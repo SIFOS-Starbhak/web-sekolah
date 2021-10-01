@@ -18,17 +18,8 @@
             <li class="nav-item dropdown d-flex align-items-center mr-2">
                 <a class="nav-link dropdown-toggle text-muted pr-0" href="#" id="navbarDropdownMenuLink" role="button"
                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span class="font-weight-bold h5">{{ JWTAuth::user()->name }}</span>
 
-                    @if (Auth::guard('manager')->check())
-                        <span class="font-weight-bold h5">{{ Auth::guard('manager')->user()->name }}</span>
-                    @endif
-                    @if (Auth::guard('guru')->check())
-                        <span class="font-weight-bold h5">{{ Auth::guard('guru')->user()->name }}</span>
-                    @endif
-
-                    @if (Auth::guard('siswa')->check())
-                        <span class="font-weight-bold h5">{{ Auth::guard('siswa')->user()->name }}</span>
-                    @endif
 
                     {{-- @elseif(Auth::guard('guru')->check())
                 <span class="font-weight-bold h4">{{Auth::guard('guru')->user()->name}}</span>
@@ -41,11 +32,7 @@
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
                     <a class="dropdown-item" href="#">Settings</a>
-                    {{-- <form method="POST" action="{{ route('logout') }}">
-                        @csrf
-                        <a class="dropdown-item" href="javascript:void(0)" onclick="event.preventDefault();
-                        this.closest('form').submit();">Logout</a>
-                    </form> --}}
+                    <a class="dropdown-item" id="frmlogout" href="javascript:void(0)">Logout</a>
                 </div>
             </li>
         </ul>

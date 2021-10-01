@@ -60,4 +60,9 @@ class User extends \TCG\Voyager\Models\User implements JWTSubject
     {
         return [];
     }
+
+    public function kelas()
+    {
+        return $this->hasOne(Kela::class,'id','kelas_siswa');
+    }
 }

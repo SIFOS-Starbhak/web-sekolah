@@ -41,42 +41,9 @@ return [
             'provider' => 'users',
         ],
 
-        'manager' => [
-            'driver' => 'session',
-            'provider' => 'managers',
-        ],
-
-        'guru' => [
-            'driver' => 'session',
-            'provider' => 'gurus',
-        ],
-
-        'siswa' => [
-            'driver' => 'session',
-            'provider' => 'siswas',
-        ],
-
-        'apiWeb' => [
+        'api' => [
             'driver' => 'jwt',
             'provider' => 'users',
-            'hash' => false,
-        ],
-
-        'apiManager' => [
-            'driver' => 'jwt',
-            'provider' => 'managers',
-            'hash' => false,
-        ],
-
-        'apiGuru' => [
-            'driver' => 'jwt',
-            'provider' => 'gurus',
-            'hash' => false,
-        ],
-
-        'apiSiswa' => [
-            'driver' => 'jwt',
-            'provider' => 'siswas',
             'hash' => false,
         ],
     ],

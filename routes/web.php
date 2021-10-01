@@ -26,19 +26,19 @@ Route::get('/dashboard', function () {
 })->name('dashboard');
 
 // Manager
-Route::group(['prefix' =>'manager','middleware'=>['jwt.verify'],'as' => 'manager.'], function () {
+Route::group(['prefix' => 'manager', 'middleware' => ['jwt.verify','auth:api'], 'as' => 'manager.'], function () {
     Route::get('/Article/index', [ArticleController::class, 'index'])->name('article.index');
 
     Route::view('/dashboard', 'dashboard.manager')->name('dashboard');
 });
 // Guru
-Route::group(['prefix' =>'guru','middleware'=>['jwt.verify'], 'as' => 'guru.'], function () {
+Route::group(['prefix' => 'guru', 'middleware' => ['jwt.verify','auth:api'], 'as' => 'guru.'], function () {
     Route::get('/Article/index', [ArticleController::class, 'index'])->name('article.index');
     Route::view('/dashboard', 'dashboard.guru')->name('dashboard');
 });
 
 // Siswa
-Route::group(['prefix' =>'siswa', 'middleware' => ['jwt.verify'], 'as' => 'siswa.'], function () {
+Route::group(['prefix' => 'siswa', 'middleware' => ['jwt.verify','auth:api'], 'as' => 'siswa.'], function () {
     Route::view('/dashboard', 'dashboard.siswa')->name('dashboard');
 });
 

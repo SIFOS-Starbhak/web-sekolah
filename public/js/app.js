@@ -4026,26 +4026,35 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 __webpack_require__(/*! alpinejs */ "./node_modules/alpinejs/dist/alpine.js");
 
- // document.getElementById('frmlogout').addEventListener('click', async () => {
-//     await axios.get()
-// })
-// var token = null;
+ // var token = null;
 
 document.addEventListener("DOMContentLoaded", function () {
   if (document.getElementById("frmlogin")) {
-    document.getElementById("frmlogin").addEventListener("submit", function () {
-      var bodyFormData = new FormData();
-      bodyFormData.append("username", document.getElementById("username").value);
-      bodyFormData.append("password", document.getElementById("password").value);
-      axios__WEBPACK_IMPORTED_MODULE_0___default().post("".concat("http://localhost:8000", "/api/login"), bodyFormData).then(function (res) {
-        // XXX: BAGAI MANA CARANYA HILANGIN TOKEN DI GET?
-        window.location.href = "".concat(res.data.redirect, "?token=").concat(res.data[0].original.access_token);
+    document.getElementById("frmlogin").addEventListener("submit", function (e) {
+      e.preventDefault();
+      var frmData = new FormData(e.target);
+      var user = Object.fromEntries(frmData);
+      axios__WEBPACK_IMPORTED_MODULE_0___default().post("".concat("http://127.0.0.1:8000", "/api/login"), user).then(function (res) {
+        console.log(res);
+        window.location.href = "".concat(res.data.redirect);
       })["catch"](function (err) {
         if (err.response) {
           console.log(err.response.data);
           document.getElementById("info").innerHTML = "<div class=\"alert alert-warning alert-dismissible fade show\" role=\"alert\">\n                            <strong>Opps!</strong> Something went wrong...\n                                ".concat(Object.values(err.response.data).map(function (e) {
             return "<li>".concat(e, "</li>");
           }).join(""), "\n                            <button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"alert\"\n                                aria-label=\"Close\"></button>\n                        </div>");
+        }
+      });
+    });
+  } else {
+    document.getElementById("frmlogout").addEventListener("click", function (e) {
+      e.preventDefault();
+      axios__WEBPACK_IMPORTED_MODULE_0___default().post("".concat("http://127.0.0.1:8000", "/api/logout")).then(function (res) {
+        console.log(res);
+        window.location.href = "/";
+      })["catch"](function (err) {
+        if (err.response) {
+          console.log(err.response.data);
         }
       });
     });

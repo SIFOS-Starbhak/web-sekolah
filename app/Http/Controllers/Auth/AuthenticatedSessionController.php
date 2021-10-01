@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
@@ -55,11 +56,10 @@ class AuthenticatedSessionController extends Controller
             'username' => 'required',
             'password' => 'required|string',
         ]);
-        $data =  ["username" => $request->username, "password" => $request->password];
-        $jwt = JWT::encode($data, "1342423424324324234"); // set cookie
+        // $data =  ["username" => $request->username, "password" => $request->password];
+        // $jwt = JWT::encode($data, "1342423424324324234"); // set cookie
 
-        setcookie("user_data", $jwt, time() + (86400 * 30), "/"); // 86400 = 1 day
-
+        // setcookie("user_data", $jwt, time() + (86400 * 30), "/"); // 86400 = 1 day
 
         if ($validator->fails()) {
             return response()->json($validator->errors(), 422);
@@ -67,7 +67,25 @@ class AuthenticatedSessionController extends Controller
         if (!$token = auth('api')->attempt(['nomor_induk' => $request->username, 'password' => $request->password])) {
             return response()->json(['error' => 'Unauthorized'], 401);
         }
-        return response()->json(['redirect' => route(Str::after(Str::lower($this->guardName()), 'api') . '.dashboard'), $this->createNewToken($token)], 200);
+
+        // simpen token ke cookie
+        Cookie::queue('token', $token, time() + (60 * 60 * 24 * 30));
+
+        $data = array();
+        $data['original_token'] = $this->createNewToken($token);
+
+        if (auth('api')->user()->hasRole('admin')) {
+            $data['redirect'] = '/admin';
+        } else if (auth('api')->user()->hasRole('siswa')) {
+            $data['redirect'] = route('siswa.dashboard');
+        } else if (auth('api')->user()->hasRole('guru')) {
+            $data['redirect'] = route('guru.dashboard');
+        } else if (auth('api')->user()->hasRole('manager')) {
+            $data['redirect'] = route('manager.dashboard');
+        } else {
+            $data['redirect'] = route('dashboard');
+        }
+        return response()->json($data, 200);
 
         // return redirect()->back();
     }
@@ -81,6 +99,7 @@ class AuthenticatedSessionController extends Controller
     public function destroy(Request $request)
     {
         auth('api')->logout();
+        Cookie::queue(Cookie::forget('token'));
         return response()->json(['message' => 'successfully signed out'], 200);
     }
 
@@ -104,10 +123,15 @@ class AuthenticatedSessionController extends Controller
         // $userdata = JWT::decode($_COOKIE['user_data'],"1342423424324324234", array('HS256')); // take user & password
 
         //hapus ini jika $_COOKIE['user_data'] sudah ada isinya
-        $encode_cookies = JWT::encode(["username" => "1920100259" ,"password" =>"password"], "1342423424324324234"); // take user & password
-        $userdata = JWT::decode($encode_cookies,"1342423424324324234", array('HS256')); // take user & password
+        // $encode_cookies = JWT::encode(["username" => "1920100259" ,"password" =>"password"], "1342423424324324234"); // take user & password
+        // $userdata = JWT::decode($encode_cookies,"1342423424324324234", array('HS256')); // take user & password
 
         // $auth_token = // need token here
-        return response()->json(auth('api')->user(), 200);
+        $data = array();
+        $data['user'] = auth('api')->user();
+        if (auth('api')->user()->kelas_siswa) {
+            $data['kelas'] = auth('api')->user()->kelas;
+        }
+        return response()->json($data, 200)->header("Access-Control-Allow-Origin", "*");
     }
 }

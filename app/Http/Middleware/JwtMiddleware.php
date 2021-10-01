@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Exception;
+use Illuminate\Support\Facades\Cookie;
 use JWTAuth;
 use Tymon\JWTAuth\Http\Middleware\BaseMiddleware;
 
@@ -20,8 +21,9 @@ class JwtMiddleware extends BaseMiddleware
     public function handle($request, Closure $next)
     {
         try {
-            $request->headers->add(["Access-Control-Allow-Origin: *"]);
-            $token = JWTAuth::parseToken()->authenticate();
+            $request->headers->set("Access-Control-Allow-Origin", "*");
+            $request->headers->set('Authorization', 'Bearer ' . Cookie::get('token'));
+            $token = JWTAuth::parseToken(Cookie::get('token'))->authenticate();
         } catch (Exception $e) {
             if ($e instanceof \Tymon\JWTAuth\Exceptions\TokenInvalidException) {
                 return response()->json(['status' => 'Token is Invalid']);
