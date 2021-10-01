@@ -93,4 +93,5 @@
 
 
         </div>
+        {{ dd($_COOKIE); }}
     @endsection

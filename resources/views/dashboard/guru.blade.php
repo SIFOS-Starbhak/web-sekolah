@@ -331,6 +331,7 @@
     {{-- </div> --}}
 </div>
 {{-- set cookie --}}
+
 <?php setcookie("token_user", JWTAuth::getToken(), time() + (86400 * 30), "/");// 86400 = 1 day ?>
 <span class="d-none token" id="token" data-token="{{ JWTAuth::getToken()}}"></span>
 @endsection

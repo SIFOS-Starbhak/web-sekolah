@@ -20,9 +20,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 "password",
                 document.getElementById("password").value
             );
+
             axios
                 .post(`${process.env.MIX_APP_URL}/api/login`, bodyFormData)
                 .then((res) => {
+                    console.log(res);
                     // XXX: BAGAI MANA CARANYA HILANGIN TOKEN DI GET?
                     window.location.href = `${res.data.redirect}?token=${res.data[0].original.access_token}`;
                 })
