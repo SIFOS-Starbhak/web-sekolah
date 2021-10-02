@@ -29,7 +29,7 @@
                 <h2 class="h5 page-title mb-4">WEB Sistem SMK Taruna Bhakti</h2>
                 <div class="row">
                     <div class="col-md-4">
-                        <a href="">
+                        <a href="javascript:void(0)" id="microWebPortal">
                             <div class="card l-bg-blue-dark text-decoration-none">
                                 <div class="card-statistic-3 p-4">
                                     <div class="card-icon card-icon-large"><i class="fas fa-chalkboard-teacher"></i>

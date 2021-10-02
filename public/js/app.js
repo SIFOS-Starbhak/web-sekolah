@@ -4035,7 +4035,9 @@ document.addEventListener("DOMContentLoaded", function () {
       var frmData = new FormData(e.target);
       var user = Object.fromEntries(frmData);
       axios__WEBPACK_IMPORTED_MODULE_0___default().post("".concat("http://127.0.0.1:8000", "/api/login"), user).then(function (res) {
-        console.log(res);
+        console.log(res.data);
+        window.sessionStorage.setItem("token", res.data.original_token.original.access_token);
+        window.sessionStorage.setItem("auth_token", res.data.auth_token);
         window.location.href = "".concat(res.data.redirect);
       })["catch"](function (err) {
         if (err.response) {
@@ -4051,11 +4053,24 @@ document.addEventListener("DOMContentLoaded", function () {
       e.preventDefault();
       axios__WEBPACK_IMPORTED_MODULE_0___default().post("".concat("http://127.0.0.1:8000", "/api/logout")).then(function (res) {
         console.log(res);
+        window.sessionStorage.removeItem("token");
+        window.sessionStorage.removeItem("auth_token");
         window.location.href = "/";
       })["catch"](function (err) {
         if (err.response) {
           console.log(err.response.data);
         }
+      });
+    });
+    document.getElementById("microWebPortal").addEventListener("click", function (e) {
+      e.preventDefault();
+      axios__WEBPACK_IMPORTED_MODULE_0___default().post("http://localhost/moodle/login/index.php", {
+        token: window.sessionStorage.getItem("token"),
+        auth_token: window.sessionStorage.getItem("auth_token")
+      }).then(function (res) {
+        console.log(res.data);
+      })["catch"](function (err) {
+        console.log(err);
       });
     });
   }

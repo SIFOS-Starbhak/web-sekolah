@@ -30,12 +30,12 @@
                         <form id="frmlogin" style="width: 23rem;" method="POST" onsubmit="event.preventDefault();">
                             <h3 class="fw-bold mb-3 pb-3" style="letter-spacing: 1px;">Log in</h3>
                             <div class="form-outline mb-4">
-                                <input type="text" id="username" name="username" class="form-control form-control-lg" />
+                                <input type="text" name="username" class="form-control form-control-lg" />
                                 <label class="form-label">Username</label>
                             </div>
                             <div class="form-outline mb-4">
-                                <input type="password" id="password" name="password"
-                                    class="form-control form-control-lg" autocomplete="off" />
+                                <input type="password" name="password" class="form-control form-control-lg"
+                                    autocomplete="off" />
                                 <label class="form-label">Password</label>
                             </div>
                             <div class="pt-1 mb-4">
