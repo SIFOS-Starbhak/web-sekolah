@@ -52,7 +52,7 @@
                                         </div>
                                         <div class="row align-items-center mb-2 d-flex">
 
-                                            <a href="#" class=" stretched-link" id="portal"
+                                            <a href="#" class=" stretched-link" id="microWebPortal"
                                                 style="color: transparent"></a>
                                         </div>
                                     </div>
@@ -76,7 +76,7 @@
                                         </div>
                                         <div class="row align-items-center mb-2 d-flex">
 
-                                            <a href="#" class=" stretched-link" style="color: transparent"></a>
+                                            <a href="#" class=" stretched-link" id="sitakols" style="color: transparent"></a>
                                         </div>
                                     </div>
                                 </div>
@@ -330,48 +330,7 @@
     </div>
     {{-- </div> --}}
 </div>
-{{-- set cookie --}}
-
-<?php setcookie("token_user", JWTAuth::getToken(), time() + (86400 * 30), "/");// 86400 = 1 day ?>
-<span class="d-none token" id="token" data-token="{{ JWTAuth::getToken()}}"></span>
 @endsection
 @push('js')
-<script>
-    $(document).ready(function () {
-        $('#portal').click(function (e) {
-            e.preventDefault();
-            token = $('#token').data('token');
-            axios.get('/api/me', {
-                headers: {
-                    "Authorization": `Bearer ${token}`
-                }
-            }).then(response => {
-                // console.log(response);
-                console.log(response.data);
-                let axiosConfig = {
-                    crossDomain: true,
-                    withCredentials: true,
-                    headers: {
-                        //"Access-Control-Allow-Origin": "*",
-                        'Content-Type': 'application/json;charset=UTF-8',
-                        "Content-Type" : "application/x-www-form-urlencoded"
-                    }
-                };
-                console.log(response.data.token);
-                var data = new FormData();
-                data.append('token', response.data.token);
-                axios.post('http://localhost/moddle/moodle/login/index.php',data, axiosConfig).then(
-                    response => {
-                        //console.log(response);
-                        window.location.href = "http://localhost/moddle/moodle/my/";
-                    }).catch(erorr => {
-
-                });
-            });
-        });
-    });
-
-</script>
-
-
-@endpush
+@endpush 
+l

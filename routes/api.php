@@ -14,7 +14,6 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
  */
-
 header('Access-Control-Allow-Origin: http://127.0.0.1:8000');
 header('Access-Control-Allow-Methods: *');
 header('Access-Control-Allow-Headers: *');

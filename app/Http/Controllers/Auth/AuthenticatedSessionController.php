@@ -63,7 +63,7 @@ class AuthenticatedSessionController extends Controller
         // TODO: api seharusnya jangan pake cookie
         // simpen token ke cookie
         Cookie::queue('token', $token, time() + (60 * 60 * 24 * 30));
-        Cookie::queue('auth_token', JWT::encode($validator->validated(), $token,'HS256'), time() + (60 * 60 * 24 * 30));
+        Cookie::queue('auth_token', JWT::encode($validator->validated(), "srtarbhak-key"), time() + (60 * 60 * 24 * 30));
 
         $data = array('original_token' => $this->createNewToken($token));
 
@@ -113,21 +113,25 @@ class AuthenticatedSessionController extends Controller
      */
     public function userProfile()
     {
-        // XXX: Ini auth_token untuk data auth
-        $data = array('user' => auth('api')->user(), 'auth_token' => JWT::decode(Cookie::get('auth_token'), Cookie::get('token'),['HS256']));
+        $data = array('user' => auth('api')->user());
         // XXX: Di Moodle user udah ada kelas sama rolenya tapi pas di matiin malah kgk ada kelas&role nya
         if (auth('api')->user()->kelas_siswa) {
             $data['kelas'] = auth('api')->user()->kelas;
         }
         if (auth('api')->user()->hasRole('admin')) {
+            $data['auth'] = ["username" => auth('api')->user()->nomor_induk, "password" => auth('api')->user()->password, "role" => "admin"];
             $data['role'] = 'admin';
         } else if (auth('api')->user()->hasRole('siswa')) {
+            $data['auth'] = ["username" => auth('api')->user()->nomor_induk, "password" => auth('api')->user()->password, "role" => "siswa"];
             $data['role'] = 'siswa';
         } else if (auth('api')->user()->hasRole('guru')) {
-            $data['role'] = 'guru';
+            $data['auth'] = ["username" => auth('api')->user()->nomor_induk, "password" => auth('api')->user()->password, "role" => "guru"];
         } else if (auth('api')->user()->hasRole('manager')) {
-            $data['role'] = 'manager';
+            $data['auth'] = ["username" => auth('api')->user()->nomor_induk, "password" => auth('api')->user()->password, "role" => "manager"];
         }
-        return response()->json($data, 200)->header("Access-Control-Allow-Origin", "*");
+
+        $token = JWT::encode($data, "1342423424324324234",'HS256');
+        return response()->json(['token' => $token], 200)->header("Access-Control-Allow-Origin", "*");
+
     }
 }

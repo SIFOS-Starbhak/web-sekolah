@@ -49,7 +49,7 @@
                         </a>
                     </div>
                     <div class="col-md-4">
-                        <a href="">
+                        <a href="javascript:void(0)" id="sitakols">
                             <div class="card l-bg-cherry">
                                 <div class="card-statistic-3 p-4">
                                     <div class="card-icon card-icon-large"><i class="fas fa-briefcase"></i></div>

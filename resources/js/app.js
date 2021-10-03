@@ -4,7 +4,6 @@ require("alpinejs");
 
 import axios from "axios";
 // var token = null;
-
 document.addEventListener("DOMContentLoaded", () => {
     if (document.getElementById("frmlogin")) {
         document.getElementById("frmlogin").addEventListener("submit", (e) => {
@@ -13,7 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const user = Object.fromEntries(frmData);
 
             axios
-                .post(`${process.env.MIX_APP_URL}/api/login`, user)
+                .post(`http://127.0.0.1:8000/api/login`, user)
                 .then((res) => {
                     console.log(res.data);
                     window.sessionStorage.setItem(
@@ -46,7 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("frmlogout").addEventListener("click", (e) => {
             e.preventDefault();
             axios
-                .post(`${process.env.MIX_APP_URL}/api/logout`)
+                .post(`http://127.0.0.1:8000/api/logout`)
                 .then((res) => {
                     console.log(res);
                     window.sessionStorage.removeItem("token");
@@ -59,21 +58,23 @@ document.addEventListener("DOMContentLoaded", () => {
                     }
                 });
         });
-        document
+    }
+
+    document
             .getElementById("microWebPortal")
             .addEventListener("click", (e) => {
                 e.preventDefault();
-                axios
-                    .post("http://localhost/moodle/login/index.php", {
-                        token: window.sessionStorage.getItem("token"),
-                        auth_token: window.sessionStorage.getItem("auth_token"),
-                    })
-                    .then((res) => {
-                        console.log(res.);
-                    })
-                    .catch((err) => {
-                        console.log(err);
-                    });
+                form = new FormData();
+                form.append('token', window.sessionStorage.getItem("token"));
+                window.location.href = "http://localhost/moddle/moodle/login/index.php?token="+window.sessionStorage.getItem("token"); // href seuai sama url
             });
-    }
+      document
+            .getElementById("sitakols")
+            .addEventListener("click", (e) => {
+                e.preventDefault();
+                console.log('clicked');
+                form = new FormData();
+                form.append('token', window.sessionStorage.getItem("token"));
+                window.location.href = "http://127.0.0.1:8080/api/prakerin/"+window.sessionStorage.getItem("token"); // href seuai sama url
+            });
 });

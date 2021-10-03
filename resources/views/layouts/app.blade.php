@@ -50,7 +50,7 @@
     <!-- Simple bar CSS -->
     <link rel="stylesheet" href="{{ asset('assets/css/simplebar.css') }}">
     <script src="https://cdn.jsdelivr.net/npm/pace-js@latest/pace.min.js"></script>
-    <link rel="stylesheet" href="{{ asset('assets/css/flash.css') }}">
+    {{-- <link rel="stylesheet" href="{{ asset('assets/css/flash.css') }}"> --}}
 
     <!-- Fonts CSS -->
     {{-- <link
