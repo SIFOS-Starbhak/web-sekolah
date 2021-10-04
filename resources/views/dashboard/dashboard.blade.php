@@ -247,10 +247,9 @@
                 </div>
             </div>
         </div>
-    {{-- @elseif (Route::is('dashboard.manager')) --}}
-     
-        @else 
+        {{-- @elseif (Route::is('dashboard.manager')) --}}
 
+    @else
         <div class="row">
             <div class="col">
                 <div class="card card-info profile-widget">
@@ -374,7 +373,9 @@
         </div>
         <div class="row">
             <div class="col">
-                <h2 class="section-title">Artikel Anda</h2>
+                <h2 class="section-title">
+                    Artikel Anda
+                </h2>
                 <a class="btn btn-primary" href="{{ route('article.tambah') }}">
                     <i class="fa fa-plus fa-lg"></i> Tambah Artikel
                 </a>
@@ -393,7 +394,7 @@
                                         <tr role="row">
                                             <th scope="col">Judul</th>
                                             <th scope="col">Kategori</th>
-                                            <th scope="col">Tanggal dibuat</th>
+                                            <th scope="col">Waktu dan Tanggal dibuat</th>
                                             <th scope="col">Status</th>
                                         </tr>
                                     </thead>
@@ -407,26 +408,10 @@
                                                         {{ asset('article-img/' . $item->image) }}" alt="">
                                                 </td> --}}
                                                 <td>{{ $item->title }}
-                                                    <div class="table-links">
+                                                    <div class="table-links d-flex align-items-center">
                                                         <a href="#">View</a>
                                                         <div class="bullet"></div>
                                                         <a href="{{ route('article.edit', $item->id) }}">Edit</a>
-                                                        <div class="bullet"></div>
-                                                        <form 
-                                                        action="{{ route('article.draft', $item->id) }}"
-                                                        method="POST">
-                                                        @method('PUT')
-                                                        @csrf
-                                                                @if ($item->status == 'PUBLISHED')
-                                                                <button type="submit" class="btn px-0 ">
-                                                                    <a class="text-warning">Draft</a>
-                                                                </button>
-                                                                @else
-                                                                <button type="submit" class="btn px-0 ">
-                                                                    <a class="text-primary">Published</a>
-                                                                </button>
-                                                                @endif
-                                                    </form>
                                                         <div class="bullet"></div>
                                                         <form id="deleteForm"
                                                             action="{{ route('article.delete', $item->id) }}"
@@ -449,13 +434,45 @@
                                                     {{ Carbon\Carbon::parse($item->created_at)->isoFormat('dddd, D MMMM Y') }}
                                                 </td>
                                                 <td>
+                                                    <div class="dropdown d-inline">
                                                         @if ($item->status == 'DRAFT')
-                                                                <div class="badge badge-warning">{{ $item->status }}</div>
-                                                        @else 
-                                                    <div class="badge badge-primary">{{ $item->status }}</div>
-
-                                                            @endif
-                                                    </td>
+                                                            <button class="btn btn-warning dropdown-toggle" type="button"
+                                                                id="dropdownMenuButton2" data-toggle="dropdown"
+                                                                aria-haspopup="true" aria-expanded="false">
+                                                                {{ $item->status }}
+                                                            </button>
+                                                        @else
+                                                            <button class="btn btn-primary dropdown-toggle" type="button"
+                                                                id="dropdownMenuButton2" data-toggle="dropdown"
+                                                                aria-haspopup="true" aria-expanded="false">
+                                                                {{ $item->status }}
+                                                            </button>
+                                                        @endif
+                                                        <div class="dropdown-menu" x-placement="bottom-start"
+                                                            style="position: absolute; transform: translate3d(0px, 28px, 0px); top: 0px; left: 0px; will-change: transform;">
+                                                            <form action="{{ route('article.draft', $item->id) }}"
+                                                                method="POST">
+                                                                @method('PUT')
+                                                                @csrf
+                                                                @if ($item->status == 'PUBLISHED')
+                                                                    <button type="submit" class="dropdown-item has-icon">
+                                                                        <a
+                                                                            class="text-dark d-flex align-items-center text-decoration-none">
+                                                                            <i class="fa fa-edit text-warning"></i>
+                                                                            Draft</a>
+                                                                    </button>
+                                                                @else
+                                                                    <button type="submit" class="dropdown-item has-icon">
+                                                                        <a
+                                                                            class="text-dark d-flex align-items-center text-decoration-none">
+                                                                            <i class="fa fa-upload text-primary"></i>
+                                                                            Publish</a>
+                                                                    </button>
+                                                                @endif
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </td>
                                             </tr>
                                         @endforeach
                                     </tbody>
@@ -474,7 +491,6 @@
 @push('css')
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/dataTables.bootstrap4.min.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.7/dist/sweetalert2.all.min.js"></script>
-    <link rel="stylesheet" href="{{ asset('css/iziToast.min.css') }}">
     <style>
         .cardh {
             transition: 0.4s ease-out;
@@ -492,6 +508,7 @@
         }
 
     </style>
+
 @endpush
 
 @push('js')
@@ -506,13 +523,14 @@
             e.preventDefault();
             let id = $(this).data('id');
             Swal.fire({
-                title: 'Are you sure ?',
-                text: "You won't be able to revert this !",
+                title: 'Apakah anda yakin ingin menghapus?',
+                text: "Artikel yang Anda hapus tidak dapat dipulihkan.",
                 icon: 'warning',
                 showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes, delete it!'
+                confirmButtonColor: '#fb160a ',
+                cancelButtonColor: '##cdd3d8',
+                confirmButtonText: 'Hapus',
+                cancelButtonText: 'Batal',
             }).then((result) => {
                 if (result.isConfirmed) {
                     $('#deleteForm').submit();

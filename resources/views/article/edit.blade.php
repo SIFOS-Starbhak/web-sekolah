@@ -68,7 +68,8 @@
                                     </div>
                                     <div class="row">
                                         <div class="col d-flex justify-content-end">
-                                            <button type="submit" class="btn btn-primary">Update</button>
+                                            <button type="submit" class="btn btn-primary">
+                                                <i class="fa fa-edit fa-lg"></i> Update</button>
                                         </div>
                                     </div>
                                 </form>
