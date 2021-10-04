@@ -1,13 +1,8 @@
 <?php
 use App\Http\Controllers\ArticleController;
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ImageController;
-use App\Http\Controllers\ArticleController;
-use App\Http\Controllers\HubinController;
-use App\Http\Controllers\WebController;
-use App\Models\Alumni;
-use App\Models\Jurusan;
 use App\Models\Post;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,7 +13,7 @@ use App\Models\Post;
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-*/
+ */
 // Route::get('/',[WebController::class,'index']);
 
 Route::group(['prefix' => 'admin'], function () {
@@ -30,12 +25,12 @@ Route::get('/login', function () {
 })->name('login');
 
 Route::get('/', 'WebController@index');
+// Route::view('/', 'template/main');
 Route::get('/profile', 'WebController@profiletb');
-
 
 Route::get('/artikel', function () {
     $settings = App\Models\Setting::all();
-    $article = App\Models\Post::where('status','PUBLISHED')->get();
+    $article = App\Models\Post::where('status', 'PUBLISHED')->get();
     return view('artikel', compact('settings', 'article'));
 });
 // Route::get('/profile', function () {
@@ -50,7 +45,6 @@ Route::get('/kurikulum', function () {
     $struktur = App\Models\Page::where('id', '17')->get(['body', 'title']);
     $kompetensi = App\Models\Page::where('id', '16')->get(['body', 'title']);
     $fotoguru = App\Models\Kategori::all();
-
 
     return view('kurikulum', compact('settings', 'struktur', 'kompetensi', 'fotoguru'));
 });
@@ -75,19 +69,14 @@ Route::get('/hubin', 'HubinController@index');
 
 Route::get('/{kategori:slug}', 'WebController@fotoguru');
 
-
-
 Route::get('/showartikel/{id}', function ($id) {
     // dd($id);
-    $articleShow = App\Models\Post::where('slug',$id)->first();
-    $author = App\Models\Manager::where('id',$articleShow->author_id)->first();
+    $articleShow = App\Models\Post::where('slug', $id)->first();
+    $author = App\Models\Manager::where('id', $articleShow->author_id)->first();
     // dd($author);
     $settings = App\Models\Setting::all();
-    return view('showartikel',compact('articleShow','settings','author'));
+    return view('showartikel', compact('articleShow', 'settings', 'author'));
 })->name('showartikel');
-
-
-
 
 // Manager
 Route::group(['prefix' => 'manager', 'middleware' => ['auth:manager']], function () {
@@ -107,7 +96,7 @@ Route::group(['prefix' => 'manager', 'middleware' => ['auth:manager']], function
 });
 
 // Guru
-Route::group(['prefix' => 'guru', 'middleware' => ['jwt.verify','auth:api'], 'as' => 'guru.'], function () {
+Route::group(['prefix' => 'guru', 'middleware' => ['jwt.verify', 'auth:api'], 'as' => 'guru.'], function () {
     Route::get('/Article/index', [ArticleController::class, 'index'])->name('article.index');
 
     Route::get('/dashboard', function () {
@@ -119,3 +108,4 @@ Route::group(['prefix' => 'siswa', 'middleware' => ['auth:siswa']], function () 
     Route::get('/dashboard', function () {
         return view('dashboard.dashboard');
     })->name('dashboard.siswa');
+});
