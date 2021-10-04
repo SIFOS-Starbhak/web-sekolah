@@ -26,8 +26,17 @@ class ArticleController extends Controller
     }
     public function store(Request $request)
     {
-        dd($request);
-
+        // dd($request);
+         $request->validate([
+            'category' => 'required',
+            'title' => 'required|unique:posts|max:100',
+            'seo_title' => 'required|unique:posts|max:60',
+            'description' => 'required',
+            'image' => 'required',
+        ],[
+            'required' => 'Tidak Boleh Kosong!',
+            'unique' => 'Sudah ada tidak boleh sama!'
+        ]);
 
       
         $description = strip_tags($request->description);
@@ -62,7 +71,7 @@ class ArticleController extends Controller
 
         $notification = array(
             'message' => 'Post created successfully!',
-            'alert-type' => 'success'
+            'alert-type' => 'success-store'
         );
         
         // return Redirect::to('/')->with($notification);
@@ -72,7 +81,7 @@ class ArticleController extends Controller
     public function edit($id)
     {
 
-       $article =  Post::where('slug',$id)->first();
+       $article =  Post::where('id',$id)->first();
        $categories = Category::all();
 
         return view('article.edit',compact('article','categories'));
@@ -81,6 +90,9 @@ class ArticleController extends Controller
         
 
     }
+
+
+    
     public function update(Request $request,$id)
     {
         // dd($request->image);
@@ -178,7 +190,8 @@ class ArticleController extends Controller
                                     
                                         $notification = array(
                                             'message' => 'Article telah di update ',
-                                            'alert-type' => 'success'
+                                             'alert-type' => 'success-update'
+                                            
                                         );
                                     
                                         return redirect()->route('dashboard.manager')->with($notification);
@@ -196,6 +209,7 @@ class ArticleController extends Controller
     }
 
 
+
     public function delete($id)
     {
        $img =  Post::where('id',$id)->first();
@@ -208,7 +222,8 @@ class ArticleController extends Controller
 
             $notification = array(
                 'message' => 'Post Berhasil Di  Hapus!',
-                'alert-type' => 'danger'
+                'alert-type' => 'success-delete'
+
             );
             
             // return Redirect::to('/')->with($notification);
@@ -225,4 +240,27 @@ class ArticleController extends Controller
 
             // dd($id);
     }
+
+    public function draftOrPublised($id)
+    {
+        // dd($id);
+       $checkStatus =  Post::where('id',$id)->first();
+
+       if ($checkStatus->status == 'PUBLISHED') {
+           Post::where('id',$id)->update([
+               'status'           => 'DRAFT',
+           ]);
+        return redirect()->back();
+           
+       }else{
+        Post::where('id',$id)->update([
+            'status'           => 'PUBLISHED',
+        ]);
+        return redirect()->back();
+       }
+
+
+
+    }
+
 }

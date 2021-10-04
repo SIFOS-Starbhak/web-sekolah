@@ -31,6 +31,7 @@ class Post extends Model implements HasMedia
     public function registerMediaConversions(Media $media = null): void
     {
         $this->addMediaConversion('thumb')
+              ->height(500)
               ->width(600);
     }
         

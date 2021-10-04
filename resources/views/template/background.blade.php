@@ -39,30 +39,37 @@
             crossorigin="anonymous" />
 
         <style>
-            #hero{
-                background: url('http://localhost:8000/template/assets/img/backgroundtb.png') top center; 
+            #hero {
+                background: url('http://localhost:8000/template/assets/img/backgroundtb.png') top center;
                 width: 100%;
                 height: 530px;
                 background-size: cover;
                 position: relative;
             }
+
         </style>
     </head>
 
     <body>
 
-            
-        <section id="hero" class="d-flex justify-content-center align-items-center">
+
+        <section id="hero" @foreach ($settings as $item)
+            @if ($item->display_name == 'Fitur Home Page')
+                style="background: url('http://localhost:8000/storage/'.{{ $item->value }}) top center; width: 100%;
+                height: 530px; background-size: cover; position: relative;"
+            @endif
+            @endforeach
+            class="d-flex justify-content-center align-items-center">
             <div class="container position-relative" style="margin-bottom: 10%;" data-aos="zoom-in" data-aos-delay="100">
                 @foreach ($settings as $item)
-                @if ( $item->display_name == 'Heading' )
-                    
-                <h1>{!!$item->value!!}</h1>
-                @elseif( $item->display_name == 'Sub Heading' )
-                <h2>{{$item->value}}</h2>
-                @endif
+                    @if ($item->display_name == 'Heading')
+
+                        <h1>{!! $item->value !!}</h1>
+                    @elseif( $item->display_name == 'Sub Heading' )
+                        <h2>{{ $item->value }}</h2>
+                    @endif
                 @endforeach
-                <a href="#" target="_blank" class="btn-get-started">Login</a>
+                <a href="{{ route('login') }}" target="_blank" class="btn-get-started">Login</a>
             </div>
         </section>
 

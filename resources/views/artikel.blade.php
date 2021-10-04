@@ -13,8 +13,8 @@
                                     <h4>{{ $artikel->category->name }}</h4>
                                     <!-- <p class="price">$169</p> -->
                                 </div>
+                                <h3><a href="{{route('showartikel',$artikel->slug )}}">{{ $artikel->title }}</a></h3>
 
-                                <h3><a href="/{{ $artikel->slug }}">{{ $artikel->title }}</a></h3>
                                 <p>{{ $artikel->excerpy }}</p>
                             </div>
                         </div>

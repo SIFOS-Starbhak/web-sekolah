@@ -7,61 +7,21 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <div class="container mt-5 mb-5">
-<a href="/kurikulum" class="col-12 mb-2 btn btn-primary text-center">Kembali</a>
+<a href="/kurikulum" class="col-12 mb-2" style="font-size: 17px;"><i class="fas fa-arrow-left"></i> Kembali</a>
 <section class="our-webcoderskull padding-lg">
   <div class="container">
     <div class="row heading heading-icon">
-        <h1 class="text-primary text-center">Our Team</h1>
+      <h2 class="text-primary">{{ $kategori->nama_kategori }}</h2>
     </div>
     <ul class="row">
+      @foreach ($foto as $ft)
       <li class="col-12 col-md-6 col-lg-3">
-          <div class="cnt-block equal-hight" style="height: 349px;">
-            <figure><img src="http://www.webcoderskull.com/img/team4.png" class="img-responsive" alt=""></figure>
-            <h3><a href="http://www.webcoderskull.com/">Web coder skull</a></h3>
-            <p>Freelance Web Developer</p>
-            <ul class="follow-us clearfix">
-              <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-              <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-              <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
-            </ul>
+          <div class="cnt-block equal-hight text-center" style="height: 349px;">
+            <img src="{{ asset('storage/'. $ft->foto) }}" class="img-responsive" alt="" style="width:200px;height:200px;">
+            <h3 style="margin-top:10%;"><a href="http://www.webcoderskull.com/">{{ $ft->nama_guru }}</a></h3>
           </div>
-      </li>
-      <li class="col-12 col-md-6 col-lg-3">
-          <div class="cnt-block equal-hight" style="height: 349px;">
-            <figure><img src="http://www.webcoderskull.com/img/team1.png" class="img-responsive" alt=""></figure>
-            <h3><a href="#">Kappua </a></h3>
-            <p>Freelance Web Developer</p>
-            <ul class="follow-us clearfix">
-              <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-              <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-              <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
-            </ul>
-          </div>
-      </li>
-      <li class="col-12 col-md-6 col-lg-3">
-          <div class="cnt-block equal-hight" style="height: 349px;">
-            <figure><img src="http://www.webcoderskull.com/img/team4.png" class="img-responsive" alt=""></figure>
-            <h3><a href="http://www.webcoderskull.com/">Manish </a></h3>
-            <p>Freelance Web Developer</p>
-            <ul class="follow-us clearfix">
-              <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-              <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-              <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
-            </ul>
-          </div>
-       </li>
-      <li class="col-12 col-md-6 col-lg-3">
-          <div class="cnt-block equal-hight" style="height: 349px;">
-            <figure><img src="http://www.webcoderskull.com/img/team2.png" class="img-responsive" alt=""></figure>
-            <h3><a href="http://www.webcoderskull.com/">Atul </a></h3>
-            <p>Freelance Web Developer</p>
-            <ul class="follow-us clearfix">
-              <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-              <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-              <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
-            </ul>
-          </div>
-      </li>
+        </li>
+        @endforeach
     </ul>
   </div>
 </section>

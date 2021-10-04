@@ -27,13 +27,17 @@
     @stack('css')
 
     <style>
+
+
       #toast-container > .toast-custom {
     content: "\f00C";
 }
 
 /* this will set the toastr style */
 .toast-custom-success {
-    background-color: rgb(117, 235, 88);
+    font-style: italic;
+    color: rgb(255, 255, 255);
+    background-color: rgb(47, 204, 16);
 }
     </style>
     <!-- App CSS -->
@@ -70,6 +74,9 @@
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.nicescroll/3.7.6/jquery.nicescroll.min.js"></script>
 
+    <script src="{{ asset('assets/js/stisla.js') }}"></script>
+    <script src="{{ asset('assets/js/config.js') }}"></script>
+    <script src="{{ asset('assets/js/app.js') }}"></script>
     <!-- JS -->
     @stack('js')
     {{-- <script src="{{ asset('js/apps.js') }}"></script> --}}
@@ -108,8 +115,16 @@
             toastr.warning("{{ Session::get('message') }}");
             break;
 
-        case 'success':
-        toastr.success("Click To Open", "more text",{iconClass:"toast-custom-success"});
+        case 'success-store':
+        toastr.success("Successfully", "Berhasil Membuat Article",{iconClass:"toast-custom-success"});
+            // toastr.success("{{ Session::get('message') }}");
+            break;
+        case 'success-update':
+        toastr.success("Successfully", "Berhasil Mengupdate Article",{iconClass:"toast-custom-success"});
+            // toastr.success("{{ Session::get('message') }}");
+            break;
+        case 'success-delete':
+        toastr.success("Successfully", "Berhasil Menghapus Article",{iconClass:"toast-custom-success"});
             // toastr.success("{{ Session::get('message') }}");
             break;
 
@@ -231,7 +246,6 @@
 
 
 
- 
 
 
       

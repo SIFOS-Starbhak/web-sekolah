@@ -29,19 +29,54 @@
         <div class="container" data-aos="fade-up">
           <div class="row card-group " data-aos="zoom-in" data-aos-delay="100">
 
-              <div class="col-lg-4 col-md-6 d-flex align-items-stretch mb-4 guru">
-                <a href="/fotoguru">
+            <section id="popular-courses" class="courses">
+              <div class="container" data-aos="fade-up">
+                <div class="row" data-aos="zoom-in" data-aos-delay="100">
+              @foreach ($fotoguru as $fg)
+              <div class="col-lg-4 col-md-6 mb-4 d-flex align-items-stretch" style="height: 450px;width:350px;">
+                <a href="/{{ $fg->slug }}">
                   <div class="course-item">
-                    <img src="{{asset('template/assets/img/abouttb.jpg')}}" class="img-fluid" alt="..."  style="height: 70%;width:100%;"/>
-                    <div class="course-content">
-                      <h3><a href="">Tim Manajemen Sekolah</a></h3>
-                      <p>Et architecto provident deleniti facere repellat nobis iste. Id facere quia quae dolores dolorem tempore.</p>
-                    </div>
+                    <img src="{{asset('storage/'.$fg->foto)}}" class="img-fluid" alt="..."  style="width:300px;height:300px;padding:10px;" />
+                    <div class="course-content mt-2 text-center ">
+                      
+                      <h3 class="mb-4"><a href="">{{ $fg->nama_kategori }}</a></h3>
+                    
+                      <p>{!! $fg->caption !!}</p>
+                      </div>
+                    
                   </div>
                 </a>
               </div>
+              @endforeach
+                </div>
+            </div>
+          </section>
 
-            <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0 mb-4 guru">
+              {{-- <section id="popular-courses" class="courses">
+                <div class="container" data-aos="fade-up">
+                    <div class="row" data-aos="zoom-in" data-aos-delay="100">
+                        @foreach ($article as $artikel)
+                        <div class="col-lg-4 col-md-6 mb-4 d-flex align-items-stretch" style="height: 450px;width:350px;">
+                            <div class="course-item">
+                                <img src="{{ asset('storage/' . $artikel->image) }}" class="img-fluid"
+                                    alt="..." style="width:350px;height:300px;"/>
+                                <div class="course-content">
+                                    <div class="d-flex justify-content-between align-items-center mb-3">
+                                        <h4>{{ $artikel->category->name }}</h4>
+                                        <!-- <p class="price">$169</p> -->
+                                    </div>
+    
+                                    <h3><a href="/{{ $artikel->slug }}">{{ $artikel->title }}</a></h3>
+                                    <p>{{ $artikel->excerpy }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        @endforeach
+                        <!-- End Course Item-->
+                    </div>
+                </div>
+            </section> --}}
+            {{-- <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0 mb-4 guru">
               <a href="/fotoguru">
                 <div class="course-item">
                   <img src="{{asset('template/assets/img/abouttb.jpg')}}" class="img-fluid" alt="..."  style="height: 70%;width:100%;"/>
@@ -87,7 +122,7 @@
                   </div>
                 </div>
               </a>
-            </div>
+            </div> --}}
 
           </div>
         </div>

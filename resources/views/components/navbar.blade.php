@@ -35,8 +35,8 @@
 <nav class="navbar navbar-secondary navbar-expand-lg">
     <div class="container">
         <div class="text-dark my-auto">
-            <h3>Welcome to the
-                <span class="text-info">Bridge</span>
+            <h3 class="my-0">
+                @yield('judul')
             </h3>
         </div>
     </div>
