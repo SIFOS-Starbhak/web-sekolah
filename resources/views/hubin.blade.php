@@ -302,7 +302,7 @@
                     <td>{{ $item->posisi }}</td>
                 </tr>
                 @endforeach
-                <tr>
+                {{-- <tr>
                     <th scope="row">2</th>
                     <td></td>
                     <td></td>
@@ -329,7 +329,7 @@
                     <td></td>
                     <td></td>
                     <td></td>
-                </tr>
+                </tr> --}}
                 
             </tbody>
         </table>

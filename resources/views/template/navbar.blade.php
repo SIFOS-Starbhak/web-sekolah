@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -9,24 +11,25 @@
     <meta content="" name="keywords" />
 
     <!-- Favicons -->
-    <link href="{{asset('template/assets/img/favicon.png')}}" rel="icon" />
+    
+    <link href="{{ asset('template/assets/img/favicon.png') }}" rel="icon" />
 
-    <link href="{{asset('template/assets/img/apple-touch-icon.png')}}" rel="apple-touch-icon" />
+    <link href="{{ asset('template/assets/img/apple-touch-icon.png') }}" rel="apple-touch-icon" />
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet" />
 
     <!-- Vendor CSS Files -->
-    <link href="{{asset('template/assets/vendor/animate.css/animate.min.css')}}" rel="stylesheet" />
-    <link href="{{asset('template/assets/vendor/aos/aos.css')}}" rel="stylesheet" />
-    <link href="{{asset('template/assets/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet" />
-    <link href="{{asset('template/assets/vendor/bootstrap-icons/bootstrap-icons.css')}}" rel="stylesheet" />
-    <link href="{{asset('template/assets/vendor/boxicons/css/boxicons.min.css')}}" rel="stylesheet" />
-    <link href="{{asset('template/assets/vendor/remixicon/remixicon.css')}}" rel="stylesheet" />
-    <link href="{{asset('template/assets/vendor/swiper/swiper-bundle.min.css')}}" rel="stylesheet" />
+    <link href="{{ asset('template/assets/vendor/animate.css/animate.min.css') }}" rel="stylesheet" />
+    <link href="{{ asset('template/assets/vendor/aos/aos.css') }}" rel="stylesheet" />
+    <link href="{{ asset('template/assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" />
+    <link href="{{ asset('template/assets/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet" />
+    <link href="{{ asset('template/assets/vendor/boxicons/css/boxicons.min.css') }}" rel="stylesheet" />
+    <link href="{{ asset('template/assets/vendor/remixicon/remixicon.css') }}" rel="stylesheet" />
+    <link href="{{ asset('template/assets/vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet" />
 
     <!-- Template Main CSS File -->
-    <link href="{{asset('template/assets/css/style.css')}}" rel="stylesheet" />
+    <link href="{{ asset('template/assets/css/style.css') }}" rel="stylesheet" />
 
     <!-- Font Awesome -->
     <!-- <link href="fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css" /> -->
@@ -40,9 +43,10 @@
   </head>
 
   <body>
-<header id="header">
-    <div class="container d-flex align-items-center">
-
+    <!-- ======= Header ======= -->
+    <header id="header" class="fixed-top">
+      <div class="container d-flex align-items-center">
+        <!-- <img src="assets/img/logotb.png" alt="" style="height: 70px; width: 70px" /> -->
       @foreach ($settings as $setting)
         @if ($setting->display_name == 'Site Logo')
             
@@ -50,32 +54,35 @@
         @endif
       @endforeach
         <!-- Uncomment below if you prefer to use an image logo -->
-        {{-- <a href="index.html" class="logo me-auto"><img src="{{asset('template/assets/img/logo.png')}}" alt="" class="img-fluid"></a> --}}
+        <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
-        <nav id="navbar active" class="navbar order-last order-lg-0 {{request()->is('/') || request()->is('profile') || request()->is('kurikulum') || request()->is('hubin') || request()->is('sarpras') || request()->is('kesiswaan') || request()->is('kontak') ? 'show':''}}" style="margin-left: auto">
+        <nav id="navbar" class="navbar order-last order-lg-0" style="margin-left: auto">
           <ul>
-            <li><a class="{{request()->is('/*') ? 'active':''}}" href="/">Home</a></li>
-            <li><a class="{{request()->is('profile*') ? 'active':''}}" href="/profile">Profile</a></li>
-            <li><a class="{{request()->is('kurikulum*') ? 'active':''}}" href="/kurikulum">Kurikulum</a></li>
-            <li><a class="{{request()->is('hubin*') ? 'active':''}}" href="/hubin">Hubungan Industri</a></li>
-            <li><a class="{{request()->is('sarpras*') ? 'active':''}}" href="/sarpras">Sarana Pra Sarana</a></li>
-            <li><a class="{{request()->is('kesiswaan*') ? 'active':''}}" href="/kesiswaan">Kesiswaan</a></li>
-            <li><a class="{{request()->is('kontakkami*') ? 'active':''}}" href="/kontakkami">Kontak Kami</a></li>
-
+            <li><a href="/" class="{{ request()->is('/*') ? 'active' : ''  }}">Home</a></li>
+            <li><a href="/profile" class="{{ request()->is('profile*') ? 'active' : ''  }}">Profile</a></li>
+            <li><a href="/kurikulum" class="{{ request()->is('kurikulum*') ? 'active' : ''  }}">Kurikulum</a></li>
+            <li><a href="/hubin" class="{{ request()->is('hubin*') ? 'active' : ''  }}">Hubungan Industri</a></li>
+            <li><a href="/sarpras" class="{{ request()->is('sarpras*') ? 'active' : ''  }}">Sarana Pra Sarana</a></li>
+            <li><a href="/kesiswaan" class="{{ request()->is('kesiswaan*') ? 'active' : ''  }}">Kesiswaan</a></li>
+            <li><a href="/kontakkami" class="{{ request()->is('kontakkami*') ? 'active' : ''  }}">Kontak Kami</a></li>
           </ul>
           <i class="bi bi-list mobile-nav-toggle"></i>
         </nav>
         <!-- .navbar -->
-      </div>  
-</header>
+      </div>
 
-    <script src="{{asset('template/assets/vendor/aos/aos.js')}}"></script>
-    <script src="{{asset('template/assets/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-    <script src="{{asset('template/assets/vendor/php-email-form/validate.js')}}"></script>
-    <script src="{{asset('template/assets/vendor/purecounter/purecounter.js')}}"></script>
-    <script src="{{asset('template/assets/vendor/swiper/swiper-bundle.min.js')}}"></script>
+    
+
+    </header>
+
+    <!-- Vendor JS Files -->
+    <script src="{{ asset('template/assets/vendor/aos/aos.js') }}"></script>
+    <script src="{{ asset('template/assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('template/assets/vendor/php-email-form/validate.js') }}"></script>
+    <script src="{{ asset('template/assets/vendor/purecounter/purecounter.js') }}"></script>
+    <script src="{{ asset('template/assets/vendor/swiper/swiper-bundle.min.js') }}"></script>
 
     <!-- Template Main JS File -->
-    <script src="{{asset('template/assets/js/main.js')}}"></script>
+    <script src="{{ asset('template/assets/js/main.js') }}"></script>
   </body>
 </html>

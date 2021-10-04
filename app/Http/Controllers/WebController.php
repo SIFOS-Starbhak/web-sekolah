@@ -10,7 +10,6 @@ use App\Models\Post;
 use App\Models\Setting;
 use App\Models\Whystarbhak;
 use App\Models\Partner;
-use App\Models\Bgcontent;
 use App\Models\Homefooter;
 use App\Models\Profile;
 use App\Models\Kategori;
@@ -26,9 +25,8 @@ class WebController extends Controller
         $settings = Setting::all();
         $whystarbhaks = Whystarbhak::all();
         $partners = Partner::all();
-        $bgcontents = Bgcontent::all();
         $homefooters = Homefooter::all();
-        return view('home', compact('news', 'settings', 'article', 'whystarbhaks','partners','bgcontents','homefooters'));
+        return view('home', compact('news', 'settings', 'article', 'whystarbhaks','partners','homefooters'));
     }
 
     // public function page($id)
@@ -45,11 +43,10 @@ class WebController extends Controller
     //    , compact('categories', 'pages'));
 
             $pages = Page::all()->where('category_id', '7')->where('status', 'ACTIVE');
-    $bgcontents = Bgcontent::all();
         $news = Newsslide::all();
 
             $settings = Setting::all();
-            return view('profile', compact('settings', 'pages', 'bgcontents', 'news'));
+            return view('profile', compact('settings', 'pages', 'news'));
     }
 
     public function kurikulumtb(){
@@ -62,8 +59,7 @@ class WebController extends Controller
     {
         $foto = Gallery::all()->where('kategori_guru', $kategori->id);
         $settings = Setting::all();
-        $bgcontents = Bgcontent::all();
 
-        return view('fotoguru', compact('foto', 'settings', 'bgcontents', 'kategori'));
+        return view('fotoguru', compact('foto', 'settings', 'kategori'));
     }
 }

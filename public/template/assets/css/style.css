@@ -492,10 +492,12 @@ h6 {
     font-size: 15px;
     color: #37423b;
 }
+.navbar-mobile .active {
+    color: white;
+}
 .navbar-mobile a:hover,
-.navbar-mobile .active,
 .navbar-mobile li:hover > a {
-    color: #2689c9;
+    color: #2a2a2a;
 }
 .navbar-mobile .getstarted,
 .navbar-mobile .getstarted:focus {

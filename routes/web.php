@@ -40,34 +40,31 @@ Route::get('/artikel', function () {
 });
 // Route::get('/profile', function () {
 //     $settings = App\Models\Setting::all();
-//     $bgcontents = App\Models\Bgcontent::all();
+//     App\Models\Bgcontent::all();
 //     $homefooters = App\Models\Homefooter::all();
-//     return view('profile', compact('settings', 'bgcontents','homefooters'));
+//     return view('profile', compact('settings','homefooters'));
 // });
 
 Route::get('/kurikulum', function () {
     $settings = App\Models\Setting::all();
-    $bgcontents = App\Models\Bgcontent::all();
     $struktur = App\Models\Page::where('id', '17')->get(['body', 'title']);
     $kompetensi = App\Models\Page::where('id', '16')->get(['body', 'title']);
     $fotoguru = App\Models\Kategori::all();
 
 
-    return view('kurikulum', compact('settings', 'bgcontents', 'struktur', 'kompetensi', 'fotoguru'));
+    return view('kurikulum', compact('settings', 'struktur', 'kompetensi', 'fotoguru'));
 });
 
 Route::get('/kontakkami', function () {
     $settings = App\Models\Setting::all();
-    $bgcontents = App\Models\Bgcontent::all();
     $news = App\Models\Newsslide::all();
-    return view('kontakkami', compact('settings', 'bgcontents', 'news'));
+    return view('kontakkami', compact('settings', 'news'));
 });
 Route::get('/hubin', 'HubinController@index');
 Route::get('/fotoguru', function () {
     $settings = App\Models\Setting::all();
-    $bgcontents = App\Models\Bgcontent::all();
 
-    return view('fotoguru', compact('settings', 'bgcontents'));
+    return view('fotoguru', compact('settings'));
 });
 
 Route::get('/{kategori:slug}', 'WebController@fotoguru');
@@ -80,23 +77,22 @@ Route::get('/showartikel/{id}', function ($id) {
     $author = App\Models\Manager::where('id',$articleShow->author_id)->first();
     // dd($author);
     $settings = App\Models\Setting::all();
-    $bgcontents = App\Models\Bgcontent::all();
-    return view('showartikel',compact('articleShow','settings', 'bgcontents','author'));
+    return view('showartikel',compact('articleShow','settings','author'));
 })->name('showartikel');
 
 
 Route::get('/sarpras', function () {
     $settings = App\Models\Setting::all();
-    $bgcontents = App\Models\Bgcontent::all();
+
     $news = App\Models\Newsslide::all();
-    return view('sarpras', compact('settings', 'bgcontents', 'news'));
+    return view('sarpras', compact('settings', 'news'));
 });
 Route::get('/kesiswaan', function () {
     $settings = App\Models\Setting::all();
-    $bgcontents = App\Models\Bgcontent::all();
     $kegiatan_osis = App\Models\Page::where('category_id', '3')->get(['body', 'title']);
-    return view('kesiswaan', compact('settings', 'bgcontents', 'kegiatan_osis'));
+    return view('kesiswaan', compact('settings', 'kegiatan_osis'));
 });
+
 
 
 
