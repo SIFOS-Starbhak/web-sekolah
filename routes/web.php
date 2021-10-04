@@ -91,6 +91,7 @@ Route::get('/kesiswaan', function () {
 
 
 
+
 // Manager
 Route::group(['prefix' => 'manager', 'middleware' => ['auth:manager']], function () {
     // Route::get('/Article/index', [ArticleController::class, 'index'])-all>name('article.index');
