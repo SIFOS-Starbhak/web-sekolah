@@ -1,5 +1,6 @@
 @include('template.navbar')
 @include('template.background')
+@include('template.carousel')
 
 <div class="container mt-5 mb-5">
 <nav>
@@ -12,12 +13,7 @@
   <div class="tab-pane fade show active" id="osis" role="tabpanel" aria-labelledby="nav-home-tab">
     <div class="container" data-aos="fade-up">
         @foreach ($kegiatan_osis as $ko)
-        <h5 class="mt-5"><b>{{ $ko->title }}</b></h5>
-        <hr>
-        <br>
-        <p>
-            {!! $ko->body !!}
-        </p>
+        {!! $ko->body !!}
         @endforeach
 
     </div>

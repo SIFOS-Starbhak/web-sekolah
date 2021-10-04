@@ -37,18 +37,37 @@
         <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
             integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
             crossorigin="anonymous" />
+
+        
+        @foreach ($settings as $item) {
+            @if ($item->display_name == 'Fitur Home Page')
+            <style>
+                #hero {
+                    width: 100% !important;
+                    height: 530px !important;
+                    background: url('http://localhost:8000/storage/{{ $item->value }}') top center;
+                    background-size: cover !important;
+                    position: relative !important;
+                }
+
+                #hero:before {
+                    content: "" !important;
+                    background: rgba(0, 0, 0, 0.4) !important;
+                    position: absolute !important;
+                    bottom: 0 !important;
+                    top: 0 !important;
+                    left: 0 !important;
+                    right: 0 !important;
+                }
+            </style>
+            @endif
+        @endforeach
     </head>
 
     <body>
 
 
-        <section id="hero" @foreach ($settings as $item)
-            @if ($item->display_name == 'Fitur Home Page')
-                style="background: url('http://localhost:8000/storage/{{ $item->value }}') top center; width: 100%;
-                height: 530px; background-size: cover; position: relative;"
-            @endif
-            @endforeach
-            class="d-flex justify-content-center align-items-center">
+        <section id="hero" class="d-flex justify-content-center align-items-center">
             <div class="container position-relative" style="margin-bottom: 10%;" data-aos="zoom-in" data-aos-delay="100">
                 @foreach ($settings as $item)
                     @if ($item->display_name == 'Heading')

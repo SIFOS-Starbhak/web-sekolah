@@ -7,6 +7,7 @@ use App\Models\Alumni;
 use App\Models\Bgcontent;
 use App\Models\Jurusan;
 use App\Models\Setting;
+use App\Models\NewsSlide;
 
 class HubinController extends Controller
 {
@@ -77,7 +78,8 @@ class HubinController extends Controller
 
         $jurusan = Jurusan::all();
         $settings = Setting::all();
+        $news = Newsslide::all();
 
-        return view('hubin', compact('tkjKuliah', 'tkjWira', 'tkjKerja', 'mmKuliah', 'mmWira', 'mmKerja', 'bcKuliah', 'bcWira', 'bcKerja', 'teiKerja', 'teiWira', 'teiKuliah', 'rplKerja', 'rplWira', 'rplKuliah', 'jurusan', 'settings'));
+        return view('hubin', compact('tkjKuliah', 'tkjWira', 'tkjKerja', 'mmKuliah', 'mmWira', 'mmKerja', 'bcKuliah', 'bcWira', 'bcKerja', 'teiKerja', 'teiWira', 'teiKuliah', 'rplKerja', 'rplWira', 'rplKuliah', 'jurusan', 'settings', 'news'));
     }
 }

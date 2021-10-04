@@ -60,12 +60,18 @@ Route::get('/kontakkami', function () {
     $news = App\Models\Newsslide::all();
     return view('kontakkami', compact('settings', 'news'));
 });
-Route::get('/hubin', 'HubinController@index');
-Route::get('/fotoguru', function () {
+Route::get('/sarpras', function () {
     $settings = App\Models\Setting::all();
-
-    return view('fotoguru', compact('settings'));
+    $news = App\Models\Newsslide::all();
+    return view('sarpras', compact('settings', 'news'));
 });
+Route::get('/kesiswaan', function () {
+    $news = App\Models\Newsslide::all();
+    $settings = App\Models\Setting::all();
+    $kegiatan_osis = App\Models\Page::where('category_id', '3')->get(['body', 'title']);
+    return view('kesiswaan', compact('settings', 'kegiatan_osis', 'news'));
+});
+Route::get('/hubin', 'HubinController@index');
 
 Route::get('/{kategori:slug}', 'WebController@fotoguru');
 
@@ -81,17 +87,6 @@ Route::get('/showartikel/{id}', function ($id) {
 })->name('showartikel');
 
 
-Route::get('/sarpras', function () {
-    $settings = App\Models\Setting::all();
-
-    $news = App\Models\Newsslide::all();
-    return view('sarpras', compact('settings', 'news'));
-});
-Route::get('/kesiswaan', function () {
-    $settings = App\Models\Setting::all();
-    $kegiatan_osis = App\Models\Page::where('category_id', '3')->get(['body', 'title']);
-    return view('kesiswaan', compact('settings', 'kegiatan_osis'));
-});
 
 
 
