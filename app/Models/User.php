@@ -60,4 +60,8 @@ class User extends \TCG\Voyager\Models\User implements JWTSubject
     {
         return [];
     }
+    public function post()
+    {
+        return $this->hasMany(Post::class);
+    }
 }

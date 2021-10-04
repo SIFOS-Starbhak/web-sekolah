@@ -1,6 +1,8 @@
 require("./bootstrap");
-
 require("alpinejs");
+require('./scripts');
+require('./stisla');
+require('./iziToast');
 
 import axios from "axios";
 // document.getElementById('frmlogout').addEventListener('click', async () => {

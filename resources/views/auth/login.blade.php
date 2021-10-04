@@ -30,7 +30,8 @@
                         <form id="frmlogin" style="width: 23rem;" method="POST" onsubmit="event.preventDefault();">
                             <h3 class="fw-bold mb-3 pb-3" style="letter-spacing: 1px;">Log in</h3>
                             <div class="form-outline mb-4">
-                                <input type="text" id="username" name="username" class="form-control form-control-lg" />
+                                <input type="text" id="username" name="username"
+                                    class="form-control form-control-lg" />
                                 <label class="form-label">Username</label>
                             </div>
                             <div class="form-outline mb-4">
