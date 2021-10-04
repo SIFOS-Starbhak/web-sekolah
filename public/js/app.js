@@ -4022,32 +4022,28 @@ module.exports = {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _bootstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
-/* harmony import */ var _bootstrap__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_bootstrap__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _scripts__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./scripts */ "./resources/js/scripts.js");
-/* harmony import */ var _scripts__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_scripts__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _stisla__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./stisla */ "./resources/js/stisla.js");
-/* harmony import */ var _stisla__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_stisla__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _iziToast__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./iziToast */ "./resources/js/iziToast.js");
-/* harmony import */ var _iziToast__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_iziToast__WEBPACK_IMPORTED_MODULE_4__);
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 __webpack_require__(/*! alpinejs */ "./node_modules/alpinejs/dist/alpine.js");
 
- // document.getElementById('frmlogout').addEventListener('click', async () => {
-//     await axios.get()
-// })
-// var token = null;
+__webpack_require__(/*! ./scripts */ "./resources/js/scripts.js");
+
+__webpack_require__(/*! ./stisla */ "./resources/js/stisla.js");
+
+__webpack_require__(/*! ./iziToast */ "./resources/js/iziToast.js");
+
 
 document.addEventListener("DOMContentLoaded", function () {
   if (document.getElementById("frmlogin")) {
-    document.getElementById("frmlogin").addEventListener("submit", function () {
-      var bodyFormData = new FormData();
-      bodyFormData.append("username", document.getElementById("username").value);
-      bodyFormData.append("password", document.getElementById("password").value);
-      axios__WEBPACK_IMPORTED_MODULE_0___default().post("".concat("http://127.0.0.1:8000", "/api/login"), bodyFormData).then(function (res) {
-        // XXX: BAGAI MANA CARANYA HILANGIN TOKEN DI GET?
-        window.location.href = "".concat(res.data.redirect, "?token=").concat(res.data[0].original.access_token);
+    document.getElementById("frmlogin").addEventListener("submit", function (e) {
+      e.preventDefault();
+      var frmData = new FormData(e.target);
+      var user = Object.fromEntries(frmData);
+      axios__WEBPACK_IMPORTED_MODULE_0___default().post("http://127.0.0.1:8000/api/login", user).then(function (res) {
+        console.log(res.data);
+        window.sessionStorage.setItem("token", res.data.original_token.original.access_token);
+        window.sessionStorage.setItem("auth_token", res.data.auth_token);
+        window.location.href = "".concat(res.data.redirect);
       })["catch"](function (err) {
         if (err.response) {
           console.log(err.response.data);
@@ -4057,12 +4053,45 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       });
     });
+  } else {
+    document.getElementById("frmlogout").addEventListener("click", function (e) {
+      e.preventDefault();
+      axios__WEBPACK_IMPORTED_MODULE_0___default().post("http://127.0.0.1:8000/api/logout").then(function (res) {
+        console.log(res);
+        window.sessionStorage.removeItem("token");
+        window.sessionStorage.removeItem("auth_token");
+        window.location.href = "/";
+      })["catch"](function (err) {
+        if (err.response) {
+          console.log(err.response.data);
+        }
+      });
+    }); // Api Portal/Moodle
+
+    document.getElementById("microWebPortal").addEventListener("click", function (e) {
+      e.preventDefault();
+      form = new FormData();
+      form.append("token", window.sessionStorage.getItem("token"));
+      window.location.href = "http://localhost/Moodle-starbhak/login/index.php?token=" + window.sessionStorage.getItem("token"); // href seuai sama url
+    }); // Api Sitakols
+
+    document.getElementById("sitakols").addEventListener("click", function (e) {
+      e.preventDefault();
+      console.log("clicked");
+      form = new FormData();
+      form.append("token", window.sessionStorage.getItem("token"));
+      window.location.href = "http://127.0.0.1:8080/api/prakerin/" + window.sessionStorage.getItem("token"); // href seuai sama url
+    }); // Api Refleksi
+
+    document.getElementById("refleksi").addEventListener("click", function (e) {
+      e.preventDefault();
+      console.log("clicked");
+      form = new FormData();
+      form.append("token", window.sessionStorage.getItem("token"));
+      window.location.href = "http://127.0.0.1:8001/authentication/" + window.sessionStorage.getItem("token"); // href seuai sama url
+    });
   }
 });
-
-
-
-
 
 /***/ }),
 

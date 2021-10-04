@@ -36,6 +36,7 @@
                             </div>
                         </div>
                     </div>
+                </div>
 
                 <div class="row">
                     <div class="col-12 mr-5 ">
@@ -179,8 +180,7 @@
                     </div>
                 </div>
             </div>
-            {{-- </div> --}}
-
-
         </div>
-    @endsection
+        {{-- </div> --}}
+    </div>
+@endsection

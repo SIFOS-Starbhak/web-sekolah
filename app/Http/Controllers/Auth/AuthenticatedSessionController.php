@@ -3,18 +3,16 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Auth\LoginRequest;
+use Firebase\JWT\JWT;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Str;
 
 class AuthenticatedSessionController extends Controller
 {
     public function __construct()
     {
-        $this->middleware(['auth:apiWeb,apiManager,apiGuru,apiSiswa'], ['except' => ['store', 'create']]);
+        $this->middleware(['auth:api'], ['except' => ['store', 'create']]);
     }
     /**
      * Get the token array structure.
@@ -28,8 +26,8 @@ class AuthenticatedSessionController extends Controller
         return response()->json([
             'access_token' => $token,
             'token_type' => 'bearer',
-            'expires_in' => auth($this->guardName())->factory()->getTTL() * 60,
-            'user' => auth($this->guardName())->user(),
+            'expires_in' => auth('api')->factory()->getTTL() * 60,
+            'user' => auth('api')->user(),
         ]);
     }
     /**
@@ -50,38 +48,38 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(Request $request)
     {
-        // TODO: SEHARUSNYA BUKAN KYK GINI TAPI KARENA DEADLINE
         $validator = Validator::make($request->all(), [
             'username' => 'required',
             'password' => 'required|string',
         ]);
+
         if ($validator->fails()) {
             return response()->json($validator->errors(), 422);
         }
-        if (!$token = auth('apiManager')->attempt(['nik' => $request->username, 'password' => $request->password])) {
-            if (!$token = auth('apiGuru')->attempt(['nik' => $request->username, 'password' => $request->password])) {
-                if (!$token = auth('apiSiswa')->attempt(['nipd' => $request->username, 'password' => $request->password])) {
-                    if (!$token = auth('apiWeb')->attempt(['email' => $request->username, 'password' => $request->password])) {
-                        return response()->json(['error' => 'Unauthorized'], 401);
-                    } else {
-                        Config::set('jwt.user', 'App\Models\User');
-                        Config::set('auth.providers.users.model', \App\Models\User::class);
-                    }
-                } else {
-                    Config::set('jwt.user', 'App\Models\Siswa');
-                    Config::set('auth.providers.users.model', \App\Models\Siswa::class);
-                }
-            } else {
-                Config::set('jwt.user', 'App\Models\Guru');
-                Config::set('auth.providers.users.model', \App\Models\Guru::class);
-            }
-        } else {
-            Config::set('jwt.user', 'App\Models\Manager');
-            Config::set('auth.providers.users.model', \App\Models\Manager::class);
+        if (!$token = auth('api')->attempt(['nomor_induk' => $request->username, 'password' => $request->password])) {
+            return response()->json(['error' => 'Unauthorized'], 401);
         }
-        return response()->json(['redirect' => route(Str::after(Str::lower($this->guardName()), 'api') . '.dashboard'), $this->createNewToken($token)], 200);
 
-        // return redirect()->back();
+        // TODO: api seharusnya jangan pake cookie
+        // simpen token ke cookie
+        Cookie::queue('token', $token, time() + (60 * 60 * 24 * 30));
+        Cookie::queue('auth_token', JWT::encode($validator->validated(), "srtarbhak-key"), time() + (60 * 60 * 24 * 30));
+
+        $data = array('original_token' => $this->createNewToken($token));
+
+        if (auth('api')->user()->hasRole('admin')) {
+            $data['redirect'] = '/admin';
+        } else if (auth('api')->user()->hasRole('siswa')) {
+            $data['redirect'] = route('siswa.dashboard');
+        } else if (auth('api')->user()->hasRole('guru')) {
+            $data['redirect'] = route('guru.dashboard');
+        } else if (auth('api')->user()->hasRole('manager')) {
+            $data['redirect'] = route('manager.dashboard');
+        } else {
+            $data['redirect'] = route('dashboard');
+        }
+        $data['auth_token'] = JWT::encode(['nomor_induk' => $request->username, 'password' => $request->password], $token);
+        return response()->json($data, 200);
     }
 
     /**
@@ -92,7 +90,9 @@ class AuthenticatedSessionController extends Controller
      */
     public function destroy(Request $request)
     {
-        auth($this->guardName())->logout();
+        auth('api')->logout();
+        Cookie::queue(Cookie::forget('token'));
+        Cookie::queue(Cookie::forget('auth_token'));
         return response()->json(['message' => 'successfully signed out'], 200);
     }
 
@@ -103,7 +103,7 @@ class AuthenticatedSessionController extends Controller
      */
     public function refresh()
     {
-        return $this->createNewToken(auth($this->guardName())->refresh());
+        return $this->createNewToken(auth('api')->refresh());
     }
 
     /**
@@ -113,28 +113,25 @@ class AuthenticatedSessionController extends Controller
      */
     public function userProfile()
     {
-        return response()->json(auth($this->guardName())->user(), 200);
-    }
-
-    /**
-     * Get the Guard Name.
-     *
-     *
-     */
-    private function guardName()
-    {
-        if (!$guard = auth('apiManager')->check()) {
-            if (!$guard = auth('apiGuru')->check()) {
-                if (!$guard = auth('apiSiswa')->check()) {
-                    if (!$guard = auth('apiWeb')->check()) {
-                        return;
-                    }
-                    return 'apiWeb';
-                }
-                return 'apiSiswa';
-            }
-            return 'apiGuru';
+        $data = array('user' => auth('api')->user());
+        // XXX: Di Moodle user udah ada kelas sama rolenya tapi pas di matiin malah kgk ada kelas&role nya
+        if (auth('api')->user()->kelas_siswa) {
+            $data['kelas'] = auth('api')->user()->kelas;
         }
-        return 'apiManager';
+        if (auth('api')->user()->hasRole('admin')) {
+            $data['auth'] = ["username" => auth('api')->user()->nomor_induk, "password" => auth('api')->user()->password, "role" => "admin"];
+            $data['role'] = 'admin';
+        } else if (auth('api')->user()->hasRole('siswa')) {
+            $data['auth'] = ["username" => auth('api')->user()->nomor_induk, "password" => auth('api')->user()->password, "role" => "siswa"];
+            $data['role'] = 'siswa';
+        } else if (auth('api')->user()->hasRole('guru')) {
+            $data['auth'] = ["username" => auth('api')->user()->nomor_induk, "password" => auth('api')->user()->password, "role" => "guru"];
+        } else if (auth('api')->user()->hasRole('manager')) {
+            $data['auth'] = ["username" => auth('api')->user()->nomor_induk, "password" => auth('api')->user()->password, "role" => "manager"];
+        }
+
+        $token = JWT::encode($data, "1342423424324324234",'HS256');
+        return response()->json(['token' => $token], 200)->header("Access-Control-Allow-Origin", "*");
+
     }
 }

@@ -1,5 +1,5 @@
 <?php
-
+use App\Http\Controllers\ArticleController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\ArticleController;
@@ -107,19 +107,15 @@ Route::group(['prefix' => 'manager', 'middleware' => ['auth:manager']], function
 });
 
 // Guru
-Route::group(['prefix' => 'guru', 'middleware' => ['jwt.auth'], 'as' => 'guru.'], function () {
+Route::group(['prefix' => 'guru', 'middleware' => ['jwt.verify','auth:api'], 'as' => 'guru.'], function () {
     Route::get('/Article/index', [ArticleController::class, 'index'])->name('article.index');
 
     Route::get('/dashboard', function () {
         return view('dashboard.dashboard');
     })->name('dashboard.guru');
 });
-
 // Siswa
 Route::group(['prefix' => 'siswa', 'middleware' => ['auth:siswa']], function () {
     Route::get('/dashboard', function () {
         return view('dashboard.dashboard');
     })->name('dashboard.siswa');
-});
-
-require __DIR__ . '/auth.php';

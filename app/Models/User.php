@@ -28,7 +28,6 @@ class User extends \TCG\Voyager\Models\User implements JWTSubject
      * @var array
      */
     protected $hidden = [
-        'password',
         'remember_token',
     ];
 
@@ -63,5 +62,9 @@ class User extends \TCG\Voyager\Models\User implements JWTSubject
     public function post()
     {
         return $this->hasMany(Post::class);
+    }
+    public function kelas()
+    {
+        return $this->hasOne(Kela::class,'id','kelas_siswa');
     }
 }
