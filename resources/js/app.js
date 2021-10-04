@@ -60,16 +60,31 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
+            // Api Portal/Moodle
+
     document
             .getElementById("microWebPortal")
             .addEventListener("click", (e) => {
                 e.preventDefault();
                 form = new FormData();
                 form.append('token', window.sessionStorage.getItem("token"));
-                window.location.href = "http://localhost/moddle/moodle/login/index.php?token="+window.sessionStorage.getItem("token"); // href seuai sama url
+                window.location.href = "http://localhost/Moodle-starbhak/login/index.php?token="+window.sessionStorage.getItem("token"); // href seuai sama url
             });
-      document
+
+            // Api Sitakols
+      document 
             .getElementById("sitakols")
+            .addEventListener("click", (e) => {
+                e.preventDefault();
+                console.log('clicked');
+                form = new FormData();
+                form.append('token', window.sessionStorage.getItem("token"));
+                window.location.href = "http://127.0.0.1:8080/api/prakerin/"+window.sessionStorage.getItem("token"); // href seuai sama url
+            });
+        
+            // Api Refleksi
+            document
+            .getElementById("refleksi")
             .addEventListener("click", (e) => {
                 e.preventDefault();
                 console.log('clicked');

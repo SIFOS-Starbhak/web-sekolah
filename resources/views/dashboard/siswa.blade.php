@@ -68,7 +68,7 @@
                         </a>
                     </div>
                     <div class="col-md-4">
-                        <a href="">
+                        <a href="javascript:void(0)" id="refleksi">
                             <div class="card l-bg-green-dark">
                                 <div class="card-statistic-3 p-4">
                                     <div class="card-icon card-icon-large"><i class="fas fa-clipboard-list"></i></div>
