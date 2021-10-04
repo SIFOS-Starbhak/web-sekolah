@@ -89,7 +89,6 @@ Route::get('/sarpras', function () {
 });
 Route::get('/kesiswaan', function () {
     $settings = App\Models\Setting::all();
- App\Models\Bgcontent::all();
     $kegiatan_osis = App\Models\Page::where('category_id', '3')->get(['body', 'title']);
     return view('kesiswaan', compact('settings', 'kegiatan_osis'));
 });
