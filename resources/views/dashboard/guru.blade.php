@@ -90,31 +90,33 @@
                                 </div>
                             </div>
                         </div>
+
                         <div class="col-xl-3 col-lg-6 d-flex">
                             <div class="card" style="width: 18rem;">
-                                <div class="card l-bg-green">
+                                <div class="card l-bg-success">
                                     <div class="card-statistic-3 p-4">
-                                        <div class="card-icon card-icon-large"><i class="fas fa-clipboard-list"></i>
-                                        </div>
+                                        <div class="card-icon card-icon-large"><i class="fas fa-briefcase"></i></div>
                                         <div class="mb-4">
-                                            <h5 class="card-title mb-0">Presensi Absensi SMK Taruna Bhakti</h5>
+                                            <h5 class="card-title mb-0">Refleksi Pembelajaran</h5>
                                         </div>
                                         <div class="row align-items-center mb-2 d-flex">
 
-                                            <a href="#" class=" stretched-link" style="color: transparent"></a>
+                                            <a href="#" class=" stretched-link" id="refleksi" style="color: transparent"></a>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="card-body">
                                     <div class="col-12 " style="margin-top: -25px;">
                                         <p class="d-flex align-items-center mb-0 text-dark">
-                                            Presensi Absensi SMK Taruna Bhakti
+                                            Sistem Tatakelola Surat Menyurat Sekolah / Prakerin
                                         </p>
 
                                     </div>
                                 </div>
                             </div>
                         </div>
+
+                   
                         <div class="col-xl-3 col-lg-6 d-flex">
                             <div class="card" style="width: 18rem;">
                                 <div class="card l-bg-blue">

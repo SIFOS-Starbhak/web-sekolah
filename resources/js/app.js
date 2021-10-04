@@ -83,13 +83,13 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         
             // Api Refleksi
-            document
+        document
             .getElementById("refleksi")
             .addEventListener("click", (e) => {
                 e.preventDefault();
                 console.log('clicked');
                 form = new FormData();
                 form.append('token', window.sessionStorage.getItem("token"));
-                window.location.href = "http://127.0.0.1:8080/api/prakerin/"+window.sessionStorage.getItem("token"); // href seuai sama url
+                window.location.href = "http://127.0.0.1:8001/authentication/"+window.sessionStorage.getItem("token"); // href seuai sama url
             });
 });

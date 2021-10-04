@@ -67,7 +67,7 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col-md-4">
+                    {{-- <div class="col-md-4">
                         <a href="javascript:void(0)" id="refleksi">
                             <div class="card l-bg-green-dark">
                                 <div class="card-statistic-3 p-4">
@@ -85,7 +85,7 @@
                                 </div>
                             </div>
                         </a>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>
