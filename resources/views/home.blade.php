@@ -110,14 +110,54 @@
                     <br />
                     <div>
                         <p>
-                            Protokol Kesehatan di Lingkungan Sekolah <a href="#"
-                                class="btn btn-transparent text-white hover"><i class="far fa-arrow-alt-circle-right"
-                                    style="font-size: 25px"></i></a>
+                            Protokol Kesehatan di Lingkungan Sekolah
+                                    <button type="button" class="btn" style="color: white" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="far fa-arrow-alt-circle-right"
+                                    style="font-size: 25px"></i>
                         </p>
                     </div>
                 </div>
             </div>
         </section>
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
+style="padding-right: 660px">
+  <div class="modal-dialog">
+    <div class="modalkonten modal-content"style="width: 1150px;margin-right:500px;">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Protokol Kesehatan di Lingkungan Sekolah</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" >
+          <div class="fotoakb">
+            <img class="fotoakb" style="width:100%;height:550px;" src="{{ asset('template/assets/img/akb.png')}}" alt="">
+          </div>
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+{{-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel" class="fw-bold" style="color: #2689c9">Protokol Kesehatan di Lingkungan Sekolah</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+         <div>
+            <img style="width:100%;height:100%;" src="{{ asset('template/assets/img/akb.png')}}" alt="">
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div> --}}
         <!-- End Counts Section -->
 
         <!-- ======= Why Us Section ======= -->

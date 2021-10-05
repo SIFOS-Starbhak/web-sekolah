@@ -319,7 +319,18 @@ h6 {
         padding: 6px 18px;
     }
 }
-
+@media (max-width: 768px) {
+    .modal-content {
+        height: 350px;
+        margin-top: 40%;
+    }
+    .modal-foto {
+        height: 100px;
+    }
+    .modal-body {
+        width: 100%;
+    }
+}
 /*--------------------------------------------------------------
 # Navigation Menu
 --------------------------------------------------------------*/
