@@ -210,7 +210,6 @@
                                     <p>{{ $artikel->excerpy }}</p>
                                 </div>
                             </div>
-                        </div>
                     @endforeach
                     <!-- End Course Item-->
                 </div>

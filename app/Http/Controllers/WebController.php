@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Gallery;
 use App\Models\Kategori;
-use App\Models\Newsslide;
 use App\Models\Page;
 use App\Models\Post;
 use App\Models\Setting;
