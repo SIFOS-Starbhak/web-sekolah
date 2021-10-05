@@ -10,6 +10,11 @@ use App\Models\Setting;
 use App\Models\Partner;
 use App\Models\Homefooter;
 use App\Models\Profile;
+<<<<<<< HEAD
+=======
+// use App\Models\Kategori;
+// use App\Models\Gallery;
+>>>>>>> c02ce9420a1c087d79ecf0f3fdc2d1503e54f0dd
 use App\Models\GuruRole;
 
 class WebController extends Controller
