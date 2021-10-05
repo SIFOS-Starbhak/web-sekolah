@@ -66,7 +66,7 @@ document.addEventListener("DOMContentLoaded", () => {
             .addEventListener("click", (e) => {
                 e.preventDefault();
                 window.location.href =
-                    "http://localhost/moddle/moodle/login/index.php?token=" +
+                    "http://localhost/Moodle-starbhak/login/index.php?token=" +
                     window.sessionStorage.getItem("token"); // href seuai sama url
             });
 
@@ -75,7 +75,7 @@ document.addEventListener("DOMContentLoaded", () => {
             e.preventDefault();
             console.log("clicked");
             window.location.href =
-                "http://127.0.0.1:8001/api/prakerin/" +
+                "http://127.0.0.1:8002/api/prakerin/" +
                 window.sessionStorage.getItem("token"); // href seuai sama url
         });
 
