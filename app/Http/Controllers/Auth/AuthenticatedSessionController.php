@@ -70,11 +70,11 @@ class AuthenticatedSessionController extends Controller
         if (auth('api')->user()->hasRole('admin')) {
             $data['redirect'] = '/admin';
         } else if (auth('api')->user()->hasRole('siswa')) {
-            $data['redirect'] = route('siswa.dashboard');
+            $data['redirect'] = route('dashboard.siswa');
         } else if (auth('api')->user()->hasRole('guru')) {
-            $data['redirect'] = route('guru.dashboard');
+            $data['redirect'] = route('dashboard.guru');
         } else if (auth('api')->user()->hasRole('manager')) {
-            $data['redirect'] = route('manager.dashboard');
+            $data['redirect'] = route('dashboard.manager');
         } else {
             $data['redirect'] = route('dashboard');
         }

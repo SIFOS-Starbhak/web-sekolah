@@ -13,19 +13,19 @@
                         <div class="profile-widget-items">
                             <div class="profile-widget-item">
                                 <div class="profile-widget-item-label">NISN</div>
-                                <div class="profile-widget-item-value">{{ Auth::guard('siswa')->user()->nipd }}</div>
+                                <div class="profile-widget-item-value">{{ JWTAuth::user()->nomor_induk }}</div>
                             </div>
                             <div class="profile-widget-item">
                                 <div class="profile-widget-item-label">Email</div>
-                                <div class="profile-widget-item-value">{{ Auth::guard('siswa')->user()->email }}</div>
+                                <div class="profile-widget-item-value">{{ JWTAuth::user()->email }}</div>
                             </div>
                         </div>
                     </div>
                     <div class="profile-widget-description">
-                        <div class="profile-widget-name">{{ Auth::guard(Auth::getDefaultDriver())->user()->name }}
+                        <div class="profile-widget-name">{{ JWTAuth::user()->name }}
                             <div class="text-muted d-inline font-weight-normal">
                                 <div class="slash"></div>
-                                {{ Auth::guard('siswa')->user()->kelas->nama_kelas }}
+                                {{ JWTAuth::user()->kelas->nama_kelas }}
                             </div>
                         </div>
                     </div>
@@ -41,7 +41,7 @@
                                 <div class="card cardh">
                                     <div class="card cardh l-bg-blue-dark caleg">
                                         <div class="card-statistic-3 p-4">
-                                            <a href="" class="d-block text-decoration-none">
+                                            <a href="#" class="d-block text-decoration-none" id="microWebPortal">
                                                 <div class="card-icon card-icon-large"><i
                                                         class="fas fa-chalkboard-teacher"></i>
                                                 </div>
@@ -58,7 +58,7 @@
                                 <div class="card cardh">
                                     <div class="card cardh l-bg-cherry">
                                         <div class="card-statistic-3 p-4">
-                                            <a href="" class="d-block text-decoration-none">
+                                            <a href="#" class="d-block text-decoration-none" id="sitakols">
                                                 <div class="card-icon card-icon-large"><i class="fas fa-briefcase"></i>
                                                 </div>
                                                 <div class="mb-4">
@@ -137,21 +137,21 @@
                             <div class="profile-widget-item">
                                 <div class="profile-widget-item-label">NIK</div>
                                 <div class="profile-widget-item-value">
-                                    {{ Auth::guard(Auth::getDefaultDriver())->user()->nik }}</div>
+                                    {{ JWTAuth::user()->nomor_induk }}</div>
                             </div>
                             <div class="profile-widget-item">
                                 <div class="profile-widget-item-label">Email</div>
                                 <div class="profile-widget-item-value">
-                                    {{ Auth::guard(Auth::getDefaultDriver())->user()->email }}</div>
+                                    {{ JWTAuth::user()->email }}</div>
                             </div>
                         </div>
                     </div>
                     <div class="profile-widget-description">
-                        <div class="profile-widget-name">{{ Auth::guard(Auth::getDefaultDriver())->user()->name }}
+                        <div class="profile-widget-name">{{ JWTAuth::user()->name }}
                             <div class="text-muted d-inline font-weight-normal">
                                 <div class="slash"></div>
                                 <div class="badge badge-primary">
-                                    {{ Auth::guard(Auth::getDefaultDriver())->user()->jabatan }}
+                                    {{ JWTAuth::user()->jabatan }}
                                 </div>
                             </div>
                         </div>
@@ -260,21 +260,21 @@
                             <div class="profile-widget-item">
                                 <div class="profile-widget-item-label">NIK</div>
                                 <div class="profile-widget-item-value">
-                                    {{ Auth::guard(Auth::getDefaultDriver())->user()->nik }}</div>
+                                    {{ JWTAuth::user()->nomor_induk }}</div>
                             </div>
                             <div class="profile-widget-item">
                                 <div class="profile-widget-item-label">Email</div>
                                 <div class="profile-widget-item-value">
-                                    {{ Auth::guard(Auth::getDefaultDriver())->user()->email }}</div>
+                                    {{ JWTAuth::user()->email }}</div>
                             </div>
                         </div>
                     </div>
                     <div class="profile-widget-description">
-                        <div class="profile-widget-name">{{ Auth::guard(Auth::getDefaultDriver())->user()->name }}
+                        <div class="profile-widget-name">{{ JWTAuth::user()->name }}
                             <div class="text-muted d-inline font-weight-normal">
                                 <div class="slash"></div>
                                 <div class="badge badge-primary">
-                                    {{ Auth::guard(Auth::getDefaultDriver())->user()->jabatan }}
+                                    {{ JWTAuth::user()->jabatan }}
                                 </div>
                             </div>
                         </div>

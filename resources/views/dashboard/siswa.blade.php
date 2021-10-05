@@ -20,15 +20,15 @@
                                 <div class="col">
                                     <div class="row align-items-center">
                                         <div class="col-md-7">
-                                            <h4 class="mb-1">{{ Auth::guard('siswa')->user()->name }}</h4>
+                                            <h4 class="mb-1">{{ JWTAuth::user()->name }}</h4>
                                             <p class="small mb-0"><span
-                                                    class="badge badge-dark">{{ Auth::guard('siswa')->user()->kelas->nama_kelas }}</span>
+                                                    class="badge badge-dark">{{ JWTAuth::user()->kelas->nama_kelas }}</span>
                                             </p>
                                             <p class="small mb-0"><span
-                                                    class="badge badge-dark">{{ Auth::guard('siswa')->user()->nipd }}</span>
+                                                    class="badge badge-dark">{{ JWTAuth::user()->nomor_induk }}</span>
                                             </p>
                                             <p class="small mb-0"><span
-                                                    class="badge badge-dark">{{ Auth::guard('siswa')->user()->email }}</span>
+                                                    class="badge badge-dark">{{ JWTAuth::user()->email }}</span>
                                             </p>
                                         </div>
                                     </div>

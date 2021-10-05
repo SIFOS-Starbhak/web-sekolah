@@ -3,6 +3,8 @@ use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\ImageController;
 use App\Models\Post;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use Tymon\JWTAuth\JWTAuth;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 |
  */
 // Route::get('/',[WebController::class,'index']);
-
+Route::post('/logout', [AuthenticatedSessionController::class,'destroy'])->name('logout');
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
@@ -79,7 +81,7 @@ Route::get('/showartikel/{id}', function ($id) {
 })->name('showartikel');
 
 // Manager
-Route::group(['prefix' => 'manager', 'middleware' => ['auth:manager']], function () {
+Route::group(['prefix' => 'manager','middleware' => ['jwt.verify', 'auth:api']], function () {
     // Route::get('/Article/index', [ArticleController::class, 'index'])-all>name('article.index');
     Route::get('/Article/tambah', [ArticleController::class, 'tambah'])->name('article.tambah');
     Route::post('/Article/post', [ArticleController::class, 'store'])->name('article.store');
@@ -89,14 +91,14 @@ Route::group(['prefix' => 'manager', 'middleware' => ['auth:manager']], function
     Route::put('/Article/draft/{id}', [ArticleController::class, 'draftOrPublised'])->name('article.draft');
     Route::POST('/image/store', [ImageController::class, 'store'])->name('admin.image');
     Route::get('/dashboard', function () {
-        $article = Post::where('author_id', Auth::guard('manager')->id())->get();
+        $article = Post::where('author_id', Auth::guard('api')->id())->get();
         // dd($article);
         return view('dashboard.dashboard', compact('article'));
     })->name('dashboard.manager');
 });
 
 // Guru
-Route::group(['prefix' => 'guru', 'middleware' => ['jwt.verify', 'auth:api'], 'as' => 'guru.'], function () {
+Route::group(['prefix' => 'guru', 'middleware' => ['jwt.verify', 'auth:api']], function () {
     Route::get('/Article/index', [ArticleController::class, 'index'])->name('article.index');
 
     Route::get('/dashboard', function () {
@@ -104,7 +106,7 @@ Route::group(['prefix' => 'guru', 'middleware' => ['jwt.verify', 'auth:api'], 'a
     })->name('dashboard.guru');
 });
 // Siswa
-Route::group(['prefix' => 'siswa', 'middleware' => ['auth:siswa']], function () {
+Route::group(['prefix' =>'siswa', 'middleware' => ['jwt.verify', 'auth:api']], function () {
     Route::get('/dashboard', function () {
         return view('dashboard.dashboard');
     })->name('dashboard.siswa');
