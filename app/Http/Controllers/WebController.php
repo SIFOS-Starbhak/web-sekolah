@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\Gallery;
+use App\Models\Kategori;
 use App\Models\Newsslide;
-use App\Models\Category;
 use App\Models\Page;
-use App\Models\Post;
 use App\Models\Setting;
 use App\Models\Partner;
 use App\Models\Homefooter;
@@ -35,19 +34,20 @@ class WebController extends Controller
     // }
     public function profiletb()
     {
-//   return view('profile', 
-    //     $categories = Category::where('name','profile'),
-    //     $pages = Page::all()->where('category_id', '1')->first();
-    //    , compact('categories', 'pages'));
+//   return view('profile',
+        //     $categories = Category::where('name','profile'),
+        //     $pages = Page::all()->where('category_id', '1')->first();
+        //    , compact('categories', 'pages'));
 
-            $pages = Page::all()->where('category_id', '7')->where('status', 'ACTIVE');
+        $pages = Page::all()->where('category_id', '7')->where('status', 'ACTIVE');
         $news = Newsslide::all();
 
-            $settings = Setting::all();
-            return view('profile', compact('settings', 'pages', 'news'));
+        $settings = Setting::all();
+        return view('profile', compact('settings', 'pages', 'news'));
     }
 
-    public function kurikulumtb(){
+    public function kurikulumtb()
+    {
         $struktur = DB::table('posts')->find(12);
 
         return view('kurikulum', compact('struktur'));

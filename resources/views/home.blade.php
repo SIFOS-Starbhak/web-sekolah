@@ -42,14 +42,16 @@
   * License: https://bootstrapmade.com/license/
     ======================================================== -->
     <style>
-        .sosmed{
+        .sosmed {
             color: white;
             font-weight: bold;
         }
+
         .sosmed:hover {
             text-decoration: underline 2px;
             color: #2689c9;
         }
+
     </style>
 </head>
 
@@ -81,18 +83,19 @@
                 <div class="row">
                     <div class="col-lg-6 col-md-6 order-1 order-lg-2 text-end" data-aos="fade-left" data-aos-delay="100">
                         @foreach ($settings as $item)
-                        @if ( $item->display_name == 'Image Content' )
-                        <img src="{{asset('storage/'.$item->value)}}" class="img-fluid whystarbak" alt="" style="height: 430px; width: 430px; border-radius: 20px; margin-left: auto" />
-                        @endif
+                            @if ($item->display_name == 'Image Content')
+                                <img src="{{ asset('storage/' . $item->value) }}" class="img-fluid whystarbak" alt=""
+                                    style="height: 430px; width: 430px; border-radius: 20px; margin-left: auto" />
+                            @endif
                         @endforeach
                     </div>
                     <div class="col-lg-6 col-md-6 pt-4 pt-lg-0 order-2 order-lg-1 content">
                         @foreach ($settings as $item)
-                        @if( $item->display_name == 'Title Content' )
-                        <h3>{{$item->value}}</h3>
-                        @elseif( $item->display_name == 'Content' )
-                        <p style="font-size: 20px">{!!$item->value!!}</p>
-                        @endif
+                            @if ($item->display_name == 'Title Content')
+                                <h3>{{ $item->value }}</h3>
+                            @elseif( $item->display_name == 'Content' )
+                                <p style="font-size: 20px">{!! $item->value !!}</p>
+                            @endif
                         @endforeach
                     </div>
                 </div>
@@ -158,10 +161,9 @@
                 </div>
                 @foreach ($settings as $setting)
                     @if ($setting->display_name == 'Virtual Tour')
-                    <iframe class="mt-5"
-                        src="{{ $setting->value }}"
-                        style="width:100%; height:500px; border-radius: 25px">
-                    </iframe>
+                        <iframe class="mt-5" src="{{ $setting->value }}"
+                            style="width:100%; height:500px; border-radius: 25px">
+                        </iframe>
                     @endif
                 @endforeach
 
@@ -174,7 +176,7 @@
         <section id="counts" class="counts section-bg" style="background: #e39b0d">
             <div class="container">
                 <div class="text-center">
-                    <a  class="btn btn-outline-light pe-5 ps-5" style="border-radius: 50px">Artikel dan Info
+                    <a class="btn btn-outline-light pe-5 ps-5" style="border-radius: 50px">Artikel dan Info
                         Sekolah</a>
                 </div>
             </div>
@@ -196,8 +198,11 @@
                                     <!-- <p class="price">$169</p> -->
                                 </div>
 
-                                <h3><a href="{{route('showartikel',$artikel->slug )}}">{{ $artikel->title }}</a></h3>
-                                <p>{{ $artikel->excerpy }}</p>
+                                    <h3><a
+                                            href="{{ route('showartikel', $artikel->slug) }}">{{ $artikel->title }}</a>
+                                    </h3>
+                                    <p>{{ $artikel->excerpy }}</p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -223,12 +228,12 @@
             <div class="container text-center">
                 <div class="row counters kebawah">
                     @foreach ($partners as $partner)
-                    <div class="col-md-3 mt-2">
-                        <img src="{{ asset('storage/' . $partner->logo_perusahaan) }}" alt=""/>
-                        <br><br>
-                        <h5 class="fw-bold">{{$partner->nama_perusahaan}}</h5>
-                    </div>
-                    
+                        <div class="col-md-3 mt-2">
+                            <img src="{{ asset('storage/' . $partner->logo_perusahaan) }}" alt="" />
+                            <br><br>
+                            <h5 class="fw-bold">{{ $partner->nama_perusahaan }}</h5>
+                        </div>
+
                     @endforeach
                 </div>
             </div>
@@ -236,43 +241,46 @@
 
         <!-- ======= Trainers Section ======= -->
         <!-- ======= Trainers Section ======= -->
-    <section id="counts" class="counts section-bg " style="background-color: #3b4850">
-        <div class="container text-white">
-            <div class="row counters mt-4 mb-5">
-            <div class="col-md-7" style="font-family: poppins">
-                <h1>
-                STARBHAK <br />
-                <h1 class="mt-2">LATEST</h1>
-                </h1>
-                <br />
-                <h1 style="font-size: 50px; font-weight: bolder"><b>ACTIVITIES.</b></h1>
-            </div>
-            <div class="col-md-3 mt-5">
-                <i class="fab fa-instagram" style="font-size: 40px"></i>
-                <br>
-                @foreach ($settings as $IG)
-                @if ($IG->display_name == 'Link Instagram')
-                    <p><a href="{{ $IG->value }}" target="_blank" class="sosmed">INSTGARAM</a></p>
-                @endif
-                @endforeach
-                <p style="font-size: 13px; font-weight: lighter">
-                Check out the latest photos <br />
-                on starbhak.offcial Instagram
-                </p>
-            </div>
-            <div class="col-md-2 mt-5">
-                <i class="fab fa-facebook" style="font-size: 40px"></i>
-                <br>
-                @foreach ($settings as $FB)
-                @if ($FB->display_name == 'Link Facebook')
-                    <p><a href="{{ $FB->value }}" target="_blank" class="sosmed">Facebook Page</a></p>
-                @endif
-                @endforeach
-                    <p style="font-size: 13px; font-weight: lighter">Check out the latest photos on starbhak.offcial Facebook</p>
+        <section id="counts" class="counts section-bg " style="background-color: #3b4850">
+            <div class="container text-white">
+                <div class="row counters mt-4 mb-5">
+                    <div class="col-md-7" style="font-family: poppins">
+                        <h1>
+                            STARBHAK <br />
+                            <h1 class="mt-2">LATEST</h1>
+                        </h1>
+                        <br />
+                        <h1 style="font-size: 50px; font-weight: bolder"><b>ACTIVITIES.</b></h1>
+                    </div>
+                    <div class="col-md-3 mt-5">
+                        <i class="fab fa-instagram" style="font-size: 40px"></i>
+                        <br>
+                        @foreach ($settings as $IG)
+                            @if ($IG->display_name == 'Link Instagram')
+                                <p><a href="{{ $IG->value }}" target="_blank" class="sosmed">INSTGARAM</a>
+                                </p>
+                            @endif
+                        @endforeach
+                        <p style="font-size: 13px; font-weight: lighter">
+                            Check out the latest photos <br />
+                            on starbhak.offcial Instagram
+                        </p>
+                    </div>
+                    <div class="col-md-2 mt-5">
+                        <i class="fab fa-facebook" style="font-size: 40px"></i>
+                        <br>
+                        @foreach ($settings as $FB)
+                            @if ($FB->display_name == 'Link Facebook')
+                                <p><a href="{{ $FB->value }}" target="_blank" class="sosmed">Facebook
+                                        Page</a></p>
+                            @endif
+                        @endforeach
+                        <p style="font-size: 13px; font-weight: lighter">Check out the latest photos on starbhak.offcial
+                            Facebook</p>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
         <!-- End Trainers Section -->
         {{-- <footer  class="counts section-bg" style="background-color: #095b90;"> --}}
         @include('template.footer')

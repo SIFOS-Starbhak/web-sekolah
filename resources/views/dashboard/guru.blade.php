@@ -76,25 +76,16 @@
                             <img src="{{ asset('img/default.png') }}" alt="..." class="avatar-img rounded-circle">
                         </div>
                     </div>
-                    <div class="col">
-                        <div class="row align-items-center">
-                            <div class="col-md-7">
-                                <h4 class="mb-1">{{ Auth::guard('guru')->user()->name }}</h4>
-                                <p class="small mb-3"><span class="badge badge-pill badge-success">Guru SMK Taruna
-                                        Bhakti</span></p>
-                            </div>
+                    <div class="row mb-4">
+                        <div class="col-md-7">
+                            <p class="text-muted"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris
+                                blandit nisl ullamcorper, rutrum metus in, congue lectus. In hac habitasse platea
+                                dictumst. Cras urna quam, malesuada vitae risus at, pretium blandit sapien. </p>
                         </div>
-                        <div class="row mb-4">
-                            <div class="col-md-7">
-                                <p class="text-muted"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris
-                                    blandit nisl ullamcorper, rutrum metus in, congue lectus. In hac habitasse platea
-                                    dictumst. Cras urna quam, malesuada vitae risus at, pretium blandit sapien. </p>
-                            </div>
-                            <div class="col">
-                                <p class="small mb-0 text-muted"></p>
-                                <p class="small mb-0 text-muted">{{ Auth::guard('guru')->user()->email }}</p>
-                                <p class="small mb-0 text-muted">(537) 315-1481</p>
-                            </div>
+                        <div class="col">
+                            <p class="small mb-0 text-muted"></p>
+                            {{-- <p class="small mb-0 text-muted">{{ Auth::guard('guru')->user()->email }}</p> --}}
+                            <p class="small mb-0 text-muted">(537) 315-1481</p>
                         </div>
                     </div>
                 </div> --}}
@@ -193,6 +184,14 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="card-body">
+                                    <div class="col-12 " style="margin-top: -25px;">
+                                        <p class="d-flex align-items-center mb-0 text-dark">
+                                            Sistem Tatakelola Surat Menyurat Sekolah / Prakerin
+                                        </p>
+
+                                    </div>
+                                </div>
                             </div>
                             {{-- <div class="col-xl-3 col-lg-6 d-flex">
                                 <div class="card" style="width: 18rem;" >
@@ -223,6 +222,9 @@
                                 </div>
                             </div> --}}
 
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
                     </div>
@@ -240,14 +242,14 @@
                                 <div class="col-md-12">
                                   <div class="card shadow mb-4">
                                     <div class="card-header">
-                                      <strong class="card-title">Form row</strong>
+                                        <strong class="card-title">Form row</strong>
                                     </div>
                                     <div class="card-body">
-                                      <form action="" method="POST">
-                                        <div class="form-row">
-                                          <div class="form-group col-md-6">
-                                            <label for="categories">Categories</label>
-                                            <select name="" id="categories" class="form-control">
+                                        <form action="" method="POST">
+                                            <div class="form-row">
+                                                <div class="form-group col-md-6">
+                                                    <label for="categories">Categories</label>
+                                                    <select name="" id="categories" class="form-control">
                                                         <option value="1">1</option>
                                                         <option value="2">2</option>
                                             </select>
@@ -416,5 +418,11 @@
     {{-- </div> --}}
 
 
+        </div>
     </div>
+    {{-- </div> --}}
+</div>
 @endsection
+@push('js')
+@endpush 
+l

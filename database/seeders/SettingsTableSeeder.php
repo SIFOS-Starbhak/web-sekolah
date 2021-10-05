@@ -16,11 +16,11 @@ class SettingsTableSeeder extends Seeder
         if (!$setting->exists) {
             $setting->fill([
                 'display_name' => __('voyager::seeders.settings.site.title'),
-                'value'        => __('voyager::seeders.settings.site.title'),
-                'details'      => '',
-                'type'         => 'text',
-                'order'        => 1,
-                'group'        => 'Site',
+                'value' => '<h1 style="box-sizing: border-box; margin: 0px; line-height: 56px; font-size: 48px; font-family: Poppins, sans-serif; color: #ffffff;"><span style="color: #ffffff;">Learning Today, </span></h1><h1 style="box-sizing: border-box; margin: 0px; line-height: 56px; font-size: 48px; font-family: Poppins, sans-serif; color: #ffffff;"><span style="color: #ffffff;">Leading Tomorrow</span></h1>',
+                'details' => '',
+                'type' => 'rich_text_box',
+                'order' => 1,
+                'group' => 'Site',
             ])->save();
         }
 
@@ -28,11 +28,11 @@ class SettingsTableSeeder extends Seeder
         if (!$setting->exists) {
             $setting->fill([
                 'display_name' => __('voyager::seeders.settings.site.description'),
-                'value'        => __('voyager::seeders.settings.site.description'),
-                'details'      => '',
-                'type'         => 'text',
-                'order'        => 2,
-                'group'        => 'Site',
+                'value' => 'We are team of talented designers making websites with Bootstrap',
+                'details' => '',
+                'type' => 'text',
+                'order' => 2,
+                'group' => 'Site',
             ])->save();
         }
 
@@ -40,11 +40,35 @@ class SettingsTableSeeder extends Seeder
         if (!$setting->exists) {
             $setting->fill([
                 'display_name' => __('voyager::seeders.settings.site.logo'),
-                'value'        => '',
-                'details'      => '',
-                'type'         => 'image',
-                'order'        => 3,
-                'group'        => 'Site',
+                'value' => 'settings\October2021\GtJrKWf2VN7hY3Ojxy6x.png',
+                'details' => '',
+                'type' => 'image',
+                'order' => 3,
+                'group' => 'Site',
+            ])->save();
+        }
+
+        $setting = $this->findSetting('site.jumbotron');
+        if (!$setting->exists) {
+            $setting->fill([
+                'display_name' => 'Site Jumbotron',
+                'value' => 'settings\October2021\SzObr0H0ibTgulV2p9K5.jpg',
+                'details' => '',
+                'type' => 'image',
+                'order' => 6,
+                'group' => 'Site',
+            ])->save();
+        }
+
+        $setting = $this->findSetting('site.virtual_tour');
+        if (!$setting->exists) {
+            $setting->fill([
+                'display_name' => 'Virtual Tour',
+                'value' => 'https: //kuula.co/share/collection/7YQlT?fs=1&vr=1&sd=1&initload=0&thumbs=1&info=0&logo=1&logosize=40',
+                'details' => '',
+                'type' => 'text',
+                'order' => 7,
+                'group' => 'Site',
             ])->save();
         }
 
@@ -52,11 +76,11 @@ class SettingsTableSeeder extends Seeder
         if (!$setting->exists) {
             $setting->fill([
                 'display_name' => __('voyager::seeders.settings.site.google_analytics_tracking_id'),
-                'value'        => '',
-                'details'      => '',
-                'type'         => 'text',
-                'order'        => 4,
-                'group'        => 'Site',
+                'value' => '',
+                'details' => '',
+                'type' => 'text',
+                'order' => 4,
+                'group' => 'Site',
             ])->save();
         }
 
@@ -64,11 +88,11 @@ class SettingsTableSeeder extends Seeder
         if (!$setting->exists) {
             $setting->fill([
                 'display_name' => __('voyager::seeders.settings.admin.background_image'),
-                'value'        => '',
-                'details'      => '',
-                'type'         => 'image',
-                'order'        => 5,
-                'group'        => 'Admin',
+                'value' => '',
+                'details' => '',
+                'type' => 'image',
+                'order' => 5,
+                'group' => 'Admin',
             ])->save();
         }
 
@@ -76,11 +100,11 @@ class SettingsTableSeeder extends Seeder
         if (!$setting->exists) {
             $setting->fill([
                 'display_name' => __('voyager::seeders.settings.admin.title'),
-                'value'        => 'Voyager',
-                'details'      => '',
-                'type'         => 'text',
-                'order'        => 1,
-                'group'        => 'Admin',
+                'value' => 'Voyager',
+                'details' => '',
+                'type' => 'text',
+                'order' => 1,
+                'group' => 'Admin',
             ])->save();
         }
 
@@ -88,11 +112,11 @@ class SettingsTableSeeder extends Seeder
         if (!$setting->exists) {
             $setting->fill([
                 'display_name' => __('voyager::seeders.settings.admin.description'),
-                'value'        => __('voyager::seeders.settings.admin.description_value'),
-                'details'      => '',
-                'type'         => 'text',
-                'order'        => 2,
-                'group'        => 'Admin',
+                'value' => __('voyager::seeders.settings.admin.description_value'),
+                'details' => '',
+                'type' => 'text',
+                'order' => 2,
+                'group' => 'Admin',
             ])->save();
         }
 
@@ -100,11 +124,11 @@ class SettingsTableSeeder extends Seeder
         if (!$setting->exists) {
             $setting->fill([
                 'display_name' => __('voyager::seeders.settings.admin.loader'),
-                'value'        => '',
-                'details'      => '',
-                'type'         => 'image',
-                'order'        => 3,
-                'group'        => 'Admin',
+                'value' => '',
+                'details' => '',
+                'type' => 'image',
+                'order' => 3,
+                'group' => 'Admin',
             ])->save();
         }
 
@@ -112,11 +136,11 @@ class SettingsTableSeeder extends Seeder
         if (!$setting->exists) {
             $setting->fill([
                 'display_name' => __('voyager::seeders.settings.admin.icon_image'),
-                'value'        => '',
-                'details'      => '',
-                'type'         => 'image',
-                'order'        => 4,
-                'group'        => 'Admin',
+                'value' => '',
+                'details' => '',
+                'type' => 'image',
+                'order' => 4,
+                'group' => 'Admin',
             ])->save();
         }
 
@@ -124,11 +148,11 @@ class SettingsTableSeeder extends Seeder
         if (!$setting->exists) {
             $setting->fill([
                 'display_name' => __('voyager::seeders.settings.admin.google_analytics_client_id'),
-                'value'        => '',
-                'details'      => '',
-                'type'         => 'text',
-                'order'        => 1,
-                'group'        => 'Admin',
+                'value' => '',
+                'details' => '',
+                'type' => 'text',
+                'order' => 1,
+                'group' => 'Admin',
             ])->save();
         }
     }

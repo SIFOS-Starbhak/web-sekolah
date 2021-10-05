@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -11,7 +9,7 @@
     <meta content="" name="keywords" />
 
     <!-- Favicons -->
-    
+
     <link href="{{ asset('template/assets/img/favicon.png') }}" rel="icon" />
 
     <link href="{{ asset('template/assets/img/apple-touch-icon.png') }}" rel="apple-touch-icon" />
@@ -49,7 +47,7 @@
         <!-- <img src="assets/img/logotb.png" alt="" style="height: 70px; width: 70px" /> -->
       @foreach ($settings as $setting)
         @if ($setting->display_name == 'Site Logo')
-            
+
           <img src="{{asset('storage/' . $setting->value)}}" alt="" style="height: 70px; width: 70px" />
         @endif
       @endforeach
@@ -71,7 +69,7 @@
         <!-- .navbar -->
       </div>
 
-    
+
 
     </header>
 

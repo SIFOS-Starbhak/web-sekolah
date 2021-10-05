@@ -26,7 +26,6 @@ class ArticleController extends Controller
     }
     public function store(Request $request)
     {
-        // dd($request);
         $request->validate([
             'category' => 'required',
             'title' => 'required|unique:posts|max:100',
@@ -48,7 +47,7 @@ class ArticleController extends Controller
         $nm->move(public_path() . '/article-img', $namafile);
 
         Post::create([
-            'author_id' => Auth::guard('manager')->id(),
+            'author_id' => auth()->id(),
             'category_id' => $request->category,
             'title' => $request->title,
             'seo_title' => $request->seo_title,
@@ -93,7 +92,7 @@ class ArticleController extends Controller
             // $namafile = $nm->getClientOriginalName();
             // $nm->move(public_path().'/article-img',$namafile);
             Post::where('id', $id)->update([
-                'author_id'        => Auth::guard('manager')->id(),
+                'author_id'        => auth()->id(),
                 'category_id'      => $request->category,
                 'title'            => $request->title,
                 'seo_title'        => $request->seo_title,
@@ -125,7 +124,7 @@ class ArticleController extends Controller
                 $namafile = $nm->getClientOriginalName();
                 $nm->move(public_path() . '/article-img', $namafile);
                 Post::where('id', $id)->update([
-                    'author_id'        => Auth::guard('manager')->id(),
+                    'author_id'        => auth()->id(),
                     'category_id'      => $request->category,
                     'title'            => $request->title,
                     'seo_title'        => $request->seo_title,

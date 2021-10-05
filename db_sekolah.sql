@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 04 Okt 2021 pada 05.02
--- Versi server: 10.4.13-MariaDB
--- Versi PHP: 7.4.8
+-- Waktu pembuatan: 05 Okt 2021 pada 04.49
+-- Versi server: 10.4.14-MariaDB
+-- Versi PHP: 7.4.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `db_sekolah`
+-- Database: `web_sekolah_db`
 --
 
 -- --------------------------------------------------------
@@ -141,16 +141,15 @@ CREATE TABLE `data_rows` (
 
 INSERT INTO `data_rows` (`id`, `data_type_id`, `field`, `type`, `display_name`, `required`, `browse`, `read`, `edit`, `add`, `delete`, `details`, `order`) VALUES
 (1, 1, 'id', 'number', 'ID', 1, 0, 0, 0, 0, 0, '{}', 1),
-(2, 1, 'name', 'text', 'Name', 1, 1, 1, 1, 1, 1, '{}', 2),
-(3, 1, 'email', 'text', 'Email', 1, 1, 1, 1, 1, 1, '{}', 3),
+(2, 1, 'name', 'text', 'Name', 1, 1, 1, 1, 1, 1, '{}', 3),
+(3, 1, 'email', 'text', 'Email', 1, 1, 1, 1, 1, 1, '{}', 5),
 (4, 1, 'password', 'password', 'Password', 1, 0, 0, 1, 1, 0, '{}', 4),
-(5, 1, 'remember_token', 'text', 'Remember Token', 0, 0, 0, 0, 0, 0, '{}', 5),
-(6, 1, 'created_at', 'timestamp', 'Created At', 0, 1, 1, 0, 0, 0, '{}', 6),
-(7, 1, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 7),
-(8, 1, 'avatar', 'image', 'Avatar', 0, 1, 1, 1, 1, 1, '{}', 8),
-(9, 1, 'user_belongsto_role_relationship', 'relationship', 'Role', 0, 1, 1, 1, 1, 0, '{\"model\":\"TCG\\\\Voyager\\\\Models\\\\Role\",\"table\":\"roles\",\"type\":\"belongsTo\",\"column\":\"role_id\",\"key\":\"id\",\"label\":\"display_name\",\"pivot_table\":\"roles\",\"pivot\":\"0\",\"taggable\":\"0\"}', 10),
-(10, 1, 'user_belongstomany_role_relationship', 'relationship', 'voyager::seeders.data_rows.roles', 0, 1, 1, 1, 1, 0, '{\"model\":\"TCG\\\\Voyager\\\\Models\\\\Role\",\"table\":\"roles\",\"type\":\"belongsToMany\",\"column\":\"id\",\"key\":\"id\",\"label\":\"display_name\",\"pivot_table\":\"user_roles\",\"pivot\":\"1\",\"taggable\":\"0\"}', 11),
-(11, 1, 'settings', 'hidden', 'Settings', 0, 0, 0, 0, 0, 0, '{}', 12),
+(5, 1, 'remember_token', 'text', 'Remember Token', 0, 0, 0, 0, 0, 0, '{}', 11),
+(6, 1, 'created_at', 'timestamp', 'Created At', 0, 1, 1, 0, 0, 0, '{}', 13),
+(7, 1, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 12),
+(8, 1, 'avatar', 'image', 'Avatar', 0, 1, 1, 1, 1, 1, '{}', 15),
+(9, 1, 'user_belongsto_role_relationship', 'relationship', 'Role', 0, 1, 1, 1, 1, 0, '{\"model\":\"TCG\\\\Voyager\\\\Models\\\\Role\",\"table\":\"roles\",\"type\":\"belongsTo\",\"column\":\"role_id\",\"key\":\"id\",\"label\":\"display_name\",\"pivot_table\":\"roles\",\"pivot\":\"0\",\"taggable\":\"0\"}', 6),
+(11, 1, 'settings', 'hidden', 'Settings', 0, 0, 0, 0, 0, 0, '{}', 17),
 (12, 2, 'id', 'number', 'ID', 1, 0, 0, 0, 0, 0, NULL, 1),
 (13, 2, 'name', 'text', 'Name', 1, 1, 1, 1, 1, 1, NULL, 2),
 (14, 2, 'created_at', 'timestamp', 'Created At', 0, 0, 0, 0, 0, 0, NULL, 3),
@@ -160,7 +159,7 @@ INSERT INTO `data_rows` (`id`, `data_type_id`, `field`, `type`, `display_name`, 
 (18, 3, 'created_at', 'timestamp', 'Created At', 0, 0, 0, 0, 0, 0, NULL, 3),
 (19, 3, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, NULL, 4),
 (20, 3, 'display_name', 'text', 'Display Name', 1, 1, 1, 1, 1, 1, NULL, 5),
-(21, 1, 'role_id', 'text', 'Role', 0, 1, 1, 1, 1, 1, '{}', 9),
+(21, 1, 'role_id', 'text', 'Role', 0, 1, 1, 1, 1, 1, '{}', 16),
 (22, 4, 'id', 'number', 'ID', 1, 0, 0, 0, 0, 0, NULL, 1),
 (23, 4, 'parent_id', 'select_dropdown', 'Parent', 0, 0, 1, 1, 1, 1, '{\"default\":\"\",\"null\":\"\",\"options\":{\"\":\"-- None --\"},\"relationship\":{\"key\":\"id\",\"label\":\"name\"}}', 2),
 (24, 4, 'order', 'text', 'Order', 1, 1, 1, 1, 1, 1, '{\"default\":1}', 3),
@@ -227,7 +226,7 @@ INSERT INTO `data_rows` (`id`, `data_type_id`, `field`, `type`, `display_name`, 
 (87, 8, 'kelas_id', 'text', 'Kelas Id', 0, 1, 1, 1, 1, 1, '{}', 6),
 (88, 10, 'jurusan', 'select_dropdown', 'Jurusan', 0, 1, 1, 1, 1, 1, '{\"default\":\"RPL\",\"options\":{\"TKJ\":\"TKJ\",\"MM\":\"MM\",\"RPL\":\"RPL\",\"BC\":\"BC\",\"TEI\":\"TEI\"}}', 3),
 (91, 8, 'nipd', 'text', 'Nipd', 0, 1, 1, 1, 1, 1, '{}', 3),
-(92, 1, 'email_verified_at', 'timestamp', 'Email Verified At', 0, 1, 1, 1, 1, 1, '{}', 6),
+(92, 1, 'email_verified_at', 'timestamp', 'Email Verified At', 0, 1, 1, 1, 1, 1, '{}', 14),
 (93, 8, 'remember_token', 'text', 'Remember Token', 0, 0, 0, 0, 0, 0, '{}', 10),
 (94, 9, 'nik', 'text', 'Nik', 0, 1, 1, 1, 1, 1, '{}', 2),
 (95, 7, 'nik', 'text', 'Nik', 0, 1, 1, 1, 1, 1, '{}', 2),
@@ -291,7 +290,12 @@ INSERT INTO `data_rows` (`id`, `data_type_id`, `field`, `type`, `display_name`, 
 (181, 16, 'alumni_belongsto_jurusan_relationship', 'relationship', 'jurusans', 0, 0, 1, 1, 1, 1, '{\"model\":\"App\\\\Models\\\\Jurusan\",\"table\":\"jurusans\",\"type\":\"belongsTo\",\"column\":\"jurusan\",\"key\":\"jurusan\",\"label\":\"jurusan\",\"pivot_table\":\"alumnis\",\"pivot\":\"0\",\"taggable\":\"0\"}', 10),
 (182, 16, 'categories_alumnis', 'text', 'Categories Alumnis', 0, 1, 1, 1, 1, 1, '{\"options\":{\"Bekerja\":\"Bekerja\",\"Kuliah\":\"Kuliah\",\"Wirausaha\":\"Wirausaha\"}}', 8),
 (183, 16, 'jurusan', 'text', 'Jurusan', 0, 1, 1, 1, 1, 1, '{}', 9),
-(184, 20, 'singkatan', 'text', 'Singkatan', 0, 1, 1, 1, 1, 1, '{}', 5);
+(184, 20, 'singkatan', 'text', 'Singkatan', 0, 1, 1, 1, 1, 1, '{}', 5),
+(186, 1, 'nomor_induk', 'text', 'Nomor Induk', 0, 1, 1, 1, 1, 1, '{}', 2),
+(187, 1, 'jabatan_guru', 'text', 'Jabatan Guru', 0, 1, 1, 1, 1, 1, '{}', 7),
+(188, 1, 'kelas_siswa', 'text', 'Kelas Siswa', 0, 1, 1, 1, 1, 1, '{}', 9),
+(189, 1, 'spesifc_role', 'select_dropdown', 'Spesifc Role', 0, 1, 1, 1, 1, 1, '{\"default\":\"DRAFT\",\"options\":{\"admin\":\"admin\",\"litbang\":\"litbang\",\"Tata Usaha\":\"tu\",\"siswa\":\"siswa\",\"kaprog\":\"kaprog\",\"kepsek\":\"kepsek\",\"waka\":\"waka\",\"bkk\":\"bkk\",\"Hubin\":\"hubin\",\"kurikulum\":\"kurikulum\",\"kesiswaan\":\"kesiswaan\",\"sarpras\":\"sarpras\",\"Kejuruan\":\"Kejuruan\"}}', 10),
+(190, 1, 'user_belongsto_kela_relationship', 'relationship', 'kelas', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\Models\\\\Kela\",\"table\":\"kelas\",\"type\":\"belongsTo\",\"column\":\"kelas_siswa\",\"key\":\"id\",\"label\":\"nama_kelas\",\"pivot_table\":\"alumnis\",\"pivot\":\"0\",\"taggable\":\"0\"}', 8);
 
 -- --------------------------------------------------------
 
@@ -322,15 +326,12 @@ CREATE TABLE `data_types` (
 --
 
 INSERT INTO `data_types` (`id`, `name`, `slug`, `display_name_singular`, `display_name_plural`, `icon`, `model_name`, `policy_name`, `controller`, `description`, `generate_permissions`, `server_side`, `details`, `created_at`, `updated_at`) VALUES
-(1, 'users', 'users', 'User', 'Users', 'voyager-person', 'TCG\\Voyager\\Models\\User', 'TCG\\Voyager\\Policies\\UserPolicy', 'TCG\\Voyager\\Http\\Controllers\\VoyagerUserController', NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"desc\",\"default_search_key\":null,\"scope\":null}', '2021-09-21 07:32:51', '2021-09-22 06:10:53'),
+(1, 'users', 'users', 'User', 'Users', NULL, 'App\\Models\\User', NULL, NULL, NULL, 0, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"desc\",\"default_search_key\":null,\"scope\":null}', '2021-09-21 07:32:51', '2021-10-04 23:57:18'),
 (2, 'menus', 'menus', 'Menu', 'Menus', 'voyager-list', 'TCG\\Voyager\\Models\\Menu', NULL, '', '', 1, 0, NULL, '2021-09-21 07:32:51', '2021-09-21 07:32:51'),
 (3, 'roles', 'roles', 'Role', 'Roles', 'voyager-lock', 'TCG\\Voyager\\Models\\Role', NULL, 'TCG\\Voyager\\Http\\Controllers\\VoyagerRoleController', '', 1, 0, NULL, '2021-09-21 07:32:52', '2021-09-21 07:32:52'),
 (4, 'categories', 'categories', 'Category', 'Categories', 'voyager-categories', 'TCG\\Voyager\\Models\\Category', NULL, '', '', 1, 0, NULL, '2021-09-21 07:33:09', '2021-09-21 07:33:09'),
 (5, 'posts', 'posts', 'Post', 'Posts', 'voyager-news', 'TCG\\Voyager\\Models\\Post', 'TCG\\Voyager\\Policies\\PostPolicy', NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"desc\",\"default_search_key\":null,\"scope\":null}', '2021-09-21 07:33:11', '2021-09-25 18:15:46'),
 (6, 'pages', 'pages', 'Page', 'Pages', 'voyager-file-text', 'TCG\\Voyager\\Models\\Page', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"desc\",\"default_search_key\":null,\"scope\":null}', '2021-09-21 07:33:12', '2021-09-25 17:38:17'),
-(7, 'gurus', 'gurus', 'Guru', 'Gurus', NULL, 'App\\Models\\Guru', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2021-09-21 20:11:32', '2021-09-23 21:03:11'),
-(8, 'siswas', 'siswas', 'Siswa', 'Siswas', NULL, 'App\\Models\\Siswa', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2021-09-21 20:12:14', '2021-09-22 06:08:24'),
-(9, 'managers', 'managers', 'Manager', 'Managers', NULL, 'App\\Models\\Manager', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2021-09-21 20:20:00', '2021-09-23 20:59:38'),
 (10, 'kelas', 'kelas', 'Kela', 'Kelas', NULL, 'App\\Models\\Kela', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2021-09-21 20:32:15', '2021-09-22 06:42:10'),
 (12, 'newsslides', 'newsslides', 'Newsslide', 'Newsslides', NULL, 'App\\Models\\Newsslide', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null}', '2021-09-24 00:32:41', '2021-09-24 00:32:41'),
 (16, 'alumnis', 'alumnis', 'Alumni', 'Alumnis', NULL, 'App\\Models\\Alumni', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2021-09-29 21:41:44', '2021-10-02 07:34:14'),
@@ -415,57 +416,6 @@ CREATE TABLE `gallery` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `gurus`
---
-
-CREATE TABLE `gurus` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `password` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  `nik` int(11) DEFAULT NULL,
-  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `jabatan` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data untuk tabel `gurus`
---
-
-INSERT INTO `gurus` (`id`, `name`, `email`, `password`, `created_at`, `updated_at`, `nik`, `remember_token`, `jabatan`) VALUES
-(2, 'Sheila Riani Putri', 'sheila@gmail.com', '$2y$10$3p.3Ue2lHsgEUKYYSG9Mv.ayPeQFVJ6LmoOm3FoVhAs99bfde848i', '2021-09-24 07:04:23', '2021-09-26 01:30:45', 99202029, NULL, 'kesiswaan'),
-(3, 'Ana Susilowati', 'ana@gmail.com', '$2y$10$SM.PR6QOjpWPU27Cmac1TO/ezT5ZMRZ5v4bPFzbh0ZEHIIu1fN13.', '2021-09-24 07:05:00', '2021-09-26 01:30:31', 2012954223, NULL, 'sarpras'),
-(4, 'Tanzela Azizi', 'tanzela@gmail.com', '$2y$10$aYytyzZpncfOsTsevCdq6.E.27jMVcURVnMmFUVLAYZjxn1mJ6m5e', '2021-09-24 07:05:47', '2021-09-26 01:30:11', 2012957767, NULL, 'hubin'),
-(5, 'Agus Diana', 'agus@gmail.com', '$2y$10$szNhcnuVzdM9LqKX/jOnv.RYrGDRu5TzjKDoLycElODjRbb8O4Tpi', '2021-09-24 07:06:44', '2021-09-26 01:29:55', 99772029, NULL, 'kurikulum');
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `guru_role`
---
-
-CREATE TABLE `guru_role` (
-  `guru_id` bigint(20) UNSIGNED NOT NULL,
-  `kategori_id` bigint(20) UNSIGNED NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data untuk tabel `guru_role`
---
-
-INSERT INTO `guru_role` (`guru_id`, `kategori_id`) VALUES
-(12, 5),
-(15, 1),
-(15, 5),
-(14, 5),
-(23, 3),
-(23, 4);
 
 -- --------------------------------------------------------
 
@@ -578,31 +528,6 @@ INSERT INTO `kelas` (`id`, `kelas`, `nama_kelas`, `tahun_ajaran`, `wali_kelas`, 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `managers`
---
-
-CREATE TABLE `managers` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `jabatan` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT 'Kepala Program',
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `password` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  `nik` int(11) DEFAULT NULL,
-  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data untuk tabel `managers`
---
-
-INSERT INTO `managers` (`id`, `name`, `jabatan`, `email`, `password`, `created_at`, `updated_at`, `nik`, `remember_token`) VALUES
-(4, 'Puguh Rismadi Ismail', 'Kepala Program', 'puguh@gmail.com', '$2y$10$GGdHSuyC7NHSYosD47rMVepa7Nl0Js0UPXPIeiuxuMHywvdmEW5iW', '2021-09-24 07:07:30', '2021-09-26 01:28:05', 7585876, NULL);
-
--- --------------------------------------------------------
-
---
 -- Struktur dari tabel `media`
 --
 
@@ -687,9 +612,6 @@ INSERT INTO `menu_items` (`id`, `menu_id`, `title`, `url`, `target`, `icon_class
 (11, 1, 'Categories', '', '_self', 'voyager-categories', NULL, NULL, 8, '2021-09-21 07:33:10', '2021-09-21 07:33:10', 'voyager.categories.index', NULL),
 (12, 1, 'Posts', '', '_self', 'voyager-news', NULL, NULL, 6, '2021-09-21 07:33:12', '2021-09-21 07:33:12', 'voyager.posts.index', NULL),
 (13, 1, 'Pages', '', '_self', 'voyager-file-text', NULL, NULL, 7, '2021-09-21 07:33:13', '2021-09-21 07:33:13', 'voyager.pages.index', NULL),
-(14, 1, 'Gurus', '', '_self', NULL, NULL, NULL, 15, '2021-09-21 20:11:33', '2021-09-21 20:11:33', 'voyager.gurus.index', NULL),
-(15, 1, 'Siswas', '', '_self', NULL, NULL, NULL, 16, '2021-09-21 20:12:15', '2021-09-21 20:12:15', 'voyager.siswas.index', NULL),
-(16, 1, 'Managers', '', '_self', NULL, NULL, NULL, 17, '2021-09-21 20:20:01', '2021-09-21 20:20:01', 'voyager.managers.index', NULL),
 (17, 1, 'Kelas', '', '_self', NULL, NULL, NULL, 18, '2021-09-21 20:32:17', '2021-09-21 20:32:17', 'voyager.kelas.index', NULL),
 (18, 1, 'Newsslides', '', '_self', NULL, NULL, NULL, 19, '2021-09-24 00:32:42', '2021-09-24 00:32:42', 'voyager.newsslides.index', NULL),
 (19, 1, 'Alumnis', '', '_self', NULL, NULL, NULL, 20, '2021-09-29 21:41:45', '2021-09-29 21:41:45', 'voyager.alumnis.index', NULL),
@@ -919,21 +841,6 @@ INSERT INTO `permissions` (`id`, `key`, `table_name`, `created_at`, `updated_at`
 (38, 'edit_pages', 'pages', '2021-09-21 07:33:13', '2021-09-21 07:33:13'),
 (39, 'add_pages', 'pages', '2021-09-21 07:33:13', '2021-09-21 07:33:13'),
 (40, 'delete_pages', 'pages', '2021-09-21 07:33:13', '2021-09-21 07:33:13'),
-(41, 'browse_gurus', 'gurus', '2021-09-21 20:11:33', '2021-09-21 20:11:33'),
-(42, 'read_gurus', 'gurus', '2021-09-21 20:11:33', '2021-09-21 20:11:33'),
-(43, 'edit_gurus', 'gurus', '2021-09-21 20:11:33', '2021-09-21 20:11:33'),
-(44, 'add_gurus', 'gurus', '2021-09-21 20:11:33', '2021-09-21 20:11:33'),
-(45, 'delete_gurus', 'gurus', '2021-09-21 20:11:33', '2021-09-21 20:11:33'),
-(46, 'browse_siswas', 'siswas', '2021-09-21 20:12:15', '2021-09-21 20:12:15'),
-(47, 'read_siswas', 'siswas', '2021-09-21 20:12:15', '2021-09-21 20:12:15'),
-(48, 'edit_siswas', 'siswas', '2021-09-21 20:12:15', '2021-09-21 20:12:15'),
-(49, 'add_siswas', 'siswas', '2021-09-21 20:12:15', '2021-09-21 20:12:15'),
-(50, 'delete_siswas', 'siswas', '2021-09-21 20:12:15', '2021-09-21 20:12:15'),
-(51, 'browse_managers', 'managers', '2021-09-21 20:20:01', '2021-09-21 20:20:01'),
-(52, 'read_managers', 'managers', '2021-09-21 20:20:01', '2021-09-21 20:20:01'),
-(53, 'edit_managers', 'managers', '2021-09-21 20:20:01', '2021-09-21 20:20:01'),
-(54, 'add_managers', 'managers', '2021-09-21 20:20:01', '2021-09-21 20:20:01'),
-(55, 'delete_managers', 'managers', '2021-09-21 20:20:01', '2021-09-21 20:20:01'),
 (56, 'browse_kelas', 'kelas', '2021-09-21 20:32:17', '2021-09-21 20:32:17'),
 (57, 'read_kelas', 'kelas', '2021-09-21 20:32:17', '2021-09-21 20:32:17'),
 (58, 'edit_kelas', 'kelas', '2021-09-21 20:32:17', '2021-09-21 20:32:17'),
@@ -997,10 +904,15 @@ CREATE TABLE `permission_role` (
 
 INSERT INTO `permission_role` (`permission_id`, `role_id`) VALUES
 (1, 1),
+(1, 5),
 (2, 1),
+(2, 5),
 (3, 1),
+(3, 5),
 (4, 1),
+(4, 5),
 (5, 1),
+(5, 5),
 (6, 1),
 (7, 1),
 (8, 1),
@@ -1036,21 +948,6 @@ INSERT INTO `permission_role` (`permission_id`, `role_id`) VALUES
 (38, 1),
 (39, 1),
 (40, 1),
-(41, 1),
-(42, 1),
-(43, 1),
-(44, 1),
-(45, 1),
-(46, 1),
-(47, 1),
-(48, 1),
-(49, 1),
-(50, 1),
-(51, 1),
-(52, 1),
-(53, 1),
-(54, 1),
-(55, 1),
 (56, 1),
 (57, 1),
 (58, 1),
@@ -1165,7 +1062,8 @@ INSERT INTO `posts` (`id`, `author_id`, `category_id`, `title`, `seo_title`, `ex
 (24, 1, 6, 'Sarana dan Prasarana Sekolah', 'Sarana dan Prasarana Sekolah', NULL, '<p><span style=\"color: #212529; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 12px;\">Gedung Sekolah Milik sendiri dengan design bangunan berbentuk permanen yang di sesuaikan dengan kebutuhan pendidikan dan berlantai 4.</span></p>\r\n<p>&nbsp;</p>\r\n<p style=\"text-align: center;\"><span style=\"color: #212529; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 12px;\"><img title=\"Gedung\" src=\"http://localhost:8000/storage/posts/September2021/gedung_51.jpg\" alt=\"\" width=\"600\" /><img src=\"http://localhost:8000/storage/posts/September2021/photo_2021-09-25_16-26-113.jpg\" alt=\"\" width=\"600\" /></span></p>\r\n<p style=\"text-align: center;\"><img src=\"http://localhost:8000/storage/posts/September2021/photo_2021-09-25_16-26-14.jpg\" alt=\"\" width=\"600\" /></p>\r\n<p style=\"text-align: center;\"><span style=\"color: #212529; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 12px;\"><img src=\"http://localhost:8000/storage/posts/September2021/photo_2021-09-25_16-26-03.jpg\" alt=\"\" width=\"600\" /></span></p>\r\n<p style=\"text-align: center;\"><span style=\"color: #212529; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 12px;\"><img src=\"http://localhost:8000/storage/posts/September2021/photo_2021-09-25_16-26-00.jpg\" alt=\"\" width=\"600\" /><img src=\"http://localhost:8000/storage/posts/September2021/gedung_31.jpg\" alt=\"\" width=\"600\" /></span></p>\r\n<p style=\"text-align: center;\"><span style=\"color: #212529; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 12px;\"><img src=\"http://localhost:8000/storage/posts/September2021/gedung_21.jpg\" alt=\"\" width=\"600\" /><img src=\"http://localhost:8000/storage/posts/September2021/gedung_41.jpg\" alt=\"\" width=\"600\" /></span></p>\r\n<p style=\"text-align: center;\">&nbsp;</p>\r\n<p style=\"text-align: center;\"><span style=\"color: #212529; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 12px;\">Ruang Belajar Teori</span></p>\r\n<p style=\"text-align: center;\"><span style=\"color: #212529; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 12px;\"><img src=\"http://localhost:8000/storage/posts/September2021/lab_91.jpg\" alt=\"\" width=\"600\" /></span></p>\r\n<p style=\"text-align: center;\"><span style=\"color: #212529; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 12px;\"><img src=\"http://localhost:8000/storage/posts/September2021/lab_rpl2.jpg\" alt=\"\" width=\"600\" /><img src=\"http://localhost:8000/storage/posts/September2021/photo_2021-09-25_16-25-461.jpg\" alt=\"\" width=\"600\" /></span></p>\r\n<p style=\"text-align: center;\"><span style=\"color: #212529; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 12px;\"><img src=\"http://localhost:8000/storage/posts/September2021/photo_2021-09-25_16-25-061.jpg\" alt=\"\" width=\"600\" /></span></p>\r\n<p style=\"text-align: center;\"><span style=\"color: #212529; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 12px;\"><img src=\"http://localhost:8000/storage/posts/September2021/photo_2021-09-25_16-25-52.jpg\" alt=\"\" width=\"600\" /></span></p>\r\n<p style=\"text-align: center;\">&nbsp;<img src=\"http://localhost:8000/storage/posts/September2021/photo_2021-09-25_16-25-351.jpg\" alt=\"\" width=\"600\" /></p>\r\n<p style=\"text-align: center;\">&nbsp;<img src=\"http://localhost:8000/storage/posts/September2021/photo_2021-09-25_16-25-321.jpg\" alt=\"\" width=\"600\" /><span style=\"color: #212529; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 12px;\"><img src=\"http://localhost:8000/storage/posts/September2021/lab_11.jpg\" alt=\"\" width=\"600\" /></span></p>\r\n<p style=\"text-align: center;\"><span style=\"color: #212529; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 12px;\"><img src=\"http://localhost:8000/storage/posts/September2021/lab_21.jpg\" alt=\"\" width=\"600\" /></span></p>\r\n<p style=\"text-align: center;\">&nbsp;</p>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1.5em; color: #212529; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 12px;\">Laboratorium Komputer dan Ruangan Terdiri dari :</p>\r\n<ol style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1rem; color: #212529; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 12px;\">\r\n<li style=\"box-sizing: border-box;\">Lab Network Advance</li>\r\n<li style=\"box-sizing: border-box;\">Lab Network</li>\r\n<li style=\"box-sizing: border-box;\">Lab Maintenance and Repair</li>\r\n<li style=\"box-sizing: border-box;\">Lab Simulasi Digital</li>\r\n<li style=\"box-sizing: border-box;\">Lab Axioo Class Program</li>\r\n<li style=\"box-sizing: border-box;\">Lab Multimedia Medium</li>\r\n<li style=\"box-sizing: border-box;\">Lab Multimedia Advance</li>\r\n<li style=\"box-sizing: border-box;\">Lab Pemrograman Basic</li>\r\n<li style=\"box-sizing: border-box;\">Lab Pemrograman Advance</li>\r\n<li style=\"box-sizing: border-box;\">Lab Bahasa Inggris</li>\r\n<li style=\"box-sizing: border-box;\">Lab Video dan Audio Editing</li>\r\n<li style=\"box-sizing: border-box;\">Studio Mini Penyiaran TV</li>\r\n<li style=\"box-sizing: border-box;\">Ruang Server dan Fasilitas Lainnya</li>\r\n</ol>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1.5em; color: #212529; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 12px;\">Lingkungan sekolah yang asri dan nyaman jauh dari bising, mudah terjangkau oleh siswa/i dari berbagai jurusan dengan kendaraan umum.</p>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1.5em; color: #212529; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 12px;\">Memiliki kantin dengan konsep cafetaria yang bersih, rapi serta nyaman dengan variasi makanan dan minuman yang sehat, agar terjaga kesehatan dari siswa/i.</p>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1.5em; color: #212529; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 12px;\">Seluruh ruangan sekolah terjangkau dari Zona Hotspot yang di support oleh :</p>\r\n<ol style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1rem; color: #212529; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 12px;\">\r\n<li style=\"box-sizing: border-box;\">Wifi id (Telkom) dengan jaringan Fiber Optik 100 Mbps</li>\r\n<li style=\"box-sizing: border-box;\">Biznet dengan jaringan Fiber Optik 20&nbsp;Mbps Dedicated 1:1</li>\r\n<li style=\"box-sizing: border-box;\">Varnion Techology Jaringan wireless 2 Mbps.</li>\r\n</ol>\r\n<p style=\"text-align: center;\">&nbsp;</p>', 'posts\\October2021\\GKq0sa4ltlu5XqYvTzZt.PNG', 'sarana-dan-prasarana-sekolah', NULL, NULL, 'PUBLISHED', 1, '2021-09-25 02:06:37', '2021-10-02 03:03:44'),
 (25, 1, 6, 'Ruang Pembelajaran Umum', 'Ruang Pembelajaran Umum', NULL, '<table style=\"border-collapse: collapse; border-spacing: 0px; margin: 0px 0px 1.5em; width: 730px; color: #212529; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 12px; height: 303px;\" border=\"1\">\r\n<tbody style=\"box-sizing: border-box;\">\r\n<tr style=\"box-sizing: border-box; height: 303px;\">\r\n<td style=\"box-sizing: border-box; padding: 0px; width: 304.406px; height: 303px;\">SMK Taruna Bhakti memiliki ruang kelas dengan penjelasan sebagai berikut:\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1.5em;\">&nbsp;</p>\r\n<ol style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1rem;\">\r\n<li style=\"box-sizing: border-box;\">Jumlah Ruang Kelas : 32</li>\r\n<li style=\"box-sizing: border-box;\">Rata-rata ukuran kelas : 8 x 8 m = 64 m<span style=\"box-sizing: border-box; position: relative; font-size: 9px; line-height: 0; vertical-align: baseline; top: -0.5em;\">2</span></li>\r\n</ol>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1.5em; text-align: center;\">Fasilitas Ruang Kelas</p>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1.5em; text-align: center;\">&nbsp;</p>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1.5em; text-align: center;\">&nbsp;</p>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1.5em; text-align: center;\">{{image fasilitas ruang kelas}}</p>\r\n</td>\r\n<td style=\"box-sizing: border-box; padding: 0px; width: 424.594px; text-align: center; height: 303px;\"><img src=\"http://localhost:8000/storage/posts/September2021/photo_2021-09-25_16-25-492.jpg\" alt=\"\" width=\"378\" height=\"283\" /></td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<table style=\"border-collapse: collapse; border-spacing: 0px; margin: 0px 0px 1.5em; width: 730px; color: #212529; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 12px;\" border=\"1\">\r\n<tbody style=\"box-sizing: border-box;\">\r\n<tr style=\"box-sizing: border-box;\">\r\n<td style=\"box-sizing: border-box; padding: 0px; width: 381.516px;\"><span style=\"box-sizing: border-box; font-weight: bolder;\">Laboratorium Bahasa</span><br style=\"box-sizing: border-box;\" />SMK Taruna Bhakti memiliki 2 Laboratorium Bahasa yang berada pada gedung bagian Timur lantai 3. Di dalam Lab. Bahasa masing-masing memiliki seperangkat peralatan audio video untuk kegiatan pembelajaran Bahasa dengan kapasitas 20 siswa dengan masing-masing siswa menempati 1 meja multimedia.</td>\r\n<td style=\"box-sizing: border-box; padding: 0px; width: 347.484px; text-align: center;\">{{image lab bahasa 2/1}}</td>\r\n</tr>\r\n<tr style=\"box-sizing: border-box;\">\r\n<td style=\"box-sizing: border-box; padding: 0px; width: 381.516px; text-align: center;\">{{image perpustakaan}}</td>\r\n<td style=\"box-sizing: border-box; padding: 0px; width: 347.484px;\">&nbsp;<span style=\"box-sizing: border-box; font-weight: bolder;\">Perpustakaan<br style=\"box-sizing: border-box;\" /></span>SMK Taruna Bhakti Depok memiliki Ruang Perpustakaan dengan luas ruangan&nbsp; : 8 m X 4 m = 32 m<span style=\"box-sizing: border-box; position: relative; font-size: 9px; line-height: 0; vertical-align: baseline; top: -0.5em; color: inherit; font-family: inherit;\">2<br style=\"box-sizing: border-box;\" /></span>Letak perpustakaan berada pada lantai 3 gedung bagian Barat yang diapit oleh Laboratorium RPL Medium dan MM Advance. Terdapat&nbsp; 3 lemari besar 1 rak buku terbuat dari besi dan 2 rak kayu besar menjulang tinggi yang berisi ratusan buku dengan berbagai macam judul dan tema.</td>\r\n</tr>\r\n</tbody>\r\n</table>', 'posts\\October2021\\UPqIrdM8DhCt2qTImlSV.PNG', 'ruang-pembelajaran-umum', NULL, NULL, 'PUBLISHED', 1, '2021-09-25 02:12:44', '2021-10-02 03:03:29'),
 (26, 1, 6, 'Ruang Pembelajaran Khusus', 'Ruang Pembelajaran Khusus', NULL, '<table style=\"border-collapse: collapse; border-spacing: 0px; margin: 0px 0px 1.5em; width: 730px; color: #212529; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 12px; height: 941px;\" border=\"1\">\r\n<tbody style=\"box-sizing: border-box;\">\r\n<tr style=\"box-sizing: border-box; height: 207px;\">\r\n<td style=\"box-sizing: border-box; padding: 0px; width: 729px; height: 207px;\">\r\n<p>Teknik Komputer dan Jaringan</p>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1.5em;\">&nbsp;</p>\r\n<img style=\"display: block; margin-left: auto; margin-right: auto;\" src=\"http://localhost:8000/storage/posts/September2021/photo_2021-09-25_16-25-35.jpg\" alt=\"\" width=\"367\" height=\"276\" /><br />\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1.5em;\">&nbsp;</p>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1.5em;\">Jurusan Teknik Komputer dan jaringan (TKJ) SMK Taruna Bhakti Depok memiliki 3 laboratorium yaitu Laboratorium Network, Laboratorium Network Advance dan Laboratorium Axio Class Program (ACP).</p>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1.5em;\">&nbsp;</p>\r\n</td>\r\n</tr>\r\n<tr style=\"box-sizing: border-box; height: 219px;\">\r\n<td style=\"box-sizing: border-box; padding: 0px; width: 729px; height: 219px;\">\r\n<p>Multimedia</p>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1.5em;\">&nbsp;</p>\r\n<p><img style=\"display: block; margin-left: auto; margin-right: auto;\" src=\"http://localhost:8000/storage/posts/September2021/photo_2021-09-25_16-25-32.jpg\" alt=\"\" width=\"491\" height=\"276\" /></p>\r\n<p>&nbsp;</p>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1.5em;\">Jurusan Multimedia (MM)&nbsp;SMK Taruna Bhakti Depok memiliki 2 laboratorium yaitu Laboratorium MM Medium dan Laboratorium MM Advance. Kedua laboratorium ini berada pada lantai yang sama tetapi dipisah oleh Laboratorium RPL Advance dan Ruang Perpustakaan. Uniknya di laboratorium ini adalah pada bagian dindingnya, dimana siswa jurusan Multimedia diberikan tantangan untuk mendesain dinding kedua ruangan tersebut dengan desain 3D.</p>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1.5em;\">&nbsp;</p>\r\n</td>\r\n</tr>\r\n<tr style=\"box-sizing: border-box; height: 219px;\">\r\n<td style=\"box-sizing: border-box; padding: 0px; width: 729px; height: 219px;\">\r\n<p>Rekayasa Perangkat Lunak</p>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1.5em;\">&nbsp;</p>\r\n<p style=\"text-align: center;\"><img src=\"http://localhost:8000/storage/posts/September2021/photo_2021-09-25_16-25-46.jpg\" alt=\"\" width=\"491\" height=\"276\" /></p>\r\n<p>&nbsp;</p>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1.5em;\">Jurusan Rekayasa Perangkat Lunak (RPL)&nbsp;SMK Taruna Bhakti Depok memiliki 2 laboratorium yaitu Laboratorium RPL Medium dan Laboratorium RPL Advance. Laboratorium RPL Medium berada pada lantai 4 berdekatan dengan Laboratorium Teknik Elektronika Industri. Sedangkan Laboratorium RPL Advance berapa pada lantai 3 berdekatan dengan Ruang Perpustakaan dan Laboratorium MM Medium.</p>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1.5em;\">&nbsp;</p>\r\n</td>\r\n</tr>\r\n<tr style=\"box-sizing: border-box; height: 185px;\">\r\n<td style=\"box-sizing: border-box; padding: 0px; width: 729px; height: 185px;\">\r\n<p>Teknik Elektronika Industri</p>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1.5em;\">&nbsp;</p>\r\n<p style=\"text-align: center;\"><img src=\"http://localhost:8000/storage/posts/September2021/photo_2021-09-25_16-25-06.jpg\" alt=\"\" width=\"368\" height=\"276\" /></p>\r\n<p>&nbsp;</p>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1.5em;\">Jurusan Teknik Elektronika Industri (TEI)&nbsp;SMK Taruna Bhakti Depok memiliki 1 Laboratorium yang diberi nama sama dengan jurusannya yaitu Laboratorium Teknik Elektronika Industri yang berada pada lantai 4 berdekatan dengan Laboratorium RPL Advance dan Ruang Kelas 18.</p>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1.5em;\">&nbsp;</p>\r\n</td>\r\n</tr>\r\n<tr style=\"box-sizing: border-box; height: 111px;\">\r\n<td style=\"box-sizing: border-box; padding: 0px; width: 729px; height: 111px;\">\r\n<p>Broadcasting</p>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1.5em;\">&nbsp;</p>\r\n<p style=\"text-align: center;\"><img src=\"http://localhost:8000/storage/posts/September2021/photo_2021-09-25_16-25-30.jpg\" alt=\"\" width=\"476\" height=\"268\" /></p>\r\n<p>&nbsp;</p>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1.5em;\">Jurusan Broadcasting SMK Taruna Bhakti memiliki satu Laboratorium dan satu Studio Broadcast. Laboratorium Broadcasting berada pada Gedung bagian Barat lantai satu yang bersebelahan dengan Ruang Kelompok Kerja Kurikulum. Sedangkan Studio Broadcast berada pada Gedung Timur lantai 2 yang berdekatan dengan Laboratorium Simdig. Studio Broadcast ini juga dapat digunakan oleh siswa dari jurusan Multimedia.</p>\r\n</td>\r\n</tr>\r\n</tbody>\r\n</table>', 'posts\\October2021\\k2rKBG6kWznaG8v5Socs.jpg', 'ruang-pembelajaran-khusus', NULL, NULL, 'PUBLISHED', 1, '2021-09-25 02:19:24', '2021-10-02 03:03:15'),
-(27, 1, 6, 'Fasilitas Pendukung', 'Fasilitas Pendukung', NULL, '<table style=\"border-collapse: collapse; border-spacing: 0px; margin: 0px 0px 1.5em; width: 730px; color: #212529; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 12px; height: 195px;\" border=\"1\">\r\n<tbody style=\"box-sizing: border-box;\">\r\n<tr style=\"box-sizing: border-box; height: 195px;\">\r\n<td style=\"box-sizing: border-box; padding: 0px; width: 311.297px; height: 195px;\">SMK Taruna Bhakti memiliki Gedung milik sendiri dengan luas lantai bangungan sebesar&nbsp;3.651 m&sup2; terdiri dari empat lantai.</td>\r\n<td style=\"box-sizing: border-box; padding: 0px; width: 417.703px; text-align: center; height: 195px;\"><img src=\"http://localhost:8000/storage/posts/September2021/photo_2021-09-25_16-26-112.jpg\" alt=\"\" width=\"297\" height=\"168\" /></td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<table style=\"border-collapse: collapse; border-spacing: 0px; margin: 0px 0px 1.5em; width: 730px; color: #212529; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 12px;\" border=\"1\">\r\n<tbody style=\"box-sizing: border-box;\">\r\n<tr style=\"box-sizing: border-box;\">\r\n<td style=\"box-sizing: border-box; padding: 0px; width: 729px;\">\r\n<p>Server SMK Taruna Bhakti</p>\r\n<p style=\"text-align: center;\">{{image server smk taruna bhakti}}</p>\r\n<p>SMK Taruna Bhakti memiliki Server yang dipergunakan untuk menyimpan data elektronik berupa Sistem Informasi Manajemen Sekolah. Perangkat server ini terdapat di ruangan yang berada pada lantai 2 diapit oleh Laboratorium Network dan Laboratorium ACP. Luas Ruang Server adalah 96 m&sup2; yang terdiri dari dua ruang yang saling terhubung satu sama lain.</p>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1.5em;\">&nbsp;</p>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1.5em;\">&nbsp;</p>\r\n</td>\r\n</tr>\r\n<tr style=\"box-sizing: border-box;\">\r\n<td style=\"box-sizing: border-box; padding: 0px; width: 729px;\">\r\n<p>Taman Sekolah</p>\r\n<p style=\"text-align: center;\">{{image taman sekolah smk taruna bhakti}}</p>\r\n<p>Sekolah berwawasan lingkungan, itulah yang diusung oleh SMK Taruna Bhakti. Sehingga terdapat taman-taman disetiap sudut sekolah.</p>\r\n</td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<table style=\"border-collapse: collapse; border-spacing: 0px; margin: 0px 0px 1.5em; width: 730px; color: #212529; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 12px;\" border=\"1\">\r\n<tbody style=\"box-sizing: border-box;\">\r\n<tr style=\"box-sizing: border-box;\">\r\n<td style=\"box-sizing: border-box; padding: 0px; width: 729px;\">\r\n<p>Pendopo</p>\r\n<p><img style=\"display: block; margin-left: auto; margin-right: auto;\" src=\"http://localhost:8000/storage/posts/September2021/photo_2021-09-25_16-26-062.jpg\" alt=\"\" width=\"307\" height=\"230\" />&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>SMK Taruna Bhakti memiliki ruang penerima tamu yang mengosong konsep Joglo. Konsep terbuka sengaja diusung agar tamu yang datang ke SMK Taruna Bhakti dapat dengan nyaman menikmati taman dan kicauan burung, sehingga membuat perasaan menjadi tenang.</p>\r\n</td>\r\n</tr>\r\n</tbody>\r\n</table>', 'posts\\October2021\\qCvWvkIiFR8OFgR3oQKI.jpg', 'fasilitas-pendukung', NULL, NULL, 'PUBLISHED', 1, '2021-09-25 02:23:23', '2021-10-02 03:03:00');
+(27, 1, 6, 'Fasilitas Pendukung', 'Fasilitas Pendukung', NULL, '<table style=\"border-collapse: collapse; border-spacing: 0px; margin: 0px 0px 1.5em; width: 730px; color: #212529; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 12px; height: 195px;\" border=\"1\">\r\n<tbody style=\"box-sizing: border-box;\">\r\n<tr style=\"box-sizing: border-box; height: 195px;\">\r\n<td style=\"box-sizing: border-box; padding: 0px; width: 311.297px; height: 195px;\">SMK Taruna Bhakti memiliki Gedung milik sendiri dengan luas lantai bangungan sebesar&nbsp;3.651 m&sup2; terdiri dari empat lantai.</td>\r\n<td style=\"box-sizing: border-box; padding: 0px; width: 417.703px; text-align: center; height: 195px;\"><img src=\"http://localhost:8000/storage/posts/September2021/photo_2021-09-25_16-26-112.jpg\" alt=\"\" width=\"297\" height=\"168\" /></td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<table style=\"border-collapse: collapse; border-spacing: 0px; margin: 0px 0px 1.5em; width: 730px; color: #212529; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 12px;\" border=\"1\">\r\n<tbody style=\"box-sizing: border-box;\">\r\n<tr style=\"box-sizing: border-box;\">\r\n<td style=\"box-sizing: border-box; padding: 0px; width: 729px;\">\r\n<p>Server SMK Taruna Bhakti</p>\r\n<p style=\"text-align: center;\">{{image server smk taruna bhakti}}</p>\r\n<p>SMK Taruna Bhakti memiliki Server yang dipergunakan untuk menyimpan data elektronik berupa Sistem Informasi Manajemen Sekolah. Perangkat server ini terdapat di ruangan yang berada pada lantai 2 diapit oleh Laboratorium Network dan Laboratorium ACP. Luas Ruang Server adalah 96 m&sup2; yang terdiri dari dua ruang yang saling terhubung satu sama lain.</p>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1.5em;\">&nbsp;</p>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1.5em;\">&nbsp;</p>\r\n</td>\r\n</tr>\r\n<tr style=\"box-sizing: border-box;\">\r\n<td style=\"box-sizing: border-box; padding: 0px; width: 729px;\">\r\n<p>Taman Sekolah</p>\r\n<p style=\"text-align: center;\">{{image taman sekolah smk taruna bhakti}}</p>\r\n<p>Sekolah berwawasan lingkungan, itulah yang diusung oleh SMK Taruna Bhakti. Sehingga terdapat taman-taman disetiap sudut sekolah.</p>\r\n</td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<table style=\"border-collapse: collapse; border-spacing: 0px; margin: 0px 0px 1.5em; width: 730px; color: #212529; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 12px;\" border=\"1\">\r\n<tbody style=\"box-sizing: border-box;\">\r\n<tr style=\"box-sizing: border-box;\">\r\n<td style=\"box-sizing: border-box; padding: 0px; width: 729px;\">\r\n<p>Pendopo</p>\r\n<p><img style=\"display: block; margin-left: auto; margin-right: auto;\" src=\"http://localhost:8000/storage/posts/September2021/photo_2021-09-25_16-26-062.jpg\" alt=\"\" width=\"307\" height=\"230\" />&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>SMK Taruna Bhakti memiliki ruang penerima tamu yang mengosong konsep Joglo. Konsep terbuka sengaja diusung agar tamu yang datang ke SMK Taruna Bhakti dapat dengan nyaman menikmati taman dan kicauan burung, sehingga membuat perasaan menjadi tenang.</p>\r\n</td>\r\n</tr>\r\n</tbody>\r\n</table>', 'posts\\October2021\\qCvWvkIiFR8OFgR3oQKI.jpg', 'fasilitas-pendukung', NULL, NULL, 'PUBLISHED', 1, '2021-09-25 02:23:23', '2021-10-02 03:03:00'),
+(28, 6, 4, 'EFWFWEF', 'FWEFWEFEWFWE', NULL, '<p>EFEWFWEF</p>', '51CMk-3RcwL._SX425_.jpg', 'EFWFWEF', 'EFEWFWEF', 'default', 'PUBLISHED', 1, '2021-10-05 02:26:48', '2021-10-05 02:26:48');
 
 -- --------------------------------------------------------
 
@@ -1189,7 +1087,8 @@ INSERT INTO `roles` (`id`, `name`, `display_name`, `created_at`, `updated_at`) V
 (1, 'admin', 'Administrator', '2021-09-21 07:32:55', '2021-09-21 07:32:55'),
 (2, 'user', 'Normal User', '2021-09-21 07:32:56', '2021-09-21 07:32:56'),
 (3, 'siswa', 'Siswa', '2021-09-23 20:57:35', '2021-09-23 20:58:45'),
-(4, 'guru', 'Guru', '2021-09-23 20:58:28', '2021-09-23 20:58:28');
+(4, 'guru', 'Guru', '2021-09-23 20:58:28', '2021-09-23 20:58:28'),
+(5, 'manager', 'manager', '2021-10-05 02:18:32', '2021-10-05 02:18:32');
 
 -- --------------------------------------------------------
 
@@ -1227,31 +1126,6 @@ INSERT INTO `settings` (`id`, `key`, `display_name`, `value`, `details`, `type`,
 (15, 'site.virtual-tour', 'Virtual Tour', 'https://kuula.co/share/collection/7YQlT?fs=1&vr=1&sd=1&initload=0&thumbs=1&info=0&logo=1&logosize=40', NULL, 'text', 10, 'Site'),
 (16, 'site.heading', 'Heading', '<p>&nbsp;</p>\r\n<h1 style=\"box-sizing: border-box; margin: 0px; line-height: 56px; font-size: 48px; font-family: Poppins, sans-serif; color: #ffffff;\"><span style=\"color: #ffffff;\">Learning Today, </span></h1>\r\n<h1 style=\"box-sizing: border-box; margin: 0px; line-height: 56px; font-size: 48px; font-family: Poppins, sans-serif; color: #ffffff;\"><span style=\"color: #ffffff;\">Leading Tomorrow</span></h1>', NULL, 'rich_text_box', 11, 'Site'),
 (17, 'site.sub_heading', 'Sub Heading', 'We are team of talented designers making websites with Bootstrap', NULL, 'text_area', 12, 'Site');
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `siswas`
---
-
-CREATE TABLE `siswas` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `kelas_id` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `password` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  `nipd` int(11) DEFAULT NULL,
-  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data untuk tabel `siswas`
---
-
-INSERT INTO `siswas` (`id`, `name`, `kelas_id`, `email`, `password`, `created_at`, `updated_at`, `nipd`, `remember_token`) VALUES
-(1, 'Kukuh Pradypta', '2', 'kukuh@gmail.com', '$2y$10$EJg3EZjiyke6MA26ywAoLe.cwYI8zc6417Ow1gUT448SDQJmLDpRG', '2021-09-22 06:43:59', '2021-09-22 06:43:59', 1920100325, NULL);
 
 -- --------------------------------------------------------
 
@@ -1323,15 +1197,23 @@ CREATE TABLE `users` (
   `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `settings` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `nomor_induk` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `jabatan_guru` varchar(225) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `kelas_siswa` int(11) DEFAULT NULL,
+  `spesifc_role` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data untuk tabel `users`
 --
 
-INSERT INTO `users` (`id`, `role_id`, `name`, `email`, `avatar`, `email_verified_at`, `password`, `remember_token`, `settings`, `created_at`, `updated_at`) VALUES
-(1, 1, 'Taruna', 'admin@admin.com', 'users/default.png', NULL, '$2y$10$191wQju0mnLP.6QT9KNsoOFamRu2El4FNMoALByTIgBzwYYHeHZ9O', 'XYodotqkPxrckKKubow2cvLLSmh7TSFyFSPMFDkYQHqC5frPAWNZeA5cJLyO', '{\"locale\":\"id\"}', '2021-09-21 00:33:10', '2021-09-25 21:38:30');
+INSERT INTO `users` (`id`, `role_id`, `name`, `email`, `avatar`, `email_verified_at`, `password`, `remember_token`, `settings`, `created_at`, `updated_at`, `nomor_induk`, `jabatan_guru`, `kelas_siswa`, `spesifc_role`) VALUES
+(2, 1, 'admin', 'admin@email.com', 'users/default.png', NULL, '$2y$10$R4YUok8EtOVF81IlFaCTZ.8l6i03Hgd6B1YUZaYQK/cVC0k8mUj76', NULL, '{\"locale\":\"id\"}', '2021-10-04 19:09:29', '2021-10-05 00:01:23', '523235235', NULL, NULL, 'kepsek'),
+(3, 3, 'Ari Suhendra Tahyadi', '32232@gmail.com', 'users/default.png', NULL, '$2y$10$qMNo101mY9bBwUaUBHidAuKh1NiuG0b4ATbUF.mhBYouy87Pv0UHC', NULL, '{\"locale\":\"id\"}', '2021-10-04 19:21:41', '2021-10-05 00:03:18', '42342342342', NULL, 3, 'siswa'),
+(4, 3, 'Ari Suhendra Tahyadi', 'joko@gmail.com', 'users/default.png', NULL, '$2y$10$IPvgfaSlLOMZpSKQCrKcHel1pMIArKFcvNGg0m7VftDcgCtMqjWtC', NULL, '{\"locale\":\"id\"}', '2021-10-04 19:25:37', '2021-10-05 00:02:49', '12910100259', NULL, 2, 'siswa'),
+(5, 1, 'admin', 'admin@test.com', 'users/default.png', NULL, '$2y$10$INKBBk0I6VUlMaIN2ALde.BIxc4q0PAaeiRx5i68s0Rf41.qaddqm', NULL, NULL, '2021-10-04 23:28:44', '2021-10-05 00:01:03', '4324234234', NULL, NULL, 'admin'),
+(6, 5, 'THEBBB', 'Yuhnpa@gmail.com', 'users\\October2021\\E8czVAHwOuRA1hZJKfyk.jpg', NULL, '$2y$10$BNaBhza.bvWGNQyZknvOQuMztrlh1JXW1Q3q3izJoeM69Ne13j7Ky', NULL, NULL, '2021-10-04 23:43:46', '2021-10-05 02:19:25', '3423242342342', 'Kepala Program', NULL, 'kaprog');
 
 -- --------------------------------------------------------
 
@@ -1426,19 +1308,6 @@ ALTER TABLE `gallery`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `gurus`
---
-ALTER TABLE `gurus`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indeks untuk tabel `guru_role`
---
-ALTER TABLE `guru_role`
-  ADD KEY `guru_role_guru_id_index` (`guru_id`),
-  ADD KEY `guru_role_kategori_id_index` (`kategori_id`);
-
---
 -- Indeks untuk tabel `homefooters`
 --
 ALTER TABLE `homefooters`
@@ -1461,12 +1330,6 @@ ALTER TABLE `kategoris`
 -- Indeks untuk tabel `kelas`
 --
 ALTER TABLE `kelas`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indeks untuk tabel `managers`
---
-ALTER TABLE `managers`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -1567,12 +1430,6 @@ ALTER TABLE `settings`
   ADD UNIQUE KEY `settings_key_unique` (`key`);
 
 --
--- Indeks untuk tabel `siswas`
---
-ALTER TABLE `siswas`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indeks untuk tabel `translations`
 --
 ALTER TABLE `translations`
@@ -1627,7 +1484,7 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT untuk tabel `data_rows`
 --
 ALTER TABLE `data_rows`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=185;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=191;
 
 --
 -- AUTO_INCREMENT untuk tabel `data_types`
@@ -1654,12 +1511,6 @@ ALTER TABLE `gallery`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `gurus`
---
-ALTER TABLE `gurus`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
 -- AUTO_INCREMENT untuk tabel `homefooters`
 --
 ALTER TABLE `homefooters`
@@ -1684,12 +1535,6 @@ ALTER TABLE `kelas`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT untuk tabel `managers`
---
-ALTER TABLE `managers`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
 -- AUTO_INCREMENT untuk tabel `media`
 --
 ALTER TABLE `media`
@@ -1708,124 +1553,22 @@ ALTER TABLE `menu_items`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
--- AUTO_INCREMENT untuk tabel `migrations`
---
-ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
-
---
--- AUTO_INCREMENT untuk tabel `newsslides`
---
-ALTER TABLE `newsslides`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT untuk tabel `pages`
---
-ALTER TABLE `pages`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
-
---
--- AUTO_INCREMENT untuk tabel `partners`
---
-ALTER TABLE `partners`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
-
---
--- AUTO_INCREMENT untuk tabel `permissions`
---
-ALTER TABLE `permissions`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=116;
-
---
--- AUTO_INCREMENT untuk tabel `personal_access_tokens`
---
-ALTER TABLE `personal_access_tokens`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT untuk tabel `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT untuk tabel `roles`
 --
 ALTER TABLE `roles`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
--- AUTO_INCREMENT untuk tabel `settings`
---
-ALTER TABLE `settings`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
-
---
--- AUTO_INCREMENT untuk tabel `siswas`
---
-ALTER TABLE `siswas`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT untuk tabel `translations`
---
-ALTER TABLE `translations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT untuk tabel `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT untuk tabel `whystarbhaks`
---
-ALTER TABLE `whystarbhaks`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
---
-
---
--- Ketidakleluasaan untuk tabel `categories`
---
-ALTER TABLE `categories`
-  ADD CONSTRAINT `categories_parent_id_foreign` FOREIGN KEY (`parent_id`) REFERENCES `categories` (`id`) ON DELETE SET NULL ON UPDATE CASCADE;
-
---
--- Ketidakleluasaan untuk tabel `data_rows`
---
-ALTER TABLE `data_rows`
-  ADD CONSTRAINT `data_rows_data_type_id_foreign` FOREIGN KEY (`data_type_id`) REFERENCES `data_types` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Ketidakleluasaan untuk tabel `menu_items`
---
-ALTER TABLE `menu_items`
-  ADD CONSTRAINT `menu_items_menu_id_foreign` FOREIGN KEY (`menu_id`) REFERENCES `menus` (`id`) ON DELETE CASCADE;
-
---
--- Ketidakleluasaan untuk tabel `permission_role`
---
-ALTER TABLE `permission_role`
-  ADD CONSTRAINT `permission_role_permission_id_foreign` FOREIGN KEY (`permission_id`) REFERENCES `permissions` (`id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `permission_role_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE;
-
---
--- Ketidakleluasaan untuk tabel `users`
---
-ALTER TABLE `users`
-  ADD CONSTRAINT `users_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`);
-
---
--- Ketidakleluasaan untuk tabel `user_roles`
---
-ALTER TABLE `user_roles`
-  ADD CONSTRAINT `user_roles_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `user_roles_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

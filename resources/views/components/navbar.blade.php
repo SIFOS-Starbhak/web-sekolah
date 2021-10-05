@@ -8,8 +8,7 @@
         <li class="dropdown"><a href="#" data-toggle="dropdown"
                 class="nav-link dropdown-toggle nav-link-lg nav-link-user">
                 <img alt="image" src="{{ asset('img/avatar/avatar-1.png') }}" class="rounded-circle mr-1">
-                <div class="d-sm-none d-lg-inline-block">{{ Auth::guard(Auth::getDefaultDriver())->user()->name }}
-                </div>
+                <div class="d-sm-none d-lg-inline-block">{{ JWTAuth::user()->name }}</div>
             </a>
             <div class="dropdown-menu dropdown-menu-right">
                 <div class="dropdown-title">Logged in 5 min ago</div>
@@ -25,9 +24,9 @@
                 <div class="dropdown-divider"></div>
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
-                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-            this.closest('form').submit();">Logout</a>
+
                 </form>
+                <a class="dropdown-item" id="frmlogout">Logout</a>
             </div>
         </li>
     </ul>

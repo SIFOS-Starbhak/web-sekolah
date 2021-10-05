@@ -1,13 +1,10 @@
 <?php
-
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ImageController;
 use App\Http\Controllers\ArticleController;
-use App\Http\Controllers\HubinController;
-use App\Http\Controllers\WebController;
-use App\Models\Alumni;
-use App\Models\Jurusan;
+use App\Http\Controllers\ImageController;
 use App\Models\Post;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use Tymon\JWTAuth\JWTAuth;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,9 +15,9 @@ use App\Models\Post;
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-*/
+ */
 // Route::get('/',[WebController::class,'index']);
-
+Route::post('/logout', [AuthenticatedSessionController::class,'destroy'])->name('logout');
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
@@ -30,12 +27,12 @@ Route::get('/login', function () {
 })->name('login');
 
 Route::get('/', 'WebController@index');
+// Route::view('/', 'template/main');
 Route::get('/profile', 'WebController@profiletb');
-
 
 Route::get('/artikel', function () {
     $settings = App\Models\Setting::all();
-    $article = App\Models\Post::where('status','PUBLISHED')->get();
+    $article = App\Models\Post::where('status', 'PUBLISHED')->get();
     return view('artikel', compact('settings', 'article'));
 });
 // Route::get('/profile', function () {
@@ -50,7 +47,6 @@ Route::get('/kurikulum', function () {
     $struktur = App\Models\Page::where('id', '17')->get(['body', 'title']);
     $kompetensi = App\Models\Page::where('id', '16')->get(['body', 'title']);
     $fotoguru = App\Models\Kategori::all();
-
 
     return view('kurikulum', compact('settings', 'struktur', 'kompetensi', 'fotoguru'));
 });
@@ -75,25 +71,17 @@ Route::get('/hubin', 'HubinController@index');
 
 Route::get('/kurikulum/{kategori:slug}', 'WebController@fotoguru');
 
-
-
 Route::get('/showartikel/{id}', function ($id) {
     // dd($id);
-    $articleShow = App\Models\Post::where('slug',$id)->first();
-    $author = App\Models\Manager::where('id',$articleShow->author_id)->first();
+    $articleShow = App\Models\Post::where('slug', $id)->first();
+    $author = App\Models\Manager::where('id', $articleShow->author_id)->first();
     // dd($author);
     $settings = App\Models\Setting::all();
-    return view('showartikel',compact('articleShow','settings','author'));
+    return view('showartikel', compact('articleShow', 'settings', 'author'));
 })->name('showartikel');
 
-
-
-
-
-
-
 // Manager
-Route::group(['prefix' => 'manager', 'middleware' => ['auth:manager']], function () {
+Route::group(['prefix' => 'manager','middleware' => ['jwt.verify', 'auth:api']], function () {
     // Route::get('/Article/index', [ArticleController::class, 'index'])-all>name('article.index');
     Route::get('/Article/tambah', [ArticleController::class, 'tambah'])->name('article.tambah');
     Route::post('/Article/post', [ArticleController::class, 'store'])->name('article.store');
@@ -103,29 +91,23 @@ Route::group(['prefix' => 'manager', 'middleware' => ['auth:manager']], function
     Route::put('/Article/draft/{id}', [ArticleController::class, 'draftOrPublised'])->name('article.draft');
     Route::POST('/image/store', [ImageController::class, 'store'])->name('admin.image');
     Route::get('/dashboard', function () {
-        $article = Post::where('author_id', Auth::guard('manager')->id())->get();
+        $article = Post::where('author_id', Auth::guard('api')->id())->get();
         // dd($article);
         return view('dashboard.dashboard', compact('article'));
     })->name('dashboard.manager');
 });
 
 // Guru
-Route::group(['prefix' => 'guru', 'middleware' => ['auth:guru']], function () {
+Route::group(['prefix' => 'guru', 'middleware' => ['jwt.verify', 'auth:api']], function () {
     Route::get('/Article/index', [ArticleController::class, 'index'])->name('article.index');
 
     Route::get('/dashboard', function () {
         return view('dashboard.dashboard');
     })->name('dashboard.guru');
 });
-
 // Siswa
-Route::group(['prefix' => 'siswa', 'middleware' => ['auth:siswa']], function () {
+Route::group(['prefix' =>'siswa', 'middleware' => ['jwt.verify', 'auth:api']], function () {
     Route::get('/dashboard', function () {
         return view('dashboard.dashboard');
     })->name('dashboard.siswa');
 });
-
-
-
-
-require __DIR__ . '/auth.php';

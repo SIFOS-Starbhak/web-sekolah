@@ -1,4 +1,4 @@
-const mix = require('laravel-mix');
+const mix = require("laravel-mix");
 
 /*
  |--------------------------------------------------------------------------
@@ -11,13 +11,18 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js')
-    .sass('resources/scss/skins/reverse.scss', 'public/css/skins')
-    .sass('resources/scss/app.scss', 'public/css').options({
+mix.js("resources/js/app.js", "public/js")
+    .sass("resources/scss/skins/reverse.scss", "public/css/skins")
+    .sass("resources/scss/app.scss", "public/css")
+    .options({
         postCss: [
-            require('postcss-import'),
-            require('tailwindcss'),
-            require('autoprefixer'),
+            require("postcss-import"),
+            require("tailwindcss"),
+            require("autoprefixer"),
         ],
-        processCssUrls: false
+        processCssUrls: false,
     });
+
+if (mix.inProduction()) {
+    mix.version();
+}
