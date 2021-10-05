@@ -6,12 +6,13 @@ use App\Models\Gallery;
 use App\Models\Kategori;
 use App\Models\Newsslide;
 use App\Models\Page;
+use App\Models\Post;
 use App\Models\Setting;
 use App\Models\Partner;
 use App\Models\Homefooter;
 use App\Models\Profile;
-use App\Models\Kategori;
-use App\Models\Gallery;
+// use App\Models\Kategori;
+// use App\Models\Gallery;
 use App\Models\GuruRole;
 
 class WebController extends Controller
