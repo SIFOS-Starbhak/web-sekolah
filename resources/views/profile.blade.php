@@ -44,29 +44,30 @@
 </head>
 
 <body>
-@include('template.navbar')
-@include('template.background')
-@include('template.carousel')
-<div class="container pt-5" >
-<nav class="nav nav-tabs flex-column flex-sm-row mt-1">
-@foreach ($pages as $key => $page)
-{{-- @if ($page == $page->first()) --}}
-<a class="flex-sm-fill text-sm-center nav-link {{ ($key == 0) ? 'active' : ''  }}" data-bs-toggle="tab" data-bs-target="#{{$page->slug}}">{{$page->title}}</a>
-{{-- @else --}}
-{{-- <a class="flex-sm-fill text-sm-center nav-link" data-bs-toggle="tab" data-bs-target="#{{$page->slug}}">{{$page->title}}</a> --}}
-{{-- @endif --}}
-@endforeach
-</nav>  
-<div class="tab-content mb-5" id="myTabContent">
- @foreach ($pages as $key =>  $page)
-     <div class="tab-pane fade show {{ ($key == 0) ? 'active' : ''  }} " id="{{$page->slug}}" role="tabpanel" aria-labelledby="{{$page->slug}}-tab">
-    <p class="mt-3">{!!$page->body!!}</p>
-  </div>
-  @endforeach
-</div>
-</div>
+    @include('template.navbar')
+    @include('template.background')
+    <div class="container pt-5">
+        <nav class="nav nav-tabs flex-column flex-sm-row mt-1">
+            @foreach ($pages as $key => $page)
+                {{-- @if ($page == $page->first()) --}}
+                <a class="flex-sm-fill text-sm-center nav-link {{ $key == 0 ? 'active' : '' }}" data-bs-toggle="tab"
+                    data-bs-target="#{{ $page->slug }}">{{ $page->title }}</a>
+                {{-- @else --}}
+                {{-- <a class="flex-sm-fill text-sm-center nav-link" data-bs-toggle="tab" data-bs-target="#{{$page->slug}}">{{$page->title}}</a> --}}
+                {{-- @endif --}}
+            @endforeach
+        </nav>
+        <div class="tab-content mb-5" id="myTabContent">
+            @foreach ($pages as $key => $page)
+                <div class="tab-pane fade show {{ $key == 0 ? 'active' : '' }} " id="{{ $page->slug }}"
+                    role="tabpanel" aria-labelledby="{{ $page->slug }}-tab">
+                    <p class="mt-3">{!! $page->body !!}</p>
+                </div>
+            @endforeach
+        </div>
+    </div>
 
-@include('template.footer')
+    @include('template.footer')
     <!-- Vendor JS Files -->
     <script src="{{ asset('template/assets/vendor/aos/aos.js') }}"></script>
     <script src="{{ asset('template/assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>

@@ -6,12 +6,10 @@ use App\Models\Gallery;
 use App\Models\Kategori;
 use App\Models\Newsslide;
 use App\Models\Page;
+use App\Models\Post;
 use App\Models\Setting;
 use App\Models\Partner;
-use App\Models\Homefooter;
 use App\Models\Profile;
-use App\Models\Kategori;
-use App\Models\Gallery;
 use App\Models\GuruRole;
 
 class WebController extends Controller
@@ -22,34 +20,19 @@ class WebController extends Controller
         $article = Post::where('status','PUBLISHED')->latest()->paginate(6);
         $settings = Setting::all();
         $partners = Partner::all();
-        $homefooters = Homefooter::all();
-        return view('home', compact('news', 'settings', 'article','partners','homefooters'));
+        return view('home', compact('news', 'settings', 'article','partners'));
     }
 
-    // public function page($id)
-    // {
-    //     $categories = Category::all();
-    //     $pages = Page::all()->where('category_id', $id);
-    //     return view('home', compact('categories', 'pages'));
-    // }
     public function profiletb()
     {
-//   return view('profile',
-        //     $categories = Category::where('name','profile'),
-        //     $pages = Page::all()->where('category_id', '1')->first();
-        //    , compact('categories', 'pages'));
-
         $pages = Page::all()->where('category_id', '7')->where('status', 'ACTIVE');
-        $news = Newsslide::all();
-
         $settings = Setting::all();
-        return view('profile', compact('settings', 'pages', 'news'));
+        return view('profile', compact('settings', 'pages'));
     }
 
     public function kurikulumtb()
     {
         $struktur = DB::table('posts')->find(12);
-
         return view('kurikulum', compact('struktur'));
     }
 
@@ -57,7 +40,22 @@ class WebController extends Controller
     {
         $foto = Gallery::all()->where('kategori_guru', $kategori->id);
         $settings = Setting::all();
-
         return view('fotoguru', compact('foto', 'settings', 'kategori'));
+    }
+
+    public function kurikulum()
+    {
+        $settings = Setting::all();
+        $struktur = Page::where('id', '17')->get(['body', 'title']);
+        $kompetensi = Page::where('id', '16')->get(['body', 'title']);
+        $fotoguru = Kategori::all();
+        return view('kurikulum', compact('settings', 'struktur', 'kompetensi', 'fotoguru'));
+    }
+
+    public function sarpras()
+    {
+        $settings = Setting::all();
+        $kegiatan_osis = Page::where('category_id', '3')->get(['body', 'title']);
+        return view('kesiswaan', compact('settings', 'kegiatan_osis'));
     }
 }
