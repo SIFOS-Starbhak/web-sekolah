@@ -46,7 +46,6 @@
 <body>
 @include('template.navbar')
 @include('template.background')
-@include('template.carousel')
 <div class="container pt-5" >
 <nav class="nav nav-tabs flex-column flex-sm-row mt-1">
 @foreach ($pages as $key => $page)

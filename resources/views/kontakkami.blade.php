@@ -1,6 +1,5 @@
 @include('template.navbar')
 @include('template.background')
-@include('template.carousel')
 <div class="container pb-5">
  <h3 class="mt-5"><b>Kontak Kami</b></h3>
  <hr class="mt-4" style="height: 2px" />

@@ -53,19 +53,16 @@ Route::get('/kurikulum', function () {
 
 Route::get('/kontakkami', function () {
     $settings = App\Models\Setting::all();
-    $news = App\Models\Newsslide::all();
-    return view('kontakkami', compact('settings', 'news'));
+    return view('kontakkami', compact('settings'));
 });
 Route::get('/sarpras', function () {
     $settings = App\Models\Setting::all();
-    $news = App\Models\Newsslide::all();
-    return view('sarpras', compact('settings', 'news'));
+    return view('sarpras', compact('settings'));
 });
 Route::get('/kesiswaan', function () {
-    $news = App\Models\Newsslide::all();
     $settings = App\Models\Setting::all();
     $kegiatan_osis = App\Models\Page::where('category_id', '3')->get(['body', 'title']);
-    return view('kesiswaan', compact('settings', 'kegiatan_osis', 'news'));
+    return view('kesiswaan', compact('settings', 'kegiatan_osis'));
 });
 Route::get('/hubin', 'HubinController@index');
 
