@@ -192,30 +192,33 @@
         <section id="popular-courses" class="courses">
             <div class="container" data-aos="fade-up">
                 <div class="row" data-aos="zoom-in" data-aos-delay="100">
-                    @foreach ($article as $artikel)
-                        <div class="col-lg-4 col-md-6 mb-4 d-flex align-items-stretch"
-                            style="height: 450px;width:350px;">
-                            <div class="course-item">
+                    @forelse ($article as $artikel)
+                        <div class="col-lg-4 col-md-6 mb-4 d-flex align-items-stretch">
+                            <div class="course-item" style="height: 400px;width:350px;">
                                 <img src="{{ asset('storage/' . $artikel->image) }}" class="img-fluid" alt="..."
-                                    style="width:350px;height:300px;" />
+                                    style="width:350px;height:250px;" />
                                 <div class="course-content">
                                     <div class="d-flex justify-content-between align-items-center mb-3">
                                         <h4>{{ $artikel->category->name }}</h4>
                                         <!-- <p class="price">$169</p> -->
                                     </div>
-
                                     <h3><a
                                             href="{{ route('showartikel', $artikel->slug) }}">{{ $artikel->title }}</a>
                                     </h3>
+
                                     <p>{{ $artikel->excerpy }}</p>
                                 </div>
                             </div>
-                    @endforeach
+                        </div>
+                    @empty
+                        <div class="btn btn-danger">
+                            Tes
+                        </div>
+                    @endforelse
                     <!-- End Course Item-->
                 </div>
             </div>
         </section>
-        <!-- End Popular Courses Section -->
 
         <div class="container">
             <div class="text-center">

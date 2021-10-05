@@ -51,7 +51,7 @@ class WebController extends Controller
         return view('kurikulum', compact('settings', 'struktur', 'kompetensi', 'fotoguru'));
     }
 
-    public function sarpras()
+    public function kesiswaan()
     {
         $settings = Setting::all();
         $kegiatan_osis = Page::where('category_id', '3')->get(['body', 'title']);
