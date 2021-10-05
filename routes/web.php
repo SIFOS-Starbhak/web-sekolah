@@ -73,7 +73,7 @@ Route::get('/kesiswaan', function () {
 });
 Route::get('/hubin', 'HubinController@index');
 
-Route::get('/{kategori:slug}', 'WebController@fotoguru');
+Route::get('/kurikulum/{kategori:slug}', 'WebController@fotoguru');
 
 
 

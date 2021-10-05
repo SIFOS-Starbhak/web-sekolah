@@ -120,25 +120,14 @@
         </section>
 
 
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
-style="padding-right: 660px">
+<div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
-    <div class="modalkonten modal-content"style="width: 1150px;margin-right:500px;">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Protokol Kesehatan di Lingkungan Sekolah</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body" >
-          <div class="fotoakb">
-            <img class="fotoakb" style="width:100%;height:550px;" src="{{ asset('template/assets/img/akb.png')}}" alt="">
-          </div>
-        
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
-      </div>
+    <div class="modalkonten modal-content">
+        <div class="">
+            <img class="fotoakb" src="{{ asset('template/assets/img/akb.png')}}" alt="">
+        </div>
     </div>
-  </div>
+</div>
 </div>
 {{-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -196,7 +185,7 @@ style="padding-right: 660px">
         <section id="popular-courses" class="courses">
             <div class="container" data-aos="fade-up">
                 <div class="row" data-aos="zoom-in" data-aos-delay="100">
-                    @foreach ($article as $artikel)
+                    @forelse ($article as $artikel)
                     <div class="col-lg-4 col-md-6 mb-4 d-flex align-items-stretch" style="height: 450px;width:350px;">
                         <div class="course-item">
                             <img src="{{ asset('storage/' . $artikel->image) }}" class="img-fluid"
@@ -212,7 +201,11 @@ style="padding-right: 660px">
                             </div>
                         </div>
                     </div>
-                    @endforeach
+                    @empty
+                        <div class="alert alert-danger">
+                            Artikel Belum Tersedia
+                        </div>
+                    @endforelse
                     <!-- End Course Item-->
                 </div>
             </div>

@@ -3,7 +3,7 @@
         <section id="popular-courses" class="courses">
             <div class="container" data-aos="fade-up">
                 <div class="row" data-aos="zoom-in" data-aos-delay="100">
-                    @foreach ($article as $artikel)
+                    @forelse ($article as $artikel)
                     <div class="col-lg-4 col-md-6 mb-4 d-flex align-items-stretch" style="height: 400px;width:350px;">
                         <div class="course-item">
                             <img src="{{ asset('storage/' . $artikel->image) }}" class="img-fluid"
@@ -19,7 +19,11 @@
                             </div>
                         </div>
                     </div>
-                    @endforeach
+                    @empty
+                        <div class="alert alert-danger">
+                            Artikel Belum Tersedia
+                        </div>
+                    @endforelse
                     <!-- End Course Item-->
                 </div>
             </div>

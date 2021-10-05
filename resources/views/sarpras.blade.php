@@ -1,7 +1,6 @@
 @include('template.navbar')
 @include('template.background')
 
-
 <div class="container-fluid pt-5">
   <nav class="nav nav-tabs flex-column flex-sm-row mt-1">
     <a class="flex-sm-fill text-sm-center nav-link active fw-bold" aria-current="page" data-bs-toggle="tab" data-bs-target="#sarpras">Sarana dan Prasarana Sekolah</a>
@@ -71,34 +70,57 @@
 
         <!-- SAMSUNG -->
         <p class="fw-bold">SAMSUNG</p>
+        <!-- The grid: four columns -->
         <div class="row">
-          <div class="col-4">
-            <img src="{{ asset('photos/samsung1.jpeg')}}" alt="" width="99%">
+          <div class="column">
+            <img src="{{ asset('photos/samsung1.jpeg')}}" alt="" width="99%" onclick="myFunction(this);">
           </div>
-          <div class="col-4">
-            <img src="{{ asset('photos/samsung2.jpeg')}}" alt="" width="99%">
+          <div class="column">
+            <img src="{{ asset('photos/samsung2.jpeg')}}" alt="" width="99%" onclick="myFunction(this);">
           </div>
-          <div class="col-4">
-            <img src="{{ asset('photos/samsung3.jpeg')}}" alt="" width="99%">
+          <div class="column">
+            <img src="{{ asset('photos/samsung3.jpeg')}}" alt="" width="99%" onclick="myFunction(this);">
+          </div>
+          <div class="column">
+            <img src="{{ asset('photos/samsung1.jpeg')}}" alt="" width="99%" onclick="myFunction(this);">
           </div>
         </div>
-        <img src="{{ asset('photos/samsung1.jpeg')}}" class="mt-4 mb-5" alt="" width="99.5%">
+
+        <!-- The expanding image container -->
+        <div class="closeimg">
+          <!-- Close the image -->
+          <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
+
+          <!-- Expanded image -->
+          <img id="expandedImg" style="width:100%">
+        </div>
 
         <!-- Lab Bahasa -->
         <br>
         <p class="fw-bold">LAB BAHASA</p>
         <div class="row">
-          <div class="col-4">
-            <img src="{{ asset('photos/lbhs1.jpeg')}}" alt="" width="99%">
+          <div class="column">
+            <img src="{{ asset('photos/lbhs1.jpeg')}}" alt="" width="99%" onclick="myImg(this);">
           </div>
-          <div class="col-4">
-            <img src="{{ asset('photos/lbhs2.jpeg')}}" alt="" width="99%">
+          <div class="column">
+            <img src="{{ asset('photos/lbhs2.jpeg')}}" alt="" width="99%" onclick="myImg(this);">
           </div>
-          <div class="col-4">
-            <img src="{{ asset('photos/lbhs3.jpeg')}}" alt="" width="99%">
+          <div class="column">
+            <img src="{{ asset('photos/lbhs3.jpeg')}}" alt="" width="99%" onclick="myImg(this);">
+          </div>
+          <div class="column">
+            <img src="{{ asset('photos/lbhs1.jpeg')}}" alt="" width="99%" onclick="myImg(this);">
           </div>
         </div>
-        <img src="{{ asset('photos/lbhs1.jpeg')}}" class="mt-4 mb-5" alt="" width="99.5%">
+
+        <!-- The expanding image container -->
+        <div class="closeimg">
+          <!-- Close the image -->
+          <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
+
+          <!-- Expanded image -->
+          <img id="expanded-Img" style="width:100%">
+        </div>
       </div>
     </div>
   </div>
@@ -460,6 +482,21 @@
 
 </div>
 </div>
+
+<script>
+function myFunction(imgs) {
+  var expandImg = document.getElementById("expandedImg");
+  var imgText = document.getElementById("imgtext");
+  expandImg.src = imgs.src;
+  expandImg.parentElement.style.display = "block";
+}
+function myImg(img) {
+  var expandImg = document.getElementById("expanded-Img");
+  var imgText = document.getElementById("img-text");
+  expandImg.src = img.src;
+  expandImg.parentElement.style.display = "block";
+}
+</script>
 
 
 @include('template.footer')

@@ -1,6 +1,5 @@
 @include('template.navbar')
 @include('template.background')
-@include('template.carousel')
 
 <div class="container pt-5">
 <h2 class="text-center"><b>Data Tamatan SMK Taruna Bhakti</b></h2>

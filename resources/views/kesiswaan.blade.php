@@ -1,6 +1,5 @@
 @include('template.navbar')
 @include('template.background')
-@include('template.carousel')
 
 <div class="container mt-5 mb-5">
 <nav>

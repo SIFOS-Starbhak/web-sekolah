@@ -8,7 +8,6 @@ use App\Models\Category;
 use App\Models\Page;
 use App\Models\Post;
 use App\Models\Setting;
-use App\Models\Whystarbhak;
 use App\Models\Partner;
 use App\Models\Homefooter;
 use App\Models\Profile;
@@ -20,13 +19,12 @@ class WebController extends Controller
 {
     public function index()
     {
-        $news = Newsslide::all();
+        $news = Post::where('status','PUBLISHED')->latest()->paginate(3);
         $article = Post::where('status','PUBLISHED')->latest()->paginate(6);
         $settings = Setting::all();
-        $whystarbhaks = Whystarbhak::all();
         $partners = Partner::all();
         $homefooters = Homefooter::all();
-        return view('home', compact('news', 'settings', 'article', 'whystarbhaks','partners','homefooters'));
+        return view('home', compact('news', 'settings', 'article','partners','homefooters'));
     }
 
     // public function page($id)
