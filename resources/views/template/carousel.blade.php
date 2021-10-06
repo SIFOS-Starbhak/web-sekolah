@@ -50,10 +50,10 @@
 
 
 <div id="carouselExampleIndicators" class="carousel slide carosel" data-bs-ride="carousel">
-  <div class="carousel-inner pt-4">
+  <div class="hcarousel carousel-inner pt-4" style="height: 150px">
     @foreach ($news as $key => $artikel)
     <div class="carousel-item {{ ($key == 0) ? 'active' : '' }}">
-            <div class=" container text-white  carosel mb-5">
+            <div class="consel container text-white  carosel mb-5" style="height: 150px">
               <div class="row counters">
                 <div class="col-md-4 judul">
                   <h2 style="color: white;">{{ $artikel->title }}</h2>
@@ -76,9 +76,8 @@
   </div>
 
   </div>
-        </div>
-    </div>
-    </div>
+</div>
+
 
     <script src="{{ asset('template/assets/vendor/aos/aos.js') }}"></script>
     <script src="{{ asset('template/assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
