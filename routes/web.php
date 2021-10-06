@@ -7,6 +7,7 @@ use App\Models\Kela;
 use App\Models\User;
 use App\Models\Page;
 use App\Models\Setting;
+use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use Tymon\JWTAuth\JWTAuth;
@@ -66,7 +67,7 @@ Route::get('/showartikel/{id}', function ($id) {
     // dd($id);
     $articleShow = App\Models\Post::where('slug', $id)->first();
     // dd($articleShow->author_id);
-    $author = App\Models\User::where('role_id', $articleShow->author_id)->first();
+    $author = App\Models\User::where('id', $articleShow->author_id)->first();
     // dd($author);
     $settings = App\Models\Setting::all();
     return view('showartikel', compact('articleShow', 'settings', 'author'));
@@ -94,6 +95,9 @@ Route::group(['prefix' => 'guru', 'middleware' => ['jwt.verify', 'auth:api']], f
     Route::get('/Article/index', [ArticleController::class, 'index'])->name('article.index');
 
     Route::get('/dashboard', function () {
+
+        $article = Post::all();
+
         $X = User::wherehas('kelas', function($query){
             $query->where('kelas','X');
         })->get();
@@ -157,7 +161,7 @@ Route::group(['prefix' => 'guru', 'middleware' => ['jwt.verify', 'auth:api']], f
 
         
 
-        return view('dashboard.dashboard',compact('X','XI','XII',
+        return view('dashboard.dashboard',compact('article','X','XI','XII',
         'X_RPL',
         'X_BC',
         'X_MM',
@@ -181,6 +185,11 @@ Route::group(['prefix' => 'guru', 'middleware' => ['jwt.verify', 'auth:api']], f
 // Siswa
 Route::group(['prefix' =>'siswa', 'middleware' => ['jwt.verify', 'auth:api']], function () {
     Route::get('/dashboard', function () {
-        return view('dashboard.dashboard');
+        // $article = Post::all();
+        $article = Category::wherehas('post', function($query){
+            $query->where('name','Siswa');
+        })->get();
+        // dd($article);
+        return view('dashboard.dashboard',compact('siswa'));
     })->name('dashboard.siswa');
 });
