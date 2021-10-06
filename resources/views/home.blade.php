@@ -10,6 +10,7 @@
     <meta content="" name="keywords" />
 
     <!-- Favicons -->
+
     <link href="{{ asset('template/assets/img/favicon.png') }}" rel="icon" />
 
     <link href="{{ asset('template/assets/img/apple-touch-icon.png') }}" rel="apple-touch-icon" />
@@ -40,7 +41,7 @@
   * Template URL: https://bootstrapmade.com/mentor-free-education-bootstrap-theme/
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
-    ======================================================== -->
+  ======================================================== -->
     <style>
         .sosmed {
             color: white;
@@ -127,10 +128,11 @@
         <div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
             aria-hidden="true">
             <div class="modal-dialog">
-                <div class="modalkonten modal-content">
-                    <div class="">
-                        <img class=" fotoakb"
-                        src="{{ asset('template/assets/img/akb.png') }}" alt="">
+                <div class="modalkonten modal-body">
+                    <div>
+                        @foreach ($home as $img)
+                            <img class="fotoakb" src="{{ asset('storage/' . $img->image) }}" alt="">
+                        @endforeach
                     </div>
                 </div>
             </div>
@@ -212,7 +214,7 @@
                         </div>
                     @empty
                         <div class="btn btn-danger">
-                            Tes
+                            Tidak Ada Artikel
                         </div>
                     @endforelse
                     <!-- End Course Item-->
