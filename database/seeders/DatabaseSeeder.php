@@ -25,7 +25,7 @@ class DatabaseSeeder extends Seeder
 
         $kelas = [2,3,4,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,
     31,32,33,34,35,36,37,38,39,40,
-41,42,43,44,45,46,47,48];
+41,42,43,44,45,46];
 
         for ($i=0; $i < 50; $i++) { 
         $faker = Faker::create('id_ID');            
@@ -107,82 +107,82 @@ class DatabaseSeeder extends Seeder
         //             }
 
 
-        // buat kelas 11
+        // // buat kelas 11
 
-                    // for ($i=1; $i <= 3; $i++) { 
-                    //     $faker = Faker::create('id_ID');            
+        //             for ($i=1; $i <= 3; $i++) { 
+        //                 $faker = Faker::create('id_ID');            
                 
-                    //         Kela::create([
-                    //             'kelas' => 'XI',
-                    //             'nama_kelas' => 'XI TKJ'.$i,
-                    //             'tahun_ajaran' => '2020/2021',
-                    //             'wali_kelas' => $faker->name,
-                    //             'status' => 'Aktif',
-                    //             'created_at' => Carbon::now(),
-                    //             'jurusan' => 'TKJ'
-                    //         ]);
-                    //         # code...
-                    //     }
+        //                     Kela::create([
+        //                         'kelas' => 'XI',
+        //                         'nama_kelas' => 'XI TKJ'.$i,
+        //                         'tahun_ajaran' => '2020/2021',
+        //                         'wali_kelas' => $faker->name,
+        //                         'status' => 'Aktif',
+        //                         'created_at' => Carbon::now(),
+        //                         'jurusan' => 'TKJ'
+        //                     ]);
+        //                     # code...
+        //                 }
                 
-                    //     for ($i=1; $i <= 3; $i++) { 
-                    //         $faker = Faker::create('id_ID');            
-                    //             Kela::create([
-                    //                 'kelas' => 'XI',
-                    //                 'nama_kelas' => 'XI MM '.$i,
-                    //                 'tahun_ajaran' => '2020/2021',
-                    //                 'wali_kelas' => $faker->name,
-                    //                 'status' => 'Aktif',
-                    //                 'created_at' => Carbon::now(),
-                    //                 'jurusan' => 'MM'
-                    //             ]);
-                    //             # code...
-                    //         }
+        //                 for ($i=1; $i <= 3; $i++) { 
+        //                     $faker = Faker::create('id_ID');            
+        //                         Kela::create([
+        //                             'kelas' => 'XI',
+        //                             'nama_kelas' => 'XI MM '.$i,
+        //                             'tahun_ajaran' => '2020/2021',
+        //                             'wali_kelas' => $faker->name,
+        //                             'status' => 'Aktif',
+        //                             'created_at' => Carbon::now(),
+        //                             'jurusan' => 'MM'
+        //                         ]);
+        //                         # code...
+        //                     }
                 
-                    //         for ($i=1; $i <= 3; $i++) { 
-                    //             $faker = Faker::create('id_ID');            
-                    //                 Kela::create([
-                    //                     'kelas' => 'XI',
-                    //                     'nama_kelas' => 'XI BC '.$i,
-                    //                     'tahun_ajaran' => '2020/2021',
-                    //                     'wali_kelas' => $faker->name,
-                    //                     'status' => 'Aktif',
-                    //                     'created_at' => Carbon::now(),
-                    //                     'jurusan' => 'BC'
-                    //                 ]);
-                    //                 # code...
-                    //             }
-                    //             for ($i=1; $i <= 3; $i++) { 
-                    //                 $faker = Faker::create('id_ID');            
-                    //                     Kela::create([
-                    //                         'kelas' => 'XI',
-                    //                         'nama_kelas' => 'XI TEI '.$i,
-                    //                         'tahun_ajaran' => '2020/2021',
-                    //                         'wali_kelas' => $faker->name,
-                    //                         'status' => 'Aktif',
-                    //                         'created_at' => Carbon::now(),
-                    //                         'jurusan' => 'TEI'
-                    //                     ]);
-                    //                     # code...
-                    //                 }
-                    //                 for ($i=1; $i <= 3; $i++) { 
-                    //                     $faker = Faker::create('id_ID');            
-                    //                         Kela::create([
-                    //                             'kelas' => 'XI',
-                    //                             'nama_kelas' => 'XI RPL '.$i,
-                    //                             'tahun_ajaran' => '2020/2021',
-                    //                             'wali_kelas' => $faker->name,
-                    //                             'status' => 'Aktif',
-                    //                             'created_at' => Carbon::now(),
-                    //                             'jurusan' => 'RPL'
-                    //                         ]);
-                    //                         # code...
-                    //                     }
+        //                     for ($i=1; $i <= 3; $i++) { 
+        //                         $faker = Faker::create('id_ID');            
+        //                             Kela::create([
+        //                                 'kelas' => 'XI',
+        //                                 'nama_kelas' => 'XI BC '.$i,
+        //                                 'tahun_ajaran' => '2020/2021',
+        //                                 'wali_kelas' => $faker->name,
+        //                                 'status' => 'Aktif',
+        //                                 'created_at' => Carbon::now(),
+        //                                 'jurusan' => 'BC'
+        //                             ]);
+        //                             # code...
+        //                         }
+        //                         for ($i=1; $i <= 3; $i++) { 
+        //                             $faker = Faker::create('id_ID');            
+        //                                 Kela::create([
+        //                                     'kelas' => 'XI',
+        //                                     'nama_kelas' => 'XI TEI '.$i,
+        //                                     'tahun_ajaran' => '2020/2021',
+        //                                     'wali_kelas' => $faker->name,
+        //                                     'status' => 'Aktif',
+        //                                     'created_at' => Carbon::now(),
+        //                                     'jurusan' => 'TEI'
+        //                                 ]);
+        //                                 # code...
+        //                             }
+        //                             for ($i=1; $i <= 3; $i++) { 
+        //                                 $faker = Faker::create('id_ID');            
+        //                                     Kela::create([
+        //                                         'kelas' => 'XI',
+        //                                         'nama_kelas' => 'XI RPL '.$i,
+        //                                         'tahun_ajaran' => '2020/2021',
+        //                                         'wali_kelas' => $faker->name,
+        //                                         'status' => 'Aktif',
+        //                                         'created_at' => Carbon::now(),
+        //                                         'jurusan' => 'RPL'
+        //                                     ]);
+        //                                     # code...
+        //                                 }
 
 
                                         
 
 
-        // buat kelas 10
+        // // buat kelas 10
 
 
         // for ($i=1; $i <= 3; $i++) { 
