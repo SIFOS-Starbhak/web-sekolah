@@ -48,7 +48,7 @@
     @include('template.navbar')
     @include('template.background')
     <div class="container-md mt-5 mb-5">
-        <h1><b>Category : {{ $category->name }}</b></h1>
+        <h1><b>Author : {{ $user->name }}</b></h1>
         @foreach ($posts as $item)
             <h3><b><a href="/{{ $item->slug }}">{{ $item->title }}</a></b></h3>
             <hr>
@@ -62,6 +62,7 @@
             <div>
                 {!! $item->excerpt !!}
             </div>
+            <p>Posted in <a href="/category/{{ $item->category->name }}">{{ $item->category->name }}</a>
             </p>
             <br>
         @endforeach

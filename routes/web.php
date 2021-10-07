@@ -63,9 +63,9 @@ Route::get('/hubin', 'HubinController@index');
 
 Route::get('/kurikulum/{kategori:slug}', 'WebController@fotoguru');
 
-Route::get('/catgory/{category:slug}', 'WebController@category');
+Route::get('/category/{category:slug}', 'WebController@category');
 
-Route::get('/showartikel/{id}', function ($id) {
+Route::get('/{id}', function ($id) {
     // dd($id);
     $articleShow = App\Models\Post::where('slug', $id)->first();
     // dd($articleShow->author_id);
@@ -74,6 +74,8 @@ Route::get('/showartikel/{id}', function ($id) {
     $settings = App\Models\Setting::all();
     return view('showartikel', compact('articleShow', 'settings', 'author'));
 })->name('showartikel');
+
+Route::get('/author/{user}', 'WebController@author');
 
 // Manager
 Route::group(['prefix' => 'manager','middleware' => ['jwt.verify', 'auth:api']], function () {

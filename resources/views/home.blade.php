@@ -140,8 +140,17 @@
             </div>
         </div>
 
-
-    <!-- ======= Popular Courses Section ======= -->
+        <!-- Artikel dan Info Sekolah -->
+        <section id="counts" class="counts section-bg" style="background: #e39b0d">
+            <div class="container">
+                <div class="text-center">
+                    <a class="btn btn-outline-light pe-5 ps-5" style="border-radius: 50px">Artikel dan Info
+                        Sekolah</a>
+                </div>
+            </div>
+        </section>
+        <!-- End -->
+        <!-- ======= Popular Courses Section ======= -->
         <section id="popular-courses" class="courses">
             <div class="container" data-aos="fade-up">
                 <div class="row" data-aos="zoom-in" data-aos-delay="100">
@@ -155,8 +164,7 @@
                                         <h4>{{ $artikel->category->name }}</h4>
                                         <!-- <p class="price">$169</p> -->
                                     </div>
-                                    <h3><a
-                                            href="{{ route('showartikel', $artikel->slug) }}">{{ $artikel->title }}</a>
+                                    <h3><a href="/{{ $artikel->slug }}">{{ $artikel->title }}</a>
                                     </h3>
 
                                     <p>{{ $artikel->excerpy }}</p>

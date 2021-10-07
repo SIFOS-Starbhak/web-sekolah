@@ -14,6 +14,7 @@ use App\Models\ContentSarpra;
 use App\Models\CategorySarpra;
 use App\Models\GallerySarpra;
 use App\Models\Category;
+use App\Models\User;
 
 class WebController extends Controller
 {
@@ -77,5 +78,11 @@ class WebController extends Controller
     {
         $settings = Setting::all();
         return view('showcategory', compact('settings', 'category'), ['posts' => $category->post]);
+    }
+
+    public function author(User $user)
+    {
+        $settings = Setting::all();
+        return view('showauthor', compact('settings', 'user'), ['posts' => $user->post]);
     }
 }
