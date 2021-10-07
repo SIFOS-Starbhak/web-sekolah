@@ -1,9 +1,12 @@
 <?php
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\ImageController;
+use App\Http\Controllers\WebController;
 use App\Models\Post;
 use App\Models\Kela;
 use App\Models\User;
+use App\Models\Page;
+use App\Models\Setting;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use Tymon\JWTAuth\JWTAuth;
@@ -44,14 +47,7 @@ Route::get('/artikel', function () {
 //     return view('profile', compact('settings','homefooters'));
 // });
 
-Route::get('/kurikulum', function () {
-    $settings = App\Models\Setting::all();
-    $struktur = App\Models\Page::where('id', '17')->get(['body', 'title']);
-    $kompetensi = App\Models\Page::where('id', '16')->get(['body', 'title']);
-    $fotoguru = App\Models\Kategori::all();
-
-    return view('kurikulum', compact('settings', 'struktur', 'kompetensi', 'fotoguru'));
-});
+Route::get('/kurikulum', 'WebController@kurikulum');
 
 Route::get('/kontakkami', function () {
     $settings = App\Models\Setting::all();
@@ -61,11 +57,7 @@ Route::get('/sarpras', function () {
     $settings = App\Models\Setting::all();
     return view('sarpras', compact('settings'));
 });
-Route::get('/kesiswaan', function () {
-    $settings = App\Models\Setting::all();
-    $kegiatan_osis = App\Models\Page::where('category_id', '3')->get(['body', 'title']);
-    return view('kesiswaan', compact('settings', 'kegiatan_osis'));
-});
+Route::get('/kesiswaan', 'WebController@kesiswaan');
 Route::get('/hubin', 'HubinController@index');
 
 Route::get('/kurikulum/{kategori:slug}', 'WebController@fotoguru');
