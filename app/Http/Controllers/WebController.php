@@ -15,11 +15,12 @@ class WebController extends Controller
 {
     public function index()
     {
+        $home = Page::all()->where('category_id', '8');
         $news = Post::where('status','PUBLISHED')->latest()->paginate(3);
         $article = Post::where('status','PUBLISHED')->latest()->paginate(6);
         $settings = Setting::all();
         $partners = Partner::all();
-        return view('home', compact('news', 'settings', 'article','partners'));
+        return view('home', compact('news', 'settings', 'article','partners', 'home'));
     }
 
     public function profiletb()

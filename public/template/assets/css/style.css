@@ -325,13 +325,21 @@ h6 {
 }
 
 .modal {
-    padding-right: 660px;
+    padding-right: 660px !important;
 }
+
+/* 100% Image Width on Smaller Screens */
+/* @media only screen and (max-width: 700px){
+    .fotoakb {
+        width: 100%;
+    }
+} */
+
 
 @media (max-width: 768px) {
     .modal {
-        margin-top: 50% !important;
-        margin-left: 6% !important;
+        padding-top: 50% !important;
+        padding-left: 6% !important;
     }
     .fotoakb {
         width: 300px !important;
@@ -342,6 +350,7 @@ h6 {
     }
     .modal-body {
         width: 100% !important;
+        margin-top: 50% !important;
     }
 
     .kategori-guru {

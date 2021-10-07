@@ -26,7 +26,11 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!-- Custom CSS -->
-    <style>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.20/datatables.min.css"/>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+<style>
         #toast-container>.toast-success {
             background-color: #51A351 !important;
         }
@@ -87,7 +91,32 @@
     {{-- <script src="../node_modules/izitoast/dist/js/iziToast.min.js"></script> --}}
     {{-- <script src="https://cdn.ckeditor.com/ckeditor5/29.2.0/classic/ckeditor.js"></script> --}}
 
+
     <script>
+        $(document).ready(function() {
+            $('#X_RPL').DataTable();
+            $('#X_MM').DataTable();
+            $('#X_BC').DataTable();
+            $('#X_TKJ').DataTable();
+            $('#X_TEI').DataTable();
+
+            $('#XI_RPL').DataTable();
+            $('#XI_MM').DataTable();
+            $('#XI_BC').DataTable();
+            $('#XI_TKJ').DataTable();
+            $('#XI_TEI').DataTable();
+
+            $('#XII_RPL').DataTable();
+            $('#XII_MM').DataTable();
+            $('#XII_BC').DataTable();
+            $('#XII_TKJ').DataTable();
+            $('#XII_TEI').DataTable();
+    } );
+    </script>
+
+    <script>
+
+        
         @if (Session::has('message'))
             iziToast.settings({
             position: 'topRight'
