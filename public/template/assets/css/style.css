@@ -114,6 +114,13 @@ ul {
     color: #025a8e;
 }
 
+@media (max-width: 767px) {
+    .skipback {
+        padding-bottom: 10% !important;
+        margin-bottom: 70% !important;
+    }
+}
+
 @media (max-width: 768px) {
     .isi {
         font-size: 12px;
@@ -130,9 +137,7 @@ ul {
         height: 270px;
         margin-bottom: 0;
     }
-    .skipback {
-        margin-bottom: 20%;
-    }
+
     .kekanan {
         width: 100%;
         overflow-x: scroll;
@@ -352,6 +357,9 @@ h6 {
         font-size: 20px !important;
         margin-bottom: -5% !important;
         font-weight: bolder !important;
+    }
+    .hcarousel {
+        height: 500px !important;
     }
 }
 /*--------------------------------------------------------------

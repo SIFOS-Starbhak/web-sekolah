@@ -139,60 +139,9 @@
                 </div>
             </div>
         </div>
-        {{-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel" class="fw-bold" style="color: #2689c9">
-                            Protokol Kesehatan di Lingkungan Sekolah</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                            aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <div>
-                            <img style="width:100%;height:100%;" src="{{ asset('template/assets/img/akb.png') }}"
-                                alt="">
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
-                    </div>
-                </div>
-            </div>
-        </div> --}}
-        <!-- End Counts Section -->
 
-        <!-- ======= Why Us Section ======= -->
-        <section id="why-us" class="why-us bg-dark">
-            <div class="container" data-aos="fade-up">
-                <div class="text-center">
-                    <a class="btn btn-outline-light pe-5 ps-5" style="border-radius: 50px">Virtual
-                        Tour SMK Taruna Bhakti</a>
-                </div>
-                @foreach ($settings as $setting)
-                    @if ($setting->display_name == 'Virtual Tour')
-                        <iframe class="mt-5" src="{{ $setting->value }}"
-                            style="width:100%; height:500px; border-radius: 25px">
-                        </iframe>
-                    @endif
-                @endforeach
-            </div>
-        </section>
-        <!-- End Why Us Section -->
 
-        <!-- Artikel dan Info Sekolah -->
-        <section id="counts" class="counts section-bg" style="background: #e39b0d">
-            <div class="container">
-                <div class="text-center">
-                    <a class="btn btn-outline-light pe-5 ps-5" style="border-radius: 50px">Artikel dan Info
-                        Sekolah</a>
-                </div>
-            </div>
-        </section>
-        <!-- End -->
-
-        <!-- ======= Popular Courses Section ======= -->
+    <!-- ======= Popular Courses Section ======= -->
         <section id="popular-courses" class="courses">
             <div class="container" data-aos="fade-up">
                 <div class="row" data-aos="zoom-in" data-aos-delay="100">
@@ -226,7 +175,7 @@
 
         <div class="container">
             <div class="text-center">
-                <a href="/artikel" class="btn btn-outline-primary pe-5 ps-5" style="border-radius: 50px">Load More
+                <a href="/artikel" class="btn btn-outline-primary pe-5 ps-5 mb-5" style="border-radius: 50px">Load More
                     ...</a>
             </div>
         </div>
@@ -246,8 +195,7 @@
             </div>
         </section>
 
-        <!-- ======= Trainers Section ======= -->
-        <!-- ======= Trainers Section ======= -->
+
         <section id="counts" class="counts section-bg " style="background-color: #3b4850">
             <div class="container text-white">
                 <div class="row counters mt-4 mb-5">
