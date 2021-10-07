@@ -12,6 +12,8 @@
     <!-- Favicons -->
 
     <link href="{{ asset('template/assets/img/favicon.png') }}" rel="icon" />
+    <link rel="stylesheet" href="owlcarousel/owl.carousel.min.css">
+    <link rel="stylesheet" href="owlcarousel/owl.theme.default.min.css">
 
     <link href="{{ asset('template/assets/img/apple-touch-icon.png') }}" rel="apple-touch-icon" />
 
@@ -305,9 +307,27 @@
     <script src="{{ asset('template/assets/vendor/php-email-form/validate.js') }}"></script>
     <script src="{{ asset('template/assets/vendor/purecounter/purecounter.js') }}"></script>
     <script src="{{ asset('template/assets/vendor/swiper/swiper-bundle.min.js') }}"></script>
+    <script src="jquery.min.js"></script>
+    <script src="owlcarousel/owl.carousel.min.js"></script>
 
     <!-- Template Main JS File -->
     <script src="{{ asset('template/assets/js/main.js') }}"></script>
+    <script>
+        //default settings:
+        autoplay: false
+        autoplayTimeout: 5000
+        autoplayHoverPause: false
+
+        var owl = $('.owl-carousel');
+        owl.owlCarousel({
+            items: 4,
+            loop: true,
+            margin: 10,
+            autoplay: true,
+            autoplayTimeout: 1000,
+            autoplayHoverPause: true
+        });
+    </script>
 </body>
 
 </html>

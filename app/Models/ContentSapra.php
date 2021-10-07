@@ -5,12 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class CategorySarpra extends Model
+class ContentSapra extends Model
 {
     use HasFactory;
-
-    public function content()
-    {
-        return $this->hasMany(ContentSarpra::class);
-    }
 }

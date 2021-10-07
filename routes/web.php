@@ -63,6 +63,8 @@ Route::get('/hubin', 'HubinController@index');
 
 Route::get('/kurikulum/{kategori:slug}', 'WebController@fotoguru');
 
+Route::get('/catgory/{category:slug}', 'WebController@category');
+
 Route::get('/showartikel/{id}', function ($id) {
     // dd($id);
     $articleShow = App\Models\Post::where('slug', $id)->first();

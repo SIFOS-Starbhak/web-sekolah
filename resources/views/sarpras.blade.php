@@ -122,7 +122,8 @@
                         </ol>
                         <p>Lingkungan sekolah yang asri dan nyaman jauh dari bising, mudah terjangkau oleh siswa/i dari
                             <br>
-                            berbagai jurusan dengan kendaraan umum.</p>
+                            berbagai jurusan dengan kendaraan umum.
+                        </p>
                         <p>Memiliki kantin dengan konsep cafetaria yang bersih, rapi serta nyaman dengan variasi makanan
                             dan
                             <br> minuman yang sehat, agar terjaga kesehatan dari siswa/i.

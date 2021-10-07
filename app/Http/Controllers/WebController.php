@@ -10,6 +10,10 @@ use App\Models\Setting;
 use App\Models\Partner;
 use App\Models\Profile;
 use App\Models\GuruRole;
+use App\Models\ContentSarpra;
+use App\Models\CategorySarpra;
+use App\Models\GallerySarpra;
+use App\Models\Category;
 
 class WebController extends Controller
 {
@@ -57,5 +61,21 @@ class WebController extends Controller
         $settings = Setting::all();
         $kegiatan_osis = Page::where('category_id', '3')->get(['body', 'title']);
         return view('kesiswaan', compact('settings', 'kegiatan_osis'));
+    }
+
+    public function sarpras()
+    {
+        $categories = CategorySarpra::all();
+        $umu = ContentSarpra::all()->where('category_id', '');
+        $settings = Setting::all();
+        $gallery = Gallery::all();
+        
+        return view('sarpras', compact('settings', 'categories', 'content', 'gallery'));
+    }
+
+    public function category(Category $category)
+    {
+        $settings = Setting::all();
+        return view('showcategory', compact('settings', 'category'), ['posts' => $category->post]);
     }
 }
