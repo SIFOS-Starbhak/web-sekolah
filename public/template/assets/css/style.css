@@ -116,8 +116,7 @@ ul {
 
 @media (max-width: 767px) {
     .skipback {
-        padding-bottom: 10% !important;
-        margin-bottom: 70% !important;
+        margin-bottom: 30% ;
     }
 }
 
@@ -324,9 +323,9 @@ h6 {
     }
 }
 
-.modal {
+/* .modal {
     padding-right: 660px !important;
-}
+} */
 
 /* 100% Image Width on Smaller Screens */
 /* @media only screen and (max-width: 700px){
@@ -335,9 +334,24 @@ h6 {
     }
 } */
 
+@media (max-width: 576px) {
+    .modal-dialog {
+        max-width: 80% !important;
+        margin-top: 50% !important;
+    }
+}
+
+.modal-dialog{
+    max-width: 80% !important;
+    margin: 1.75rem auto !important;
+}
+
+/* .modal{
+    padding-top: 50% !important;
+} */
 
 @media (max-width: 768px) {
-    .modal {
+    /* .modal {
         padding-top: 50% !important;
         padding-left: 6% !important;
     }
@@ -351,7 +365,7 @@ h6 {
     .modal-body {
         width: 100% !important;
         margin-top: 50% !important;
-    }
+    } */
 
     .kategori-guru {
         font-size: 20px !important;

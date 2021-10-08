@@ -54,18 +54,23 @@
         <td>
             <br>
         </td>
-        <p>Posted on <a
-                href="{{ Carbon\Carbon::parse($articleShow->created_at)->isoFormat('dddd, D MMMM Y') }}">{{ Carbon\Carbon::parse($articleShow->created_at)->isoFormat('dddd, D MMMM Y') }}</a>
-            | by
-            <a href="/author/{{ $author->name }}">{{ $author->name }}</a>
+        <p>
+            by
+            <a href="/author/{{ $articleShow->user->id }}">{{ $articleShow->user->name }}</a> |
+            Posted in <a
+                href="/category/{{ $articleShow->category->slug }}">{{ $articleShow->category->name }}</a>
+            | {{ $articleShow->created_at->diffForHumans() }}
         </p>
         {{-- <p>Posted on <a href="">August , 2016</a> | by <a href="">smktaruanbhakti</a></p> --}}
+        <br>
+        <div class="text-center">
+            <img src="{{ asset('storage/' . $articleShow->image) }}" alt="" width="70%">
+        </div>
         <br>
         <div>
             {!! $articleShow->body !!}
         </div>
-        <p>Posted in <a href="/Category/{{ $articleShow->category->name }}">{{ $articleShow->category->name }}</a>
-        </p>
+        <br>
     </div>
     <br>
 

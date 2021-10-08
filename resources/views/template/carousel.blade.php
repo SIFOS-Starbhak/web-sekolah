@@ -18,15 +18,13 @@
                     </div>
                 </div>
             </div>
-            <div class="carousel-indicators skipback">
-                @foreach ($news as $key => $item)
-                    <button type="button" data-bs-target="#carouselExampleIndicators"
-                        data-bs-slide-to="{{ $key }}" class="{{ $key == 0 ? 'active' : '' }}"
-                        aria-current="true" aria-label="Slide {{ $loop->iteration }}"></button>
-                @endforeach
-            </div>
         @endforeach
-
-
+        <div class="carousel-indicators skipback">
+            @foreach ($news as $key => $item)
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{ $key }}"
+                    class="{{ $key == 0 ? 'active' : '' }}" aria-current="true"
+                    aria-label="Slide {{ $loop->iteration }}"></button>
+            @endforeach
+        </div>
     </div>
 </div>

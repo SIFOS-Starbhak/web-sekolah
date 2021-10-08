@@ -77,6 +77,7 @@ Route::get('/{id}', function ($id) {
 
 Route::get('/author/{user}', 'WebController@author');
 
+Route::get('/posted/{posted}', 'WebController@posted');
 // Manager
 Route::group(['prefix' => 'manager','middleware' => ['jwt.verify', 'auth:api']], function () {
     // Route::get('/Article/index', [ArticleController::class, 'index'])-all>name('article.index');

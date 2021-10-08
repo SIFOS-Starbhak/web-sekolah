@@ -15,6 +15,7 @@ use App\Models\CategorySarpra;
 use App\Models\GallerySarpra;
 use App\Models\Category;
 use App\Models\User;
+use Carbon;
 
 class WebController extends Controller
 {
@@ -84,5 +85,12 @@ class WebController extends Controller
     {
         $settings = Setting::all();
         return view('showauthor', compact('settings', 'user'), ['posts' => $user->post]);
+    }
+
+    public function posted($posted)
+    {
+        $posts = Post::all()->where('created_at', Carbon\Carbon::parse($posted)->isoFormat('YYYY-MM-DD HH:mm:ss'));
+        $settings = Setting::all();
+        return view('showposted', compact('settings', 'posts', 'posted'));
     }
 }

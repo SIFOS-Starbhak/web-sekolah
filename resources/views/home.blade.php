@@ -12,8 +12,6 @@
     <!-- Favicons -->
 
     <link href="{{ asset('template/assets/img/favicon.png') }}" rel="icon" />
-    <link rel="stylesheet" href="owlcarousel/owl.carousel.min.css">
-    <link rel="stylesheet" href="owlcarousel/owl.theme.default.min.css">
 
     <link href="{{ asset('template/assets/img/apple-touch-icon.png') }}" rel="apple-touch-icon" />
 
@@ -53,6 +51,15 @@
         .sosmed:hover {
             text-decoration: underline 2px;
             color: #2689c9;
+        }
+
+        .artikel {
+            color: white;
+            font-weight: bold;
+        }
+
+        .artikel:hover {
+            text-decoration: underline 2px;
         }
 
     </style>
@@ -127,15 +134,14 @@
         </section>
 
 
-        <div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
             aria-hidden="true">
             <div class="modal-dialog">
-                <div class="modalkonten modal-body">
-                    <div>
-                        @foreach ($home as $img)
-                            <img class="fotoakb" src="{{ asset('storage/' . $img->image) }}" alt="">
-                        @endforeach
-                    </div>
+                <div class="modal-content" style="width: 100%">
+                    @foreach ($home as $img)
+                        <img class="fotoakb" src="{{ asset('storage/' . $img->image) }}" alt=""
+                            style="width:100%;">
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -153,21 +159,25 @@
         <!-- ======= Popular Courses Section ======= -->
         <section id="popular-courses" class="courses">
             <div class="container" data-aos="fade-up">
-                <div class="row" data-aos="zoom-in" data-aos-delay="100">
+                <div class="d-flex justify-content-center row flex-wrap" data-aos="zoom-in" data-aos-delay="100">
                     @forelse ($article as $artikel)
-                        <div class="col-lg-4 col-md-6 mb-4 d-flex align-items-stretch">
-                            <div class="course-item" style="height: 400px;width:350px;">
+                        <div class="col-lg-4 mb-4">
+                            <div class="course-item shadow">
                                 <img src="{{ asset('storage/' . $artikel->image) }}" class="img-fluid" alt="..."
-                                    style="width:350px;height:250px;" />
+                                    style="width:100%;height:250px;" />
                                 <div class="course-content">
-                                    <div class="d-flex justify-content-between align-items-center mb-3">
-                                        <h4>{{ $artikel->category->name }}</h4>
+                                    <div class="d-flex justify-content-between mb-3">
+                                        <h4>
+                                            <a href="/category/{{ $artikel->category->name }}"
+                                                class="artikel">{{ $artikel->category->name }}</a>
+                                        </h4>
                                         <!-- <p class="price">$169</p> -->
                                     </div>
                                     <h3><a href="/{{ $artikel->slug }}">{{ $artikel->title }}</a>
                                     </h3>
 
-                                    <p>{{ $artikel->excerpy }}</p>
+                                    <p>{{ $artikel->excerpt }}</p>
+                                    <p><a href="/{{ $artikel->slug }}">Read More ...</a></p>
                                 </div>
                             </div>
                         </div>
