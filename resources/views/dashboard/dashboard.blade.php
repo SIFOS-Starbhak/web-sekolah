@@ -147,7 +147,7 @@
                             <div class="profile-widget-item">
                                 <div class="profile-widget-item-label">Mata Pelajaran</div>
                                 <div class="profile-widget-item-value">
-                                    {{ JWTAuth::user()->mapel->nama_mapel }}</div>
+                                    {{ JWTAuth::user()->mapel->mata_pelajaran }}</div>
                             </div>
                         </div>
                     </div>
