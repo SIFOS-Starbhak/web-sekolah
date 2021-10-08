@@ -195,6 +195,6 @@ Route::group(['prefix' =>'siswa', 'middleware' => ['jwt.verify', 'auth:api']], f
             $query->where('name','Siswa');
         })->get();
         // dd($article);
-        return view('dashboard.dashboard',compact('siswa'));
+        return view('dashboard.dashboard',compact('article'));
     })->name('dashboard.siswa');
 });
