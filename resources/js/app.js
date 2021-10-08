@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
             axios
                 // .post(`http://127.0.0.1:8000/api/login`, user)
                 // buat ip public
-                .post(`http://117.102.67.70:8000/api/login`, user)
+                .post(`/api/login`, user)
                 .then((res) => {
                     console.log(res.data);
                     window.sessionStorage.setItem(
@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
             axios
               // .post(`http://127.0.0.1:8000/api/logout`)
                 // buat ip public
-                .post(`http://117.102.67.70:8000/api/login`, user)
+                .post(`/api/logout`, user)
                 .then((res) => {
                     console.log(res);
                     window.sessionStorage.removeItem("token");
