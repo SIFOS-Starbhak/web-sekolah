@@ -13,7 +13,9 @@ document.addEventListener("DOMContentLoaded", () => {
             const user = Object.fromEntries(frmData);
 
             axios
-                .post(`http://127.0.0.1:8000/api/login`, user)
+                // .post(`http://127.0.0.1:8000/api/login`, user)
+                // buat ip public
+                .post(`http://117.102.67.70:8000/api/login`, user)
                 .then((res) => {
                     console.log(res.data);
                     window.sessionStorage.setItem(
@@ -46,7 +48,9 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("frmlogout").addEventListener("click", (e) => {
             e.preventDefault();
             axios
-                .post(`http://127.0.0.1:8000/api/logout`)
+              // .post(`http://127.0.0.1:8000/api/logout`)
+                // buat ip public
+                .post(`http://117.102.67.70:8000/api/login`, user)
                 .then((res) => {
                     console.log(res);
                     window.sessionStorage.removeItem("token");
