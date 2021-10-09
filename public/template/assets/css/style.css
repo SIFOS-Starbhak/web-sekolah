@@ -116,7 +116,7 @@ ul {
 
 @media (max-width: 767px) {
     .skipback {
-        margin-bottom: 30% ;
+        margin-bottom: 30%;
     }
 }
 
@@ -341,7 +341,7 @@ h6 {
     }
 }
 
-.modal-dialog{
+.modal-dialog {
     max-width: 80% !important;
     margin: 1.75rem auto !important;
 }
@@ -597,8 +597,8 @@ h6 {
     background: url("../img/backgroundtb.png");
     background-size: cover !important;
     position: relative !important;
-} */
-/* #hero:before {
+}
+#hero:before {
     content: "" !important;
     background: rgba(0, 0, 0, 0.4) !important;
     position: absolute !important;
@@ -608,7 +608,7 @@ h6 {
     right: 0 !important;
 } */
 #hero .container {
-    padding-top: 72px !important;
+    padding-top: 72px;
 }
 @media (max-width: 992px) {
     #hero .container {
