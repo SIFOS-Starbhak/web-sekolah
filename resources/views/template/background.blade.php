@@ -3,7 +3,7 @@
         <style>
             #hero {
                 width: 100% !important;
-                height: 530px !important;
+                height: 100% !important;
                 background: url('{{ asset("storage/$item->value") }}') top center;
                 background-size: cover !important;
                 position: relative !important;
