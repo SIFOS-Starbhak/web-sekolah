@@ -30,7 +30,7 @@ Route::group(['prefix' => 'admin'], function () {
 
 Route::get('/login', function () {
     return view('auth.login');
-})->name('login');
+})->name('login')->middleware('guest:api');
 
 Route::get('/', 'WebController@index');
 // Route::view('/', 'template/main');
