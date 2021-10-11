@@ -5,13 +5,13 @@
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 
-    <title>Mentor Bootstrap Template - Index</title>
+    <title>SMK Taruna Bhakti - Our Quality Ask be Different</title>
     <meta content="" name="description" />
     <meta content="" name="keywords" />
 
     <!-- Favicons -->
 
-    <link href="{{ asset('template/assets/img/favicon.png') }}" rel="icon" />
+    <link href="{{ asset('favicon.ico') }}" rel="icon" />
 
     <link href="{{ asset('template/assets/img/apple-touch-icon.png') }}" rel="apple-touch-icon" />
 
@@ -146,6 +146,26 @@
             </div>
         </div>
 
+        <!-- ======= Why Us Section ======= -->
+        <section id="why-us" class="why-us bg-dark">
+            <div class="container" data-aos="fade-up">
+                <div class="text-center">
+                    <a class="btn btn-outline-light pe-5 ps-5" style="border-radius: 50px">Virtual
+                        Tour SMK Taruna Bhakti</a>
+                </div>
+                @foreach ($settings as $setting)
+                    @if ($setting->display_name == 'Virtual Tour')
+                        <iframe class="mt-5" src="{{ $setting->value }}"
+                            style="width:100%; height:500px; border-radius: 25px">
+                        </iframe>
+                    @endif
+                @endforeach
+
+            </div>
+            </div>
+        </section>
+        <!-- End Why Us Section -->
+
         <!-- Artikel dan Info Sekolah -->
         <section id="counts" class="counts section-bg" style="background: #e39b0d">
             <div class="container">
@@ -200,14 +220,13 @@
 
         <section id="counts" class="counts section-bg mt-4" style="background-color: #fff9f9">
             <div class="container text-center">
-                <div class="row counters kebawah">
+                <div class="row counters kebawah owl-carousel">
                     @foreach ($partners as $partner)
                         <div class="col-md-3 mt-2">
                             <img src="{{ asset('storage/' . $partner->logo_perusahaan) }}" alt="" />
                             <br><br>
                             <h5 class="fw-bold">{{ $partner->nama_perusahaan }}</h5>
                         </div>
-
                     @endforeach
                 </div>
             </div>
@@ -280,19 +299,30 @@
     <script src="{{ asset('template/assets/js/main.js') }}"></script>
     <script>
         //default settings:
-        autoplay: false
-        autoplayTimeout: 5000
-        autoplayHoverPause: false
-
-        var owl = $('.owl-carousel');
-        owl.owlCarousel({
-            items: 4,
-            loop: true,
-            margin: 10,
-            autoplay: true,
-            autoplayTimeout: 1000,
-            autoplayHoverPause: true
-        });
+        $('.owl-carousel').owlCarousel({
+                    nav: false,
+                    loop: true,
+                    margin: 30,
+                    dots: true,
+                    autoplay: true,
+                    autoplaySpeed: 2200,
+                    autoplayTimeout: 2200,
+                    autoplayHoverPause: true,
+                    slideTransition: 'linear',
+                    responsive: {
+                        0: {
+                            items: 1
+                        },
+                        576: {
+                            items: 2
+                        },
+                        768: {
+                            items: 3
+                        },
+                        992: {
+                            items: 4
+                        }
+                    }
     </script>
 </body>
 
