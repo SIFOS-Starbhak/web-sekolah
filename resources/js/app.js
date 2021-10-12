@@ -88,7 +88,7 @@ document.addEventListener("DOMContentLoaded", () => {
             e.preventDefault();
             console.log("clicked");
             window.location.href =
-                "http://127.0.0.1:8001/authentication/" +
+                "http://117.102.67.70:8000/authentication/" +
                 window.sessionStorage.getItem("token"); // href seuai sama url
         });
     }
