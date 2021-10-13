@@ -11,6 +11,6 @@ class CategorySarpra extends Model
 
     public function content()
     {
-        return $this->hasMany(ContentSarpra::class);
+        return $this->hasMany(ContentSarpra::class, 'name');
     }
 }

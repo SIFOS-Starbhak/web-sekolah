@@ -67,12 +67,17 @@ class WebController extends Controller
 
     public function sarpras()
     {
-        $categories = CategorySarpra::all();
-        $umu = ContentSarpra::all()->where('category_id', '');
+        $category = CategorySarpra::all();
+        $content = ContentSarpra::all();
         $settings = Setting::all();
-        $gallery = Gallery::all();
+        $samsung = GallerySarpra::all()->where('content_id', '16');
+        $bahasa = GallerySarpra::all()->where('content_id', '17');
+        $kelas = GallerySarpra::all()->where('content_id', '1');
+        $lab = GallerySarpra::all()->where('content_id', '2');
+        $perpus = GallerySarpra::all()->where('content_id', '3');
+        $gallery = GallerySarpra::all();
         
-        return view('sarpras', compact('settings', 'categories', 'content', 'gallery'));
+        return view('sarpras', compact('perpus', 'lab', 'kelas', 'settings', 'category', 'content', 'gallery', 'samsung', 'bahasa'));
     }
 
     public function category(Category $category)
@@ -85,12 +90,5 @@ class WebController extends Controller
     {
         $settings = Setting::all();
         return view('showauthor', compact('settings', 'user'), ['posts' => $user->post]);
-    }
-
-    public function posted($posted)
-    {
-        $posts = Post::all()->where('created_at', Carbon\Carbon::parse($posted)->isoFormat('YYYY-MM-DD HH:mm:ss'));
-        $settings = Setting::all();
-        return view('showposted', compact('settings', 'posts', 'posted'));
     }
 }
