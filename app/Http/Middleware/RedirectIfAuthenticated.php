@@ -24,11 +24,11 @@ class RedirectIfAuthenticated
                 if (Auth::guard($guard)->user()->hasRole('admin')) {
                     return redirect("/admin");
                 } else if (Auth::guard($guard)->user()->hasRole('guru')) {
-                    return redirect()->route('guru.dashboard');
+                    return redirect()->route('dashboard.guru');
                 } else if (Auth::guard($guard)->user()->hasRole('siswa')) {
-                    return redirect()->route('siswa.dashboard');
+                    return redirect()->route('dashboard.siswa');
                 } else if (Auth::guard($guard)->user()->hasRole('manager')) {
-                    return redirect()->route('manager.dashboard');
+                    return redirect()->route('dashboard.manager');
                 } else {
                     return redirect()->route('dashboard');
                 }
