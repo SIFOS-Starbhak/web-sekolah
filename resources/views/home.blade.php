@@ -235,12 +235,17 @@
             </div>
         </section>
 
-        <div class="container">
-            <div class="text-center">
-                <a href="/artikel" class="btn btn-outline-primary pe-5 ps-5 mb-5" style="border-radius: 50px">Load More
-                    ...</a>
-            </div>
-        </div>
+        @foreach ($posts as $item)
+            @if ($loop->iteration > 6)
+                <div class="container">
+                    <div class="text-center">
+                        <a href="/artikel" class="btn btn-outline-primary pe-5 ps-5 mb-5"
+                            style="border-radius: 50px">Load More
+                            ...</a>
+                    </div>
+                </div>
+            @endif
+        @endforeach
 
         <section id="counts" class="counts section-bg mt-4" style="background-color: #fff9f9">
             <div class="container text-center">
@@ -324,29 +329,29 @@
     <script>
         //default settings:
         $('.owl-carousel').owlCarousel({
-                    nav: false,
-                    loop: true,
-                    margin: 30,
-                    dots: true,
-                    autoplay: true,
-                    autoplaySpeed: 2200,
-                    autoplayTimeout: 2200,
-                    autoplayHoverPause: true,
-                    slideTransition: 'linear',
-                    responsive: {
-                        0: {
-                            items: 1
-                        },
-                        576: {
-                            items: 2
-                        },
-                        768: {
-                            items: 3
-                        },
-                        992: {
-                            items: 4
-                        }
-                    }
+            nav: false,
+            loop: true,
+            margin: 30,
+            dots: true,
+            autoplay: true,
+            autoplaySpeed: 2200,
+            autoplayTimeout: 2200,
+            autoplayHoverPause: true,
+            slideTransition: 'linear',
+            responsive: {
+                0: {
+                    items: 1
+                },
+                576: {
+                    items: 2
+                },
+                768: {
+                    items: 3
+                },
+                992: {
+                    items: 4
+                }
+            }
         })
     </script>
 </body>
