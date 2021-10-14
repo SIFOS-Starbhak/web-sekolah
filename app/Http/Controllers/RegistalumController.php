@@ -43,7 +43,7 @@ public function store(Request $request)
     ]);
  if($registalum){
         //redirect dengan pesan sukses
-        return redirect()->route('/hubin')->with(['success' => 'Pengajuan Data Alumni telah Terkirim dan Akan Segra Kami Konfirmasi!']);
+        return redirect()->route('/hubin')->with(['success' => 'Pengajuan Data Alumni telah Terkirim dan Akan Segera Dikonfirmasi!']);
     }else{
         //redirect dengan pesan error
         return redirect()->route('/hubin')->with(['error' => 'Data Gagal Terkirim!']);

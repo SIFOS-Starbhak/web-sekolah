@@ -31,7 +31,7 @@ Route::group(['prefix' => 'admin'], function () {
 
 Route::get('/login', function () {
     return view('auth.login');
-})->name('login');
+})->name('login')->middleware('guest:api');
 
 Route::get('/', 'WebController@index');
 // Route::view('/', 'template/main');
@@ -59,12 +59,12 @@ Route::get('/sarpras', function () {
     $settings = App\Models\Setting::all();
     return view('sarpras', compact('settings'));
 });
-Route::get('/registalum', function () {
-    $settings = App\Models\Setting::all();
-    return view('/registalum', compact('settings'));
-});
-// Route::get('/registalum',[RegistalumController::class,'store']);
-// Route::get('/registalum',[RegistalumController::class,'create']);
+// Route::get('/registalum', function () {
+//     $settings = App\Models\Setting::all();
+//     return view('/registalum', compact('settings'));
+// });
+Route::post('/registalum/store',[RegistalumController::class,'store'])->name('store');
+Route::get('/registalum',[RegistalumController::class,'create']);
 Route::get('/kesiswaan', 'WebController@kesiswaan');
 Route::get('/hubin', 'HubinController@index');
 

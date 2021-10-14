@@ -4,7 +4,7 @@
             @foreach ($settings as $setting)
                 @if ($setting->display_name == 'Site Logo')
 
-                    <img src="{{ asset('storage/' . $setting->value) }}" alt="" style="height: 70px; width: 70px" />
+                    <a href="/home"><img src="{{ asset('storage/' . $setting->value) }}" alt="" style="height: 70px; width: 70px" /></a>
                 @endif
             @endforeach
             <!-- Uncomment below if you prefer to use an image logo -->
@@ -12,7 +12,7 @@
 
             <nav id="navbar" class="navbar order-last order-lg-0" style="margin-left: auto">
                 <ul>
-                    <li><a href="/" class="{{ request()->is('/*') ? 'active' : '' }}">Home</a></li>
+                    {{-- <li><a href="/" class="{{ request()->is('/*') ? 'active' : '' }}">Home</a></li> --}}
                     <li><a href="/profile" class="{{ request()->is('profile*') ? 'active' : '' }}">Profile</a></li>
                     <li><a href="/kurikulum" class="{{ request()->is('kurikulum*') ? 'active' : '' }}">Kurikulum</a>
                     </li>

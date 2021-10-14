@@ -13,9 +13,9 @@ document.addEventListener("DOMContentLoaded", () => {
             const user = Object.fromEntries(frmData);
 
             axios
-                // .post(`http://127.0.0.1:8000/api/login`, user)
+                .post(`/api/login`, user)
                 // buat ip public
-                .post(`http://117.102.67.70:8000/api/login`, user)
+                // .post(`http://117.102.67.70:8000/api/login`, user)
                 .then((res) => {
                     console.log(res.data);
                     window.sessionStorage.setItem(
@@ -48,9 +48,9 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("frmlogout").addEventListener("click", (e) => {
             e.preventDefault();
             axios
-              // .post(`http://127.0.0.1:8000/api/logout`)
+              .post(`/api/logout`)
                 // buat ip public
-                .post(`http://117.102.67.70:8000/api/logout`)
+                // .post(`http://117.102.67.70:8000/api/logout`)
                 .then((res) => {
                     console.log(res);
                     window.sessionStorage.removeItem("token");
@@ -88,7 +88,7 @@ document.addEventListener("DOMContentLoaded", () => {
             e.preventDefault();
             console.log("clicked");
             window.location.href =
-                "http://127.0.0.1:8001/authentication/" +
+                "http://117.102.67.70:8000/authentication/" +
                 window.sessionStorage.getItem("token"); // href seuai sama url
         });
     }

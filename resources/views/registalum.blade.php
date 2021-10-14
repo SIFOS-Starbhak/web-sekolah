@@ -44,8 +44,9 @@
   ======================================================== -->
 </head>
 
-<body>@include('template.navbar')
-    @include('template.background')
+<body>
+    {{-- @include('template.navbar')
+    @include('template.background') --}}
  <div class="container mt-5">
      <div>
          <a href="/hubin" class="col-12" style="font-size: 17px;"><i class="fas fa-arrow-left"></i> Kembali</a>
@@ -59,7 +60,9 @@
 
                 <div class="card">
                    <div class="card-body shadow">
-                        <form action="/create" method="POST"  enctype="multipart/form-data">
+                        <form action="{{ route('store') }}" method="POST"  enctype="multipart/form-data">
+                        @csrf
+
                     <div class="mb-3">
                         <label for="exampleInputPassword1" class="form-label fw-bold">Nama Lengkap</label>
                         <input type="text" class="form-control" id="name" name="name">
@@ -181,7 +184,7 @@
     </div>
 
     
-    @include('template.footer')
+    {{-- @include('template.footer') --}}
     <!-- Vendor JS Files -->
     <script src="{{ asset('template/assets/vendor/aos/aos.js') }}"></script>
     <script src="{{ asset('template/assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
