@@ -188,7 +188,7 @@
                                 <div class="course-content">
                                     <div class="d-flex justify-content-between mb-3">
                                         <h4>
-                                            <a href="/category/{{ $artikel->category->name }}"
+                                            <a href="/category/{{ $artikel->category->slug }}"
                                                 class="artikel">{{ $artikel->category->name }}</a>
                                         </h4>
                                         <!-- <p class="price">$169</p> -->

@@ -8,13 +8,6 @@ use Illuminate\Http\Request;
 
 class RegistalumController extends Controller
 {
-    
-    public function create()
-{
-    
-    return view('/registalum', [ 'jurusans' => Jurusan::all() ]);
-}
-
 public function store(Request $request)
 {
     $this->validate($request, [
@@ -43,10 +36,10 @@ public function store(Request $request)
     ]);
  if($registalum){
         //redirect dengan pesan sukses
-        return redirect()->route('/hubin')->with(['success' => 'Pengajuan Data Alumni telah Terkirim dan Akan Segera Dikonfirmasi!']);
+        return redirect()->route('hubin')->with(['success' => 'Pengajuan Data Alumni telah Terkirim dan Akan Segera Dikonfirmasi!']);
     }else{
         //redirect dengan pesan error
-        return redirect()->route('/hubin')->with(['error' => 'Data Gagal Terkirim!']);
+        return redirect()->route('hubin')->with(['error' => 'Data Gagal Terkirim!']);
     }
 }
 }

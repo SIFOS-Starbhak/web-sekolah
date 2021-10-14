@@ -64,9 +64,8 @@ Route::get('/sarpras', function () {
 //     return view('/registalum', compact('settings'));
 // });
 Route::post('/registalum/store',[RegistalumController::class,'store'])->name('store');
-Route::get('/registalum',[RegistalumController::class,'create']);
 Route::get('/kesiswaan', 'WebController@kesiswaan');
-Route::get('/hubin', 'HubinController@index');
+Route::get('/hubin', 'HubinController@index')->name('hubin');
 
 Route::get('/kurikulum/{kategori:slug}', 'WebController@fotoguru');
 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 13, 2021 at 04:13 AM
+-- Generation Time: Oct 14, 2021 at 01:22 PM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.4.8
 
@@ -38,31 +38,32 @@ CREATE TABLE `alumnis` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `categories_alumnis` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `jurusan` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL
+  `jurusan` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `status` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `alumnis`
 --
 
-INSERT INTO `alumnis` (`id`, `name`, `tahun_lulus`, `nama_perusahaan`, `posisi`, `tahun_kerja`, `penghasilan`, `created_at`, `updated_at`, `categories_alumnis`, `jurusan`) VALUES
-(1, 'Syaifudin Ilham', 2022, 'Cv Propose', 'Managaer', 2023, '200000', '2021-10-01 05:59:57', '2021-10-01 05:59:57', 'Bekerja', 'Multimedia'),
-(2, 'DIo Selvinus Silalebit', 2022, 'Universitas Indonesia', 'Teknik Informatika', 2025, '10000000', '2021-10-01 06:27:00', '2021-10-01 06:31:13', 'Kuliah', 'Teknik Komputer Jaringan'),
-(3, 'Muhammad Yafik Ramdhan Ilham', 2022, 'Google Corporation', 'Managaer', 2025, '10000000', '2021-10-01 06:34:42', '2021-10-01 06:34:42', 'Bekerja', 'Teknik Komputer Jaringan'),
-(4, 'Nur Firdaus', 2022, 'Minuman dan Makanan', NULL, NULL, NULL, '2021-10-01 06:58:31', '2021-10-01 06:58:31', 'Bekerja', NULL),
-(5, 'Nur Firdaus', 2022, 'Minuman dan Makanan', NULL, NULL, '15000000', '2021-10-01 06:59:12', '2021-10-01 06:59:12', 'Wirausaha', 'Teknik Komputer Jaringan'),
-(6, 'Muhamman Tarmidzi Bariq', 2022, 'Universitas Gunadarma', 'Management', NULL, NULL, '2021-10-01 07:34:36', '2021-10-01 07:34:36', 'Kuliah', 'Multimedia'),
-(7, 'Rafie Aydin Ihsan', 2022, 'Galon Isi Ulang', NULL, NULL, '10000000', '2021-10-01 07:35:46', '2021-10-01 07:35:46', 'Wirausaha', 'Multimedia'),
-(8, 'Angkasa Raya', 2022, 'Nasa', 'Managaer', 2025, '10000000', '2021-10-01 07:37:09', '2021-10-01 07:37:09', 'Bekerja', 'Rekayasa Perangkat Lunak'),
-(9, 'Muhammad Irsyam Kelana', 2021, 'Universitas Unindra', 'Otomotif', NULL, NULL, '2021-10-01 07:38:47', '2021-10-01 07:38:47', 'Kuliah', 'Rekayasa Perangkat Lunak'),
-(10, 'Andhika Riski Hidayat', 2022, 'Milk Shake', NULL, NULL, '5000000', '2021-10-01 07:39:50', '2021-10-01 07:39:50', 'Wirausaha', 'Rekayasa Perangkat Lunak'),
-(11, 'Dana Satria', 2022, 'PT Ada kalanya', 'Web Dev', 2025, '15000000', '2021-10-01 07:41:30', '2021-10-01 07:41:30', 'Bekerja', 'Broadcast'),
-(12, 'Satrai Dwi Putra', 2022, 'Universitas Gadjah Mada', 'Sistem Informasi', NULL, NULL, '2021-10-01 07:42:37', '2021-10-01 07:42:37', 'Kuliah', 'Broadcast'),
-(13, 'Rifki Ahmad Zahidan', 2022, 'Usaha Bidang Kesehatan', NULL, NULL, '12000000', '2021-10-01 07:43:28', '2021-10-01 07:43:28', 'Wirausaha', 'Broadcast'),
-(14, 'Muhammad Adil Farizki', 2022, 'PT Jaya Abadi', 'CEO', 2025, '15000000', '2021-10-01 07:44:39', '2021-10-01 07:44:39', 'Bekerja', 'Teknik Elektronik Industri'),
-(15, 'Sheva Sinatrya Putra', 2022, 'Institute Pertanian Bogor', 'Pertanian', NULL, NULL, '2021-10-01 07:45:51', '2021-10-01 07:45:51', 'Kuliah', 'Teknik Elektronik Industri'),
-(16, 'Kelvyn Nathanael', 2022, 'Coffee', NULL, NULL, '10000000', '2021-10-01 07:47:39', '2021-10-01 07:47:39', 'Wirausaha', 'Teknik Elektronik Industri'),
-(17, 'Firdaus Caesar', 2022, 'Universitas Unair', 'Sistem Informasi', NULL, NULL, '2021-10-01 08:36:18', '2021-10-01 08:36:18', 'Kuliah', 'Rekayasa Perangkat Lunak');
+INSERT INTO `alumnis` (`id`, `name`, `tahun_lulus`, `nama_perusahaan`, `posisi`, `tahun_kerja`, `penghasilan`, `created_at`, `updated_at`, `categories_alumnis`, `jurusan`, `status`) VALUES
+(1, 'Syaifudin Ilham', 2022, 'Cv Propose', 'Managaer', 2023, '200000', '2021-10-01 05:59:57', '2021-10-01 05:59:57', 'Bekerja', 'Multimedia', NULL),
+(2, 'DIo Selvinus Silalebit', 2022, 'Universitas Indonesia', 'Teknik Informatika', 2025, '10000000', '2021-10-01 06:27:00', '2021-10-01 06:31:13', 'Kuliah', 'Teknik Komputer Jaringan', NULL),
+(3, 'Muhammad Yafik Ramdhan Ilham', 2022, 'Google Corporation', 'Managaer', 2025, '10000000', '2021-10-01 06:34:42', '2021-10-01 06:34:42', 'Bekerja', 'Teknik Komputer Jaringan', NULL),
+(4, 'Nur Firdaus', 2022, 'Minuman dan Makanan', NULL, NULL, NULL, '2021-10-01 06:58:31', '2021-10-01 06:58:31', 'Bekerja', NULL, NULL),
+(5, 'Nur Firdaus', 2022, 'Minuman dan Makanan', NULL, NULL, '15000000', '2021-10-01 06:59:12', '2021-10-01 06:59:12', 'Wirausaha', 'Teknik Komputer Jaringan', NULL),
+(6, 'Muhamman Tarmidzi Bariq', 2022, 'Universitas Gunadarma', 'Management', NULL, NULL, '2021-10-01 07:34:36', '2021-10-01 07:34:36', 'Kuliah', 'Multimedia', NULL),
+(7, 'Rafie Aydin Ihsan', 2022, 'Galon Isi Ulang', NULL, NULL, '10000000', '2021-10-01 07:35:46', '2021-10-01 07:35:46', 'Wirausaha', 'Multimedia', NULL),
+(8, 'Angkasa Raya', 2022, 'Nasa', 'Managaer', 2025, '10000000', '2021-10-01 07:37:09', '2021-10-01 07:37:09', 'Bekerja', 'Rekayasa Perangkat Lunak', NULL),
+(9, 'Muhammad Irsyam Kelana', 2021, 'Universitas Unindra', 'Otomotif', NULL, NULL, '2021-10-01 07:38:47', '2021-10-01 07:38:47', 'Kuliah', 'Rekayasa Perangkat Lunak', NULL),
+(10, 'Andhika Riski Hidayat', 2022, 'Milk Shake', NULL, NULL, '5000000', '2021-10-01 07:39:50', '2021-10-01 07:39:50', 'Wirausaha', 'Rekayasa Perangkat Lunak', NULL),
+(11, 'Dana Satria', 2022, 'PT Ada kalanya', 'Web Dev', 2025, '15000000', '2021-10-01 07:41:30', '2021-10-01 07:41:30', 'Bekerja', 'Broadcast', NULL),
+(12, 'Satrai Dwi Putra', 2022, 'Universitas Gadjah Mada', 'Sistem Informasi', NULL, NULL, '2021-10-01 07:42:37', '2021-10-01 07:42:37', 'Kuliah', 'Broadcast', NULL),
+(13, 'Rifki Ahmad Zahidan', 2022, 'Usaha Bidang Kesehatan', NULL, NULL, '12000000', '2021-10-01 07:43:28', '2021-10-01 07:43:28', 'Wirausaha', 'Broadcast', NULL),
+(14, 'Muhammad Adil Farizki', 2022, 'PT Jaya Abadi', 'CEO', 2025, '15000000', '2021-10-01 07:44:39', '2021-10-01 07:44:39', 'Bekerja', 'Teknik Elektronik Industri', NULL),
+(15, 'Sheva Sinatrya Putra', 2022, 'Institute Pertanian Bogor', 'Pertanian', NULL, NULL, '2021-10-01 07:45:51', '2021-10-01 07:45:51', 'Kuliah', 'Teknik Elektronik Industri', NULL),
+(16, 'Kelvyn Nathanael', 2022, 'Coffee', NULL, NULL, '10000000', '2021-10-01 07:47:39', '2021-10-01 07:47:39', 'Wirausaha', 'Teknik Elektronik Industri', NULL),
+(17, 'Firdaus Caesar', 2022, 'Universitas Unair', 'Sistem Informasi', NULL, NULL, '2021-10-01 08:36:18', '2021-10-01 08:36:18', 'Kuliah', 'Rekayasa Perangkat Lunak', NULL);
 
 -- --------------------------------------------------------
 
@@ -166,8 +167,7 @@ INSERT INTO `content_sarpras` (`id`, `title`, `description`, `category_id`, `cre
 (13, 'Taman Sekolah', '<p><span style=\"color: #212529; font-family: \'Open Sans\', sans-serif; font-size: 16px;\">Sekolah berwawasan lingkungan, itulah yang diusung oleh SMK Taruna Bhakti. Sehingga terdapat taman-taman disetiap sudut sekolah.</span></p>', '6', '2021-10-06 15:22:19', '2021-10-06 15:22:19'),
 (14, 'Pendopo', '<p><span style=\"color: #212529; font-family: \'Open Sans\', sans-serif; font-size: 16px;\">SMK Taruna Bhakti memiliki ruang penerima tamu yang mengosong konsep Joglo. Konsep terbuka sengaja diusung agar tamu yang datang ke SMK Taruna Bhakti dapat dengan nyaman menikmati taman dan kicauan burung, sehingga membuat perasaan menjadi tenang.</span></p>', '6', '2021-10-06 15:22:41', '2021-10-06 15:22:41'),
 (15, 'Sarana dan Prasarana Sekolah', '<p class=\"mt-5\">Laboratorium Komputer dan Ruangan Terdiri dari :</p>\r\n<ol>\r\n<li>Lab Network Advance</li>\r\n<li>Lab Network</li>\r\n<li>Lab Maintenance and Repair</li>\r\n<li>Lab Simulasi Digital</li>\r\n<li>Lab Axioo Class Program</li>\r\n<li>Lab Multimedia Medium</li>\r\n<li>Lab Multimedia Advance</li>\r\n<li>Lab Pemrograman Basic</li>\r\n<li>Lab Pemrograman Advance</li>\r\n<li>Lab Bahasa Inggris</li>\r\n<li>Lab Video dan Audio Editing</li>\r\n<li>Studio Mini Penyiaran TV</li>\r\n<li>Ruang Server dan Fasilitas lainnya</li>\r\n</ol>\r\n<p>Lingkungan sekolah yang asri dan nyaman jauh dari bising, mudah terjangkau oleh siswa/i dari <br />berbagai jurusan dengan kendaraan umum.</p>\r\n<p>Memiliki kantin dengan konsep cafetaria yang bersih, rapi serta nyaman dengan variasi makanan dan <br />minuman yang sehat, agar terjaga kesehatan dari siswa/i.</p>\r\n<p>Seluruh ruangan sekolah terjangkau dari Zona Hotspot yang di support oleh :</p>\r\n<ol>\r\n<li>Wifi id (Telkom) dengan jaringan Fiber Optik 100 Mbps</li>\r\n<li>Biznet dengan jaringan Fiber Optik 20 Mbps Dedicated 1:1</li>\r\n<li>Varnion Techology Jaringan wireless 2 Mbps</li>\r\n</ol>', '1', '2021-10-11 00:37:07', '2021-10-11 00:37:07'),
-(16, 'Samsung', NULL, '1', '2021-10-11 00:46:54', '2021-10-11 00:46:54'),
-(17, 'Lab Bahasa', NULL, '1', '2021-10-11 00:47:19', '2021-10-11 00:47:19');
+(16, 'Samsung', NULL, '1', '2021-10-11 00:46:54', '2021-10-11 00:46:54');
 
 -- --------------------------------------------------------
 
@@ -341,7 +341,8 @@ INSERT INTO `data_rows` (`id`, `data_type_id`, `field`, `type`, `display_name`, 
 (205, 32, 'created_at', 'timestamp', 'Created At', 0, 1, 1, 1, 0, 1, '{}', 3),
 (206, 32, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 4),
 (207, 1, 'user_belongsto_mapel_relationship', 'relationship', 'mapels', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\Models\\\\Mapel\",\"table\":\"mapels\",\"type\":\"belongsTo\",\"column\":\"mapel_id\",\"key\":\"id\",\"label\":\"nama_mapel\",\"pivot_table\":\"alumnis\",\"pivot\":\"0\",\"taggable\":null}', 13),
-(208, 31, 'nama_photo', 'text', 'Nama Photo', 0, 1, 1, 1, 1, 1, '{}', 6);
+(208, 31, 'nama_photo', 'text', 'Nama Photo', 0, 1, 1, 1, 1, 1, '{}', 6),
+(209, 19, 'website_perusahaan', 'text', 'Website Perusahaan', 0, 1, 1, 1, 1, 1, '{}', 7);
 
 -- --------------------------------------------------------
 
@@ -384,11 +385,11 @@ INSERT INTO `data_types` (`id`, `name`, `slug`, `display_name_singular`, `displa
 (10, 'kelas', 'kelas', 'Kela', 'Kelas', NULL, 'App\\Models\\Kela', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2021-09-21 20:32:15', '2021-09-22 06:42:10'),
 (16, 'alumnis', 'alumnis', 'Alumni', 'Alumnis', NULL, 'App\\Models\\Alumni', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2021-09-29 21:41:44', '2021-10-02 07:34:14'),
 (17, 'categories_alumnis', 'categories-alumnis', 'Categories Alumni', 'Categories Alumnis', NULL, 'App\\Models\\CategoriesAlumni', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2021-09-29 21:51:04', '2021-09-29 23:51:34'),
-(19, 'partners', 'partners', 'Partner', 'Partners', NULL, 'App\\Models\\Partner', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2021-09-29 21:52:12', '2021-09-30 08:50:17'),
+(19, 'partners', 'partners', 'Partner', 'Partners', NULL, 'App\\Models\\Partner', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2021-09-29 21:52:12', '2021-10-13 05:13:25'),
 (20, 'jurusans', 'jurusans', 'Jurusan', 'Jurusans', NULL, 'App\\Models\\Jurusan', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2021-09-29 23:52:50', '2021-10-02 07:37:34'),
 (28, 'category_sarpras', 'category-sarpras', 'Category Sarpra', 'Category Sarpras', NULL, 'App\\Models\\CategorySarpra', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2021-10-06 08:21:52', '2021-10-06 14:43:23'),
 (30, 'content_sarpras', 'content-sarpras', 'Content Sarpra', 'Content Sarpras', NULL, 'App\\Models\\ContentSarpra', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2021-10-06 14:30:52', '2021-10-06 15:10:01'),
-(31, 'gallery_sarpras', 'gallery-sarpras', 'Gallery Sarpra', 'Gallery Sarpras', NULL, 'App\\Models\\GallerySarpra', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2021-10-06 14:35:52', '2021-10-13 01:14:14'),
+(31, 'gallery_sarpras', 'gallery-sarpras', 'Gallery Sarpra', 'Gallery Sarpras', NULL, 'App\\Models\\GallerySarpra', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2021-10-06 14:35:52', '2021-10-13 05:18:27'),
 (32, 'mapels', 'mapels', 'Mapel', 'Mapels', NULL, 'App\\Models\\Mapel', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null}', '2021-10-07 02:56:07', '2021-10-07 02:56:07');
 
 -- --------------------------------------------------------
@@ -549,7 +550,10 @@ INSERT INTO `gallery_sarpras` (`id`, `created_at`, `updated_at`, `image`, `conte
 (35, '2021-10-13 01:29:03', '2021-10-13 01:29:03', 'gallery-sarpras\\October2021\\sokvMh9dIDYtbwm15PO9.jpeg', '8', NULL),
 (36, '2021-10-13 02:03:02', '2021-10-13 02:03:02', 'gallery-sarpras\\October2021\\G1rAsJlLVEsyastOo52l.jpg', '15', 'Gedung Sekolah'),
 (37, '2021-10-13 02:03:40', '2021-10-13 02:03:40', 'gallery-sarpras\\October2021\\h6RXRODeRXMKm8GCfTY0.jpg', '15', 'Ruang Belajar Teori'),
-(38, '2021-10-13 02:04:23', '2021-10-13 02:04:23', 'gallery-sarpras\\October2021\\c5kxF2WxYsKQQg0EvGCf.jpg', '14', NULL);
+(38, '2021-10-13 02:04:23', '2021-10-13 02:04:23', 'gallery-sarpras\\October2021\\c5kxF2WxYsKQQg0EvGCf.jpg', '14', NULL),
+(41, '2021-10-14 02:31:36', '2021-10-14 02:31:36', 'gallery-sarpras\\October2021\\QVEZsWOc9HitXu7sPxkf.png', '10', NULL),
+(42, '2021-10-14 02:47:16', '2021-10-14 02:47:16', 'gallery-sarpras\\October2021\\VmsoEOKJeD5stCg4rm2V.jpg', '11', NULL),
+(43, '2021-10-14 03:01:54', '2021-10-14 03:01:54', 'gallery-sarpras\\October2021\\ljb9Da9Je1gA0jdm7dgN.jpeg', '17', NULL);
 
 -- --------------------------------------------------------
 
@@ -994,18 +998,19 @@ CREATE TABLE `partners` (
   `nama_perusahaan` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `alamat_perusahaan` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `website_perusahaan` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `partners`
 --
 
-INSERT INTO `partners` (`id`, `logo_perusahaan`, `nama_perusahaan`, `alamat_perusahaan`, `created_at`, `updated_at`) VALUES
-(1, 'partners\\September2021\\X5dVle3n9fghgh63JqPL.png', 'Impunity', 'jl dongkal no 30', '2021-09-30 08:39:59', '2021-09-30 08:39:59'),
-(2, 'partners\\September2021\\VfckVh3Uuf1HwQZu2m9F.png', 'Automate', 'jl baru no 30', '2021-09-30 08:41:09', '2021-09-30 08:41:09'),
-(9, 'partners\\September2021\\eBChzSeaoGRIUizDLpYM.png', 'Play Media', 'MNC', '2021-09-30 08:50:47', '2021-09-30 08:50:47'),
-(10, 'partners\\September2021\\QISLM81GwCEJUpgHywdJ.png', 'Rumah Coding', 'Rumah', '2021-09-30 08:51:02', '2021-09-30 08:51:02');
+INSERT INTO `partners` (`id`, `logo_perusahaan`, `nama_perusahaan`, `alamat_perusahaan`, `created_at`, `updated_at`, `website_perusahaan`) VALUES
+(1, 'partners\\September2021\\X5dVle3n9fghgh63JqPL.png', 'Impunity', 'jl dongkal no 30', '2021-09-30 08:39:59', '2021-09-30 08:39:59', NULL),
+(2, 'partners\\September2021\\VfckVh3Uuf1HwQZu2m9F.png', 'Automate', 'jl baru no 30', '2021-09-30 08:41:09', '2021-09-30 08:41:09', NULL),
+(9, 'partners\\September2021\\eBChzSeaoGRIUizDLpYM.png', 'Play Media', 'MNC', '2021-09-30 08:50:47', '2021-09-30 08:50:47', NULL),
+(10, 'partners\\September2021\\QISLM81GwCEJUpgHywdJ.png', 'Rumah Coding', 'Rumah', '2021-09-30 08:51:02', '2021-09-30 08:51:02', NULL);
 
 -- --------------------------------------------------------
 
@@ -1812,7 +1817,7 @@ ALTER TABLE `content_sarpras`
 -- AUTO_INCREMENT for table `data_rows`
 --
 ALTER TABLE `data_rows`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=209;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=210;
 
 --
 -- AUTO_INCREMENT for table `data_types`
@@ -1836,7 +1841,7 @@ ALTER TABLE `galleries`
 -- AUTO_INCREMENT for table `gallery_sarpras`
 --
 ALTER TABLE `gallery_sarpras`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT for table `gurus`
