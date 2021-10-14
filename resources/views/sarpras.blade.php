@@ -44,7 +44,9 @@
   ======================================================== -->
 </head>
 
-<body>@include('template.navbar')
+<body>
+    
+    @include('template.navbar')
     @include('template.background')
 
     <div class="container-fluid pt-5">

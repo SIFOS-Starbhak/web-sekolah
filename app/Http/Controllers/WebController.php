@@ -20,12 +20,13 @@ class WebController extends Controller
 {
     public function index()
     {
-        $home = Page::all()->where('category_id', '8');
+        $home = Page::all()->where('id', '20');
+        $content = Page::all()->where('category_id', '8');
         $news = Post::all()->where('status','PUBLISHED')->where('featured', '1');
         $article = Post::where('status','PUBLISHED')->latest()->paginate(6);
         $settings = Setting::all();
         $partners = Partner::all();
-        return view('home', compact('news', 'settings', 'article','partners', 'home'));
+        return view('home', compact('content', 'news', 'settings', 'article','partners', 'home'));
     }
 
     public function profiletb()

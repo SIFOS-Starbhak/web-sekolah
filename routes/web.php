@@ -55,10 +55,7 @@ Route::get('/kontakkami', function () {
     $settings = App\Models\Setting::all();
     return view('kontakkami', compact('settings'));
 });
-Route::get('/sarpras', function () {
-    $settings = App\Models\Setting::all();
-    return view('sarpras', compact('settings'));
-});
+Route::get('/sarpras', 'WebController@sarpras');
 // Route::get('/registalum', function () {
 //     $settings = App\Models\Setting::all();
 //     return view('/registalum', compact('settings'));
