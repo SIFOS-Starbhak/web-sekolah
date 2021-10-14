@@ -15,7 +15,6 @@ use App\Models\CategorySarpra;
 use App\Models\GallerySarpra;
 use App\Models\Category;
 use App\Models\User;
-use Carbon;
 
 class WebController extends Controller
 {
@@ -71,13 +70,17 @@ class WebController extends Controller
         $content = ContentSarpra::all();
         $settings = Setting::all();
         $samsung = GallerySarpra::all()->where('content_id', '16');
-        $bahasa = GallerySarpra::all()->where('content_id', '17');
+        $bahasa = GallerySarpra::all()->where('content_id', '2');
         $kelas = GallerySarpra::all()->where('content_id', '1');
-        $lab = GallerySarpra::all()->where('content_id', '2');
         $perpus = GallerySarpra::all()->where('content_id', '3');
+        $tkj = GallerySarpra::all()->where('content_id', '4');
+        $mm = GallerySarpra::all()->where('content_id', '5');
+        $rpl = GallerySarpra::all()->where('content_id', '6');
+        $bc = GallerySarpra::all()->where('content_id', '7');
+        $tei = GallerySarpra::all()->where('content_id', '8');
         $gallery = GallerySarpra::all();
         
-        return view('sarpras', compact('perpus', 'lab', 'kelas', 'settings', 'category', 'content', 'gallery', 'samsung', 'bahasa'));
+        return view('sarpras', compact('tei', 'bc', 'rpl', 'mm', 'tkj', 'perpus', 'kelas', 'settings', 'category', 'content', 'gallery', 'samsung', 'bahasa'));
     }
 
     public function category(Category $category)
