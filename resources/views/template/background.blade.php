@@ -34,6 +34,6 @@
                 <h2>{{ $item->value }}</h2>
             @endif
         @endforeach
-        <a href="{{ route('login') }}" target="_blank" class="btn-get-started">Login</a>
+        
     </div>
 </section>

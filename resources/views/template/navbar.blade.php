@@ -24,6 +24,7 @@
                     </li>
                     <li><a href="/kontakkami" class="{{ request()->is('kontakkami*') ? 'active' : '' }}">Kontak
                             Kami</a></li>
+                    <li><a href="{{ route('login') }}" target="_blank" class="btn-get-started active">Login</a></li>
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
             </nav>

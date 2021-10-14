@@ -20,6 +20,7 @@
         href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
         rel="stylesheet" />
 
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
     <!-- Vendor CSS Files -->
     <link href="{{ asset('template/assets/vendor/animate.css/animate.min.css') }}" rel="stylesheet" />
     <link href="{{ asset('template/assets/vendor/aos/aos.css') }}" rel="stylesheet" />
@@ -51,7 +52,8 @@
     <div class="container pt-5">
         <h2 class="text-center"><b>Data Tamatan SMK Taruna Bhakti</b></h2>
         <hr>
-        <br>
+        <div class="col-12 btn btn-primary text-center"><a style="color: white" href="/registalum">Registrasi Data Tamatan SMK Taruna Bhakti</a></div>
+        <br><br>
         <nav class="nav nav-tabs flex-column flex-sm-row mt-1">
             @foreach ($jurusan as $key => $item)
                 <a class="flex-sm-fill text-sm-center nav-link {{ $key == 0 ? 'active' : '' }}" aria-current="page"
@@ -558,6 +560,21 @@
 
     <!-- Template Main JS File -->
     <script src="{{ asset('template/assets/js/main.js') }}"></script>
+
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+        <script>
+        //message with toastr
+        @if(session()->has('success'))
+        
+            toastr.success('{{ session('success') }}', 'BERHASIL!'); 
+
+        @elseif(session()->has('error'))
+
+            toastr.error('{{ session('error') }}', 'GAGAL!'); 
+            
+        @endif
+    </script>
 </body>
 
 </html>

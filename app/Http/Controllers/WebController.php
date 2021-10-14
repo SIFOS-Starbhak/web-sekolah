@@ -65,6 +65,7 @@ class WebController extends Controller
         return view('kesiswaan', compact('settings', 'kegiatan_osis'));
     }
 
+    
     public function sarpras()
     {
         $categories = CategorySarpra::all();
@@ -74,7 +75,15 @@ class WebController extends Controller
         
         return view('sarpras', compact('settings', 'categories', 'content', 'gallery'));
     }
-
+    public function registalum()
+    {
+        
+        
+        $settings = Setting::all();
+        
+        
+        return view('registalum', compact('settings'));
+    }
     public function category(Category $category)
     {
         $settings = Setting::all();

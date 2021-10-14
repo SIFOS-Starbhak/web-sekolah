@@ -2,6 +2,7 @@
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\WebController;
+use App\Http\Controllers\RegistalumController;
 use App\Models\Post;
 use App\Models\Kela;
 use App\Models\User;
@@ -58,6 +59,12 @@ Route::get('/sarpras', function () {
     $settings = App\Models\Setting::all();
     return view('sarpras', compact('settings'));
 });
+Route::get('/registalum', function () {
+    $settings = App\Models\Setting::all();
+    return view('/registalum', compact('settings'));
+});
+// Route::get('/registalum',[RegistalumController::class,'store']);
+// Route::get('/registalum',[RegistalumController::class,'create']);
 Route::get('/kesiswaan', 'WebController@kesiswaan');
 Route::get('/hubin', 'HubinController@index');
 
