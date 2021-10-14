@@ -5,12 +5,11 @@
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 
-    <title>SMK Taruna Bhakti - Our Quality Ask be Different</title>
+
     <meta content="" name="description" />
     <meta content="" name="keywords" />
 
     <!-- Favicons -->
-
     <link href="{{ asset('favicon.ico') }}" rel="icon" />
 
     <link href="{{ asset('template/assets/img/apple-touch-icon.png') }}" rel="apple-touch-icon" />
@@ -82,32 +81,56 @@
         <!-- ======= Counts Section ======= -->
         <!-- Carousel -->
 
-        @include('template.carousel')
+        <div id="carouselExampleIndicators" class="carousel slide carosel" data-bs-ride="carousel">
+            <div class="carousel-inner pt-4">
+                @foreach ($news as $key => $artikel)
+                    <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
+                        <div class=" container text-white mb-5">
+                            <div class="row counters">
+                                <div class="col-md-4 judul">
+                                    <h2 style="color: white;">{{ $artikel->title }}</h2>
+                                </div>
+                                <div class="col-md-4">
+                                    <p style="font-weight: 100" class="mt-2 isi">{{ $artikel->excerpt }}</p>
+                                </div>
+                                <div class="col-md-4 text-center tombol">
+                                    <a href="/showartikel/{{ $artikel->slug }}"
+                                        style="background-color: #e39b0d; border-radius: 50px"
+                                        class="btn  text-center fw-bold text-white pe-5 ps-5 mt-4">Selengkapnya</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+                <div class="carousel-indicators skipback">
+                    @foreach ($news as $key => $item)
+                        <button type="button" data-bs-target="#carouselExampleIndicators"
+                            data-bs-slide-to="{{ $key }}" class="{{ $key == 0 ? 'active' : '' }}"
+                            aria-current="true" aria-label="Slide {{ $loop->iteration }}"></button>
+                    @endforeach
+                </div>
+            </div>
+        </div>
 
         <!-- End Carousel -->
         <!-- End Counts Section -->
 
         <!-- ======= About Section ======= -->
-        <section id="about" class="about" style="background-color: #d7efff; font-family: 'Poppins', sans-serif">
+        <section id="about" class="about"
+            style="background-color: #d7efff; font-family: 'Poppins', sans-serif">
             <div class="container" data-aos="fade-up">
                 <div class="row">
-                    <div class="col-lg-6 col-md-6 order-1 order-lg-2 text-end" data-aos="fade-left" data-aos-delay="100">
-                        @foreach ($settings as $item)
-                            @if ($item->display_name == 'Image Content')
-                                <img src="{{ asset('storage/' . $item->value) }}" class="img-fluid whystarbak" alt=""
-                                    style="height: 430px; width: 430px; border-radius: 20px; margin-left: auto" />
-                            @endif
-                        @endforeach
-                    </div>
-                    <div class="col-lg-6 col-md-6 pt-4 pt-lg-0 order-2 order-lg-1 content">
-                        @foreach ($settings as $item)
-                            @if ($item->display_name == 'Title Content')
-                                <h3>{{ $item->value }}</h3>
-                            @elseif( $item->display_name == 'Content' )
-                                <p style="font-size: 20px">{!! $item->value !!}</p>
-                            @endif
-                        @endforeach
-                    </div>
+                    @foreach ($content as $item)
+                        <div class="col-lg-6 col-md-6 order-1 order-lg-2 text-end" data-aos="fade-left"
+                            data-aos-delay="100">
+                            <img src="{{ asset('storage/' . $item->image) }}" class="img-fluid whystarbak" alt=""
+                                style="height: 430px; width: 430px; border-radius: 20px; margin-left: auto" />
+                        </div>
+                        <div class="col-lg-6 col-md-6 pt-4 pt-lg-0 order-2 order-lg-1 content">
+                            <h3>{{ $item->title }}</h3>
+                            <p style="font-size: 20px">{!! $item->body !!}</p>
+                        </div>
+                    @endforeach
                 </div>
             </div>
         </section>
@@ -122,12 +145,14 @@
                     </div>
                     <br />
                     <div>
-                        <p>
-                            Protokol Kesehatan di Lingkungan Sekolah
-                            <button type="button" class="btn" style="color: white" data-bs-toggle="modal"
-                                data-bs-target="#exampleModal"><i class="far fa-arrow-alt-circle-right"
-                                    style="font-size: 25px"></i>
-                        </p>
+                        @foreach ($home as $img)
+                            <p>
+                                {{ $img->title }}
+                                <button type="button" class="btn" style="color: white" data-bs-toggle="modal"
+                                    data-bs-target="#exampleModal"><i class="far fa-arrow-alt-circle-right"
+                                        style="font-size: 25px"></i>
+                            </p>
+                        @endforeach
                     </div>
                 </div>
             </div>
@@ -161,7 +186,6 @@
                     @endif
                 @endforeach
 
-            </div>
             </div>
         </section>
         <!-- End Why Us Section -->
@@ -292,11 +316,11 @@
     <script src="{{ asset('template/assets/vendor/php-email-form/validate.js') }}"></script>
     <script src="{{ asset('template/assets/vendor/purecounter/purecounter.js') }}"></script>
     <script src="{{ asset('template/assets/vendor/swiper/swiper-bundle.min.js') }}"></script>
-    <script src="jquery.min.js"></script>
-    <script src="owlcarousel/owl.carousel.min.js"></script>
 
     <!-- Template Main JS File -->
     <script src="{{ asset('template/assets/js/main.js') }}"></script>
+    <script src="jquery.min.js"></script>
+    <script src="owlcarousel/owl.carousel.min.js"></script>
     <script>
         //default settings:
         $('.owl-carousel').owlCarousel({
@@ -323,6 +347,7 @@
                             items: 4
                         }
                     }
+        })
     </script>
 </body>
 

@@ -133,12 +133,6 @@ ul {
     color: #025a8e;
 }
 
-@media (max-width: 767px) {
-    .skipback {
-        margin-bottom: 30%;
-    }
-}
-
 @media (max-width: 768px) {
     .isi {
         font-size: 12px;
@@ -148,15 +142,6 @@ ul {
     .judul {
         padding: 0 20px;
         text-align: center;
-    }
-
-    .tombol {
-        padding-bottom: 20px;
-    }
-
-    .carosel {
-        height: 270px;
-        margin-bottom: 0;
     }
 
     .kekanan {
@@ -173,15 +158,6 @@ ul {
 @media (max-width: 768px) {
     .judulcarousel {
         padding-right: 10%;
-    }
-
-    .isicarousel {
-        margin-left: 10%;
-        padding-right: 10%;
-    }
-
-    .tombolcarousel {
-        margin-top: -5%;
     }
 }
 

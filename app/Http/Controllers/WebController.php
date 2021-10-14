@@ -20,8 +20,8 @@ class WebController extends Controller
 {
     public function index()
     {
-        $home = Page::all()->where('id', '20');
-        $content = Page::all()->where('category_id', '8');
+        $home = Page::all()->where('category_id', '9')->where('status', 'ACTIVE');
+        $content = Page::all()->where('category_id', '8')->where('status', 'ACTIVE');
         $news = Post::all()->where('status','PUBLISHED')->where('featured', '1');
         $article = Post::where('status','PUBLISHED')->latest()->paginate(6);
         $settings = Setting::all();
