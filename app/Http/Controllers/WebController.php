@@ -15,7 +15,6 @@ use App\Models\CategorySarpra;
 use App\Models\GallerySarpra;
 use App\Models\Category;
 use App\Models\User;
-use Carbon;
 
 class WebController extends Controller
 {
@@ -68,12 +67,21 @@ class WebController extends Controller
     
     public function sarpras()
     {
-        $categories = CategorySarpra::all();
-        $umu = ContentSarpra::all()->where('category_id', '');
+        $category = CategorySarpra::all();
+        $content = ContentSarpra::all();
         $settings = Setting::all();
-        $gallery = Gallery::all();
+        $samsung = GallerySarpra::all()->where('content_id', '16');
+        $bahasa = GallerySarpra::all()->where('content_id', '2');
+        $kelas = GallerySarpra::all()->where('content_id', '1');
+        $perpus = GallerySarpra::all()->where('content_id', '3');
+        $tkj = GallerySarpra::all()->where('content_id', '4');
+        $mm = GallerySarpra::all()->where('content_id', '5');
+        $rpl = GallerySarpra::all()->where('content_id', '6');
+        $bc = GallerySarpra::all()->where('content_id', '7');
+        $tei = GallerySarpra::all()->where('content_id', '8');
+        $gallery = GallerySarpra::all();
         
-        return view('sarpras', compact('settings', 'categories', 'content', 'gallery'));
+        return view('sarpras', compact('tei', 'bc', 'rpl', 'mm', 'tkj', 'perpus', 'kelas', 'settings', 'category', 'content', 'gallery', 'samsung', 'bahasa'));
     }
     public function registalum()
     {
@@ -94,12 +102,5 @@ class WebController extends Controller
     {
         $settings = Setting::all();
         return view('showauthor', compact('settings', 'user'), ['posts' => $user->post]);
-    }
-
-    public function posted($posted)
-    {
-        $posts = Post::all()->where('created_at', Carbon\Carbon::parse($posted)->isoFormat('YYYY-MM-DD HH:mm:ss'));
-        $settings = Setting::all();
-        return view('showposted', compact('settings', 'posts', 'posted'));
     }
 }

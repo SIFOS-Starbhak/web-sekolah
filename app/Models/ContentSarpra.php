@@ -11,11 +11,11 @@ class ContentSarpra extends Model
 
     public function gallery()
     {
-        return $this->hasMany(GallerySarpra::class);
+        return $this->hasMany(GallerySarpra::class, 'content_id', 'id');
     }
 
     public function category()
     {
-        return $this->belongsTo(CategorySarpra::class);
+        return $this->belongsTo(CategorySarpra::class, 'id', 'name');
     }
 }

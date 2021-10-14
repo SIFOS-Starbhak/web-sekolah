@@ -84,14 +84,6 @@
             <div class="row">
                 @include('components.card')
             </div>
-
-
-
-
-
-
-
-
         </div>
 
         <div class="row">
@@ -1139,7 +1131,60 @@
                 </div>
             </div>
             <div class="row">
-                @include('components.card')
+                <div class="col">
+                    <div class="mb-3">
+                        <h1 class="section-title">WEB App Instansi SMK Taruna Bhakti
+                        </h1>
+                    </div>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-4 d-flex mb-3">
+                                <a href="" class="text-decoration-none" id="microWebPortal">
+                                    <div class="card h-100">
+                                        <div class="bg-success text-white py-5 px-4">
+                                            <i class="fas fa-chalkboard-teacher big-icon"></i>
+                                            <h3>Portal SMK Taruna Bhakti</h3>
+                                        </div>
+                                        <div class="card-body flex-fill">
+                                            <p class="card-text text-dark">Portal yang dapat digunakan untuk
+                                                pembelajaran,
+                                                pengerjaan dan pengiriman Tugas.</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-md-4 d-flex mb-3">
+                                <a href="" class="text-decoration-none" id="sitakols">
+                                    <div class="card h-100">
+                                        <div class="bg-warning text-white py-5 px-4">
+                                            <i class="fas fa-briefcase big-icon"></i>
+                                            <h3>Sitakols SMK Taruna Bhakti</h3>
+                                        </div>
+                                        <div class="card-body flex-fill">
+                                            <p class="card-text text-dark">Sitakols adalah aplikasi yang digunakan
+                                                untuk keperluan surat menyurat dan magang.</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-md-4 d-flex mb-3">
+                                <a href="" class="text-decoration-none" id="refleksi">
+                                    <div class="card h-100">
+                                        <div class="bg-info text-white py-5 px-4">
+                                            <i class="fas fa-clipboard big-icon"></i>
+                                            <h3>Refleksi Mengajar
+                                                SMK Taruna Bhakti</h3>
+                                        </div>
+                                        <div class="card-body flex-fill">
+                                            <p class="card-text text-dark">Refleksi mengajar yang berfungsi untuk
+                                                merekap pembelajaran jarak jauh (PJJ)</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="row">
