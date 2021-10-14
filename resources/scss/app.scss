@@ -2,17 +2,17 @@
 @import "style";
 
 .big-icon {
-    font-size: 144px;
+    font-size: 140px;
     position: absolute;
     top: 30px;
     bottom: 0;
-    left: 0;
+    // left: 0;
     right: 0;
-    display: flex;
-    /* add */
-    justify-content: end;
-    /* add to align horizontal */
-    align-items: start;
+    // display: flex;
+    // /* add */
+    // justify-content: end;
+    // /* add to align horizontal */
+    // align-items: end;
     /* add to align vertical */
     opacity: 50%;
 }

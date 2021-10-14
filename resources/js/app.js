@@ -70,7 +70,8 @@ document.addEventListener("DOMContentLoaded", () => {
             .addEventListener("click", (e) => {
                 e.preventDefault();
                 window.location.href =
-                    "http://localhost/Moodle-starbhak/login/index.php?token=" +
+                    "http://117.102.67.70:8008/moodlev2/login/index.php?token=" +
+                    //"http://localhost/Moodle-starbhak/login/index.php?token=" +
                     window.sessionStorage.getItem("token"); // href seuai sama url
             });
 
@@ -79,7 +80,8 @@ document.addEventListener("DOMContentLoaded", () => {
             e.preventDefault();
             console.log("clicked");
             window.location.href =
-                "http://127.0.0.1:8002/api/prakerin/" +
+                "http://117.102.60.70:8090/api/prakerin/" +
+                //"http://127.0.0.1:8002/api/prakerin/" +
                 window.sessionStorage.getItem("token"); // href seuai sama url
         });
 
@@ -89,6 +91,7 @@ document.addEventListener("DOMContentLoaded", () => {
             console.log("clicked");
             window.location.href =
                 "http://117.102.67.70:8000/authentication/" +
+                //"http://127.0.0.1:8001/authentication/" +
                 window.sessionStorage.getItem("token"); // href seuai sama url
         });
     }
