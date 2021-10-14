@@ -8,6 +8,13 @@ use Illuminate\Http\Request;
 
 class RegistalumController extends Controller
 {
+    
+    public function create()
+{
+    
+    return view('/registalum', [ 'jurusans' => Jurusan::all() ]);
+}
+
 public function store(Request $request)
 {
     $this->validate($request, [
