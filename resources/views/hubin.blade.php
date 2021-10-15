@@ -54,7 +54,7 @@
     <div class="container pt-5">
         <h2 class="text-center"><b>Data Tamatan SMK Taruna Bhakti</b></h2>
         <hr>
-        <div class="col-12 btn btn-primary text-center"><a style="color: white" href="/registalum">Registrasi Data Tamatan SMK Taruna Bhakti</a></div>
+        <a style="color: white" href="/registalum"><button class="col-12 btn btn-primary text-center">Registrasi Data Tamatan SMK Taruna Bhakti</button></a>
         <br><br>
         <nav class="nav nav-tabs flex-column flex-sm-row mt-1">
             @foreach ($jurusan as $key => $item)

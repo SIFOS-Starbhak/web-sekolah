@@ -20,10 +20,6 @@ public function store(Request $request)
     $this->validate($request, [
         'name'     => 'required',
         'tahun_lulus'     => 'required',
-        'nama_perusahaan'     => 'required',
-        'posisi'     => 'required',
-        'tahun_kerja'   => 'required',
-        'penghasilan'   => 'required',
         'categories_alumnis'   => 'required',
         'jurusan'   => 'required',
     ]);
@@ -39,9 +35,10 @@ public function store(Request $request)
         'penghasilan'     => $request->penghasilan,
         'categories_alumnis'     => $request->categories_alumnis,
         'jurusan'     => $request->jurusan,
+        'status'     => $request->status,
         
     ]);
- if($registalum){
+    if($registalum){
         //redirect dengan pesan sukses
         return redirect()->route('hubin')->with(['success' => 'Pengajuan Data Alumni telah Terkirim dan Akan Segera Dikonfirmasi!']);
     }else{
