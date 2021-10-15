@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 
-
+    <title>SMK Taruna Bhakti - Our Quality Ask Be Different</title>
     <meta content="" name="description" />
     <meta content="" name="keywords" />
 
@@ -235,8 +235,8 @@
             </div>
         </section>
 
-        @foreach ($posts as $item)
-            @if ($loop->iteration > 6)
+        @foreach ($posts as $key => $item)
+            @if ($key == 6)
                 <div class="container">
                     <div class="text-center">
                         <a href="/artikel" class="btn btn-outline-primary pe-5 ps-5 mb-5"
@@ -251,10 +251,11 @@
             <div class="container text-center">
                 <div class="row counters kebawah owl-carousel">
                     @foreach ($partners as $partner)
-                        <div class="col-md-3 mt-2">
-                            <img src="{{ asset('storage/' . $partner->logo_perusahaan) }}" alt="" />
-                            <br><br>
-                            <h5 class="fw-bold">{{ $partner->nama_perusahaan }}</h5>
+                        <div class="col-md-3 mt-2 partner"">
+                            <a href=" {{ $partner->link_perusahaan }}">
+                            <img title="{{ $partner->nama_perusahaan }}"
+                                src="{{ asset('storage/' . $partner->logo_perusahaan) }}" alt=""/>
+                            </a>
                         </div>
                     @endforeach
                 </div>
