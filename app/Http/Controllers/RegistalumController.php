@@ -35,7 +35,7 @@ public function store(Request $request)
         'penghasilan'     => $request->penghasilan,
         'categories_alumnis'     => $request->categories_alumnis,
         'jurusan'     => $request->jurusan,
-        'status'     => $request->status,
+        'status'     => 'UNPUBLISHED',
         
     ]);
     if($registalum){

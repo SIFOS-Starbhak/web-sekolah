@@ -173,17 +173,6 @@
                                     </div>
                                 @enderror
                             </div>
-                            <div class="mb-3">
-                                <label for="Status" class="form-label fw-bold">Status</label>
-                                <br>
-                                <input type="checkbox" name="status" value="PUBLISHED" id="">
-                                Published
-                                @error('jurusan')
-                                    <div class="alert alert-danger mt-2">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div>
 
                     </div>
                 </div>
