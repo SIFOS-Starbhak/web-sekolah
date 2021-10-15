@@ -4038,8 +4038,7 @@ document.addEventListener("DOMContentLoaded", function () {
       e.preventDefault();
       var frmData = new FormData(e.target);
       var user = Object.fromEntries(frmData);
-      axios__WEBPACK_IMPORTED_MODULE_0___default().post("/api/login", user) // buat ip public
-      // .post(`http://117.102.67.70:8000/api/login`, user)
+      axios__WEBPACK_IMPORTED_MODULE_0___default().post("/api/login", user) // .post(`http://117.102.67.70:8000/api/login`, user)
       .then(function (res) {
         console.log(res.data);
         window.sessionStorage.setItem("token", res.data.original_token.original.access_token);
@@ -4057,8 +4056,7 @@ document.addEventListener("DOMContentLoaded", function () {
   } else {
     document.getElementById("frmlogout").addEventListener("click", function (e) {
       e.preventDefault();
-      axios__WEBPACK_IMPORTED_MODULE_0___default().post("/api/logout") // buat ip public
-      // .post(`http://117.102.67.70:8000/api/logout`)
+      axios__WEBPACK_IMPORTED_MODULE_0___default().post("/api/logout") // .post(`http://117.102.67.70:8000/api/logout`)
       .then(function (res) {
         console.log(res);
         window.sessionStorage.removeItem("token");

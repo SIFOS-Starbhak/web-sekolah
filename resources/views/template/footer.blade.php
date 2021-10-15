@@ -80,7 +80,7 @@
                     <div class="text-center" style="margin-bottom: -15%">
                         <p style="font-size: 13px; font-weight: lighter">
                             Copyright SMK Taruna Bhakti <br />
-                            Design by Software Engineering SMK Taruna Bhakti
+                            Developed by Software Engineering SMK Taruna Bhakti
                         </p>
                     </div>
                 </section>

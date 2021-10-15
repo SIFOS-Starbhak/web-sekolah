@@ -13,8 +13,8 @@ document.addEventListener("DOMContentLoaded", () => {
             const user = Object.fromEntries(frmData);
 
             axios
+            // buat ip public
                 .post(`/api/login`, user)
-                // buat ip public
                 // .post(`http://117.102.67.70:8000/api/login`, user)
                 .then((res) => {
                     console.log(res.data);
@@ -48,8 +48,8 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("frmlogout").addEventListener("click", (e) => {
             e.preventDefault();
             axios
+            // buat ip public
               .post(`/api/logout`)
-                // buat ip public
                 // .post(`http://117.102.67.70:8000/api/logout`)
                 .then((res) => {
                     console.log(res);
