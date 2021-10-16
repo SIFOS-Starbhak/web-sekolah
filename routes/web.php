@@ -37,6 +37,8 @@ Route::get('/', 'WebController@index');
 // Route::view('/', 'template/main');
 Route::get('/profile', 'WebController@profiletb');
 
+route::get('/gallery', 'WebController@gallery');
+
 Route::get('/artikel', function () {
     $settings = App\Models\Setting::all();
     $article = App\Models\Post::where('status', 'PUBLISHED')->get();
@@ -56,6 +58,8 @@ Route::get('/kontakkami', function () {
     return view('kontakkami', compact('settings'));
 });
 Route::get('/sarpras', 'WebController@sarpras');
+Route::get('/sarpras/sarprassekolah', 'WebController@sarprassekolah');
+
 // Route::get('/registalum', function () {
 //     $settings = App\Models\Setting::all();
 //     return view('/registalum', compact('settings'));

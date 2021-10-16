@@ -73,6 +73,8 @@
                                 Sarana</a></li>
                         <li><a href="/kesiswaan"
                                 class="{{ request()->is('kesiswaan*') ? 'active' : '' }}">Kesiswaan</a>
+                        <li><a href="/gallery"
+                                class="{{ request()->is('gallery*') ? 'active' : '' }}">Gallery</a>
                         </li>
                         <li><a href="/kontakkami" class="{{ request()->is('kontakkami*') ? 'active' : '' }}">Kontak
                                 Kami</a></li>
