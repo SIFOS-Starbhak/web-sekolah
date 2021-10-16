@@ -203,7 +203,7 @@
                         <br>
                         @foreach ($settings as $IG)
                             @if ($IG->display_name == 'Link Instagram')
-                                <p><a href="{{ $IG->value }}" target="_blank" class="sosmed">INSTGARAM</a>
+                                <p><a href="{{ $IG->value }}" target="_blank" class="sosmed">INSTAGRAM</a>
                                 </p>
                             @endif
                         @endforeach

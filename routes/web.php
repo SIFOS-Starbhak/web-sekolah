@@ -50,28 +50,29 @@ Route::get('/artikel', function () {
 // });
 
 Route::get('/kurikulum', 'WebController@kurikulum');
+Route::get('/bkk', 'WebController@bkk');
 
 Route::get('/kontakkami', function () {
     $settings = App\Models\Setting::all();
     return view('kontakkami', compact('settings'));
 });
-    Route::get('/sarpras', 'WebController@sarpras');
-    // Route::get('/registalum', function () {
-    //     $settings = App\Models\Setting::all();
-    //     return view('/registalum', compact('settings'));
-    // });
-    Route::post('/registalum/store',[RegistalumController::class,'store'])->name('store');
-    Route::get('/registalum',[RegistalumController::class,'create']);
-    Route::get('/kesiswaan', 'WebController@kesiswaan');
-    Route::get('/gallery', 'WebController@gallery');
-    Route::get('/hubin', 'HubinController@index')->name('hubin');
+Route::get('/sarpras', 'WebController@sarpras');
+// Route::get('/registalum', function () {
+//     $settings = App\Models\Setting::all();
+//     return view('/registalum', compact('settings'));
+// });
+Route::post('/registalum/store',[RegistalumController::class,'store'])->name('store');
+Route::get('/registalum',[RegistalumController::class,'create']);
+Route::get('/kesiswaan', 'WebController@kesiswaan');
+Route::get('/kurikulum/kurikulumguru', 'WebController@kurikulumguru');
+Route::get('/kurikulum/kurikulumsmktb', 'WebController@kurikulumsmktb');
+Route::get('/hubin', 'HubinController@index')->name('hubin');
 
-    Route::get('/kurikulum/{kategori:slug}', 'WebController@fotoguru');
-    Route::get('/kesiswaan/{category:slug}', 'WebController@kesiswaan_menu');
+Route::get('/kurikulum/{kategori:slug}', 'WebController@fotoguru');
 
-    Route::get('/category/{category:slug}', 'WebController@category');
+Route::get('/category/{category:slug}', 'WebController@category');
 
-    Route::get('/{id}', function ($id) {
+Route::get('/{id}', function ($id) {
     // dd($id);
     $articleShow = App\Models\Post::where('slug', $id)->first();
     // dd($articleShow->author_id);
