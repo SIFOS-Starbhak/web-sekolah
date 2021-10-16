@@ -1,5 +1,5 @@
 @extends('template.app')
-@section('title', 'Hubin')
+@section('title', 'Sarana Pra sarana')
 @section('main')
     <div class="container-fluid pt-5">
         <nav class="nav nav-tabs flex-column flex-sm-row mt-1">

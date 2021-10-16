@@ -1,5 +1,5 @@
 @extends('template.app')
-@section('title', 'Hubin')
+@section('title', 'Kesiswaan')
 @section('main')
     <div class="container mt-5" data-aos="fade-up">
         {!! $category->body !!}

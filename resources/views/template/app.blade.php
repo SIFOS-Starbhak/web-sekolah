@@ -110,8 +110,7 @@
             <nav id="navbar" class="navbar order-last order-lg-0" style="margin-left: auto">
                 <ul>
                     {{-- <li><a href="/" class="{{ request()->is('/*') ? 'active' : '' }}">Home</a></li> --}}
-                    <li><a href="/profile" class="{{ request()->is('profile*') ? 'active' : '' }}">Profile</a>
-                    </li>
+                    
                     <li><a href="/kurikulum"
                             class="{{ request()->is('kurikulum*') ? 'active' : '' }}">Kurikulum</a>
                     </li>
@@ -123,6 +122,9 @@
                     <li><a href="/kesiswaan"
                             class="{{ request()->is('kesiswaan*') ? 'active' : '' }}">Kesiswaan</a>
                     </li>
+                    <li><a href="/bkk" class="{{ request()->is('bkk*') ? 'active' : '' }}">BKK</a></li>
+                    <li><a href="/programkeahlian" class="{{ request()->is('programkeahlian*') ? 'active' : '' }}">Program Keahlian</a></li>
+                    <li><a href="/galery" class="{{ request()->is('galery*') ? 'active' : '' }}">Galery</a></li>
                     <li><a href="/kontakkami" class="{{ request()->is('kontakkami*') ? 'active' : '' }}">Kontak
                             Kami</a></li>
                     <li><a href="{{ route('login') }}" target="_blank" class="btn-get-started active">Login</a>
