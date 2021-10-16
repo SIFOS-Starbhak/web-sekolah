@@ -34,6 +34,6 @@
                 <h2>{{ $item->value }}</h2>
             @endif
         @endforeach
-        
+        <a href="/profile" class="btn-get-started">Profile</a>
     </div>
 </section>

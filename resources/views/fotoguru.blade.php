@@ -54,7 +54,7 @@
     @include('template.background')
 
     <div class="container mt-5 mb-5">
-        <a href="/kurikulum" class="col-12 mb-2" style="font-size: 17px;"><i class="fas fa-arrow-left"></i> Kembali</a>
+        <a href="/kurikulumguru" class="col-12 mb-2" style="font-size: 17px;"><i class="fas fa-arrow-left"></i> Kembali</a>
         <section class="our-webcoderskull padding-lg">
             <div class="container">
                 <div class="row heading heading-icon">
