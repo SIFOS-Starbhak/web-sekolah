@@ -5,11 +5,12 @@
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 
-
+    <title>Kurikulum - SMK Taruna Bhakti</title>
     <meta content="" name="description" />
     <meta content="" name="keywords" />
 
     <!-- Favicons -->
+
     <link href="{{ asset('favicon.ico') }}" rel="icon" />
 
     <link href="{{ asset('template/assets/img/apple-touch-icon.png') }}" rel="apple-touch-icon" />
@@ -44,36 +45,36 @@
 </head>
 
 <body>
-    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner pt-4">
-            @foreach ($news as $key => $artikel)
-                <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
-                    <div class=" container text-white mb-5">
-                        <div class="row counters">
-                            <div class="col-md-4 judul">
-                                <h2 style="color: white;">{{ $artikel->title }}</h2>
-                            </div>
-                            <div class="col-md-4">
-                                <p style="font-weight: 100" class="mt-2 isi">{{ $artikel->excerpt }}</p>
-                            </div>
-                            <div class="col-md-4 text-center tombol">
-                                <a href="/showartikel/{{ $artikel->slug }}"
-                                    style="background-color: #e39b0d; border-radius: 50px"
-                                    class="btn  text-center fw-bold text-white pe-5 ps-5 mt-4">Selengkapnya</a>
+    @include('template.navbar')
+    @include('template.background')
+    <div class="container" data-aos="fade-up">
+    <div class="row card-group " data-aos="zoom-in" data-aos-delay="100">
+
+        <section id="popular-courses" class="courses">
+            <div class="container" data-aos="fade-up">
+                <div class="d-flex justify-content-center row flex-wrap" data-aos="zoom-in" data-aos-delay="100" >
+                    @foreach ($cardbkk as $fg)
+                        <div class="col-lg-4 mb-4" style="width: 300px">
+                            <div class="course-item shadow">
+                                <img src="{{ asset('storage/' . $fg->image) }}" class="img-fluid" alt="..."
+                                    style="width:100%;height:250px;" />
+                                <div class="course-content mt-3">
+                                    <h3><a href="/bkk{{ $fg->slug }}">{{ $fg->title }}</a>
+                                    </h3>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    @endforeach
                 </div>
-            @endforeach
-            <div class="carousel-indicators skipback">
-                @foreach ($news as $key => $item)
-                    <button type="button" data-bs-target="#carouselExampleIndicators"
-                        data-bs-slide-to="{{ $key }}" class="{{ $key == 0 ? 'active' : '' }}"
-                        aria-current="true" aria-label="Slide {{ $loop->iteration }}"></button>
-                @endforeach
             </div>
-        </div>
+        </section>
+
     </div>
+    </div>
+
+
+    @include('template.footer')
+    <!-- Vendor JS Files -->
     <script src="{{ asset('template/assets/vendor/aos/aos.js') }}"></script>
     <script src="{{ asset('template/assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('template/assets/vendor/php-email-form/validate.js') }}"></script>

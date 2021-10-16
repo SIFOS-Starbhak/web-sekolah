@@ -55,21 +55,46 @@ class WebController extends Controller
         $settings = Setting::all();
         return view('fotoguru', compact('foto', 'settings', 'kategori'));
     }
+    public function kurikulumguru()
+    {
+        $settings = Setting::all();
+        $fotoguru = Kategori::all();
+        return view('kurikulumguru', compact('settings','fotoguru'));
+    }
+    public function kurikulumsmktb()
+    {
+        $settings = Setting::all();
+        $struktur = Page::where('id', '17')->get(['body', 'title']);
+        return view('kurikulumsmktb', compact('settings','struktur'));
+    }
 
     public function kurikulum()
     {
         $settings = Setting::all();
         $struktur = Page::where('id', '17')->get(['body', 'title']);
         $kompetensi = Page::where('id', '16')->get(['body', 'title']);
-        $fotoguru = Kategori::all();
-        return view('kurikulum', compact('settings', 'struktur', 'kompetensi', 'fotoguru'));
+        $fotoguru = Kategori::all();    
+        $cardkurikulum = Page::where('id', '22')->orWhere('id', '23')->orWhere('id', '24')->get();
+        return view('kurikulum', compact('settings', 'struktur', 'kompetensi', 'fotoguru', 'cardkurikulum'));
+    }
+    public function bkk()
+    {
+        $settings = Setting::all();
+        $cardbkk = Page::where('id', '25')->orWhere('id', '26')->get();
+        return view('bkk', compact('settings','cardbkk'));
     }
 
     public function kesiswaan()
     {
         $settings = Setting::all();
-        $kegiatan_osis = Page::where('category_id', '3')->get(['body', 'title']);
-        return view('kesiswaan', compact('settings', 'kegiatan_osis'));
+        $kesiswaans = Page::where('category_id', '3')->get(['title', 'slug', 'image']);
+        return view('kesiswaan', compact('settings', 'kesiswaans'));
+    }
+
+    public function kesiswaan_menu(Page $category)
+    {
+        $settings = Setting::all();
+        return view('kesiswaanmenu', compact('settings', 'category'));
     }
 
     
