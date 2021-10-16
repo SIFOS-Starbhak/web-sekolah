@@ -5,11 +5,12 @@
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 
-    <title>Mentor Bootstrap Template - Index</title>
+    <title>Kurikulum - SMK Taruna Bhakti</title>
     <meta content="" name="description" />
     <meta content="" name="keywords" />
 
     <!-- Favicons -->
+
     <link href="{{ asset('favicon.ico') }}" rel="icon" />
 
     <link href="{{ asset('template/assets/img/apple-touch-icon.png') }}" rel="apple-touch-icon" />
@@ -44,50 +45,36 @@
 </head>
 
 <body>
-    <footer class="counts section-bg" style="background-color: #095b90;">
-        <div class="container text-white">
-            <div class="row counters mt-4">
-                <div class="col-md-2" style="font-family: poppins">
-                    <img src="{{ asset('template/assets/img/logotb.png') }}" alt=""
-                        style="width: 95px; height: 95px" />
-                </div>
-                <div class="col-md-4 mt-3">
-                    <p style="font-size: 20px">
-                        <b>
-                            YAYASAN SETYA BHAKTI <br />
-                            SMK TARUNA BHAKTI
-                        </b>
-                    </p>
-                    <p style="font-size: 13px; font-weight: lighter">
-                        Jalan Pekapuran Kel.Curug <br />
-                        Kec.Cimanggis , Kota Depok <br />
-                        Propinsi Jawa Barat <br />
-                        <br />
-                        Telpon : (021) 874 4810
-                    </p>
-                </div>
-                <div class="col-md-6 mt-3">
-                    <p style="font-size: 20px"><b> Admission Information</b></p>
-                    <br />
-                    <p style="font-size: 13px; font-weight: lighter">
-                        Email : taruna@smktarunabhakti.net <br />
-                        Format: name, address, phone number, <br />
-                        majors, and description
-                    </p>
-                </div>
-                <hr class="mt-4" style="height: 2.5px" />
-                <section>
-                    <div class="text-center" style="margin-bottom: -15%">
-                        <p style="font-size: 13px; font-weight: lighter">
-                            Copyright SMK Taruna Bhakti <br />
-                            Developed by Software Engineering SMK Taruna Bhakti
-                        </p>
-                    </div>
-                </section>
-            </div>
-        </div>
-    </footer>
+    @include('template.navbar')
+    @include('template.background')
+    <div class="container" data-aos="fade-up">
+    <div class="row card-group " data-aos="zoom-in" data-aos-delay="100">
 
+        <section id="popular-courses" class="courses">
+            <div class="container" data-aos="fade-up">
+                <div class="d-flex justify-content-center row flex-wrap" data-aos="zoom-in" data-aos-delay="100" >
+                    @foreach ($cardbkk as $fg)
+                        <div class="col-lg-4 mb-4" style="width: 300px">
+                            <div class="course-item shadow">
+                                <img src="{{ asset('storage/' . $fg->image) }}" class="img-fluid" alt="..."
+                                    style="width:100%;height:250px;" />
+                                <div class="course-content mt-3">
+                                    <h3><a href="/bkk{{ $fg->slug }}">{{ $fg->title }}</a>
+                                    </h3>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+        </section>
+
+    </div>
+    </div>
+
+
+    @include('template.footer')
+    <!-- Vendor JS Files -->
     <script src="{{ asset('template/assets/vendor/aos/aos.js') }}"></script>
     <script src="{{ asset('template/assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('template/assets/vendor/php-email-form/validate.js') }}"></script>

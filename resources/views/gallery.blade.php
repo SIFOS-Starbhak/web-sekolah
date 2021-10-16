@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 
-
+    <title>SMK Taruna Bhakti - Our Quality Ask Be Different</title>
     <meta content="" name="description" />
     <meta content="" name="keywords" />
 
@@ -41,39 +41,43 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
+    <style>
+        .sosmed {
+            color: white;
+            font-weight: bold;
+        }
+
+        .sosmed:hover {
+            text-decoration: underline 2px;
+            color: #2689c9;
+        }
+
+        .artikel {
+            color: white;
+            font-weight: bold;
+        }
+
+        .artikel:hover {
+            text-decoration: underline 2px;
+        }
+
+    </style>
 </head>
 
 <body>
-    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner pt-4">
-            @foreach ($news as $key => $artikel)
-                <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
-                    <div class=" container text-white mb-5">
-                        <div class="row counters">
-                            <div class="col-md-4 judul">
-                                <h2 style="color: white;">{{ $artikel->title }}</h2>
-                            </div>
-                            <div class="col-md-4">
-                                <p style="font-weight: 100" class="mt-2 isi">{{ $artikel->excerpt }}</p>
-                            </div>
-                            <div class="col-md-4 text-center tombol">
-                                <a href="/showartikel/{{ $artikel->slug }}"
-                                    style="background-color: #e39b0d; border-radius: 50px"
-                                    class="btn  text-center fw-bold text-white pe-5 ps-5 mt-4">Selengkapnya</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            @endforeach
-            <div class="carousel-indicators skipback">
-                @foreach ($news as $key => $item)
-                    <button type="button" data-bs-target="#carouselExampleIndicators"
-                        data-bs-slide-to="{{ $key }}" class="{{ $key == 0 ? 'active' : '' }}"
-                        aria-current="true" aria-label="Slide {{ $loop->iteration }}"></button>
-                @endforeach
-            </div>
-        </div>
-    </div>
+    
+    <!-- ======= Header ======= -->
+
+    {{-- <header id="header" class="fixed-top"> --}}
+        @include('template.navbar')
+        {{-- </header> --}}
+    
+        <!-- End Header -->
+    
+        <!-- ======= Hero Section ======= -->
+        @include('template.background')
+        <!-- End Hero -->
+    
     <script src="{{ asset('template/assets/vendor/aos/aos.js') }}"></script>
     <script src="{{ asset('template/assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('template/assets/vendor/php-email-form/validate.js') }}"></script>
@@ -82,6 +86,8 @@
 
     <!-- Template Main JS File -->
     <script src="{{ asset('template/assets/js/main.js') }}"></script>
+    <script src="jquery.min.js"></script>
+    <script src="owlcarousel/owl.carousel.min.js"></script>
 </body>
 
 </html>
