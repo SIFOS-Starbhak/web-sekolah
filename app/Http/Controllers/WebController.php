@@ -15,6 +15,7 @@ use App\Models\CategorySarpra;
 use App\Models\GallerySarpra;
 use App\Models\Category;
 use App\Models\User;
+use App\Models\Navbar;
 
 class WebController extends Controller
 {
@@ -27,27 +28,31 @@ class WebController extends Controller
         $posts = Post::all()->where('status','PUBLISHED');
         $settings = Setting::all();
         $partners = Partner::all();
-        return view('home', compact('posts', 'content', 'news', 'settings', 'article','partners', 'home'));
+        $navbar = Navbar::all();
+        return view('home', compact('navbar', 'navbar', 'posts', 'content', 'news', 'settings', 'article','partners', 'home'));
     }
 
     public function profiletb()
     {
         $pages = Page::all()->where('category_id', '7')->where('status', 'ACTIVE');
         $settings = Setting::all();
-        return view('profile', compact('settings', 'pages'));
+        $navbar = Navbar::all();
+        return view('profile', compact('navbar', 'settings', 'pages'));
     }
 
     public function kurikulumtb()
     {
         $struktur = DB::table('posts')->find(12);
-        return view('kurikulum', compact('struktur'));
+        $navbar = Navbar::all();
+        return view('kurikulum', compact('navbar', 'struktur'));
     }
 
     public function fotoguru(Kategori $kategori)
     {
         $foto = Gallery::all()->where('kategori_guru', $kategori->id);
         $settings = Setting::all();
-        return view('fotoguru', compact('foto', 'settings', 'kategori'));
+        $navbar = Navbar::all();
+        return view('fotoguru', compact('navbar', 'foto', 'settings', 'kategori'));
     }
 
     public function kurikulum()
@@ -56,14 +61,16 @@ class WebController extends Controller
         $struktur = Page::where('id', '17')->get(['body', 'title']);
         $kompetensi = Page::where('id', '16')->get(['body', 'title']);
         $fotoguru = Kategori::all();
-        return view('kurikulum', compact('settings', 'struktur', 'kompetensi', 'fotoguru'));
+        $navbar = Navbar::all();
+        return view('kurikulum', compact('navbar', 'settings', 'struktur', 'kompetensi', 'fotoguru'));
     }
 
     public function kesiswaan()
     {
         $settings = Setting::all();
         $kegiatan_osis = Page::where('category_id', '3')->get(['body', 'title']);
-        return view('kesiswaan', compact('settings', 'kegiatan_osis'));
+        $navbar = Navbar::all();
+        return view('kesiswaan', compact('navbar', 'settings', 'kegiatan_osis'));
     }
 
     
@@ -82,27 +89,33 @@ class WebController extends Controller
         $bc = GallerySarpra::all()->where('content_id', '7');
         $tei = GallerySarpra::all()->where('content_id', '8');
         $gallery = GallerySarpra::all();
-        
-        return view('sarpras', compact('tei', 'bc', 'rpl', 'mm', 'tkj', 'perpus', 'kelas', 'settings', 'category', 'content', 'gallery', 'samsung', 'bahasa'));
+        $navbar = Navbar::all();
+        return view('sarpras', compact('navbar', 'tei', 'bc', 'rpl', 'mm', 'tkj', 'perpus', 'kelas', 'settings', 'category', 'content', 'gallery', 'samsung', 'bahasa'));
     }
     public function registalum()
     {
-        
-        
         $settings = Setting::all();
-        
-        
-        return view('registalum', compact('settings'));
+        $navbar = Navbar::all();
+        return view('registalum', compact('navbar', 'settings'));
     }
     public function category(Category $category)
     {
         $settings = Setting::all();
-        return view('showcategory', compact('settings', 'category'), ['posts' => $category->post]);
+        return view('showcategory', compact('navbar', 'settings', 'category'), ['posts' => $category->post]);
     }
 
     public function author(User $user)
     {
         $settings = Setting::all();
-        return view('showauthor', compact('settings', 'user'), ['posts' => $user->post]);
+        $navbar = Navbar::all();
+        return view('showauthor', compact('navbar', 'settings', 'user'), ['posts' => $user->post]);
+    }
+
+    public function menucard(Navbar $menu)
+    {
+        $page = Page::all()->where('category_id', $menu);
+        $navbar = Navbar::all();
+        $settings = Setting::all();
+        return view('menu', compact('page', 'settings', 'navbar'));
     }
 }

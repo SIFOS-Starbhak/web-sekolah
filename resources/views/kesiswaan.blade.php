@@ -45,21 +45,22 @@
 
     <div class="container mt-5 mb-5">
         <nav>
+            @foreach ($kegiatan_osis as $key => $item)
             <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                <button class="nav-link active fw-bold" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#osis"
-                    type="button" role="tab" aria-controls="nav-home" aria-selected="true">Kegiatan OSIS</button>
+                <button class="nav-link fw-bold {{ ($key == 0) ? 'active' : '' }}" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#{{ $item->slug }}"
+                    type="button" role="tab" aria-controls="nav-home" aria-selected="true">{{ $item->title }}</button>
 
             </div>
+            @endforeach
         </nav>
         <div class="tab-content" id="nav-tabContent">
-            <div class="tab-pane fade show active" id="osis" role="tabpanel" aria-labelledby="nav-home-tab">
+            @foreach ($kegiatan_osis as $key => $item)
+            <div class="tab-pane fade show {{ ($key == 0) ? 'active' : '' }}" id="osis" role="tabpanel" aria-labelledby="nav-home-tab">
                 <div class="container" data-aos="fade-up">
-                    @foreach ($kegiatan_osis as $ko)
-                        {!! $ko->body !!}
-                    @endforeach
-
+                    {!! $ko->body !!}
                 </div>
             </div>
+            @endforeach
         </div>
     </div>
     </div>

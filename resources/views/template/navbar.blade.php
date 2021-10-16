@@ -63,17 +63,11 @@
                         {{-- <li><a href="/" class="{{ request()->is('/*') ? 'active' : '' }}">Home</a></li> --}}
                         <li><a href="/profile" class="{{ request()->is('profile*') ? 'active' : '' }}">Profile</a>
                         </li>
-                        <li><a href="/kurikulum"
-                                class="{{ request()->is('kurikulum*') ? 'active' : '' }}">Kurikulum</a>
-                        </li>
-                        <li><a href="/hubin" class="{{ request()->is('hubin*') ? 'active' : '' }}">Hubungan
-                                Industri</a>
-                        </li>
-                        <li><a href="/sarpras" class="{{ request()->is('sarpras*') ? 'active' : '' }}">Sarana Pra
-                                Sarana</a></li>
-                        <li><a href="/kesiswaan"
-                                class="{{ request()->is('kesiswaan*') ? 'active' : '' }}">Kesiswaan</a>
-                        </li>
+                        @foreach ($navbar as $item)
+                            <li><a href="/{{ $item->slug }}"
+                                class="{{ request()->is('$item->slug*') ? 'active' : '' }}">{{ $item->name }}</a>
+                            </li>
+                        @endforeach
                         <li><a href="/kontakkami" class="{{ request()->is('kontakkami*') ? 'active' : '' }}">Kontak
                                 Kami</a></li>
                         <li><a href="{{ route('login') }}" target="_blank" class="btn-get-started active">Login</a>

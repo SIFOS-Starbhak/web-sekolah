@@ -49,6 +49,8 @@ Route::get('/artikel', function () {
 //     return view('profile', compact('settings','homefooters'));
 // });
 
+Route::get('/{navbar}', 'WebController@menucard');
+
 Route::get('/kurikulum', 'WebController@kurikulum');
 
 Route::get('/kontakkami', function () {
