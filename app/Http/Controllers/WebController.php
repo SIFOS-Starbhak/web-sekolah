@@ -62,8 +62,14 @@ class WebController extends Controller
     public function kesiswaan()
     {
         $settings = Setting::all();
-        $kegiatan_osis = Page::where('category_id', '3')->get(['body', 'title']);
-        return view('kesiswaan', compact('settings', 'kegiatan_osis'));
+        $kesiswaans = Page::where('category_id', '3')->get(['title', 'slug', 'image']);
+        return view('kesiswaan', compact('settings', 'kesiswaans'));
+    }
+
+    public function kesiswaan_menu(Page $category)
+    {
+        $settings = Setting::all();
+        return view('kesiswaanmenu', compact('settings', 'category'));
     }
 
     
