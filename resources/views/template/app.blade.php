@@ -14,6 +14,11 @@
 
     <link href="{{ asset('template/assets/img/apple-touch-icon.png') }}" rel="apple-touch-icon" />
 
+    {{-- Gallery Carousel --}}
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
     <!-- Google Fonts -->
     <link
         href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
@@ -89,6 +94,80 @@
         text-decoration: underline 2px;
         color: #2689c9;
     }
+    #vpCarousel .carousel-caption h2 {
+        background-color: rgba(192,192,192,0.2);
+        padding: 10px 0;
+        color:darkred;
+    }
+    #vpCarousel .carousel-caption p {
+        background-color: rgba(192,192,192,0.3);
+        padding: 10px 0;
+        color:darkgreen;
+    }
+
+    #vpCarousel .carousel-control.left {
+        background-image: none;
+        width: 54px;
+        height: 54px;
+        top: 50%;
+        left: 20px;
+        margin-top: -27px;
+        line-height: 54px;
+        border: 2px solid #fff;
+        opacity: 1;
+        text-shadow: none;
+        -webkit-transition: all 0.2s ease-in-out 0s;
+        -o-transition: all 0.2s ease-in-out 0s;
+        transition: all 0.2s ease-in-out 0s;
+    }
+    #vpCarousel .carousel-control.right {
+        background-image: none;
+        width: 54px;
+        height: 54px;
+        top: 50%;
+        right: 20px;
+        margin-top: -27px;
+        line-height: 54px;
+        border: 2px solid #fff;
+        opacity: 1;
+        text-shadow: none;
+        -webkit-transition: all 0.2s ease-in-out 0s;
+        -o-transition: all 0.2s ease-in-out 0s;
+        transition: all 0.2s ease-in-out 0s;
+    }
+
+    #vpCarousel .carousel-indicators {
+        bottom: 0;
+        left: 10px;
+        margin-left: 5px;
+        width: 100%;
+    }
+    #vpCarousel .carousel-indicators li {
+        border: medium none;
+        border-radius: 0;
+        float: left;
+        height: 40px;
+        margin-bottom: 5px;
+        margin-left: 0;
+        margin-right: 5px !important;
+        margin-top: 0;
+        width: 76px;
+    }
+    #vpCarousel .carousel-indicators img {
+        border: 2px solid #FFFFFF;
+        float: left;
+        height: 40px;
+        left: 0;
+        width: 76px;
+        opacity: 0.7;
+    }
+    #vpCarousel .carousel-indicators .active img {
+        border: 2px solid #39b3d7;
+        opacity: 1;
+    }
+    #vpCarousel .carousel-indicators li:hover img {
+        opacity: 0.85;
+    }
 
 </style>
 </head>
@@ -124,7 +203,7 @@
                     </li>
                     <li><a href="/bkk" class="{{ request()->is('bkk*') ? 'active' : '' }}">BKK</a></li>
                     <li><a href="/programkeahlian" class="{{ request()->is('programkeahlian*') ? 'active' : '' }}">Program Keahlian</a></li>
-                    <li><a href="/galery" class="{{ request()->is('galery*') ? 'active' : '' }}">Galery</a></li>
+                    <li><a href="/gallery" class="{{ request()->is('gallery*') ? 'active' : '' }}">Gallery</a></li>
                     <li><a href="/kontakkami" class="{{ request()->is('kontakkami*') ? 'active' : '' }}">Kontak
                             Kami</a></li>
                     <li><a href="{{ route('login') }}" target="_blank" class="btn-get-started active">Login</a>

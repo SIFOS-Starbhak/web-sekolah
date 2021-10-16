@@ -38,6 +38,7 @@ Route::get('/', 'WebController@index');
 Route::get('/profile', 'WebController@profiletb');
 
 route::get('/gallery', 'WebController@gallery');
+route::get('/gallery/tahun-2021', 'WebController@gallery21');
 
 Route::get('/artikel', function () {
     $settings = App\Models\Setting::all();
