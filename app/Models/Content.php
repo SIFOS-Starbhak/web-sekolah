@@ -5,12 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Navbar extends Model
+class Content extends Model
 {
     use HasFactory;
 
-    public function page()
+    public function pages()
     {
-        return $this->hasMany(Page::class, 'category_id' ,'id');
+        return $this->belongsTo(Page::class, 'sub_menu');
     }
 }

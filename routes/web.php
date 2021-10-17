@@ -36,48 +36,43 @@ Route::get('/login', function () {
 Route::get('/', 'WebController@index');
 // Route::view('/', 'template/main');
 Route::get('/profile', 'WebController@profiletb');
+Route::get('sarpras/sarana-dan-prasarana-sekolah', 'WebController@sarpras');
+Route::get('sarpras/ruang-pembelajaran-umum', 'WebController@sarpras');
+Route::get('sarpras/ruang-pembelajaran-khusus', 'WebController@sarpras');
+Route::get('sarpras/fasilitas-parkir-kendaraan-siswa', 'WebController@sarpras');
+Route::get('sarpras/mushola-raudhotul-ilmi', 'WebController@sarpras');
+Route::get('sarpras/fasilitas-pendukung', 'WebController@sarpras');
 
-route::get('/gallery', 'WebController@gallery');
-route::get('/gallery/tahun-2021', 'WebController@gallery21');
-route::get('/gallery/tahun-2020', 'WebController@gallery20');
-route::get('/gallery/tahun-2019', 'WebController@gallery19');
-route::get('/gallery/tahun-2018', 'WebController@gallery18');
-route::get('/gallery/tahun-2017', 'WebController@gallery17');
+Route::get('/hubin/data-tamatan', 'HubinController@index')->name('hubin');
+Route::get('/kurikulum/guru-smk-taruna-bhakti', 'WebController@kurikulumguru')->name('hubin');
+
+Route::get('/gallery/{gallery:slug}', 'WebController@galleries');
+// route::get('/gallery', 'WebController@gallery');
+// route::get('/gallery/tahun-2021', 'WebController@gallery21');
+// route::get('/gallery/tahun-2020', 'WebController@gallery20');
+// route::get('/gallery/tahun-2019', 'WebController@gallery19');
+// route::get('/gallery/tahun-2018', 'WebController@gallery18');
+// route::get('/gallery/tahun-2017', 'WebController@gallery17');
 
 Route::get('/artikel', function () {
     $settings = App\Models\Setting::all();
     $article = App\Models\Post::where('status', 'PUBLISHED')->get();
     return view('artikel', compact('settings', 'article'));
 });
-// Route::get('/profile', function () {
-//     $settings = App\Models\Setting::all();
-//     App\Models\Bgcontent::all();
-//     $homefooters = App\Models\Homefooter::all();
-//     return view('profile', compact('settings','homefooters'));
-// });
 
 Route::get('/{menu:slug}', 'WebController@menucard');
 
-// Route::get('/kurikulum', 'WebController@kurikulum');
-// Route::get('/bkk', 'WebController@bkk');
+Route::get('/{nav:slug}/{submenu:slug}', 'WebController@submenu');
 
 Route::get('/kontakkami', function () {
     $settings = App\Models\Setting::all();
     return view('kontakkami', compact('settings'));
 });
-Route::get('/sarpras', 'WebController@sarpras');
-Route::get('/sarpras/sarprassekolah', 'WebController@sarprassekolah');
-
-// Route::get('/registalum', function () {
-//     $settings = App\Models\Setting::all();
-//     return view('/registalum', compact('settings'));
-// });
 Route::post('/registalum/store',[RegistalumController::class,'store'])->name('store');
 Route::get('/registalum',[RegistalumController::class,'create']);
 // Route::get('/kesiswaan', 'WebController@kesiswaan');
-Route::get('/kurikulum/kurikulumguru', 'WebController@kurikulumguru');
+// Route::get('/kurikulum/kurikulumguru', 'WebController@kurikulumguru');
 Route::get('/kurikulum/kurikulumsmktb', 'WebController@kurikulumsmktb');
-// Route::get('/hubin', 'HubinController@index')->name('hubin');
 
 Route::get('/kurikulum/{kategori:slug}', 'WebController@fotoguru');
 

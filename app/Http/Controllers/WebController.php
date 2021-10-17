@@ -18,19 +18,22 @@ use App\Models\Category;
 use App\Models\CategoryNews;
 use App\Models\User;
 use App\Models\Navbar;
+use App\Models\Content;
+use App\Models\Image;
+use App\Models\Video;
 
 class WebController extends Controller
 {
-    public function index(Navbar $navbar)
+    public function index()
     {
         $home = Page::all()->where('category_id', '9')->where('status', 'ACTIVE');
         $content = Page::all()->where('category_id', '8')->where('status', 'ACTIVE');
-        $news = Post::all()->where('status','PUBLISHED')->where('featured', '1');
+        $news = Post::where('status','PUBLISHED')->latest()->paginate(5);
         $article = Post::where('status','PUBLISHED')->latest()->paginate(6);
         $posts = Post::all()->where('status','PUBLISHED');
         $settings = Setting::all();
         $partners = Partner::all();
-        $navbar = Navbar::all();
+        $navbar = Navbar::all()->where('status', 'Active');
         return view('home', compact('navbar', 'navbar', 'posts', 'content', 'news', 'settings', 'article','partners', 'home'));
     }
 
@@ -38,7 +41,7 @@ class WebController extends Controller
     {
         $pages = Page::all()->where('category_id', '7')->where('status', 'ACTIVE');
         $settings = Setting::all();
-        $navbar = Navbar::all();
+        $navbar = Navbar::all()->where('status', 'Active');
         return view('profile', compact('navbar', 'settings', 'pages'));
     }
 
@@ -46,6 +49,7 @@ class WebController extends Controller
     {
         $settings = Setting::all();
         $cardgallery = CategoryNews::all();
+        $navbar = Navbar::all()->where('status', 'Active');
         return view ('gallery', compact('settings', 'cardgallery'));
     }
 
@@ -53,30 +57,35 @@ class WebController extends Controller
     {
         $settings = Setting::all();
         $card2021 = GalleryNews::where('category', '5')->get();
+        $navbar = Navbar::all()->where('status', 'Active');
         return view ('tahun-2021', compact('settings', 'card2021'));
     }
     public function gallery20()
     {
         $settings = Setting::all();
         $card2020 = GalleryNews::where('category', '4')->get();
+        $navbar = Navbar::all()->where('status', 'Active');
         return view ('tahun-2020', compact('settings', 'card2020'));
     }
     public function gallery19()
     {
         $settings = Setting::all();
         $card2019 = GalleryNews::where('category', '3')->get();
+        $navbar = Navbar::all()->where('status', 'Active');
         return view ('tahun-2019', compact('settings', 'card2019'));
     }
     public function gallery18()
     {
         $settings = Setting::all();
         $card2018 = GalleryNews::where('category', '2')->get();
+        $navbar = Navbar::all()->where('status', 'Active');
         return view ('tahun-2018', compact('settings', 'card2018'));
     }
     public function gallery17()
     {
         $settings = Setting::all();
         $card2017 = GalleryNews::where('category', '1')->get();
+        $navbar = Navbar::all()->where('status', 'Active');
         return view ('tahun-2017', compact('settings', 'card2017'));
     }
 
@@ -91,14 +100,16 @@ class WebController extends Controller
     {
         $foto = Gallery::all()->where('kategori_guru', $kategori->id);
         $settings = Setting::all();
-        $navbar = Navbar::all();
+        $navbar = Navbar::all()->where('status', 'Active');
+        
         return view('fotoguru', compact('navbar', 'foto', 'settings', 'kategori'));
     }
     public function kurikulumguru()
     {
         $settings = Setting::all();
         $fotoguru = Kategori::all();
-        return view('kurikulumguru', compact('settings','fotoguru'));
+        $navbar = Navbar::all()->where('status', 'Active');
+        return view('kurikulum', compact('navbar', 'settings', 'fotoguru'));
     }
     public function kurikulumsmktb()
     {
@@ -139,7 +150,6 @@ class WebController extends Controller
     
     public function sarpras()
     {
-        $category = CategorySarpra::all();
         $content = ContentSarpra::all();
         $settings = Setting::all();
         $samsung = GallerySarpra::all()->where('content_id', '16');
@@ -153,7 +163,7 @@ class WebController extends Controller
         $tei = GallerySarpra::all()->where('content_id', '8');
         $gallery = GallerySarpra::all();
         $navbar = Navbar::all();
-        return view('sarpras', compact('navbar', 'tei', 'bc', 'rpl', 'mm', 'tkj', 'perpus', 'kelas', 'settings', 'category', 'content', 'gallery', 'samsung', 'bahasa'));
+        return view('sarpras', compact('navbar', 'tei', 'bc', 'rpl', 'mm', 'tkj', 'perpus', 'kelas', 'settings', 'content', 'gallery', 'samsung', 'bahasa'));
     }
     public function sarprassekolah()
     {
@@ -194,9 +204,27 @@ class WebController extends Controller
 
     public function menucard(Navbar $menu)
     {
-        $page = Page::all()->where('category_id', $menu->id);
+        $page = Page::all()->where('category_id', $menu->id)->where('status', 'ACTIVE');
         $settings = Setting::all();
-        $navbar = Navbar::all();
+        $navbar = Navbar::all()->where('status', 'Active');
         return view('template.menu', compact('menu', 'page', 'settings', 'navbar'));
+    }
+
+    public function submenu($nav, Page $submenu)
+    {
+        $settings = Setting::all();
+        $navbar = Navbar::all()->where('status', 'Active');
+        $contents = Content::all()->where('sub_menu', $submenu->id);
+        return view('submenu', compact('settings', 'navbar', 'nav', 'contents', 'submenu'));
+    }
+
+    public function galleries(Page $gallery)
+    {
+        $image = Image::all();
+        $video = Video::all();
+        $settings = Setting::all();
+        $navbar = Navbar::all()->where('status', 'Active');
+
+        return view('gallery', compact('image', 'video', 'gallery', 'settings', 'navbar'));
     }
 }

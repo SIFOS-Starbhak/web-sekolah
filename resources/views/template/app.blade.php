@@ -39,137 +39,143 @@
     <!-- Font Awesome -->
     <!-- <link href="fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css" /> -->
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
-        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
-        crossorigin="anonymous" />
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
     <!-- =======================================================
 * Template Name: Mentor - v4.5.0
 * Template URL: https://bootstrapmade.com/mentor-free-education-bootstrap-theme/
 * Author: BootstrapMade.com
 * License: https://bootstrapmade.com/license/
 ======================================================== -->
-@foreach ($settings as $item)
-    @if ($item->display_name == 'Fitur Home Page')
-        <style>
-            #hero {
-                width: 100% !important;
-                height: 100% !important;
-                background: url('{{ asset("storage/$item->value") }}') top center;
-                background-size: cover !important;
-                position: relative !important;
-            }
+    @foreach ($settings as $item)
+        @if ($item->display_name == 'Fitur Home Page')
+            <style>
+                #hero {
+                    width: 100% !important;
+                    height: 100% !important;
+                    background: url('{{ asset("storage/$item->value") }}') top center;
+                    background-size: cover !important;
+                    position: relative !important;
+                }
 
-            #hero:before {
-                content: "" !important;
-                background: rgba(0, 0, 0, 0.4) !important;
-                position: absolute !important;
-                bottom: 0 !important;
-                top: 0 !important;
-                left: 0 !important;
-                right: 0 !important;
-            }
+                #hero:before {
+                    content: "" !important;
+                    background: rgba(0, 0, 0, 0.4) !important;
+                    position: absolute !important;
+                    bottom: 0 !important;
+                    top: 0 !important;
+                    left: 0 !important;
+                    right: 0 !important;
+                }
 
-            #hero {
-    background-attachment: fixed;
-}
+                #hero {
+                    background-attachment: fixed;
+                }
 
-        </style>
-    @endif
-@endforeach
-<style>
-    .artikel {
-        color: white;
-        font-weight: bold;
-    }
-
-    .artikel:hover {
-        text-decoration: underline 2px;
-    }
-
-    .sosmed {
+            </style>
+        @endif
+    @endforeach
+    <style>
+        .artikel {
             color: white;
             font-weight: bold;
         }
 
-    .sosmed:hover {
-        text-decoration: underline 2px;
-        color: #2689c9;
-    }
-    #vpCarousel .carousel-caption h2 {
-        background-color: rgba(192,192,192,0.2);
-        padding: 10px 0;
-        color:darkred;
-    }
-    #vpCarousel .carousel-caption p {
-        background-color: rgba(192,192,192,0.3);
-        padding: 10px 0;
-        color:darkgreen;
-    }
+        .artikel:hover {
+            text-decoration: underline 2px;
+        }
 
-    #vpCarousel .carousel-control.left {
-        background-image: none;
-        width: 54px;
-        height: 54px;
-        top: 50%;
-        left: 20px;
-        margin-top: -27px;
-        line-height: 54px;
-        border: 2px solid #fff;
-        opacity: 1;
-        text-shadow: none;
-        -webkit-transition: all 0.2s ease-in-out 0s;
-        -o-transition: all 0.2s ease-in-out 0s;
-        transition: all 0.2s ease-in-out 0s;
-    }
-    #vpCarousel .carousel-control.right {
-        background-image: none;
-        width: 54px;
-        height: 54px;
-        top: 50%;
-        right: 20px;
-        margin-top: -27px;
-        line-height: 54px;
-        border: 2px solid #fff;
-        opacity: 1;
-        text-shadow: none;
-        -webkit-transition: all 0.2s ease-in-out 0s;
-        -o-transition: all 0.2s ease-in-out 0s;
-        transition: all 0.2s ease-in-out 0s;
-    }
+        .sosmed {
+            color: white;
+            font-weight: bold;
+        }
 
-    #vpCarousel .carousel-indicators {
-        bottom: 0;
-        left: 10px;
-        margin-left: 5px;
-        width: 100%;
-    }
-    #vpCarousel .carousel-indicators li {
-        border: medium none;
-        border-radius: 0;
-        float: left;
-        height: 40px;
-        margin-bottom: 5px;
-        margin-left: 0;
-        margin-right: 5px !important;
-        margin-top: 0;
-        width: 76px;
-    }
-    #vpCarousel .carousel-indicators img {
-        border: 2px solid #FFFFFF;
-        float: left;
-        height: 40px;
-        left: 0;
-        width: 76px;
-        opacity: 0.7;
-    }
-    #vpCarousel .carousel-indicators .active img {
-        border: 2px solid #39b3d7;
-        opacity: 1;
-    }
-    #vpCarousel .carousel-indicators li:hover img {
-        opacity: 0.85;
-    }
+        .sosmed:hover {
+            text-decoration: underline 2px;
+            color: #2689c9;
+        }
 
-</style>
+        #vpCarousel .carousel-caption h2 {
+            background-color: rgba(192, 192, 192, 0.2);
+            padding: 10px 0;
+            color: darkred;
+        }
+
+        #vpCarousel .carousel-caption p {
+            background-color: rgba(192, 192, 192, 0.3);
+            padding: 10px 0;
+            color: darkgreen;
+        }
+
+        #vpCarousel .carousel-control.left {
+            background-image: none;
+            width: 54px;
+            height: 54px;
+            top: 50%;
+            left: 20px;
+            margin-top: -27px;
+            line-height: 54px;
+            border: 2px solid #fff;
+            opacity: 1;
+            text-shadow: none;
+            -webkit-transition: all 0.2s ease-in-out 0s;
+            -o-transition: all 0.2s ease-in-out 0s;
+            transition: all 0.2s ease-in-out 0s;
+        }
+
+        #vpCarousel .carousel-control.right {
+            background-image: none;
+            width: 54px;
+            height: 54px;
+            top: 50%;
+            right: 20px;
+            margin-top: -27px;
+            line-height: 54px;
+            border: 2px solid #fff;
+            opacity: 1;
+            text-shadow: none;
+            -webkit-transition: all 0.2s ease-in-out 0s;
+            -o-transition: all 0.2s ease-in-out 0s;
+            transition: all 0.2s ease-in-out 0s;
+        }
+
+        #vpCarousel .carousel-indicators {
+            bottom: 0;
+            left: 10px;
+            margin-left: 5px;
+            width: 100%;
+        }
+
+        #vpCarousel .carousel-indicators li {
+            border: medium none;
+            border-radius: 0;
+            float: left;
+            height: 40px;
+            margin-bottom: 5px;
+            margin-left: 0;
+            margin-right: 5px !important;
+            margin-top: 0;
+            width: 76px;
+        }
+
+        #vpCarousel .carousel-indicators img {
+            border: 2px solid #FFFFFF;
+            float: left;
+            height: 40px;
+            left: 0;
+            width: 76px;
+            opacity: 0.7;
+        }
+
+        #vpCarousel .carousel-indicators .active img {
+            border: 2px solid #39b3d7;
+            opacity: 1;
+        }
+
+        #vpCarousel .carousel-indicators li:hover img {
+            opacity: 0.85;
+        }
+
+    </style>
 </head>
 
 <body>
@@ -190,9 +196,11 @@
                 <ul>
                     {{-- <li><a href="/" class="{{ request()->is('/*') ? 'active' : '' }}">Home</a></li> --}}
                     @foreach ($navbar as $item)
-                    <li><a href="{{ $item->slug }}"
-                            class="{{ request()->is($item->slug . '*') ? 'active' : '' }}">{{ $item->name }}</a>
-                    </li>
+                        {{-- @if (!$item->name == 'Profile' || !$item->name == 'Home' || !$item->name == 'News Home') --}}
+                            <li><a href="/{{ $item->slug }}"
+                                    class="{{ request()->is($item->slug . '*') ? 'active' : '' }}">{{ $item->name }}</a>
+                            </li>
+                        {{-- @endif --}}
                     @endforeach
                     <li><a href="/kontakkami" class="{{ request()->is('kontakkami*') ? 'active' : '' }}">Kontak
                             Kami</a></li>
@@ -208,14 +216,15 @@
         <div class="container position-relative" style="margin-bottom: 10%;" data-aos="zoom-in" data-aos-delay="100">
             @foreach ($settings as $item)
                 @if ($item->display_name == 'Heading')
-    
+
                     <h1>{!! $item->value !!}</h1>
                 @elseif( $item->display_name == 'Sub Heading' )
                     <h2>{{ $item->value }}</h2>
                 @endif
             @endforeach
-            <a href="/profile" class="btn btn-outline-light mt-4" style="padding: 10px 30px 10px 30px; border-radius: 50px">Profile</a>
-            
+            <a href="/profile" class="btn btn-outline-light mt-4"
+                style="padding: 10px 30px 10px 30px; border-radius: 50px">Profile</a>
+
         </div>
     </section>
 

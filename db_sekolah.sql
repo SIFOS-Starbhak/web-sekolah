@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 17 Okt 2021 pada 06.03
--- Versi server: 10.4.21-MariaDB
--- Versi PHP: 8.0.11
+-- Generation Time: Oct 17, 2021 at 06:36 PM
+-- Server version: 10.4.13-MariaDB
+-- PHP Version: 7.4.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `alumnis`
+-- Table structure for table `alumnis`
 --
 
 CREATE TABLE `alumnis` (
@@ -43,7 +43,7 @@ CREATE TABLE `alumnis` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `alumnis`
+-- Dumping data for table `alumnis`
 --
 
 INSERT INTO `alumnis` (`id`, `name`, `tahun_lulus`, `nama_perusahaan`, `posisi`, `tahun_kerja`, `penghasilan`, `created_at`, `updated_at`, `categories_alumnis`, `jurusan`, `status`) VALUES
@@ -68,7 +68,7 @@ INSERT INTO `alumnis` (`id`, `name`, `tahun_lulus`, `nama_perusahaan`, `posisi`,
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `categories`
+-- Table structure for table `categories`
 --
 
 CREATE TABLE `categories` (
@@ -82,7 +82,7 @@ CREATE TABLE `categories` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `categories`
+-- Dumping data for table `categories`
 --
 
 INSERT INTO `categories` (`id`, `parent_id`, `order`, `name`, `slug`, `created_at`, `updated_at`) VALUES
@@ -97,7 +97,7 @@ INSERT INTO `categories` (`id`, `parent_id`, `order`, `name`, `slug`, `created_a
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `categories_alumnis`
+-- Table structure for table `categories_alumnis`
 --
 
 CREATE TABLE `categories_alumnis` (
@@ -110,59 +110,31 @@ CREATE TABLE `categories_alumnis` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `category_news`
+-- Table structure for table `contents`
 --
 
-CREATE TABLE `category_news` (
+CREATE TABLE `contents` (
   `id` int(10) UNSIGNED NOT NULL,
-  `tahun` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `content` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  `image` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `slug` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL
+  `sub_menu` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `category_news`
+-- Dumping data for table `contents`
 --
 
-INSERT INTO `category_news` (`id`, `tahun`, `created_at`, `updated_at`, `image`, `slug`) VALUES
-(1, '2017', '2021-10-16 11:52:26', '2021-10-16 12:06:04', 'category-news\\October2021\\NvsI85gbnVyj91YhQRbj.jpg', 'tahun-2017'),
-(2, '2018', '2021-10-16 11:53:03', '2021-10-16 12:05:49', 'category-news\\October2021\\MOJPGHhzfVCEi0piddzW.jpg', 'tahun-2018'),
-(3, '2019', '2021-10-16 11:53:11', '2021-10-16 12:05:32', 'category-news\\October2021\\R3wKXNN5Ihz07A7YJItu.jpg', 'tahun-2019'),
-(4, '2020', '2021-10-16 11:53:18', '2021-10-16 12:05:14', 'category-news\\October2021\\Gig4vBnwjAUWZFxqXWrQ.jpg', 'tahun-2020'),
-(5, '2021', '2021-10-16 11:53:29', '2021-10-16 12:04:52', 'category-news\\October2021\\fo3IiotWKA8ngF3ugrLx.jpg', 'tahun-2021');
+INSERT INTO `contents` (`id`, `title`, `content`, `created_at`, `updated_at`, `sub_menu`) VALUES
+(1, 'Struktur Kurikulum SMK Taruna Bhakti', '<div class=\"mt-5\">\r\n<p style=\"text-align: center;\"><span style=\"font-size: 18pt;\">STRUKTUR KURIKULUM</span></p>\r\n<p style=\"text-align: center;\"><span style=\"font-size: 18pt;\">SMK TARUNA BHAKTI </span></p>\r\n<p>&nbsp;</p>\r\n<p>BIDANG KEAHIAN : TEKNOLOGI INFORMASI DAN KOMUNIKASI</p>\r\n<p>PROGRAM KEAHLIAN : TEKNIK KOMPUTER DAN INFORMATIKA</p>\r\n<p>PAKET KEAHLIAN : TEKNIK KOMPUTER DAN JARINGAN</p>\r\n<div class=\"kekanan\">\r\n<table class=\"table table-bordered\" style=\"width: 100%;\" border=\"1\" width=\"100%\"><caption>&nbsp;</caption>\r\n<tbody>\r\n<tr>\r\n<td class=\"text-center\" style=\"width: 397px;\" colspan=\"2\" rowspan=\"3\">MATA PELAJARAN</td>\r\n<td style=\"width: 292px;\" colspan=\"6\">KELAS</td>\r\n</tr>\r\n<tr>\r\n<td style=\"width: 96px;\" colspan=\"2\">X</td>\r\n<td style=\"width: 96px;\" colspan=\"2\">XI</td>\r\n<td style=\"width: 96px;\" colspan=\"2\">XII</td>\r\n</tr>\r\n<tr>\r\n<td style=\"width: 47px;\">1</td>\r\n<td style=\"width: 47px;\">2</td>\r\n<td style=\"width: 47px;\">1</td>\r\n<td style=\"width: 47px;\">2</td>\r\n<td style=\"width: 47px;\">1</td>\r\n<td style=\"width: 47px;\">2</td>\r\n</tr>\r\n<tr>\r\n<td style=\"width: 691px;\" colspan=\"8\"><strong>Kelompok A</strong></td>\r\n</tr>\r\n<tr>\r\n<td style=\"width: 47px;\">1</td>\r\n<td style=\"width: 348px;\">Pendidikan Agama dan Budi Pekerti</td>\r\n<td style=\"width: 47px;\">3</td>\r\n<td style=\"width: 47px;\">3</td>\r\n<td style=\"width: 47px;\">3</td>\r\n<td style=\"width: 47px;\">3</td>\r\n<td style=\"width: 47px;\">3</td>\r\n<td style=\"width: 47px;\">3</td>\r\n</tr>\r\n<tr>\r\n<td style=\"width: 47px;\">2</td>\r\n<td style=\"width: 348px;\">Pendidikan Pancasila dan Kewarganegaraan</td>\r\n<td style=\"width: 47px;\">2</td>\r\n<td style=\"width: 47px;\">2</td>\r\n<td style=\"width: 47px;\">2</td>\r\n<td style=\"width: 47px;\">2</td>\r\n<td style=\"width: 47px;\">2</td>\r\n<td style=\"width: 47px;\">2</td>\r\n</tr>\r\n<tr>\r\n<td style=\"width: 47px;\">3</td>\r\n<td style=\"width: 348px;\">Bahasa Indonesia</td>\r\n<td style=\"width: 47px;\">3</td>\r\n<td style=\"width: 47px;\">3</td>\r\n<td style=\"width: 47px;\">3</td>\r\n<td style=\"width: 47px;\">3</td>\r\n<td style=\"width: 47px;\">2</td>\r\n<td style=\"width: 47px;\">2</td>\r\n</tr>\r\n<tr>\r\n<td style=\"width: 47px;\">4</td>\r\n<td style=\"width: 348px;\">Matematika</td>\r\n<td style=\"width: 47px;\">4</td>\r\n<td style=\"width: 47px;\">4</td>\r\n<td style=\"width: 47px;\">4</td>\r\n<td style=\"width: 47px;\">4</td>\r\n<td style=\"width: 47px;\">4</td>\r\n<td style=\"width: 47px;\">4</td>\r\n</tr>\r\n<tr>\r\n<td style=\"width: 47px;\">5</td>\r\n<td style=\"width: 348px;\">Sejarah Indonesia</td>\r\n<td style=\"width: 47px;\">2</td>\r\n<td style=\"width: 47px;\">2</td>\r\n<td style=\"width: 47px;\">2</td>\r\n<td style=\"width: 47px;\">2</td>\r\n<td style=\"width: 47px;\">&ndash;</td>\r\n<td style=\"width: 47px;\">&ndash;</td>\r\n</tr>\r\n<tr>\r\n<td style=\"width: 47px;\">6</td>\r\n<td style=\"width: 348px;\">Bahasa Inggris</td>\r\n<td style=\"width: 47px;\">3</td>\r\n<td style=\"width: 47px;\">3</td>\r\n<td style=\"width: 47px;\">3</td>\r\n<td style=\"width: 47px;\">3</td>\r\n<td style=\"width: 47px;\">3</td>\r\n<td style=\"width: 47px;\">3</td>\r\n</tr>\r\n<tr>\r\n<td style=\"width: 691px;\" colspan=\"8\"><strong>Kelompok B</strong></td>\r\n</tr>\r\n<tr>\r\n<td style=\"width: 47px;\">7</td>\r\n<td style=\"width: 348px;\">Seni Budaya</td>\r\n<td style=\"width: 47px;\">3</td>\r\n<td style=\"width: 47px;\">3</td>\r\n<td style=\"width: 47px;\">&ndash;</td>\r\n<td style=\"width: 47px;\">&ndash;</td>\r\n<td style=\"width: 47px;\">&ndash;</td>\r\n<td style=\"width: 47px;\">&ndash;</td>\r\n</tr>\r\n<tr>\r\n<td style=\"width: 47px;\">8</td>\r\n<td style=\"width: 348px;\">Prakarya dan Kewirausahaan</td>\r\n<td style=\"width: 47px;\">&ndash;</td>\r\n<td style=\"width: 47px;\">&ndash;</td>\r\n<td style=\"width: 47px;\">2</td>\r\n<td style=\"width: 47px;\">2</td>\r\n<td style=\"width: 47px;\">2</td>\r\n<td style=\"width: 47px;\">2</td>\r\n</tr>\r\n<tr>\r\n<td style=\"width: 47px;\">9</td>\r\n<td style=\"width: 348px;\">Pendidikan Jasmani, Olah Raga &amp; Kesehatan</td>\r\n<td style=\"width: 47px;\">2</td>\r\n<td style=\"width: 47px;\">2</td>\r\n<td style=\"width: 47px;\">2</td>\r\n<td style=\"width: 47px;\">2</td>\r\n<td style=\"width: 47px;\">&ndash;</td>\r\n<td style=\"width: 47px;\">&ndash;</td>\r\n</tr>\r\n<tr>\r\n<td style=\"width: 397px;\" colspan=\"2\">Jumlah A Dan B</td>\r\n<td style=\"width: 47px;\">22</td>\r\n<td style=\"width: 47px;\">22</td>\r\n<td style=\"width: 47px;\">21</td>\r\n<td style=\"width: 47px;\">21</td>\r\n<td style=\"width: 47px;\">16</td>\r\n<td style=\"width: 47px;\">16</td>\r\n</tr>\r\n<tr>\r\n<td style=\"width: 691px;\" colspan=\"8\"><strong>Kelompok C (Peminatan)</strong></td>\r\n</tr>\r\n<tr>\r\n<td style=\"width: 691px;\" colspan=\"8\"><strong>C1. Dasar Bidang Keahlian</strong></td>\r\n</tr>\r\n<tr>\r\n<td style=\"width: 47px;\">10</td>\r\n<td style=\"width: 348px;\">Simulasi Digital</td>\r\n<td style=\"width: 47px;\">3</td>\r\n<td style=\"width: 47px;\">3</td>\r\n<td style=\"width: 47px;\">&ndash;</td>\r\n<td style=\"width: 47px;\">&ndash;</td>\r\n<td style=\"width: 47px;\">&ndash;</td>\r\n<td style=\"width: 47px;\">&ndash;</td>\r\n</tr>\r\n<tr>\r\n<td style=\"width: 47px;\">11</td>\r\n<td style=\"width: 348px;\">Fisika</td>\r\n<td style=\"width: 47px;\">4</td>\r\n<td style=\"width: 47px;\">4</td>\r\n<td style=\"width: 47px;\">&ndash;</td>\r\n<td style=\"width: 47px;\">&ndash;</td>\r\n<td style=\"width: 47px;\">&ndash;</td>\r\n<td style=\"width: 47px;\">&ndash;</td>\r\n</tr>\r\n<tr>\r\n<td style=\"width: 47px;\">12</td>\r\n<td style=\"width: 348px;\">Sistem Komputer</td>\r\n<td style=\"width: 47px;\">4</td>\r\n<td style=\"width: 47px;\">4</td>\r\n<td style=\"width: 47px;\">&ndash;</td>\r\n<td style=\"width: 47px;\">&ndash;</td>\r\n<td style=\"width: 47px;\">&ndash;</td>\r\n<td style=\"width: 47px;\">&ndash;</td>\r\n</tr>\r\n<tr>\r\n<td style=\"width: 691px;\" colspan=\"8\"><strong>C2. Dasar Program Keahlian</strong></td>\r\n</tr>\r\n<tr>\r\n<td style=\"width: 47px;\">13</td>\r\n<td style=\"width: 348px;\">Komputer dan Jaringan Dasar</td>\r\n<td style=\"width: 47px;\">10</td>\r\n<td style=\"width: 47px;\">10</td>\r\n<td style=\"width: 47px;\">&ndash;</td>\r\n<td style=\"width: 47px;\">&ndash;</td>\r\n<td style=\"width: 47px;\">&ndash;</td>\r\n<td style=\"width: 47px;\">&ndash;</td>\r\n</tr>\r\n<tr>\r\n<td style=\"width: 47px;\">14</td>\r\n<td style=\"width: 348px;\">Pemrograman Dasar</td>\r\n<td style=\"width: 47px;\">3</td>\r\n<td style=\"width: 47px;\">3</td>\r\n<td style=\"width: 47px;\">&ndash;</td>\r\n<td style=\"width: 47px;\">&ndash;</td>\r\n<td style=\"width: 47px;\">&ndash;</td>\r\n<td style=\"width: 47px;\">&ndash;</td>\r\n</tr>\r\n<tr>\r\n<td style=\"width: 47px;\">15</td>\r\n<td style=\"width: 348px;\">Dasar Design Grafis</td>\r\n<td style=\"width: 47px;\">2</td>\r\n<td style=\"width: 47px;\">2</td>\r\n<td style=\"width: 47px;\">&ndash;</td>\r\n<td style=\"width: 47px;\">&ndash;</td>\r\n<td style=\"width: 47px;\">&ndash;</td>\r\n<td style=\"width: 47px;\">&ndash;</td>\r\n</tr>\r\n<tr>\r\n<td style=\"width: 691px;\" colspan=\"8\"><strong>C3. Paket Keahlian</strong></td>\r\n</tr>\r\n<tr>\r\n<td style=\"width: 47px;\">16</td>\r\n<td style=\"width: 348px;\">Teknologi Infrastruktur Jaringan</td>\r\n<td style=\"width: 47px;\">&ndash;</td>\r\n<td style=\"width: 47px;\">&ndash;</td>\r\n<td style=\"width: 47px;\">8</td>\r\n<td style=\"width: 47px;\">8</td>\r\n<td style=\"width: 47px;\">&ndash;</td>\r\n<td style=\"width: 47px;\">&ndash;</td>\r\n</tr>\r\n<tr>\r\n<td style=\"width: 47px;\">17</td>\r\n<td style=\"width: 348px;\">Rancang Bangun Jaringan</td>\r\n<td style=\"width: 47px;\">&ndash;</td>\r\n<td style=\"width: 47px;\">&ndash;</td>\r\n<td style=\"width: 47px;\">8</td>\r\n<td style=\"width: 47px;\">8</td>\r\n<td style=\"width: 47px;\">9</td>\r\n<td style=\"width: 47px;\">9</td>\r\n</tr>\r\n<tr>\r\n<td style=\"width: 47px;\">18</td>\r\n<td style=\"width: 348px;\">Administrasi Server dan Keamanan Jaringan</td>\r\n<td style=\"width: 47px;\">&ndash;</td>\r\n<td style=\"width: 47px;\">&ndash;</td>\r\n<td style=\"width: 47px;\">8</td>\r\n<td style=\"width: 47px;\">8</td>\r\n<td style=\"width: 47px;\">10</td>\r\n<td style=\"width: 47px;\">10</td>\r\n</tr>\r\n<tr>\r\n<td style=\"width: 47px;\">19</td>\r\n<td style=\"width: 348px;\">Teknologi Layanan Jaringan</td>\r\n<td style=\"width: 47px;\">&ndash;</td>\r\n<td style=\"width: 47px;\">&ndash;</td>\r\n<td style=\"width: 47px;\">&ndash;</td>\r\n<td style=\"width: 47px;\">&ndash;</td>\r\n<td style=\"width: 47px;\">10</td>\r\n<td style=\"width: 47px;\">10</td>\r\n</tr>\r\n<tr>\r\n<td style=\"width: 47px;\">20</td>\r\n<td style=\"width: 348px;\">Pengembangan Produk Kreatif</td>\r\n<td style=\"width: 47px;\">&ndash;</td>\r\n<td style=\"width: 47px;\">&ndash;</td>\r\n<td style=\"width: 47px;\">3</td>\r\n<td style=\"width: 47px;\">3</td>\r\n<td style=\"width: 47px;\">3</td>\r\n<td style=\"width: 47px;\">3</td>\r\n</tr>\r\n<tr>\r\n<td style=\"width: 397px;\" colspan=\"2\">Jumlah C1, C2 Dan C3</td>\r\n<td style=\"width: 47px;\">26</td>\r\n<td style=\"width: 47px;\">26</td>\r\n<td style=\"width: 47px;\">27</td>\r\n<td style=\"width: 47px;\">27</td>\r\n<td style=\"width: 47px;\">32</td>\r\n<td style=\"width: 47px;\">32</td>\r\n</tr>\r\n<tr>\r\n<td style=\"width: 397px;\" colspan=\"2\"><strong>TOTAL</strong></td>\r\n<td style=\"width: 47px;\"><strong>48</strong></td>\r\n<td style=\"width: 47px;\"><strong>48</strong></td>\r\n<td style=\"width: 47px;\"><strong>48</strong></td>\r\n<td style=\"width: 47px;\"><strong>48</strong></td>\r\n<td style=\"width: 47px;\"><strong>48</strong></td>\r\n<td style=\"width: 47px;\"><strong>48</strong></td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n</div>\r\n<p>&nbsp;</p>\r\n<p>BIDANG KEAHLIAN : TEKNOLOGI INFORMASI DAN KOMUNIKASI</p>\r\n<p>PROGRAM KEAHLIAN : TEKNIK KOMPUTER DAN INFORMATIKA</p>\r\n<p>PAKET KEAHLIAN : MULTIMEDIA</p>\r\n<div class=\"kekanan\">\r\n<table class=\"table table-bordered\" style=\"width: 100%; height: 1056px;\" border=\"1\" width=\"100%\"><caption>&nbsp;</caption>\r\n<tbody>\r\n<tr style=\"height: 33px;\">\r\n<td class=\"text-center\" style=\"width: 397px; height: 99px;\" colspan=\"2\" rowspan=\"3\">MATA PELAJARAN</td>\r\n<td style=\"width: 292px; height: 33px;\" colspan=\"6\">KELAS</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"width: 96px; height: 33px;\" colspan=\"2\">X</td>\r\n<td style=\"width: 96px; height: 33px;\" colspan=\"2\">XI</td>\r\n<td style=\"width: 96px; height: 33px;\" colspan=\"2\">XII</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"width: 47px; height: 33px;\">1</td>\r\n<td style=\"width: 47px; height: 33px;\">2</td>\r\n<td style=\"width: 47px; height: 33px;\">1</td>\r\n<td style=\"width: 47px; height: 33px;\">2</td>\r\n<td style=\"width: 47px; height: 33px;\">1</td>\r\n<td style=\"width: 47px; height: 33px;\">2</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"width: 691px; height: 33px;\" colspan=\"8\"><strong>Kelompok A</strong></td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"width: 47px; height: 33px;\">1</td>\r\n<td style=\"width: 348px; height: 33px;\">Pendidikan Agama dan Budi Pekerti</td>\r\n<td style=\"width: 47px; height: 33px;\">3</td>\r\n<td style=\"width: 47px; height: 33px;\">3</td>\r\n<td style=\"width: 47px; height: 33px;\">3</td>\r\n<td style=\"width: 47px; height: 33px;\">3</td>\r\n<td style=\"width: 47px; height: 33px;\">3</td>\r\n<td style=\"width: 47px; height: 33px;\">3</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"width: 47px; height: 33px;\">2</td>\r\n<td style=\"width: 348px; height: 33px;\">Pendidikan Pancasila dan Kewarganegaraan</td>\r\n<td style=\"width: 47px; height: 33px;\">2</td>\r\n<td style=\"width: 47px; height: 33px;\">2</td>\r\n<td style=\"width: 47px; height: 33px;\">2</td>\r\n<td style=\"width: 47px; height: 33px;\">2</td>\r\n<td style=\"width: 47px; height: 33px;\">2</td>\r\n<td style=\"width: 47px; height: 33px;\">2</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"width: 47px; height: 33px;\">3</td>\r\n<td style=\"width: 348px; height: 33px;\">Bahasa Indonesia</td>\r\n<td style=\"width: 47px; height: 33px;\">3</td>\r\n<td style=\"width: 47px; height: 33px;\">3</td>\r\n<td style=\"width: 47px; height: 33px;\">3</td>\r\n<td style=\"width: 47px; height: 33px;\">3</td>\r\n<td style=\"width: 47px; height: 33px;\">2</td>\r\n<td style=\"width: 47px; height: 33px;\">2</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"width: 47px; height: 33px;\">4</td>\r\n<td style=\"width: 348px; height: 33px;\">Matematika</td>\r\n<td style=\"width: 47px; height: 33px;\">4</td>\r\n<td style=\"width: 47px; height: 33px;\">4</td>\r\n<td style=\"width: 47px; height: 33px;\">4</td>\r\n<td style=\"width: 47px; height: 33px;\">4</td>\r\n<td style=\"width: 47px; height: 33px;\">4</td>\r\n<td style=\"width: 47px; height: 33px;\">4</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"width: 47px; height: 33px;\">5</td>\r\n<td style=\"width: 348px; height: 33px;\">Sejarah Indonesia</td>\r\n<td style=\"width: 47px; height: 33px;\">2</td>\r\n<td style=\"width: 47px; height: 33px;\">2</td>\r\n<td style=\"width: 47px; height: 33px;\">2</td>\r\n<td style=\"width: 47px; height: 33px;\">2</td>\r\n<td style=\"width: 47px; height: 33px;\">&ndash;</td>\r\n<td style=\"width: 47px; height: 33px;\">&ndash;</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"width: 47px; height: 33px;\">6</td>\r\n<td style=\"width: 348px; height: 33px;\">Bahasa Inggris</td>\r\n<td style=\"width: 47px; height: 33px;\">3</td>\r\n<td style=\"width: 47px; height: 33px;\">3</td>\r\n<td style=\"width: 47px; height: 33px;\">3</td>\r\n<td style=\"width: 47px; height: 33px;\">3</td>\r\n<td style=\"width: 47px; height: 33px;\">3</td>\r\n<td style=\"width: 47px; height: 33px;\">3</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"width: 691px; height: 33px;\" colspan=\"8\"><strong>Kelompok B</strong></td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"width: 47px; height: 33px;\">7</td>\r\n<td style=\"width: 348px; height: 33px;\">Seni Budaya</td>\r\n<td style=\"width: 47px; height: 33px;\">3</td>\r\n<td style=\"width: 47px; height: 33px;\">3</td>\r\n<td style=\"width: 47px; height: 33px;\">&ndash;</td>\r\n<td style=\"width: 47px; height: 33px;\">&ndash;</td>\r\n<td style=\"width: 47px; height: 33px;\">&ndash;</td>\r\n<td style=\"width: 47px; height: 33px;\">&ndash;</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"width: 47px; height: 33px;\">8</td>\r\n<td style=\"width: 348px; height: 33px;\">Prakarya dan Kewirausahaan</td>\r\n<td style=\"width: 47px; height: 33px;\">&ndash;</td>\r\n<td style=\"width: 47px; height: 33px;\">&ndash;</td>\r\n<td style=\"width: 47px; height: 33px;\">2</td>\r\n<td style=\"width: 47px; height: 33px;\">2</td>\r\n<td style=\"width: 47px; height: 33px;\">2</td>\r\n<td style=\"width: 47px; height: 33px;\">2</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"width: 47px; height: 33px;\">9</td>\r\n<td style=\"width: 348px; height: 33px;\">Pendidikan Jasmani, Olah Raga &amp; Kesehatan</td>\r\n<td style=\"width: 47px; height: 33px;\">2</td>\r\n<td style=\"width: 47px; height: 33px;\">2</td>\r\n<td style=\"width: 47px; height: 33px;\">2</td>\r\n<td style=\"width: 47px; height: 33px;\">2</td>\r\n<td style=\"width: 47px; height: 33px;\">&ndash;</td>\r\n<td style=\"width: 47px; height: 33px;\">&ndash;</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"width: 397px; height: 33px;\" colspan=\"2\">Jumlah A Dan B</td>\r\n<td style=\"width: 47px; height: 33px;\">22</td>\r\n<td style=\"width: 47px; height: 33px;\">22</td>\r\n<td style=\"width: 47px; height: 33px;\">21</td>\r\n<td style=\"width: 47px; height: 33px;\">21</td>\r\n<td style=\"width: 47px; height: 33px;\">16</td>\r\n<td style=\"width: 47px; height: 33px;\">16</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"width: 691px; height: 33px;\" colspan=\"8\"><strong>Kelompok C (Peminatan)</strong></td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"width: 691px; height: 33px;\" colspan=\"8\"><strong>C1. Dasar Bidang Keahlian</strong></td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"width: 47px; height: 33px;\">10</td>\r\n<td style=\"width: 348px; height: 33px;\">Simulasi Digital</td>\r\n<td style=\"width: 47px; height: 33px;\">3</td>\r\n<td style=\"width: 47px; height: 33px;\">3</td>\r\n<td style=\"width: 47px; height: 33px;\">&ndash;</td>\r\n<td style=\"width: 47px; height: 33px;\">&ndash;</td>\r\n<td style=\"width: 47px; height: 33px;\">&ndash;</td>\r\n<td style=\"width: 47px; height: 33px;\">&ndash;</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"width: 47px; height: 33px;\">11</td>\r\n<td style=\"width: 348px; height: 33px;\">Fisika</td>\r\n<td style=\"width: 47px; height: 33px;\">4</td>\r\n<td style=\"width: 47px; height: 33px;\">4</td>\r\n<td style=\"width: 47px; height: 33px;\">&ndash;</td>\r\n<td style=\"width: 47px; height: 33px;\">&ndash;</td>\r\n<td style=\"width: 47px; height: 33px;\">&ndash;</td>\r\n<td style=\"width: 47px; height: 33px;\">&ndash;</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"width: 47px; height: 33px;\">12</td>\r\n<td style=\"width: 348px; height: 33px;\">Sistem Komputer</td>\r\n<td style=\"width: 47px; height: 33px;\">4</td>\r\n<td style=\"width: 47px; height: 33px;\">4</td>\r\n<td style=\"width: 47px; height: 33px;\">&ndash;</td>\r\n<td style=\"width: 47px; height: 33px;\">&ndash;</td>\r\n<td style=\"width: 47px; height: 33px;\">&ndash;</td>\r\n<td style=\"width: 47px; height: 33px;\">&ndash;</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"width: 691px; height: 33px;\" colspan=\"8\"><strong>C2. Dasar Program Keahlian</strong></td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"width: 47px; height: 33px;\">13</td>\r\n<td style=\"width: 348px; height: 33px;\">Perakitan Komputer dan Sistem Operasi</td>\r\n<td style=\"width: 47px; height: 33px;\">4</td>\r\n<td style=\"width: 47px; height: 33px;\">4</td>\r\n<td style=\"width: 47px; height: 33px;\">&ndash;</td>\r\n<td style=\"width: 47px; height: 33px;\">&ndash;</td>\r\n<td style=\"width: 47px; height: 33px;\">&ndash;</td>\r\n<td style=\"width: 47px; height: 33px;\">&ndash;</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"width: 47px; height: 33px;\">14</td>\r\n<td style=\"width: 348px; height: 33px;\">Pemrograman Dasar</td>\r\n<td style=\"width: 47px; height: 33px;\">4</td>\r\n<td style=\"width: 47px; height: 33px;\">4</td>\r\n<td style=\"width: 47px; height: 33px;\">&ndash;</td>\r\n<td style=\"width: 47px; height: 33px;\">&ndash;</td>\r\n<td style=\"width: 47px; height: 33px;\">&ndash;</td>\r\n<td style=\"width: 47px; height: 33px;\">&ndash;</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"width: 47px; height: 33px;\">15</td>\r\n<td style=\"width: 348px; height: 33px;\">Dasar Desain Grafis</td>\r\n<td style=\"width: 47px; height: 33px;\">7</td>\r\n<td style=\"width: 47px; height: 33px;\">7</td>\r\n<td style=\"width: 47px; height: 33px;\">&ndash;</td>\r\n<td style=\"width: 47px; height: 33px;\">&ndash;</td>\r\n<td style=\"width: 47px; height: 33px;\">&ndash;</td>\r\n<td style=\"width: 47px; height: 33px;\">&ndash;</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"width: 691px; height: 33px;\" colspan=\"8\"><strong>C3. Paket Keahlian</strong></td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"width: 47px; height: 33px;\">16</td>\r\n<td style=\"width: 348px; height: 33px;\">Pengantar Multimedia</td>\r\n<td style=\"width: 47px; height: 33px;\">&ndash;</td>\r\n<td style=\"width: 47px; height: 33px;\">&ndash;</td>\r\n<td style=\"width: 47px; height: 33px;\">6</td>\r\n<td style=\"width: 47px; height: 33px;\">6</td>\r\n<td style=\"width: 47px; height: 33px;\">&ndash;</td>\r\n<td style=\"width: 47px; height: 33px;\">&ndash;</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"width: 47px; height: 33px;\">17</td>\r\n<td style=\"width: 348px; height: 33px;\">Teknik Pengolahan Audio Video</td>\r\n<td style=\"width: 47px; height: 33px;\">&ndash;</td>\r\n<td style=\"width: 47px; height: 33px;\">&ndash;</td>\r\n<td style=\"width: 47px; height: 33px;\">6</td>\r\n<td style=\"width: 47px; height: 33px;\">6</td>\r\n<td style=\"width: 47px; height: 33px;\">12</td>\r\n<td style=\"width: 47px; height: 33px;\">12</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"width: 47px; height: 33px;\">18</td>\r\n<td style=\"width: 348px; height: 33px;\">Teknik Animasi 2D &amp; 3D</td>\r\n<td style=\"width: 47px; height: 33px;\">&ndash;</td>\r\n<td style=\"width: 47px; height: 33px;\">&ndash;</td>\r\n<td style=\"width: 47px; height: 33px;\">6</td>\r\n<td style=\"width: 47px; height: 33px;\">6</td>\r\n<td style=\"width: 47px; height: 33px;\">8</td>\r\n<td style=\"width: 47px; height: 33px;\">8</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"width: 47px; height: 33px;\">19</td>\r\n<td style=\"width: 348px; height: 33px;\">Desain Media Interaktif</td>\r\n<td style=\"width: 47px; height: 33px;\">&ndash;</td>\r\n<td style=\"width: 47px; height: 33px;\">&ndash;</td>\r\n<td style=\"width: 47px; height: 33px;\">6</td>\r\n<td style=\"width: 47px; height: 33px;\">6</td>\r\n<td style=\"width: 47px; height: 33px;\">9</td>\r\n<td style=\"width: 47px; height: 33px;\">9</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"width: 47px; height: 33px;\">20</td>\r\n<td style=\"width: 348px; height: 33px;\">Pengembangan Produk Kreatif</td>\r\n<td style=\"width: 47px; height: 33px;\">&ndash;</td>\r\n<td style=\"width: 47px; height: 33px;\">&ndash;</td>\r\n<td style=\"width: 47px; height: 33px;\">3</td>\r\n<td style=\"width: 47px; height: 33px;\">3</td>\r\n<td style=\"width: 47px; height: 33px;\">3</td>\r\n<td style=\"width: 47px; height: 33px;\">3</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"width: 397px; height: 33px;\" colspan=\"2\">Jumlah C1, C2,Dan C3</td>\r\n<td style=\"width: 47px; height: 33px;\">26</td>\r\n<td style=\"width: 47px; height: 33px;\">26</td>\r\n<td style=\"width: 47px; height: 33px;\">27</td>\r\n<td style=\"width: 47px; height: 33px;\">27</td>\r\n<td style=\"width: 47px; height: 33px;\">32</td>\r\n<td style=\"width: 47px; height: 33px;\">32</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"width: 397px; height: 33px;\" colspan=\"2\"><strong>TOTAL</strong></td>\r\n<td style=\"width: 47px; height: 33px;\">48</td>\r\n<td style=\"width: 47px; height: 33px;\">48</td>\r\n<td style=\"width: 47px; height: 33px;\">48</td>\r\n<td style=\"width: 47px; height: 33px;\">48</td>\r\n<td style=\"width: 47px; height: 33px;\">48</td>\r\n<td style=\"width: 47px; height: 33px;\">48</td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n</div>\r\n<p>&nbsp;</p>\r\n<p>BIDANG KEAHIAN : TEKNOLOGI INFORMASI DAN KOMUNIKASI</p>\r\n<p>PROGRAM KEAHLIAN : TEKNIK KOMPUTER DAN INFORMATIKA</p>\r\n<p>PAKET KEAHLIAN : REKAYASA PERANGKAT LUNAK</p>\r\n<div class=\"kekanan\">\r\n<table class=\"table table-bordered\" style=\"height: 1056px; width: 100%;\" border=\"1\" width=\"100%\"><caption>&nbsp;</caption>\r\n<tbody>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"width: 378px; height: 99px;\" colspan=\"2\" rowspan=\"3\">\r\n<p class=\"text-center\" style=\"text-align: center;\">MATA PELAJARAN</p>\r\n</td>\r\n<td style=\"width: 311px; height: 33px;\" colspan=\"6\">\r\n<p style=\"text-align: center;\">KELAS</p>\r\n</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"width: 102px; height: 33px; text-align: center;\" colspan=\"2\">X</td>\r\n<td style=\"width: 102px; height: 33px; text-align: center;\" colspan=\"2\">XI</td>\r\n<td style=\"width: 103px; height: 33px; text-align: center;\" colspan=\"2\">XII</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">1</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">2</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">1</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">2</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">1</td>\r\n<td style=\"width: 51px; height: 33px;\">\r\n<p style=\"text-align: center;\">2</p>\r\n</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"width: 691px; height: 33px;\" colspan=\"8\">\r\n<p style=\"text-align: center;\"><strong>Kelompok A</strong></p>\r\n</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"width: 50px; height: 33px;\">1</td>\r\n<td style=\"width: 326px; height: 33px;\">Pendidikan Agama dan Budi Pekerti</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">3</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">3</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">3</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">3</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">3</td>\r\n<td style=\"width: 51px; height: 33px; text-align: center;\">3</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"width: 50px; height: 33px;\">2</td>\r\n<td style=\"width: 326px; height: 33px;\">Pendidikan Pancasila dan Kewarganegaraan</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">2</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">2</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">2</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">2</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">2</td>\r\n<td style=\"width: 51px; height: 33px; text-align: center;\">2</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"width: 50px; height: 33px;\">3</td>\r\n<td style=\"width: 326px; height: 33px;\">Bahasa Indonesia</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">3</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">3</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">3</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">3</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">2</td>\r\n<td style=\"width: 51px; height: 33px; text-align: center;\">2</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"width: 50px; height: 33px;\">4</td>\r\n<td style=\"width: 326px; height: 33px;\">Matematika</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">4</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">4</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">4</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">4</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">4</td>\r\n<td style=\"width: 51px; height: 33px; text-align: center;\">4</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"width: 50px; height: 33px;\">5</td>\r\n<td style=\"width: 326px; height: 33px;\">Sejarah Indonesia</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">2</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">2</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">2</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">2</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">&ndash;</td>\r\n<td style=\"width: 51px; height: 33px; text-align: center;\">&ndash;</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"width: 50px; height: 33px;\">6</td>\r\n<td style=\"width: 326px; height: 33px;\">Bahasa Inggris</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">3</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">3</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">3</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">3</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">3</td>\r\n<td style=\"width: 51px; height: 33px; text-align: center;\">3</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"width: 691px; height: 33px;\" colspan=\"8\"><strong>Kelompok B</strong></td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"width: 50px; height: 33px;\">7</td>\r\n<td style=\"width: 326px; height: 33px;\">Seni Budaya</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">3</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">3</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">&ndash;</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">&ndash;</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">&ndash;</td>\r\n<td style=\"width: 51px; height: 33px; text-align: center;\">&ndash;</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"width: 50px; height: 33px;\">8</td>\r\n<td style=\"width: 326px; height: 33px;\">Kewirausahaan</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">&ndash;</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">&ndash;</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">2</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">2</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">2</td>\r\n<td style=\"width: 51px; height: 33px; text-align: center;\">2</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"width: 50px; height: 33px;\">9</td>\r\n<td style=\"width: 326px; height: 33px;\">Pendidikan Jasmani, Olah Raga &amp; Kesehatan</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">2</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">2</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">2</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">2</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">&ndash;</td>\r\n<td style=\"width: 51px; height: 33px; text-align: center;\">&ndash;</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"width: 378px; height: 33px;\" colspan=\"2\">Jumlah A Dan B</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">22</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">22</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">21</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">21</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">16</td>\r\n<td style=\"width: 51px; height: 33px; text-align: center;\">16</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"width: 691px; height: 33px;\" colspan=\"8\"><strong>Kelompok C (Peminatan)</strong></td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"width: 691px; height: 33px;\" colspan=\"8\"><strong>C1. Dasar Bidang Keahlian</strong></td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"width: 50px; height: 33px;\">10</td>\r\n<td style=\"width: 326px; height: 33px;\">Simulasi Digital</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">3</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">3</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">&ndash;</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">&ndash;</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">&ndash;</td>\r\n<td style=\"width: 51px; height: 33px; text-align: center;\">&ndash;</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"width: 50px; height: 33px;\">11</td>\r\n<td style=\"width: 326px; height: 33px;\">Fisika</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">4</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">4</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">&ndash;</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">&ndash;</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">&ndash;</td>\r\n<td style=\"width: 51px; height: 33px; text-align: center;\">&ndash;</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"width: 50px; height: 33px;\">12</td>\r\n<td style=\"width: 326px; height: 33px;\">Sistem Komputer</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">4</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">4</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">&ndash;</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">&ndash;</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">&ndash;</td>\r\n<td style=\"width: 51px; height: 33px; text-align: center;\">&ndash;</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"width: 691px; height: 33px;\" colspan=\"8\"><strong>C2. Dasar Program Keahlian</strong></td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"width: 50px; height: 33px;\">13</td>\r\n<td style=\"width: 326px; height: 33px;\">Komputer dan Jaringan Dasar</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">4</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">4</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">&ndash;</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">&ndash;</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">&ndash;</td>\r\n<td style=\"width: 51px; height: 33px; text-align: center;\">&ndash;</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"width: 50px; height: 33px;\">14</td>\r\n<td style=\"width: 326px; height: 33px;\">Pemrograman Dasar</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">7</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">7</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">&ndash;</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">&ndash;</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">&ndash;</td>\r\n<td style=\"width: 51px; height: 33px; text-align: center;\">&ndash;</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"width: 50px; height: 33px;\">15</td>\r\n<td style=\"width: 326px; height: 33px;\">Dasar Desain Grafis</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">4</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">4</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">&ndash;</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">&ndash;</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">&ndash;</td>\r\n<td style=\"width: 51px; height: 33px; text-align: center;\">&ndash;</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"width: 691px; height: 33px;\" colspan=\"8\"><strong>C3. Paket Keahlian</strong></td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"width: 50px; height: 33px;\">16</td>\r\n<td style=\"width: 326px; height: 33px;\">Pemodelan Perangkat Lunak</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">&ndash;</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">&ndash;</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">3</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">3</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">2</td>\r\n<td style=\"width: 51px; height: 33px; text-align: center;\">2</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"width: 50px; height: 33px;\">17</td>\r\n<td style=\"width: 326px; height: 33px;\">Basis Data</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">&ndash;</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">&ndash;</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">6</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">6</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">6</td>\r\n<td style=\"width: 51px; height: 33px; text-align: center;\">6</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"width: 50px; height: 33px;\">18</td>\r\n<td style=\"width: 326px; height: 33px;\">Pemrograman Berorientasi Obyek</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">&ndash;</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">&ndash;</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">6</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">6</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">8</td>\r\n<td style=\"width: 51px; height: 33px; text-align: center;\">8</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"width: 50px; height: 33px;\">19</td>\r\n<td style=\"width: 326px; height: 33px;\">Pemrograman Web dan Mobile</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">&ndash;</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">&ndash;</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">8</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">8</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">8</td>\r\n<td style=\"width: 51px; height: 33px; text-align: center;\">8</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"width: 50px; height: 33px;\">20</td>\r\n<td style=\"width: 326px; height: 33px;\">Pengembangan Produk Kreatif</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">&ndash;</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">&ndash;</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">4</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">4</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">8</td>\r\n<td style=\"width: 51px; height: 33px; text-align: center;\">8</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"width: 378px; height: 33px;\" colspan=\"2\">Jumlah C1, C2 Dan C3</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">26</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">26</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">27</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">27</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">32</td>\r\n<td style=\"width: 51px; height: 33px; text-align: center;\">32</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"width: 378px; height: 33px;\" colspan=\"2\"><strong>TOTAL</strong></td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">48</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">48</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">48</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">48</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">48</td>\r\n<td style=\"width: 51px; height: 33px; text-align: center;\">48</td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n</div>\r\n<p>&nbsp;</p>\r\n<p>BIDANG KEAHLIAN : SENI RUPA</p>\r\n<p>PROGRAM KEAHLIAN : SENI AUDIO VISUAL</p>\r\n<p>PAKET KEAHLIAN : PRODUKSI FILM DAN PROGRAM TELEVISI</p>\r\n<div class=\"kekanan\">\r\n<table class=\"table table-bordered\" style=\"height: 1158px; width: 100%;\" border=\"1\" width=\"100%\"><caption>&nbsp;</caption>\r\n<thead>\r\n<tr style=\"height: 32px;\">\r\n<td class=\"text-center\" style=\"height: 100px;\" colspan=\"2\" rowspan=\"3\" width=\"57%\">MATA PELAJARAN</td>\r\n<td style=\"height: 32px;\" colspan=\"8\" width=\"42%\">KELAS</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"height: 33px;\" colspan=\"2\" width=\"10%\">X</td>\r\n<td style=\"height: 33px;\" colspan=\"2\" width=\"10%\">XI</td>\r\n<td style=\"height: 33px;\" colspan=\"2\" width=\"10%\">XII</td>\r\n<td style=\"height: 33px;\" colspan=\"2\" width=\"10%\">XIII</td>\r\n</tr>\r\n</thead>\r\n<tbody>\r\n<tr style=\"height: 35px;\">\r\n<td style=\"height: 35px;\" width=\"5%\">1</td>\r\n<td style=\"height: 35px;\" width=\"5%\">2</td>\r\n<td style=\"height: 35px;\" width=\"5%\">3</td>\r\n<td style=\"height: 35px;\" width=\"5%\">4</td>\r\n<td style=\"height: 35px;\" width=\"5%\">5</td>\r\n<td style=\"height: 35px;\" width=\"5%\">6</td>\r\n<td style=\"height: 35px;\" width=\"5%\">7</td>\r\n<td style=\"height: 35px;\" width=\"5%\">8</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"height: 33px;\" colspan=\"10\" width=\"100%\"><strong>Kelompok A</strong></td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"height: 33px;\" width=\"5%\">1</td>\r\n<td style=\"height: 33px;\" width=\"51%\">Pendidikan Agama &amp; Budi pekerti</td>\r\n<td style=\"height: 33px;\" width=\"5%\">3</td>\r\n<td style=\"height: 33px;\" width=\"5%\">3</td>\r\n<td style=\"height: 33px;\" width=\"5%\">3</td>\r\n<td style=\"height: 33px;\" width=\"5%\">3</td>\r\n<td style=\"height: 33px;\" width=\"5%\">3</td>\r\n<td style=\"height: 33px;\" width=\"5%\">3</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n</tr>\r\n<tr style=\"height: 50px;\">\r\n<td style=\"height: 50px;\" width=\"5%\">2</td>\r\n<td style=\"height: 50px;\" width=\"51%\">Pendidikan Pancasila dan Kewarganegaraan</td>\r\n<td style=\"height: 50px;\" width=\"5%\">2</td>\r\n<td style=\"height: 50px;\" width=\"5%\">2</td>\r\n<td style=\"height: 50px;\" width=\"5%\">2</td>\r\n<td style=\"height: 50px;\" width=\"5%\">2</td>\r\n<td style=\"height: 50px;\" width=\"5%\">2</td>\r\n<td style=\"height: 50px;\" width=\"5%\">2</td>\r\n<td style=\"height: 50px;\" width=\"5%\">&ndash;</td>\r\n<td style=\"height: 50px;\" width=\"5%\">&ndash;</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"height: 33px;\" width=\"5%\">3</td>\r\n<td style=\"height: 33px;\" width=\"51%\">Bahasa Indonesia</td>\r\n<td style=\"height: 33px;\" width=\"5%\">3</td>\r\n<td style=\"height: 33px;\" width=\"5%\">3</td>\r\n<td style=\"height: 33px;\" width=\"5%\">3</td>\r\n<td style=\"height: 33px;\" width=\"5%\">3</td>\r\n<td style=\"height: 33px;\" width=\"5%\">2</td>\r\n<td style=\"height: 33px;\" width=\"5%\">2</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"height: 33px;\" width=\"5%\">4</td>\r\n<td style=\"height: 33px;\" width=\"51%\">Matematika</td>\r\n<td style=\"height: 33px;\" width=\"5%\">4</td>\r\n<td style=\"height: 33px;\" width=\"5%\">4</td>\r\n<td style=\"height: 33px;\" width=\"5%\">4</td>\r\n<td style=\"height: 33px;\" width=\"5%\">4</td>\r\n<td style=\"height: 33px;\" width=\"5%\">4</td>\r\n<td style=\"height: 33px;\" width=\"5%\">4</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"height: 33px;\" width=\"5%\">5</td>\r\n<td style=\"height: 33px;\" width=\"51%\">Sejarah Indonesia</td>\r\n<td style=\"height: 33px;\" width=\"5%\">2</td>\r\n<td style=\"height: 33px;\" width=\"5%\">2</td>\r\n<td style=\"height: 33px;\" width=\"5%\">2</td>\r\n<td style=\"height: 33px;\" width=\"5%\">2</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"height: 33px;\" width=\"5%\">6</td>\r\n<td style=\"height: 33px;\" width=\"51%\">Bahasa Inggris</td>\r\n<td style=\"height: 33px;\" width=\"5%\">3</td>\r\n<td style=\"height: 33px;\" width=\"5%\">3</td>\r\n<td style=\"height: 33px;\" width=\"5%\">3</td>\r\n<td style=\"height: 33px;\" width=\"5%\">3</td>\r\n<td style=\"height: 33px;\" width=\"5%\">3</td>\r\n<td style=\"height: 33px;\" width=\"5%\">3</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"height: 33px;\" colspan=\"10\" width=\"100%\"><strong>Kelompok B</strong></td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"height: 33px;\" width=\"5%\">7</td>\r\n<td style=\"height: 33px;\" width=\"51%\">Seni Budaya</td>\r\n<td style=\"height: 33px;\" width=\"5%\">3</td>\r\n<td style=\"height: 33px;\" width=\"5%\">3</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"height: 33px;\" width=\"5%\">8</td>\r\n<td style=\"height: 33px;\" width=\"51%\">Kewirausahaan</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"5%\">2</td>\r\n<td style=\"height: 33px;\" width=\"5%\">2</td>\r\n<td style=\"height: 33px;\" width=\"5%\">2</td>\r\n<td style=\"height: 33px;\" width=\"5%\">2</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n</tr>\r\n<tr style=\"height: 50px;\">\r\n<td style=\"height: 50px;\" width=\"5%\">9</td>\r\n<td style=\"height: 50px;\" width=\"51%\">Pendidikan Jasmani, Olah Raga &amp; Kesehatan</td>\r\n<td style=\"height: 50px;\" width=\"5%\">2</td>\r\n<td style=\"height: 50px;\" width=\"5%\">2</td>\r\n<td style=\"height: 50px;\" width=\"5%\">2</td>\r\n<td style=\"height: 50px;\" width=\"5%\">2</td>\r\n<td style=\"height: 50px;\" width=\"5%\">&ndash;</td>\r\n<td style=\"height: 50px;\" width=\"5%\">&ndash;</td>\r\n<td style=\"height: 50px;\" width=\"5%\">&ndash;</td>\r\n<td style=\"height: 50px;\" width=\"5%\">&ndash;</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"height: 33px;\" colspan=\"2\" width=\"57%\">Jumlah A dan B</td>\r\n<td style=\"height: 33px;\" width=\"5%\">22</td>\r\n<td style=\"height: 33px;\" width=\"5%\">22</td>\r\n<td style=\"height: 33px;\" width=\"5%\">21</td>\r\n<td style=\"height: 33px;\" width=\"5%\">21</td>\r\n<td style=\"height: 33px;\" width=\"5%\">16</td>\r\n<td style=\"height: 33px;\" width=\"5%\">16</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"height: 33px;\" colspan=\"10\" width=\"100%\"><strong>Kelompok C (Peminatan)</strong></td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"height: 33px;\" colspan=\"10\" width=\"100%\"><strong>C1</strong><strong>. </strong><strong>Dasar Bidang Keahlian</strong></td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"height: 33px;\" width=\"5%\">10</td>\r\n<td style=\"height: 33px;\" width=\"51%\">Simulasi Digital</td>\r\n<td style=\"height: 33px;\" width=\"5%\">3</td>\r\n<td style=\"height: 33px;\" width=\"5%\">3</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"height: 33px;\" width=\"5%\">11</td>\r\n<td style=\"height: 33px;\" width=\"51%\">Pengantar Seni</td>\r\n<td style=\"height: 33px;\" width=\"5%\">2</td>\r\n<td style=\"height: 33px;\" width=\"5%\">2</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"height: 33px;\" width=\"5%\">12</td>\r\n<td style=\"height: 33px;\" width=\"51%\">Dasar-dasar Kreativitas</td>\r\n<td style=\"height: 33px;\" width=\"5%\">2</td>\r\n<td style=\"height: 33px;\" width=\"5%\">2</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"height: 33px;\" colspan=\"10\" width=\"100%\"><strong>C2</strong><strong>. </strong><strong>Dasar Program Keahlian</strong></td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"height: 33px;\" width=\"5%\">13</td>\r\n<td style=\"height: 33px;\" width=\"51%\">Komunikasi Massa</td>\r\n<td style=\"height: 33px;\" width=\"5%\">3</td>\r\n<td style=\"height: 33px;\" width=\"5%\">3</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"height: 33px;\" width=\"5%\">14</td>\r\n<td style=\"height: 33px;\" width=\"51%\">Dasar Seni Audio Visual</td>\r\n<td style=\"height: 33px;\" width=\"5%\">4</td>\r\n<td style=\"height: 33px;\" width=\"5%\">4</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"height: 33px;\" width=\"5%\">15</td>\r\n<td style=\"height: 33px;\" width=\"51%\">Produksi Audio Visual</td>\r\n<td style=\"height: 33px;\" width=\"5%\">12</td>\r\n<td style=\"height: 33px;\" width=\"5%\">12</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"height: 33px;\" colspan=\"10\" width=\"100%\"><strong>C3</strong><strong>. </strong><strong>Paket Keahlian</strong></td>\r\n</tr>\r\n<tr style=\"height: 50px;\">\r\n<td style=\"height: 50px;\" width=\"5%\">16</td>\r\n<td style=\"height: 50px;\" width=\"51%\">Penulisan Naskah dan Manajemen Produksi</td>\r\n<td style=\"height: 50px;\" width=\"5%\">&ndash;</td>\r\n<td style=\"height: 50px;\" width=\"5%\">&ndash;</td>\r\n<td style=\"height: 50px;\" width=\"5%\">4</td>\r\n<td style=\"height: 50px;\" width=\"5%\">4</td>\r\n<td style=\"height: 50px;\" width=\"5%\">4</td>\r\n<td style=\"height: 50px;\" width=\"5%\">4</td>\r\n<td style=\"height: 50px;\" width=\"5%\">4</td>\r\n<td style=\"height: 50px;\" width=\"5%\">4</td>\r\n</tr>\r\n<tr style=\"height: 50px;\">\r\n<td style=\"height: 50px;\" width=\"5%\">17</td>\r\n<td style=\"height: 50px;\" width=\"51%\">Tata Kamera, Suara dan Pencahayaan</td>\r\n<td style=\"height: 50px;\" width=\"5%\">&ndash;</td>\r\n<td style=\"height: 50px;\" width=\"5%\">&ndash;</td>\r\n<td style=\"height: 50px;\" width=\"5%\">6</td>\r\n<td style=\"height: 50px;\" width=\"5%\">6</td>\r\n<td style=\"height: 50px;\" width=\"5%\">7</td>\r\n<td style=\"height: 50px;\" width=\"5%\">7</td>\r\n<td style=\"height: 50px;\" width=\"5%\">10</td>\r\n<td style=\"height: 50px;\" width=\"5%\">10</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"height: 33px;\" width=\"5%\">18</td>\r\n<td style=\"height: 33px;\" width=\"51%\">Tata Artistik</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"5%\">4</td>\r\n<td style=\"height: 33px;\" width=\"5%\">4</td>\r\n<td style=\"height: 33px;\" width=\"5%\">4</td>\r\n<td style=\"height: 33px;\" width=\"5%\">4</td>\r\n<td style=\"height: 33px;\" width=\"5%\">4</td>\r\n<td style=\"height: 33px;\" width=\"5%\">4</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"height: 33px;\" width=\"5%\">19</td>\r\n<td style=\"height: 33px;\" width=\"51%\">Penyutradaraan</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"5%\">4</td>\r\n<td style=\"height: 33px;\" width=\"5%\">4</td>\r\n<td style=\"height: 33px;\" width=\"5%\">6</td>\r\n<td style=\"height: 33px;\" width=\"5%\">6</td>\r\n<td style=\"height: 33px;\" width=\"5%\">8</td>\r\n<td style=\"height: 33px;\" width=\"5%\">8</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"height: 33px;\" width=\"5%\">20</td>\r\n<td style=\"height: 33px;\" width=\"51%\">Editing</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"5%\">6</td>\r\n<td style=\"height: 33px;\" width=\"5%\">6</td>\r\n<td style=\"height: 33px;\" width=\"5%\">8</td>\r\n<td style=\"height: 33px;\" width=\"5%\">8</td>\r\n<td style=\"height: 33px;\" width=\"5%\">10</td>\r\n<td style=\"height: 33px;\" width=\"5%\">10</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"height: 33px;\" width=\"5%\">21</td>\r\n<td style=\"height: 33px;\" width=\"51%\">Pengembangan Produk Kreatif</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"5%\">3</td>\r\n<td style=\"height: 33px;\" width=\"5%\">3</td>\r\n<td style=\"height: 33px;\" width=\"5%\">3</td>\r\n<td style=\"height: 33px;\" width=\"5%\">3</td>\r\n<td style=\"height: 33px;\" width=\"5%\">12</td>\r\n<td style=\"height: 33px;\" width=\"5%\">12</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"height: 33px;\" colspan=\"2\" width=\"57%\">Jumlah C1, C2, C3</td>\r\n<td style=\"height: 33px;\" width=\"5%\">26</td>\r\n<td style=\"height: 33px;\" width=\"5%\">26</td>\r\n<td style=\"height: 33px;\" width=\"5%\">27</td>\r\n<td style=\"height: 33px;\" width=\"5%\">27</td>\r\n<td style=\"height: 33px;\" width=\"5%\">32</td>\r\n<td style=\"height: 33px;\" width=\"5%\">32</td>\r\n<td style=\"height: 33px;\" width=\"5%\">48</td>\r\n<td style=\"height: 33px;\" width=\"5%\">48</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"height: 33px;\" colspan=\"2\" width=\"57%\"><strong>TOTAL</strong></td>\r\n<td style=\"height: 33px;\" width=\"5%\"><strong>48</strong></td>\r\n<td style=\"height: 33px;\" width=\"5%\"><strong>48</strong></td>\r\n<td style=\"height: 33px;\" width=\"5%\"><strong>48</strong></td>\r\n<td style=\"height: 33px;\" width=\"5%\"><strong>48</strong></td>\r\n<td style=\"height: 33px;\" width=\"5%\"><strong>48</strong></td>\r\n<td style=\"height: 33px;\" width=\"5%\"><strong>48</strong></td>\r\n<td style=\"height: 33px;\" width=\"5%\"><strong>48</strong></td>\r\n<td style=\"height: 33px;\" width=\"5%\"><strong>48</strong></td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n</div>\r\n<p>&nbsp;</p>\r\n<p>BIDANG KEAHLIAN : TEKNOLOGI DAN REKAYASA</p>\r\n<p>PROGRAM KEAHLIAN : TEKNIK ELEKTRONIKA</p>\r\n<p>PAKET KEAHLIAN : TEKNIK ELEKTRONIKA INDUSTRI</p>\r\n<div class=\"kekanan\">\r\n<table class=\"table table-bordered\" style=\"width: 100%; height: 1091px;\" border=\"1\" width=\"100%\"><caption>&nbsp;</caption>\r\n<thead>\r\n<tr style=\"height: 32px;\">\r\n<td class=\"text-center\" style=\"height: 98px;\" colspan=\"2\" rowspan=\"3\" width=\"70%\">MATA PELAJARAN</td>\r\n<td style=\"height: 32px;\" colspan=\"6\" width=\"29%\">KELAS</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"height: 33px;\" colspan=\"2\" width=\"9%\">X</td>\r\n<td style=\"height: 33px;\" colspan=\"2\" width=\"9%\">XI</td>\r\n<td style=\"height: 33px;\" colspan=\"2\" width=\"9%\">XII</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"height: 33px;\" width=\"4%\">1</td>\r\n<td style=\"height: 33px;\" width=\"4%\">2</td>\r\n<td style=\"height: 33px;\" width=\"4%\">1</td>\r\n<td style=\"height: 33px;\" width=\"4%\">2</td>\r\n<td style=\"height: 33px;\" width=\"4%\">1</td>\r\n<td style=\"height: 33px;\" width=\"4%\">2</td>\r\n</tr>\r\n</thead>\r\n<tbody>\r\n<tr style=\"height: 35px;\">\r\n<td style=\"height: 35px;\" colspan=\"8\" width=\"100%\"><strong>Kelompok A</strong></td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"height: 33px;\" width=\"4%\">1</td>\r\n<td style=\"height: 33px;\" width=\"65%\">Pendidikan Agama dan Budi Pekerti</td>\r\n<td style=\"height: 33px;\" width=\"4%\">3</td>\r\n<td style=\"height: 33px;\" width=\"4%\">3</td>\r\n<td style=\"height: 33px;\" width=\"4%\">3</td>\r\n<td style=\"height: 33px;\" width=\"4%\">3</td>\r\n<td style=\"height: 33px;\" width=\"4%\">3</td>\r\n<td style=\"height: 33px;\" width=\"4%\">3</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"height: 33px;\" width=\"4%\">2</td>\r\n<td style=\"height: 33px;\" width=\"65%\">Pendidikan Pancasila dan Kewarganegaraan</td>\r\n<td style=\"height: 33px;\" width=\"4%\">2</td>\r\n<td style=\"height: 33px;\" width=\"4%\">2</td>\r\n<td style=\"height: 33px;\" width=\"4%\">2</td>\r\n<td style=\"height: 33px;\" width=\"4%\">2</td>\r\n<td style=\"height: 33px;\" width=\"4%\">2</td>\r\n<td style=\"height: 33px;\" width=\"4%\">2</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"height: 33px;\" width=\"4%\">3</td>\r\n<td style=\"height: 33px;\" width=\"65%\">Bahasa Indonesia</td>\r\n<td style=\"height: 33px;\" width=\"4%\">3</td>\r\n<td style=\"height: 33px;\" width=\"4%\">3</td>\r\n<td style=\"height: 33px;\" width=\"4%\">3</td>\r\n<td style=\"height: 33px;\" width=\"4%\">3</td>\r\n<td style=\"height: 33px;\" width=\"4%\">2</td>\r\n<td style=\"height: 33px;\" width=\"4%\">2</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"height: 33px;\" width=\"4%\">4</td>\r\n<td style=\"height: 33px;\" width=\"65%\">Matematika</td>\r\n<td style=\"height: 33px;\" width=\"4%\">4</td>\r\n<td style=\"height: 33px;\" width=\"4%\">4</td>\r\n<td style=\"height: 33px;\" width=\"4%\">4</td>\r\n<td style=\"height: 33px;\" width=\"4%\">4</td>\r\n<td style=\"height: 33px;\" width=\"4%\">4</td>\r\n<td style=\"height: 33px;\" width=\"4%\">4</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"height: 33px;\" width=\"4%\">5</td>\r\n<td style=\"height: 33px;\" width=\"65%\">Sejarah Indonesia</td>\r\n<td style=\"height: 33px;\" width=\"4%\">2</td>\r\n<td style=\"height: 33px;\" width=\"4%\">2</td>\r\n<td style=\"height: 33px;\" width=\"4%\">2</td>\r\n<td style=\"height: 33px;\" width=\"4%\">2</td>\r\n<td style=\"height: 33px;\" width=\"4%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"4%\">&ndash;</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"height: 33px;\" width=\"4%\">6</td>\r\n<td style=\"height: 33px;\" width=\"65%\">Bahasa Inggris</td>\r\n<td style=\"height: 33px;\" width=\"4%\">3</td>\r\n<td style=\"height: 33px;\" width=\"4%\">3</td>\r\n<td style=\"height: 33px;\" width=\"4%\">3</td>\r\n<td style=\"height: 33px;\" width=\"4%\">3</td>\r\n<td style=\"height: 33px;\" width=\"4%\">3</td>\r\n<td style=\"height: 33px;\" width=\"4%\">3</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"height: 33px;\" colspan=\"8\" width=\"100%\"><strong>Kelompok B </strong></td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"height: 33px;\" width=\"4%\">7</td>\r\n<td style=\"height: 33px;\" width=\"65%\">Seni Budaya</td>\r\n<td style=\"height: 33px;\" width=\"4%\">3</td>\r\n<td style=\"height: 33px;\" width=\"4%\">3</td>\r\n<td style=\"height: 33px;\" width=\"4%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"4%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"4%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"4%\">&ndash;</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"height: 33px;\" width=\"4%\">8</td>\r\n<td style=\"height: 33px;\" width=\"65%\">Kewirausahaan</td>\r\n<td style=\"height: 33px;\" width=\"4%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"4%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"4%\">2</td>\r\n<td style=\"height: 33px;\" width=\"4%\">2</td>\r\n<td style=\"height: 33px;\" width=\"4%\">2</td>\r\n<td style=\"height: 33px;\" width=\"4%\">2</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"height: 33px;\" width=\"4%\">9</td>\r\n<td style=\"height: 33px;\" width=\"65%\">Pendidikan Jasmani, Olah Raga dan Kesehatan</td>\r\n<td style=\"height: 33px;\" width=\"4%\">2</td>\r\n<td style=\"height: 33px;\" width=\"4%\">2</td>\r\n<td style=\"height: 33px;\" width=\"4%\">2</td>\r\n<td style=\"height: 33px;\" width=\"4%\">2</td>\r\n<td style=\"height: 33px;\" width=\"4%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"4%\">&ndash;</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"height: 33px;\" colspan=\"2\" width=\"70%\">Jumlah A dan B</td>\r\n<td style=\"height: 33px;\" width=\"4%\">22</td>\r\n<td style=\"height: 33px;\" width=\"4%\">22</td>\r\n<td style=\"height: 33px;\" width=\"4%\">21</td>\r\n<td style=\"height: 33px;\" width=\"4%\">21</td>\r\n<td style=\"height: 33px;\" width=\"4%\">16</td>\r\n<td style=\"height: 33px;\" width=\"4%\">16</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"height: 33px;\" colspan=\"8\" width=\"100%\"><strong>Kelompok C (Peminatan)</strong></td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"height: 33px;\" colspan=\"8\" width=\"100%\"><strong>C1. Dasar Bidang Keahlian</strong></td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"height: 33px;\" width=\"4%\">10</td>\r\n<td style=\"height: 33px;\" width=\"65%\">Simulasi Digital</td>\r\n<td style=\"height: 33px;\" width=\"4%\">3</td>\r\n<td style=\"height: 33px;\" width=\"4%\">3</td>\r\n<td style=\"height: 33px;\" width=\"4%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"4%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"4%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"4%\">&ndash;</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"height: 33px;\" width=\"4%\">11</td>\r\n<td style=\"height: 33px;\" width=\"65%\">Fisika</td>\r\n<td style=\"height: 33px;\" width=\"4%\">4</td>\r\n<td style=\"height: 33px;\" width=\"4%\">4</td>\r\n<td style=\"height: 33px;\" width=\"4%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"4%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"4%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"4%\">&ndash;</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"height: 33px;\" width=\"4%\">12</td>\r\n<td style=\"height: 33px;\" width=\"65%\">Kimia</td>\r\n<td style=\"height: 33px;\" width=\"4%\">4</td>\r\n<td style=\"height: 33px;\" width=\"4%\">4</td>\r\n<td style=\"height: 33px;\" width=\"4%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"4%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"4%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"4%\">&ndash;</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"height: 33px;\" colspan=\"8\" width=\"100%\"><strong>C2. Dasar Program Keahlian</strong></td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"height: 33px;\" width=\"4%\">13</td>\r\n<td style=\"height: 33px;\" width=\"65%\">Kerja Bengkel dan Gambar Teknik</td>\r\n<td style=\"height: 33px;\" width=\"4%\">4</td>\r\n<td style=\"height: 33px;\" width=\"4%\">4</td>\r\n<td style=\"height: 33px;\" width=\"4%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"4%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"4%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"4%\">&ndash;</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"height: 33px;\" width=\"4%\">14</td>\r\n<td style=\"height: 33px;\" width=\"65%\">DasarListrik dan Elektronika</td>\r\n<td style=\"height: 33px;\" width=\"4%\">6</td>\r\n<td style=\"height: 33px;\" width=\"4%\">6</td>\r\n<td style=\"height: 33px;\" width=\"4%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"4%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"4%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"4%\">&ndash;</td>\r\n</tr>\r\n<tr style=\"height: 50px;\">\r\n<td style=\"height: 50px;\" width=\"4%\">15</td>\r\n<td style=\"height: 50px;\" width=\"65%\">Pemrograman, Mikroprosessor dan Mikrokontroller</td>\r\n<td style=\"height: 50px;\" width=\"4%\">5</td>\r\n<td style=\"height: 50px;\" width=\"4%\">5</td>\r\n<td style=\"height: 50px;\" width=\"4%\">&ndash;</td>\r\n<td style=\"height: 50px;\" width=\"4%\">&ndash;</td>\r\n<td style=\"height: 50px;\" width=\"4%\">&ndash;</td>\r\n<td style=\"height: 50px;\" width=\"4%\">&ndash;</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"height: 33px;\" colspan=\"8\" width=\"100%\"><strong>C3. Paket Keahlian</strong></td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"height: 33px;\" width=\"4%\">16</td>\r\n<td style=\"height: 33px;\" width=\"65%\">Penerapan Rangkaian Elektronika</td>\r\n<td style=\"height: 33px;\" width=\"4%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"4%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"4%\">10</td>\r\n<td style=\"height: 33px;\" width=\"4%\">10</td>\r\n<td style=\"height: 33px;\" width=\"4%\">6</td>\r\n<td style=\"height: 33px;\" width=\"4%\">6</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"height: 33px;\" width=\"4%\">17</td>\r\n<td style=\"height: 33px;\" width=\"65%\">Sistem Pengendali Elektronik</td>\r\n<td style=\"height: 33px;\" width=\"4%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"4%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"4%\">10</td>\r\n<td style=\"height: 33px;\" width=\"4%\">10</td>\r\n<td style=\"height: 33px;\" width=\"4%\">14</td>\r\n<td style=\"height: 33px;\" width=\"4%\">14</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"height: 33px;\" width=\"4%\">18</td>\r\n<td style=\"height: 33px;\" width=\"65%\">Pengendali Sistem Robotik</td>\r\n<td style=\"height: 33px;\" width=\"4%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"4%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"4%\">4</td>\r\n<td style=\"height: 33px;\" width=\"4%\">4</td>\r\n<td style=\"height: 33px;\" width=\"4%\">5</td>\r\n<td style=\"height: 33px;\" width=\"4%\">5</td>\r\n</tr>\r\n<tr style=\"height: 50px;\">\r\n<td style=\"height: 50px;\" width=\"4%\">19</td>\r\n<td style=\"height: 50px;\" width=\"65%\">Pembuatan , Perbaikan dan Pemeliharaan Peralatan Elektronika</td>\r\n<td style=\"height: 50px;\" width=\"4%\">&ndash;</td>\r\n<td style=\"height: 50px;\" width=\"4%\">&ndash;</td>\r\n<td style=\"height: 50px;\" width=\"4%\">&ndash;</td>\r\n<td style=\"height: 50px;\" width=\"4%\">&ndash;</td>\r\n<td style=\"height: 50px;\" width=\"4%\">4</td>\r\n<td style=\"height: 50px;\" width=\"4%\">4</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"height: 33px;\" width=\"4%\">20</td>\r\n<td style=\"height: 33px;\" width=\"65%\">Pengembangan Produk Kreatif</td>\r\n<td style=\"height: 33px;\" width=\"4%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"4%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"4%\">3</td>\r\n<td style=\"height: 33px;\" width=\"4%\">3</td>\r\n<td style=\"height: 33px;\" width=\"4%\">3</td>\r\n<td style=\"height: 33px;\" width=\"4%\">3</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"height: 33px;\" colspan=\"2\" width=\"70%\">Jumlah C1,C2 dan C3</td>\r\n<td style=\"height: 33px;\" width=\"4%\">26</td>\r\n<td style=\"height: 33px;\" width=\"4%\">26</td>\r\n<td style=\"height: 33px;\" width=\"4%\">27</td>\r\n<td style=\"height: 33px;\" width=\"4%\">27</td>\r\n<td style=\"height: 33px;\" width=\"4%\">32</td>\r\n<td style=\"height: 33px;\" width=\"4%\">32</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"height: 33px;\" colspan=\"2\" width=\"70%\"><strong>TOTAL</strong></td>\r\n<td style=\"height: 33px;\" width=\"4%\"><strong>48</strong></td>\r\n<td style=\"height: 33px;\" width=\"4%\"><strong>48</strong></td>\r\n<td style=\"height: 33px;\" width=\"4%\"><strong>48</strong></td>\r\n<td style=\"height: 33px;\" width=\"4%\"><strong>48</strong></td>\r\n<td style=\"height: 33px;\" width=\"4%\"><strong>48</strong></td>\r\n<td style=\"height: 33px;\" width=\"4%\"><strong>48</strong></td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n</div>\r\n</div>', '2021-10-17 14:45:20', '2021-10-17 14:45:20', '32');
+INSERT INTO `contents` (`id`, `title`, `content`, `created_at`, `updated_at`, `sub_menu`) VALUES
+(2, 'Kegiatan Osis', '<h5 class=\"mt-5\" style=\"box-sizing: border-box; margin-bottom: 0.5rem; font-weight: 500; line-height: 1.2; font-size: 1.25rem; font-family: Raleway, sans-serif; margin-top: 3rem !important;\"><span style=\"box-sizing: border-box; font-weight: bolder;\">Kegiatan Osis</span></h5>\r\n<hr style=\"box-sizing: border-box; margin: 1rem 0px; background-color: currentcolor; border: 0px; opacity: 0.25; height: 1px; font-family: \'Open Sans\', sans-serif; font-size: 16px;\" />\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1rem; font-family: \'Open Sans\', sans-serif; font-size: 16px;\">&nbsp;</p>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1rem; font-family: \'Open Sans\', sans-serif; font-size: 16px;\">Musyawarah Siswa merupakan salah satu agenda yang diwajibkan dari setiap organisasi yang ada, hal ini dikarenakan Muyawarah Siswa (MUSIS) akan membahas persoalan pembahasan Laporan pertanggung jawaban kepengurusan sebelumnya, Anggaran Dasar dan Anggaran Rumah Tangga sebuah organisasi tentunya juga akan menentukan pemimpin baru untuk memimpin organisasi tersebut. Oleh karena itu Musis adalah hal yang sakral dari sebua organisasi. Ini merupakan agenda rutin yang dilakukan OSIS SMK Taruna Bhakti setiap tahunnya.</p>', '2021-10-17 14:54:01', '2021-10-17 14:54:01', '41');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `category_sarpras`
---
-
-CREATE TABLE `category_sarpras` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  `slug` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data untuk tabel `category_sarpras`
---
-
-INSERT INTO `category_sarpras` (`id`, `name`, `created_at`, `updated_at`, `slug`) VALUES
-(1, 'Sarana dan Prasarana Sekolah', '2021-10-06 14:43:46', '2021-10-06 14:43:46', 'sarana-dan-prasarana-sekolah'),
-(2, 'Ruang Pembelajaran Umum', '2021-10-06 14:44:00', '2021-10-06 14:44:00', 'ruang-pembelajaran-umum'),
-(3, 'Ruang Pembelajaran Khusus', '2021-10-06 14:44:12', '2021-10-06 14:44:12', 'ruang-pembelajaran-khusus'),
-(4, 'Fasilitas Parkir Kendaraan Siswa', '2021-10-06 14:44:27', '2021-10-06 14:44:27', 'fasilitas-parkir-kendaraan-siswa'),
-(5, 'Mushola Raudhotul Ilmi', '2021-10-06 14:44:41', '2021-10-06 14:44:41', 'mushola-raudhotul-ilmi'),
-(6, 'Fasilitas Pendukung', '2021-10-06 14:44:52', '2021-10-06 14:44:52', 'fasilitas-pendukung');
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `content_sarpras`
+-- Table structure for table `content_sarpras`
 --
 
 CREATE TABLE `content_sarpras` (
@@ -175,31 +147,31 @@ CREATE TABLE `content_sarpras` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `content_sarpras`
+-- Dumping data for table `content_sarpras`
 --
 
 INSERT INTO `content_sarpras` (`id`, `title`, `description`, `category_id`, `created_at`, `updated_at`) VALUES
-(1, 'Ruang Kelas', '<p><span style=\"color: #212529; font-family: \'Open Sans\', sans-serif; font-size: 16px;\">SMK Taruna Bhakti memilki ruang kelas dengan penjelasan sebagai berikut:</span></p>\r\n<ol style=\"box-sizing: border-box; padding-left: 2rem; margin-top: 0px; margin-bottom: 1rem; color: #212529; font-family: \'Open Sans\', sans-serif; font-size: 16px;\">\r\n<li style=\"box-sizing: border-box;\">Jumlah Ruang Kelas : 32</li>\r\n<li style=\"box-sizing: border-box;\">Rata-rata ukuran kelas : 8 x 8 m = 64 m<span style=\"box-sizing: border-box; position: relative; font-size: 0.75em; line-height: 0; vertical-align: baseline; top: -0.5em;\">2</span></li>\r\n</ol>', '2', '2021-10-06 15:01:00', '2021-10-06 15:10:57'),
-(2, 'Laboratorium Bahasa', '<p><span style=\"color: #212529; font-family: \'Open Sans\', sans-serif; font-size: 16px;\">SMK Taruna Bhakti memiliki 2 Laboratorium Bahasa yang berada pada gedung bagian Timur lantai 3. Di dalam Lab. Bahasa masing-masing memiliki seperangkat peralatan audio video untuk kegiatan pembelajaran Bahasa dengan kapasitas 20 siswa dengan masing-masing siswa menempati 1 meja multimedia.</span></p>', '2', '2021-10-06 15:02:00', '2021-10-06 15:10:44'),
-(3, 'Perpustakaan', '<p><span style=\"color: #212529; font-family: \'Open Sans\', sans-serif; font-size: 16px;\">SMK Taruna Bhakti Depok memiliki Ruang Perpustakaan dengan luas ruangan : 8 m X 4 m = 32 m2 Letak perpustakaan berada pada lantai 3 gedung bagian Barat yang diapit oleh Laboratorium RPL Medium dan MM Advance. Terdapat 3 lemari besar 1 rak buku terbuat dari besi dan 2 rak kayu besar menjulang tinggi yang berisi ratusan buku dengan berbagai macam judul dan tema.</span></p>', '2', '2021-10-06 15:03:00', '2021-10-11 05:20:33'),
-(4, 'Teknik Komputer dan Jaringan', '<p><span style=\"color: #212529; font-family: \'Open Sans\', sans-serif; font-size: 16px;\">Jurusan Teknik Komputer dan jaringan (TKJ) SMK Taruna Bhakti Depok memiliki 3 laboratorium yaitu Laboratorium Network dan Laboratorium Network Advance.</span></p>', '3', '2021-10-06 15:04:00', '2021-10-06 15:14:53'),
-(5, 'Multimedia', '<p><span style=\"color: #212529; font-family: \'Open Sans\', sans-serif; font-size: 16px;\">Jurusan Multimedia (MM) SMK Taruna Bhakti Depok memiliki 2 laboratorium yaitu Laboratorium MM Medium dan Laboratorium MM Advance. Kedua laboratorium ini berada pada lantai yang sama tetapi dipisah oleh Laboratorium RPL Advance dan Ruang Perpustakaan. Uniknya di laboratorium ini adalah pada bagian dindingnya, dimana siswa jurusan Multimedia diberikan tantangan untuk mendesain dinding kedua ruangan tersebut dengan desain 3D.</span></p>', '3', '2021-10-06 15:05:00', '2021-10-06 15:16:19'),
-(6, 'Rekayasa Perangkat Lunak', '<p><span style=\"color: #212529; font-family: \'Open Sans\', sans-serif; font-size: 16px;\">Jurusan Rekayasa Perangkat Lunak (RPL) SMK Taruna Bhakti Depok memiliki 2 laboratorium yaitu Laboratorium RPL Medium dan Laboratorium RPL Advance. Laboratorium RPL Medium berada pada lantai 4 berdekatan dengan Laboratorium Teknik Elektronika Industri. Sedangkan Laboratorium RPL Advance berapa pada lantai 3 berdekatan dengan Ruang Perpustakaan dan Laboratorium MM Medium.</span></p>', '3', '2021-10-06 15:06:00', '2021-10-06 15:16:35'),
-(7, 'Broadcasting', '<p><span style=\"color: #212529; font-family: \'Open Sans\', sans-serif; font-size: 16px;\">Jurusan Broadcasting SMK Taruna Bhakti memiliki satu Laboratorium dan satu Studio Broadcast. Laboratorium Broadcasting berada pada Gedung bagian Barat lantai satu yang bersebelahan dengan Ruang Kelompok Kerja Kurikulum. Sedangkan Studio Broadcast berada pada Gedung Timur lantai 2 yang berdekatan dengan Laboratorium Simdig. Studio Broadcast ini juga dapat digunakan oleh siswa dari jurusan Multimedia.</span></p>', '3', '2021-10-06 15:06:00', '2021-10-06 15:17:34'),
-(8, 'Teknik Elektronika Industri', '<p><span style=\"color: #212529; font-family: \'Open Sans\', sans-serif; font-size: 16px;\">Jurusan Teknik Elektronika Industri (TEI) SMK Taruna Bhakti Depok memiliki 1 Laboratorium yang diberi nama sama dengan jurusannya yaitu Laboratorium Teknik Elektronika Industri yang berada pada lantai 4 berdekatan dengan Laboratorium RPL Advance dan Ruang Kelas 18.</span></p>', '3', '2021-10-06 15:07:00', '2021-10-06 15:17:48'),
-(9, 'Fasilitas Parkir', '<p><span style=\"font-family: \'Open Sans\', sans-serif; font-size: 16px;\">Fasilitas Parkir Kendaraan Siswa</span></p>', '4', '2021-10-06 15:19:37', '2021-10-06 15:19:37'),
-(10, 'Mushola Raudhotul Ilmi', '<p><span style=\"font-family: \'Open Sans\', sans-serif; font-size: 16px;\">Fasilitas pendukung ini difungsikan selain sebagai Ruang belajar mata pelajaran Pendidikan Agama dan Budi Pekerti, difungsikan juga sebagai tempat ibadah (Musholla).Ruangan ini dapat menampung kurang lebih 120 siswa.</span></p>', '5', '2021-10-06 15:20:04', '2021-10-06 15:20:04'),
-(11, 'Gedung Sekolah', '<p><span style=\"color: #212529; font-family: \'Open Sans\', sans-serif; font-size: 16px;\">SMK Taruna Bhakti memiliki Gedung milik sendiri dengan luas lantai bangungan sebesar 3.651 m&sup2; terdiri dari empat lantai</span></p>', '6', '2021-10-06 15:21:26', '2021-10-06 15:21:26'),
-(12, 'Server SMK Taruna Bhakti', '<p><span style=\"color: #212529; font-family: \'Open Sans\', sans-serif; font-size: 16px;\">SMK Taruna Bhakti memiliki Server yang dipergunakan untuk menyimpan data elektronik berupa Sistem Informasi Manajemen Sekolah. Perangkat server ini terdapat di ruangan yang berada pada lantai 2 diapit oleh Laboratorium Network dan Laboratorium ACP. Luas Ruang Server adalah 96 m&sup2; yang terdiri dari dua ruang yang saling terhubung satu sama lain.</span></p>', '6', '2021-10-06 15:21:54', '2021-10-06 15:21:54'),
-(13, 'Taman Sekolah', '<p><span style=\"color: #212529; font-family: \'Open Sans\', sans-serif; font-size: 16px;\">Sekolah berwawasan lingkungan, itulah yang diusung oleh SMK Taruna Bhakti. Sehingga terdapat taman-taman disetiap sudut sekolah.</span></p>', '6', '2021-10-06 15:22:19', '2021-10-06 15:22:19'),
-(14, 'Pendopo', '<p><span style=\"color: #212529; font-family: \'Open Sans\', sans-serif; font-size: 16px;\">SMK Taruna Bhakti memiliki ruang penerima tamu yang mengosong konsep Joglo. Konsep terbuka sengaja diusung agar tamu yang datang ke SMK Taruna Bhakti dapat dengan nyaman menikmati taman dan kicauan burung, sehingga membuat perasaan menjadi tenang.</span></p>', '6', '2021-10-06 15:22:41', '2021-10-06 15:22:41'),
-(15, 'Sarana dan Prasarana Sekolah', '<p class=\"mt-5\">Laboratorium Komputer dan Ruangan Terdiri dari :</p>\r\n<ol>\r\n<li>Lab Network Advance</li>\r\n<li>Lab Network</li>\r\n<li>Lab Maintenance and Repair</li>\r\n<li>Lab Simulasi Digital</li>\r\n<li>Lab Axioo Class Program</li>\r\n<li>Lab Multimedia Medium</li>\r\n<li>Lab Multimedia Advance</li>\r\n<li>Lab Pemrograman Basic</li>\r\n<li>Lab Pemrograman Advance</li>\r\n<li>Lab Bahasa Inggris</li>\r\n<li>Lab Video dan Audio Editing</li>\r\n<li>Studio Mini Penyiaran TV</li>\r\n<li>Ruang Server dan Fasilitas lainnya</li>\r\n</ol>\r\n<p>Lingkungan sekolah yang asri dan nyaman jauh dari bising, mudah terjangkau oleh siswa/i dari <br />berbagai jurusan dengan kendaraan umum.</p>\r\n<p>Memiliki kantin dengan konsep cafetaria yang bersih, rapi serta nyaman dengan variasi makanan dan <br />minuman yang sehat, agar terjaga kesehatan dari siswa/i.</p>\r\n<p>Seluruh ruangan sekolah terjangkau dari Zona Hotspot yang di support oleh :</p>\r\n<ol>\r\n<li>Wifi id (Telkom) dengan jaringan Fiber Optik 100 Mbps</li>\r\n<li>Biznet dengan jaringan Fiber Optik 20 Mbps Dedicated 1:1</li>\r\n<li>Varnion Techology Jaringan wireless 2 Mbps</li>\r\n</ol>', '1', '2021-10-11 00:37:07', '2021-10-11 00:37:07'),
-(16, 'Samsung', NULL, '1', '2021-10-11 00:46:54', '2021-10-11 00:46:54');
+(1, 'Ruang Kelas', '<p><span style=\"color: #212529; font-family: \'Open Sans\', sans-serif; font-size: 16px;\">SMK Taruna Bhakti memilki ruang kelas dengan penjelasan sebagai berikut:</span></p>\r\n<ol style=\"box-sizing: border-box; padding-left: 2rem; margin-top: 0px; margin-bottom: 1rem; color: #212529; font-family: \'Open Sans\', sans-serif; font-size: 16px;\">\r\n<li style=\"box-sizing: border-box;\">Jumlah Ruang Kelas : 32</li>\r\n<li style=\"box-sizing: border-box;\">Rata-rata ukuran kelas : 8 x 8 m = 64 m<span style=\"box-sizing: border-box; position: relative; font-size: 0.75em; line-height: 0; vertical-align: baseline; top: -0.5em;\">2</span></li>\r\n</ol>', '36', '2021-10-06 15:01:00', '2021-10-17 08:42:51'),
+(2, 'Laboratorium Bahasa', '<p><span style=\"color: #212529; font-family: \'Open Sans\', sans-serif; font-size: 16px;\">SMK Taruna Bhakti memiliki 2 Laboratorium Bahasa yang berada pada gedung bagian Timur lantai 3. Di dalam Lab. Bahasa masing-masing memiliki seperangkat peralatan audio video untuk kegiatan pembelajaran Bahasa dengan kapasitas 20 siswa dengan masing-masing siswa menempati 1 meja multimedia.</span></p>', '36', '2021-10-06 15:02:00', '2021-10-17 08:42:32'),
+(3, 'Perpustakaan', '<p><span style=\"color: #212529; font-family: \'Open Sans\', sans-serif; font-size: 16px;\">SMK Taruna Bhakti Depok memiliki Ruang Perpustakaan dengan luas ruangan : 8 m X 4 m = 32 m2 Letak perpustakaan berada pada lantai 3 gedung bagian Barat yang diapit oleh Laboratorium RPL Medium dan MM Advance. Terdapat 3 lemari besar 1 rak buku terbuat dari besi dan 2 rak kayu besar menjulang tinggi yang berisi ratusan buku dengan berbagai macam judul dan tema.</span></p>', '36', '2021-10-06 15:03:00', '2021-10-17 08:42:09'),
+(4, 'Teknik Komputer dan Jaringan', '<p><span style=\"color: #212529; font-family: \'Open Sans\', sans-serif; font-size: 16px;\">Jurusan Teknik Komputer dan jaringan (TKJ) SMK Taruna Bhakti Depok memiliki 3 laboratorium yaitu Laboratorium Network dan Laboratorium Network Advance.</span></p>', '37', '2021-10-06 15:04:00', '2021-10-17 08:41:46'),
+(5, 'Multimedia', '<p><span style=\"color: #212529; font-family: \'Open Sans\', sans-serif; font-size: 16px;\">Jurusan Multimedia (MM) SMK Taruna Bhakti Depok memiliki 2 laboratorium yaitu Laboratorium MM Medium dan Laboratorium MM Advance. Kedua laboratorium ini berada pada lantai yang sama tetapi dipisah oleh Laboratorium RPL Advance dan Ruang Perpustakaan. Uniknya di laboratorium ini adalah pada bagian dindingnya, dimana siswa jurusan Multimedia diberikan tantangan untuk mendesain dinding kedua ruangan tersebut dengan desain 3D.</span></p>', '37', '2021-10-06 15:05:00', '2021-10-17 08:41:26'),
+(6, 'Rekayasa Perangkat Lunak', '<p><span style=\"color: #212529; font-family: \'Open Sans\', sans-serif; font-size: 16px;\">Jurusan Rekayasa Perangkat Lunak (RPL) SMK Taruna Bhakti Depok memiliki 2 laboratorium yaitu Laboratorium RPL Medium dan Laboratorium RPL Advance. Laboratorium RPL Medium berada pada lantai 4 berdekatan dengan Laboratorium Teknik Elektronika Industri. Sedangkan Laboratorium RPL Advance berapa pada lantai 3 berdekatan dengan Ruang Perpustakaan dan Laboratorium MM Medium.</span></p>', '37', '2021-10-06 15:06:00', '2021-10-17 08:40:19'),
+(7, 'Broadcasting', '<p><span style=\"color: #212529; font-family: \'Open Sans\', sans-serif; font-size: 16px;\">Jurusan Broadcasting SMK Taruna Bhakti memiliki satu Laboratorium dan satu Studio Broadcast. Laboratorium Broadcasting berada pada Gedung bagian Barat lantai satu yang bersebelahan dengan Ruang Kelompok Kerja Kurikulum. Sedangkan Studio Broadcast berada pada Gedung Timur lantai 2 yang berdekatan dengan Laboratorium Simdig. Studio Broadcast ini juga dapat digunakan oleh siswa dari jurusan Multimedia.</span></p>', '37', '2021-10-06 15:06:00', '2021-10-17 08:40:58'),
+(8, 'Teknik Elektronika Industri', '<p><span style=\"color: #212529; font-family: \'Open Sans\', sans-serif; font-size: 16px;\">Jurusan Teknik Elektronika Industri (TEI) SMK Taruna Bhakti Depok memiliki 1 Laboratorium yang diberi nama sama dengan jurusannya yaitu Laboratorium Teknik Elektronika Industri yang berada pada lantai 4 berdekatan dengan Laboratorium RPL Advance dan Ruang Kelas 18.</span></p>', '37', '2021-10-06 15:07:00', '2021-10-17 08:40:00'),
+(9, 'Fasilitas Parkir', '<p><span style=\"font-family: \'Open Sans\', sans-serif; font-size: 16px;\">Fasilitas Parkir Kendaraan Siswa</span></p>', '38', '2021-10-06 15:19:00', '2021-10-17 08:39:40'),
+(10, 'Mushola Raudhotul Ilmi', '<p><span style=\"font-family: \'Open Sans\', sans-serif; font-size: 16px;\">Fasilitas pendukung ini difungsikan selain sebagai Ruang belajar mata pelajaran Pendidikan Agama dan Budi Pekerti, difungsikan juga sebagai tempat ibadah (Musholla).Ruangan ini dapat menampung kurang lebih 120 siswa.</span></p>', '39', '2021-10-06 15:20:00', '2021-10-17 08:39:08'),
+(11, 'Gedung Sekolah', '<p><span style=\"color: #212529; font-family: \'Open Sans\', sans-serif; font-size: 16px;\">SMK Taruna Bhakti memiliki Gedung milik sendiri dengan luas lantai bangungan sebesar 3.651 m&sup2; terdiri dari empat lantai</span></p>', '40', '2021-10-06 15:21:00', '2021-10-17 08:38:45'),
+(12, 'Server SMK Taruna Bhakti', '<p><span style=\"color: #212529; font-family: \'Open Sans\', sans-serif; font-size: 16px;\">SMK Taruna Bhakti memiliki Server yang dipergunakan untuk menyimpan data elektronik berupa Sistem Informasi Manajemen Sekolah. Perangkat server ini terdapat di ruangan yang berada pada lantai 2 diapit oleh Laboratorium Network dan Laboratorium ACP. Luas Ruang Server adalah 96 m&sup2; yang terdiri dari dua ruang yang saling terhubung satu sama lain.</span></p>', '40', '2021-10-06 15:21:00', '2021-10-17 08:38:20'),
+(13, 'Taman Sekolah', '<p><span style=\"color: #212529; font-family: \'Open Sans\', sans-serif; font-size: 16px;\">Sekolah berwawasan lingkungan, itulah yang diusung oleh SMK Taruna Bhakti. Sehingga terdapat taman-taman disetiap sudut sekolah.</span></p>', '40', '2021-10-06 15:22:00', '2021-10-17 08:37:47'),
+(14, 'Pendopo', '<p><span style=\"color: #212529; font-family: \'Open Sans\', sans-serif; font-size: 16px;\">SMK Taruna Bhakti memiliki ruang penerima tamu yang mengosong konsep Joglo. Konsep terbuka sengaja diusung agar tamu yang datang ke SMK Taruna Bhakti dapat dengan nyaman menikmati taman dan kicauan burung, sehingga membuat perasaan menjadi tenang.</span></p>', '40', '2021-10-06 15:22:00', '2021-10-17 08:36:54'),
+(15, 'Sarana dan Prasarana Sekolah', '<p class=\"mt-5\">Laboratorium Komputer dan Ruangan Terdiri dari :</p>\r\n<ol>\r\n<li>Lab Network Advance</li>\r\n<li>Lab Network</li>\r\n<li>Lab Maintenance and Repair</li>\r\n<li>Lab Simulasi Digital</li>\r\n<li>Lab Axioo Class Program</li>\r\n<li>Lab Multimedia Medium</li>\r\n<li>Lab Multimedia Advance</li>\r\n<li>Lab Pemrograman Basic</li>\r\n<li>Lab Pemrograman Advance</li>\r\n<li>Lab Bahasa Inggris</li>\r\n<li>Lab Video dan Audio Editing</li>\r\n<li>Studio Mini Penyiaran TV</li>\r\n<li>Ruang Server dan Fasilitas lainnya</li>\r\n</ol>\r\n<p>Lingkungan sekolah yang asri dan nyaman jauh dari bising, mudah terjangkau oleh siswa/i dari <br />berbagai jurusan dengan kendaraan umum.</p>\r\n<p>Memiliki kantin dengan konsep cafetaria yang bersih, rapi serta nyaman dengan variasi makanan dan <br />minuman yang sehat, agar terjaga kesehatan dari siswa/i.</p>\r\n<p>Seluruh ruangan sekolah terjangkau dari Zona Hotspot yang di support oleh :</p>\r\n<ol>\r\n<li>Wifi id (Telkom) dengan jaringan Fiber Optik 100 Mbps</li>\r\n<li>Biznet dengan jaringan Fiber Optik 20 Mbps Dedicated 1:1</li>\r\n<li>Varnion Techology Jaringan wireless 2 Mbps</li>\r\n</ol>', '35', '2021-10-11 00:37:00', '2021-10-17 08:36:24'),
+(16, 'Samsung', NULL, '35', '2021-10-11 00:46:00', '2021-10-17 08:35:47');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `data_rows`
+-- Table structure for table `data_rows`
 --
 
 CREATE TABLE `data_rows` (
@@ -219,7 +191,7 @@ CREATE TABLE `data_rows` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `data_rows`
+-- Dumping data for table `data_rows`
 --
 
 INSERT INTO `data_rows` (`id`, `data_type_id`, `field`, `type`, `display_name`, `required`, `browse`, `read`, `edit`, `add`, `delete`, `details`, `order`) VALUES
@@ -265,7 +237,7 @@ INSERT INTO `data_rows` (`id`, `data_type_id`, `field`, `type`, `display_name`, 
 (40, 5, 'created_at', 'timestamp', 'Created At', 0, 1, 1, 0, 0, 0, '{}', 13),
 (41, 5, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 14),
 (42, 5, 'seo_title', 'text', 'SEO Title', 0, 1, 1, 1, 1, 1, '{}', 15),
-(43, 5, 'featured', 'checkbox', 'News Slide', 1, 1, 1, 1, 1, 1, '{\"on\":\"Active\",\"off\":\"Inactive\"}', 16),
+(43, 5, 'featured', 'checkbox', 'Featured', 1, 1, 1, 1, 1, 1, '{}', 16),
 (44, 6, 'id', 'number', 'ID', 1, 0, 0, 0, 0, 0, '{}', 1),
 (45, 6, 'author_id', 'text', 'Author', 1, 0, 0, 0, 0, 0, '{}', 2),
 (46, 6, 'title', 'text', 'Title', 1, 1, 1, 1, 1, 1, '{}', 3),
@@ -285,7 +257,7 @@ INSERT INTO `data_rows` (`id`, `data_type_id`, `field`, `type`, `display_name`, 
 (60, 7, 'created_at', 'timestamp', 'Created At', 0, 0, 0, 0, 0, 0, '{}', 6),
 (61, 7, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 7),
 (62, 8, 'id', 'text', 'Id', 1, 0, 0, 0, 0, 0, '{}', 1),
-(64, 8, 'name', 'text', 'Name', 0, 1, 1, 1, 1, 1, '{}', 4),
+(64, 8, 'name', 'date', 'Name', 0, 1, 1, 1, 1, 1, '{}', 4),
 (66, 8, 'email', 'text', 'Email', 0, 1, 1, 1, 1, 1, '{}', 7),
 (67, 8, 'password', 'password', 'Password', 0, 0, 1, 1, 1, 1, '{}', 8),
 (68, 8, 'created_at', 'timestamp', 'Created At', 0, 0, 0, 0, 0, 0, '{}', 9),
@@ -308,7 +280,7 @@ INSERT INTO `data_rows` (`id`, `data_type_id`, `field`, `type`, `display_name`, 
 (86, 8, 'siswa_belongsto_kela_relationship', 'relationship', 'kelas', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\Models\\\\Kela\",\"table\":\"kelas\",\"type\":\"belongsTo\",\"column\":\"kelas_id\",\"key\":\"id\",\"label\":\"nama_kelas\",\"pivot_table\":\"categories\",\"pivot\":\"0\",\"taggable\":\"0\"}', 5),
 (87, 8, 'kelas_id', 'text', 'Kelas Id', 0, 1, 1, 1, 1, 1, '{}', 6),
 (88, 10, 'jurusan', 'select_dropdown', 'Jurusan', 0, 1, 1, 1, 1, 1, '{\"default\":\"RPL\",\"options\":{\"TKJ\":\"TKJ\",\"MM\":\"MM\",\"RPL\":\"RPL\",\"BC\":\"BC\",\"TEI\":\"TEI\"}}', 3),
-(91, 8, 'nipd', 'text', 'Nipd', 0, 1, 1, 1, 1, 1, '{}', 3),
+(91, 8, 'nipd', 'timestamp', 'Nipd', 0, 0, 0, 1, 1, 1, '{\"format\":\"%Y\"}', 3),
 (92, 1, 'email_verified_at', 'timestamp', 'Email Verified At', 0, 1, 1, 1, 1, 1, '{}', 6),
 (93, 8, 'remember_token', 'text', 'Remember Token', 0, 0, 0, 0, 0, 0, '{}', 10),
 (94, 9, 'nik', 'text', 'Nik', 0, 1, 1, 1, 1, 1, '{}', 2),
@@ -316,7 +288,7 @@ INSERT INTO `data_rows` (`id`, `data_type_id`, `field`, `type`, `display_name`, 
 (96, 7, 'remember_token', 'text', 'Remember Token', 0, 0, 0, 0, 0, 0, '{}', 8),
 (97, 9, 'remember_token', 'text', 'Remember Token', 0, 0, 0, 0, 0, 0, '{}', 9),
 (98, 7, 'jabatan', 'select_dropdown', 'Jabatan', 0, 1, 1, 1, 1, 1, '{\"options\":{\"admin\":\"Admin\",\"litbang\":\"Litbang\",\"tu\":\"TU\",\"bkk\":\"BKK\",\"hubin\":\"Hubin\",\"kurikulum\":\"Kurikulum\",\"kesiswaan\":\"Kesiswaan\",\"sarpras\":\"Sarpras\",\"kejuruan\":\"Kejuruan\",\"pembimbing\":\"Pembimbing\"}}', 9),
-(104, 6, 'page_belongsto_category_relationship', 'relationship', 'categories', 0, 1, 1, 1, 1, 1, '{\"model\":\"TCG\\\\Voyager\\\\Models\\\\Category\",\"table\":\"categories\",\"type\":\"belongsTo\",\"column\":\"category_id\",\"key\":\"id\",\"label\":\"name\",\"pivot_table\":\"categories\",\"pivot\":\"0\",\"taggable\":\"0\"}', 13),
+(104, 6, 'page_belongsto_category_relationship', 'relationship', 'categories', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\Models\\\\Navbar\",\"table\":\"navbars\",\"type\":\"belongsTo\",\"column\":\"category_id\",\"key\":\"id\",\"label\":\"name\",\"pivot_table\":\"categories\",\"pivot\":\"0\",\"taggable\":\"0\"}', 13),
 (105, 6, 'category_id', 'text', 'Category Id', 0, 1, 1, 1, 1, 1, '{}', 13),
 (106, 16, 'id', 'text', 'Id', 1, 0, 0, 0, 0, 0, '{}', 1),
 (107, 16, 'name', 'text', 'Name', 0, 1, 1, 1, 1, 1, '{}', 2),
@@ -345,24 +317,19 @@ INSERT INTO `data_rows` (`id`, `data_type_id`, `field`, `type`, `display_name`, 
 (182, 16, 'categories_alumnis', 'text', 'Categories Alumnis', 0, 1, 1, 1, 1, 1, '{\"options\":{\"Bekerja\":\"Bekerja\",\"Kuliah\":\"Kuliah\",\"Wirausaha\":\"Wirausaha\"}}', 8),
 (183, 16, 'jurusan', 'text', 'Jurusan', 0, 1, 1, 1, 1, 1, '{}', 9),
 (184, 20, 'singkatan', 'text', 'Singkatan', 0, 1, 1, 1, 1, 1, '{}', 5),
-(185, 28, 'id', 'text', 'Id', 1, 0, 0, 0, 0, 0, '{}', 1),
-(186, 28, 'name', 'text', 'Name', 0, 1, 1, 1, 1, 1, '{}', 2),
-(187, 28, 'created_at', 'timestamp', 'Created At', 0, 1, 1, 1, 0, 1, '{}', 4),
-(188, 28, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 5),
 (189, 30, 'id', 'text', 'Id', 1, 0, 0, 0, 0, 0, '{}', 1),
 (190, 30, 'title', 'text', 'Title', 0, 1, 1, 1, 1, 1, '{}', 2),
 (191, 30, 'description', 'rich_text_box', 'Description', 0, 1, 1, 1, 1, 1, '{}', 3),
 (192, 30, 'category_id', 'text', 'Category Page Sarpras', 0, 0, 1, 1, 1, 1, '{}', 4),
 (193, 30, 'created_at', 'timestamp', 'Created At', 0, 1, 1, 1, 0, 1, '{}', 6),
 (194, 30, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 7),
-(195, 30, 'content_sarpra_belongsto_category_sarpra_relationship', 'relationship', 'category_sarpras', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\Models\\\\CategorySarpra\",\"table\":\"category_sarpras\",\"type\":\"belongsTo\",\"column\":\"category_id\",\"key\":\"id\",\"label\":\"name\",\"pivot_table\":\"alumnis\",\"pivot\":\"0\",\"taggable\":\"0\"}', 5),
+(195, 30, 'content_sarpra_belongsto_category_sarpra_relationship', 'relationship', 'category_sarpras', 0, 1, 1, 1, 1, 1, '{\"title\":\"Sarana Pra Sarana\",\"model\":\"App\\\\Models\\\\Page\",\"table\":\"pages\",\"type\":\"belongsTo\",\"column\":\"category_id\",\"key\":\"id\",\"label\":\"title\",\"pivot_table\":\"alumnis\",\"pivot\":\"0\",\"taggable\":\"0\"}', 5),
 (196, 31, 'id', 'text', 'Id', 1, 0, 0, 0, 0, 0, '{}', 1),
 (197, 31, 'created_at', 'timestamp', 'Created At', 0, 0, 1, 1, 0, 1, '{}', 4),
 (198, 31, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 5),
-(199, 31, 'image', 'image', 'Image', 0, 1, 1, 1, 1, 1, '{}', 2),
+(199, 31, 'image', 'file', 'Image', 0, 1, 1, 1, 1, 1, '{}', 2),
 (200, 31, 'content_id', 'text', 'Content Id', 0, 1, 1, 1, 1, 1, '{}', 3),
 (201, 31, 'gallery_sarpra_belongsto_content_sarpra_relationship', 'relationship', 'content_sarpras', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\Models\\\\ContentSarpra\",\"table\":\"content_sarpras\",\"type\":\"belongsTo\",\"column\":\"content_id\",\"key\":\"id\",\"label\":\"title\",\"pivot_table\":\"alumnis\",\"pivot\":\"0\",\"taggable\":\"0\"}', 6),
-(202, 28, 'slug', 'text', 'Slug', 0, 1, 1, 1, 1, 1, '{\"slugify\":{\"origin\":\"name\",\"forceUpdate\":true},\"validation\":{\"rule\":\"unique:category_sarpras,slug\"}}', 3),
 (203, 32, 'id', 'text', 'Id', 1, 0, 0, 0, 0, 0, '{}', 1),
 (204, 32, 'nama_mapel', 'text', 'Nama Mapel', 1, 1, 1, 1, 1, 1, '{}', 2),
 (205, 32, 'created_at', 'timestamp', 'Created At', 0, 1, 1, 1, 0, 1, '{}', 3),
@@ -372,33 +339,35 @@ INSERT INTO `data_rows` (`id`, `data_type_id`, `field`, `type`, `display_name`, 
 (209, 19, 'website_perusahaan', 'text', 'Website Perusahaan', 0, 1, 1, 1, 1, 1, '{}', 7),
 (210, 16, 'status', 'select_dropdown', 'Status', 0, 1, 1, 1, 1, 1, '{\"default\":\"UNPUBLISHED\",\"options\":{\"PUBLISED\":\"PUBLISHED\",\"UNPUBLISED\":\"UNPUBLISED\"}}', 12),
 (211, 34, 'id', 'text', 'Id', 1, 0, 0, 0, 0, 0, '{}', 1),
-(212, 34, 'nama_guru', 'text', 'Nama Guru', 0, 1, 1, 1, 1, 1, '{}', 2),
-(213, 34, 'foto', 'text', 'Foto', 0, 1, 1, 1, 1, 1, '{}', 3),
-(214, 34, 'kategori_guru', 'text', 'Kategori Guru', 0, 1, 1, 1, 1, 1, '{}', 4),
-(215, 34, 'created_at', 'timestamp', 'Created At', 0, 1, 1, 1, 0, 1, '{}', 5),
-(216, 34, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 6),
-(217, 34, 'deleted_at', 'timestamp', 'Deleted At', 0, 1, 1, 1, 1, 1, '{}', 7),
-(218, 34, 'kategori_id', 'text', 'Kategori Id', 0, 1, 1, 1, 1, 1, '{}', 8),
-(219, 35, 'id', 'text', 'Id', 1, 0, 0, 0, 0, 0, '{}', 1),
-(220, 35, 'title', 'text', 'Title', 0, 1, 1, 1, 1, 1, '{}', 2),
-(221, 35, 'content', 'rich_text_box', 'Content', 0, 1, 1, 1, 1, 1, '{}', 3),
-(222, 35, 'image', 'image', 'Image', 0, 1, 1, 1, 1, 1, '{}', 4),
-(224, 35, 'created_at', 'timestamp', 'Created At', 0, 0, 0, 0, 0, 0, '{\"format\":\"%Y\"}', 6),
-(225, 35, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 7),
-(226, 36, 'id', 'text', 'Id', 1, 0, 0, 0, 0, 0, '{}', 1),
-(227, 36, 'tahun', 'number', 'Tahun', 0, 1, 1, 1, 1, 1, '{}', 3),
-(228, 36, 'created_at', 'timestamp', 'Created At', 0, 0, 0, 0, 0, 0, '{}', 4),
-(229, 36, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 5),
-(231, 36, 'slug', 'text', 'Slug', 0, 1, 1, 1, 1, 1, '{}', 6),
-(232, 36, 'image', 'image', 'Image', 0, 1, 1, 1, 1, 1, '{}', 5),
-(233, 35, 'gallery_news_belongsto_category_news_relationship', 'relationship', 'category_news', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\Models\\\\CategoryNews\",\"table\":\"category_news\",\"type\":\"belongsTo\",\"column\":\"category\",\"key\":\"id\",\"label\":\"tahun\",\"pivot_table\":\"alumnis\",\"pivot\":\"0\",\"taggable\":\"0\"}', 8),
-(234, 35, 'category', 'text', 'Category', 0, 1, 1, 1, 1, 1, '{}', 7),
-(235, 35, 'date', 'date', 'Date', 0, 1, 1, 1, 1, 1, '{}', 8);
+(212, 34, 'name', 'text', 'Name', 0, 1, 1, 1, 1, 1, '{}', 2),
+(213, 34, 'slug', 'text', 'Slug', 0, 1, 1, 1, 1, 1, '{\"slugify\":{\"origin\":\"name\"}}', 3),
+(214, 34, 'created_at', 'timestamp', 'Created At', 0, 0, 0, 0, 0, 0, '{}', 4),
+(215, 34, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 5),
+(216, 36, 'id', 'text', 'Id', 1, 0, 0, 0, 0, 0, '{}', 1),
+(217, 36, 'photo', 'image', 'Photo', 0, 1, 1, 1, 1, 1, '{}', 2),
+(218, 36, 'title', 'text', 'Title', 0, 1, 1, 1, 1, 1, '{}', 3),
+(219, 36, 'description', 'text', 'Description', 0, 1, 1, 1, 1, 1, '{}', 4),
+(220, 36, 'created_at', 'timestamp', 'Created At', 0, 0, 0, 0, 0, 0, '{}', 5),
+(221, 36, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 6),
+(222, 37, 'id', 'text', 'Id', 1, 0, 0, 0, 0, 0, '{}', 1),
+(223, 37, 'video', 'file', 'Video', 0, 1, 1, 1, 1, 1, '{}', 2),
+(224, 37, 'title', 'text', 'Title', 0, 1, 1, 1, 1, 1, '{}', 3),
+(225, 37, 'description', 'text', 'Description', 0, 1, 1, 1, 1, 1, '{}', 4),
+(226, 37, 'created_at', 'timestamp', 'Created At', 0, 1, 1, 1, 0, 1, '{}', 5),
+(227, 37, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 6),
+(228, 34, 'status', 'select_dropdown', 'Status', 0, 1, 1, 1, 1, 1, '{\"default\":\"Active\",\"options\":{\"Active\":\"Active\",\"Inactive\":\"Inactive\"}}', 6),
+(229, 38, 'id', 'text', 'Id', 1, 0, 0, 0, 0, 0, '{}', 1),
+(230, 38, 'title', 'text', 'Title', 0, 1, 1, 1, 1, 1, '{}', 2),
+(231, 38, 'content', 'rich_text_box', 'Content', 0, 1, 1, 1, 1, 1, '{}', 3),
+(232, 38, 'created_at', 'timestamp', 'Created At', 0, 0, 0, 0, 0, 0, '{}', 4),
+(233, 38, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 5),
+(234, 38, 'content_belongsto_page_relationship', 'relationship', 'pages', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\Models\\\\Page\",\"table\":\"pages\",\"type\":\"belongsTo\",\"column\":\"sub_menu\",\"key\":\"id\",\"label\":\"title\",\"pivot_table\":\"alumnis\",\"pivot\":\"0\",\"taggable\":\"0\"}', 7),
+(235, 38, 'sub_menu', 'text', 'Sub Menu', 0, 1, 1, 1, 1, 1, '{}', 6);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `data_types`
+-- Table structure for table `data_types`
 --
 
 CREATE TABLE `data_types` (
@@ -420,7 +389,7 @@ CREATE TABLE `data_types` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `data_types`
+-- Dumping data for table `data_types`
 --
 
 INSERT INTO `data_types` (`id`, `name`, `slug`, `display_name_singular`, `display_name_plural`, `icon`, `model_name`, `policy_name`, `controller`, `description`, `generate_permissions`, `server_side`, `details`, `created_at`, `updated_at`) VALUES
@@ -428,28 +397,28 @@ INSERT INTO `data_types` (`id`, `name`, `slug`, `display_name_singular`, `displa
 (2, 'menus', 'menus', 'Menu', 'Menus', 'voyager-list', 'TCG\\Voyager\\Models\\Menu', NULL, '', '', 1, 0, NULL, '2021-09-21 07:32:51', '2021-09-21 07:32:51'),
 (3, 'roles', 'roles', 'Role', 'Roles', 'voyager-lock', 'TCG\\Voyager\\Models\\Role', NULL, 'TCG\\Voyager\\Http\\Controllers\\VoyagerRoleController', '', 1, 0, NULL, '2021-09-21 07:32:52', '2021-09-21 07:32:52'),
 (4, 'categories', 'categories', 'Category', 'Categories', 'voyager-categories', 'TCG\\Voyager\\Models\\Category', NULL, '', '', 1, 0, NULL, '2021-09-21 07:33:09', '2021-09-21 07:33:09'),
-(5, 'posts', 'posts', 'Post', 'Posts', 'voyager-news', 'TCG\\Voyager\\Models\\Post', 'TCG\\Voyager\\Policies\\PostPolicy', NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"desc\",\"default_search_key\":null,\"scope\":null}', '2021-09-21 07:33:11', '2021-10-08 07:24:07'),
-(6, 'pages', 'pages', 'Page', 'Pages', 'voyager-file-text', 'TCG\\Voyager\\Models\\Page', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"desc\",\"default_search_key\":null,\"scope\":null}', '2021-09-21 07:33:12', '2021-09-25 17:38:17'),
+(5, 'posts', 'posts', 'Post', 'Posts', 'voyager-news', 'TCG\\Voyager\\Models\\Post', 'TCG\\Voyager\\Policies\\PostPolicy', NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"desc\",\"default_search_key\":null,\"scope\":null}', '2021-09-21 07:33:11', '2021-10-17 06:25:06'),
+(6, 'pages', 'pages', 'Page', 'Pages', 'voyager-file-text', 'TCG\\Voyager\\Models\\Page', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"desc\",\"default_search_key\":null,\"scope\":null}', '2021-09-21 07:33:12', '2021-10-17 04:33:32'),
 (7, 'gurus', 'gurus', 'Guru', 'Gurus', NULL, 'App\\Models\\Guru', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2021-09-21 20:11:32', '2021-09-23 21:03:11'),
-(8, 'siswas', 'siswas', 'Siswa', 'Siswas', NULL, 'App\\Models\\Siswa', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2021-09-21 20:12:14', '2021-09-22 06:08:24'),
+(8, 'siswas', 'siswas', 'Siswa', 'Siswas', NULL, 'App\\Models\\Siswa', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2021-09-21 20:12:14', '2021-10-16 12:51:55'),
 (9, 'managers', 'managers', 'Manager', 'Managers', NULL, 'App\\Models\\Manager', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2021-09-21 20:20:00', '2021-09-23 20:59:38'),
 (10, 'kelas', 'kelas', 'Kela', 'Kelas', NULL, 'App\\Models\\Kela', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2021-09-21 20:32:15', '2021-09-22 06:42:10'),
 (16, 'alumnis', 'alumnis', 'Alumni', 'Alumnis', NULL, 'App\\Models\\Alumni', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2021-09-29 21:41:44', '2021-10-14 13:06:02'),
 (17, 'categories_alumnis', 'categories-alumnis', 'Categories Alumni', 'Categories Alumnis', NULL, 'App\\Models\\CategoriesAlumni', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2021-09-29 21:51:04', '2021-09-29 23:51:34'),
 (19, 'partners', 'partners', 'Partner', 'Partners', NULL, 'App\\Models\\Partner', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2021-09-29 21:52:12', '2021-10-13 05:13:25'),
 (20, 'jurusans', 'jurusans', 'Jurusan', 'Jurusans', NULL, 'App\\Models\\Jurusan', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2021-09-29 23:52:50', '2021-10-02 07:37:34'),
-(28, 'category_sarpras', 'category-sarpras', 'Category Sarpra', 'Category Sarpras', NULL, 'App\\Models\\CategorySarpra', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2021-10-06 08:21:52', '2021-10-06 14:43:23'),
-(30, 'content_sarpras', 'content-sarpras', 'Content Sarpra', 'Content Sarpras', NULL, 'App\\Models\\ContentSarpra', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2021-10-06 14:30:52', '2021-10-06 15:10:01'),
-(31, 'gallery_sarpras', 'gallery-sarpras', 'Gallery Sarpra', 'Gallery Sarpras', NULL, 'App\\Models\\GallerySarpra', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2021-10-06 14:35:52', '2021-10-13 05:18:27'),
+(30, 'content_sarpras', 'content-sarpras', 'Content Sarpra', 'Content Sarpras', NULL, 'App\\Models\\ContentSarpra', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2021-10-06 14:30:52', '2021-10-17 08:34:43'),
+(31, 'gallery_sarpras', 'gallery-sarpras', 'Gallery Sarpra', 'Gallery Sarpras', NULL, 'App\\Models\\GallerySarpra', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2021-10-06 14:35:52', '2021-10-17 02:53:32'),
 (32, 'mapels', 'mapels', 'Mapel', 'Mapels', NULL, 'App\\Models\\Mapel', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null}', '2021-10-07 02:56:07', '2021-10-07 02:56:07'),
-(34, 'galleries', 'galleries', 'Gallery', 'Galleries', NULL, 'App\\Models\\Gallery', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null}', '2021-10-16 07:49:59', '2021-10-16 07:49:59'),
-(35, 'gallery_news', 'gallery', 'Gallery', 'Gallery', NULL, 'App\\Models\\GalleryNews', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2021-10-16 08:00:57', '2021-10-16 12:38:16'),
-(36, 'category_news', 'category-news', 'Category News', 'Category News', NULL, 'App\\Models\\CategoryNews', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2021-10-16 11:49:23', '2021-10-16 12:02:46');
+(34, 'navbars', 'navbars', 'Navbar', 'Navbars', NULL, 'App\\Models\\Navbar', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2021-10-16 04:24:34', '2021-10-17 06:17:25'),
+(36, 'images', 'images', 'Image', 'Images', NULL, 'App\\Models\\Image', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null}', '2021-10-17 03:22:34', '2021-10-17 03:22:34'),
+(37, 'videos', 'videos', 'Video', 'Videos', NULL, 'App\\Models\\Video', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null}', '2021-10-17 03:24:19', '2021-10-17 03:24:19'),
+(38, 'contents', 'contents', 'Content', 'Contents', NULL, 'App\\Models\\Content', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2021-10-17 09:10:31', '2021-10-17 14:42:56');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `failed_jobs`
+-- Table structure for table `failed_jobs`
 --
 
 CREATE TABLE `failed_jobs` (
@@ -465,7 +434,7 @@ CREATE TABLE `failed_jobs` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `galleries`
+-- Table structure for table `galleries`
 --
 
 CREATE TABLE `galleries` (
@@ -480,7 +449,7 @@ CREATE TABLE `galleries` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `galleries`
+-- Dumping data for table `galleries`
 --
 
 INSERT INTO `galleries` (`id`, `nama_guru`, `foto`, `kategori_guru`, `created_at`, `updated_at`, `deleted_at`, `kategori_id`) VALUES
@@ -551,37 +520,7 @@ INSERT INTO `galleries` (`id`, `nama_guru`, `foto`, `kategori_guru`, `created_at
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `gallery_news`
---
-
-CREATE TABLE `gallery_news` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `content` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `image` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  `category` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `date` date DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data untuk tabel `gallery_news`
---
-
-INSERT INTO `gallery_news` (`id`, `title`, `content`, `image`, `created_at`, `updated_at`, `category`, `date`) VALUES
-(5, 'Kegiatan Vaksinasi SMK Taruna Bhakti', NULL, 'gallery\\October2021\\JRcDZUrZ9j5LRMojyXJH.jpg', '2021-10-17 02:59:59', '2021-10-17 02:59:59', '5', '2021-10-17'),
-(6, 'Seminar Gamer Indonesia', NULL, 'gallery\\October2021\\pSccjjop0Uf6yNScT0zj.jpg', '2021-10-17 03:05:45', '2021-10-17 03:05:45', '5', '2021-10-17'),
-(7, 'Ekskul 2020', NULL, 'gallery\\October2021\\CM9EsMCg3oAzJjZAKhxr.jpeg', '2021-10-17 03:46:08', '2021-10-17 03:46:08', '4', '2021-10-17'),
-(8, 'lapangan TB', NULL, 'gallery\\October2021\\nHds49FOyJQYFv1P3Eot.jpg', '2021-10-17 03:49:43', '2021-10-17 03:49:43', '4', '2021-10-17'),
-(9, '2019', NULL, 'gallery\\October2021\\Rx03hppq6rrXF9vJK1q7.jpg', '2021-10-17 03:59:25', '2021-10-17 03:59:25', '3', '2021-10-17'),
-(10, 'ortus', NULL, 'gallery\\October2021\\RMDmTMx49mcDAIqloi7d.jpg', '2021-10-17 04:00:01', '2021-10-17 04:00:01', '2', '2000-11-30'),
-(11, '2017', NULL, 'gallery\\October2021\\XJNSbaYeqyN5WgpTzOl4.jpg', '2021-10-17 04:00:40', '2021-10-17 04:00:40', '1', '2009-02-20');
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `gallery_sarpras`
+-- Table structure for table `gallery_sarpras`
 --
 
 CREATE TABLE `gallery_sarpras` (
@@ -594,7 +533,7 @@ CREATE TABLE `gallery_sarpras` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `gallery_sarpras`
+-- Dumping data for table `gallery_sarpras`
 --
 
 INSERT INTO `gallery_sarpras` (`id`, `created_at`, `updated_at`, `image`, `content_id`, `nama_photo`) VALUES
@@ -639,7 +578,7 @@ INSERT INTO `gallery_sarpras` (`id`, `created_at`, `updated_at`, `image`, `conte
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `gurus`
+-- Table structure for table `gurus`
 --
 
 CREATE TABLE `gurus` (
@@ -655,7 +594,7 @@ CREATE TABLE `gurus` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `gurus`
+-- Dumping data for table `gurus`
 --
 
 INSERT INTO `gurus` (`id`, `name`, `email`, `password`, `created_at`, `updated_at`, `nik`, `remember_token`, `jabatan`) VALUES
@@ -667,7 +606,7 @@ INSERT INTO `gurus` (`id`, `name`, `email`, `password`, `created_at`, `updated_a
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `guru_role`
+-- Table structure for table `guru_role`
 --
 
 CREATE TABLE `guru_role` (
@@ -676,7 +615,7 @@ CREATE TABLE `guru_role` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `guru_role`
+-- Dumping data for table `guru_role`
 --
 
 INSERT INTO `guru_role` (`guru_id`, `kategori_id`) VALUES
@@ -699,7 +638,30 @@ INSERT INTO `guru_role` (`guru_id`, `kategori_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `jurusans`
+-- Table structure for table `images`
+--
+
+CREATE TABLE `images` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `photo` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `description` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `images`
+--
+
+INSERT INTO `images` (`id`, `photo`, `title`, `description`, `created_at`, `updated_at`) VALUES
+(1, 'images/October2021/MFRcaeLYsZBkkTWqdtB7.jpg', NULL, NULL, '2021-10-17 03:56:18', '2021-10-17 03:56:18'),
+(2, 'images/October2021/FHmZElnNGy7Zliuvy6s1.png', NULL, NULL, '2021-10-17 06:01:36', '2021-10-17 06:01:36');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `jurusans`
 --
 
 CREATE TABLE `jurusans` (
@@ -711,7 +673,7 @@ CREATE TABLE `jurusans` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `jurusans`
+-- Dumping data for table `jurusans`
 --
 
 INSERT INTO `jurusans` (`id`, `jurusan`, `created_at`, `updated_at`, `singkatan`) VALUES
@@ -724,7 +686,7 @@ INSERT INTO `jurusans` (`id`, `jurusan`, `created_at`, `updated_at`, `singkatan`
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `kategoris`
+-- Table structure for table `kategoris`
 --
 
 CREATE TABLE `kategoris` (
@@ -739,7 +701,7 @@ CREATE TABLE `kategoris` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `kategoris`
+-- Dumping data for table `kategoris`
 --
 
 INSERT INTO `kategoris` (`id`, `nama_kategori`, `foto`, `caption`, `created_at`, `updated_at`, `deleted_at`, `slug`) VALUES
@@ -752,7 +714,7 @@ INSERT INTO `kategoris` (`id`, `nama_kategori`, `foto`, `caption`, `created_at`,
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `kelas`
+-- Table structure for table `kelas`
 --
 
 CREATE TABLE `kelas` (
@@ -768,7 +730,7 @@ CREATE TABLE `kelas` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `kelas`
+-- Dumping data for table `kelas`
 --
 
 INSERT INTO `kelas` (`id`, `kelas`, `nama_kelas`, `tahun_ajaran`, `wali_kelas`, `status`, `created_at`, `updated_at`, `jurusan`) VALUES
@@ -821,7 +783,7 @@ INSERT INTO `kelas` (`id`, `kelas`, `nama_kelas`, `tahun_ajaran`, `wali_kelas`, 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `managers`
+-- Table structure for table `managers`
 --
 
 CREATE TABLE `managers` (
@@ -837,7 +799,7 @@ CREATE TABLE `managers` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `managers`
+-- Dumping data for table `managers`
 --
 
 INSERT INTO `managers` (`id`, `name`, `jabatan`, `email`, `password`, `created_at`, `updated_at`, `nik`, `remember_token`) VALUES
@@ -846,7 +808,7 @@ INSERT INTO `managers` (`id`, `name`, `jabatan`, `email`, `password`, `created_a
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `mapels`
+-- Table structure for table `mapels`
 --
 
 CREATE TABLE `mapels` (
@@ -857,7 +819,7 @@ CREATE TABLE `mapels` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `mapels`
+-- Dumping data for table `mapels`
 --
 
 INSERT INTO `mapels` (`id`, `mata_pelajaran`, `created_at`, `updated_at`) VALUES
@@ -869,7 +831,7 @@ INSERT INTO `mapels` (`id`, `mata_pelajaran`, `created_at`, `updated_at`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `media`
+-- Table structure for table `media`
 --
 
 CREATE TABLE `media` (
@@ -896,7 +858,7 @@ CREATE TABLE `media` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `menus`
+-- Table structure for table `menus`
 --
 
 CREATE TABLE `menus` (
@@ -907,7 +869,7 @@ CREATE TABLE `menus` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `menus`
+-- Dumping data for table `menus`
 --
 
 INSERT INTO `menus` (`id`, `name`, `created_at`, `updated_at`) VALUES
@@ -916,7 +878,7 @@ INSERT INTO `menus` (`id`, `name`, `created_at`, `updated_at`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `menu_items`
+-- Table structure for table `menu_items`
 --
 
 CREATE TABLE `menu_items` (
@@ -936,43 +898,43 @@ CREATE TABLE `menu_items` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `menu_items`
+-- Dumping data for table `menu_items`
 --
 
 INSERT INTO `menu_items` (`id`, `menu_id`, `title`, `url`, `target`, `icon_class`, `color`, `parent_id`, `order`, `created_at`, `updated_at`, `route`, `parameters`) VALUES
 (1, 1, 'Dashboard', '', '_self', 'voyager-boat', NULL, NULL, 1, '2021-09-21 07:32:54', '2021-09-21 07:32:54', 'voyager.dashboard', NULL),
-(2, 1, 'Media', '', '_self', 'voyager-images', NULL, NULL, 5, '2021-09-21 07:32:54', '2021-09-21 07:32:54', 'voyager.media.index', NULL),
+(2, 1, 'Media', '', '_self', 'voyager-images', NULL, NULL, 4, '2021-09-21 07:32:54', '2021-10-17 03:25:27', 'voyager.media.index', NULL),
 (3, 1, 'Users', '', '_self', 'voyager-person', NULL, NULL, 3, '2021-09-21 07:32:55', '2021-09-21 07:32:55', 'voyager.users.index', NULL),
 (4, 1, 'Roles', '', '_self', 'voyager-lock', NULL, NULL, 2, '2021-09-21 07:32:55', '2021-09-21 07:32:55', 'voyager.roles.index', NULL),
-(5, 1, 'Tools', '', '_self', 'voyager-tools', NULL, NULL, 9, '2021-09-21 07:32:55', '2021-09-21 07:32:55', NULL, NULL),
-(6, 1, 'Menu Builder', '', '_self', 'voyager-list', NULL, 5, 10, '2021-09-21 07:32:55', '2021-09-21 07:32:55', 'voyager.menus.index', NULL),
-(7, 1, 'Database', '', '_self', 'voyager-data', NULL, 5, 11, '2021-09-21 07:32:55', '2021-09-21 07:32:55', 'voyager.database.index', NULL),
-(8, 1, 'Compass', '', '_self', 'voyager-compass', NULL, 5, 12, '2021-09-21 07:32:55', '2021-09-21 07:32:55', 'voyager.compass.index', NULL),
-(9, 1, 'BREAD', '', '_self', 'voyager-bread', NULL, 5, 13, '2021-09-21 07:32:55', '2021-09-21 07:32:55', 'voyager.bread.index', NULL),
-(10, 1, 'Settings', '', '_self', 'voyager-settings', NULL, NULL, 14, '2021-09-21 07:32:55', '2021-09-21 07:32:55', 'voyager.settings.index', NULL),
-(11, 1, 'Categories', '', '_self', 'voyager-categories', NULL, NULL, 8, '2021-09-21 07:33:10', '2021-09-21 07:33:10', 'voyager.categories.index', NULL),
-(12, 1, 'Posts', '', '_self', 'voyager-news', NULL, NULL, 6, '2021-09-21 07:33:12', '2021-09-21 07:33:12', 'voyager.posts.index', NULL),
-(13, 1, 'Pages', '', '_self', 'voyager-file-text', NULL, NULL, 7, '2021-09-21 07:33:13', '2021-09-21 07:33:13', 'voyager.pages.index', NULL),
-(14, 1, 'Gurus', '', '_self', NULL, NULL, NULL, 15, '2021-09-21 20:11:33', '2021-09-21 20:11:33', 'voyager.gurus.index', NULL),
-(15, 1, 'Siswas', '', '_self', NULL, NULL, NULL, 16, '2021-09-21 20:12:15', '2021-09-21 20:12:15', 'voyager.siswas.index', NULL),
-(16, 1, 'Managers', '', '_self', NULL, NULL, NULL, 17, '2021-09-21 20:20:01', '2021-09-21 20:20:01', 'voyager.managers.index', NULL),
-(17, 1, 'Kelas', '', '_self', NULL, NULL, NULL, 18, '2021-09-21 20:32:17', '2021-09-21 20:32:17', 'voyager.kelas.index', NULL),
-(19, 1, 'Alumnis', '', '_self', NULL, NULL, NULL, 20, '2021-09-29 21:41:45', '2021-09-29 21:41:45', 'voyager.alumnis.index', NULL),
-(20, 1, 'Categories Alumnis', '', '_self', NULL, NULL, NULL, 21, '2021-09-29 21:51:04', '2021-09-29 21:51:04', 'voyager.categories-alumnis.index', NULL),
-(21, 1, 'Partners', '', '_self', NULL, NULL, NULL, 22, '2021-09-29 21:52:12', '2021-09-29 21:52:12', 'voyager.partners.index', NULL),
-(22, 1, 'Jurusans', '', '_self', NULL, NULL, NULL, 23, '2021-09-29 23:52:51', '2021-09-29 23:52:51', 'voyager.jurusans.index', NULL),
-(29, 1, 'Category Sarpras', '', '_self', NULL, NULL, NULL, 28, '2021-10-06 08:21:54', '2021-10-06 08:21:54', 'voyager.category-sarpras.index', NULL),
-(30, 1, 'Content Sarpras', '', '_self', NULL, NULL, NULL, 29, '2021-10-06 14:30:53', '2021-10-06 14:30:53', 'voyager.content-sarpras.index', NULL),
-(31, 1, 'Gallery Sarpras', '', '_self', NULL, NULL, NULL, 30, '2021-10-06 14:35:53', '2021-10-06 14:35:53', 'voyager.gallery-sarpras.index', NULL),
-(32, 1, 'Mapels', '', '_self', NULL, NULL, NULL, 31, '2021-10-07 02:56:09', '2021-10-07 02:56:09', 'voyager.mapels.index', NULL),
-(33, 1, 'Galleries', '', '_self', NULL, NULL, NULL, 32, '2021-10-16 07:50:02', '2021-10-16 07:50:02', 'voyager.galleries.index', NULL),
-(34, 1, 'Gallery', '', '_self', NULL, NULL, NULL, 33, '2021-10-16 08:00:58', '2021-10-16 08:00:58', 'voyager.gallery.index', NULL),
-(35, 1, 'Category News', '', '_self', NULL, NULL, NULL, 34, '2021-10-16 11:49:24', '2021-10-16 11:49:24', 'voyager.category-news.index', NULL);
+(5, 1, 'Tools', '', '_self', 'voyager-tools', NULL, NULL, 8, '2021-09-21 07:32:55', '2021-10-17 03:25:28', NULL, NULL),
+(6, 1, 'Menu Builder', '', '_self', 'voyager-list', NULL, 5, 1, '2021-09-21 07:32:55', '2021-10-17 03:25:28', 'voyager.menus.index', NULL),
+(7, 1, 'Database', '', '_self', 'voyager-data', NULL, 5, 2, '2021-09-21 07:32:55', '2021-10-17 03:25:28', 'voyager.database.index', NULL),
+(8, 1, 'Compass', '', '_self', 'voyager-compass', NULL, 5, 3, '2021-09-21 07:32:55', '2021-10-17 03:25:28', 'voyager.compass.index', NULL),
+(9, 1, 'BREAD', '', '_self', 'voyager-bread', NULL, 5, 4, '2021-09-21 07:32:55', '2021-10-17 03:25:28', 'voyager.bread.index', NULL),
+(10, 1, 'Settings', '', '_self', 'voyager-settings', NULL, NULL, 9, '2021-09-21 07:32:55', '2021-10-17 03:25:28', 'voyager.settings.index', NULL),
+(11, 1, 'Categories', '', '_self', 'voyager-categories', NULL, NULL, 7, '2021-09-21 07:33:10', '2021-10-17 03:25:28', 'voyager.categories.index', NULL),
+(12, 1, 'Posts', '', '_self', 'voyager-news', NULL, NULL, 5, '2021-09-21 07:33:12', '2021-10-17 03:25:27', 'voyager.posts.index', NULL),
+(13, 1, 'Pages', '', '_self', 'voyager-file-text', NULL, NULL, 6, '2021-09-21 07:33:13', '2021-10-17 03:25:27', 'voyager.pages.index', NULL),
+(14, 1, 'Gurus', '', '_self', NULL, NULL, NULL, 10, '2021-09-21 20:11:33', '2021-10-17 03:25:28', 'voyager.gurus.index', NULL),
+(15, 1, 'Siswas', '', '_self', NULL, NULL, NULL, 11, '2021-09-21 20:12:15', '2021-10-17 03:25:28', 'voyager.siswas.index', NULL),
+(17, 1, 'Kelas', '', '_self', NULL, NULL, NULL, 13, '2021-09-21 20:32:17', '2021-10-17 03:25:29', 'voyager.kelas.index', NULL),
+(19, 1, 'Alumnis', '', '_self', NULL, NULL, NULL, 14, '2021-09-29 21:41:45', '2021-10-17 03:25:29', 'voyager.alumnis.index', NULL),
+(21, 1, 'Partners', '', '_self', NULL, NULL, NULL, 16, '2021-09-29 21:52:12', '2021-10-17 03:25:29', 'voyager.partners.index', NULL),
+(22, 1, 'Jurusans', '', '_self', NULL, NULL, NULL, 17, '2021-09-29 23:52:51', '2021-10-17 03:25:29', 'voyager.jurusans.index', NULL),
+(30, 1, 'Content Sarpras', '', '_self', NULL, NULL, 37, 2, '2021-10-06 14:30:53', '2021-10-17 03:27:18', 'voyager.content-sarpras.index', NULL),
+(31, 1, 'Gallery Sarpras', '', '_self', NULL, NULL, 37, 3, '2021-10-06 14:35:53', '2021-10-17 03:27:19', 'voyager.gallery-sarpras.index', NULL),
+(32, 1, 'Mapels', '', '_self', NULL, NULL, NULL, 18, '2021-10-07 02:56:09', '2021-10-17 03:27:19', 'voyager.mapels.index', NULL),
+(33, 1, 'Navbars', '', '_self', NULL, NULL, NULL, 19, '2021-10-16 04:24:35', '2021-10-17 03:27:19', 'voyager.navbars.index', NULL),
+(34, 1, 'Images', '', '_self', NULL, NULL, 36, 2, '2021-10-17 03:22:35', '2021-10-17 03:25:36', 'voyager.images.index', NULL),
+(35, 1, 'Videos', '', '_self', NULL, NULL, 36, 1, '2021-10-17 03:24:20', '2021-10-17 03:25:29', 'voyager.videos.index', NULL),
+(36, 1, 'Gallery', '', '_self', NULL, '#000000', NULL, 20, '2021-10-17 03:25:12', '2021-10-17 03:27:19', NULL, ''),
+(37, 1, 'Page Sarpras', '', '_self', NULL, '#000000', NULL, 21, '2021-10-17 03:26:59', '2021-10-17 03:27:19', NULL, ''),
+(38, 1, 'Contents', '', '_self', NULL, NULL, NULL, 22, '2021-10-17 09:10:33', '2021-10-17 09:10:33', 'voyager.contents.index', NULL);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `migrations`
+-- Table structure for table `migrations`
 --
 
 CREATE TABLE `migrations` (
@@ -982,7 +944,7 @@ CREATE TABLE `migrations` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `migrations`
+-- Dumping data for table `migrations`
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
@@ -1019,7 +981,38 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `pages`
+-- Table structure for table `navbars`
+--
+
+CREATE TABLE `navbars` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `slug` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `status` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `navbars`
+--
+
+INSERT INTO `navbars` (`id`, `name`, `slug`, `created_at`, `updated_at`, `status`) VALUES
+(1, 'Kurikulum', 'kurikulum', '2021-10-16 04:46:09', '2021-10-17 06:20:09', 'Active'),
+(2, 'Hubungan Industri', 'hubin', '2021-10-16 04:46:50', '2021-10-17 09:54:21', 'Active'),
+(3, 'Sarana Pra Sarana', 'sarpras', '2021-10-16 04:47:13', '2021-10-17 09:54:06', 'Active'),
+(4, 'Kesiswaan', 'kesiswaan', '2021-10-16 04:47:28', '2021-10-17 06:19:34', 'Active'),
+(5, 'BKK', 'bkk', '2021-10-16 04:47:42', '2021-10-17 06:19:22', 'Active'),
+(6, 'Program Keahlian', 'program-keahlian', '2021-10-16 04:48:04', '2021-10-17 06:19:11', 'Active'),
+(7, 'Profile', 'profile', '2021-10-17 04:38:23', '2021-10-17 06:28:40', 'Inactive'),
+(8, 'Home', 'home', '2021-10-17 06:04:16', '2021-10-17 06:29:01', 'Inactive'),
+(9, 'News Home', 'news-home', '2021-10-17 06:04:27', '2021-10-17 06:29:14', 'Inactive'),
+(10, 'Gallery', 'gallery', '2021-10-17 06:04:40', '2021-10-17 06:29:27', 'Active');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pages`
 --
 
 CREATE TABLE `pages` (
@@ -1039,33 +1032,37 @@ CREATE TABLE `pages` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `pages`
+-- Dumping data for table `pages`
 --
 
 INSERT INTO `pages` (`id`, `author_id`, `title`, `excerpt`, `body`, `image`, `slug`, `meta_description`, `meta_keywords`, `status`, `created_at`, `updated_at`, `category_id`) VALUES
-(2, 1, 'Sejarah SMK Taruna Bhakti', 'Pada tanggal 16 Juni 2004 didirikan SMK Taruna Bhakti Depok yang berada di Jalan Pekapuran Kelurahan Curug Kecamatan Cimanggis Depok. Dengan Bidang Studi Keahlian “ Teknologi informasi dan komunikasi” serta kompetensi keahlian “Teknik computer dan jaringan”.', '<h3 class=\"mt-5\" style=\"box-sizing: border-box; margin-bottom: 0.5rem; font-weight: 500; line-height: 1.2; font-size: 1.75rem; font-family: Raleway, sans-serif; margin-top: 3rem !important;\"><span style=\"box-sizing: border-box; font-weight: bolder;\">SEJARAH SMK TARUNA BHAKTI</span></h3>\r\n<p>&nbsp;</p>\r\n<p class=\"mt-3\" style=\"box-sizing: border-box; margin-bottom: 1rem; font-family: \'Open Sans\', sans-serif; font-size: 16px; margin-top: 1rem !important;\">Untuk memenuhi kebutuhan akan sumber daya manusia yang berkualitas tinggi dalam penguasaan IPTEK yang didasari semangat iman dan taqwa,<span style=\"box-sizing: border-box; font-weight: bolder;\">&nbsp;SMK Taruna Bhakti Depok</span>&nbsp;dirancang untuk membekali siswa agar menguasai ilmu pengetahuan khususnya dalam bidang Teknologi Informasi dan Komunikasi yang berkualitas, serta memiliki kecakapan hidup. Program pembelajaran SMK Taruna Bhakti memberi perhatian khusus (ciri khas) pada penguasaan TIK khususnya bidang Teknik Komputer dan Jaringan (TKJ), Multimedia (MM) serta Rekaya Perangkat Lunak (RPL) dengan menggunakan kurikulum Nasional yang secara inovatif diperkaya oleh SMK Taruna Bhakti berdasarkan VISI, MISI, TUJUAN serta TARGET SMK Taruna Bhakti.<br style=\"box-sizing: border-box;\" /><br style=\"box-sizing: border-box;\" />Selain pembelajaran di kelas (intrakurikuler) dan pengembangan bakat/minat melalui ekstrakurikuler, siswa memperluas wawasan melalui berbagai macam program yang membekali siswa untuk memiliki kecakapan hidup antara lain: Character Building, Science Camp, Mendatangkan Guru Tamu dari Dunai Usaha/Industri yang relevan dll, serta memberi kesempatan luas kepada siswa untuk berkompetisi dalam bidang akademis dan non-akademis baik tingkat Nasional, Regional, dan Internasional. Proses dan efektifitas pembelajaran didukung oleh guru yang kompeten, bimbingan dan konseling, serta sarana pendidikan yang lengkap. Sebagai salah satu sekolah Teknologi Informasi dan Komunikasi bermutu di Depok, prestasi yang telah dicapai oleh SMK Taruna Bhakti Depok ini memang sesuai dengn visi dan misi yang diembannya</p>', NULL, 'sejarah-smk-taruna-bhakti', 'Sejarah SMK Taruna Bhakti', 'Sejarah', 'ACTIVE', '2021-09-24 18:35:29', '2021-10-01 09:46:07', 7),
-(3, 1, 'Identitas Sekolah', 'Identitas Sekolah SMK Taruna Bhakti', '<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1.5em; color: #212529; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 12px; text-align: center;\"><span style=\"box-sizing: border-box; font-weight: bolder;\">IDENTITAS SEKOLAH</span></p>\r\n<table style=\"border-collapse: collapse; border-spacing: 0px; margin: 0px 0px 1.5em; width: 719px; color: #212529; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 12px; height: 146px;\">\r\n<tbody style=\"box-sizing: border-box;\">\r\n<tr style=\"box-sizing: border-box; height: 29px;\">\r\n<td style=\"box-sizing: border-box; padding: 0px; width: 238px; height: 29px;\">1. Nama Sekolah</td>\r\n<td style=\"box-sizing: border-box; padding: 0px; width: 462px; height: 29px;\"><span style=\"box-sizing: border-box; font-weight: bolder;\">SMK TARUNA BHAKTI</span></td>\r\n</tr>\r\n<tr style=\"box-sizing: border-box; height: 29.25px;\">\r\n<td style=\"box-sizing: border-box; padding: 0px; width: 238px; height: 29.25px;\">2. Status Akreditasi</td>\r\n<td style=\"box-sizing: border-box; padding: 0px; width: 462px; height: 29.25px;\">A / Nomor : 02.00/350/BAP-SM/XII/2013</td>\r\n</tr>\r\n<tr style=\"box-sizing: border-box; height: 29px;\">\r\n<td style=\"box-sizing: border-box; padding: 0px; width: 238px; height: 29px;\">3. Alamat Sekolah</td>\r\n<td style=\"box-sizing: border-box; padding: 0px; width: 462px; height: 29px;\">Jalan Raya pekapuran RT 02 RW 07</td>\r\n</tr>\r\n<tr style=\"box-sizing: border-box; height: 29px;\">\r\n<td style=\"box-sizing: border-box; padding: 0px; width: 238px; height: 29px;\">&nbsp;&nbsp;&nbsp; Kelurahan/Desa</td>\r\n<td style=\"box-sizing: border-box; padding: 0px; width: 462px; height: 29px;\">Curug</td>\r\n</tr>\r\n<tr style=\"box-sizing: border-box; height: 29px;\">\r\n<td style=\"box-sizing: border-box; padding: 0px; width: 238px; height: 29px;\">&nbsp;&nbsp;&nbsp; Kecamatan</td>\r\n<td style=\"box-sizing: border-box; padding: 0px; width: 462px; height: 29px;\">Cimanggis</td>\r\n</tr>\r\n<tr style=\"box-sizing: border-box; height: 29px;\">\r\n<td style=\"box-sizing: border-box; padding: 0px; width: 238px; height: 29px;\">&nbsp;&nbsp;&nbsp; Kabupaten/Kota</td>\r\n<td style=\"box-sizing: border-box; padding: 0px; width: 462px; height: 29px;\">Depok</td>\r\n</tr>\r\n<tr style=\"box-sizing: border-box; height: 29px;\">\r\n<td style=\"box-sizing: border-box; padding: 0px; width: 238px; height: 29px;\">&nbsp;&nbsp;&nbsp; Provinsi</td>\r\n<td style=\"box-sizing: border-box; padding: 0px; width: 462px; height: 29px;\">Jawa Barat</td>\r\n</tr>\r\n<tr style=\"box-sizing: border-box; height: 29px;\">\r\n<td style=\"box-sizing: border-box; padding: 0px; width: 238px; height: 29px;\">&nbsp;&nbsp;&nbsp; Telephone</td>\r\n<td style=\"box-sizing: border-box; padding: 0px; width: 462px; height: 29px;\">(021) 8744810</td>\r\n</tr>\r\n<tr style=\"box-sizing: border-box; height: 29px;\">\r\n<td style=\"box-sizing: border-box; padding: 0px; width: 238px; height: 29px;\">&nbsp;&nbsp;&nbsp; Faximile</td>\r\n<td style=\"box-sizing: border-box; padding: 0px; width: 462px; height: 29px;\">(021) 87743374</td>\r\n</tr>\r\n<tr style=\"box-sizing: border-box; height: 29px;\">\r\n<td style=\"box-sizing: border-box; padding: 0px; width: 238px; height: 29px;\">&nbsp;&nbsp;&nbsp; Kode Pos</td>\r\n<td style=\"box-sizing: border-box; padding: 0px; width: 462px; height: 29px;\">16953</td>\r\n</tr>\r\n<tr style=\"box-sizing: border-box; height: 29px;\">\r\n<td style=\"box-sizing: border-box; padding: 0px; width: 238px; height: 29px;\">&nbsp;&nbsp;&nbsp; website</td>\r\n<td style=\"box-sizing: border-box; padding: 0px; width: 462px; height: 29px;\">www.smktarunabhakti.net</td>\r\n</tr>\r\n<tr style=\"box-sizing: border-box; height: 29px;\">\r\n<td style=\"box-sizing: border-box; padding: 0px; width: 238px; height: 29px;\">&nbsp;&nbsp;&nbsp; e-mail</td>\r\n<td style=\"box-sizing: border-box; padding: 0px; width: 462px; height: 29px;\">taruna@smktarunabhakti.net</td>\r\n</tr>\r\n<tr style=\"box-sizing: border-box; height: 29px;\">\r\n<td style=\"box-sizing: border-box; padding: 0px; width: 238px; height: 29px;\">4. Nomor Pokok Sekolah Nasional</td>\r\n<td style=\"box-sizing: border-box; padding: 0px; width: 462px; height: 29px;\">20229232</td>\r\n</tr>\r\n<tr style=\"box-sizing: border-box; height: 29px;\">\r\n<td style=\"box-sizing: border-box; padding: 0px; width: 238px; height: 29px;\">5. Nomor Induk Sekolah</td>\r\n<td style=\"box-sizing: border-box; padding: 0px; width: 462px; height: 29px;\">400580</td>\r\n</tr>\r\n<tr style=\"box-sizing: border-box; height: 29px;\">\r\n<td style=\"box-sizing: border-box; padding: 0px; width: 238px; height: 29px;\">6. Nomor Statistik Sekolah</td>\r\n<td style=\"box-sizing: border-box; padding: 0px; width: 462px; height: 29px;\">422026601001</td>\r\n</tr>\r\n<tr style=\"box-sizing: border-box; height: 29px;\">\r\n<td style=\"box-sizing: border-box; padding: 0px; width: 238px; height: 29px;\">7. Tahun Berdiri</td>\r\n<td style=\"box-sizing: border-box; padding: 0px; width: 462px; height: 29px;\">2004</td>\r\n</tr>\r\n<tr style=\"box-sizing: border-box; height: 29px;\">\r\n<td style=\"box-sizing: border-box; padding: 0px; width: 238px; height: 29px;\">&nbsp;</td>\r\n<td style=\"box-sizing: border-box; padding: 0px; width: 462px; height: 29px;\">&nbsp;</td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1.5em; color: #212529; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 12px;\">&nbsp;</p>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1.5em; color: #212529; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 12px; text-align: center;\"><span style=\"box-sizing: border-box; font-weight: bolder;\">VISI</span></p>\r\n<table style=\"border-collapse: collapse; border-spacing: 0px; margin: 0px 0px 1.5em; width: 730px; color: #212529; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 12px;\" width=\"100%\">\r\n<tbody style=\"box-sizing: border-box;\">\r\n<tr style=\"box-sizing: border-box;\">\r\n<td style=\"box-sizing: border-box; padding: 0px;\">Menghasilkan Lulusan Yang Kompeten Dalam Ilmu Pengetahuan dan Teknologi (IPTEK) dan Iman Taqwa (IMTAQ) Serta Mampu Bersaing Pada Tingkat Nasional dan Global</td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1.5em; color: #212529; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 12px; text-align: center;\"><span style=\"box-sizing: border-box; font-weight: bolder;\">MISI</span></p>\r\n<table style=\"border-collapse: collapse; border-spacing: 0px; margin: 0px 0px 1.5em; width: 730px; color: #212529; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 12px;\" width=\"100%\">\r\n<tbody style=\"box-sizing: border-box;\">\r\n<tr style=\"box-sizing: border-box;\">\r\n<td style=\"box-sizing: border-box; padding: 0px;\">\r\n<ol style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1rem;\">\r\n<li style=\"box-sizing: border-box;\">Menumbuhkan Semangat Kreatifitas, Bersinergi Dan Kompetitif Kepada Seluruh Warga Sekolah.</li>\r\n<li style=\"box-sizing: border-box;\">Melaksanakan Kurikulum Melalui Pembelajaran Dan Penilaian Berbasis Kompetensi, Berbasis Wirausaha Berwawasan Lingkungan.</li>\r\n<li style=\"box-sizing: border-box;\">Meningkatkan kualitas sumber daya manusia melalui sertifikasi Kompetensi Tingkat Nasional dan Internasional</li>\r\n<li style=\"box-sizing: border-box;\">Mengembangkan Potensi Peserta Didik Melalui Kegiatan Minat Dan Bakat Dan Pembinaan Kedisiplinan.</li>\r\n<li style=\"box-sizing: border-box;\">Menerapkan Layanan Prima Dalam Pengelolaan Sekolah Melalui Sistem Manajemen Mutu</li>\r\n</ol>\r\n</td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<table style=\"border-collapse: collapse; border-spacing: 0px; margin: 0px 0px 1.5em; width: 730px; color: #212529; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 12px; height: 263px;\" width=\"839\">\r\n<tbody style=\"box-sizing: border-box;\">\r\n<tr style=\"box-sizing: border-box; height: 24px;\">\r\n<td style=\"box-sizing: border-box; padding: 0px; width: 411.5px; height: 24px;\">&nbsp;</td>\r\n<td style=\"box-sizing: border-box; padding: 0px; width: 411.5px; height: 24px;\">&nbsp;</td>\r\n</tr>\r\n<tr style=\"box-sizing: border-box; height: 24px;\">\r\n<td style=\"box-sizing: border-box; padding: 0px; width: 411.5px; height: 24px;\">Nama Kepala Sekolah</td>\r\n<td style=\"box-sizing: border-box; padding: 0px; width: 411.5px; height: 24px;\">Ramadin Tarigan, ST</td>\r\n</tr>\r\n<tr style=\"box-sizing: border-box; height: 24px;\">\r\n<td style=\"box-sizing: border-box; padding: 0px; width: 411.5px; height: 24px;\">Jumlah Rombongan Belajar</td>\r\n<td style=\"box-sizing: border-box; padding: 0px; width: 411.5px; height: 24px;\">40&nbsp;Rombongan Belajar</td>\r\n</tr>\r\n<tr style=\"box-sizing: border-box; height: 24px;\">\r\n<td style=\"box-sizing: border-box; padding: 0px; width: 411.5px; height: 24px;\">Jumlah Ruang Kelas</td>\r\n<td style=\"box-sizing: border-box; padding: 0px; width: 411.5px; height: 24px;\">16 Ruang Kelas</td>\r\n</tr>\r\n<tr style=\"box-sizing: border-box; height: 24px;\">\r\n<td style=\"box-sizing: border-box; padding: 0px; width: 411.5px; height: 24px;\">Jumlah Laboratorium</td>\r\n<td style=\"box-sizing: border-box; padding: 0px; width: 411.5px; height: 24px;\">12 Laboratorium Komputer + 2 Lab Bahasa</td>\r\n</tr>\r\n<tr style=\"box-sizing: border-box; height: 24px;\">\r\n<td style=\"box-sizing: border-box; padding: 0px; width: 411.5px; height: 24px;\">Penerapan MBS</td>\r\n<td style=\"box-sizing: border-box; padding: 0px; width: 411.5px; height: 24px;\">Pagi</td>\r\n</tr>\r\n<tr style=\"box-sizing: border-box; height: 24px;\">\r\n<td style=\"box-sizing: border-box; padding: 0px; width: 411.5px; height: 24px;\">Jumlah Tenaga Pendidik/Guru</td>\r\n<td style=\"box-sizing: border-box; padding: 0px; width: 411.5px; height: 24px;\">67&nbsp;Orang</td>\r\n</tr>\r\n<tr style=\"box-sizing: border-box; height: 24px;\">\r\n<td style=\"box-sizing: border-box; padding: 0px; width: 411.5px; height: 24px;\">Jumlah Siswa</td>\r\n<td style=\"box-sizing: border-box; padding: 0px; width: 411.5px; height: 24px;\">1536&nbsp;Siswa</td>\r\n</tr>\r\n<tr style=\"box-sizing: border-box; height: 24px;\">\r\n<td style=\"box-sizing: border-box; padding: 0px; width: 411.5px; height: 24px;\">Jumlah Staf Tata Usaha</td>\r\n<td style=\"box-sizing: border-box; padding: 0px; width: 411.5px; height: 24px;\">7 Orang</td>\r\n</tr>\r\n<tr style=\"box-sizing: border-box; height: 24px;\">\r\n<td style=\"box-sizing: border-box; padding: 0px; width: 411.5px; height: 24px;\">Jumlah Operator SIM Sekolah</td>\r\n<td style=\"box-sizing: border-box; padding: 0px; width: 411.5px; height: 24px;\">2 Orang</td>\r\n</tr>\r\n<tr style=\"box-sizing: border-box; height: 24.5px;\">\r\n<td style=\"box-sizing: border-box; padding: 0px; width: 411.5px; height: 24.5px;\">Jumlah Laboran</td>\r\n<td style=\"box-sizing: border-box; padding: 0px; width: 411.5px; height: 24.5px;\">2 Orang</td>\r\n</tr>\r\n<tr style=\"box-sizing: border-box; height: 24px;\">\r\n<td style=\"box-sizing: border-box; padding: 0px; width: 411.5px; height: 24px;\">Jumlah Pustakawan</td>\r\n<td style=\"box-sizing: border-box; padding: 0px; width: 411.5px; height: 24px;\">2 Orang</td>\r\n</tr>\r\n<tr style=\"box-sizing: border-box; height: 24px;\">\r\n<td style=\"box-sizing: border-box; padding: 0px; width: 411.5px; height: 24px;\">Jumlah Penjaga Sekolah</td>\r\n<td style=\"box-sizing: border-box; padding: 0px; width: 411.5px; height: 24px;\">1 Orang</td>\r\n</tr>\r\n<tr style=\"box-sizing: border-box; height: 24px;\">\r\n<td style=\"box-sizing: border-box; padding: 0px; width: 411.5px; height: 24px;\">Jumlah Satpam</td>\r\n<td style=\"box-sizing: border-box; padding: 0px; width: 411.5px; height: 24px;\">1 Orang</td>\r\n</tr>\r\n<tr style=\"box-sizing: border-box; height: 24px;\">\r\n<td style=\"box-sizing: border-box; padding: 0px; width: 411.5px; height: 24px;\">Jumlah Tukang Kebersihan</td>\r\n<td style=\"box-sizing: border-box; padding: 0px; width: 411.5px; height: 24px;\">3 Orang</td>\r\n</tr>\r\n<tr style=\"box-sizing: border-box; height: 24px;\">\r\n<td style=\"box-sizing: border-box; padding: 0px; width: 411.5px; height: 24px;\">Jumlah Pengemudi/Supir</td>\r\n<td style=\"box-sizing: border-box; padding: 0px; width: 411.5px; height: 24px;\">1 Orang</td>\r\n</tr>\r\n<tr style=\"box-sizing: border-box; height: 24px;\">\r\n<td style=\"box-sizing: border-box; padding: 0px; width: 411.5px; height: 24px;\">Bidang Studi Keahlian</td>\r\n<td style=\"box-sizing: border-box; padding: 0px; width: 411.5px; height: 24px;\">Teknologi Informasi dan Komunikasi</td>\r\n</tr>\r\n<tr style=\"box-sizing: border-box; height: 24px;\">\r\n<td style=\"box-sizing: border-box; padding: 0px; width: 411.5px; height: 24px;\">Program Studi Keahlian</td>\r\n<td style=\"box-sizing: border-box; padding: 0px; width: 411.5px; height: 24px;\">Teknik Komputer dan Informatika</td>\r\n</tr>\r\n<tr style=\"box-sizing: border-box; height: 24px;\">\r\n<td style=\"box-sizing: border-box; padding: 0px; width: 411.5px; height: 24px;\">&nbsp;</td>\r\n<td style=\"box-sizing: border-box; padding: 0px; width: 411.5px; height: 24px;\">&nbsp;</td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1.5em; color: #212529; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 12px;\">Kompetensi Keahlian&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :</p>\r\n<ol style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1rem; color: #212529; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 12px;\">\r\n<li style=\"box-sizing: border-box;\">Teknik Komputer dan Jaringan (TKJ)</li>\r\n<li style=\"box-sizing: border-box;\">Multimedia (MM)</li>\r\n<li style=\"box-sizing: border-box;\">Rekayasa Perangkat Lunak (RPL)</li>\r\n<li style=\"box-sizing: border-box;\">Broadcasting (BRC)</li>\r\n<li style=\"box-sizing: border-box;\">Teknik Elektronika Industri (TEI)</li>\r\n<li style=\"box-sizing: border-box;\">Axioo Class Program (ACP)</li>\r\n</ol>', NULL, 'identitas-sekolah', 'Identitas Sekolah', 'Identitas Sekolah', 'INACTIVE', '2021-09-24 18:37:01', '2021-09-24 18:37:01', NULL),
-(4, 1, 'Visi dan Misi', 'Visi dan Misi SMK Taruna Bhakti', '<h3 class=\"mt-5 fw-bold\" style=\"box-sizing: border-box; margin-bottom: 0.5rem; line-height: 1.2; font-size: 1.75rem; font-family: Raleway, sans-serif; margin-top: 3rem !important;\">Visi</h3>\r\n<ol style=\"box-sizing: border-box; padding-left: 2rem; margin-top: 0px; margin-bottom: 1rem; font-family: \'Open Sans\', sans-serif; font-size: 16px;\">\r\n<li style=\"box-sizing: border-box;\">Menghasilkan lulusan yang kompeten dalam IPTEK DAN IMTAQ,</li>\r\n<li style=\"box-sizing: border-box;\">serta mampu bersaing pada tingkat nasional dan global.</li>\r\n</ol>\r\n<h3 class=\"mt-5 fw-bold\" style=\"box-sizing: border-box; margin-bottom: 0.5rem; line-height: 1.2; font-size: 1.75rem; font-family: Raleway, sans-serif; margin-top: 3rem !important;\">Misi</h3>\r\n<ol style=\"box-sizing: border-box; padding-left: 2rem; margin-top: 0px; margin-bottom: 1rem; font-family: \'Open Sans\', sans-serif; font-size: 16px;\">\r\n<li style=\"box-sizing: border-box;\">Menumbuhkan semangat kreatifitas, bersinergi dan kompetitif kepada seluruh warga sekolah</li>\r\n<li style=\"box-sizing: border-box;\">Melaksanakan kurikulum melalui pembelajaran dan penilaian berbasis kompetensi, Berbasis wirausaha, berwawasan lingkungan.dan berlandaskan kejujuran.</li>\r\n<li style=\"box-sizing: border-box;\">Meningkatkan kualitas sumber daya manusia melalui sertifikasi Kompetensi Tingkat Nasional dan Internasional</li>\r\n<li style=\"box-sizing: border-box;\">Mengembangkan potensi peserta didik melalui kegiatan Minat dan Bakat dan pembinaan kedisiplinan.</li>\r\n<li style=\"box-sizing: border-box;\">Menerapkan layanan prima dalam pengelolaan sekolah melalui Sistem Manajeman Mutu</li>\r\n</ol>', NULL, 'visi-dan-misi', 'Visi dan Misi', 'VIsi dan Misi', 'ACTIVE', '2021-09-24 18:38:35', '2021-10-01 09:47:40', 7),
-(5, 1, 'Tujuan', 'Tujuan SMK Taruna Bhakti', '<h3 class=\"mt-5\" style=\"box-sizing: border-box; margin-bottom: 0.5rem; font-weight: 500; line-height: 1.2; font-size: 1.75rem; font-family: Raleway, sans-serif; margin-top: 3rem !important;\"><span style=\"box-sizing: border-box; font-weight: bolder;\">Tujuan Sekolah</span></h3>\r\n<ol style=\"box-sizing: border-box; padding-left: 2rem; margin-top: 0px; margin-bottom: 1rem; color: #444444; font-family: \'Open Sans\', sans-serif; font-weight: 400;\">\r\n<li style=\"box-sizing: border-box;\">Menghasilkan lulusan yang kompeten</li>\r\n<li style=\"box-sizing: border-box;\">Meningkatkan kualitas pembelajaran.</li>\r\n<li style=\"box-sizing: border-box;\">Menyiapkan peserta didik agar mampu mengembangkan sikap profesional, mampu beradaptasi dan berkompetisi</li>\r\n<li style=\"box-sizing: border-box;\">Meningkatkan kepuasan masyarakat untuk memperoleh layanan pendidikan</li>\r\n<li style=\"box-sizing: border-box;\">Konsistensi pelaksanaan aktifitas, kendali mutu dan jaminan mutu sekolah.</li>\r\n<li style=\"box-sizing: border-box;\">Meningkatkan kesejahteraan warga sekolah.</li>\r\n</ol>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1rem; color: #444444; font-family: \'Open Sans\', sans-serif; font-weight: 400;\">Dalam segala aktivitas Proses Pendidikan menerapkan budaya mutu sebagai berikut :</p>\r\n<ul style=\"box-sizing: border-box; padding-left: 2rem; margin-top: 0px; margin-bottom: 1rem; color: #444444; font-family: \'Open Sans\', sans-serif; font-weight: 400;\">\r\n<li style=\"box-sizing: border-box;\"><span style=\"box-sizing: border-box; font-weight: bolder;\">Perubahan itu masa depan</span></li>\r\n<li style=\"box-sizing: border-box;\"><span style=\"box-sizing: border-box; font-weight: bolder;\">Pelayanan Prima</span></li>\r\n<li style=\"box-sizing: border-box;\"><span style=\"box-sizing: border-box; font-weight: bolder;\">Learning without practising is nothing</span></li>\r\n<li style=\"box-sizing: border-box;\"><span style=\"box-sizing: border-box; font-weight: bolder;\">Service is investment</span></li>\r\n<li style=\"box-sizing: border-box;\"><span style=\"box-sizing: border-box; font-weight: bolder;\">Our quality ask be different</span></li>\r\n</ul>', NULL, 'tujuan', 'Tujuan SMK Taruna Bhakti', 'Tujuan', 'ACTIVE', '2021-09-24 18:39:26', '2021-10-01 09:17:59', 7),
-(6, 1, 'Kebijakan Mutu SMK Taruna Bhakti', 'SMK Taruna Bhakti bertekad menerapkan Sistem Manajenen Mutu agar menjadi lembaga Pendidikan dan Pelatihan yang dapat memuaskan stacholder, dengan kebijakan:', '<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1.5em; color: #212529; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 12px;\">SMK Taruna Bhakti&nbsp;<em style=\"box-sizing: border-box;\">bertekad menerapkan Sistem Manajenen Mutu&nbsp;</em>agar menjadi lembaga Pendidikan dan Pelatihan yang dapat memuaskan stacholder, dengan kebijakan:</p>\r\n<ol style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1rem; color: #212529; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 12px;\">\r\n<li style=\"box-sizing: border-box;\">Berorientasi mutu pada setiap kegiatannya</li>\r\n<li style=\"box-sizing: border-box;\">Mengedepankan kepuasan pelanggan, serta selalu meningkatkan kinerja pelayanan</li>\r\n<li style=\"box-sizing: border-box;\">Mutu menjadi semangat dan budaya kerja kami dalam mencapai kepuasan pelanggan</li>\r\n<li style=\"box-sizing: border-box;\">Sumber daya manusia&nbsp;<span style=\"box-sizing: border-box; font-weight: bolder;\"><em style=\"box-sizing: border-box;\">harus</em></span>&nbsp;bertanggungjawab dan melaksanakan serta melakukan penyempurnaan dan berperan&nbsp;<span style=\"box-sizing: border-box; font-weight: bolder;\"><em style=\"box-sizing: border-box;\">aktif untuk meninjau dan,&nbsp;<span style=\"box-sizing: border-box; font-weight: bolder;\"><em style=\"box-sizing: border-box;\">memperbaiki Sistem Manajemen Mutu secara berkelanjutan&nbsp; di unit kerja&nbsp; masing-masing</em></span></em></span></li>\r\n<li style=\"box-sizing: border-box;\"><em style=\"box-sizing: border-box;\">Pengembangan kesadaran lingkungan hidup menjadi perhatian kami dalam melaksanakan proses belajar mengajar</em></li>\r\n<li style=\"box-sizing: border-box;\"><em style=\"box-sizing: border-box;\">Menumbuhkan penghayatan terhadap ajaran agama sebagai sumber kearifan dalam bertindak</em></li>\r\n<li style=\"box-sizing: border-box;\">Dalam segala aktivitasnya&nbsp; menerapkan budaya mutu sebagai berikut :</li>\r\n</ol>\r\n<ul style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1rem; color: #212529; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 12px;\">\r\n<li style=\"box-sizing: border-box;\"><span style=\"box-sizing: border-box; font-weight: bolder;\"><em style=\"box-sizing: border-box;\">Perubahan itu masa depan</em></span></li>\r\n<li style=\"box-sizing: border-box;\"><span style=\"box-sizing: border-box; font-weight: bolder;\"><em style=\"box-sizing: border-box;\">Pelayanan Prima</em></span></li>\r\n<li style=\"box-sizing: border-box;\"><span style=\"box-sizing: border-box; font-weight: bolder;\"><em style=\"box-sizing: border-box;\">Learning without practising is nothing</em></span></li>\r\n<li style=\"box-sizing: border-box;\"><span style=\"box-sizing: border-box; font-weight: bolder;\"><em style=\"box-sizing: border-box;\">Service is investment</em></span></li>\r\n<li style=\"box-sizing: border-box;\"><span style=\"box-sizing: border-box; font-weight: bolder;\"><em style=\"box-sizing: border-box;\">Our quality ask be different</em></span></li>\r\n</ul>', NULL, 'kebijakan-mutu-smk-taruna-bhakti', 'Kebijakan Mutu SMK Taruna Bhakti', 'Kebijakan Mutu', 'INACTIVE', '2021-09-24 18:40:28', '2021-09-24 18:40:28', NULL),
-(7, 1, 'Analisis Jabatan Tenaga Pendidik (Guru)', 'Tenaga Pendidik (Guru) diangkat berdasarkan Surat Keputusan (SK) Kepala SMK Taruna Bhakti Depok.', '<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1.5em; color: #212529; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 12px; text-align: center;\"><span style=\"box-sizing: border-box; font-size: 14pt;\"><span style=\"box-sizing: border-box; font-weight: bolder;\">ANALISIS JABATAN</span></span></p>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1.5em; color: #212529; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 12px; text-align: center;\"><span style=\"box-sizing: border-box; font-size: 14pt;\"><span style=\"box-sizing: border-box; font-weight: bolder;\">TENAGA PENDIDIK ( GURU )</span></span></p>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1.5em; color: #212529; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 12px;\">&nbsp;</p>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1.5em; color: #212529; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 12px;\">Tenaga Pendidik (Guru) diangkat berdasarkan Surat Keputusan (SK) Kepala SMK Taruna Bhakti Depok.</p>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1.5em; color: #212529; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 12px;\">Bertanggung Jawab Kepada :</p>\r\n<ul style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1rem; color: #212529; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 12px;\">\r\n<li style=\"box-sizing: border-box;\"><span style=\"box-sizing: border-box; font-weight: bolder;\">Kepala Sekolah</span></li>\r\n<li style=\"box-sizing: border-box;\"><span style=\"box-sizing: border-box; font-weight: bolder;\">Kepala Program Keahlian</span></li>\r\n</ul>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1.5em; color: #212529; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 12px;\">Berhubungan dengan :</p>\r\n<ol style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1rem; color: #212529; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 12px;\">\r\n<li style=\"box-sizing: border-box;\">Seluruh posisi Wakasek dan UMM</li>\r\n<li style=\"box-sizing: border-box;\">Ketua Program Studi Keahlian</li>\r\n<li style=\"box-sizing: border-box;\">Seluruh Tenaga Pendidik</li>\r\n<li style=\"box-sizing: border-box;\">Bimbingan Konseling</li>\r\n<li style=\"box-sizing: border-box;\">Tata Usaha</li>\r\n<li style=\"box-sizing: border-box;\">Pelanggan (Siswa, Orangtua Siswa, DU/DI)</li>\r\n</ol>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1.5em; color: #212529; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 12px;\">&nbsp;</p>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1.5em; color: #212529; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 12px;\"><span style=\"box-sizing: border-box; font-weight: bolder;\">Prasyarat :</span></p>\r\n<ol style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1rem; color: #212529; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 12px;\">\r\n<li style=\"box-sizing: border-box;\">Pendidikan minimal S1 (Berakta IV) atau memiliki sertifikat yang sesuai.</li>\r\n<li style=\"box-sizing: border-box;\">Usia minimal 20 tahun.</li>\r\n<li style=\"box-sizing: border-box;\">Memiliki latar belakang pendidikan atau pelatihan dan atau pengalaman yang sesuai dengan mata pelajaran/kompetensi yang diajarkannya.</li>\r\n<li style=\"box-sizing: border-box;\">Mampu merencanakan, melaksanakan dan mengevaluasi PBM.</li>\r\n<li style=\"box-sizing: border-box;\">Memahami berbagai kebijakan terkini yang mendukung pelaksanaan program.</li>\r\n<li style=\"box-sizing: border-box;\">Berkepribadian baik dan santun dalam membentuk kepribadian siswa yang berlandaskan pada IMTAQ.</li>\r\n</ol>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1.5em; color: #212529; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 12px;\"><span style=\"box-sizing: border-box; font-weight: bolder;\">&nbsp;</span></p>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1.5em; color: #212529; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 12px;\"><span style=\"box-sizing: border-box; font-weight: bolder;\">Tugas :</span></p>\r\n<ol style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1rem; color: #212529; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 12px;\">\r\n<li style=\"box-sizing: border-box;\">Membantu Kepala Program Keahlian dan Waka. Bid. Kurikulum untuk menyusun kurikulum implementatif.</li>\r\n<li style=\"box-sizing: border-box;\">Menyusun Program Tahunan dan Semester.</li>\r\n<li style=\"box-sizing: border-box;\">Menyusun perangkat pembelajaran (silabus, RPP, modul, alat peraga).</li>\r\n<li style=\"box-sizing: border-box;\">Menganalisis kebutuhan bahan ajar (buku sumber, alat, bahan).</li>\r\n<li style=\"box-sizing: border-box;\">Melaksanakan penyelenggaraan diklat.</li>\r\n<li style=\"box-sizing: border-box;\">Menyusun perangkat evaluasi (kisi-kisi, soal, analisis soal, program remedial).</li>\r\n<li style=\"box-sizing: border-box;\">Melakukan persiapan dan pelaksanaan evaluasi PBM.</li>\r\n<li style=\"box-sizing: border-box;\">Mengikuti Rapat Dinas.</li>\r\n<li style=\"box-sizing: border-box;\">Melaksanakan tindak lanjut hasil Rapat Dinas.</li>\r\n<li style=\"box-sizing: border-box;\">Melaporkan tugas pokok dan fungsinya (daftar hadir siswa, nilai, dan laporan kasus) kepada Ketua Program K</li>\r\n<li style=\"box-sizing: border-box;\">Menganalisis ketercapaian kompetensi siswa.</li>\r\n<li style=\"box-sizing: border-box;\">Membimbing siswa yang mengalami kesulitan belajar.</li>\r\n<li style=\"box-sizing: border-box;\">Memberi teguran kepada siswa yang melanggar tata tertib sekolah.</li>\r\n</ol>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1.5em; color: #212529; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 12px;\"><span style=\"box-sizing: border-box; font-weight: bolder;\">&nbsp;</span></p>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1.5em; color: #212529; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 12px;\"><span style=\"box-sizing: border-box; font-weight: bolder;\">Wewenang :</span></p>\r\n<ol style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1rem; color: #212529; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 12px;\">\r\n<li style=\"box-sizing: border-box;\">Menentukan nilai ketuntasan belajar (KB) sesuai mata pelajaran yang diampu.</li>\r\n<li style=\"box-sizing: border-box;\">Berperan serta dalam menyeleksi siswa untuk kegiatan LKS.</li>\r\n<li style=\"box-sizing: border-box;\">Berperan serta menentukan kenaikan tingkat dan kelulusan siswa (mata pelajaran/kompetensi) dalam rapat kenaikan dan kelulusan dewan guru.</li>\r\n<li style=\"box-sizing: border-box;\">Menganalisis kebutuhan pelanggan dan mendeskripsikannya dalam program kerja.</li>\r\n</ol>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1.5em; color: #212529; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 12px;\">&nbsp;</p>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1.5em; color: #212529; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 12px;\">&nbsp;</p>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1.5em; color: #212529; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 12px;\">&nbsp;</p>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1.5em; color: #212529; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 12px; text-align: right;\">Depok, 18 Juli 2018</p>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1.5em; color: #212529; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 12px; text-align: right;\">Kepala SMK Taruna Bhakti</p>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1.5em; color: #212529; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 12px;\">&nbsp;</p>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1.5em; color: #212529; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 12px;\">&nbsp;</p>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1.5em; color: #212529; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 12px; text-align: right;\"><span style=\"box-sizing: border-box; font-weight: bolder;\"><u style=\"box-sizing: border-box;\">Ramadin Tarigan, ST</u></span></p>', NULL, 'analisis-jabatan-tenaga-pendidik-guru', 'Analisis Jabatan Tenaga Pendidik', 'Analisis Jabatan Tenaga Pendidik', 'INACTIVE', '2021-09-24 18:42:37', '2021-09-24 18:42:37', NULL),
-(8, 1, 'Analisis Jabatan Wakil Kepala Sekolah Bidang Hubungan Industri', 'Wakil Kepala Sekolah Bidang Hubungan Industri diangkat berdasarkan Surat Keputusan (SK) Kepala SMK Taruna Bhakti Depok.', '<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1.5em; color: #212529; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 12px; text-align: center;\"><span style=\"box-sizing: border-box; font-weight: bolder;\">ANALISIS JABATAN</span></p>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1.5em; color: #212529; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 12px; text-align: center;\"><span style=\"box-sizing: border-box; font-weight: bolder;\">WAKIL KEPALA SEKOLAH BIDANG HUBUNGAN INDUSTRI</span></p>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1.5em; color: #212529; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 12px;\">&nbsp;</p>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1.5em; color: #212529; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 12px;\">Wakil Kepala Sekolah Bidang Hubungan Industri diangkat berdasarkan Surat Keputusan (SK) Kepala SMK Taruna Bhakti Depok.</p>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1.5em; color: #212529; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 12px;\">Bertanggung jawab kepada :</p>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1.5em; color: #212529; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 12px;\"><span style=\"box-sizing: border-box; font-weight: bolder;\">Kepala Sekolah</span></p>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1.5em; color: #212529; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 12px;\">Berhubungan dengan :</p>\r\n<ol style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1rem; color: #212529; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 12px;\">\r\n<li style=\"box-sizing: border-box;\">Seluruh posisi Waka dan UMM</li>\r\n<li style=\"box-sizing: border-box;\">Ketua Program Keahlian</li>\r\n<li style=\"box-sizing: border-box;\">Seluruh Tenaga Pendidik</li>\r\n<li style=\"box-sizing: border-box;\">Tata Usaha</li>\r\n<li style=\"box-sizing: border-box;\">Pelanggan (Siswa, Orangtua Siswa, DU/DI)</li>\r\n</ol>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1.5em; color: #212529; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 12px;\">&nbsp;</p>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1.5em; color: #212529; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 12px;\"><span style=\"box-sizing: border-box; font-weight: bolder;\">Prasyarat :</span></p>\r\n<ol style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1rem; color: #212529; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 12px;\">\r\n<li style=\"box-sizing: border-box;\">Pendidikan minimal S1.</li>\r\n<li style=\"box-sizing: border-box;\">Usia setinggi-tingginya 50 tahun.</li>\r\n<li style=\"box-sizing: border-box;\">Pengalaman mengajar sekurang-kurangnya 5 tahun.</li>\r\n<li style=\"box-sizing: border-box;\">Memahami filosofi, konsep dasar, program, dan strategi pelaksanaan pendidikan menengah kejuruan dalam pembangunan nasional.</li>\r\n<li style=\"box-sizing: border-box;\">Memahami Sistem Manajemen Mutu ISO 9001 : 2000.</li>\r\n<li style=\"box-sizing: border-box;\">Memahami Anggaran dan Pendapatan Belanja Sekolah (APBS).</li>\r\n</ol>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1.5em; color: #212529; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 12px;\">&nbsp;</p>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1.5em; color: #212529; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 12px;\"><span style=\"box-sizing: border-box; font-weight: bolder;\">Tugas :</span></p>\r\n<ol style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1rem; color: #212529; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 12px;\">\r\n<li style=\"box-sizing: border-box;\">Menyusun Program Kerja sesuai Kebijakan Mutu dan Sasaran Mutu.</li>\r\n<li style=\"box-sizing: border-box;\">Mengikuti Rapat Tinjauan Manajemen.</li>\r\n<li style=\"box-sizing: border-box;\">Melaksanakan tindak lanjut hasil Rapat Tinjauan Manajemen.</li>\r\n<li style=\"box-sizing: border-box;\">Melaksanakan Program Kerja.</li>\r\n<li style=\"box-sizing: border-box;\">Memonitor dan Mengevaluasi Pelaksanaan Hubungan Kerjasama Industri (Prakerin, Penelusuran dan Pemasaran Tamatan).</li>\r\n<li style=\"box-sizing: border-box;\">Menindaklanjuti Hasil Monitoring dan Evaluasi Pelaksanaan Hubungan Kerjasama Industri (Prakerin, Penelusuran dan Pemasaran Tamatan).</li>\r\n<li style=\"box-sizing: border-box;\">Mengkordinir pelaksanaan uji kompetensi.</li>\r\n<li style=\"box-sizing: border-box;\">Melaporkan dan mengkoordinasikan hasil Pelaksanaan Hubungan Kerjasama Industri dalam Rapat Dinas Tim Manajemen.</li>\r\n<li style=\"box-sizing: border-box;\">Mewakili dan atau melaksanakan tugas Kepala Sekolah sesuai bidang Hubungan Kerjasama Industri.</li>\r\n<li style=\"box-sizing: border-box;\">Mengkoordinir penelusuran tamatan.</li>\r\n<li style=\"box-sizing: border-box;\">Mengkoordinir persiapan dan pelaksanaan Praktek Kerja Industri (Prakerin).</li>\r\n<li style=\"box-sizing: border-box;\">Menyusun dan mengatur kegiatan yang bersifat kehumasan.</li>\r\n</ol>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1.5em; color: #212529; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 12px;\">&nbsp;</p>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1.5em; color: #212529; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 12px;\"><span style=\"box-sizing: border-box; font-weight: bolder;\">Wewenang :</span></p>\r\n<ol style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1rem; color: #212529; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 12px;\">\r\n<li style=\"box-sizing: border-box;\">Mewajibkan setiap ketua program keahlian untuk memiliki dokumen kerja sesuai tugas pokok dan fungsinya.</li>\r\n<li style=\"box-sizing: border-box;\">Mengkoordinir proses analisis kebutuhan pelanggan dan mendeskripsikannya dalam program kerja yang harus dilaksanakan oleh tim kerja/dan atau Program Studi Keahlian terkait.</li>\r\n<li style=\"box-sizing: border-box;\">Membuat Dokumen Kebijakan Mutu dan Sasaran Mutu Hubungan Kerjasama Industri bersama-sama dengan Waka dan Ketua Program Keahlian.</li>\r\n<li style=\"box-sizing: border-box;\">Menyusun uraian tugas dan wewenang tim Hubungan Kerjasama Industri agar mampu melaksanakan tugas sebaik-baiknya.</li>\r\n<li style=\"box-sizing: border-box;\">Memanfaatkan berbagai sumberdaya, jaringan lintas sektoral untuk memenuhi kebutuhan fasilitas dalam pengembangan kerjasama industri.</li>\r\n<li style=\"box-sizing: border-box;\">Penyelenggaraan penelusuran dan pemasaran tamatan sesuai dengan tuntutan pasar kerja, standar kerja dan standar kompetensi.</li>\r\n<li style=\"box-sizing: border-box;\">Meningkatkan potensi tamatan sesuai dengan Sekolah Bertaraf Internasional.</li>\r\n<li style=\"box-sizing: border-box;\">Merekomendasikan DU/DI yang akan dipilih sebagai institusi pasangan.</li>\r\n</ol>', NULL, 'analisis-jabatan-wakil-kepala-sekolah-bidang-hubungan-industri', 'Analisis Jabatan Wakil Kepala Sekolah Bidang Hubungan Industri', 'Analisis Jabatan Wakil Kepala Sekolah Bidang Hubungan Industri', 'INACTIVE', '2021-09-24 18:43:37', '2021-09-24 18:43:37', NULL);
-INSERT INTO `pages` (`id`, `author_id`, `title`, `excerpt`, `body`, `image`, `slug`, `meta_description`, `meta_keywords`, `status`, `created_at`, `updated_at`, `category_id`) VALUES
-(9, 1, 'Analisis Jabatan Wakil Kepala Sekolah Bidang Kurikulum', 'Koordinator Pokja Kurikulum diangkat berdasarkan Surat Keputusan (SK) Kepala SMK Taruna Bhakti Depok.', '<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1.5em; color: #212529; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 12px; text-align: center;\"><span style=\"box-sizing: border-box; font-size: 14pt;\"><span style=\"box-sizing: border-box; font-weight: bolder;\">ANALISIS JABATAN</span></span></p>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1.5em; color: #212529; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 12px; text-align: center;\"><span style=\"box-sizing: border-box; font-size: 14pt;\"><span style=\"box-sizing: border-box; font-weight: bolder;\">KOORDINATOR POKJA KURIKULUM</span></span></p>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1.5em; color: #212529; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 12px;\">&nbsp;</p>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1.5em; color: #212529; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 12px;\">Koordinator Pokja Kurikulum diangkat berdasarkan Surat Keputusan (SK) Kepala SMK Taruna Bhakti Depok.</p>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1.5em; color: #212529; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 12px;\">Bertanggung Jawab Kepada :</p>\r\n<ul style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1rem; color: #212529; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 12px;\">\r\n<li style=\"box-sizing: border-box;\"><span style=\"box-sizing: border-box; font-weight: bolder;\">Kepala Sekolah</span></li>\r\n</ul>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1.5em; color: #212529; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 12px;\">Berhubungan dengan :</p>\r\n<ol style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1rem; color: #212529; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 12px;\">\r\n<li style=\"box-sizing: border-box;\">Seluruh posisi Wakasek dan UMM</li>\r\n<li style=\"box-sizing: border-box;\">Ketua Program Studi Keahlian</li>\r\n<li style=\"box-sizing: border-box;\">Seluruh Tenaga Pendidik</li>\r\n<li style=\"box-sizing: border-box;\">Bimbingan Konseling</li>\r\n<li style=\"box-sizing: border-box;\">Tata Usaha</li>\r\n<li style=\"box-sizing: border-box;\">Pelanggan (Siswa, Orangtua Siswa, DU/DI)</li>\r\n</ol>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1.5em; color: #212529; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 12px;\">&nbsp;</p>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1.5em; color: #212529; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 12px;\"><span style=\"box-sizing: border-box; font-weight: bolder;\">Prasyarat :</span></p>\r\n<ol style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1rem; color: #212529; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 12px;\">\r\n<li style=\"box-sizing: border-box;\">Pendidikan minimal S1.</li>\r\n<li style=\"box-sizing: border-box;\">Usia setinggi-tingginya 50 tahun.</li>\r\n<li style=\"box-sizing: border-box;\">Pengalaman mengajar sekurang-kurangnya 5 tahun.</li>\r\n<li style=\"box-sizing: border-box;\">Memahami filosofi, konsep dasar, program, dan strategi pelaksanaan pendidikan menengah kejuruan dalam pembangunan nasional.</li>\r\n<li style=\"box-sizing: border-box;\">Memahami Sistem Manajemen Mutu ISO 9001 : 2000.</li>\r\n<li style=\"box-sizing: border-box;\">Memahami Anggaran dan Pendapatan Belanja Sekolah (APBS).</li>\r\n</ol>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1.5em; color: #212529; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 12px;\">&nbsp;</p>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1.5em; color: #212529; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 12px;\"><span style=\"box-sizing: border-box; font-weight: bolder;\">Tugas :</span></p>\r\n<ol style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1rem; color: #212529; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 12px;\">\r\n<li style=\"box-sizing: border-box;\">Menyusun Program Kerja sesuai Kebijakan Mutu dan Sasaran Mutu.</li>\r\n<li style=\"box-sizing: border-box;\">Mengikuti Rapat Tinjauan Manajemen.</li>\r\n<li style=\"box-sizing: border-box;\">Melaksanakan tindak lanjut hasil Rapat Tinjauan Manajemen.</li>\r\n<li style=\"box-sizing: border-box;\">Melaksanakan Program Kerja.</li>\r\n<li style=\"box-sizing: border-box;\">Merencanakan, Memonitor dan Mengevaluasi Pelaksanaan pembelajaran.</li>\r\n<li style=\"box-sizing: border-box;\">Menindaklanjuti Hasil Monitoring dan Evaluasi.</li>\r\n<li style=\"box-sizing: border-box;\">Mewakili dan atau melaksanakan tugas Kepala Sekolah sesuai bidang kurikulum.</li>\r\n<li style=\"box-sizing: border-box;\">Menganalisis kebutuhan tenaga pendidik.</li>\r\n<li style=\"box-sizing: border-box;\">Mengkoordinir persiapan dan pelaksanaan evaluasi PBM.</li>\r\n<li style=\"box-sizing: border-box;\">Membimbing penyusunan perangkat pembelajaran (Silabus, RPP, Bahan Ajar).</li>\r\n</ol>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1.5em; color: #212529; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 12px;\">&nbsp;</p>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1.5em; color: #212529; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 12px;\"><span style=\"box-sizing: border-box; font-weight: bolder;\">Wewenang :</span></p>\r\n<ol style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1rem; color: #212529; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 12px;\">\r\n<li style=\"box-sizing: border-box;\">Mewajibkan setiap kepala program keahlian untuk memiliki dokumen kerja sesuai tugas pokok dan fungsinya.</li>\r\n<li style=\"box-sizing: border-box;\">Mengkoordinir proses analisis kebutuhan pelanggan dan mendeskripsikannya dalam program kerja yang harus dilaksanakan oleh tim kerja/dan atau Program Studi Keahlian terkait.</li>\r\n<li style=\"box-sizing: border-box;\">Membuat Dokumen Kebijakan Mutu dan Sasaran Mutu Pendidikan dan Pelatihan, bersama-sama dengan Waka lainnya.</li>\r\n<li style=\"box-sizing: border-box;\">Menyusun uraian tugas dan wewenang para tenaga pendidik, agar mampu melaksanakan penyelenggaraan pendidikan dan pelatihan.</li>\r\n<li style=\"box-sizing: border-box;\">Memanfaatkan berbagai sumberdaya, jaringan lintas sektoral untuk memenuhi kebutuhan fasilitas dalam pengelolaan dan penyelenggaran diklat.</li>\r\n<li style=\"box-sizing: border-box;\">Penyelenggaraan Diklat sesuai tuntutan pasar kerja, standar kerja dan standar kompetensi</li>\r\n<li style=\"box-sizing: border-box;\">Meningkatkan potensi nilai akademik.</li>\r\n</ol>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1.5em; color: #212529; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 12px;\">&nbsp;</p>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1.5em; color: #212529; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 12px;\"><span style=\"box-sizing: border-box; font-weight: bolder;\">Catatan :</span></p>\r\n<ol style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1rem; color: #212529; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 12px;\">\r\n<li style=\"box-sizing: border-box;\">Point Kinerja pokja harus Mencapai Target Minimal 250 Point, apabila tidak memenuhi target maka konpensasi bulanan akan disesuai dengan presentasi pencapaian program dari program bidang Kurikulum.</li>\r\n</ol>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1.5em; color: #212529; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 12px;\">&nbsp;</p>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1.5em; color: #212529; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 12px; text-align: right;\">Depok, 17 Juli 2018</p>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1.5em; color: #212529; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 12px; text-align: right;\">Kepala SMK Taruna Bhakti</p>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1.5em; color: #212529; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 12px; text-align: right;\"><span style=\"box-sizing: border-box; font-weight: bolder;\"><u style=\"box-sizing: border-box;\">Ramadin Tarigan, ST</u></span></p>', NULL, 'analisis-jabatan-wakil-kepala-sekolah-bidang-kurikulum', 'Analisis Jabatan Wakil Kepala Sekolah Bidang Kurikulum', 'Analisis Jabatan Wakil Kepala Sekolah Bidang Kurikulum', 'INACTIVE', '2021-09-24 18:44:25', '2021-09-24 18:44:25', NULL),
-(10, 1, 'Analisis Jabatan Wali Kelas', 'Wali Kelas diangkat berdasarkan Surat Keputusan (SK) Kepala SMK Taruna Bhakti Depok.', '<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1.5em; color: #212529; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 12px; text-align: center;\"><span style=\"box-sizing: border-box; font-size: 14pt;\"><span style=\"box-sizing: border-box; font-weight: bolder;\">ANALISIS JABATAN</span></span></p>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1.5em; color: #212529; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 12px; text-align: center;\"><span style=\"box-sizing: border-box; font-size: 14pt;\"><span style=\"box-sizing: border-box; font-weight: bolder;\">WALI KELAS</span></span></p>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1.5em; color: #212529; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 12px;\">Wali Kelas diangkat berdasarkan Surat Keputusan (SK) Kepala SMK Taruna Bhakti Depok.</p>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1.5em; color: #212529; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 12px;\">Bertanggung Jawab Kepada :</p>\r\n<ul style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1rem; color: #212529; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 12px;\">\r\n<li style=\"box-sizing: border-box;\"><span style=\"box-sizing: border-box; font-weight: bolder;\">Kepala Sekolah</span></li>\r\n<li style=\"box-sizing: border-box;\"><span style=\"box-sizing: border-box; font-weight: bolder;\">Kepala Program Keahlian</span></li>\r\n</ul>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1.5em; color: #212529; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 12px;\">Berhubungan dengan :</p>\r\n<ol style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1rem; color: #212529; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 12px;\">\r\n<li style=\"box-sizing: border-box;\">Seluruh posisi Wakasek dan UMM</li>\r\n<li style=\"box-sizing: border-box;\">Ketua Program Studi Keahlian</li>\r\n<li style=\"box-sizing: border-box;\">Seluruh Tenaga Pendidik</li>\r\n<li style=\"box-sizing: border-box;\">Bimbingan Konseling</li>\r\n<li style=\"box-sizing: border-box;\">Tata Usaha</li>\r\n<li style=\"box-sizing: border-box;\">Pelanggan (Siswa, Orangtua Siswa, DU/DI)</li>\r\n</ol>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1.5em; color: #212529; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 12px;\"><span style=\"box-sizing: border-box; font-weight: bolder;\">Prasyarat :</span></p>\r\n<ol style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1rem; color: #212529; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 12px;\">\r\n<li style=\"box-sizing: border-box;\">Memiliki kemampuan untuk membentuk kepribadian siswa yang berlandaskan pada IMTAQ.</li>\r\n<li style=\"box-sizing: border-box;\">Pendidikan minimal D3 atau memiliki sertifikat yang sesuai.</li>\r\n<li style=\"box-sizing: border-box;\">Usia minimal 20 tahun.</li>\r\n<li style=\"box-sizing: border-box;\">Mampu merencanakan, melaksanakan dan mengevaluasi PBM.</li>\r\n<li style=\"box-sizing: border-box;\">Memahami berbagai kebijakan terkini yang mendukung pelaksanaan program.</li>\r\n</ol>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1.5em; color: #212529; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 12px;\"><span style=\"box-sizing: border-box; font-weight: bolder;\">Tugas&nbsp; :&nbsp;</span></p>\r\n<ol style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1rem; color: #212529; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 12px;\">\r\n<li style=\"box-sizing: border-box;\">Menyusun program kerja wali kelas.</li>\r\n<li style=\"box-sizing: border-box;\">Memonitor kehadiran siswa setiap hari, yang dibantu oleh Sekertaris kelas</li>\r\n<li style=\"box-sizing: border-box;\">Mengatur tempat duduk siswa di kelas dan membuat lay out kelas.</li>\r\n<li style=\"box-sizing: border-box;\">Membentuk pengurus kelas dan pembagian tugas piket kelas.</li>\r\n<li style=\"box-sizing: border-box;\">Menjalin hubungan dengan orang tua siswa.</li>\r\n<li style=\"box-sizing: border-box;\">Menghubungi orang tua/wali siswa apabila perlu.</li>\r\n<li style=\"box-sizing: border-box;\">Membantu bendahara sekolah dalam pengumpulan pembayaran SPP dan sumbangan lainnya.</li>\r\n<li style=\"box-sizing: border-box;\">Memahami karakter siswa yang meliputi : jumlah, nama dan latar belakang siswa dari kelas yang diasuhnya.</li>\r\n<li style=\"box-sizing: border-box;\">Membina suasana kekeluargaan diantara peserta didik</li>\r\n<li style=\"box-sizing: border-box;\">Menerima nilai dari penanggung jawab nilai danolah nilai (Pokja Kurikulum) untuk diolah menjadi nilai akhir dalam raport.</li>\r\n<li style=\"box-sizing: border-box;\">Mengisi dan membagikan buku laporan pendidkan (raport).</li>\r\n<li style=\"box-sizing: border-box;\">Menangani segala permasalahan yang dihadapi oleh siswa.</li>\r\n<li style=\"box-sizing: border-box;\">Berkoordinasi dengan guru BP/BK dalam menangani siswa yang menghadapi masalah.</li>\r\n<li style=\"box-sizing: border-box;\">Membina budi pekerti siswa.</li>\r\n<li style=\"box-sizing: border-box;\">Membantu siswa dalam memecahkan masalahnya.</li>\r\n<li style=\"box-sizing: border-box;\">Memotivasi siswa dalam pelaksanaan 5K &ndash; 7K.</li>\r\n<li style=\"box-sizing: border-box;\">Mengadministrasikan berkas/catatan pembinaan siswa pada kelas yang diasuhnya.</li>\r\n<li style=\"box-sizing: border-box;\">Membuat peta kerawanan kelas.</li>\r\n<li style=\"box-sizing: border-box;\">Membuat laporan berkala dan insidentil.</li>\r\n<li style=\"box-sizing: border-box;\">Menjadwalkan pertemuan mingguan dengan siswa perwalian.</li>\r\n<li style=\"box-sizing: border-box;\">Menjadwalkan pertemuan bulanan dengan orang tua siswa perwalian setelah tanggal 10 setiap bulannya.</li>\r\n<li style=\"box-sizing: border-box;\">Memonitor terlaksananya program sekolah dalam rangka hidup hemat (Menabung RP.2000 /hari).</li>\r\n<li style=\"box-sizing: border-box;\">Memonitor pengumpulan dan penggunaan uang KAS kelas.</li>\r\n<li style=\"box-sizing: border-box;\">Membuat laporan kerja wali kelas setiap akhir semester tahun pelajaran.</li>\r\n<li style=\"box-sizing: border-box;\">Melaksanakan proses himbauan dan penagihan Program menabung Rp. 2000,-per hari mencapai minimal 70% setiap bulan dari total siswa perwalian.</li>\r\n</ol>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1.5em; color: #212529; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 12px;\"><span style=\"box-sizing: border-box; font-weight: bolder;\">Wewenang :</span></p>\r\n<ol style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1rem; color: #212529; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 12px;\">\r\n<li style=\"box-sizing: border-box;\">Membina kelas yang diasuhnya.</li>\r\n<li style=\"box-sizing: border-box;\">Mengisi daftar kumpulan nilai.</li>\r\n<li style=\"box-sizing: border-box;\">Mengisi dan menanda tangani raport.</li>\r\n<li style=\"box-sizing: border-box;\">Mengatasi siswa yang bermasalah bekerja sama guru BP/BK.</li>\r\n<li style=\"box-sizing: border-box;\">Mengadakan pembinaan dan bimbingan terhadap siswa yang diasuhnya.</li>\r\n<li style=\"box-sizing: border-box;\">Menilai budi pekerti siswa yang diasuhnya.</li>\r\n<li style=\"box-sizing: border-box;\">Mengadakan kunjungan atau memanggil orang tua siswa/wali dari siswa yang bermasalah.</li>\r\n<li style=\"box-sizing: border-box;\">Membantu siswa yang mempunyai masalah dalam pelajaran tertentu.</li>\r\n</ol>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1.5em; color: #212529; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 12px;\">&nbsp;</p>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1.5em; color: #212529; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 12px; text-align: right;\">Depok, 17 Juli 2018</p>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1.5em; color: #212529; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 12px; text-align: right;\">Kepala SMK Taruna Bhakti</p>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1.5em; color: #212529; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 12px; text-align: right;\">&nbsp;</p>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1.5em; color: #212529; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 12px; text-align: right;\"><span style=\"box-sizing: border-box; font-weight: bolder;\"><u style=\"box-sizing: border-box;\">Ramadin Tarigan, ST</u></span></p>', NULL, 'analisis-jabatan-wali-kelas', 'Analisis Jabatan Wali Kelas', 'Analisis Jabatan Wali Kelas', 'INACTIVE', '2021-09-24 18:45:09', '2021-09-24 18:45:09', NULL),
-(16, 1, 'Kompetensi Keahlian', 'Kompetensi Keahlian', '<h3 class=\"mt-5\" style=\"box-sizing: border-box; margin-bottom: 0.5rem; font-weight: 500; line-height: 1.2; font-size: 1.75rem; font-family: Raleway, sans-serif; margin-top: 3rem !important;\"><span style=\"box-sizing: border-box; font-weight: bolder;\">Kompetensi Keahlian</span></h3>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1.5em; color: #212529; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 12px;\">&nbsp;</p>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1rem; font-family: \'Open Sans\', sans-serif; font-size: 16px;\"><span style=\"box-sizing: border-box; font-weight: bolder;\">Pembelajaran di smk menggabungan antara teori dan praktek dengan orientasi pada kesiapan kerja lulusannya.&nbsp;</span>Kurikulum dalam pendidikan smk terkonsentrasi pada sistem pembelajaran keahlian pada kejuruan-kejuruan khusus. karena itu dalam persaingan global saat ini lulusan smk dipersiapkan menjadi tenaga yang siap terjun ke dunia usaha dan industri</p>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1.5em; color: #212529; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 12px;\">&nbsp;</p>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1rem; font-family: \'Open Sans\', sans-serif; font-size: 16px;\">SMK Taruna Bhakti Memiliki 5 Kompetensi keahlian yang Terdiri dari :</p>\r\n<ol style=\"box-sizing: border-box; padding-left: 2rem; margin-top: 0px; margin-bottom: 1rem; font-family: \'Open Sans\', sans-serif; font-size: 16px;\">\r\n<li style=\"box-sizing: border-box;\">Teknik Komputer Dan Jaringan</li>\r\n<li style=\"box-sizing: border-box;\">Multimedia</li>\r\n<li style=\"box-sizing: border-box;\">Rekayasa Perangkat Lunak</li>\r\n<li style=\"box-sizing: border-box;\">Teknik Elektronika Industri</li>\r\n<li style=\"box-sizing: border-box;\">Broadcasting</li>\r\n</ol>', NULL, 'kompetensi-keahlian', 'Kompetensi Keahlian', 'Kompetensi Keahlian', 'ACTIVE', '2021-10-01 07:29:30', '2021-10-01 09:50:01', 5);
-INSERT INTO `pages` (`id`, `author_id`, `title`, `excerpt`, `body`, `image`, `slug`, `meta_description`, `meta_keywords`, `status`, `created_at`, `updated_at`, `category_id`) VALUES
-(17, 1, 'Struktur Kurikulum SMK Taruna Bhakti', 'Struktur Kurikulum SMK Taruna Bhakti', '<div class=\"mt-5\">\r\n<p style=\"text-align: center;\"><span style=\"font-size: 18pt;\">STRUKTUR KURIKULUM</span></p>\r\n<p style=\"text-align: center;\"><span style=\"font-size: 18pt;\">SMK TARUNA BHAKTI </span></p>\r\n<p>&nbsp;</p>\r\n<p>BIDANG KEAHIAN : TEKNOLOGI INFORMASI DAN KOMUNIKASI</p>\r\n<p>PROGRAM KEAHLIAN : TEKNIK KOMPUTER DAN INFORMATIKA</p>\r\n<p>PAKET KEAHLIAN : TEKNIK KOMPUTER DAN JARINGAN</p>\r\n<div class=\"kekanan\">\r\n<table class=\"table table-bordered\" style=\"width: 100%;\" border=\"1\" width=\"100%\"><caption>&nbsp;</caption>\r\n<tbody>\r\n<tr>\r\n<td class=\"text-center\" style=\"width: 397px;\" colspan=\"2\" rowspan=\"3\">MATA PELAJARAN</td>\r\n<td style=\"width: 292px;\" colspan=\"6\">KELAS</td>\r\n</tr>\r\n<tr>\r\n<td style=\"width: 96px;\" colspan=\"2\">X</td>\r\n<td style=\"width: 96px;\" colspan=\"2\">XI</td>\r\n<td style=\"width: 96px;\" colspan=\"2\">XII</td>\r\n</tr>\r\n<tr>\r\n<td style=\"width: 47px;\">1</td>\r\n<td style=\"width: 47px;\">2</td>\r\n<td style=\"width: 47px;\">1</td>\r\n<td style=\"width: 47px;\">2</td>\r\n<td style=\"width: 47px;\">1</td>\r\n<td style=\"width: 47px;\">2</td>\r\n</tr>\r\n<tr>\r\n<td style=\"width: 691px;\" colspan=\"8\"><strong>Kelompok A</strong></td>\r\n</tr>\r\n<tr>\r\n<td style=\"width: 47px;\">1</td>\r\n<td style=\"width: 348px;\">Pendidikan Agama dan Budi Pekerti</td>\r\n<td style=\"width: 47px;\">3</td>\r\n<td style=\"width: 47px;\">3</td>\r\n<td style=\"width: 47px;\">3</td>\r\n<td style=\"width: 47px;\">3</td>\r\n<td style=\"width: 47px;\">3</td>\r\n<td style=\"width: 47px;\">3</td>\r\n</tr>\r\n<tr>\r\n<td style=\"width: 47px;\">2</td>\r\n<td style=\"width: 348px;\">Pendidikan Pancasila dan Kewarganegaraan</td>\r\n<td style=\"width: 47px;\">2</td>\r\n<td style=\"width: 47px;\">2</td>\r\n<td style=\"width: 47px;\">2</td>\r\n<td style=\"width: 47px;\">2</td>\r\n<td style=\"width: 47px;\">2</td>\r\n<td style=\"width: 47px;\">2</td>\r\n</tr>\r\n<tr>\r\n<td style=\"width: 47px;\">3</td>\r\n<td style=\"width: 348px;\">Bahasa Indonesia</td>\r\n<td style=\"width: 47px;\">3</td>\r\n<td style=\"width: 47px;\">3</td>\r\n<td style=\"width: 47px;\">3</td>\r\n<td style=\"width: 47px;\">3</td>\r\n<td style=\"width: 47px;\">2</td>\r\n<td style=\"width: 47px;\">2</td>\r\n</tr>\r\n<tr>\r\n<td style=\"width: 47px;\">4</td>\r\n<td style=\"width: 348px;\">Matematika</td>\r\n<td style=\"width: 47px;\">4</td>\r\n<td style=\"width: 47px;\">4</td>\r\n<td style=\"width: 47px;\">4</td>\r\n<td style=\"width: 47px;\">4</td>\r\n<td style=\"width: 47px;\">4</td>\r\n<td style=\"width: 47px;\">4</td>\r\n</tr>\r\n<tr>\r\n<td style=\"width: 47px;\">5</td>\r\n<td style=\"width: 348px;\">Sejarah Indonesia</td>\r\n<td style=\"width: 47px;\">2</td>\r\n<td style=\"width: 47px;\">2</td>\r\n<td style=\"width: 47px;\">2</td>\r\n<td style=\"width: 47px;\">2</td>\r\n<td style=\"width: 47px;\">&ndash;</td>\r\n<td style=\"width: 47px;\">&ndash;</td>\r\n</tr>\r\n<tr>\r\n<td style=\"width: 47px;\">6</td>\r\n<td style=\"width: 348px;\">Bahasa Inggris</td>\r\n<td style=\"width: 47px;\">3</td>\r\n<td style=\"width: 47px;\">3</td>\r\n<td style=\"width: 47px;\">3</td>\r\n<td style=\"width: 47px;\">3</td>\r\n<td style=\"width: 47px;\">3</td>\r\n<td style=\"width: 47px;\">3</td>\r\n</tr>\r\n<tr>\r\n<td style=\"width: 691px;\" colspan=\"8\"><strong>Kelompok B</strong></td>\r\n</tr>\r\n<tr>\r\n<td style=\"width: 47px;\">7</td>\r\n<td style=\"width: 348px;\">Seni Budaya</td>\r\n<td style=\"width: 47px;\">3</td>\r\n<td style=\"width: 47px;\">3</td>\r\n<td style=\"width: 47px;\">&ndash;</td>\r\n<td style=\"width: 47px;\">&ndash;</td>\r\n<td style=\"width: 47px;\">&ndash;</td>\r\n<td style=\"width: 47px;\">&ndash;</td>\r\n</tr>\r\n<tr>\r\n<td style=\"width: 47px;\">8</td>\r\n<td style=\"width: 348px;\">Prakarya dan Kewirausahaan</td>\r\n<td style=\"width: 47px;\">&ndash;</td>\r\n<td style=\"width: 47px;\">&ndash;</td>\r\n<td style=\"width: 47px;\">2</td>\r\n<td style=\"width: 47px;\">2</td>\r\n<td style=\"width: 47px;\">2</td>\r\n<td style=\"width: 47px;\">2</td>\r\n</tr>\r\n<tr>\r\n<td style=\"width: 47px;\">9</td>\r\n<td style=\"width: 348px;\">Pendidikan Jasmani, Olah Raga &amp; Kesehatan</td>\r\n<td style=\"width: 47px;\">2</td>\r\n<td style=\"width: 47px;\">2</td>\r\n<td style=\"width: 47px;\">2</td>\r\n<td style=\"width: 47px;\">2</td>\r\n<td style=\"width: 47px;\">&ndash;</td>\r\n<td style=\"width: 47px;\">&ndash;</td>\r\n</tr>\r\n<tr>\r\n<td style=\"width: 397px;\" colspan=\"2\">Jumlah A Dan B</td>\r\n<td style=\"width: 47px;\">22</td>\r\n<td style=\"width: 47px;\">22</td>\r\n<td style=\"width: 47px;\">21</td>\r\n<td style=\"width: 47px;\">21</td>\r\n<td style=\"width: 47px;\">16</td>\r\n<td style=\"width: 47px;\">16</td>\r\n</tr>\r\n<tr>\r\n<td style=\"width: 691px;\" colspan=\"8\"><strong>Kelompok C (Peminatan)</strong></td>\r\n</tr>\r\n<tr>\r\n<td style=\"width: 691px;\" colspan=\"8\"><strong>C1. Dasar Bidang Keahlian</strong></td>\r\n</tr>\r\n<tr>\r\n<td style=\"width: 47px;\">10</td>\r\n<td style=\"width: 348px;\">Simulasi Digital</td>\r\n<td style=\"width: 47px;\">3</td>\r\n<td style=\"width: 47px;\">3</td>\r\n<td style=\"width: 47px;\">&ndash;</td>\r\n<td style=\"width: 47px;\">&ndash;</td>\r\n<td style=\"width: 47px;\">&ndash;</td>\r\n<td style=\"width: 47px;\">&ndash;</td>\r\n</tr>\r\n<tr>\r\n<td style=\"width: 47px;\">11</td>\r\n<td style=\"width: 348px;\">Fisika</td>\r\n<td style=\"width: 47px;\">4</td>\r\n<td style=\"width: 47px;\">4</td>\r\n<td style=\"width: 47px;\">&ndash;</td>\r\n<td style=\"width: 47px;\">&ndash;</td>\r\n<td style=\"width: 47px;\">&ndash;</td>\r\n<td style=\"width: 47px;\">&ndash;</td>\r\n</tr>\r\n<tr>\r\n<td style=\"width: 47px;\">12</td>\r\n<td style=\"width: 348px;\">Sistem Komputer</td>\r\n<td style=\"width: 47px;\">4</td>\r\n<td style=\"width: 47px;\">4</td>\r\n<td style=\"width: 47px;\">&ndash;</td>\r\n<td style=\"width: 47px;\">&ndash;</td>\r\n<td style=\"width: 47px;\">&ndash;</td>\r\n<td style=\"width: 47px;\">&ndash;</td>\r\n</tr>\r\n<tr>\r\n<td style=\"width: 691px;\" colspan=\"8\"><strong>C2. Dasar Program Keahlian</strong></td>\r\n</tr>\r\n<tr>\r\n<td style=\"width: 47px;\">13</td>\r\n<td style=\"width: 348px;\">Komputer dan Jaringan Dasar</td>\r\n<td style=\"width: 47px;\">10</td>\r\n<td style=\"width: 47px;\">10</td>\r\n<td style=\"width: 47px;\">&ndash;</td>\r\n<td style=\"width: 47px;\">&ndash;</td>\r\n<td style=\"width: 47px;\">&ndash;</td>\r\n<td style=\"width: 47px;\">&ndash;</td>\r\n</tr>\r\n<tr>\r\n<td style=\"width: 47px;\">14</td>\r\n<td style=\"width: 348px;\">Pemrograman Dasar</td>\r\n<td style=\"width: 47px;\">3</td>\r\n<td style=\"width: 47px;\">3</td>\r\n<td style=\"width: 47px;\">&ndash;</td>\r\n<td style=\"width: 47px;\">&ndash;</td>\r\n<td style=\"width: 47px;\">&ndash;</td>\r\n<td style=\"width: 47px;\">&ndash;</td>\r\n</tr>\r\n<tr>\r\n<td style=\"width: 47px;\">15</td>\r\n<td style=\"width: 348px;\">Dasar Design Grafis</td>\r\n<td style=\"width: 47px;\">2</td>\r\n<td style=\"width: 47px;\">2</td>\r\n<td style=\"width: 47px;\">&ndash;</td>\r\n<td style=\"width: 47px;\">&ndash;</td>\r\n<td style=\"width: 47px;\">&ndash;</td>\r\n<td style=\"width: 47px;\">&ndash;</td>\r\n</tr>\r\n<tr>\r\n<td style=\"width: 691px;\" colspan=\"8\"><strong>C3. Paket Keahlian</strong></td>\r\n</tr>\r\n<tr>\r\n<td style=\"width: 47px;\">16</td>\r\n<td style=\"width: 348px;\">Teknologi Infrastruktur Jaringan</td>\r\n<td style=\"width: 47px;\">&ndash;</td>\r\n<td style=\"width: 47px;\">&ndash;</td>\r\n<td style=\"width: 47px;\">8</td>\r\n<td style=\"width: 47px;\">8</td>\r\n<td style=\"width: 47px;\">&ndash;</td>\r\n<td style=\"width: 47px;\">&ndash;</td>\r\n</tr>\r\n<tr>\r\n<td style=\"width: 47px;\">17</td>\r\n<td style=\"width: 348px;\">Rancang Bangun Jaringan</td>\r\n<td style=\"width: 47px;\">&ndash;</td>\r\n<td style=\"width: 47px;\">&ndash;</td>\r\n<td style=\"width: 47px;\">8</td>\r\n<td style=\"width: 47px;\">8</td>\r\n<td style=\"width: 47px;\">9</td>\r\n<td style=\"width: 47px;\">9</td>\r\n</tr>\r\n<tr>\r\n<td style=\"width: 47px;\">18</td>\r\n<td style=\"width: 348px;\">Administrasi Server dan Keamanan Jaringan</td>\r\n<td style=\"width: 47px;\">&ndash;</td>\r\n<td style=\"width: 47px;\">&ndash;</td>\r\n<td style=\"width: 47px;\">8</td>\r\n<td style=\"width: 47px;\">8</td>\r\n<td style=\"width: 47px;\">10</td>\r\n<td style=\"width: 47px;\">10</td>\r\n</tr>\r\n<tr>\r\n<td style=\"width: 47px;\">19</td>\r\n<td style=\"width: 348px;\">Teknologi Layanan Jaringan</td>\r\n<td style=\"width: 47px;\">&ndash;</td>\r\n<td style=\"width: 47px;\">&ndash;</td>\r\n<td style=\"width: 47px;\">&ndash;</td>\r\n<td style=\"width: 47px;\">&ndash;</td>\r\n<td style=\"width: 47px;\">10</td>\r\n<td style=\"width: 47px;\">10</td>\r\n</tr>\r\n<tr>\r\n<td style=\"width: 47px;\">20</td>\r\n<td style=\"width: 348px;\">Pengembangan Produk Kreatif</td>\r\n<td style=\"width: 47px;\">&ndash;</td>\r\n<td style=\"width: 47px;\">&ndash;</td>\r\n<td style=\"width: 47px;\">3</td>\r\n<td style=\"width: 47px;\">3</td>\r\n<td style=\"width: 47px;\">3</td>\r\n<td style=\"width: 47px;\">3</td>\r\n</tr>\r\n<tr>\r\n<td style=\"width: 397px;\" colspan=\"2\">Jumlah C1, C2 Dan C3</td>\r\n<td style=\"width: 47px;\">26</td>\r\n<td style=\"width: 47px;\">26</td>\r\n<td style=\"width: 47px;\">27</td>\r\n<td style=\"width: 47px;\">27</td>\r\n<td style=\"width: 47px;\">32</td>\r\n<td style=\"width: 47px;\">32</td>\r\n</tr>\r\n<tr>\r\n<td style=\"width: 397px;\" colspan=\"2\"><strong>TOTAL</strong></td>\r\n<td style=\"width: 47px;\"><strong>48</strong></td>\r\n<td style=\"width: 47px;\"><strong>48</strong></td>\r\n<td style=\"width: 47px;\"><strong>48</strong></td>\r\n<td style=\"width: 47px;\"><strong>48</strong></td>\r\n<td style=\"width: 47px;\"><strong>48</strong></td>\r\n<td style=\"width: 47px;\"><strong>48</strong></td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n</div>\r\n<p>&nbsp;</p>\r\n<p>BIDANG KEAHLIAN : TEKNOLOGI INFORMASI DAN KOMUNIKASI</p>\r\n<p>PROGRAM KEAHLIAN : TEKNIK KOMPUTER DAN INFORMATIKA</p>\r\n<p>PAKET KEAHLIAN : MULTIMEDIA</p>\r\n<div class=\"kekanan\">\r\n<table class=\"table table-bordered\" style=\"width: 100%; height: 1056px;\" border=\"1\" width=\"100%\"><caption>&nbsp;</caption>\r\n<tbody>\r\n<tr style=\"height: 33px;\">\r\n<td class=\"text-center\" style=\"width: 397px; height: 99px;\" colspan=\"2\" rowspan=\"3\">MATA PELAJARAN</td>\r\n<td style=\"width: 292px; height: 33px;\" colspan=\"6\">KELAS</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"width: 96px; height: 33px;\" colspan=\"2\">X</td>\r\n<td style=\"width: 96px; height: 33px;\" colspan=\"2\">XI</td>\r\n<td style=\"width: 96px; height: 33px;\" colspan=\"2\">XII</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"width: 47px; height: 33px;\">1</td>\r\n<td style=\"width: 47px; height: 33px;\">2</td>\r\n<td style=\"width: 47px; height: 33px;\">1</td>\r\n<td style=\"width: 47px; height: 33px;\">2</td>\r\n<td style=\"width: 47px; height: 33px;\">1</td>\r\n<td style=\"width: 47px; height: 33px;\">2</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"width: 691px; height: 33px;\" colspan=\"8\"><strong>Kelompok A</strong></td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"width: 47px; height: 33px;\">1</td>\r\n<td style=\"width: 348px; height: 33px;\">Pendidikan Agama dan Budi Pekerti</td>\r\n<td style=\"width: 47px; height: 33px;\">3</td>\r\n<td style=\"width: 47px; height: 33px;\">3</td>\r\n<td style=\"width: 47px; height: 33px;\">3</td>\r\n<td style=\"width: 47px; height: 33px;\">3</td>\r\n<td style=\"width: 47px; height: 33px;\">3</td>\r\n<td style=\"width: 47px; height: 33px;\">3</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"width: 47px; height: 33px;\">2</td>\r\n<td style=\"width: 348px; height: 33px;\">Pendidikan Pancasila dan Kewarganegaraan</td>\r\n<td style=\"width: 47px; height: 33px;\">2</td>\r\n<td style=\"width: 47px; height: 33px;\">2</td>\r\n<td style=\"width: 47px; height: 33px;\">2</td>\r\n<td style=\"width: 47px; height: 33px;\">2</td>\r\n<td style=\"width: 47px; height: 33px;\">2</td>\r\n<td style=\"width: 47px; height: 33px;\">2</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"width: 47px; height: 33px;\">3</td>\r\n<td style=\"width: 348px; height: 33px;\">Bahasa Indonesia</td>\r\n<td style=\"width: 47px; height: 33px;\">3</td>\r\n<td style=\"width: 47px; height: 33px;\">3</td>\r\n<td style=\"width: 47px; height: 33px;\">3</td>\r\n<td style=\"width: 47px; height: 33px;\">3</td>\r\n<td style=\"width: 47px; height: 33px;\">2</td>\r\n<td style=\"width: 47px; height: 33px;\">2</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"width: 47px; height: 33px;\">4</td>\r\n<td style=\"width: 348px; height: 33px;\">Matematika</td>\r\n<td style=\"width: 47px; height: 33px;\">4</td>\r\n<td style=\"width: 47px; height: 33px;\">4</td>\r\n<td style=\"width: 47px; height: 33px;\">4</td>\r\n<td style=\"width: 47px; height: 33px;\">4</td>\r\n<td style=\"width: 47px; height: 33px;\">4</td>\r\n<td style=\"width: 47px; height: 33px;\">4</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"width: 47px; height: 33px;\">5</td>\r\n<td style=\"width: 348px; height: 33px;\">Sejarah Indonesia</td>\r\n<td style=\"width: 47px; height: 33px;\">2</td>\r\n<td style=\"width: 47px; height: 33px;\">2</td>\r\n<td style=\"width: 47px; height: 33px;\">2</td>\r\n<td style=\"width: 47px; height: 33px;\">2</td>\r\n<td style=\"width: 47px; height: 33px;\">&ndash;</td>\r\n<td style=\"width: 47px; height: 33px;\">&ndash;</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"width: 47px; height: 33px;\">6</td>\r\n<td style=\"width: 348px; height: 33px;\">Bahasa Inggris</td>\r\n<td style=\"width: 47px; height: 33px;\">3</td>\r\n<td style=\"width: 47px; height: 33px;\">3</td>\r\n<td style=\"width: 47px; height: 33px;\">3</td>\r\n<td style=\"width: 47px; height: 33px;\">3</td>\r\n<td style=\"width: 47px; height: 33px;\">3</td>\r\n<td style=\"width: 47px; height: 33px;\">3</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"width: 691px; height: 33px;\" colspan=\"8\"><strong>Kelompok B</strong></td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"width: 47px; height: 33px;\">7</td>\r\n<td style=\"width: 348px; height: 33px;\">Seni Budaya</td>\r\n<td style=\"width: 47px; height: 33px;\">3</td>\r\n<td style=\"width: 47px; height: 33px;\">3</td>\r\n<td style=\"width: 47px; height: 33px;\">&ndash;</td>\r\n<td style=\"width: 47px; height: 33px;\">&ndash;</td>\r\n<td style=\"width: 47px; height: 33px;\">&ndash;</td>\r\n<td style=\"width: 47px; height: 33px;\">&ndash;</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"width: 47px; height: 33px;\">8</td>\r\n<td style=\"width: 348px; height: 33px;\">Prakarya dan Kewirausahaan</td>\r\n<td style=\"width: 47px; height: 33px;\">&ndash;</td>\r\n<td style=\"width: 47px; height: 33px;\">&ndash;</td>\r\n<td style=\"width: 47px; height: 33px;\">2</td>\r\n<td style=\"width: 47px; height: 33px;\">2</td>\r\n<td style=\"width: 47px; height: 33px;\">2</td>\r\n<td style=\"width: 47px; height: 33px;\">2</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"width: 47px; height: 33px;\">9</td>\r\n<td style=\"width: 348px; height: 33px;\">Pendidikan Jasmani, Olah Raga &amp; Kesehatan</td>\r\n<td style=\"width: 47px; height: 33px;\">2</td>\r\n<td style=\"width: 47px; height: 33px;\">2</td>\r\n<td style=\"width: 47px; height: 33px;\">2</td>\r\n<td style=\"width: 47px; height: 33px;\">2</td>\r\n<td style=\"width: 47px; height: 33px;\">&ndash;</td>\r\n<td style=\"width: 47px; height: 33px;\">&ndash;</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"width: 397px; height: 33px;\" colspan=\"2\">Jumlah A Dan B</td>\r\n<td style=\"width: 47px; height: 33px;\">22</td>\r\n<td style=\"width: 47px; height: 33px;\">22</td>\r\n<td style=\"width: 47px; height: 33px;\">21</td>\r\n<td style=\"width: 47px; height: 33px;\">21</td>\r\n<td style=\"width: 47px; height: 33px;\">16</td>\r\n<td style=\"width: 47px; height: 33px;\">16</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"width: 691px; height: 33px;\" colspan=\"8\"><strong>Kelompok C (Peminatan)</strong></td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"width: 691px; height: 33px;\" colspan=\"8\"><strong>C1. Dasar Bidang Keahlian</strong></td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"width: 47px; height: 33px;\">10</td>\r\n<td style=\"width: 348px; height: 33px;\">Simulasi Digital</td>\r\n<td style=\"width: 47px; height: 33px;\">3</td>\r\n<td style=\"width: 47px; height: 33px;\">3</td>\r\n<td style=\"width: 47px; height: 33px;\">&ndash;</td>\r\n<td style=\"width: 47px; height: 33px;\">&ndash;</td>\r\n<td style=\"width: 47px; height: 33px;\">&ndash;</td>\r\n<td style=\"width: 47px; height: 33px;\">&ndash;</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"width: 47px; height: 33px;\">11</td>\r\n<td style=\"width: 348px; height: 33px;\">Fisika</td>\r\n<td style=\"width: 47px; height: 33px;\">4</td>\r\n<td style=\"width: 47px; height: 33px;\">4</td>\r\n<td style=\"width: 47px; height: 33px;\">&ndash;</td>\r\n<td style=\"width: 47px; height: 33px;\">&ndash;</td>\r\n<td style=\"width: 47px; height: 33px;\">&ndash;</td>\r\n<td style=\"width: 47px; height: 33px;\">&ndash;</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"width: 47px; height: 33px;\">12</td>\r\n<td style=\"width: 348px; height: 33px;\">Sistem Komputer</td>\r\n<td style=\"width: 47px; height: 33px;\">4</td>\r\n<td style=\"width: 47px; height: 33px;\">4</td>\r\n<td style=\"width: 47px; height: 33px;\">&ndash;</td>\r\n<td style=\"width: 47px; height: 33px;\">&ndash;</td>\r\n<td style=\"width: 47px; height: 33px;\">&ndash;</td>\r\n<td style=\"width: 47px; height: 33px;\">&ndash;</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"width: 691px; height: 33px;\" colspan=\"8\"><strong>C2. Dasar Program Keahlian</strong></td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"width: 47px; height: 33px;\">13</td>\r\n<td style=\"width: 348px; height: 33px;\">Perakitan Komputer dan Sistem Operasi</td>\r\n<td style=\"width: 47px; height: 33px;\">4</td>\r\n<td style=\"width: 47px; height: 33px;\">4</td>\r\n<td style=\"width: 47px; height: 33px;\">&ndash;</td>\r\n<td style=\"width: 47px; height: 33px;\">&ndash;</td>\r\n<td style=\"width: 47px; height: 33px;\">&ndash;</td>\r\n<td style=\"width: 47px; height: 33px;\">&ndash;</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"width: 47px; height: 33px;\">14</td>\r\n<td style=\"width: 348px; height: 33px;\">Pemrograman Dasar</td>\r\n<td style=\"width: 47px; height: 33px;\">4</td>\r\n<td style=\"width: 47px; height: 33px;\">4</td>\r\n<td style=\"width: 47px; height: 33px;\">&ndash;</td>\r\n<td style=\"width: 47px; height: 33px;\">&ndash;</td>\r\n<td style=\"width: 47px; height: 33px;\">&ndash;</td>\r\n<td style=\"width: 47px; height: 33px;\">&ndash;</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"width: 47px; height: 33px;\">15</td>\r\n<td style=\"width: 348px; height: 33px;\">Dasar Desain Grafis</td>\r\n<td style=\"width: 47px; height: 33px;\">7</td>\r\n<td style=\"width: 47px; height: 33px;\">7</td>\r\n<td style=\"width: 47px; height: 33px;\">&ndash;</td>\r\n<td style=\"width: 47px; height: 33px;\">&ndash;</td>\r\n<td style=\"width: 47px; height: 33px;\">&ndash;</td>\r\n<td style=\"width: 47px; height: 33px;\">&ndash;</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"width: 691px; height: 33px;\" colspan=\"8\"><strong>C3. Paket Keahlian</strong></td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"width: 47px; height: 33px;\">16</td>\r\n<td style=\"width: 348px; height: 33px;\">Pengantar Multimedia</td>\r\n<td style=\"width: 47px; height: 33px;\">&ndash;</td>\r\n<td style=\"width: 47px; height: 33px;\">&ndash;</td>\r\n<td style=\"width: 47px; height: 33px;\">6</td>\r\n<td style=\"width: 47px; height: 33px;\">6</td>\r\n<td style=\"width: 47px; height: 33px;\">&ndash;</td>\r\n<td style=\"width: 47px; height: 33px;\">&ndash;</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"width: 47px; height: 33px;\">17</td>\r\n<td style=\"width: 348px; height: 33px;\">Teknik Pengolahan Audio Video</td>\r\n<td style=\"width: 47px; height: 33px;\">&ndash;</td>\r\n<td style=\"width: 47px; height: 33px;\">&ndash;</td>\r\n<td style=\"width: 47px; height: 33px;\">6</td>\r\n<td style=\"width: 47px; height: 33px;\">6</td>\r\n<td style=\"width: 47px; height: 33px;\">12</td>\r\n<td style=\"width: 47px; height: 33px;\">12</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"width: 47px; height: 33px;\">18</td>\r\n<td style=\"width: 348px; height: 33px;\">Teknik Animasi 2D &amp; 3D</td>\r\n<td style=\"width: 47px; height: 33px;\">&ndash;</td>\r\n<td style=\"width: 47px; height: 33px;\">&ndash;</td>\r\n<td style=\"width: 47px; height: 33px;\">6</td>\r\n<td style=\"width: 47px; height: 33px;\">6</td>\r\n<td style=\"width: 47px; height: 33px;\">8</td>\r\n<td style=\"width: 47px; height: 33px;\">8</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"width: 47px; height: 33px;\">19</td>\r\n<td style=\"width: 348px; height: 33px;\">Desain Media Interaktif</td>\r\n<td style=\"width: 47px; height: 33px;\">&ndash;</td>\r\n<td style=\"width: 47px; height: 33px;\">&ndash;</td>\r\n<td style=\"width: 47px; height: 33px;\">6</td>\r\n<td style=\"width: 47px; height: 33px;\">6</td>\r\n<td style=\"width: 47px; height: 33px;\">9</td>\r\n<td style=\"width: 47px; height: 33px;\">9</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"width: 47px; height: 33px;\">20</td>\r\n<td style=\"width: 348px; height: 33px;\">Pengembangan Produk Kreatif</td>\r\n<td style=\"width: 47px; height: 33px;\">&ndash;</td>\r\n<td style=\"width: 47px; height: 33px;\">&ndash;</td>\r\n<td style=\"width: 47px; height: 33px;\">3</td>\r\n<td style=\"width: 47px; height: 33px;\">3</td>\r\n<td style=\"width: 47px; height: 33px;\">3</td>\r\n<td style=\"width: 47px; height: 33px;\">3</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"width: 397px; height: 33px;\" colspan=\"2\">Jumlah C1, C2,Dan C3</td>\r\n<td style=\"width: 47px; height: 33px;\">26</td>\r\n<td style=\"width: 47px; height: 33px;\">26</td>\r\n<td style=\"width: 47px; height: 33px;\">27</td>\r\n<td style=\"width: 47px; height: 33px;\">27</td>\r\n<td style=\"width: 47px; height: 33px;\">32</td>\r\n<td style=\"width: 47px; height: 33px;\">32</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"width: 397px; height: 33px;\" colspan=\"2\"><strong>TOTAL</strong></td>\r\n<td style=\"width: 47px; height: 33px;\">48</td>\r\n<td style=\"width: 47px; height: 33px;\">48</td>\r\n<td style=\"width: 47px; height: 33px;\">48</td>\r\n<td style=\"width: 47px; height: 33px;\">48</td>\r\n<td style=\"width: 47px; height: 33px;\">48</td>\r\n<td style=\"width: 47px; height: 33px;\">48</td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n</div>\r\n<p>&nbsp;</p>\r\n<p>BIDANG KEAHIAN : TEKNOLOGI INFORMASI DAN KOMUNIKASI</p>\r\n<p>PROGRAM KEAHLIAN : TEKNIK KOMPUTER DAN INFORMATIKA</p>\r\n<p>PAKET KEAHLIAN : REKAYASA PERANGKAT LUNAK</p>\r\n<div class=\"kekanan\">\r\n<table class=\"table table-bordered\" style=\"height: 1056px; width: 100%;\" border=\"1\" width=\"100%\"><caption>&nbsp;</caption>\r\n<tbody>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"width: 378px; height: 99px;\" colspan=\"2\" rowspan=\"3\">\r\n<p class=\"text-center\" style=\"text-align: center;\">MATA PELAJARAN</p>\r\n</td>\r\n<td style=\"width: 311px; height: 33px;\" colspan=\"6\">\r\n<p style=\"text-align: center;\">KELAS</p>\r\n</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"width: 102px; height: 33px; text-align: center;\" colspan=\"2\">X</td>\r\n<td style=\"width: 102px; height: 33px; text-align: center;\" colspan=\"2\">XI</td>\r\n<td style=\"width: 103px; height: 33px; text-align: center;\" colspan=\"2\">XII</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">1</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">2</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">1</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">2</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">1</td>\r\n<td style=\"width: 51px; height: 33px;\">\r\n<p style=\"text-align: center;\">2</p>\r\n</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"width: 691px; height: 33px;\" colspan=\"8\">\r\n<p style=\"text-align: center;\"><strong>Kelompok A</strong></p>\r\n</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"width: 50px; height: 33px;\">1</td>\r\n<td style=\"width: 326px; height: 33px;\">Pendidikan Agama dan Budi Pekerti</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">3</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">3</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">3</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">3</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">3</td>\r\n<td style=\"width: 51px; height: 33px; text-align: center;\">3</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"width: 50px; height: 33px;\">2</td>\r\n<td style=\"width: 326px; height: 33px;\">Pendidikan Pancasila dan Kewarganegaraan</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">2</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">2</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">2</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">2</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">2</td>\r\n<td style=\"width: 51px; height: 33px; text-align: center;\">2</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"width: 50px; height: 33px;\">3</td>\r\n<td style=\"width: 326px; height: 33px;\">Bahasa Indonesia</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">3</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">3</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">3</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">3</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">2</td>\r\n<td style=\"width: 51px; height: 33px; text-align: center;\">2</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"width: 50px; height: 33px;\">4</td>\r\n<td style=\"width: 326px; height: 33px;\">Matematika</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">4</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">4</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">4</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">4</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">4</td>\r\n<td style=\"width: 51px; height: 33px; text-align: center;\">4</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"width: 50px; height: 33px;\">5</td>\r\n<td style=\"width: 326px; height: 33px;\">Sejarah Indonesia</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">2</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">2</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">2</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">2</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">&ndash;</td>\r\n<td style=\"width: 51px; height: 33px; text-align: center;\">&ndash;</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"width: 50px; height: 33px;\">6</td>\r\n<td style=\"width: 326px; height: 33px;\">Bahasa Inggris</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">3</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">3</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">3</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">3</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">3</td>\r\n<td style=\"width: 51px; height: 33px; text-align: center;\">3</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"width: 691px; height: 33px;\" colspan=\"8\"><strong>Kelompok B</strong></td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"width: 50px; height: 33px;\">7</td>\r\n<td style=\"width: 326px; height: 33px;\">Seni Budaya</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">3</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">3</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">&ndash;</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">&ndash;</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">&ndash;</td>\r\n<td style=\"width: 51px; height: 33px; text-align: center;\">&ndash;</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"width: 50px; height: 33px;\">8</td>\r\n<td style=\"width: 326px; height: 33px;\">Kewirausahaan</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">&ndash;</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">&ndash;</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">2</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">2</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">2</td>\r\n<td style=\"width: 51px; height: 33px; text-align: center;\">2</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"width: 50px; height: 33px;\">9</td>\r\n<td style=\"width: 326px; height: 33px;\">Pendidikan Jasmani, Olah Raga &amp; Kesehatan</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">2</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">2</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">2</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">2</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">&ndash;</td>\r\n<td style=\"width: 51px; height: 33px; text-align: center;\">&ndash;</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"width: 378px; height: 33px;\" colspan=\"2\">Jumlah A Dan B</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">22</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">22</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">21</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">21</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">16</td>\r\n<td style=\"width: 51px; height: 33px; text-align: center;\">16</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"width: 691px; height: 33px;\" colspan=\"8\"><strong>Kelompok C (Peminatan)</strong></td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"width: 691px; height: 33px;\" colspan=\"8\"><strong>C1. Dasar Bidang Keahlian</strong></td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"width: 50px; height: 33px;\">10</td>\r\n<td style=\"width: 326px; height: 33px;\">Simulasi Digital</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">3</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">3</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">&ndash;</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">&ndash;</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">&ndash;</td>\r\n<td style=\"width: 51px; height: 33px; text-align: center;\">&ndash;</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"width: 50px; height: 33px;\">11</td>\r\n<td style=\"width: 326px; height: 33px;\">Fisika</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">4</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">4</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">&ndash;</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">&ndash;</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">&ndash;</td>\r\n<td style=\"width: 51px; height: 33px; text-align: center;\">&ndash;</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"width: 50px; height: 33px;\">12</td>\r\n<td style=\"width: 326px; height: 33px;\">Sistem Komputer</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">4</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">4</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">&ndash;</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">&ndash;</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">&ndash;</td>\r\n<td style=\"width: 51px; height: 33px; text-align: center;\">&ndash;</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"width: 691px; height: 33px;\" colspan=\"8\"><strong>C2. Dasar Program Keahlian</strong></td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"width: 50px; height: 33px;\">13</td>\r\n<td style=\"width: 326px; height: 33px;\">Komputer dan Jaringan Dasar</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">4</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">4</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">&ndash;</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">&ndash;</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">&ndash;</td>\r\n<td style=\"width: 51px; height: 33px; text-align: center;\">&ndash;</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"width: 50px; height: 33px;\">14</td>\r\n<td style=\"width: 326px; height: 33px;\">Pemrograman Dasar</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">7</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">7</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">&ndash;</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">&ndash;</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">&ndash;</td>\r\n<td style=\"width: 51px; height: 33px; text-align: center;\">&ndash;</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"width: 50px; height: 33px;\">15</td>\r\n<td style=\"width: 326px; height: 33px;\">Dasar Desain Grafis</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">4</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">4</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">&ndash;</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">&ndash;</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">&ndash;</td>\r\n<td style=\"width: 51px; height: 33px; text-align: center;\">&ndash;</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"width: 691px; height: 33px;\" colspan=\"8\"><strong>C3. Paket Keahlian</strong></td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"width: 50px; height: 33px;\">16</td>\r\n<td style=\"width: 326px; height: 33px;\">Pemodelan Perangkat Lunak</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">&ndash;</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">&ndash;</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">3</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">3</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">2</td>\r\n<td style=\"width: 51px; height: 33px; text-align: center;\">2</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"width: 50px; height: 33px;\">17</td>\r\n<td style=\"width: 326px; height: 33px;\">Basis Data</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">&ndash;</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">&ndash;</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">6</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">6</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">6</td>\r\n<td style=\"width: 51px; height: 33px; text-align: center;\">6</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"width: 50px; height: 33px;\">18</td>\r\n<td style=\"width: 326px; height: 33px;\">Pemrograman Berorientasi Obyek</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">&ndash;</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">&ndash;</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">6</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">6</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">8</td>\r\n<td style=\"width: 51px; height: 33px; text-align: center;\">8</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"width: 50px; height: 33px;\">19</td>\r\n<td style=\"width: 326px; height: 33px;\">Pemrograman Web dan Mobile</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">&ndash;</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">&ndash;</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">8</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">8</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">8</td>\r\n<td style=\"width: 51px; height: 33px; text-align: center;\">8</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"width: 50px; height: 33px;\">20</td>\r\n<td style=\"width: 326px; height: 33px;\">Pengembangan Produk Kreatif</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">&ndash;</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">&ndash;</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">4</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">4</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">8</td>\r\n<td style=\"width: 51px; height: 33px; text-align: center;\">8</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"width: 378px; height: 33px;\" colspan=\"2\">Jumlah C1, C2 Dan C3</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">26</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">26</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">27</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">27</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">32</td>\r\n<td style=\"width: 51px; height: 33px; text-align: center;\">32</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"width: 378px; height: 33px;\" colspan=\"2\"><strong>TOTAL</strong></td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">48</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">48</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">48</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">48</td>\r\n<td style=\"width: 50px; height: 33px; text-align: center;\">48</td>\r\n<td style=\"width: 51px; height: 33px; text-align: center;\">48</td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n</div>\r\n<p>&nbsp;</p>\r\n<p>BIDANG KEAHLIAN : SENI RUPA</p>\r\n<p>PROGRAM KEAHLIAN : SENI AUDIO VISUAL</p>\r\n<p>PAKET KEAHLIAN : PRODUKSI FILM DAN PROGRAM TELEVISI</p>\r\n<div class=\"kekanan\">\r\n<table class=\"table table-bordered\" style=\"height: 1158px; width: 100%;\" border=\"1\" width=\"100%\"><caption>&nbsp;</caption>\r\n<thead>\r\n<tr style=\"height: 32px;\">\r\n<td class=\"text-center\" style=\"height: 100px;\" colspan=\"2\" rowspan=\"3\" width=\"57%\">MATA PELAJARAN</td>\r\n<td style=\"height: 32px;\" colspan=\"8\" width=\"42%\">KELAS</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"height: 33px;\" colspan=\"2\" width=\"10%\">X</td>\r\n<td style=\"height: 33px;\" colspan=\"2\" width=\"10%\">XI</td>\r\n<td style=\"height: 33px;\" colspan=\"2\" width=\"10%\">XII</td>\r\n<td style=\"height: 33px;\" colspan=\"2\" width=\"10%\">XIII</td>\r\n</tr>\r\n</thead>\r\n<tbody>\r\n<tr style=\"height: 35px;\">\r\n<td style=\"height: 35px;\" width=\"5%\">1</td>\r\n<td style=\"height: 35px;\" width=\"5%\">2</td>\r\n<td style=\"height: 35px;\" width=\"5%\">3</td>\r\n<td style=\"height: 35px;\" width=\"5%\">4</td>\r\n<td style=\"height: 35px;\" width=\"5%\">5</td>\r\n<td style=\"height: 35px;\" width=\"5%\">6</td>\r\n<td style=\"height: 35px;\" width=\"5%\">7</td>\r\n<td style=\"height: 35px;\" width=\"5%\">8</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"height: 33px;\" colspan=\"10\" width=\"100%\"><strong>Kelompok A</strong></td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"height: 33px;\" width=\"5%\">1</td>\r\n<td style=\"height: 33px;\" width=\"51%\">Pendidikan Agama &amp; Budi pekerti</td>\r\n<td style=\"height: 33px;\" width=\"5%\">3</td>\r\n<td style=\"height: 33px;\" width=\"5%\">3</td>\r\n<td style=\"height: 33px;\" width=\"5%\">3</td>\r\n<td style=\"height: 33px;\" width=\"5%\">3</td>\r\n<td style=\"height: 33px;\" width=\"5%\">3</td>\r\n<td style=\"height: 33px;\" width=\"5%\">3</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n</tr>\r\n<tr style=\"height: 50px;\">\r\n<td style=\"height: 50px;\" width=\"5%\">2</td>\r\n<td style=\"height: 50px;\" width=\"51%\">Pendidikan Pancasila dan Kewarganegaraan</td>\r\n<td style=\"height: 50px;\" width=\"5%\">2</td>\r\n<td style=\"height: 50px;\" width=\"5%\">2</td>\r\n<td style=\"height: 50px;\" width=\"5%\">2</td>\r\n<td style=\"height: 50px;\" width=\"5%\">2</td>\r\n<td style=\"height: 50px;\" width=\"5%\">2</td>\r\n<td style=\"height: 50px;\" width=\"5%\">2</td>\r\n<td style=\"height: 50px;\" width=\"5%\">&ndash;</td>\r\n<td style=\"height: 50px;\" width=\"5%\">&ndash;</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"height: 33px;\" width=\"5%\">3</td>\r\n<td style=\"height: 33px;\" width=\"51%\">Bahasa Indonesia</td>\r\n<td style=\"height: 33px;\" width=\"5%\">3</td>\r\n<td style=\"height: 33px;\" width=\"5%\">3</td>\r\n<td style=\"height: 33px;\" width=\"5%\">3</td>\r\n<td style=\"height: 33px;\" width=\"5%\">3</td>\r\n<td style=\"height: 33px;\" width=\"5%\">2</td>\r\n<td style=\"height: 33px;\" width=\"5%\">2</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"height: 33px;\" width=\"5%\">4</td>\r\n<td style=\"height: 33px;\" width=\"51%\">Matematika</td>\r\n<td style=\"height: 33px;\" width=\"5%\">4</td>\r\n<td style=\"height: 33px;\" width=\"5%\">4</td>\r\n<td style=\"height: 33px;\" width=\"5%\">4</td>\r\n<td style=\"height: 33px;\" width=\"5%\">4</td>\r\n<td style=\"height: 33px;\" width=\"5%\">4</td>\r\n<td style=\"height: 33px;\" width=\"5%\">4</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"height: 33px;\" width=\"5%\">5</td>\r\n<td style=\"height: 33px;\" width=\"51%\">Sejarah Indonesia</td>\r\n<td style=\"height: 33px;\" width=\"5%\">2</td>\r\n<td style=\"height: 33px;\" width=\"5%\">2</td>\r\n<td style=\"height: 33px;\" width=\"5%\">2</td>\r\n<td style=\"height: 33px;\" width=\"5%\">2</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"height: 33px;\" width=\"5%\">6</td>\r\n<td style=\"height: 33px;\" width=\"51%\">Bahasa Inggris</td>\r\n<td style=\"height: 33px;\" width=\"5%\">3</td>\r\n<td style=\"height: 33px;\" width=\"5%\">3</td>\r\n<td style=\"height: 33px;\" width=\"5%\">3</td>\r\n<td style=\"height: 33px;\" width=\"5%\">3</td>\r\n<td style=\"height: 33px;\" width=\"5%\">3</td>\r\n<td style=\"height: 33px;\" width=\"5%\">3</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"height: 33px;\" colspan=\"10\" width=\"100%\"><strong>Kelompok B</strong></td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"height: 33px;\" width=\"5%\">7</td>\r\n<td style=\"height: 33px;\" width=\"51%\">Seni Budaya</td>\r\n<td style=\"height: 33px;\" width=\"5%\">3</td>\r\n<td style=\"height: 33px;\" width=\"5%\">3</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"height: 33px;\" width=\"5%\">8</td>\r\n<td style=\"height: 33px;\" width=\"51%\">Kewirausahaan</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"5%\">2</td>\r\n<td style=\"height: 33px;\" width=\"5%\">2</td>\r\n<td style=\"height: 33px;\" width=\"5%\">2</td>\r\n<td style=\"height: 33px;\" width=\"5%\">2</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n</tr>\r\n<tr style=\"height: 50px;\">\r\n<td style=\"height: 50px;\" width=\"5%\">9</td>\r\n<td style=\"height: 50px;\" width=\"51%\">Pendidikan Jasmani, Olah Raga &amp; Kesehatan</td>\r\n<td style=\"height: 50px;\" width=\"5%\">2</td>\r\n<td style=\"height: 50px;\" width=\"5%\">2</td>\r\n<td style=\"height: 50px;\" width=\"5%\">2</td>\r\n<td style=\"height: 50px;\" width=\"5%\">2</td>\r\n<td style=\"height: 50px;\" width=\"5%\">&ndash;</td>\r\n<td style=\"height: 50px;\" width=\"5%\">&ndash;</td>\r\n<td style=\"height: 50px;\" width=\"5%\">&ndash;</td>\r\n<td style=\"height: 50px;\" width=\"5%\">&ndash;</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"height: 33px;\" colspan=\"2\" width=\"57%\">Jumlah A dan B</td>\r\n<td style=\"height: 33px;\" width=\"5%\">22</td>\r\n<td style=\"height: 33px;\" width=\"5%\">22</td>\r\n<td style=\"height: 33px;\" width=\"5%\">21</td>\r\n<td style=\"height: 33px;\" width=\"5%\">21</td>\r\n<td style=\"height: 33px;\" width=\"5%\">16</td>\r\n<td style=\"height: 33px;\" width=\"5%\">16</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"height: 33px;\" colspan=\"10\" width=\"100%\"><strong>Kelompok C (Peminatan)</strong></td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"height: 33px;\" colspan=\"10\" width=\"100%\"><strong>C1</strong><strong>. </strong><strong>Dasar Bidang Keahlian</strong></td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"height: 33px;\" width=\"5%\">10</td>\r\n<td style=\"height: 33px;\" width=\"51%\">Simulasi Digital</td>\r\n<td style=\"height: 33px;\" width=\"5%\">3</td>\r\n<td style=\"height: 33px;\" width=\"5%\">3</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"height: 33px;\" width=\"5%\">11</td>\r\n<td style=\"height: 33px;\" width=\"51%\">Pengantar Seni</td>\r\n<td style=\"height: 33px;\" width=\"5%\">2</td>\r\n<td style=\"height: 33px;\" width=\"5%\">2</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"height: 33px;\" width=\"5%\">12</td>\r\n<td style=\"height: 33px;\" width=\"51%\">Dasar-dasar Kreativitas</td>\r\n<td style=\"height: 33px;\" width=\"5%\">2</td>\r\n<td style=\"height: 33px;\" width=\"5%\">2</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"height: 33px;\" colspan=\"10\" width=\"100%\"><strong>C2</strong><strong>. </strong><strong>Dasar Program Keahlian</strong></td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"height: 33px;\" width=\"5%\">13</td>\r\n<td style=\"height: 33px;\" width=\"51%\">Komunikasi Massa</td>\r\n<td style=\"height: 33px;\" width=\"5%\">3</td>\r\n<td style=\"height: 33px;\" width=\"5%\">3</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"height: 33px;\" width=\"5%\">14</td>\r\n<td style=\"height: 33px;\" width=\"51%\">Dasar Seni Audio Visual</td>\r\n<td style=\"height: 33px;\" width=\"5%\">4</td>\r\n<td style=\"height: 33px;\" width=\"5%\">4</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"height: 33px;\" width=\"5%\">15</td>\r\n<td style=\"height: 33px;\" width=\"51%\">Produksi Audio Visual</td>\r\n<td style=\"height: 33px;\" width=\"5%\">12</td>\r\n<td style=\"height: 33px;\" width=\"5%\">12</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"height: 33px;\" colspan=\"10\" width=\"100%\"><strong>C3</strong><strong>. </strong><strong>Paket Keahlian</strong></td>\r\n</tr>\r\n<tr style=\"height: 50px;\">\r\n<td style=\"height: 50px;\" width=\"5%\">16</td>\r\n<td style=\"height: 50px;\" width=\"51%\">Penulisan Naskah dan Manajemen Produksi</td>\r\n<td style=\"height: 50px;\" width=\"5%\">&ndash;</td>\r\n<td style=\"height: 50px;\" width=\"5%\">&ndash;</td>\r\n<td style=\"height: 50px;\" width=\"5%\">4</td>\r\n<td style=\"height: 50px;\" width=\"5%\">4</td>\r\n<td style=\"height: 50px;\" width=\"5%\">4</td>\r\n<td style=\"height: 50px;\" width=\"5%\">4</td>\r\n<td style=\"height: 50px;\" width=\"5%\">4</td>\r\n<td style=\"height: 50px;\" width=\"5%\">4</td>\r\n</tr>\r\n<tr style=\"height: 50px;\">\r\n<td style=\"height: 50px;\" width=\"5%\">17</td>\r\n<td style=\"height: 50px;\" width=\"51%\">Tata Kamera, Suara dan Pencahayaan</td>\r\n<td style=\"height: 50px;\" width=\"5%\">&ndash;</td>\r\n<td style=\"height: 50px;\" width=\"5%\">&ndash;</td>\r\n<td style=\"height: 50px;\" width=\"5%\">6</td>\r\n<td style=\"height: 50px;\" width=\"5%\">6</td>\r\n<td style=\"height: 50px;\" width=\"5%\">7</td>\r\n<td style=\"height: 50px;\" width=\"5%\">7</td>\r\n<td style=\"height: 50px;\" width=\"5%\">10</td>\r\n<td style=\"height: 50px;\" width=\"5%\">10</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"height: 33px;\" width=\"5%\">18</td>\r\n<td style=\"height: 33px;\" width=\"51%\">Tata Artistik</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"5%\">4</td>\r\n<td style=\"height: 33px;\" width=\"5%\">4</td>\r\n<td style=\"height: 33px;\" width=\"5%\">4</td>\r\n<td style=\"height: 33px;\" width=\"5%\">4</td>\r\n<td style=\"height: 33px;\" width=\"5%\">4</td>\r\n<td style=\"height: 33px;\" width=\"5%\">4</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"height: 33px;\" width=\"5%\">19</td>\r\n<td style=\"height: 33px;\" width=\"51%\">Penyutradaraan</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"5%\">4</td>\r\n<td style=\"height: 33px;\" width=\"5%\">4</td>\r\n<td style=\"height: 33px;\" width=\"5%\">6</td>\r\n<td style=\"height: 33px;\" width=\"5%\">6</td>\r\n<td style=\"height: 33px;\" width=\"5%\">8</td>\r\n<td style=\"height: 33px;\" width=\"5%\">8</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"height: 33px;\" width=\"5%\">20</td>\r\n<td style=\"height: 33px;\" width=\"51%\">Editing</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"5%\">6</td>\r\n<td style=\"height: 33px;\" width=\"5%\">6</td>\r\n<td style=\"height: 33px;\" width=\"5%\">8</td>\r\n<td style=\"height: 33px;\" width=\"5%\">8</td>\r\n<td style=\"height: 33px;\" width=\"5%\">10</td>\r\n<td style=\"height: 33px;\" width=\"5%\">10</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"height: 33px;\" width=\"5%\">21</td>\r\n<td style=\"height: 33px;\" width=\"51%\">Pengembangan Produk Kreatif</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"5%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"5%\">3</td>\r\n<td style=\"height: 33px;\" width=\"5%\">3</td>\r\n<td style=\"height: 33px;\" width=\"5%\">3</td>\r\n<td style=\"height: 33px;\" width=\"5%\">3</td>\r\n<td style=\"height: 33px;\" width=\"5%\">12</td>\r\n<td style=\"height: 33px;\" width=\"5%\">12</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"height: 33px;\" colspan=\"2\" width=\"57%\">Jumlah C1, C2, C3</td>\r\n<td style=\"height: 33px;\" width=\"5%\">26</td>\r\n<td style=\"height: 33px;\" width=\"5%\">26</td>\r\n<td style=\"height: 33px;\" width=\"5%\">27</td>\r\n<td style=\"height: 33px;\" width=\"5%\">27</td>\r\n<td style=\"height: 33px;\" width=\"5%\">32</td>\r\n<td style=\"height: 33px;\" width=\"5%\">32</td>\r\n<td style=\"height: 33px;\" width=\"5%\">48</td>\r\n<td style=\"height: 33px;\" width=\"5%\">48</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"height: 33px;\" colspan=\"2\" width=\"57%\"><strong>TOTAL</strong></td>\r\n<td style=\"height: 33px;\" width=\"5%\"><strong>48</strong></td>\r\n<td style=\"height: 33px;\" width=\"5%\"><strong>48</strong></td>\r\n<td style=\"height: 33px;\" width=\"5%\"><strong>48</strong></td>\r\n<td style=\"height: 33px;\" width=\"5%\"><strong>48</strong></td>\r\n<td style=\"height: 33px;\" width=\"5%\"><strong>48</strong></td>\r\n<td style=\"height: 33px;\" width=\"5%\"><strong>48</strong></td>\r\n<td style=\"height: 33px;\" width=\"5%\"><strong>48</strong></td>\r\n<td style=\"height: 33px;\" width=\"5%\"><strong>48</strong></td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n</div>\r\n<p>&nbsp;</p>\r\n<p>BIDANG KEAHLIAN : TEKNOLOGI DAN REKAYASA</p>\r\n<p>PROGRAM KEAHLIAN : TEKNIK ELEKTRONIKA</p>\r\n<p>PAKET KEAHLIAN : TEKNIK ELEKTRONIKA INDUSTRI</p>\r\n<div class=\"kekanan\">\r\n<table class=\"table table-bordered\" style=\"width: 100%; height: 1091px;\" border=\"1\" width=\"100%\"><caption>&nbsp;</caption>\r\n<thead>\r\n<tr style=\"height: 32px;\">\r\n<td class=\"text-center\" style=\"height: 98px;\" colspan=\"2\" rowspan=\"3\" width=\"70%\">MATA PELAJARAN</td>\r\n<td style=\"height: 32px;\" colspan=\"6\" width=\"29%\">KELAS</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"height: 33px;\" colspan=\"2\" width=\"9%\">X</td>\r\n<td style=\"height: 33px;\" colspan=\"2\" width=\"9%\">XI</td>\r\n<td style=\"height: 33px;\" colspan=\"2\" width=\"9%\">XII</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"height: 33px;\" width=\"4%\">1</td>\r\n<td style=\"height: 33px;\" width=\"4%\">2</td>\r\n<td style=\"height: 33px;\" width=\"4%\">1</td>\r\n<td style=\"height: 33px;\" width=\"4%\">2</td>\r\n<td style=\"height: 33px;\" width=\"4%\">1</td>\r\n<td style=\"height: 33px;\" width=\"4%\">2</td>\r\n</tr>\r\n</thead>\r\n<tbody>\r\n<tr style=\"height: 35px;\">\r\n<td style=\"height: 35px;\" colspan=\"8\" width=\"100%\"><strong>Kelompok A</strong></td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"height: 33px;\" width=\"4%\">1</td>\r\n<td style=\"height: 33px;\" width=\"65%\">Pendidikan Agama dan Budi Pekerti</td>\r\n<td style=\"height: 33px;\" width=\"4%\">3</td>\r\n<td style=\"height: 33px;\" width=\"4%\">3</td>\r\n<td style=\"height: 33px;\" width=\"4%\">3</td>\r\n<td style=\"height: 33px;\" width=\"4%\">3</td>\r\n<td style=\"height: 33px;\" width=\"4%\">3</td>\r\n<td style=\"height: 33px;\" width=\"4%\">3</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"height: 33px;\" width=\"4%\">2</td>\r\n<td style=\"height: 33px;\" width=\"65%\">Pendidikan Pancasila dan Kewarganegaraan</td>\r\n<td style=\"height: 33px;\" width=\"4%\">2</td>\r\n<td style=\"height: 33px;\" width=\"4%\">2</td>\r\n<td style=\"height: 33px;\" width=\"4%\">2</td>\r\n<td style=\"height: 33px;\" width=\"4%\">2</td>\r\n<td style=\"height: 33px;\" width=\"4%\">2</td>\r\n<td style=\"height: 33px;\" width=\"4%\">2</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"height: 33px;\" width=\"4%\">3</td>\r\n<td style=\"height: 33px;\" width=\"65%\">Bahasa Indonesia</td>\r\n<td style=\"height: 33px;\" width=\"4%\">3</td>\r\n<td style=\"height: 33px;\" width=\"4%\">3</td>\r\n<td style=\"height: 33px;\" width=\"4%\">3</td>\r\n<td style=\"height: 33px;\" width=\"4%\">3</td>\r\n<td style=\"height: 33px;\" width=\"4%\">2</td>\r\n<td style=\"height: 33px;\" width=\"4%\">2</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"height: 33px;\" width=\"4%\">4</td>\r\n<td style=\"height: 33px;\" width=\"65%\">Matematika</td>\r\n<td style=\"height: 33px;\" width=\"4%\">4</td>\r\n<td style=\"height: 33px;\" width=\"4%\">4</td>\r\n<td style=\"height: 33px;\" width=\"4%\">4</td>\r\n<td style=\"height: 33px;\" width=\"4%\">4</td>\r\n<td style=\"height: 33px;\" width=\"4%\">4</td>\r\n<td style=\"height: 33px;\" width=\"4%\">4</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"height: 33px;\" width=\"4%\">5</td>\r\n<td style=\"height: 33px;\" width=\"65%\">Sejarah Indonesia</td>\r\n<td style=\"height: 33px;\" width=\"4%\">2</td>\r\n<td style=\"height: 33px;\" width=\"4%\">2</td>\r\n<td style=\"height: 33px;\" width=\"4%\">2</td>\r\n<td style=\"height: 33px;\" width=\"4%\">2</td>\r\n<td style=\"height: 33px;\" width=\"4%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"4%\">&ndash;</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"height: 33px;\" width=\"4%\">6</td>\r\n<td style=\"height: 33px;\" width=\"65%\">Bahasa Inggris</td>\r\n<td style=\"height: 33px;\" width=\"4%\">3</td>\r\n<td style=\"height: 33px;\" width=\"4%\">3</td>\r\n<td style=\"height: 33px;\" width=\"4%\">3</td>\r\n<td style=\"height: 33px;\" width=\"4%\">3</td>\r\n<td style=\"height: 33px;\" width=\"4%\">3</td>\r\n<td style=\"height: 33px;\" width=\"4%\">3</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"height: 33px;\" colspan=\"8\" width=\"100%\"><strong>Kelompok B </strong></td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"height: 33px;\" width=\"4%\">7</td>\r\n<td style=\"height: 33px;\" width=\"65%\">Seni Budaya</td>\r\n<td style=\"height: 33px;\" width=\"4%\">3</td>\r\n<td style=\"height: 33px;\" width=\"4%\">3</td>\r\n<td style=\"height: 33px;\" width=\"4%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"4%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"4%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"4%\">&ndash;</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"height: 33px;\" width=\"4%\">8</td>\r\n<td style=\"height: 33px;\" width=\"65%\">Kewirausahaan</td>\r\n<td style=\"height: 33px;\" width=\"4%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"4%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"4%\">2</td>\r\n<td style=\"height: 33px;\" width=\"4%\">2</td>\r\n<td style=\"height: 33px;\" width=\"4%\">2</td>\r\n<td style=\"height: 33px;\" width=\"4%\">2</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"height: 33px;\" width=\"4%\">9</td>\r\n<td style=\"height: 33px;\" width=\"65%\">Pendidikan Jasmani, Olah Raga dan Kesehatan</td>\r\n<td style=\"height: 33px;\" width=\"4%\">2</td>\r\n<td style=\"height: 33px;\" width=\"4%\">2</td>\r\n<td style=\"height: 33px;\" width=\"4%\">2</td>\r\n<td style=\"height: 33px;\" width=\"4%\">2</td>\r\n<td style=\"height: 33px;\" width=\"4%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"4%\">&ndash;</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"height: 33px;\" colspan=\"2\" width=\"70%\">Jumlah A dan B</td>\r\n<td style=\"height: 33px;\" width=\"4%\">22</td>\r\n<td style=\"height: 33px;\" width=\"4%\">22</td>\r\n<td style=\"height: 33px;\" width=\"4%\">21</td>\r\n<td style=\"height: 33px;\" width=\"4%\">21</td>\r\n<td style=\"height: 33px;\" width=\"4%\">16</td>\r\n<td style=\"height: 33px;\" width=\"4%\">16</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"height: 33px;\" colspan=\"8\" width=\"100%\"><strong>Kelompok C (Peminatan)</strong></td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"height: 33px;\" colspan=\"8\" width=\"100%\"><strong>C1. Dasar Bidang Keahlian</strong></td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"height: 33px;\" width=\"4%\">10</td>\r\n<td style=\"height: 33px;\" width=\"65%\">Simulasi Digital</td>\r\n<td style=\"height: 33px;\" width=\"4%\">3</td>\r\n<td style=\"height: 33px;\" width=\"4%\">3</td>\r\n<td style=\"height: 33px;\" width=\"4%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"4%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"4%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"4%\">&ndash;</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"height: 33px;\" width=\"4%\">11</td>\r\n<td style=\"height: 33px;\" width=\"65%\">Fisika</td>\r\n<td style=\"height: 33px;\" width=\"4%\">4</td>\r\n<td style=\"height: 33px;\" width=\"4%\">4</td>\r\n<td style=\"height: 33px;\" width=\"4%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"4%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"4%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"4%\">&ndash;</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"height: 33px;\" width=\"4%\">12</td>\r\n<td style=\"height: 33px;\" width=\"65%\">Kimia</td>\r\n<td style=\"height: 33px;\" width=\"4%\">4</td>\r\n<td style=\"height: 33px;\" width=\"4%\">4</td>\r\n<td style=\"height: 33px;\" width=\"4%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"4%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"4%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"4%\">&ndash;</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"height: 33px;\" colspan=\"8\" width=\"100%\"><strong>C2. Dasar Program Keahlian</strong></td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"height: 33px;\" width=\"4%\">13</td>\r\n<td style=\"height: 33px;\" width=\"65%\">Kerja Bengkel dan Gambar Teknik</td>\r\n<td style=\"height: 33px;\" width=\"4%\">4</td>\r\n<td style=\"height: 33px;\" width=\"4%\">4</td>\r\n<td style=\"height: 33px;\" width=\"4%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"4%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"4%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"4%\">&ndash;</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"height: 33px;\" width=\"4%\">14</td>\r\n<td style=\"height: 33px;\" width=\"65%\">DasarListrik dan Elektronika</td>\r\n<td style=\"height: 33px;\" width=\"4%\">6</td>\r\n<td style=\"height: 33px;\" width=\"4%\">6</td>\r\n<td style=\"height: 33px;\" width=\"4%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"4%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"4%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"4%\">&ndash;</td>\r\n</tr>\r\n<tr style=\"height: 50px;\">\r\n<td style=\"height: 50px;\" width=\"4%\">15</td>\r\n<td style=\"height: 50px;\" width=\"65%\">Pemrograman, Mikroprosessor dan Mikrokontroller</td>\r\n<td style=\"height: 50px;\" width=\"4%\">5</td>\r\n<td style=\"height: 50px;\" width=\"4%\">5</td>\r\n<td style=\"height: 50px;\" width=\"4%\">&ndash;</td>\r\n<td style=\"height: 50px;\" width=\"4%\">&ndash;</td>\r\n<td style=\"height: 50px;\" width=\"4%\">&ndash;</td>\r\n<td style=\"height: 50px;\" width=\"4%\">&ndash;</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"height: 33px;\" colspan=\"8\" width=\"100%\"><strong>C3. Paket Keahlian</strong></td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"height: 33px;\" width=\"4%\">16</td>\r\n<td style=\"height: 33px;\" width=\"65%\">Penerapan Rangkaian Elektronika</td>\r\n<td style=\"height: 33px;\" width=\"4%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"4%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"4%\">10</td>\r\n<td style=\"height: 33px;\" width=\"4%\">10</td>\r\n<td style=\"height: 33px;\" width=\"4%\">6</td>\r\n<td style=\"height: 33px;\" width=\"4%\">6</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"height: 33px;\" width=\"4%\">17</td>\r\n<td style=\"height: 33px;\" width=\"65%\">Sistem Pengendali Elektronik</td>\r\n<td style=\"height: 33px;\" width=\"4%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"4%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"4%\">10</td>\r\n<td style=\"height: 33px;\" width=\"4%\">10</td>\r\n<td style=\"height: 33px;\" width=\"4%\">14</td>\r\n<td style=\"height: 33px;\" width=\"4%\">14</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"height: 33px;\" width=\"4%\">18</td>\r\n<td style=\"height: 33px;\" width=\"65%\">Pengendali Sistem Robotik</td>\r\n<td style=\"height: 33px;\" width=\"4%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"4%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"4%\">4</td>\r\n<td style=\"height: 33px;\" width=\"4%\">4</td>\r\n<td style=\"height: 33px;\" width=\"4%\">5</td>\r\n<td style=\"height: 33px;\" width=\"4%\">5</td>\r\n</tr>\r\n<tr style=\"height: 50px;\">\r\n<td style=\"height: 50px;\" width=\"4%\">19</td>\r\n<td style=\"height: 50px;\" width=\"65%\">Pembuatan , Perbaikan dan Pemeliharaan Peralatan Elektronika</td>\r\n<td style=\"height: 50px;\" width=\"4%\">&ndash;</td>\r\n<td style=\"height: 50px;\" width=\"4%\">&ndash;</td>\r\n<td style=\"height: 50px;\" width=\"4%\">&ndash;</td>\r\n<td style=\"height: 50px;\" width=\"4%\">&ndash;</td>\r\n<td style=\"height: 50px;\" width=\"4%\">4</td>\r\n<td style=\"height: 50px;\" width=\"4%\">4</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"height: 33px;\" width=\"4%\">20</td>\r\n<td style=\"height: 33px;\" width=\"65%\">Pengembangan Produk Kreatif</td>\r\n<td style=\"height: 33px;\" width=\"4%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"4%\">&ndash;</td>\r\n<td style=\"height: 33px;\" width=\"4%\">3</td>\r\n<td style=\"height: 33px;\" width=\"4%\">3</td>\r\n<td style=\"height: 33px;\" width=\"4%\">3</td>\r\n<td style=\"height: 33px;\" width=\"4%\">3</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"height: 33px;\" colspan=\"2\" width=\"70%\">Jumlah C1,C2 dan C3</td>\r\n<td style=\"height: 33px;\" width=\"4%\">26</td>\r\n<td style=\"height: 33px;\" width=\"4%\">26</td>\r\n<td style=\"height: 33px;\" width=\"4%\">27</td>\r\n<td style=\"height: 33px;\" width=\"4%\">27</td>\r\n<td style=\"height: 33px;\" width=\"4%\">32</td>\r\n<td style=\"height: 33px;\" width=\"4%\">32</td>\r\n</tr>\r\n<tr style=\"height: 33px;\">\r\n<td style=\"height: 33px;\" colspan=\"2\" width=\"70%\"><strong>TOTAL</strong></td>\r\n<td style=\"height: 33px;\" width=\"4%\"><strong>48</strong></td>\r\n<td style=\"height: 33px;\" width=\"4%\"><strong>48</strong></td>\r\n<td style=\"height: 33px;\" width=\"4%\"><strong>48</strong></td>\r\n<td style=\"height: 33px;\" width=\"4%\"><strong>48</strong></td>\r\n<td style=\"height: 33px;\" width=\"4%\"><strong>48</strong></td>\r\n<td style=\"height: 33px;\" width=\"4%\"><strong>48</strong></td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n</div>\r\n</div>', NULL, 'struktur-kurikulum-smk-taruna-bhakti', 'Struktur Kurikulum SMK Taruna Bhakti', 'Struktur Kurikulum SMK Taruna Bhakti', 'ACTIVE', '2021-10-01 07:30:58', '2021-10-01 10:03:12', 5);
-INSERT INTO `pages` (`id`, `author_id`, `title`, `excerpt`, `body`, `image`, `slug`, `meta_description`, `meta_keywords`, `status`, `created_at`, `updated_at`, `category_id`) VALUES
-(18, 1, 'Kegiatan Osis', 'Kegiatan Osis', '<h5 class=\"mt-5\" style=\"box-sizing: border-box; margin-bottom: 0.5rem; font-weight: 500; line-height: 1.2; font-size: 1.25rem; font-family: Raleway, sans-serif; margin-top: 3rem !important;\"><span style=\"box-sizing: border-box; font-weight: bolder;\">Kegiatan Osis</span></h5>\r\n<hr style=\"box-sizing: border-box; margin: 1rem 0px; background-color: currentcolor; border: 0px; opacity: 0.25; height: 1px; font-family: \'Open Sans\', sans-serif; font-size: 16px;\" />\r\n<p>&nbsp;</p>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1rem; font-family: \'Open Sans\', sans-serif; font-size: 16px;\">Musyawarah Siswa merupakan salah satu agenda yang diwajibkan dari setiap organisasi yang ada, hal ini dikarenakan Muyawarah Siswa (MUSIS) akan membahas persoalan pembahasan Laporan pertanggung jawaban kepengurusan sebelumnya, Anggaran Dasar dan Anggaran Rumah Tangga sebuah organisasi tentunya juga akan menentukan pemimpin baru untuk memimpin organisasi tersebut. Oleh karena itu Musis adalah hal yang sakral dari sebua organisasi. Ini merupakan agenda rutin yang dilakukan OSIS SMK Taruna Bhakti setiap tahunnya.</p>', NULL, 'kegiatan-osis', NULL, NULL, 'ACTIVE', '2021-10-01 07:35:18', '2021-10-04 03:17:08', 3),
-(19, 1, 'Sarana dan Prasarana Sekolah', 'Gedung Sekolah Milik sendiri dengan design bangunan berbentuk permanen yang di sesuaikan dengan kebutuhan pendidikan dan berlantai 4.', '<h3 style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 0.5rem; font-weight: 500; line-height: 1.2; font-size: 1.75rem; font-family: Raleway, sans-serif;\"><span style=\"box-sizing: border-box; font-weight: bolder;\">Sarana dan Prasarana Sekolah</span></h3>\r\n<hr style=\"box-sizing: border-box; margin: 1rem 0px; background-color: currentcolor; border: 0px; opacity: 0.25; height: 1px; font-family: \'Open Sans\', sans-serif; font-size: 16px;\" />\r\n<h3 style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 0.5rem; font-weight: 500; line-height: 1.2; font-size: 1.75rem; font-family: Raleway, sans-serif;\">&nbsp;</h3>\r\n<p class=\"mt-3\" style=\"box-sizing: border-box; margin-bottom: 1rem; font-family: \'Open Sans\', sans-serif; font-size: 16px; margin-top: 1rem !important;\">Gedung Sekolah Milik sendiri dengan design bangunan berbentuk permanen yang di sesuaikan dengan kebutuhan pendidikan dan berlantai 4.</p>\r\n<div class=\" text-center\" style=\"box-sizing: border-box; font-family: \'Open Sans\', sans-serif; font-size: 16px; text-align: center !important;\"><img class=\"mt-3\" style=\"box-sizing: border-box; vertical-align: middle; margin-top: 1rem !important;\" src=\"http://localhost:8000/photos/gedung_tb.jpg\" alt=\"Foto 1\" width=\"70%\" height=\"49%\" /><br style=\"box-sizing: border-box;\" /><img class=\"mt-3 mb-5\" style=\"box-sizing: border-box; vertical-align: middle; margin-top: 1rem !important; margin-bottom: 3rem !important;\" src=\"http://localhost:8000/photos\" alt=\"Foto 2\" width=\"70%\" height=\"49%\" />\r\n<p class=\"mt-5 fw-bold\" style=\"box-sizing: border-box; margin-top: 3rem !important; margin-bottom: 1rem; font-weight: 700 !important;\">Tempat Parkir Siswa</p>\r\n<img class=\"mt-3 mb-5\" style=\"box-sizing: border-box; vertical-align: middle; margin-top: 1rem !important; margin-bottom: 3rem !important;\" src=\"http://localhost:8000/photos\" alt=\"Tempat Parkir\" width=\"70%\" height=\"49%\" />\r\n<p class=\"mt-5 fw-bold\" style=\"box-sizing: border-box; margin-top: 3rem !important; margin-bottom: 1rem; font-weight: 700 !important;\">Lapangan Olahraga</p>\r\n<img class=\"mt-3 mb-5\" style=\"box-sizing: border-box; vertical-align: middle; margin-top: 1rem !important; margin-bottom: 3rem !important;\" src=\"http://localhost:8000/photos\" alt=\"Lapangan Olahraga\" width=\"70%\" height=\"49%\" />\r\n<p class=\"mt-5 fw-bold\" style=\"box-sizing: border-box; margin-top: 3rem !important; margin-bottom: 1rem; font-weight: 700 !important;\">Ruang Belajar Teori</p>\r\n<img class=\"mt-3 mb-5\" style=\"box-sizing: border-box; vertical-align: middle; margin-top: 1rem !important; margin-bottom: 3rem !important;\" src=\"http://localhost:8000/photos/rb_teori.jpg\" alt=\"Ruang Belajar Teori\" width=\"70%\" height=\"49%\" /></div>\r\n<p class=\"mt-5\" style=\"box-sizing: border-box; margin-bottom: 1rem; font-family: \'Open Sans\', sans-serif; font-size: 16px; margin-top: 3rem !important;\">Laboratorium Komputer dan Ruangan Terdiri dari :</p>\r\n<ol style=\"box-sizing: border-box; padding-left: 2rem; margin-top: 0px; margin-bottom: 1rem; font-family: \'Open Sans\', sans-serif; font-size: 16px;\">\r\n<li style=\"box-sizing: border-box;\">Lab Network Advance</li>\r\n<li style=\"box-sizing: border-box;\">Lab Network</li>\r\n<li style=\"box-sizing: border-box;\">Lab Maintenance and Repair</li>\r\n<li style=\"box-sizing: border-box;\">Lab Simulasi Digital</li>\r\n<li style=\"box-sizing: border-box;\">Lab Axioo Class Program</li>\r\n<li style=\"box-sizing: border-box;\">Lab Multimedia Medium</li>\r\n<li style=\"box-sizing: border-box;\">Lab Multimedia Advance</li>\r\n<li style=\"box-sizing: border-box;\">Lab Pemrograman Basic</li>\r\n<li style=\"box-sizing: border-box;\">Lab Pemrograman Advance</li>\r\n<li style=\"box-sizing: border-box;\">Lab Bahasa Inggris</li>\r\n<li style=\"box-sizing: border-box;\">Lab Video dan Audio Editing</li>\r\n<li style=\"box-sizing: border-box;\">Studio Mini Penyiaran TV</li>\r\n<li style=\"box-sizing: border-box;\">Ruang Server dan Fasilitas lainnya</li>\r\n</ol>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1rem; font-family: \'Open Sans\', sans-serif; font-size: 16px;\">Lingkungan sekolah yang asri dan nyaman jauh dari bising, mudah terjangkau oleh siswa/i dari<br style=\"box-sizing: border-box;\" />berbagai jurusan dengan kendaraan umum.</p>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1rem; font-family: \'Open Sans\', sans-serif; font-size: 16px;\">Memiliki kantin dengan konsep cafetaria yang bersih, rapi serta nyaman dengan variasi makanan dan<br style=\"box-sizing: border-box;\" />minuman yang sehat, agar terjaga kesehatan dari siswa/i.</p>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1rem; font-family: \'Open Sans\', sans-serif; font-size: 16px;\">Seluruh ruangan sekolah terjangkau dari Zona Hotspot yang di support oleh :</p>\r\n<ol style=\"box-sizing: border-box; padding-left: 2rem; margin-top: 0px; margin-bottom: 1rem; font-family: \'Open Sans\', sans-serif; font-size: 16px;\">\r\n<li style=\"box-sizing: border-box;\">Wifi id (Telkom) dengan jaringan Fiber Optik 100 Mbps</li>\r\n<li style=\"box-sizing: border-box;\">Biznet dengan jaringan Fiber Optik 20 Mbps Dedicated 1:1</li>\r\n<li style=\"box-sizing: border-box;\">Varnion Techology Jaringan wireless 2 Mbps</li>\r\n</ol>\r\n<p class=\"fw-bold\" style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1rem; font-family: \'Open Sans\', sans-serif; font-size: 16px; font-weight: 700 !important;\">Galery Foto Sarana Lab Komputer SMK Taruna Bhakti</p>\r\n<h3 style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 0.5rem; font-weight: 500; line-height: 1.2; font-size: 1.75rem; font-family: Raleway, sans-serif;\">&nbsp;</h3>\r\n<p class=\"fw-bold\" style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1rem; font-family: \'Open Sans\', sans-serif; font-size: 16px; font-weight: 700 !important;\">SAMSUNG</p>\r\n<div class=\"row\" style=\"box-sizing: border-box; --bs-gutter-x: 1.5rem; --bs-gutter-y: 0; display: flex; flex-wrap: wrap; margin-top: calc(var(--bs-gutter-y) * -1); margin-right: calc(var(--bs-gutter-x) * -0.5); margin-left: calc(var(--bs-gutter-x) * -0.5); font-family: \'Open Sans\', sans-serif; font-size: 16px;\">\r\n<div class=\"col-4\" style=\"box-sizing: border-box; flex: 0 0 auto; width: 380px; max-width: 100%; padding-right: calc(var(--bs-gutter-x) * 0.5); padding-left: calc(var(--bs-gutter-x) * 0.5); margin-top: var(--bs-gutter-y);\"><img style=\"box-sizing: border-box; vertical-align: middle;\" src=\"http://localhost:8000/photos/samsung1.jpeg\" alt=\"\" width=\"99%\" /></div>\r\n<div class=\"col-4\" style=\"box-sizing: border-box; flex: 0 0 auto; width: 380px; max-width: 100%; padding-right: calc(var(--bs-gutter-x) * 0.5); padding-left: calc(var(--bs-gutter-x) * 0.5); margin-top: var(--bs-gutter-y);\"><img style=\"box-sizing: border-box; vertical-align: middle;\" src=\"http://localhost:8000/photos/samsung2.jpeg\" alt=\"\" width=\"99%\" /></div>\r\n<div class=\"col-4\" style=\"box-sizing: border-box; flex: 0 0 auto; width: 380px; max-width: 100%; padding-right: calc(var(--bs-gutter-x) * 0.5); padding-left: calc(var(--bs-gutter-x) * 0.5); margin-top: var(--bs-gutter-y);\"><img style=\"box-sizing: border-box; vertical-align: middle;\" src=\"http://localhost:8000/photos/samsung3.jpeg\" alt=\"\" width=\"99%\" /></div>\r\n</div>\r\n<h3 style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 0.5rem; font-weight: 500; line-height: 1.2; font-size: 1.75rem; font-family: Raleway, sans-serif;\"><img class=\"mt-4 mb-5\" style=\"box-sizing: border-box; vertical-align: middle; font-family: \'Open Sans\', sans-serif; font-size: 16px; margin-top: 1.5rem !important; margin-bottom: 3rem !important;\" src=\"http://localhost:8000/photos/samsung1.jpeg\" alt=\"\" width=\"99.5%\" /></h3>\r\n<p class=\"fw-bold\" style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1rem; font-family: \'Open Sans\', sans-serif; font-size: 16px; font-weight: 700 !important;\">LAB BAHASA</p>\r\n<div class=\"row\" style=\"box-sizing: border-box; --bs-gutter-x: 1.5rem; --bs-gutter-y: 0; display: flex; flex-wrap: wrap; margin-top: calc(var(--bs-gutter-y) * -1); margin-right: calc(var(--bs-gutter-x) * -0.5); margin-left: calc(var(--bs-gutter-x) * -0.5); font-family: \'Open Sans\', sans-serif; font-size: 16px;\">\r\n<div class=\"col-4\" style=\"box-sizing: border-box; flex: 0 0 auto; width: 380px; max-width: 100%; padding-right: calc(var(--bs-gutter-x) * 0.5); padding-left: calc(var(--bs-gutter-x) * 0.5); margin-top: var(--bs-gutter-y);\"><img style=\"box-sizing: border-box; vertical-align: middle;\" src=\"http://localhost:8000/photos/lbhs1.jpeg\" alt=\"\" width=\"99%\" /></div>\r\n<div class=\"col-4\" style=\"box-sizing: border-box; flex: 0 0 auto; width: 380px; max-width: 100%; padding-right: calc(var(--bs-gutter-x) * 0.5); padding-left: calc(var(--bs-gutter-x) * 0.5); margin-top: var(--bs-gutter-y);\"><img style=\"box-sizing: border-box; vertical-align: middle;\" src=\"http://localhost:8000/photos/lbhs2.jpeg\" alt=\"\" width=\"99%\" /></div>\r\n<div class=\"col-4\" style=\"box-sizing: border-box; flex: 0 0 auto; width: 380px; max-width: 100%; padding-right: calc(var(--bs-gutter-x) * 0.5); padding-left: calc(var(--bs-gutter-x) * 0.5); margin-top: var(--bs-gutter-y);\"><img style=\"box-sizing: border-box; vertical-align: middle;\" src=\"http://localhost:8000/photos/lbhs3.jpeg\" alt=\"\" width=\"99%\" /></div>\r\n</div>\r\n<h3 style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 0.5rem; font-weight: 500; line-height: 1.2; font-size: 1.75rem; font-family: Raleway, sans-serif;\"><img class=\"mt-4 mb-5\" style=\"box-sizing: border-box; vertical-align: middle; font-family: \'Open Sans\', sans-serif; font-size: 16px; margin-top: 1.5rem !important; margin-bottom: 3rem !important;\" src=\"http://localhost:8000/photos/lbhs1.jpeg\" alt=\"\" width=\"99.5%\" /></h3>', NULL, 'sarana-dan-prasarana-sekolah', 'sarana dan prasarana sekolah', 'sarana dan prasarana sekolah', 'ACTIVE', '2021-10-02 05:04:52', '2021-10-02 05:04:52', 6),
-(20, 1, 'Protokol Kesehatan di Lingkungan Sekolah', 'Protokol Kesehatan', NULL, 'pages\\October2021\\YEpdvnAHwI82TSYLASe1.png', 'protokol-kesehatan-di-lingkungan-sekolah', 'Prokres', 'Prokres', 'ACTIVE', '2021-10-06 07:19:34', '2021-10-14 12:54:30', 9),
-(21, 1, 'Why Starbhak?', NULL, '<p style=\"font-size: 20px;\">90% of graduating students already work before graduation, as either self-employed workers or young professionals.</p>', 'pages\\October2021\\DOR6wm4KG89mGlPVChTc.jpg', 'why-starbhak', NULL, NULL, 'ACTIVE', '2021-10-14 11:59:20', '2021-10-14 11:59:20', 8);
+(26, 1, 'Why Starbhak?', NULL, '<p><span style=\"font-family: Poppins, sans-serif; font-size: 20px; background-color: #d7efff;\">90% of graduating students already work before graduation, as either self-employed workers or young professionals.</span></p>', 'pages/October2021/12YtmE4i0nLcZnMm1Vuf.jpg', 'why-starbhak', NULL, NULL, 'ACTIVE', '2021-10-17 07:00:50', '2021-10-17 07:00:50', 8),
+(27, 1, 'Protokol Kesehatan di Lingkungan Sekolah', NULL, NULL, 'pages/October2021/tny4ByO9Yc1DXyBtAzAs.png', 'protokol-kesehatan-di-lingkungan-sekolah', NULL, NULL, 'ACTIVE', '2021-10-17 07:01:39', '2021-10-17 07:01:39', 9),
+(28, 1, 'Sejarah SMK Taruna Bhakti', NULL, '<h3 class=\"mt-5\" style=\"box-sizing: border-box; margin-bottom: 0.5rem; font-weight: 500; line-height: 1.2; font-size: 1.75rem; font-family: Raleway, sans-serif; margin-top: 3rem !important;\"><span style=\"box-sizing: border-box; font-weight: bolder;\">SEJARAH SMK TARUNA BHAKTI</span></h3>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1rem; font-family: \'Open Sans\', sans-serif; font-size: 16px;\">&nbsp;</p>\r\n<p class=\"mt-3\" style=\"box-sizing: border-box; margin-bottom: 1rem; font-family: \'Open Sans\', sans-serif; font-size: 16px; margin-top: 1rem !important;\">Untuk memenuhi kebutuhan akan sumber daya manusia yang berkualitas tinggi dalam penguasaan IPTEK yang didasari semangat iman dan taqwa,<span style=\"box-sizing: border-box; font-weight: bolder;\">&nbsp;SMK Taruna Bhakti Depok</span>&nbsp;dirancang untuk membekali siswa agar menguasai ilmu pengetahuan khususnya dalam bidang Teknologi Informasi dan Komunikasi yang berkualitas, serta memiliki kecakapan hidup. Program pembelajaran SMK Taruna Bhakti memberi perhatian khusus (ciri khas) pada penguasaan TIK khususnya bidang Teknik Komputer dan Jaringan (TKJ), Multimedia (MM) serta Rekaya Perangkat Lunak (RPL) dengan menggunakan kurikulum Nasional yang secara inovatif diperkaya oleh SMK Taruna Bhakti berdasarkan VISI, MISI, TUJUAN serta TARGET SMK Taruna Bhakti.<br style=\"box-sizing: border-box;\" /><br style=\"box-sizing: border-box;\" />Selain pembelajaran di kelas (intrakurikuler) dan pengembangan bakat/minat melalui ekstrakurikuler, siswa memperluas wawasan melalui berbagai macam program yang membekali siswa untuk memiliki kecakapan hidup antara lain: Character Building, Science Camp, Mendatangkan Guru Tamu dari Dunai Usaha/Industri yang relevan dll, serta memberi kesempatan luas kepada siswa untuk berkompetisi dalam bidang akademis dan non-akademis baik tingkat Nasional, Regional, dan Internasional. Proses dan efektifitas pembelajaran didukung oleh guru yang kompeten, bimbingan dan konseling, serta sarana pendidikan yang lengkap. Sebagai salah satu sekolah Teknologi Informasi dan Komunikasi bermutu di Depok, prestasi yang telah dicapai oleh SMK Taruna Bhakti Depok ini memang sesuai dengn visi dan misi yang diembannya</p>', NULL, 'sejarah-smk-taruna-bhakti', NULL, NULL, 'ACTIVE', '2021-10-17 07:02:27', '2021-10-17 07:02:27', 7),
+(29, 1, 'Visi dan Misi', NULL, '<h3 class=\"mt-5 fw-bold\" style=\"box-sizing: border-box; margin-bottom: 0.5rem; line-height: 1.2; font-size: 1.75rem; font-family: Raleway, sans-serif; margin-top: 3rem !important;\">Visi</h3>\r\n<ol style=\"box-sizing: border-box; padding-left: 2rem; margin-top: 0px; margin-bottom: 1rem; font-family: \'Open Sans\', sans-serif; font-size: 16px;\">\r\n<li style=\"box-sizing: border-box;\">Menghasilkan lulusan yang kompeten dalam IPTEK DAN IMTAQ,</li>\r\n<li style=\"box-sizing: border-box;\">serta mampu bersaing pada tingkat nasional dan global.</li>\r\n</ol>\r\n<h3 class=\"mt-5 fw-bold\" style=\"box-sizing: border-box; margin-bottom: 0.5rem; line-height: 1.2; font-size: 1.75rem; font-family: Raleway, sans-serif; margin-top: 3rem !important;\">Misi</h3>\r\n<ol style=\"box-sizing: border-box; padding-left: 2rem; margin-top: 0px; margin-bottom: 1rem; font-family: \'Open Sans\', sans-serif; font-size: 16px;\">\r\n<li style=\"box-sizing: border-box;\">Menumbuhkan semangat kreatifitas, bersinergi dan kompetitif kepada seluruh warga sekolah</li>\r\n<li style=\"box-sizing: border-box;\">Melaksanakan kurikulum melalui pembelajaran dan penilaian berbasis kompetensi, Berbasis wirausaha, berwawasan lingkungan.dan berlandaskan kejujuran.</li>\r\n<li style=\"box-sizing: border-box;\">Meningkatkan kualitas sumber daya manusia melalui sertifikasi Kompetensi Tingkat Nasional dan Internasional</li>\r\n<li style=\"box-sizing: border-box;\">Mengembangkan potensi peserta didik melalui kegiatan Minat dan Bakat dan pembinaan kedisiplinan.</li>\r\n<li style=\"box-sizing: border-box;\">Menerapkan layanan prima dalam pengelolaan sekolah melalui Sistem Manajeman Mutu</li>\r\n</ol>', NULL, 'visi-dan-misi', NULL, NULL, 'ACTIVE', '2021-10-17 07:03:13', '2021-10-17 07:03:13', 7),
+(30, 1, 'Tujuan Sekolah', NULL, '<h3 class=\"mt-5\" style=\"box-sizing: border-box; margin-bottom: 0.5rem; font-weight: 500; line-height: 1.2; font-size: 1.75rem; font-family: Raleway, sans-serif; margin-top: 3rem !important;\"><span style=\"box-sizing: border-box; font-weight: bolder;\">Tujuan Sekolah</span></h3>\r\n<ol style=\"box-sizing: border-box; padding-left: 2rem; margin-top: 0px; margin-bottom: 1rem; font-family: \'Open Sans\', sans-serif; font-size: 16px;\">\r\n<li style=\"box-sizing: border-box;\">Menghasilkan lulusan yang kompeten</li>\r\n<li style=\"box-sizing: border-box;\">Meningkatkan kualitas pembelajaran.</li>\r\n<li style=\"box-sizing: border-box;\">Menyiapkan peserta didik agar mampu mengembangkan sikap profesional, mampu beradaptasi dan berkompetisi</li>\r\n<li style=\"box-sizing: border-box;\">Meningkatkan kepuasan masyarakat untuk memperoleh layanan pendidikan</li>\r\n<li style=\"box-sizing: border-box;\">Konsistensi pelaksanaan aktifitas, kendali mutu dan jaminan mutu sekolah.</li>\r\n<li style=\"box-sizing: border-box;\">Meningkatkan kesejahteraan warga sekolah.</li>\r\n</ol>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1rem; font-family: \'Open Sans\', sans-serif; font-size: 16px;\">Dalam segala aktivitas Proses Pendidikan menerapkan budaya mutu sebagai berikut :</p>\r\n<ul style=\"box-sizing: border-box; padding: 0px 0px 0px 2rem; margin: 0px 0px 1rem; list-style: none; font-family: \'Open Sans\', sans-serif; font-size: 16px;\">\r\n<li style=\"box-sizing: border-box;\"><span style=\"box-sizing: border-box; font-weight: bolder;\">Perubahan itu masa depan</span></li>\r\n<li style=\"box-sizing: border-box;\"><span style=\"box-sizing: border-box; font-weight: bolder;\">Pelayanan Prima</span></li>\r\n<li style=\"box-sizing: border-box;\"><span style=\"box-sizing: border-box; font-weight: bolder;\">Learning without practising is nothing</span></li>\r\n<li style=\"box-sizing: border-box;\"><span style=\"box-sizing: border-box; font-weight: bolder;\">Service is investment</span></li>\r\n<li style=\"box-sizing: border-box;\"><span style=\"box-sizing: border-box; font-weight: bolder;\">Our quality ask be different</span></li>\r\n</ul>', NULL, 'tujuan-sekolah', NULL, NULL, 'ACTIVE', '2021-10-17 07:03:49', '2021-10-17 07:03:49', 7),
+(31, 1, 'Guru SMK Taruna Bhakti', NULL, NULL, 'pages/October2021/1PGpfdWDQJ92a0O5lexF.jpg', 'guru-smk-taruna-bhakti', NULL, NULL, 'ACTIVE', '2021-10-17 07:04:39', '2021-10-17 07:04:39', 1),
+(32, 1, 'Struktur Kurikulum SMK Taruna Bhakti', NULL, NULL, 'pages/October2021/O3r0wkusYSHeWG1I3AQC.jpg', 'struktur-kurikulum-smk-taruna-bhakti', NULL, NULL, 'ACTIVE', '2021-10-17 07:05:31', '2021-10-17 07:05:31', 1),
+(33, 1, 'Evaluasi', NULL, NULL, 'pages/October2021/ilgcJtXv0ZmDCXodd7N5.jpg', 'evaluasi', NULL, NULL, 'ACTIVE', '2021-10-17 07:05:58', '2021-10-17 07:05:58', 1),
+(34, 1, 'Data Tamatan SMK Taruna Bhakti', NULL, NULL, 'pages/October2021/cDOEwebCTaJn1PhGOowV.jpg', 'data-tamatan', NULL, NULL, 'ACTIVE', '2021-10-17 07:06:41', '2021-10-17 10:23:01', 2),
+(35, 1, 'Sarana dan Prasarana Sekolah', NULL, NULL, 'pages/October2021/eQ019SBsh0uAnMPpp80B.jpg', 'sarana-dan-prasarana-sekolah', NULL, NULL, 'ACTIVE', '2021-10-17 07:07:11', '2021-10-17 07:07:11', 3),
+(36, 1, 'Ruang Pembelajaran Umum', NULL, NULL, 'pages/October2021/3sMON3t5jLtDkcYSazBV.jpg', 'ruang-pembelajaran-umum', NULL, NULL, 'ACTIVE', '2021-10-17 07:09:49', '2021-10-17 07:09:49', 3),
+(37, 1, 'Ruang Pembelajaran Khusus', NULL, NULL, 'pages/October2021/kgF7fVYUfWsAKsDNrdrG.jpg', 'ruang-pembelajaran-khusus', NULL, NULL, 'ACTIVE', '2021-10-17 07:10:20', '2021-10-17 07:10:20', 3),
+(38, 1, 'Fasilitas Parkir Kendaraan Siswa', NULL, NULL, 'pages/October2021/CCB2AEMVRLE0IOmG60PT.jpg', 'fasilitas-parkir-kendaraan-siswa', NULL, NULL, 'ACTIVE', '2021-10-17 07:10:49', '2021-10-17 07:10:49', 3),
+(39, 1, 'Mushola Raudhotul Ilmi', NULL, NULL, 'pages/October2021/FxpLN738Cng20v1IHS4F.jpg', 'mushola-raudhotul-ilmi', NULL, NULL, 'ACTIVE', '2021-10-17 07:11:17', '2021-10-17 07:11:17', 3),
+(40, 1, 'Fasilitas Pendukung', NULL, NULL, 'pages/October2021/S1FCYUJRV4rbOebXZJFH.jpg', 'fasilitas-pendukung', NULL, NULL, 'ACTIVE', '2021-10-17 07:11:43', '2021-10-17 07:11:43', 3),
+(41, 1, 'Kegiatan Osis', NULL, NULL, 'pages/October2021/ixtVINehuSZSi3ZqqFGg.jpg', 'kegiatan-osis', NULL, NULL, 'ACTIVE', '2021-10-17 07:12:18', '2021-10-17 07:12:18', 4),
+(42, 1, 'Bimbingan Konseling', NULL, NULL, 'pages/October2021/3wAIRX6Eb22eWcK63Luo.jpg', 'bimbingan-konseling', NULL, NULL, 'ACTIVE', '2021-10-17 07:13:11', '2021-10-17 07:13:33', 4),
+(43, 1, 'Ekstrakurikuler', NULL, NULL, 'pages/October2021/Bxf8ULlbOHc5NXM532gt.jpg', 'ekstrakurikuler', NULL, NULL, 'ACTIVE', '2021-10-17 07:14:21', '2021-10-17 07:14:21', 4),
+(44, 1, 'Open Recruitment', NULL, NULL, 'pages/October2021/HXlnBNqDnLyIfxskufGZ.jpg', 'open-recruitment', NULL, NULL, 'ACTIVE', '2021-10-17 07:15:13', '2021-10-17 07:15:13', 5),
+(45, 1, 'Data Lulusan SMK Taruna Bhakti', NULL, NULL, 'pages/October2021/OHY6s4U7cPMX5OO5gT4o.jpg', 'data-lulusan-smk-taruna-bhakti', NULL, NULL, 'ACTIVE', '2021-10-17 07:15:49', '2021-10-17 07:15:49', 5),
+(46, 1, 'Image', NULL, NULL, 'pages/October2021/nvvieG1eXz1wWu70LCgx.jpg', 'image', NULL, NULL, 'ACTIVE', '2021-10-17 07:16:45', '2021-10-17 07:16:45', 10),
+(47, 1, 'Video', NULL, NULL, 'pages/October2021/gelmSD1zy7kstltz1FzG.jpg', 'video', NULL, NULL, 'ACTIVE', '2021-10-17 07:17:15', '2021-10-17 07:17:15', 10);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `partners`
+-- Table structure for table `partners`
 --
 
 CREATE TABLE `partners` (
@@ -1079,7 +1076,7 @@ CREATE TABLE `partners` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `partners`
+-- Dumping data for table `partners`
 --
 
 INSERT INTO `partners` (`id`, `logo_perusahaan`, `nama_perusahaan`, `alamat_perusahaan`, `created_at`, `updated_at`, `website_perusahaan`) VALUES
@@ -1091,7 +1088,7 @@ INSERT INTO `partners` (`id`, `logo_perusahaan`, `nama_perusahaan`, `alamat_peru
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `password_resets`
+-- Table structure for table `password_resets`
 --
 
 CREATE TABLE `password_resets` (
@@ -1103,7 +1100,7 @@ CREATE TABLE `password_resets` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `permissions`
+-- Table structure for table `permissions`
 --
 
 CREATE TABLE `permissions` (
@@ -1115,7 +1112,7 @@ CREATE TABLE `permissions` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `permissions`
+-- Dumping data for table `permissions`
 --
 
 INSERT INTO `permissions` (`id`, `key`, `table_name`, `created_at`, `updated_at`) VALUES
@@ -1199,11 +1196,6 @@ INSERT INTO `permissions` (`id`, `key`, `table_name`, `created_at`, `updated_at`
 (83, 'edit_jurusans', 'jurusans', '2021-09-29 23:52:50', '2021-09-29 23:52:50'),
 (84, 'add_jurusans', 'jurusans', '2021-09-29 23:52:50', '2021-09-29 23:52:50'),
 (85, 'delete_jurusans', 'jurusans', '2021-09-29 23:52:50', '2021-09-29 23:52:50'),
-(116, 'browse_category_sarpras', 'category_sarpras', '2021-10-06 08:21:52', '2021-10-06 08:21:52'),
-(117, 'read_category_sarpras', 'category_sarpras', '2021-10-06 08:21:52', '2021-10-06 08:21:52'),
-(118, 'edit_category_sarpras', 'category_sarpras', '2021-10-06 08:21:52', '2021-10-06 08:21:52'),
-(119, 'add_category_sarpras', 'category_sarpras', '2021-10-06 08:21:52', '2021-10-06 08:21:52'),
-(120, 'delete_category_sarpras', 'category_sarpras', '2021-10-06 08:21:52', '2021-10-06 08:21:52'),
 (121, 'browse_content_sarpras', 'content_sarpras', '2021-10-06 14:30:52', '2021-10-06 14:30:52'),
 (122, 'read_content_sarpras', 'content_sarpras', '2021-10-06 14:30:52', '2021-10-06 14:30:52'),
 (123, 'edit_content_sarpras', 'content_sarpras', '2021-10-06 14:30:52', '2021-10-06 14:30:52'),
@@ -1219,26 +1211,31 @@ INSERT INTO `permissions` (`id`, `key`, `table_name`, `created_at`, `updated_at`
 (133, 'edit_mapels', 'mapels', '2021-10-07 02:56:08', '2021-10-07 02:56:08'),
 (134, 'add_mapels', 'mapels', '2021-10-07 02:56:08', '2021-10-07 02:56:08'),
 (135, 'delete_mapels', 'mapels', '2021-10-07 02:56:08', '2021-10-07 02:56:08'),
-(136, 'browse_galleries', 'galleries', '2021-10-16 07:50:01', '2021-10-16 07:50:01'),
-(137, 'read_galleries', 'galleries', '2021-10-16 07:50:01', '2021-10-16 07:50:01'),
-(138, 'edit_galleries', 'galleries', '2021-10-16 07:50:01', '2021-10-16 07:50:01'),
-(139, 'add_galleries', 'galleries', '2021-10-16 07:50:01', '2021-10-16 07:50:01'),
-(140, 'delete_galleries', 'galleries', '2021-10-16 07:50:01', '2021-10-16 07:50:01'),
-(141, 'browse_gallery_news', 'gallery_news', '2021-10-16 08:00:58', '2021-10-16 08:00:58'),
-(142, 'read_gallery_news', 'gallery_news', '2021-10-16 08:00:58', '2021-10-16 08:00:58'),
-(143, 'edit_gallery_news', 'gallery_news', '2021-10-16 08:00:58', '2021-10-16 08:00:58'),
-(144, 'add_gallery_news', 'gallery_news', '2021-10-16 08:00:58', '2021-10-16 08:00:58'),
-(145, 'delete_gallery_news', 'gallery_news', '2021-10-16 08:00:58', '2021-10-16 08:00:58'),
-(146, 'browse_category_news', 'category_news', '2021-10-16 11:49:24', '2021-10-16 11:49:24'),
-(147, 'read_category_news', 'category_news', '2021-10-16 11:49:24', '2021-10-16 11:49:24'),
-(148, 'edit_category_news', 'category_news', '2021-10-16 11:49:24', '2021-10-16 11:49:24'),
-(149, 'add_category_news', 'category_news', '2021-10-16 11:49:24', '2021-10-16 11:49:24'),
-(150, 'delete_category_news', 'category_news', '2021-10-16 11:49:24', '2021-10-16 11:49:24');
+(136, 'browse_navbars', 'navbars', '2021-10-16 04:24:35', '2021-10-16 04:24:35'),
+(137, 'read_navbars', 'navbars', '2021-10-16 04:24:35', '2021-10-16 04:24:35'),
+(138, 'edit_navbars', 'navbars', '2021-10-16 04:24:35', '2021-10-16 04:24:35'),
+(139, 'add_navbars', 'navbars', '2021-10-16 04:24:35', '2021-10-16 04:24:35'),
+(140, 'delete_navbars', 'navbars', '2021-10-16 04:24:35', '2021-10-16 04:24:35'),
+(141, 'browse_images', 'images', '2021-10-17 03:22:35', '2021-10-17 03:22:35'),
+(142, 'read_images', 'images', '2021-10-17 03:22:35', '2021-10-17 03:22:35'),
+(143, 'edit_images', 'images', '2021-10-17 03:22:35', '2021-10-17 03:22:35'),
+(144, 'add_images', 'images', '2021-10-17 03:22:35', '2021-10-17 03:22:35'),
+(145, 'delete_images', 'images', '2021-10-17 03:22:35', '2021-10-17 03:22:35'),
+(146, 'browse_videos', 'videos', '2021-10-17 03:24:20', '2021-10-17 03:24:20'),
+(147, 'read_videos', 'videos', '2021-10-17 03:24:20', '2021-10-17 03:24:20'),
+(148, 'edit_videos', 'videos', '2021-10-17 03:24:20', '2021-10-17 03:24:20'),
+(149, 'add_videos', 'videos', '2021-10-17 03:24:20', '2021-10-17 03:24:20'),
+(150, 'delete_videos', 'videos', '2021-10-17 03:24:20', '2021-10-17 03:24:20'),
+(151, 'browse_contents', 'contents', '2021-10-17 09:10:32', '2021-10-17 09:10:32'),
+(152, 'read_contents', 'contents', '2021-10-17 09:10:32', '2021-10-17 09:10:32'),
+(153, 'edit_contents', 'contents', '2021-10-17 09:10:32', '2021-10-17 09:10:32'),
+(154, 'add_contents', 'contents', '2021-10-17 09:10:32', '2021-10-17 09:10:32'),
+(155, 'delete_contents', 'contents', '2021-10-17 09:10:32', '2021-10-17 09:10:32');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `permission_role`
+-- Table structure for table `permission_role`
 --
 
 CREATE TABLE `permission_role` (
@@ -1247,7 +1244,7 @@ CREATE TABLE `permission_role` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `permission_role`
+-- Dumping data for table `permission_role`
 --
 
 INSERT INTO `permission_role` (`permission_id`, `role_id`) VALUES
@@ -1331,11 +1328,6 @@ INSERT INTO `permission_role` (`permission_id`, `role_id`) VALUES
 (83, 1),
 (84, 1),
 (85, 1),
-(116, 1),
-(117, 1),
-(118, 1),
-(119, 1),
-(120, 1),
 (121, 1),
 (122, 1),
 (123, 1),
@@ -1365,12 +1357,17 @@ INSERT INTO `permission_role` (`permission_id`, `role_id`) VALUES
 (147, 1),
 (148, 1),
 (149, 1),
-(150, 1);
+(150, 1),
+(151, 1),
+(152, 1),
+(153, 1),
+(154, 1),
+(155, 1);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `personal_access_tokens`
+-- Table structure for table `personal_access_tokens`
 --
 
 CREATE TABLE `personal_access_tokens` (
@@ -1388,7 +1385,7 @@ CREATE TABLE `personal_access_tokens` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `posts`
+-- Table structure for table `posts`
 --
 
 CREATE TABLE `posts` (
@@ -1410,7 +1407,7 @@ CREATE TABLE `posts` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `posts`
+-- Dumping data for table `posts`
 --
 
 INSERT INTO `posts` (`id`, `author_id`, `category_id`, `title`, `seo_title`, `excerpt`, `body`, `image`, `slug`, `meta_description`, `meta_keywords`, `status`, `featured`, `created_at`, `updated_at`) VALUES
@@ -1420,7 +1417,7 @@ INSERT INTO `posts` (`id`, `author_id`, `category_id`, `title`, `seo_title`, `ex
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `roles`
+-- Table structure for table `roles`
 --
 
 CREATE TABLE `roles` (
@@ -1432,7 +1429,7 @@ CREATE TABLE `roles` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `roles`
+-- Dumping data for table `roles`
 --
 
 INSERT INTO `roles` (`id`, `name`, `display_name`, `created_at`, `updated_at`) VALUES
@@ -1445,7 +1442,7 @@ INSERT INTO `roles` (`id`, `name`, `display_name`, `created_at`, `updated_at`) V
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `settings`
+-- Table structure for table `settings`
 --
 
 CREATE TABLE `settings` (
@@ -1460,7 +1457,7 @@ CREATE TABLE `settings` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `settings`
+-- Dumping data for table `settings`
 --
 
 INSERT INTO `settings` (`id`, `key`, `display_name`, `value`, `details`, `type`, `order`, `group`) VALUES
@@ -1468,24 +1465,23 @@ INSERT INTO `settings` (`id`, `key`, `display_name`, `value`, `details`, `type`,
 (2, 'site.description', 'Site Description', 'Site Description', '', 'text', 11, 'Site'),
 (3, 'site.logo', 'Site Logo', 'settings\\October2021\\kPm9a78D1EXFcXIgtmSz.png', '', 'image', 1, 'Site'),
 (4, 'site.google_analytics_tracking_id', 'Google Analytics Tracking ID', NULL, '', 'text', 12, 'Site'),
-(5, 'admin.bg_image', 'Admin Background Image', '', '', 'image', 5, 'Admin'),
-(6, 'admin.title', 'Admin Title', 'Voyager', '', 'text', 1, 'Admin'),
-(7, 'admin.description', 'Admin Description', 'Welcome to Voyager. The Missing Admin for Laravel', '', 'text', 2, 'Admin'),
+(5, 'admin.bg_image', 'Admin Background Image', 'settings/October2021/mxaxhTGZ741nEZaPuKXA.png', '', 'image', 5, 'Admin'),
+(6, 'admin.title', 'Admin Title', 'SMK Taruna Bhakti', '', 'text', 1, 'Admin'),
+(7, 'admin.description', 'Admin Description', 'Welcome to Page Admin SMK Taruna Bhakti', '', 'text', 2, 'Admin'),
 (8, 'admin.loader', 'Admin Loader', '', '', 'image', 3, 'Admin'),
-(9, 'admin.icon_image', 'Admin Icon Image', '', '', 'image', 4, 'Admin'),
+(9, 'admin.icon_image', 'Admin Icon Image', 'settings/October2021/cWCmjpfhKB9xzkabkiFS.png', '', 'image', 4, 'Admin'),
 (10, 'admin.google_analytics_client_id', 'Google Analytics Client ID (used for admin dashboard)', NULL, '', 'text', 1, 'Admin'),
 (13, 'site.fitur_home_page', 'Fitur Home Page', 'settings/October2021/DLpESG8ztdttleSD9CQz.png', NULL, 'image', 2, 'Site'),
 (15, 'site.virtual-tour', 'Virtual Tour', 'https://kuula.co/share/collection/7YQlT?fs=1&vr=1&sd=1&initload=0&thumbs=1&info=0&logo=1&logosize=40', NULL, 'text', 3, 'Site'),
-(16, 'site.heading', 'Heading', '<p>&nbsp;</p>\r\n<h1 style=\"box-sizing: border-box; margin: 0px; line-height: 56px; font-size: 48px; font-family: Poppins, sans-serif; color: #ffffff;\"><span style=\"color: #ffffff;\">Learning Today, </span></h1>\r\n<h1 style=\"box-sizing: border-box; margin: 0px; line-height: 56px; font-size: 48px; font-family: Poppins, sans-serif; color: #ffffff;\"><span style=\"color: #ffffff;\">Leading Tomorrow</span></h1>', NULL, 'rich_text_box', 4, 'Site'),
-(17, 'site.sub_heading', 'Sub Heading', 'We are team of talented designers making websites with Bootstrap', NULL, 'text_area', 8, 'Site'),
-(22, 'site.image_content', 'Image Content', 'settings\\October2021\\VDQRjzZhc2nhxMn2QkV3.jpg', NULL, 'image', 15, 'Site'),
+(16, 'site.heading', 'Heading', '<h1>SMK Pusat</h1>\r\n<h1>Keunggulan</h1>', NULL, 'rich_text_box', 4, 'Site'),
+(17, 'site.sub_heading', 'Sub Heading', 'Our Quality Ask Be DIfferent', NULL, 'text_area', 8, 'Site'),
 (23, 'site.instagram', 'Link Instagram', 'https://instagram.com/starbhak.official?utm_medium=copy_link', NULL, 'text', 16, 'Site'),
 (24, 'site.facebook', 'Link Facebook', 'https://web.facebook.com/smktarunabhaktidepok', NULL, 'text', 17, 'Site');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `siswas`
+-- Table structure for table `siswas`
 --
 
 CREATE TABLE `siswas` (
@@ -1496,21 +1492,21 @@ CREATE TABLE `siswas` (
   `password` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  `nipd` int(11) DEFAULT NULL,
+  `nipd` timestamp NULL DEFAULT NULL,
   `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `siswas`
+-- Dumping data for table `siswas`
 --
 
 INSERT INTO `siswas` (`id`, `name`, `kelas_id`, `email`, `password`, `created_at`, `updated_at`, `nipd`, `remember_token`) VALUES
-(1, 'Kukuh Pradypta', '2', 'kukuh@gmail.com', '$2y$10$EJg3EZjiyke6MA26ywAoLe.cwYI8zc6417Ow1gUT448SDQJmLDpRG', '2021-09-22 06:43:59', '2021-09-22 06:43:59', 1920100325, NULL);
+(3, 'admin@admin.com', '2', 'alifqi171@gmail.com', NULL, '2021-10-16 12:36:08', '2021-10-16 12:36:08', '2021-10-15 17:00:00', NULL);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `translations`
+-- Table structure for table `translations`
 --
 
 CREATE TABLE `translations` (
@@ -1525,7 +1521,7 @@ CREATE TABLE `translations` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `translations`
+-- Dumping data for table `translations`
 --
 
 INSERT INTO `translations` (`id`, `table_name`, `column_name`, `foreign_key`, `locale`, `value`, `created_at`, `updated_at`) VALUES
@@ -1563,7 +1559,7 @@ INSERT INTO `translations` (`id`, `table_name`, `column_name`, `foreign_key`, `l
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `users`
+-- Table structure for table `users`
 --
 
 CREATE TABLE `users` (
@@ -1586,7 +1582,7 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `users`
+-- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `role_id`, `name`, `email`, `avatar`, `email_verified_at`, `password`, `remember_token`, `settings`, `created_at`, `updated_at`, `nomor_induk`, `jabatan_guru`, `kelas_siswa`, `spesifc_role`, `mapel_id`) VALUES
@@ -1650,7 +1646,7 @@ INSERT INTO `users` (`id`, `role_id`, `name`, `email`, `avatar`, `email_verified
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `user_roles`
+-- Table structure for table `user_roles`
 --
 
 CREATE TABLE `user_roles` (
@@ -1658,18 +1654,40 @@ CREATE TABLE `user_roles` (
   `role_id` bigint(20) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `videos`
+--
+
+CREATE TABLE `videos` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `video` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `title` int(11) DEFAULT NULL,
+  `description` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `videos`
+--
+
+INSERT INTO `videos` (`id`, `video`, `title`, `description`, `created_at`, `updated_at`) VALUES
+(2, 'videos/October2021/DF4hrxELH5xrWEpBwsvL.mp4', NULL, NULL, '2021-10-17 03:54:48', '2021-10-17 03:54:48');
+
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indeks untuk tabel `alumnis`
+-- Indexes for table `alumnis`
 --
 ALTER TABLE `alumnis`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `categories`
+-- Indexes for table `categories`
 --
 ALTER TABLE `categories`
   ADD PRIMARY KEY (`id`),
@@ -1677,33 +1695,26 @@ ALTER TABLE `categories`
   ADD KEY `categories_parent_id_foreign` (`parent_id`);
 
 --
--- Indeks untuk tabel `category_news`
+-- Indexes for table `contents`
 --
-ALTER TABLE `category_news`
+ALTER TABLE `contents`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `category_sarpras`
---
-ALTER TABLE `category_sarpras`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `category_sarpras_slug_unique` (`slug`);
-
---
--- Indeks untuk tabel `content_sarpras`
+-- Indexes for table `content_sarpras`
 --
 ALTER TABLE `content_sarpras`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `data_rows`
+-- Indexes for table `data_rows`
 --
 ALTER TABLE `data_rows`
   ADD PRIMARY KEY (`id`),
   ADD KEY `data_rows_data_type_id_foreign` (`data_type_id`);
 
 --
--- Indeks untuk tabel `data_types`
+-- Indexes for table `data_types`
 --
 ALTER TABLE `data_types`
   ADD PRIMARY KEY (`id`),
@@ -1711,76 +1722,76 @@ ALTER TABLE `data_types`
   ADD UNIQUE KEY `data_types_slug_unique` (`slug`);
 
 --
--- Indeks untuk tabel `failed_jobs`
+-- Indexes for table `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
 
 --
--- Indeks untuk tabel `galleries`
+-- Indexes for table `galleries`
 --
 ALTER TABLE `galleries`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `gallery_news`
---
-ALTER TABLE `gallery_news`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indeks untuk tabel `gallery_sarpras`
+-- Indexes for table `gallery_sarpras`
 --
 ALTER TABLE `gallery_sarpras`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `gurus`
+-- Indexes for table `gurus`
 --
 ALTER TABLE `gurus`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `guru_role`
+-- Indexes for table `guru_role`
 --
 ALTER TABLE `guru_role`
   ADD KEY `guru_role_guru_id_index` (`guru_id`),
   ADD KEY `guru_role_kategori_id_index` (`kategori_id`);
 
 --
--- Indeks untuk tabel `jurusans`
+-- Indexes for table `images`
+--
+ALTER TABLE `images`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `jurusans`
 --
 ALTER TABLE `jurusans`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `kategoris`
+-- Indexes for table `kategoris`
 --
 ALTER TABLE `kategoris`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `kategoris_slug_unique` (`slug`);
 
 --
--- Indeks untuk tabel `kelas`
+-- Indexes for table `kelas`
 --
 ALTER TABLE `kelas`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `managers`
+-- Indexes for table `managers`
 --
 ALTER TABLE `managers`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `mapels`
+-- Indexes for table `mapels`
 --
 ALTER TABLE `mapels`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `media`
+-- Indexes for table `media`
 --
 ALTER TABLE `media`
   ADD PRIMARY KEY (`id`),
@@ -1788,53 +1799,59 @@ ALTER TABLE `media`
   ADD KEY `media_model_type_model_id_index` (`model_type`,`model_id`);
 
 --
--- Indeks untuk tabel `menus`
+-- Indexes for table `menus`
 --
 ALTER TABLE `menus`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `menus_name_unique` (`name`);
 
 --
--- Indeks untuk tabel `menu_items`
+-- Indexes for table `menu_items`
 --
 ALTER TABLE `menu_items`
   ADD PRIMARY KEY (`id`),
   ADD KEY `menu_items_menu_id_foreign` (`menu_id`);
 
 --
--- Indeks untuk tabel `migrations`
+-- Indexes for table `migrations`
 --
 ALTER TABLE `migrations`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `pages`
+-- Indexes for table `navbars`
+--
+ALTER TABLE `navbars`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `pages`
 --
 ALTER TABLE `pages`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `pages_slug_unique` (`slug`);
 
 --
--- Indeks untuk tabel `partners`
+-- Indexes for table `partners`
 --
 ALTER TABLE `partners`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `password_resets`
+-- Indexes for table `password_resets`
 --
 ALTER TABLE `password_resets`
   ADD KEY `password_resets_email_index` (`email`);
 
 --
--- Indeks untuk tabel `permissions`
+-- Indexes for table `permissions`
 --
 ALTER TABLE `permissions`
   ADD PRIMARY KEY (`id`),
   ADD KEY `permissions_key_index` (`key`);
 
 --
--- Indeks untuk tabel `permission_role`
+-- Indexes for table `permission_role`
 --
 ALTER TABLE `permission_role`
   ADD PRIMARY KEY (`permission_id`,`role_id`),
@@ -1842,7 +1859,7 @@ ALTER TABLE `permission_role`
   ADD KEY `permission_role_role_id_index` (`role_id`);
 
 --
--- Indeks untuk tabel `personal_access_tokens`
+-- Indexes for table `personal_access_tokens`
 --
 ALTER TABLE `personal_access_tokens`
   ADD PRIMARY KEY (`id`),
@@ -1850,41 +1867,41 @@ ALTER TABLE `personal_access_tokens`
   ADD KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`);
 
 --
--- Indeks untuk tabel `posts`
+-- Indexes for table `posts`
 --
 ALTER TABLE `posts`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `posts_slug_unique` (`slug`);
 
 --
--- Indeks untuk tabel `roles`
+-- Indexes for table `roles`
 --
 ALTER TABLE `roles`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `roles_name_unique` (`name`);
 
 --
--- Indeks untuk tabel `settings`
+-- Indexes for table `settings`
 --
 ALTER TABLE `settings`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `settings_key_unique` (`key`);
 
 --
--- Indeks untuk tabel `siswas`
+-- Indexes for table `siswas`
 --
 ALTER TABLE `siswas`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `translations`
+-- Indexes for table `translations`
 --
 ALTER TABLE `translations`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `translations_table_name_column_name_foreign_key_locale_unique` (`table_name`,`column_name`,`foreign_key`,`locale`);
 
 --
--- Indeks untuk tabel `users`
+-- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
@@ -1892,7 +1909,7 @@ ALTER TABLE `users`
   ADD KEY `role_id` (`role_id`);
 
 --
--- Indeks untuk tabel `user_roles`
+-- Indexes for table `user_roles`
 --
 ALTER TABLE `user_roles`
   ADD PRIMARY KEY (`user_id`,`role_id`),
@@ -1900,226 +1917,238 @@ ALTER TABLE `user_roles`
   ADD KEY `user_roles_role_id_index` (`role_id`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- Indexes for table `videos`
+--
+ALTER TABLE `videos`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `alumnis`
+-- AUTO_INCREMENT for table `alumnis`
 --
 ALTER TABLE `alumnis`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
--- AUTO_INCREMENT untuk tabel `categories`
+-- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- AUTO_INCREMENT untuk tabel `category_news`
+-- AUTO_INCREMENT for table `contents`
 --
-ALTER TABLE `category_news`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+ALTER TABLE `contents`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT untuk tabel `category_sarpras`
---
-ALTER TABLE `category_sarpras`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
---
--- AUTO_INCREMENT untuk tabel `content_sarpras`
+-- AUTO_INCREMENT for table `content_sarpras`
 --
 ALTER TABLE `content_sarpras`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
--- AUTO_INCREMENT untuk tabel `data_rows`
+-- AUTO_INCREMENT for table `data_rows`
 --
 ALTER TABLE `data_rows`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=236;
 
 --
--- AUTO_INCREMENT untuk tabel `data_types`
+-- AUTO_INCREMENT for table `data_types`
 --
 ALTER TABLE `data_types`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
--- AUTO_INCREMENT untuk tabel `failed_jobs`
+-- AUTO_INCREMENT for table `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `galleries`
+-- AUTO_INCREMENT for table `galleries`
 --
 ALTER TABLE `galleries`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
 
 --
--- AUTO_INCREMENT untuk tabel `gallery_news`
---
-ALTER TABLE `gallery_news`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
-
---
--- AUTO_INCREMENT untuk tabel `gallery_sarpras`
+-- AUTO_INCREMENT for table `gallery_sarpras`
 --
 ALTER TABLE `gallery_sarpras`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
--- AUTO_INCREMENT untuk tabel `gurus`
+-- AUTO_INCREMENT for table `gurus`
 --
 ALTER TABLE `gurus`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT untuk tabel `jurusans`
+-- AUTO_INCREMENT for table `images`
+--
+ALTER TABLE `images`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `jurusans`
 --
 ALTER TABLE `jurusans`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT untuk tabel `kategoris`
+-- AUTO_INCREMENT for table `kategoris`
 --
 ALTER TABLE `kategoris`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT untuk tabel `kelas`
+-- AUTO_INCREMENT for table `kelas`
 --
 ALTER TABLE `kelas`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
--- AUTO_INCREMENT untuk tabel `managers`
+-- AUTO_INCREMENT for table `managers`
 --
 ALTER TABLE `managers`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT untuk tabel `mapels`
+-- AUTO_INCREMENT for table `mapels`
 --
 ALTER TABLE `mapels`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT untuk tabel `media`
+-- AUTO_INCREMENT for table `media`
 --
 ALTER TABLE `media`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `menus`
+-- AUTO_INCREMENT for table `menus`
 --
 ALTER TABLE `menus`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT untuk tabel `menu_items`
+-- AUTO_INCREMENT for table `menu_items`
 --
 ALTER TABLE `menu_items`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
--- AUTO_INCREMENT untuk tabel `migrations`
+-- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
--- AUTO_INCREMENT untuk tabel `pages`
+-- AUTO_INCREMENT for table `navbars`
 --
-ALTER TABLE `pages`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+ALTER TABLE `navbars`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
--- AUTO_INCREMENT untuk tabel `partners`
+-- AUTO_INCREMENT for table `pages`
+--
+ALTER TABLE `pages`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+
+--
+-- AUTO_INCREMENT for table `partners`
 --
 ALTER TABLE `partners`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
--- AUTO_INCREMENT untuk tabel `permissions`
+-- AUTO_INCREMENT for table `permissions`
 --
 ALTER TABLE `permissions`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=151;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=156;
 
 --
--- AUTO_INCREMENT untuk tabel `personal_access_tokens`
+-- AUTO_INCREMENT for table `personal_access_tokens`
 --
 ALTER TABLE `personal_access_tokens`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `posts`
+-- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
--- AUTO_INCREMENT untuk tabel `roles`
+-- AUTO_INCREMENT for table `roles`
 --
 ALTER TABLE `roles`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT untuk tabel `settings`
+-- AUTO_INCREMENT for table `settings`
 --
 ALTER TABLE `settings`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
--- AUTO_INCREMENT untuk tabel `siswas`
+-- AUTO_INCREMENT for table `siswas`
 --
 ALTER TABLE `siswas`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT untuk tabel `translations`
+-- AUTO_INCREMENT for table `translations`
 --
 ALTER TABLE `translations`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
--- AUTO_INCREMENT untuk tabel `users`
+-- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
 
 --
--- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
+-- AUTO_INCREMENT for table `videos`
+--
+ALTER TABLE `videos`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- Constraints for dumped tables
 --
 
 --
--- Ketidakleluasaan untuk tabel `categories`
+-- Constraints for table `categories`
 --
 ALTER TABLE `categories`
   ADD CONSTRAINT `categories_parent_id_foreign` FOREIGN KEY (`parent_id`) REFERENCES `categories` (`id`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `data_rows`
+-- Constraints for table `data_rows`
 --
 ALTER TABLE `data_rows`
   ADD CONSTRAINT `data_rows_data_type_id_foreign` FOREIGN KEY (`data_type_id`) REFERENCES `data_types` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `menu_items`
+-- Constraints for table `menu_items`
 --
 ALTER TABLE `menu_items`
   ADD CONSTRAINT `menu_items_menu_id_foreign` FOREIGN KEY (`menu_id`) REFERENCES `menus` (`id`) ON DELETE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `permission_role`
+-- Constraints for table `permission_role`
 --
 ALTER TABLE `permission_role`
   ADD CONSTRAINT `permission_role_permission_id_foreign` FOREIGN KEY (`permission_id`) REFERENCES `permissions` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `permission_role_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `users`
+-- Constraints for table `users`
 --
 ALTER TABLE `users`
   ADD CONSTRAINT `role_id` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`);

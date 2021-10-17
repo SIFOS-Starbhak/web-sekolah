@@ -1,29 +1,51 @@
 @extends('template.app')
-@section('title', 'Gallery')
-@section ('main')
-<div class="container" data-aos="fade-up">
-    <div class="row card-group " data-aos="zoom-in" data-aos-delay="100">
+@section('title', $gallery->title)
+@section('main')
+    {{-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script> --}}
 
-        <a href="/gallery" class="col-12 mt-5" style="font-size: 17px;"><i class="fas fa-arrow-left"></i> Kembali</a>
-
-        <section id="popular-courses" class="courses">
-            <div class="container" data-aos="fade-up">
-                <div class="d-flex justify-content-center row flex-wrap" data-aos="zoom-in" data-aos-delay="100" >
-                    @foreach ($cardgallery as $fg)
-                        <div class="col-lg-4 mb-4" style="width: 300px;">
-                            <div class="course-item shadow">
-                                <img src="{{ asset('storage/' . $fg->image) }}" class="img-fluid" alt="..."
-                                    style="width:100%;height:250px;" />
-                                <div class="course-content mt-3 text-center mb-3">
-                                    <h3><a href="/gallery/{{ $fg->slug }}"><span>Gallery Tahun</span> {{ $fg->tahun }}</a>
-                                    </h3>
-                                </div>
-                            </div>
-                        </div>
-                    @endforeach
-                </div>
+    @if (request()->is('gallery/image'))
+        <div id="carouselExampleIndicators" class="carousel slide my-5" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                @foreach ($image as $key => $kls)
+                    <button type="button" data-bs-target="#carouselExampleIndicators"
+                        data-bs-slide-to="{{ $loop->iteration - 1 }}" class="{{ $loop->iteration == 1 ? 'active' : '' }}"
+                        aria-current="true" aria-label="Slide {{ $loop->iteration }}"><img class="img-fluid mx-auto"
+                            src="{{ asset('storage/' . $kls->photo) }}" width="100%" alt=""></button>
+                @endforeach
             </div>
-        </section>
-    </div>
-</div>
+            <div class="carousel-inner">
+                @foreach ($image as $key => $kls)
+                    <div class="carousel-item {{ $loop->iteration == 1 ? 'active' : '' }}">
+                        <img src="{{ asset('storage/' . $kls->photo) }}" class="d-block img-fluid mx-auto" alt="..."
+                            width="50%">
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    @endif
+    @if (request()->is('gallery/video'))
+        {{-- <div class="container mx-auto my-5">
+        @foreach ($video as $item)
+            <video width="320" height="240" controls>
+                <source src="{{ asset('storage/' . $item->video) }}" type="video/mp4">
+            </video>
+        @endforeach
+    </div> --}}
+        <div id="trailer" class="container my-5">
+            <div id="video">
+                <video controls autoplay="autoplay" width="600"
+                    onclick="if(/Android/.test(navigator.userAgent))this.play();">
+                    @foreach ($video as $item)
+                        <source src="{{ asset('storage/'. $item->video) }}" type="video/mp4" />
+                    @endforeach
+                    <embed src="video/flashfox.swf" width="600" height="480"
+                        flashVars="autoplay=true&amp;controls=true&amp;loop=true&amp;src=trailer.mp4" allowFullScreen="true"
+                        wmode="transparent" type="application/x-shockwave-flash"
+                        pluginspage="http://www.adobe.com/go/getflashplayer_en" />
+                </video>
+            </div>
+        </div>
+    @endif
 @endsection
