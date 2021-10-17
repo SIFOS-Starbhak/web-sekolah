@@ -37,6 +37,13 @@ Route::get('/', 'WebController@index');
 // Route::view('/', 'template/main');
 Route::get('/profile', 'WebController@profiletb');
 
+route::get('/gallery', 'WebController@gallery');
+route::get('/gallery/tahun-2021', 'WebController@gallery21');
+route::get('/gallery/tahun-2020', 'WebController@gallery20');
+route::get('/gallery/tahun-2019', 'WebController@gallery19');
+route::get('/gallery/tahun-2018', 'WebController@gallery18');
+route::get('/gallery/tahun-2017', 'WebController@gallery17');
+
 Route::get('/artikel', function () {
     $settings = App\Models\Setting::all();
     $article = App\Models\Post::where('status', 'PUBLISHED')->get();
@@ -57,6 +64,8 @@ Route::get('/kontakkami', function () {
     return view('kontakkami', compact('settings'));
 });
 Route::get('/sarpras', 'WebController@sarpras');
+Route::get('/sarpras/sarprassekolah', 'WebController@sarprassekolah');
+
 // Route::get('/registalum', function () {
 //     $settings = App\Models\Setting::all();
 //     return view('/registalum', compact('settings'));

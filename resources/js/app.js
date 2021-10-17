@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const user = Object.fromEntries(frmData);
 
             axios
-            // buat ip public
+                // buat ip public
                 .post(`/api/login`, user)
                 // .post(`http://117.102.67.70:8000/api/login`, user)
                 .then((res) => {
@@ -44,12 +44,20 @@ document.addEventListener("DOMContentLoaded", () => {
                     }
                 });
         });
+    } else if (document.getElementById("syncData")) {
+        document.getElementById("syncData").addEventListener("click", (e) => {
+            console.log("clicked")
+            e.preventDefault();
+            var data = new FormData();
+            data.append('token', 'token-post');
+            axios.post("http://localhost/moddle/moodle/login/index.php", data,{withCredentials: true}).then(res => console.log(res.data)).catch(err => console.log(err));
+        });
     } else {
         document.getElementById("frmlogout").addEventListener("click", (e) => {
             e.preventDefault();
             axios
-            // buat ip public
-              .post(`/api/logout`)
+                // buat ip public
+                .post(`/api/logout`)
                 // .post(`http://117.102.67.70:8000/api/logout`)
                 .then((res) => {
                     console.log(res);
@@ -95,4 +103,5 @@ document.addEventListener("DOMContentLoaded", () => {
                 window.sessionStorage.getItem("token"); // href seuai sama url
         });
     }
+
 });

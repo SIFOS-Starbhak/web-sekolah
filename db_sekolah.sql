@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 14, 2021 at 04:29 PM
--- Server version: 10.4.13-MariaDB
--- PHP Version: 7.4.8
+-- Waktu pembuatan: 17 Okt 2021 pada 06.03
+-- Versi server: 10.4.21-MariaDB
+-- Versi PHP: 8.0.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `alumnis`
+-- Struktur dari tabel `alumnis`
 --
 
 CREATE TABLE `alumnis` (
@@ -43,7 +43,7 @@ CREATE TABLE `alumnis` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `alumnis`
+-- Dumping data untuk tabel `alumnis`
 --
 
 INSERT INTO `alumnis` (`id`, `name`, `tahun_lulus`, `nama_perusahaan`, `posisi`, `tahun_kerja`, `penghasilan`, `created_at`, `updated_at`, `categories_alumnis`, `jurusan`, `status`) VALUES
@@ -68,7 +68,7 @@ INSERT INTO `alumnis` (`id`, `name`, `tahun_lulus`, `nama_perusahaan`, `posisi`,
 -- --------------------------------------------------------
 
 --
--- Table structure for table `categories`
+-- Struktur dari tabel `categories`
 --
 
 CREATE TABLE `categories` (
@@ -82,7 +82,7 @@ CREATE TABLE `categories` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `categories`
+-- Dumping data untuk tabel `categories`
 --
 
 INSERT INTO `categories` (`id`, `parent_id`, `order`, `name`, `slug`, `created_at`, `updated_at`) VALUES
@@ -97,7 +97,7 @@ INSERT INTO `categories` (`id`, `parent_id`, `order`, `name`, `slug`, `created_a
 -- --------------------------------------------------------
 
 --
--- Table structure for table `categories_alumnis`
+-- Struktur dari tabel `categories_alumnis`
 --
 
 CREATE TABLE `categories_alumnis` (
@@ -110,7 +110,33 @@ CREATE TABLE `categories_alumnis` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `category_sarpras`
+-- Struktur dari tabel `category_news`
+--
+
+CREATE TABLE `category_news` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `tahun` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `image` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `slug` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data untuk tabel `category_news`
+--
+
+INSERT INTO `category_news` (`id`, `tahun`, `created_at`, `updated_at`, `image`, `slug`) VALUES
+(1, '2017', '2021-10-16 11:52:26', '2021-10-16 12:06:04', 'category-news\\October2021\\NvsI85gbnVyj91YhQRbj.jpg', 'tahun-2017'),
+(2, '2018', '2021-10-16 11:53:03', '2021-10-16 12:05:49', 'category-news\\October2021\\MOJPGHhzfVCEi0piddzW.jpg', 'tahun-2018'),
+(3, '2019', '2021-10-16 11:53:11', '2021-10-16 12:05:32', 'category-news\\October2021\\R3wKXNN5Ihz07A7YJItu.jpg', 'tahun-2019'),
+(4, '2020', '2021-10-16 11:53:18', '2021-10-16 12:05:14', 'category-news\\October2021\\Gig4vBnwjAUWZFxqXWrQ.jpg', 'tahun-2020'),
+(5, '2021', '2021-10-16 11:53:29', '2021-10-16 12:04:52', 'category-news\\October2021\\fo3IiotWKA8ngF3ugrLx.jpg', 'tahun-2021');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `category_sarpras`
 --
 
 CREATE TABLE `category_sarpras` (
@@ -122,7 +148,7 @@ CREATE TABLE `category_sarpras` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `category_sarpras`
+-- Dumping data untuk tabel `category_sarpras`
 --
 
 INSERT INTO `category_sarpras` (`id`, `name`, `created_at`, `updated_at`, `slug`) VALUES
@@ -136,7 +162,7 @@ INSERT INTO `category_sarpras` (`id`, `name`, `created_at`, `updated_at`, `slug`
 -- --------------------------------------------------------
 
 --
--- Table structure for table `content_sarpras`
+-- Struktur dari tabel `content_sarpras`
 --
 
 CREATE TABLE `content_sarpras` (
@@ -149,7 +175,7 @@ CREATE TABLE `content_sarpras` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `content_sarpras`
+-- Dumping data untuk tabel `content_sarpras`
 --
 
 INSERT INTO `content_sarpras` (`id`, `title`, `description`, `category_id`, `created_at`, `updated_at`) VALUES
@@ -173,7 +199,7 @@ INSERT INTO `content_sarpras` (`id`, `title`, `description`, `category_id`, `cre
 -- --------------------------------------------------------
 
 --
--- Table structure for table `data_rows`
+-- Struktur dari tabel `data_rows`
 --
 
 CREATE TABLE `data_rows` (
@@ -193,7 +219,7 @@ CREATE TABLE `data_rows` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `data_rows`
+-- Dumping data untuk tabel `data_rows`
 --
 
 INSERT INTO `data_rows` (`id`, `data_type_id`, `field`, `type`, `display_name`, `required`, `browse`, `read`, `edit`, `add`, `delete`, `details`, `order`) VALUES
@@ -344,12 +370,35 @@ INSERT INTO `data_rows` (`id`, `data_type_id`, `field`, `type`, `display_name`, 
 (207, 1, 'user_belongsto_mapel_relationship', 'relationship', 'mapels', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\Models\\\\Mapel\",\"table\":\"mapels\",\"type\":\"belongsTo\",\"column\":\"mapel_id\",\"key\":\"id\",\"label\":\"nama_mapel\",\"pivot_table\":\"alumnis\",\"pivot\":\"0\",\"taggable\":null}', 13),
 (208, 31, 'nama_photo', 'text', 'Nama Photo', 0, 1, 1, 1, 1, 1, '{}', 6),
 (209, 19, 'website_perusahaan', 'text', 'Website Perusahaan', 0, 1, 1, 1, 1, 1, '{}', 7),
-(210, 16, 'status', 'select_dropdown', 'Status', 0, 1, 1, 1, 1, 1, '{\"default\":\"UNPUBLISHED\",\"options\":{\"PUBLISED\":\"PUBLISHED\",\"UNPUBLISED\":\"UNPUBLISED\"}}', 12);
+(210, 16, 'status', 'select_dropdown', 'Status', 0, 1, 1, 1, 1, 1, '{\"default\":\"UNPUBLISHED\",\"options\":{\"PUBLISED\":\"PUBLISHED\",\"UNPUBLISED\":\"UNPUBLISED\"}}', 12),
+(211, 34, 'id', 'text', 'Id', 1, 0, 0, 0, 0, 0, '{}', 1),
+(212, 34, 'nama_guru', 'text', 'Nama Guru', 0, 1, 1, 1, 1, 1, '{}', 2),
+(213, 34, 'foto', 'text', 'Foto', 0, 1, 1, 1, 1, 1, '{}', 3),
+(214, 34, 'kategori_guru', 'text', 'Kategori Guru', 0, 1, 1, 1, 1, 1, '{}', 4),
+(215, 34, 'created_at', 'timestamp', 'Created At', 0, 1, 1, 1, 0, 1, '{}', 5),
+(216, 34, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 6),
+(217, 34, 'deleted_at', 'timestamp', 'Deleted At', 0, 1, 1, 1, 1, 1, '{}', 7),
+(218, 34, 'kategori_id', 'text', 'Kategori Id', 0, 1, 1, 1, 1, 1, '{}', 8),
+(219, 35, 'id', 'text', 'Id', 1, 0, 0, 0, 0, 0, '{}', 1),
+(220, 35, 'title', 'text', 'Title', 0, 1, 1, 1, 1, 1, '{}', 2),
+(221, 35, 'content', 'rich_text_box', 'Content', 0, 1, 1, 1, 1, 1, '{}', 3),
+(222, 35, 'image', 'image', 'Image', 0, 1, 1, 1, 1, 1, '{}', 4),
+(224, 35, 'created_at', 'timestamp', 'Created At', 0, 0, 0, 0, 0, 0, '{\"format\":\"%Y\"}', 6),
+(225, 35, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 7),
+(226, 36, 'id', 'text', 'Id', 1, 0, 0, 0, 0, 0, '{}', 1),
+(227, 36, 'tahun', 'number', 'Tahun', 0, 1, 1, 1, 1, 1, '{}', 3),
+(228, 36, 'created_at', 'timestamp', 'Created At', 0, 0, 0, 0, 0, 0, '{}', 4),
+(229, 36, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 5),
+(231, 36, 'slug', 'text', 'Slug', 0, 1, 1, 1, 1, 1, '{}', 6),
+(232, 36, 'image', 'image', 'Image', 0, 1, 1, 1, 1, 1, '{}', 5),
+(233, 35, 'gallery_news_belongsto_category_news_relationship', 'relationship', 'category_news', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\Models\\\\CategoryNews\",\"table\":\"category_news\",\"type\":\"belongsTo\",\"column\":\"category\",\"key\":\"id\",\"label\":\"tahun\",\"pivot_table\":\"alumnis\",\"pivot\":\"0\",\"taggable\":\"0\"}', 8),
+(234, 35, 'category', 'text', 'Category', 0, 1, 1, 1, 1, 1, '{}', 7),
+(235, 35, 'date', 'date', 'Date', 0, 1, 1, 1, 1, 1, '{}', 8);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `data_types`
+-- Struktur dari tabel `data_types`
 --
 
 CREATE TABLE `data_types` (
@@ -371,7 +420,7 @@ CREATE TABLE `data_types` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `data_types`
+-- Dumping data untuk tabel `data_types`
 --
 
 INSERT INTO `data_types` (`id`, `name`, `slug`, `display_name_singular`, `display_name_plural`, `icon`, `model_name`, `policy_name`, `controller`, `description`, `generate_permissions`, `server_side`, `details`, `created_at`, `updated_at`) VALUES
@@ -392,12 +441,15 @@ INSERT INTO `data_types` (`id`, `name`, `slug`, `display_name_singular`, `displa
 (28, 'category_sarpras', 'category-sarpras', 'Category Sarpra', 'Category Sarpras', NULL, 'App\\Models\\CategorySarpra', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2021-10-06 08:21:52', '2021-10-06 14:43:23'),
 (30, 'content_sarpras', 'content-sarpras', 'Content Sarpra', 'Content Sarpras', NULL, 'App\\Models\\ContentSarpra', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2021-10-06 14:30:52', '2021-10-06 15:10:01'),
 (31, 'gallery_sarpras', 'gallery-sarpras', 'Gallery Sarpra', 'Gallery Sarpras', NULL, 'App\\Models\\GallerySarpra', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2021-10-06 14:35:52', '2021-10-13 05:18:27'),
-(32, 'mapels', 'mapels', 'Mapel', 'Mapels', NULL, 'App\\Models\\Mapel', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null}', '2021-10-07 02:56:07', '2021-10-07 02:56:07');
+(32, 'mapels', 'mapels', 'Mapel', 'Mapels', NULL, 'App\\Models\\Mapel', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null}', '2021-10-07 02:56:07', '2021-10-07 02:56:07'),
+(34, 'galleries', 'galleries', 'Gallery', 'Galleries', NULL, 'App\\Models\\Gallery', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null}', '2021-10-16 07:49:59', '2021-10-16 07:49:59'),
+(35, 'gallery_news', 'gallery', 'Gallery', 'Gallery', NULL, 'App\\Models\\GalleryNews', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2021-10-16 08:00:57', '2021-10-16 12:38:16'),
+(36, 'category_news', 'category-news', 'Category News', 'Category News', NULL, 'App\\Models\\CategoryNews', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2021-10-16 11:49:23', '2021-10-16 12:02:46');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `failed_jobs`
+-- Struktur dari tabel `failed_jobs`
 --
 
 CREATE TABLE `failed_jobs` (
@@ -413,7 +465,7 @@ CREATE TABLE `failed_jobs` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `galleries`
+-- Struktur dari tabel `galleries`
 --
 
 CREATE TABLE `galleries` (
@@ -428,7 +480,7 @@ CREATE TABLE `galleries` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `galleries`
+-- Dumping data untuk tabel `galleries`
 --
 
 INSERT INTO `galleries` (`id`, `nama_guru`, `foto`, `kategori_guru`, `created_at`, `updated_at`, `deleted_at`, `kategori_id`) VALUES
@@ -499,7 +551,37 @@ INSERT INTO `galleries` (`id`, `nama_guru`, `foto`, `kategori_guru`, `created_at
 -- --------------------------------------------------------
 
 --
--- Table structure for table `gallery_sarpras`
+-- Struktur dari tabel `gallery_news`
+--
+
+CREATE TABLE `gallery_news` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `content` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `image` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `category` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `date` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data untuk tabel `gallery_news`
+--
+
+INSERT INTO `gallery_news` (`id`, `title`, `content`, `image`, `created_at`, `updated_at`, `category`, `date`) VALUES
+(5, 'Kegiatan Vaksinasi SMK Taruna Bhakti', NULL, 'gallery\\October2021\\JRcDZUrZ9j5LRMojyXJH.jpg', '2021-10-17 02:59:59', '2021-10-17 02:59:59', '5', '2021-10-17'),
+(6, 'Seminar Gamer Indonesia', NULL, 'gallery\\October2021\\pSccjjop0Uf6yNScT0zj.jpg', '2021-10-17 03:05:45', '2021-10-17 03:05:45', '5', '2021-10-17'),
+(7, 'Ekskul 2020', NULL, 'gallery\\October2021\\CM9EsMCg3oAzJjZAKhxr.jpeg', '2021-10-17 03:46:08', '2021-10-17 03:46:08', '4', '2021-10-17'),
+(8, 'lapangan TB', NULL, 'gallery\\October2021\\nHds49FOyJQYFv1P3Eot.jpg', '2021-10-17 03:49:43', '2021-10-17 03:49:43', '4', '2021-10-17'),
+(9, '2019', NULL, 'gallery\\October2021\\Rx03hppq6rrXF9vJK1q7.jpg', '2021-10-17 03:59:25', '2021-10-17 03:59:25', '3', '2021-10-17'),
+(10, 'ortus', NULL, 'gallery\\October2021\\RMDmTMx49mcDAIqloi7d.jpg', '2021-10-17 04:00:01', '2021-10-17 04:00:01', '2', '2000-11-30'),
+(11, '2017', NULL, 'gallery\\October2021\\XJNSbaYeqyN5WgpTzOl4.jpg', '2021-10-17 04:00:40', '2021-10-17 04:00:40', '1', '2009-02-20');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `gallery_sarpras`
 --
 
 CREATE TABLE `gallery_sarpras` (
@@ -512,7 +594,7 @@ CREATE TABLE `gallery_sarpras` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `gallery_sarpras`
+-- Dumping data untuk tabel `gallery_sarpras`
 --
 
 INSERT INTO `gallery_sarpras` (`id`, `created_at`, `updated_at`, `image`, `content_id`, `nama_photo`) VALUES
@@ -557,7 +639,7 @@ INSERT INTO `gallery_sarpras` (`id`, `created_at`, `updated_at`, `image`, `conte
 -- --------------------------------------------------------
 
 --
--- Table structure for table `gurus`
+-- Struktur dari tabel `gurus`
 --
 
 CREATE TABLE `gurus` (
@@ -573,7 +655,7 @@ CREATE TABLE `gurus` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `gurus`
+-- Dumping data untuk tabel `gurus`
 --
 
 INSERT INTO `gurus` (`id`, `name`, `email`, `password`, `created_at`, `updated_at`, `nik`, `remember_token`, `jabatan`) VALUES
@@ -585,7 +667,7 @@ INSERT INTO `gurus` (`id`, `name`, `email`, `password`, `created_at`, `updated_a
 -- --------------------------------------------------------
 
 --
--- Table structure for table `guru_role`
+-- Struktur dari tabel `guru_role`
 --
 
 CREATE TABLE `guru_role` (
@@ -594,7 +676,7 @@ CREATE TABLE `guru_role` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `guru_role`
+-- Dumping data untuk tabel `guru_role`
 --
 
 INSERT INTO `guru_role` (`guru_id`, `kategori_id`) VALUES
@@ -617,7 +699,7 @@ INSERT INTO `guru_role` (`guru_id`, `kategori_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `jurusans`
+-- Struktur dari tabel `jurusans`
 --
 
 CREATE TABLE `jurusans` (
@@ -629,7 +711,7 @@ CREATE TABLE `jurusans` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `jurusans`
+-- Dumping data untuk tabel `jurusans`
 --
 
 INSERT INTO `jurusans` (`id`, `jurusan`, `created_at`, `updated_at`, `singkatan`) VALUES
@@ -642,7 +724,7 @@ INSERT INTO `jurusans` (`id`, `jurusan`, `created_at`, `updated_at`, `singkatan`
 -- --------------------------------------------------------
 
 --
--- Table structure for table `kategoris`
+-- Struktur dari tabel `kategoris`
 --
 
 CREATE TABLE `kategoris` (
@@ -657,7 +739,7 @@ CREATE TABLE `kategoris` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `kategoris`
+-- Dumping data untuk tabel `kategoris`
 --
 
 INSERT INTO `kategoris` (`id`, `nama_kategori`, `foto`, `caption`, `created_at`, `updated_at`, `deleted_at`, `slug`) VALUES
@@ -670,7 +752,7 @@ INSERT INTO `kategoris` (`id`, `nama_kategori`, `foto`, `caption`, `created_at`,
 -- --------------------------------------------------------
 
 --
--- Table structure for table `kelas`
+-- Struktur dari tabel `kelas`
 --
 
 CREATE TABLE `kelas` (
@@ -686,7 +768,7 @@ CREATE TABLE `kelas` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `kelas`
+-- Dumping data untuk tabel `kelas`
 --
 
 INSERT INTO `kelas` (`id`, `kelas`, `nama_kelas`, `tahun_ajaran`, `wali_kelas`, `status`, `created_at`, `updated_at`, `jurusan`) VALUES
@@ -739,7 +821,7 @@ INSERT INTO `kelas` (`id`, `kelas`, `nama_kelas`, `tahun_ajaran`, `wali_kelas`, 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `managers`
+-- Struktur dari tabel `managers`
 --
 
 CREATE TABLE `managers` (
@@ -755,7 +837,7 @@ CREATE TABLE `managers` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `managers`
+-- Dumping data untuk tabel `managers`
 --
 
 INSERT INTO `managers` (`id`, `name`, `jabatan`, `email`, `password`, `created_at`, `updated_at`, `nik`, `remember_token`) VALUES
@@ -764,7 +846,7 @@ INSERT INTO `managers` (`id`, `name`, `jabatan`, `email`, `password`, `created_a
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mapels`
+-- Struktur dari tabel `mapels`
 --
 
 CREATE TABLE `mapels` (
@@ -775,7 +857,7 @@ CREATE TABLE `mapels` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `mapels`
+-- Dumping data untuk tabel `mapels`
 --
 
 INSERT INTO `mapels` (`id`, `mata_pelajaran`, `created_at`, `updated_at`) VALUES
@@ -787,7 +869,7 @@ INSERT INTO `mapels` (`id`, `mata_pelajaran`, `created_at`, `updated_at`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `media`
+-- Struktur dari tabel `media`
 --
 
 CREATE TABLE `media` (
@@ -814,7 +896,7 @@ CREATE TABLE `media` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `menus`
+-- Struktur dari tabel `menus`
 --
 
 CREATE TABLE `menus` (
@@ -825,7 +907,7 @@ CREATE TABLE `menus` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `menus`
+-- Dumping data untuk tabel `menus`
 --
 
 INSERT INTO `menus` (`id`, `name`, `created_at`, `updated_at`) VALUES
@@ -834,7 +916,7 @@ INSERT INTO `menus` (`id`, `name`, `created_at`, `updated_at`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `menu_items`
+-- Struktur dari tabel `menu_items`
 --
 
 CREATE TABLE `menu_items` (
@@ -854,7 +936,7 @@ CREATE TABLE `menu_items` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `menu_items`
+-- Dumping data untuk tabel `menu_items`
 --
 
 INSERT INTO `menu_items` (`id`, `menu_id`, `title`, `url`, `target`, `icon_class`, `color`, `parent_id`, `order`, `created_at`, `updated_at`, `route`, `parameters`) VALUES
@@ -882,12 +964,15 @@ INSERT INTO `menu_items` (`id`, `menu_id`, `title`, `url`, `target`, `icon_class
 (29, 1, 'Category Sarpras', '', '_self', NULL, NULL, NULL, 28, '2021-10-06 08:21:54', '2021-10-06 08:21:54', 'voyager.category-sarpras.index', NULL),
 (30, 1, 'Content Sarpras', '', '_self', NULL, NULL, NULL, 29, '2021-10-06 14:30:53', '2021-10-06 14:30:53', 'voyager.content-sarpras.index', NULL),
 (31, 1, 'Gallery Sarpras', '', '_self', NULL, NULL, NULL, 30, '2021-10-06 14:35:53', '2021-10-06 14:35:53', 'voyager.gallery-sarpras.index', NULL),
-(32, 1, 'Mapels', '', '_self', NULL, NULL, NULL, 31, '2021-10-07 02:56:09', '2021-10-07 02:56:09', 'voyager.mapels.index', NULL);
+(32, 1, 'Mapels', '', '_self', NULL, NULL, NULL, 31, '2021-10-07 02:56:09', '2021-10-07 02:56:09', 'voyager.mapels.index', NULL),
+(33, 1, 'Galleries', '', '_self', NULL, NULL, NULL, 32, '2021-10-16 07:50:02', '2021-10-16 07:50:02', 'voyager.galleries.index', NULL),
+(34, 1, 'Gallery', '', '_self', NULL, NULL, NULL, 33, '2021-10-16 08:00:58', '2021-10-16 08:00:58', 'voyager.gallery.index', NULL),
+(35, 1, 'Category News', '', '_self', NULL, NULL, NULL, 34, '2021-10-16 11:49:24', '2021-10-16 11:49:24', 'voyager.category-news.index', NULL);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `migrations`
+-- Struktur dari tabel `migrations`
 --
 
 CREATE TABLE `migrations` (
@@ -897,7 +982,7 @@ CREATE TABLE `migrations` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `migrations`
+-- Dumping data untuk tabel `migrations`
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
@@ -934,7 +1019,7 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pages`
+-- Struktur dari tabel `pages`
 --
 
 CREATE TABLE `pages` (
@@ -954,7 +1039,7 @@ CREATE TABLE `pages` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `pages`
+-- Dumping data untuk tabel `pages`
 --
 
 INSERT INTO `pages` (`id`, `author_id`, `title`, `excerpt`, `body`, `image`, `slug`, `meta_description`, `meta_keywords`, `status`, `created_at`, `updated_at`, `category_id`) VALUES
@@ -980,7 +1065,7 @@ INSERT INTO `pages` (`id`, `author_id`, `title`, `excerpt`, `body`, `image`, `sl
 -- --------------------------------------------------------
 
 --
--- Table structure for table `partners`
+-- Struktur dari tabel `partners`
 --
 
 CREATE TABLE `partners` (
@@ -994,7 +1079,7 @@ CREATE TABLE `partners` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `partners`
+-- Dumping data untuk tabel `partners`
 --
 
 INSERT INTO `partners` (`id`, `logo_perusahaan`, `nama_perusahaan`, `alamat_perusahaan`, `created_at`, `updated_at`, `website_perusahaan`) VALUES
@@ -1006,7 +1091,7 @@ INSERT INTO `partners` (`id`, `logo_perusahaan`, `nama_perusahaan`, `alamat_peru
 -- --------------------------------------------------------
 
 --
--- Table structure for table `password_resets`
+-- Struktur dari tabel `password_resets`
 --
 
 CREATE TABLE `password_resets` (
@@ -1018,7 +1103,7 @@ CREATE TABLE `password_resets` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `permissions`
+-- Struktur dari tabel `permissions`
 --
 
 CREATE TABLE `permissions` (
@@ -1030,7 +1115,7 @@ CREATE TABLE `permissions` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `permissions`
+-- Dumping data untuk tabel `permissions`
 --
 
 INSERT INTO `permissions` (`id`, `key`, `table_name`, `created_at`, `updated_at`) VALUES
@@ -1133,12 +1218,27 @@ INSERT INTO `permissions` (`id`, `key`, `table_name`, `created_at`, `updated_at`
 (132, 'read_mapels', 'mapels', '2021-10-07 02:56:08', '2021-10-07 02:56:08'),
 (133, 'edit_mapels', 'mapels', '2021-10-07 02:56:08', '2021-10-07 02:56:08'),
 (134, 'add_mapels', 'mapels', '2021-10-07 02:56:08', '2021-10-07 02:56:08'),
-(135, 'delete_mapels', 'mapels', '2021-10-07 02:56:08', '2021-10-07 02:56:08');
+(135, 'delete_mapels', 'mapels', '2021-10-07 02:56:08', '2021-10-07 02:56:08'),
+(136, 'browse_galleries', 'galleries', '2021-10-16 07:50:01', '2021-10-16 07:50:01'),
+(137, 'read_galleries', 'galleries', '2021-10-16 07:50:01', '2021-10-16 07:50:01'),
+(138, 'edit_galleries', 'galleries', '2021-10-16 07:50:01', '2021-10-16 07:50:01'),
+(139, 'add_galleries', 'galleries', '2021-10-16 07:50:01', '2021-10-16 07:50:01'),
+(140, 'delete_galleries', 'galleries', '2021-10-16 07:50:01', '2021-10-16 07:50:01'),
+(141, 'browse_gallery_news', 'gallery_news', '2021-10-16 08:00:58', '2021-10-16 08:00:58'),
+(142, 'read_gallery_news', 'gallery_news', '2021-10-16 08:00:58', '2021-10-16 08:00:58'),
+(143, 'edit_gallery_news', 'gallery_news', '2021-10-16 08:00:58', '2021-10-16 08:00:58'),
+(144, 'add_gallery_news', 'gallery_news', '2021-10-16 08:00:58', '2021-10-16 08:00:58'),
+(145, 'delete_gallery_news', 'gallery_news', '2021-10-16 08:00:58', '2021-10-16 08:00:58'),
+(146, 'browse_category_news', 'category_news', '2021-10-16 11:49:24', '2021-10-16 11:49:24'),
+(147, 'read_category_news', 'category_news', '2021-10-16 11:49:24', '2021-10-16 11:49:24'),
+(148, 'edit_category_news', 'category_news', '2021-10-16 11:49:24', '2021-10-16 11:49:24'),
+(149, 'add_category_news', 'category_news', '2021-10-16 11:49:24', '2021-10-16 11:49:24'),
+(150, 'delete_category_news', 'category_news', '2021-10-16 11:49:24', '2021-10-16 11:49:24');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `permission_role`
+-- Struktur dari tabel `permission_role`
 --
 
 CREATE TABLE `permission_role` (
@@ -1147,7 +1247,7 @@ CREATE TABLE `permission_role` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `permission_role`
+-- Dumping data untuk tabel `permission_role`
 --
 
 INSERT INTO `permission_role` (`permission_id`, `role_id`) VALUES
@@ -1250,12 +1350,27 @@ INSERT INTO `permission_role` (`permission_id`, `role_id`) VALUES
 (132, 1),
 (133, 1),
 (134, 1),
-(135, 1);
+(135, 1),
+(136, 1),
+(137, 1),
+(138, 1),
+(139, 1),
+(140, 1),
+(141, 1),
+(142, 1),
+(143, 1),
+(144, 1),
+(145, 1),
+(146, 1),
+(147, 1),
+(148, 1),
+(149, 1),
+(150, 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `personal_access_tokens`
+-- Struktur dari tabel `personal_access_tokens`
 --
 
 CREATE TABLE `personal_access_tokens` (
@@ -1273,7 +1388,7 @@ CREATE TABLE `personal_access_tokens` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `posts`
+-- Struktur dari tabel `posts`
 --
 
 CREATE TABLE `posts` (
@@ -1295,7 +1410,7 @@ CREATE TABLE `posts` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `posts`
+-- Dumping data untuk tabel `posts`
 --
 
 INSERT INTO `posts` (`id`, `author_id`, `category_id`, `title`, `seo_title`, `excerpt`, `body`, `image`, `slug`, `meta_description`, `meta_keywords`, `status`, `featured`, `created_at`, `updated_at`) VALUES
@@ -1305,7 +1420,7 @@ INSERT INTO `posts` (`id`, `author_id`, `category_id`, `title`, `seo_title`, `ex
 -- --------------------------------------------------------
 
 --
--- Table structure for table `roles`
+-- Struktur dari tabel `roles`
 --
 
 CREATE TABLE `roles` (
@@ -1317,7 +1432,7 @@ CREATE TABLE `roles` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `roles`
+-- Dumping data untuk tabel `roles`
 --
 
 INSERT INTO `roles` (`id`, `name`, `display_name`, `created_at`, `updated_at`) VALUES
@@ -1330,7 +1445,7 @@ INSERT INTO `roles` (`id`, `name`, `display_name`, `created_at`, `updated_at`) V
 -- --------------------------------------------------------
 
 --
--- Table structure for table `settings`
+-- Struktur dari tabel `settings`
 --
 
 CREATE TABLE `settings` (
@@ -1345,7 +1460,7 @@ CREATE TABLE `settings` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `settings`
+-- Dumping data untuk tabel `settings`
 --
 
 INSERT INTO `settings` (`id`, `key`, `display_name`, `value`, `details`, `type`, `order`, `group`) VALUES
@@ -1370,7 +1485,7 @@ INSERT INTO `settings` (`id`, `key`, `display_name`, `value`, `details`, `type`,
 -- --------------------------------------------------------
 
 --
--- Table structure for table `siswas`
+-- Struktur dari tabel `siswas`
 --
 
 CREATE TABLE `siswas` (
@@ -1386,7 +1501,7 @@ CREATE TABLE `siswas` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `siswas`
+-- Dumping data untuk tabel `siswas`
 --
 
 INSERT INTO `siswas` (`id`, `name`, `kelas_id`, `email`, `password`, `created_at`, `updated_at`, `nipd`, `remember_token`) VALUES
@@ -1395,7 +1510,7 @@ INSERT INTO `siswas` (`id`, `name`, `kelas_id`, `email`, `password`, `created_at
 -- --------------------------------------------------------
 
 --
--- Table structure for table `translations`
+-- Struktur dari tabel `translations`
 --
 
 CREATE TABLE `translations` (
@@ -1410,7 +1525,7 @@ CREATE TABLE `translations` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `translations`
+-- Dumping data untuk tabel `translations`
 --
 
 INSERT INTO `translations` (`id`, `table_name`, `column_name`, `foreign_key`, `locale`, `value`, `created_at`, `updated_at`) VALUES
@@ -1448,7 +1563,7 @@ INSERT INTO `translations` (`id`, `table_name`, `column_name`, `foreign_key`, `l
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Struktur dari tabel `users`
 --
 
 CREATE TABLE `users` (
@@ -1471,7 +1586,7 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `users`
+-- Dumping data untuk tabel `users`
 --
 
 INSERT INTO `users` (`id`, `role_id`, `name`, `email`, `avatar`, `email_verified_at`, `password`, `remember_token`, `settings`, `created_at`, `updated_at`, `nomor_induk`, `jabatan_guru`, `kelas_siswa`, `spesifc_role`, `mapel_id`) VALUES
@@ -1535,7 +1650,7 @@ INSERT INTO `users` (`id`, `role_id`, `name`, `email`, `avatar`, `email_verified
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user_roles`
+-- Struktur dari tabel `user_roles`
 --
 
 CREATE TABLE `user_roles` (
@@ -1548,13 +1663,13 @@ CREATE TABLE `user_roles` (
 --
 
 --
--- Indexes for table `alumnis`
+-- Indeks untuk tabel `alumnis`
 --
 ALTER TABLE `alumnis`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `categories`
+-- Indeks untuk tabel `categories`
 --
 ALTER TABLE `categories`
   ADD PRIMARY KEY (`id`),
@@ -1562,27 +1677,33 @@ ALTER TABLE `categories`
   ADD KEY `categories_parent_id_foreign` (`parent_id`);
 
 --
--- Indexes for table `category_sarpras`
+-- Indeks untuk tabel `category_news`
+--
+ALTER TABLE `category_news`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `category_sarpras`
 --
 ALTER TABLE `category_sarpras`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `category_sarpras_slug_unique` (`slug`);
 
 --
--- Indexes for table `content_sarpras`
+-- Indeks untuk tabel `content_sarpras`
 --
 ALTER TABLE `content_sarpras`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `data_rows`
+-- Indeks untuk tabel `data_rows`
 --
 ALTER TABLE `data_rows`
   ADD PRIMARY KEY (`id`),
   ADD KEY `data_rows_data_type_id_foreign` (`data_type_id`);
 
 --
--- Indexes for table `data_types`
+-- Indeks untuk tabel `data_types`
 --
 ALTER TABLE `data_types`
   ADD PRIMARY KEY (`id`),
@@ -1590,70 +1711,76 @@ ALTER TABLE `data_types`
   ADD UNIQUE KEY `data_types_slug_unique` (`slug`);
 
 --
--- Indexes for table `failed_jobs`
+-- Indeks untuk tabel `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
 
 --
--- Indexes for table `galleries`
+-- Indeks untuk tabel `galleries`
 --
 ALTER TABLE `galleries`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `gallery_sarpras`
+-- Indeks untuk tabel `gallery_news`
+--
+ALTER TABLE `gallery_news`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `gallery_sarpras`
 --
 ALTER TABLE `gallery_sarpras`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `gurus`
+-- Indeks untuk tabel `gurus`
 --
 ALTER TABLE `gurus`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `guru_role`
+-- Indeks untuk tabel `guru_role`
 --
 ALTER TABLE `guru_role`
   ADD KEY `guru_role_guru_id_index` (`guru_id`),
   ADD KEY `guru_role_kategori_id_index` (`kategori_id`);
 
 --
--- Indexes for table `jurusans`
+-- Indeks untuk tabel `jurusans`
 --
 ALTER TABLE `jurusans`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `kategoris`
+-- Indeks untuk tabel `kategoris`
 --
 ALTER TABLE `kategoris`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `kategoris_slug_unique` (`slug`);
 
 --
--- Indexes for table `kelas`
+-- Indeks untuk tabel `kelas`
 --
 ALTER TABLE `kelas`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `managers`
+-- Indeks untuk tabel `managers`
 --
 ALTER TABLE `managers`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `mapels`
+-- Indeks untuk tabel `mapels`
 --
 ALTER TABLE `mapels`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `media`
+-- Indeks untuk tabel `media`
 --
 ALTER TABLE `media`
   ADD PRIMARY KEY (`id`),
@@ -1661,53 +1788,53 @@ ALTER TABLE `media`
   ADD KEY `media_model_type_model_id_index` (`model_type`,`model_id`);
 
 --
--- Indexes for table `menus`
+-- Indeks untuk tabel `menus`
 --
 ALTER TABLE `menus`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `menus_name_unique` (`name`);
 
 --
--- Indexes for table `menu_items`
+-- Indeks untuk tabel `menu_items`
 --
 ALTER TABLE `menu_items`
   ADD PRIMARY KEY (`id`),
   ADD KEY `menu_items_menu_id_foreign` (`menu_id`);
 
 --
--- Indexes for table `migrations`
+-- Indeks untuk tabel `migrations`
 --
 ALTER TABLE `migrations`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `pages`
+-- Indeks untuk tabel `pages`
 --
 ALTER TABLE `pages`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `pages_slug_unique` (`slug`);
 
 --
--- Indexes for table `partners`
+-- Indeks untuk tabel `partners`
 --
 ALTER TABLE `partners`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `password_resets`
+-- Indeks untuk tabel `password_resets`
 --
 ALTER TABLE `password_resets`
   ADD KEY `password_resets_email_index` (`email`);
 
 --
--- Indexes for table `permissions`
+-- Indeks untuk tabel `permissions`
 --
 ALTER TABLE `permissions`
   ADD PRIMARY KEY (`id`),
   ADD KEY `permissions_key_index` (`key`);
 
 --
--- Indexes for table `permission_role`
+-- Indeks untuk tabel `permission_role`
 --
 ALTER TABLE `permission_role`
   ADD PRIMARY KEY (`permission_id`,`role_id`),
@@ -1715,7 +1842,7 @@ ALTER TABLE `permission_role`
   ADD KEY `permission_role_role_id_index` (`role_id`);
 
 --
--- Indexes for table `personal_access_tokens`
+-- Indeks untuk tabel `personal_access_tokens`
 --
 ALTER TABLE `personal_access_tokens`
   ADD PRIMARY KEY (`id`),
@@ -1723,41 +1850,41 @@ ALTER TABLE `personal_access_tokens`
   ADD KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`);
 
 --
--- Indexes for table `posts`
+-- Indeks untuk tabel `posts`
 --
 ALTER TABLE `posts`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `posts_slug_unique` (`slug`);
 
 --
--- Indexes for table `roles`
+-- Indeks untuk tabel `roles`
 --
 ALTER TABLE `roles`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `roles_name_unique` (`name`);
 
 --
--- Indexes for table `settings`
+-- Indeks untuk tabel `settings`
 --
 ALTER TABLE `settings`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `settings_key_unique` (`key`);
 
 --
--- Indexes for table `siswas`
+-- Indeks untuk tabel `siswas`
 --
 ALTER TABLE `siswas`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `translations`
+-- Indeks untuk tabel `translations`
 --
 ALTER TABLE `translations`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `translations_table_name_column_name_foreign_key_locale_unique` (`table_name`,`column_name`,`foreign_key`,`locale`);
 
 --
--- Indexes for table `users`
+-- Indeks untuk tabel `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
@@ -1765,7 +1892,7 @@ ALTER TABLE `users`
   ADD KEY `role_id` (`role_id`);
 
 --
--- Indexes for table `user_roles`
+-- Indeks untuk tabel `user_roles`
 --
 ALTER TABLE `user_roles`
   ADD PRIMARY KEY (`user_id`,`role_id`),
@@ -1773,214 +1900,226 @@ ALTER TABLE `user_roles`
   ADD KEY `user_roles_role_id_index` (`role_id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `alumnis`
+-- AUTO_INCREMENT untuk tabel `alumnis`
 --
 ALTER TABLE `alumnis`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
--- AUTO_INCREMENT for table `categories`
+-- AUTO_INCREMENT untuk tabel `categories`
 --
 ALTER TABLE `categories`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- AUTO_INCREMENT for table `category_sarpras`
+-- AUTO_INCREMENT untuk tabel `category_news`
+--
+ALTER TABLE `category_news`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT untuk tabel `category_sarpras`
 --
 ALTER TABLE `category_sarpras`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT for table `content_sarpras`
+-- AUTO_INCREMENT untuk tabel `content_sarpras`
 --
 ALTER TABLE `content_sarpras`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
--- AUTO_INCREMENT for table `data_rows`
+-- AUTO_INCREMENT untuk tabel `data_rows`
 --
 ALTER TABLE `data_rows`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=211;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=236;
 
 --
--- AUTO_INCREMENT for table `data_types`
+-- AUTO_INCREMENT untuk tabel `data_types`
 --
 ALTER TABLE `data_types`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
--- AUTO_INCREMENT for table `failed_jobs`
+-- AUTO_INCREMENT untuk tabel `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `galleries`
+-- AUTO_INCREMENT untuk tabel `galleries`
 --
 ALTER TABLE `galleries`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
 
 --
--- AUTO_INCREMENT for table `gallery_sarpras`
+-- AUTO_INCREMENT untuk tabel `gallery_news`
+--
+ALTER TABLE `gallery_news`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT untuk tabel `gallery_sarpras`
 --
 ALTER TABLE `gallery_sarpras`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
--- AUTO_INCREMENT for table `gurus`
+-- AUTO_INCREMENT untuk tabel `gurus`
 --
 ALTER TABLE `gurus`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT for table `jurusans`
+-- AUTO_INCREMENT untuk tabel `jurusans`
 --
 ALTER TABLE `jurusans`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT for table `kategoris`
+-- AUTO_INCREMENT untuk tabel `kategoris`
 --
 ALTER TABLE `kategoris`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT for table `kelas`
+-- AUTO_INCREMENT untuk tabel `kelas`
 --
 ALTER TABLE `kelas`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
--- AUTO_INCREMENT for table `managers`
+-- AUTO_INCREMENT untuk tabel `managers`
 --
 ALTER TABLE `managers`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `mapels`
+-- AUTO_INCREMENT untuk tabel `mapels`
 --
 ALTER TABLE `mapels`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `media`
+-- AUTO_INCREMENT untuk tabel `media`
 --
 ALTER TABLE `media`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `menus`
+-- AUTO_INCREMENT untuk tabel `menus`
 --
 ALTER TABLE `menus`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `menu_items`
+-- AUTO_INCREMENT untuk tabel `menu_items`
 --
 ALTER TABLE `menu_items`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
--- AUTO_INCREMENT for table `migrations`
+-- AUTO_INCREMENT untuk tabel `migrations`
 --
 ALTER TABLE `migrations`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
--- AUTO_INCREMENT for table `pages`
+-- AUTO_INCREMENT untuk tabel `pages`
 --
 ALTER TABLE `pages`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
--- AUTO_INCREMENT for table `partners`
+-- AUTO_INCREMENT untuk tabel `partners`
 --
 ALTER TABLE `partners`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
--- AUTO_INCREMENT for table `permissions`
+-- AUTO_INCREMENT untuk tabel `permissions`
 --
 ALTER TABLE `permissions`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=136;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=151;
 
 --
--- AUTO_INCREMENT for table `personal_access_tokens`
+-- AUTO_INCREMENT untuk tabel `personal_access_tokens`
 --
 ALTER TABLE `personal_access_tokens`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `posts`
+-- AUTO_INCREMENT untuk tabel `posts`
 --
 ALTER TABLE `posts`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
--- AUTO_INCREMENT for table `roles`
+-- AUTO_INCREMENT untuk tabel `roles`
 --
 ALTER TABLE `roles`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT for table `settings`
+-- AUTO_INCREMENT untuk tabel `settings`
 --
 ALTER TABLE `settings`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
--- AUTO_INCREMENT for table `siswas`
+-- AUTO_INCREMENT untuk tabel `siswas`
 --
 ALTER TABLE `siswas`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `translations`
+-- AUTO_INCREMENT untuk tabel `translations`
 --
 ALTER TABLE `translations`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
--- AUTO_INCREMENT for table `users`
+-- AUTO_INCREMENT untuk tabel `users`
 --
 ALTER TABLE `users`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
 
 --
--- Constraints for dumped tables
+-- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
 --
 
 --
--- Constraints for table `categories`
+-- Ketidakleluasaan untuk tabel `categories`
 --
 ALTER TABLE `categories`
   ADD CONSTRAINT `categories_parent_id_foreign` FOREIGN KEY (`parent_id`) REFERENCES `categories` (`id`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 --
--- Constraints for table `data_rows`
+-- Ketidakleluasaan untuk tabel `data_rows`
 --
 ALTER TABLE `data_rows`
   ADD CONSTRAINT `data_rows_data_type_id_foreign` FOREIGN KEY (`data_type_id`) REFERENCES `data_types` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `menu_items`
+-- Ketidakleluasaan untuk tabel `menu_items`
 --
 ALTER TABLE `menu_items`
   ADD CONSTRAINT `menu_items_menu_id_foreign` FOREIGN KEY (`menu_id`) REFERENCES `menus` (`id`) ON DELETE CASCADE;
 
 --
--- Constraints for table `permission_role`
+-- Ketidakleluasaan untuk tabel `permission_role`
 --
 ALTER TABLE `permission_role`
   ADD CONSTRAINT `permission_role_permission_id_foreign` FOREIGN KEY (`permission_id`) REFERENCES `permissions` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `permission_role_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE;
 
 --
--- Constraints for table `users`
+-- Ketidakleluasaan untuk tabel `users`
 --
 ALTER TABLE `users`
   ADD CONSTRAINT `role_id` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`);
