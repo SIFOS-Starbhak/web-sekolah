@@ -4059,8 +4059,9 @@ document.addEventListener("DOMContentLoaded", function () {
       e.preventDefault();
       var data = new FormData();
       data.append('token', 'token-post');
-      axios__WEBPACK_IMPORTED_MODULE_0___default().post("http://localhost/moddle/moodle/login/index.php", data, {
-        withCredentials: true
+      axios__WEBPACK_IMPORTED_MODULE_0___default().post("http://localhost/moddle/moodle/webservice/rest/costom-rest.php", data, {
+        withCredentials: true,
+        crossDomain: true
       }).then(function (res) {
         return console.log(res.data);
       })["catch"](function (err) {

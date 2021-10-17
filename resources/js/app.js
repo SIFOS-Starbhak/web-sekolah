@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
             e.preventDefault();
             var data = new FormData();
             data.append('token', 'token-post');
-            axios.post("http://localhost/moddle/moodle/login/index.php", data,{withCredentials: true}).then(res => console.log(res.data)).catch(err => console.log(err));
+            axios.post("http://localhost/moddle/moodle/webservice/rest/costom-rest.php", data,{withCredentials: true,crossDomain: true}).then(res => console.log(res.data)).catch(err => console.log(err));
         });
     } else {
         document.getElementById("frmlogout").addEventListener("click", (e) => {
