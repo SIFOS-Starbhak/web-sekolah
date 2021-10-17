@@ -7,13 +7,14 @@ use App\Models\User;
 use Firebase\JWT\JWT;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cookie;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
 class AuthenticatedSessionController extends Controller
 {
     public function __construct()
     {
-        $this->middleware(['auth:api'], ['except' => ['store', 'create', 'userData']]);
+        $this->middleware(['auth:api'], ['except' => ['store', 'create', 'userData', 'userCreate']]);
     }
     /**
      * Get the token array structure.
@@ -144,6 +145,17 @@ class AuthenticatedSessionController extends Controller
      */
     public function userData()
     {
-        return response()->json(User::all(), 200);
+        return response()->json(User::with('kelas')->get(), 200);
+    }
+    /**
+     * create the User.
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+
+    public function userCreate(Request $request)
+    {
+        // TODO: Bsk kerjain create datanya
+        return response()->json([$request->all(), 'ispassword' => Hash::needsRehash($request->password)], 201);
     }
 }

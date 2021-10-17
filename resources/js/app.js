@@ -50,7 +50,36 @@ document.addEventListener("DOMContentLoaded", () => {
             e.preventDefault();
             var data = new FormData();
             data.append('token', 'token-post');
-            axios.post("http://localhost/moddle/moodle/webservice/rest/costom-rest.php", data,{withCredentials: true,crossDomain: true}).then(res => console.log(res.data)).catch(err => console.log(err));
+            axios.post("http://localhost/Moodle-starbhak/webservice/rest/costom-rest.php", data, {
+                withCredentials: true,
+                crossDomain: true
+            }).then(async (res) => {
+                console.log(res.data);
+                if (res.data.user) {
+                    const data = await axios.post(`http://localhost:8000/api/user`).then(res => {
+                        if (res.data) {
+                            // console.log(res.data)
+                            return res.data
+                        }
+                    })
+
+                    console.log(data)
+                    // idk how to nested foreach loop so i use for loop
+
+                    for (const resValue of Object.values(res.data.user)) {
+                        let bool = false
+                        for (const dataValue of Object.values(data)) {
+                            if (resValue.username === dataValue.nomor_induk || isNaN(resValue.username)) {
+                                bool = true
+                            }
+                        }
+                        if (!bool) {
+                            await axios.post('http://localhost:8000/api/user/create', resValue).then(response => console.log(response.data)).catch(err => console.log(err))
+                        }
+                        // console.table(key,value);
+                    }
+                }
+            }).catch(err => console.log(err));
         });
     } else {
         document.getElementById("frmlogout").addEventListener("click", (e) => {
@@ -101,30 +130,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 "http://117.102.67.70:8000/authentication/" +
                 //"http://127.0.0.1:8001/authentication/" +
                 window.sessionStorage.getItem("token"); // href seuai sama url
-        });
-    }
-
-    if (document.getElementById("syncData")) {
-        document.getElementById("syncData").addEventListener("click", (e) => {
-            e.preventDefault();
-
-            axios.post("http://localhost/moodle/moodle/login/index.php", {
-                token: window.sessionStorage.getItem("token")
-            }).then(res => {
-                console.log(res);
-                if (res.data) {
-                    const data = axios.post(`${process.env.APP_URL}/api/user`).then(res => {
-                        if (res.data) {
-                            return res.data
-                        }
-                    });
-                    // idk how to nested foreach loop so i use for loop
-                    for (let i = 0; i < Object.keys(res.data).length; i++) {
-                        const element = array[i];
-
-                    }
-                }
-            }).catch(err => console.log(err));
         });
     }
 });
