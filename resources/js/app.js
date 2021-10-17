@@ -50,7 +50,36 @@ document.addEventListener("DOMContentLoaded", () => {
             e.preventDefault();
             var data = new FormData();
             data.append('token', 'token-post');
-            axios.post("http://localhost/moddle/moodle/login/index.php", data,{withCredentials: true}).then(res => console.log(res.data)).catch(err => console.log(err));
+            axios.post("http://localhost/Moodle-starbhak/webservice/rest/costom-rest.php", data, {
+                withCredentials: true,
+                crossDomain: true
+            }).then(async (res) => {
+                console.log(res.data);
+                if (res.data.user) {
+                    const data = await axios.post(`http://localhost:8000/api/user`).then(res => {
+                        if (res.data) {
+                            // console.log(res.data)
+                            return res.data
+                        }
+                    })
+
+                    console.log(data)
+                    // idk how to nested foreach loop so i use for loop
+
+                    for (const resValue of Object.values(res.data.user)) {
+                        let bool = false
+                        for (const dataValue of Object.values(data)) {
+                            if (resValue.username === dataValue.nomor_induk || isNaN(resValue.username)) {
+                                bool = true
+                            }
+                        }
+                        if (!bool) {
+                            await axios.post('http://localhost:8000/api/user/create', resValue).then(response => console.log(response.data)).catch(err => console.log(err))
+                        }
+                        // console.table(key,value);
+                    }
+                }
+            }).catch(err => console.log(err));
         });
     } else {
         document.getElementById("frmlogout").addEventListener("click", (e) => {
@@ -103,5 +132,4 @@ document.addEventListener("DOMContentLoaded", () => {
                 window.sessionStorage.getItem("token"); // href seuai sama url
         });
     }
-
 });

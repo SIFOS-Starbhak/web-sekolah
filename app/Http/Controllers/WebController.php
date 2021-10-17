@@ -127,11 +127,18 @@ class WebController extends Controller
         $cardkurikulum = Page::where('id', '22')->orWhere('id', '23')->orWhere('id', '24')->get();
         return view('kurikulum', compact('settings', 'struktur', 'kompetensi', 'fotoguru', 'cardkurikulum'));
     }
+    
     public function bkk()
     {
         $settings = Setting::all();
-        $cardbkk = Page::where('id', '25')->orWhere('id', '26')->get();
+        $cardbkk = Page::where('id', '24')->orWhere('id', '25')->get();
         return view('bkk', compact('settings','cardbkk'));
+    }
+
+    public function bkk_menu(Page $category)
+    {
+        $settings = Setting::all();
+        return view('bkkmenu', compact('settings','category'));
     }
 
     public function kesiswaan()
