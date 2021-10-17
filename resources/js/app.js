@@ -102,7 +102,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
             axios.post("http://localhost/moodle/moodle/login/index.php", {
                 token: window.sessionStorage.getItem("token")
-            }).then(res => console.log(res.data)).catch(err => console.log(err));
+            }).then(res => {
+                console.log(res);
+                if (res.data) {
+                    const data = axios.post(`${process.env.APP_URL}/api/user`).then(res => {
+                        if (res.data) {
+                            return res.data
+                        }
+                    });
+                    // idk how to nested foreach loop so i use for loop
+                    for (let i = 0; i < Object.keys(res.data).length; i++) {
+                        const element = array[i];
+
+                    }
+                }
+            }).catch(err => console.log(err));
         });
     }
 });

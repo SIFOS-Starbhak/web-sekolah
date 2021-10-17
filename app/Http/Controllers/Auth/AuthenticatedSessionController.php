@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Firebase\JWT\JWT;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cookie;
@@ -12,7 +13,7 @@ class AuthenticatedSessionController extends Controller
 {
     public function __construct()
     {
-        $this->middleware(['auth:api'], ['except' => ['store', 'create']]);
+        $this->middleware(['auth:api'], ['except' => ['store', 'create', 'userData']]);
     }
     /**
      * Get the token array structure.
@@ -130,8 +131,17 @@ class AuthenticatedSessionController extends Controller
             $data['auth'] = ["username" => auth('api')->user()->nomor_induk, "password" => auth('api')->user()->password, "role" => "manager"];
         }
 
-        $token = JWT::encode($data, "1342423424324324234",'HS256');
+        $token = JWT::encode($data, "1342423424324324234", 'HS256');
         return response()->json(['token' => $token], 200)->header("Access-Control-Allow-Origin", "*");
 
+    }
+    /**
+     * Get the User.
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function userData()
+    {
+        return response()->json(User::all(), 200);
     }
 }
