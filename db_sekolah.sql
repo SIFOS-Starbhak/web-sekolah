@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 16 Okt 2021 pada 15.59
+-- Waktu pembuatan: 17 Okt 2021 pada 06.03
 -- Versi server: 10.4.21-MariaDB
 -- Versi PHP: 8.0.11
 
@@ -570,7 +570,13 @@ CREATE TABLE `gallery_news` (
 --
 
 INSERT INTO `gallery_news` (`id`, `title`, `content`, `image`, `created_at`, `updated_at`, `category`, `date`) VALUES
-(4, 'Kegiatan Vaksinasi', '<p>Kegiatan vaksinasi yang diadakan di SMK Taruna Bhakti Depok</p>', 'gallery\\October2021\\jsMp3vhSa5ios56dF2fA.jpg', '2021-10-16 12:26:59', '2021-10-16 12:38:49', '5', '2021-09-24');
+(5, 'Kegiatan Vaksinasi SMK Taruna Bhakti', NULL, 'gallery\\October2021\\JRcDZUrZ9j5LRMojyXJH.jpg', '2021-10-17 02:59:59', '2021-10-17 02:59:59', '5', '2021-10-17'),
+(6, 'Seminar Gamer Indonesia', NULL, 'gallery\\October2021\\pSccjjop0Uf6yNScT0zj.jpg', '2021-10-17 03:05:45', '2021-10-17 03:05:45', '5', '2021-10-17'),
+(7, 'Ekskul 2020', NULL, 'gallery\\October2021\\CM9EsMCg3oAzJjZAKhxr.jpeg', '2021-10-17 03:46:08', '2021-10-17 03:46:08', '4', '2021-10-17'),
+(8, 'lapangan TB', NULL, 'gallery\\October2021\\nHds49FOyJQYFv1P3Eot.jpg', '2021-10-17 03:49:43', '2021-10-17 03:49:43', '4', '2021-10-17'),
+(9, '2019', NULL, 'gallery\\October2021\\Rx03hppq6rrXF9vJK1q7.jpg', '2021-10-17 03:59:25', '2021-10-17 03:59:25', '3', '2021-10-17'),
+(10, 'ortus', NULL, 'gallery\\October2021\\RMDmTMx49mcDAIqloi7d.jpg', '2021-10-17 04:00:01', '2021-10-17 04:00:01', '2', '2000-11-30'),
+(11, '2017', NULL, 'gallery\\October2021\\XJNSbaYeqyN5WgpTzOl4.jpg', '2021-10-17 04:00:40', '2021-10-17 04:00:40', '1', '2009-02-20');
 
 -- --------------------------------------------------------
 
@@ -1955,7 +1961,7 @@ ALTER TABLE `galleries`
 -- AUTO_INCREMENT untuk tabel `gallery_news`
 --
 ALTER TABLE `gallery_news`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT untuk tabel `gallery_sarpras`
