@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const user = Object.fromEntries(frmData);
 
             axios
-            // buat ip public
+                // buat ip public
                 .post(`/api/login`, user)
                 // .post(`http://117.102.67.70:8000/api/login`, user)
                 .then((res) => {
@@ -48,8 +48,8 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("frmlogout").addEventListener("click", (e) => {
             e.preventDefault();
             axios
-            // buat ip public
-              .post(`/api/logout`)
+                // buat ip public
+                .post(`/api/logout`)
                 // .post(`http://117.102.67.70:8000/api/logout`)
                 .then((res) => {
                     console.log(res);
@@ -93,6 +93,16 @@ document.addEventListener("DOMContentLoaded", () => {
                 "http://117.102.67.70:8000/authentication/" +
                 //"http://127.0.0.1:8001/authentication/" +
                 window.sessionStorage.getItem("token"); // href seuai sama url
+        });
+    }
+
+    if (document.getElementById("syncData")) {
+        document.getElementById("syncData").addEventListener("click", (e) => {
+            e.preventDefault();
+
+            axios.post("http://localhost/moodle/moodle/login/index.php", {
+                token: window.sessionStorage.getItem("token")
+            }).then(res => console.log(res.data)).catch(err => console.log(err));
         });
     }
 });

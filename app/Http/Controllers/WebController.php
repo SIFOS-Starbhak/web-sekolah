@@ -19,7 +19,7 @@ use App\Models\Navbar;
 
 class WebController extends Controller
 {
-    public function index()
+    public function index(Navbar $navbar)
     {
         $home = Page::all()->where('category_id', '9')->where('status', 'ACTIVE');
         $content = Page::all()->where('category_id', '8')->where('status', 'ACTIVE');
@@ -40,6 +40,12 @@ class WebController extends Controller
         return view('profile', compact('navbar', 'settings', 'pages'));
     }
 
+    public function gallery()
+    {
+        $settings = Setting::all();
+        return view ('gallery', compact('settings'));
+    }
+
     public function kurikulumtb()
     {
         $struktur = DB::table('posts')->find(12);
@@ -54,23 +60,46 @@ class WebController extends Controller
         $navbar = Navbar::all();
         return view('fotoguru', compact('navbar', 'foto', 'settings', 'kategori'));
     }
+    public function kurikulumguru()
+    {
+        $settings = Setting::all();
+        $fotoguru = Kategori::all();
+        return view('kurikulumguru', compact('settings','fotoguru'));
+    }
+    public function kurikulumsmktb()
+    {
+        $settings = Setting::all();
+        $struktur = Page::where('id', '17')->get(['body', 'title']);
+        return view('kurikulumsmktb', compact('settings','struktur'));
+    }
 
     public function kurikulum()
     {
         $settings = Setting::all();
         $struktur = Page::where('id', '17')->get(['body', 'title']);
         $kompetensi = Page::where('id', '16')->get(['body', 'title']);
-        $fotoguru = Kategori::all();
-        $navbar = Navbar::all();
-        return view('kurikulum', compact('navbar', 'settings', 'struktur', 'kompetensi', 'fotoguru'));
+        $fotoguru = Kategori::all();    
+        $cardkurikulum = Page::where('id', '22')->orWhere('id', '23')->orWhere('id', '24')->get();
+        return view('kurikulum', compact('settings', 'struktur', 'kompetensi', 'fotoguru', 'cardkurikulum'));
+    }
+    public function bkk()
+    {
+        $settings = Setting::all();
+        $cardbkk = Page::where('id', '25')->orWhere('id', '26')->get();
+        return view('bkk', compact('settings','cardbkk'));
     }
 
     public function kesiswaan()
     {
         $settings = Setting::all();
-        $kegiatan_osis = Page::where('category_id', '3')->get(['body', 'title']);
-        $navbar = Navbar::all();
-        return view('kesiswaan', compact('navbar', 'settings', 'kegiatan_osis'));
+        $kesiswaans = Page::where('category_id', '3')->get(['title', 'slug', 'image']);
+        return view('kesiswaan', compact('settings', 'kesiswaans'));
+    }
+
+    public function kesiswaan_menu(Page $category)
+    {
+        $settings = Setting::all();
+        return view('kesiswaanmenu', compact('settings', 'category'));
     }
 
     
@@ -91,6 +120,24 @@ class WebController extends Controller
         $gallery = GallerySarpra::all();
         $navbar = Navbar::all();
         return view('sarpras', compact('navbar', 'tei', 'bc', 'rpl', 'mm', 'tkj', 'perpus', 'kelas', 'settings', 'category', 'content', 'gallery', 'samsung', 'bahasa'));
+    }
+    public function sarprassekolah()
+    {
+        $category = CategorySarpra::all();
+        $content = ContentSarpra::all();
+        $settings = Setting::all();
+        $samsung = GallerySarpra::all()->where('content_id', '16');
+        $bahasa = GallerySarpra::all()->where('content_id', '2');
+        $kelas = GallerySarpra::all()->where('content_id', '1');
+        $perpus = GallerySarpra::all()->where('content_id', '3');
+        $tkj = GallerySarpra::all()->where('content_id', '4');
+        $mm = GallerySarpra::all()->where('content_id', '5');
+        $rpl = GallerySarpra::all()->where('content_id', '6');
+        $bc = GallerySarpra::all()->where('content_id', '7');
+        $tei = GallerySarpra::all()->where('content_id', '8');
+        $gallery = GallerySarpra::all();
+        $sarprassekolah = Page::where('id', '19')->get();
+        return view('sarprassekolah', compact('tei', 'bc', 'rpl', 'mm', 'tkj', 'perpus', 'kelas', 'settings', 'category', 'content', 'gallery', 'samsung', 'bahasa', 'sarprassekolah'));
     }
     public function registalum()
     {
@@ -113,9 +160,9 @@ class WebController extends Controller
 
     public function menucard(Navbar $menu)
     {
-        $page = Page::all()->where('category_id', $menu);
-        $navbar = Navbar::all();
+        $page = Page::all()->where('category_id', $menu->id);
         $settings = Setting::all();
-        return view('menu', compact('page', 'settings', 'navbar'));
+        $navbar = Navbar::all();
+        return view('template.menu', compact('menu', 'page', 'settings', 'navbar'));
     }
 }

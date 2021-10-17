@@ -37,6 +37,8 @@ Route::get('/', 'WebController@index');
 // Route::view('/', 'template/main');
 Route::get('/profile', 'WebController@profiletb');
 
+// route::get('/gallery', 'WebController@gallery');
+
 Route::get('/artikel', function () {
     $settings = App\Models\Setting::all();
     $article = App\Models\Post::where('status', 'PUBLISHED')->get();
@@ -49,23 +51,28 @@ Route::get('/artikel', function () {
 //     return view('profile', compact('settings','homefooters'));
 // });
 
-Route::get('/{navbar}', 'WebController@menucard');
+Route::get('/{menu:slug}', 'WebController@menucard');
 
-Route::get('/kurikulum', 'WebController@kurikulum');
+// Route::get('/kurikulum', 'WebController@kurikulum');
+// Route::get('/bkk', 'WebController@bkk');
 
 Route::get('/kontakkami', function () {
     $settings = App\Models\Setting::all();
     return view('kontakkami', compact('settings'));
 });
 Route::get('/sarpras', 'WebController@sarpras');
+Route::get('/sarpras/sarprassekolah', 'WebController@sarprassekolah');
+
 // Route::get('/registalum', function () {
 //     $settings = App\Models\Setting::all();
 //     return view('/registalum', compact('settings'));
 // });
 Route::post('/registalum/store',[RegistalumController::class,'store'])->name('store');
 Route::get('/registalum',[RegistalumController::class,'create']);
-Route::get('/kesiswaan', 'WebController@kesiswaan');
-Route::get('/hubin', 'HubinController@index')->name('hubin');
+// Route::get('/kesiswaan', 'WebController@kesiswaan');
+Route::get('/kurikulum/kurikulumguru', 'WebController@kurikulumguru');
+Route::get('/kurikulum/kurikulumsmktb', 'WebController@kurikulumsmktb');
+// Route::get('/hubin', 'HubinController@index')->name('hubin');
 
 Route::get('/kurikulum/{kategori:slug}', 'WebController@fotoguru');
 
@@ -81,11 +88,11 @@ Route::get('/{id}', function ($id) {
     return view('showartikel', compact('articleShow', 'settings', 'author'));
 })->name('showartikel');
 
-Route::get('/author/{user}', 'WebController@author');
+    Route::get('/author/{user}', 'WebController@author');
 
-Route::get('/posted/{posted}', 'WebController@posted');
-// Manager
-Route::group(['prefix' => 'manager','middleware' => ['jwt.verify', 'auth:api']], function () {
+    Route::get('/posted/{posted}', 'WebController@posted');
+    // Manager
+    Route::group(['prefix' => 'manager','middleware' => ['jwt.verify', 'auth:api']], function () {
     // Route::get('/Article/index', [ArticleController::class, 'index'])-all>name('article.index');
     Route::get('/Article/tambah', [ArticleController::class, 'tambah'])->name('article.tambah');
     Route::post('/Article/post', [ArticleController::class, 'store'])->name('article.store');
