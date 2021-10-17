@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 16 Okt 2021 pada 10.47
+-- Waktu pembuatan: 17 Okt 2021 pada 06.03
 -- Versi server: 10.4.21-MariaDB
 -- Versi PHP: 8.0.11
 
@@ -106,6 +106,32 @@ CREATE TABLE `categories_alumnis` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `category_news`
+--
+
+CREATE TABLE `category_news` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `tahun` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `image` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `slug` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data untuk tabel `category_news`
+--
+
+INSERT INTO `category_news` (`id`, `tahun`, `created_at`, `updated_at`, `image`, `slug`) VALUES
+(1, '2017', '2021-10-16 11:52:26', '2021-10-16 12:06:04', 'category-news\\October2021\\NvsI85gbnVyj91YhQRbj.jpg', 'tahun-2017'),
+(2, '2018', '2021-10-16 11:53:03', '2021-10-16 12:05:49', 'category-news\\October2021\\MOJPGHhzfVCEi0piddzW.jpg', 'tahun-2018'),
+(3, '2019', '2021-10-16 11:53:11', '2021-10-16 12:05:32', 'category-news\\October2021\\R3wKXNN5Ihz07A7YJItu.jpg', 'tahun-2019'),
+(4, '2020', '2021-10-16 11:53:18', '2021-10-16 12:05:14', 'category-news\\October2021\\Gig4vBnwjAUWZFxqXWrQ.jpg', 'tahun-2020'),
+(5, '2021', '2021-10-16 11:53:29', '2021-10-16 12:04:52', 'category-news\\October2021\\fo3IiotWKA8ngF3ugrLx.jpg', 'tahun-2021');
 
 -- --------------------------------------------------------
 
@@ -357,9 +383,17 @@ INSERT INTO `data_rows` (`id`, `data_type_id`, `field`, `type`, `display_name`, 
 (220, 35, 'title', 'text', 'Title', 0, 1, 1, 1, 1, 1, '{}', 2),
 (221, 35, 'content', 'rich_text_box', 'Content', 0, 1, 1, 1, 1, 1, '{}', 3),
 (222, 35, 'image', 'image', 'Image', 0, 1, 1, 1, 1, 1, '{}', 4),
-(223, 35, 'tahun', 'timestamp', 'Tahun', 0, 0, 0, 0, 0, 0, '{\"format\":\"%Y\"}', 5),
 (224, 35, 'created_at', 'timestamp', 'Created At', 0, 0, 0, 0, 0, 0, '{\"format\":\"%Y\"}', 6),
-(225, 35, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 7);
+(225, 35, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 7),
+(226, 36, 'id', 'text', 'Id', 1, 0, 0, 0, 0, 0, '{}', 1),
+(227, 36, 'tahun', 'number', 'Tahun', 0, 1, 1, 1, 1, 1, '{}', 3),
+(228, 36, 'created_at', 'timestamp', 'Created At', 0, 0, 0, 0, 0, 0, '{}', 4),
+(229, 36, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 5),
+(231, 36, 'slug', 'text', 'Slug', 0, 1, 1, 1, 1, 1, '{}', 6),
+(232, 36, 'image', 'image', 'Image', 0, 1, 1, 1, 1, 1, '{}', 5),
+(233, 35, 'gallery_news_belongsto_category_news_relationship', 'relationship', 'category_news', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\Models\\\\CategoryNews\",\"table\":\"category_news\",\"type\":\"belongsTo\",\"column\":\"category\",\"key\":\"id\",\"label\":\"tahun\",\"pivot_table\":\"alumnis\",\"pivot\":\"0\",\"taggable\":\"0\"}', 8),
+(234, 35, 'category', 'text', 'Category', 0, 1, 1, 1, 1, 1, '{}', 7),
+(235, 35, 'date', 'date', 'Date', 0, 1, 1, 1, 1, 1, '{}', 8);
 
 -- --------------------------------------------------------
 
@@ -409,7 +443,8 @@ INSERT INTO `data_types` (`id`, `name`, `slug`, `display_name_singular`, `displa
 (31, 'gallery_sarpras', 'gallery-sarpras', 'Gallery Sarpra', 'Gallery Sarpras', NULL, 'App\\Models\\GallerySarpra', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2021-10-06 14:35:52', '2021-10-13 05:18:27'),
 (32, 'mapels', 'mapels', 'Mapel', 'Mapels', NULL, 'App\\Models\\Mapel', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null}', '2021-10-07 02:56:07', '2021-10-07 02:56:07'),
 (34, 'galleries', 'galleries', 'Gallery', 'Galleries', NULL, 'App\\Models\\Gallery', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null}', '2021-10-16 07:49:59', '2021-10-16 07:49:59'),
-(35, 'gallery_news', 'gallery', 'Gallery', 'Gallery', NULL, 'App\\Models\\GalleryNews', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2021-10-16 08:00:57', '2021-10-16 08:15:32');
+(35, 'gallery_news', 'gallery', 'Gallery', 'Gallery', NULL, 'App\\Models\\GalleryNews', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2021-10-16 08:00:57', '2021-10-16 12:38:16'),
+(36, 'category_news', 'category-news', 'Category News', 'Category News', NULL, 'App\\Models\\CategoryNews', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2021-10-16 11:49:23', '2021-10-16 12:02:46');
 
 -- --------------------------------------------------------
 
@@ -524,10 +559,24 @@ CREATE TABLE `gallery_news` (
   `title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `content` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `image` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `tahun` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `category` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `date` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data untuk tabel `gallery_news`
+--
+
+INSERT INTO `gallery_news` (`id`, `title`, `content`, `image`, `created_at`, `updated_at`, `category`, `date`) VALUES
+(5, 'Kegiatan Vaksinasi SMK Taruna Bhakti', NULL, 'gallery\\October2021\\JRcDZUrZ9j5LRMojyXJH.jpg', '2021-10-17 02:59:59', '2021-10-17 02:59:59', '5', '2021-10-17'),
+(6, 'Seminar Gamer Indonesia', NULL, 'gallery\\October2021\\pSccjjop0Uf6yNScT0zj.jpg', '2021-10-17 03:05:45', '2021-10-17 03:05:45', '5', '2021-10-17'),
+(7, 'Ekskul 2020', NULL, 'gallery\\October2021\\CM9EsMCg3oAzJjZAKhxr.jpeg', '2021-10-17 03:46:08', '2021-10-17 03:46:08', '4', '2021-10-17'),
+(8, 'lapangan TB', NULL, 'gallery\\October2021\\nHds49FOyJQYFv1P3Eot.jpg', '2021-10-17 03:49:43', '2021-10-17 03:49:43', '4', '2021-10-17'),
+(9, '2019', NULL, 'gallery\\October2021\\Rx03hppq6rrXF9vJK1q7.jpg', '2021-10-17 03:59:25', '2021-10-17 03:59:25', '3', '2021-10-17'),
+(10, 'ortus', NULL, 'gallery\\October2021\\RMDmTMx49mcDAIqloi7d.jpg', '2021-10-17 04:00:01', '2021-10-17 04:00:01', '2', '2000-11-30'),
+(11, '2017', NULL, 'gallery\\October2021\\XJNSbaYeqyN5WgpTzOl4.jpg', '2021-10-17 04:00:40', '2021-10-17 04:00:40', '1', '2009-02-20');
 
 -- --------------------------------------------------------
 
@@ -917,7 +966,8 @@ INSERT INTO `menu_items` (`id`, `menu_id`, `title`, `url`, `target`, `icon_class
 (31, 1, 'Gallery Sarpras', '', '_self', NULL, NULL, NULL, 30, '2021-10-06 14:35:53', '2021-10-06 14:35:53', 'voyager.gallery-sarpras.index', NULL),
 (32, 1, 'Mapels', '', '_self', NULL, NULL, NULL, 31, '2021-10-07 02:56:09', '2021-10-07 02:56:09', 'voyager.mapels.index', NULL),
 (33, 1, 'Galleries', '', '_self', NULL, NULL, NULL, 32, '2021-10-16 07:50:02', '2021-10-16 07:50:02', 'voyager.galleries.index', NULL),
-(34, 1, 'Gallery', '', '_self', NULL, NULL, NULL, 33, '2021-10-16 08:00:58', '2021-10-16 08:00:58', 'voyager.gallery.index', NULL);
+(34, 1, 'Gallery', '', '_self', NULL, NULL, NULL, 33, '2021-10-16 08:00:58', '2021-10-16 08:00:58', 'voyager.gallery.index', NULL),
+(35, 1, 'Category News', '', '_self', NULL, NULL, NULL, 34, '2021-10-16 11:49:24', '2021-10-16 11:49:24', 'voyager.category-news.index', NULL);
 
 -- --------------------------------------------------------
 
@@ -1178,7 +1228,12 @@ INSERT INTO `permissions` (`id`, `key`, `table_name`, `created_at`, `updated_at`
 (142, 'read_gallery_news', 'gallery_news', '2021-10-16 08:00:58', '2021-10-16 08:00:58'),
 (143, 'edit_gallery_news', 'gallery_news', '2021-10-16 08:00:58', '2021-10-16 08:00:58'),
 (144, 'add_gallery_news', 'gallery_news', '2021-10-16 08:00:58', '2021-10-16 08:00:58'),
-(145, 'delete_gallery_news', 'gallery_news', '2021-10-16 08:00:58', '2021-10-16 08:00:58');
+(145, 'delete_gallery_news', 'gallery_news', '2021-10-16 08:00:58', '2021-10-16 08:00:58'),
+(146, 'browse_category_news', 'category_news', '2021-10-16 11:49:24', '2021-10-16 11:49:24'),
+(147, 'read_category_news', 'category_news', '2021-10-16 11:49:24', '2021-10-16 11:49:24'),
+(148, 'edit_category_news', 'category_news', '2021-10-16 11:49:24', '2021-10-16 11:49:24'),
+(149, 'add_category_news', 'category_news', '2021-10-16 11:49:24', '2021-10-16 11:49:24'),
+(150, 'delete_category_news', 'category_news', '2021-10-16 11:49:24', '2021-10-16 11:49:24');
 
 -- --------------------------------------------------------
 
@@ -1305,7 +1360,12 @@ INSERT INTO `permission_role` (`permission_id`, `role_id`) VALUES
 (142, 1),
 (143, 1),
 (144, 1),
-(145, 1);
+(145, 1),
+(146, 1),
+(147, 1),
+(148, 1),
+(149, 1),
+(150, 1);
 
 -- --------------------------------------------------------
 
@@ -1617,6 +1677,12 @@ ALTER TABLE `categories`
   ADD KEY `categories_parent_id_foreign` (`parent_id`);
 
 --
+-- Indeks untuk tabel `category_news`
+--
+ALTER TABLE `category_news`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indeks untuk tabel `category_sarpras`
 --
 ALTER TABLE `category_sarpras`
@@ -1850,6 +1916,12 @@ ALTER TABLE `categories`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
+-- AUTO_INCREMENT untuk tabel `category_news`
+--
+ALTER TABLE `category_news`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
 -- AUTO_INCREMENT untuk tabel `category_sarpras`
 --
 ALTER TABLE `category_sarpras`
@@ -1865,13 +1937,13 @@ ALTER TABLE `content_sarpras`
 -- AUTO_INCREMENT untuk tabel `data_rows`
 --
 ALTER TABLE `data_rows`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=226;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=236;
 
 --
 -- AUTO_INCREMENT untuk tabel `data_types`
 --
 ALTER TABLE `data_types`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT untuk tabel `failed_jobs`
@@ -1889,7 +1961,7 @@ ALTER TABLE `galleries`
 -- AUTO_INCREMENT untuk tabel `gallery_news`
 --
 ALTER TABLE `gallery_news`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT untuk tabel `gallery_sarpras`
@@ -1949,7 +2021,7 @@ ALTER TABLE `menus`
 -- AUTO_INCREMENT untuk tabel `menu_items`
 --
 ALTER TABLE `menu_items`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT untuk tabel `migrations`
@@ -1973,7 +2045,7 @@ ALTER TABLE `partners`
 -- AUTO_INCREMENT untuk tabel `permissions`
 --
 ALTER TABLE `permissions`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=146;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=151;
 
 --
 -- AUTO_INCREMENT untuk tabel `personal_access_tokens`

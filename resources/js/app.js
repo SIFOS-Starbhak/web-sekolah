@@ -44,6 +44,14 @@ document.addEventListener("DOMContentLoaded", () => {
                     }
                 });
         });
+    } else if (document.getElementById("syncData")) {
+        document.getElementById("syncData").addEventListener("click", (e) => {
+            console.log("clicked")
+            e.preventDefault();
+            var data = new FormData();
+            data.append('token', 'token-post');
+            axios.post("http://localhost/moddle/moodle/login/index.php", data,{withCredentials: true}).then(res => console.log(res.data)).catch(err => console.log(err));
+        });
     } else {
         document.getElementById("frmlogout").addEventListener("click", (e) => {
             e.preventDefault();
@@ -96,13 +104,4 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    if (document.getElementById("syncData")) {
-        document.getElementById("syncData").addEventListener("click", (e) => {
-            e.preventDefault();
-
-            axios.post("http://localhost/moodle/moodle/login/index.php", {
-                token: window.sessionStorage.getItem("token")
-            }).then(res => console.log(res.data)).catch(err => console.log(err));
-        });
-    }
 });

@@ -13,7 +13,9 @@ use App\Models\GuruRole;
 use App\Models\ContentSarpra;
 use App\Models\CategorySarpra;
 use App\Models\GallerySarpra;
+use App\Models\GalleryNews;
 use App\Models\Category;
+use App\Models\CategoryNews;
 use App\Models\User;
 use App\Models\Navbar;
 
@@ -43,7 +45,39 @@ class WebController extends Controller
     public function gallery()
     {
         $settings = Setting::all();
-        return view ('gallery', compact('settings'));
+        $cardgallery = CategoryNews::all();
+        return view ('gallery', compact('settings', 'cardgallery'));
+    }
+
+    public function gallery21()
+    {
+        $settings = Setting::all();
+        $card2021 = GalleryNews::where('category', '5')->get();
+        return view ('tahun-2021', compact('settings', 'card2021'));
+    }
+    public function gallery20()
+    {
+        $settings = Setting::all();
+        $card2020 = GalleryNews::where('category', '4')->get();
+        return view ('tahun-2020', compact('settings', 'card2020'));
+    }
+    public function gallery19()
+    {
+        $settings = Setting::all();
+        $card2019 = GalleryNews::where('category', '3')->get();
+        return view ('tahun-2019', compact('settings', 'card2019'));
+    }
+    public function gallery18()
+    {
+        $settings = Setting::all();
+        $card2018 = GalleryNews::where('category', '2')->get();
+        return view ('tahun-2018', compact('settings', 'card2018'));
+    }
+    public function gallery17()
+    {
+        $settings = Setting::all();
+        $card2017 = GalleryNews::where('category', '1')->get();
+        return view ('tahun-2017', compact('settings', 'card2017'));
     }
 
     public function kurikulumtb()
