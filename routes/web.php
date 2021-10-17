@@ -38,6 +38,11 @@ Route::get('/', 'WebController@index');
 Route::get('/profile', 'WebController@profiletb');
 
 route::get('/gallery', 'WebController@gallery');
+route::get('/gallery/tahun-2021', 'WebController@gallery21');
+route::get('/gallery/tahun-2020', 'WebController@gallery20');
+route::get('/gallery/tahun-2019', 'WebController@gallery19');
+route::get('/gallery/tahun-2018', 'WebController@gallery18');
+route::get('/gallery/tahun-2017', 'WebController@gallery17');
 
 Route::get('/artikel', function () {
     $settings = App\Models\Setting::all();
@@ -53,6 +58,7 @@ Route::get('/artikel', function () {
 
 Route::get('/kurikulum', 'WebController@kurikulum');
 Route::get('/bkk', 'WebController@bkk');
+Route::get('/bkk/{category:slug}', 'WebController@bkk_menu');
 
 Route::get('/kontakkami', function () {
     $settings = App\Models\Setting::all();
@@ -68,6 +74,7 @@ Route::get('/sarpras/sarprassekolah', 'WebController@sarprassekolah');
 Route::post('/registalum/store',[RegistalumController::class,'store'])->name('store');
 Route::get('/registalum',[RegistalumController::class,'create']);
 Route::get('/kesiswaan', 'WebController@kesiswaan');
+Route::get('/kesiswaan/{category:slug}', 'WebController@kesiswaan_menu');
 Route::get('/kurikulum/kurikulumguru', 'WebController@kurikulumguru');
 Route::get('/kurikulum/kurikulumsmktb', 'WebController@kurikulumsmktb');
 Route::get('/hubin', 'HubinController@index')->name('hubin');

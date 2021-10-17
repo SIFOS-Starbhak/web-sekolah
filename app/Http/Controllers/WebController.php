@@ -13,7 +13,9 @@ use App\Models\GuruRole;
 use App\Models\ContentSarpra;
 use App\Models\CategorySarpra;
 use App\Models\GallerySarpra;
+use App\Models\GalleryNews;
 use App\Models\Category;
+use App\Models\CategoryNews;
 use App\Models\User;
 
 class WebController extends Controller
@@ -40,7 +42,39 @@ class WebController extends Controller
     public function gallery()
     {
         $settings = Setting::all();
-        return view ('gallery', compact('settings'));
+        $cardgallery = CategoryNews::all();
+        return view ('gallery', compact('settings', 'cardgallery'));
+    }
+
+    public function gallery21()
+    {
+        $settings = Setting::all();
+        $card2021 = GalleryNews::where('category', '5')->get();
+        return view ('tahun-2021', compact('settings', 'card2021'));
+    }
+    public function gallery20()
+    {
+        $settings = Setting::all();
+        $card2020 = GalleryNews::where('category', '4')->get();
+        return view ('tahun-2020', compact('settings', 'card2020'));
+    }
+    public function gallery19()
+    {
+        $settings = Setting::all();
+        $card2019 = GalleryNews::where('category', '3')->get();
+        return view ('tahun-2019', compact('settings', 'card2019'));
+    }
+    public function gallery18()
+    {
+        $settings = Setting::all();
+        $card2018 = GalleryNews::where('category', '2')->get();
+        return view ('tahun-2018', compact('settings', 'card2018'));
+    }
+    public function gallery17()
+    {
+        $settings = Setting::all();
+        $card2017 = GalleryNews::where('category', '1')->get();
+        return view ('tahun-2017', compact('settings', 'card2017'));
     }
 
     public function kurikulumtb()
@@ -77,11 +111,18 @@ class WebController extends Controller
         $cardkurikulum = Page::where('id', '22')->orWhere('id', '23')->orWhere('id', '24')->get();
         return view('kurikulum', compact('settings', 'struktur', 'kompetensi', 'fotoguru', 'cardkurikulum'));
     }
+    
     public function bkk()
     {
         $settings = Setting::all();
-        $cardbkk = Page::where('id', '25')->orWhere('id', '26')->get();
+        $cardbkk = Page::where('id', '24')->orWhere('id', '25')->get();
         return view('bkk', compact('settings','cardbkk'));
+    }
+
+    public function bkk_menu(Page $category)
+    {
+        $settings = Setting::all();
+        return view('bkkmenu', compact('settings','category'));
     }
 
     public function kesiswaan()

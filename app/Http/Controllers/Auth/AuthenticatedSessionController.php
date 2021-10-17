@@ -54,6 +54,8 @@ class AuthenticatedSessionController extends Controller
             'password' => 'required|string',
         ]);
 
+        //$user = User::where(["username"=>$request->usename],['password'=> md5($request->password)]);
+
         if ($validator->fails()) {
             return response()->json($validator->errors(), 422);
         }

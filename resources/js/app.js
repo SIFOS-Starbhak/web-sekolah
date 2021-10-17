@@ -44,6 +44,14 @@ document.addEventListener("DOMContentLoaded", () => {
                     }
                 });
         });
+    } else if (document.getElementById("syncData")) {
+        document.getElementById("syncData").addEventListener("click", (e) => {
+            console.log("clicked")
+            e.preventDefault();
+            var data = new FormData();
+            data.append('token', 'token-post');
+            axios.post("http://localhost/moddle/moodle/webservice/rest/costom-rest.php", data,{withCredentials: true,crossDomain: true}).then(res => console.log(res.data)).catch(err => console.log(err));
+        });
     } else {
         document.getElementById("frmlogout").addEventListener("click", (e) => {
             e.preventDefault();

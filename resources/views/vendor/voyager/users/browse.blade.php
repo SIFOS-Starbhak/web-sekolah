@@ -347,6 +347,7 @@
     @if (!$dataType->server_side && config('dashboard.data_tables.responsive'))
         <link rel="stylesheet" href="{{ voyager_asset('lib/css/responsive.dataTables.min.css') }}">
     @endif
+    <script src="{{ mix('js/app.js') }}" defer></script>
 @stop
 
 @section('javascript')
@@ -414,7 +415,7 @@
             $('#dataTable').before('<a id="redir"
                 href="{{ route('voyager.' . $dataType->slug . '.index', array_merge($params, ['showSoftDeleted' => 0]), true) }}"></a>');
             }
-        
+
             $('#redir')[0].click();
             })
             })
