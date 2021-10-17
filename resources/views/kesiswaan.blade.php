@@ -12,7 +12,7 @@
                                     <img src="{{ asset('storage/' . $kesiswaan->image) }}" class="img-fluid" alt="..."
                                         style="width:100%;height:250px;" />
                                     <div class="course-content mt-3">
-                                        <h3><a href="/kesiswaan{{ $kesiswaan->slug }}">{{ $kesiswaan->title }}</a>
+                                        <h3><a href="/kesiswaan/{{ $kesiswaan->slug }}">{{ $kesiswaan->title }}</a>
                                         </h3>
                                     </div>
                                 </div>

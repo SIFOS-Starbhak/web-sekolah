@@ -4,8 +4,6 @@
 <div class="container" data-aos="fade-up">
     <div class="row card-group " data-aos="zoom-in" data-aos-delay="100">
 
-        <a href="/gallery" class="col-12 mt-5" style="font-size: 17px;"><i class="fas fa-arrow-left"></i> Kembali</a>
-
         <section id="popular-courses" class="courses">
             <div class="container" data-aos="fade-up">
                 <div class="d-flex justify-content-center row flex-wrap" data-aos="zoom-in" data-aos-delay="100" >

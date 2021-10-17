@@ -1,4 +1,5 @@
 @extends('template.app')
+@section('title', 'Gallery')
 @section('main')
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">  
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -8,6 +9,8 @@
 <div class="container mt-4 mb-4 p-3">
 	<div class="row">
     
+    <a href="/gallery" class="col-12 mt-5 mb-5" style="font-size: 17px;"><i class="fas fa-arrow-left"></i> Kembali</a>
+
     <div class="carousel slide article-slide" id="vpCarousel" data-interval="2000" data-ride="carousel">
       <div class="carousel-inner cont-slider">
         @foreach($card2021 as $key => $card)
