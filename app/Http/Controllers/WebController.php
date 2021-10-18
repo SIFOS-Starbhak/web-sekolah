@@ -21,11 +21,59 @@ use App\Models\Navbar;
 use App\Models\Content;
 use App\Models\Image;
 use App\Models\Video;
+use Illuminate\Support\Facades\Hash;
+use App\Models\Role;
 
 class WebController extends Controller
 {
     public function index()
     {
+
+        function cekrole($role)
+        {
+            switch ($role) {
+                case 'manager':
+                    $roles = Role::where("name", "manager")->first();
+                    return $roles->id;
+                    break;
+                case 'student':
+                    $roles = Role::where("name", "siswa")->first();
+                    return $roles->id;
+                case 'teacher':
+                case 'coursecreator':
+                case 'editingteacher':
+                    $roles = Role::where("name", "guru")->first();
+                    return $roles->id;
+            }
+        }
+
+        function sitakols_role($role)
+        {
+            switch ($role) {
+                case 'manager':
+                    return "kaprog";
+                    break;
+                case 'student':
+                    return "siswa";
+                    break;
+                case 'teacher':
+                case 'coursecreator':
+                case 'editingteacher':
+                    return "guru";
+                    break;
+            }
+        }
+
+        User::create([
+            "name" => "312314",
+            "email" => "email",
+            "password" => "$2y$10$0MiO/AXNP90GfABmowu.kOj.4.g8eVqhAHDXzNjCoy4QIDRrWbhA.",
+            "nomor_induk" => "1230913",
+            "role_id" => cekrole("editingteacher"),
+            "spesifc_role" => sitakols_role("editingteacher"),
+        ]);
+
+
         $home = Page::all()->where('category_id', '9')->where('status', 'ACTIVE');
         $content = Page::all()->where('category_id', '8')->where('status', 'ACTIVE');
         $news = Post::where('status','PUBLISHED')->latest()->paginate(5);
@@ -101,7 +149,7 @@ class WebController extends Controller
         $foto = Gallery::all()->where('kategori_guru', $kategori->id);
         $settings = Setting::all();
         $navbar = Navbar::all()->where('status', 'Active');
-        
+
         return view('fotoguru', compact('navbar', 'foto', 'settings', 'kategori'));
     }
     public function kurikulumguru()
@@ -123,11 +171,11 @@ class WebController extends Controller
         $settings = Setting::all();
         $struktur = Page::where('id', '17')->get(['body', 'title']);
         $kompetensi = Page::where('id', '16')->get(['body', 'title']);
-        $fotoguru = Kategori::all();    
+        $fotoguru = Kategori::all();
         $cardkurikulum = Page::where('id', '22')->orWhere('id', '23')->orWhere('id', '24')->get();
         return view('kurikulum', compact('settings', 'struktur', 'kompetensi', 'fotoguru', 'cardkurikulum'));
     }
-    
+
     public function bkk()
     {
         $settings = Setting::all();
@@ -154,7 +202,7 @@ class WebController extends Controller
         return view('kesiswaanmenu', compact('settings', 'category'));
     }
 
-    
+
     public function sarpras()
     {
         $content = ContentSarpra::all();
