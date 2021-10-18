@@ -99,7 +99,7 @@
         <section id="why-us" class="why-us bg-dark">
             <div class="container" data-aos="fade-up">
                 <div class="text-center">
-                    <a class="btn btn-outline-light pe-5 ps-5" style="border-radius: 50px">Virtual
+                    <a class="btn btn-outline-light text-light pe-5 ps-5" style="border-radius: 50px">Virtual
                         Tour SMK Taruna Bhakti</a>
                 </div>
                 @foreach ($settings as $setting)
@@ -118,7 +118,7 @@
         <section id="counts" class="counts section-bg" style="background: #e39b0d">
             <div class="container">
                 <div class="text-center">
-                    <a class="btn btn-outline-light pe-5 ps-5" style="border-radius: 50px">Artikel dan Info
+                    <a class="btn btn-outline-light text-light pe-5 ps-5" style="border-radius: 50px">Artikel dan Info
                         Sekolah</a>
                 </div>
             </div>

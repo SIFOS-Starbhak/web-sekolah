@@ -59,19 +59,6 @@ Route::get('/artikel', function () {
     $article = App\Models\Post::where('status', 'PUBLISHED')->get();
     return view('artikel', compact('settings', 'article'));
 });
-<<<<<<< HEAD
-// Route::get('/profile', function () {
-//     $settings = App\Models\Setting::all();
-//     App\Models\Bgcontent::all();
-//     $homefooters = App\Models\Homefooter::all();
-//     return view('profile', compact('settings','homefooters'));
-// });
-
-Route::get('/kurikulum', 'WebController@kurikulum');
-Route::get('/bkk', 'WebController@bkk');
-Route::get('/bkk/{bkk:slug}', 'WebController@bkkmenu');
-=======
->>>>>>> c5e2aaa9ca2f204c1425a61bfd0c94d5c140055e
 
 Route::get('/kontakkami', function () {
     $settings = App\Models\Setting::all();
