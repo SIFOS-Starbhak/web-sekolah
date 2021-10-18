@@ -35,9 +35,9 @@ class WebController extends Controller
         $posts = Post::all()->where('status','PUBLISHED');
         $settings = Setting::all();
         $partners = Partner::all();
-        // $backgrounds = Background::all();
+        $backgrounds = Background::all();
         $navbar = Navbar::all()->where('status', 'Active');
-        return view('home', compact('navbar', 'navbar', 'posts', 'content', 'news', 'settings', 'article','partners', 'home'));
+        return view('home', compact('navbar','backgrounds', 'navbar', 'posts', 'content', 'news', 'settings', 'article','partners', 'home'));
     }
 
     public function profiletb()
