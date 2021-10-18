@@ -22,6 +22,7 @@ use App\Models\Content;
 use App\Models\Image;
 use App\Models\Video;
 use App\Models\Background;
+use App\Models\Role;
 
 class WebController extends Controller
 {
@@ -104,7 +105,7 @@ class WebController extends Controller
         $foto = Gallery::all()->where('kategori_guru', $kategori->id);
         $settings = Setting::all();
         $navbar = Navbar::all()->where('status', 'Active');
-        
+
         return view('fotoguru', compact('navbar', 'foto', 'settings', 'kategori'));
     }
     public function kurikulumguru()
@@ -127,11 +128,11 @@ class WebController extends Controller
         $settings = Setting::all();
         $struktur = Page::where('id', '17')->get(['body', 'title']);
         $kompetensi = Page::where('id', '16')->get(['body', 'title']);
-        $fotoguru = Kategori::all();    
+        $fotoguru = Kategori::all();
         $cardkurikulum = Page::where('id', '22')->orWhere('id', '23')->orWhere('id', '24')->get();
         return view('kurikulum', compact('settings', 'struktur', 'kompetensi', 'fotoguru', 'cardkurikulum'));
     }
-    
+
     public function bkk()
     {
         $settings = Setting::all();
@@ -158,7 +159,7 @@ class WebController extends Controller
         return view('kesiswaanmenu', compact('settings', 'category'));
     }
 
-    
+
     public function sarpras()
     {
         $content = ContentSarpra::all();

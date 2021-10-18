@@ -4078,7 +4078,7 @@ document.addEventListener("DOMContentLoaded", function () {
       e.preventDefault();
       var data = new FormData();
       data.append('token', 'token-post');
-      axios__WEBPACK_IMPORTED_MODULE_1___default().post("http://localhost/Moodle-starbhak/webservice/rest/costom-rest.php", data, {
+      axios__WEBPACK_IMPORTED_MODULE_1___default().post("http://localhost/moddle/moodle/webservice/rest/costom-rest.php", data, {
         withCredentials: true,
         crossDomain: true
       }).then( /*#__PURE__*/function () {
@@ -4089,14 +4089,12 @@ document.addEventListener("DOMContentLoaded", function () {
             while (1) {
               switch (_context.prev = _context.next) {
                 case 0:
-                  console.log(res.data);
-
                   if (!res.data.user) {
-                    _context.next = 17;
+                    _context.next = 16;
                     break;
                   }
 
-                  _context.next = 4;
+                  _context.next = 3;
                   return axios__WEBPACK_IMPORTED_MODULE_1___default().post("http://localhost:8000/api/user").then(function (res) {
                     if (res.data) {
                       // console.log(res.data)
@@ -4104,15 +4102,15 @@ document.addEventListener("DOMContentLoaded", function () {
                     }
                   });
 
-                case 4:
+                case 3:
                   _data = _context.sent;
-                  console.log(_data); // idk how to nested foreach loop so i use for loop
+                  console.log(res.data); // idk how to nested foreach loop so i use for loop
 
                   _i = 0, _Object$values = Object.values(res.data.user);
 
-                case 7:
+                case 6:
                   if (!(_i < _Object$values.length)) {
-                    _context.next = 17;
+                    _context.next = 16;
                     break;
                   }
 
@@ -4128,23 +4126,23 @@ document.addEventListener("DOMContentLoaded", function () {
                   }
 
                   if (bool) {
-                    _context.next = 14;
+                    _context.next = 13;
                     break;
                   }
 
-                  _context.next = 14;
+                  _context.next = 13;
                   return axios__WEBPACK_IMPORTED_MODULE_1___default().post('http://localhost:8000/api/user/create', resValue).then(function (response) {
                     return console.log(response.data);
                   })["catch"](function (err) {
                     return console.log(err);
                   });
 
-                case 14:
+                case 13:
                   _i++;
-                  _context.next = 7;
+                  _context.next = 6;
                   break;
 
-                case 17:
+                case 16:
                 case "end":
                   return _context.stop();
               }

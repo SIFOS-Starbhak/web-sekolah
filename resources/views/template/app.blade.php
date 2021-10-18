@@ -223,8 +223,13 @@
                     <img src="{{ asset('storage/' . $bg->image) }}" class="d-block" alt="..." width="100%"
                         style="height: 600px;">
                     <div class="carousel-caption d-none d-md-block">
-                        <h1>{{ $bg->heading }}</h1>
-                        <h2>{{ $bg->subheading }}</h2>
+                        @foreach ($settings as $item)
+                            @if ($item->display_name == 'Heading')
+                                <h1>{!! $item->value !!}</h1>
+                            @elseif( $item->display_name == 'Sub Heading' )
+                                <h2>{{ $item->value }}</h2>
+                            @endif
+                        @endforeach
                         <a href="/profile" class="btn btn-outline-light mt-4"
                             style="padding: 10px 30px 10px 30px; border-radius: 50px">Profile</a>
                     </div>
@@ -244,14 +249,18 @@
     </div>
     {{-- <section id="hero" class="d-flex justify-content-center align-items-center">
         <div class="container position-relative" style="margin-bottom: 10%;" data-aos="zoom-in" data-aos-delay="100">
-            @foreach ($settings as $item)
-                @if ($item->display_name == 'Heading')
+            @foreach ($backgrounds as $key => $bg)
+            <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
+                <img src="{{ asset('storage/' . $bg->image) }}" class="d-block" alt="..." width="100%"
+                        style="height: 600px;object-fit: cover">
 
-                    <h1>{!! $item->value !!}</h1>
-                @elseif( $item->display_name == 'Sub Heading' )
-                    <h2>{{ $item->value }}</h2>
-                @endif
-            @endforeach
+ @foreach ($settings as $item)
+                            @if ($item->display_name == 'Heading')
+                                <h1>{!! $item->value !!}</h1>
+                            @elseif( $item->display_name == 'Sub Heading' )
+                                <h2>{{ $item->value }}</h2>
+                            @endif
+                        @endforeach
             <a href="/profile" class="btn btn-outline-light mt-4"
                 style="padding: 10px 30px 10px 30px; border-radius: 50px">Profile</a>
 
