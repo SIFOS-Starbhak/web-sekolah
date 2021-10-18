@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -33,18 +31,18 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-6 px-0 d-none d-sm-block">
-                    <img src="{{ asset('img/bg-tb.jpg') }}" alt="Login image" class="w-100 vh-100"
-                        style="object-fit: cover; object-position: left;" id="banner-tb">
-                    <img src="{{ asset('img/bg-tb1.jpg') }}" alt="Login image" class="w-100 vh-100 d-none"
-                        style="object-fit: cover; object-position: left;" id="banner-tb1">
+                    <img src="{{ asset('img/bg-tb.jpg') }}" alt="Login image" class="w-100 h-100 min-vh-100"
+                        style="object-fit: cover;" id="banner-tb">
+                    {{-- <img src="{{ asset('img/bg-tb1.jpg') }}" alt="Login image" class="w-100 vh-100 d-none"
+                        style="object-fit: cover; object-position: left;" id="banner-tb1"> --}}
                 </div>
                 <div class="col-sm-6 text-black">
                     <div class="px-5 ms-xl-4 me-3 pt-5 mt-xl-4">
                         <img src="{{ asset('img/logo-starbhak.png') }}" alt="logo" style="width: 100px" id="log-tb">
                     </div>
-                    <div class="d-flex align-items-center h-custom-2 px-5 ms-xl-4 mt-5 pt-5 pt-xl-0 mt-xl-n5">
+                    <div class="d-grid align-items-center h-custom-2 px-5 ms-xl-4 mt-5 pt-5 pt-xl-0 mt-xl-n5">
+                        <span id="info"></span>
                         <form id="frmlogin" style="width: 23rem;" method="POST" onsubmit="event.preventDefault();">
-                        <form style="width: 23rem;" method="POST" action="{{ route('login') }}" novalidate="">
                             @csrf
                             <h3 class="fw-bold mb-3 pb-3" style="letter-spacing: 1px;">Log in</h3>
                             <div class="form-outline mb-4">
@@ -59,7 +57,7 @@
                             <div class="pt-1 mb-4">
                                 <button class="btn btn-primary btn-lg btn-block" type="submit">Login</button>
                             </div>
-                             {{-- <p class="small mb-5 pb-lg-2" id="fp"><a class="text-muted" href="">Forgot password?</a> --}}
+                            {{-- <p class="small mb-5 pb-lg-2" id="fp"><a class="text-muted" href="">Forgot password?</a> --}}
                             </p>
                         </form>
                     </div>

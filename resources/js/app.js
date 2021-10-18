@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const user = Object.fromEntries(frmData);
 
             axios
-            // buat ip public
+                // buat ip public
                 .post(`/api/login`, user)
                 // .post(`http://117.102.67.70:8000/api/login`, user)
                 .then((res) => {
@@ -44,12 +44,49 @@ document.addEventListener("DOMContentLoaded", () => {
                     }
                 });
         });
+    } else if (document.getElementById("syncData")) {
+        document.getElementById("syncData").addEventListener("click", (e) => {
+            console.log("clicked")
+            e.preventDefault();
+            var data = new FormData();
+            data.append('token', 'token-post');
+            axios.post("http://localhost/Moodle-starbhak/webservice/rest/costom-rest.php", data, {
+                withCredentials: true,
+                crossDomain: true
+            }).then(async (res) => {
+                console.log(res.data);
+                if (res.data.user) {
+                    const data = await axios.post(`http://localhost:8000/api/user`).then(res => {
+                        if (res.data) {
+                            // console.log(res.data)
+                            return res.data
+                        }
+                    })
+
+                    console.log(data)
+                    // idk how to nested foreach loop so i use for loop
+
+                    for (const resValue of Object.values(res.data.user)) {
+                        let bool = false
+                        for (const dataValue of Object.values(data)) {
+                            if (resValue.username === dataValue.nomor_induk || isNaN(resValue.username)) {
+                                bool = true
+                            }
+                        }
+                        if (!bool) {
+                            await axios.post('http://localhost:8000/api/user/create', resValue).then(response => console.log(response.data)).catch(err => console.log(err))
+                        }
+                        // console.table(key,value);
+                    }
+                }
+            }).catch(err => console.log(err));
+        });
     } else {
         document.getElementById("frmlogout").addEventListener("click", (e) => {
-            e.preventDefault();
+            e.preventDefault(); 
             axios
-            // buat ip public
-              .post(`/api/logout`)
+                // buat ip public
+                .post(`/api/logout`)
                 // .post(`http://117.102.67.70:8000/api/logout`)
                 .then((res) => {
                     console.log(res);

@@ -699,10 +699,6 @@ h6 {
     border: 2px solid #2689c9;
 }
 
-#hero {
-    background-attachment: fixed;
-}
-
 @media (max-width: 768px) {
     #hero {
         height: 100vh;
@@ -1872,4 +1868,33 @@ section {
     color: white;
     font-size: 35px;
     cursor: pointer;
+}
+
+#wrapper #trailer {
+    position: absolute;
+    z-index: 3;
+    margin-top: 55px;
+    width: 987px;
+    height: 620px;
+    background-color: #000;
+    margin-right: auto;
+    margin-bottom: 0px;
+    margin-left: auto;
+    border: 1px solid #009;
+}
+
+#wrapper #trailer #close {
+    position: absolute;
+    z-index: 2;
+    top: 20px;
+    right: 231px;
+    cursor: pointer;
+}
+
+#wrapper #trailer video {
+    margin-top: 0px;
+    margin-right: auto;
+    margin-bottom: 0px;
+    margin-left: auto;
+    border: 1px solid #009;
 }

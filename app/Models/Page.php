@@ -9,8 +9,13 @@ class Page extends Model
 {
     use HasFactory;
 
-    public function category()
+    public function navbar()
     {
-        return $this->belongsTo(Category::class,'id');
+        return $this->belongsTo(Navbar::class,'category_id');
+    }
+
+    public function content()
+    {
+        return $this->hasMany(Content::class,'sub_menu', 'id');
     }
 }

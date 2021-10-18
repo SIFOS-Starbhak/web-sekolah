@@ -20,15 +20,12 @@ header('Access-Control-Allow-Headers: *');
 header('Access-Control-Allow-Credentials: true');
 
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
-
 Route::group([
     'middleware' => 'api',
 ], function ($router) {
     Route::post('/login', [AuthenticatedSessionController::class, 'store']);
-    // Route::post('/register', [AuthenticatedSessionController::class, 'register']);
+    Route::post('/user', [AuthenticatedSessionController::class, 'userData']);
+    Route::post('/user/create', [AuthenticatedSessionController::class, 'userCreate']);
     Route::post('/logout', [AuthenticatedSessionController::class, 'destroy']);
     Route::post('/refresh', [AuthenticatedSessionController::class, 'refresh']);
     Route::get('/me', [AuthenticatedSessionController::class, 'userProfile']);
