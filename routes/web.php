@@ -60,12 +60,9 @@ Route::get('/artikel', function () {
     return view('artikel', compact('settings', 'article'));
 });
 
-Route::get('/{menu:slug}', 'WebController@menucard');
-
-Route::get('/{nav:slug}/{submenu:slug}', 'WebController@submenu');
-
 Route::get('/kontakkami', function () {
     $settings = App\Models\Setting::all();
+    $navbar = App\Models\Navbar::all()->where('status', 'Active');
     return view('kontakkami', compact('settings'));
 });
 Route::post('/registalum/store',[RegistalumController::class,'store'])->name('store');
@@ -78,19 +75,21 @@ Route::get('/kurikulum/{kategori:slug}', 'WebController@fotoguru');
 
 Route::get('/category/{category:slug}', 'WebController@category');
 
-Route::get('/{id}', function ($id) {
+Route::get('/showartikel/{id}', function ($id) {
     // dd($id);
     $articleShow = App\Models\Post::where('slug', $id)->first();
     // dd($articleShow->author_id);
     $author = App\Models\User::where('id', $articleShow->author_id)->first();
     // dd($author);
     $settings = App\Models\Setting::all();
-    return view('showartikel', compact('articleShow', 'settings', 'author'));
+    $navbar = App\Models\Navbar::all()->where('status', 'Active');
+    return view('showartikel', compact('articleShow', 'settings', 'author', 'navbar'));
 })->name('showartikel');
 
     Route::get('/author/{user}', 'WebController@author');
 
     Route::get('/posted/{posted}', 'WebController@posted');
+
     // Manager
     Route::group(['prefix' => 'manager','middleware' => ['jwt.verify', 'auth:api']], function () {
     // Route::get('/Article/index', [ArticleController::class, 'index'])-all>name('article.index');
@@ -134,7 +133,7 @@ Route::group(['prefix' => 'guru', 'middleware' => ['jwt.verify', 'auth:api']], f
         $X_TEI = User::wherehas('kelas', function($query){
             $query->where('kelas','X')->where('jurusan','TEI');
         })->get();
-        
+
         // dd($RPL);
         $XI = User::wherehas('kelas', function($query){
             $query->where('kelas','XI');
@@ -177,7 +176,7 @@ Route::group(['prefix' => 'guru', 'middleware' => ['jwt.verify', 'auth:api']], f
         })->get();
 
 
-        
+
 
         return view('dashboard.dashboard',compact('article','X','XI','XII',
         'X_RPL',
@@ -185,7 +184,7 @@ Route::group(['prefix' => 'guru', 'middleware' => ['jwt.verify', 'auth:api']], f
         'X_MM',
         'X_TKJ',
         'X_TEI',
-        
+
         'XI_RPL',
         'XI_BC',
         'XI_MM',
@@ -211,3 +210,7 @@ Route::group(['prefix' =>'siswa', 'middleware' => ['jwt.verify', 'auth:api']], f
         return view('dashboard.dashboard',compact('article'));
     })->name('dashboard.siswa');
 });
+
+Route::get('/{menu:slug}', 'WebController@menucard');
+
+Route::get('/{nav:slug}/{submenu:slug}', 'WebController@submenu');

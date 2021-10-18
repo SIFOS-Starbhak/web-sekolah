@@ -145,7 +145,7 @@
                                     </h3>
 
                                     <p>{{ $artikel->excerpt }}</p>
-                                    <p><a href="/{{ $artikel->slug }}">Read More ...</a></p>
+                                    <p><a href="/showartikel/{{ $artikel->slug }}">Read More ...</a></p>
                                 </div>
                             </div>
                         </div>

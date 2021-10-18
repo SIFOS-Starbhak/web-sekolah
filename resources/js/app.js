@@ -83,7 +83,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     } else {
         document.getElementById("frmlogout").addEventListener("click", (e) => {
-            e.preventDefault();
+            e.preventDefault(); 
             axios
                 // buat ip public
                 .post(`/api/logout`)
