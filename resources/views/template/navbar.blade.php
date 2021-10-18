@@ -46,7 +46,7 @@
 
     <body>
         <header id="header" class="{{ request()->is('artikel') ? '' : 'fixed-top' }}">
-            <div class="container d-flex align-items-center">
+            <div class="container-fluid d-flex align-items-center">
                 <!-- <img src="assets/img/logotb.png" alt="" style="height: 70px; width: 70px" /> -->
                 @foreach ($settings as $setting)
                     @if ($setting->display_name == 'Site Logo')
@@ -58,25 +58,25 @@
                 <!-- Uncomment below if you prefer to use an image logo -->
                 <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
-                <nav id="navbar" class="navbar order-last order-lg-0" style="margin-left: auto">
-                    <ul>
-                        <li><a href="/kurikulum"
+                <nav id="navbar" class="navbar order-last order-lg-0" style="margin-left: auto;">
+                    <ul >
+                        <li><a style="font-size: small" href="/kurikulum"
                                 class="{{ request()->is('kurikulum*') ? 'active' : '' }}">Kurikulum</a>
                         </li>
-                        <li><a href="/hubin" class="{{ request()->is('hubin*') ? 'active' : '' }}">Hubungan
+                        <li><a style="font-size: small" href="/hubin" class="{{ request()->is('hubin*') ? 'active' : '' }}">Hubungan
                                 Industri</a>
                         </li>
-                        <li><a href="/sarpras" class="{{ request()->is('sarpras*') ? 'active' : '' }}">Sarana Pra
+                        <li><a style="font-size: small" href="/sarpras" class="{{ request()->is('sarpras*') ? 'active' : '' }}">Sarana Pra
                                 Sarana</a></li>
-                        <li><a href="/kesiswaan"
+                        <li><a style="font-size: small" href="/kesiswaan"
                                 class="{{ request()->is('kesiswaan*') ? 'active' : '' }}">Kesiswaan</a>
                         </li>
-                        <li><a href="/bkk" class="{{ request()->is('bkk*') ? 'active' : '' }}">BKK</a></li>
-                        <li><a href="/programkeahlian" class="{{ request()->is('programkeahlian*') ? 'active' : '' }}">Program Keahlian</a></li>
-                        <li><a href="/galery" class="{{ request()->is('galery*') ? 'active' : '' }}">Galery</a></li>
-                        <li><a href="/kontakkami" class="{{ request()->is('kontakkami*') ? 'active' : '' }}">Kontak
+                        <li><a style="font-size: small" href="/bkk" class="{{ request()->is('bkk*') ? 'active' : '' }}">BKK</a></li>
+                        <li><a style="font-size: small" href="/programkeahlian" class="{{ request()->is('programkeahlian*') ? 'active' : '' }}">Program Keahlian</a></li>
+                        <li><a style="font-size: small" href="/galery" class="{{ request()->is('galery*') ? 'active' : '' }}">Galery</a></li>
+                        <li><a style="font-size: small" href="/kontakkami" class="{{ request()->is('kontakkami*') ? 'active' : '' }}">Kontak
                                 Kami</a></li>
-                        <li><a href="{{ route('login') }}" target="_blank" class="btn-get-started active">Login</a>
+                        <li><a style="font-size: small" href="{{ route('login') }}" target="_blank" class="btn-get-started active">Login</a>
                         </li>
                     </ul>
                     <i class="bi bi-list mobile-nav-toggle"></i>

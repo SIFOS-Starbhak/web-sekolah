@@ -51,6 +51,7 @@ Route::get('/artikel', function () {
 
 Route::get('/kurikulum', 'WebController@kurikulum');
 Route::get('/bkk', 'WebController@bkk');
+Route::get('/bkk/{bkk:slug}', 'WebController@bkkmenu');
 
 Route::get('/kontakkami', function () {
     $settings = App\Models\Setting::all();
