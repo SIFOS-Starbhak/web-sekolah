@@ -12,10 +12,11 @@
                         <div class=" container text-white mb-5">
                             <div class="row counters">
                                 <div class="col-md-4 judul">
-                                    <h2 style="color: white;">{{ $artikel->title }}</h2>
+                                    <h2 style="color: white;">{{ Str::words($artikel->title, 5)}}
+                                    </h2>
                                 </div>
                                 <div class="col-md-4">
-                                    <p style="font-weight: 100" class="mt-2 isi">{{ $artikel->excerpt }}</p>
+                                    <p style="font-weight: 100" class="mt-2 isi">{{ Str::words($artikel->excerpt, 25) }}</p>
                                 </div>
                                 <div class="col-md-4 text-center tombol">
                                     <a href="/showartikel/{{ $artikel->slug }}"

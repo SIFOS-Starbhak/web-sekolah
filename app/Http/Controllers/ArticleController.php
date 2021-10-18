@@ -92,6 +92,8 @@ class ArticleController extends Controller
             $description = strip_tags($request->description);
             $str = str_replace('&nbsp;', '', $description);
             $meta_description = html_entity_decode($str);
+            $pieces = explode(" ", $meta_description);
+            $excerpt_10 = implode(" ", array_splice($pieces, 0, 10));
             // $string = str_replace(' ', '', $string);
             $slug = str_replace(' ', '-', $request->title);
             // dd($request,$description,$meta_description,$slug);
@@ -103,7 +105,7 @@ class ArticleController extends Controller
                 'category_id'      => $request->category,
                 'title'            => $request->title,
                 'seo_title'        => $request->seo_title,
-                'excerpt'          => null,
+                'excerpt'          => $excerpt_10,
                 'body'             => $request->description,
                 // 'image'            => $namafile,
                 'slug'             => $slug,
@@ -124,6 +126,8 @@ class ArticleController extends Controller
                 $description = strip_tags($request->description);
                 $str = str_replace('&nbsp;', '', $description);
                 $meta_description = html_entity_decode($str);
+                $pieces = explode(" ", $meta_description);
+                $excerpt_10 = implode(" ", array_splice($pieces, 0, 10));
                 // $string = str_replace(' ', '', $string);
                 $slug = str_replace(' ', '-', $request->title);
                 // dd($request,$description,$meta_description,$slug);
@@ -135,7 +139,7 @@ class ArticleController extends Controller
                     'category_id'      => $request->category,
                     'title'            => $request->title,
                     'seo_title'        => $request->seo_title,
-                    'excerpt'          => null,
+                    'excerpt'          => $excerpt_10,
                     'body'             => $request->description,
                     'image'            => $namafile,
                     'slug'             => $slug,

@@ -8,7 +8,7 @@
             <div class="col">
                 <div class="card profile-widget">
                     <div class="profile-widget-header">
-                        <img alt="image" src="{{ asset('img/avatar/avatar-1.png') }}"
+                        <img alt="image" src="{{ asset(Auth::user()->avatar) }}'"
                             class="rounded-circle profile-widget-picture">
                         <div class="profile-widget-items">
                             <div class="profile-widget-item">
@@ -80,21 +80,21 @@
                 </div> --}}
             </div>
         </div>
-        <div class="col-12 col-sm-6 col-lg-3">
+        {{-- <div class="col-12 col-sm-6 col-lg-3">
             <div class="card">
                 <div class="card-body text-center">
                     <div class="mb-2">Info Message</div>
                     <button class="btn btn-primary" id="toastr-1">Launch</button>
                 </div>
             </div>
-        </div>
+        </div> --}}
 
     @elseif (Route::is('dashboard.guru'))
         <div class="row">
             <div class="col">
                 <div class="card profile-widget">
                     <div class="profile-widget-header">
-                        <img alt="image" src="{{ asset('img/avatar/avatar-1.png') }}"
+                        <img alt="image" src="{{ asset(/Auth::user()->avatar) }}'"
                             class="rounded-circle profile-widget-picture">
                         <div class="profile-widget-items">
                             <div class="profile-widget-item">
@@ -1193,7 +1193,7 @@
             <div class="col">
                 <div class="card card-info profile-widget">
                     <div class="profile-widget-header">
-                        <img alt="image" src="{{ asset('img/avatar/avatar-1.png') }}"
+                        <img alt="image" src="{{ asset(Auth::user()->avatar) }}"
                             class="rounded-circle profile-widget-picture">
                         <div class="profile-widget-items">
                             <div class="profile-widget-item">
