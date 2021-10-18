@@ -183,10 +183,10 @@ class WebController extends Controller
         return view('bkk', compact('settings','cardbkk'));
     }
 
-    public function bkk_menu(Page $category)
+    public function bkkmenu(Page $bkk)
     {
         $settings = Setting::all();
-        return view('bkkmenu', compact('settings','category'));
+        return view('bkkmenu', compact('settings','bkk'));
     }
 
     public function kesiswaan()

@@ -17,7 +17,11 @@
         {{-- <p>Posted on <a href="">August , 2016</a> | by <a href="">smktaruanbhakti</a></p> --}}
         <br>
         <div class="text-center">
-            <img src="{{ asset('storage/' . $articleShow->image) }}" alt="" width="70%">
+            @if (file_exists(public_path('article-img/'.$articleShow->image)))
+            <img src="{{ asset('article-img/' . $articleShow->image) }}" class="img-fluid" width="70%" />
+            @else 
+            <img src="{{ asset('storage/' . $articleShow->image) }}" class="img-fluid" width="70%" />
+            @endif
         </div>
         <br>
         <div>
