@@ -9,6 +9,8 @@
     <meta content="" name="description" />
     <meta content="" name="keywords" />
 
+
+
     <!-- Favicons -->
     <link href="{{ asset('favicon.ico') }}" rel="icon" />
 
@@ -179,7 +181,7 @@
 </head>
 
 <body>
-    <header id="header" class="{{ request()->is('artikel') ? '' : 'fixed-top' }}">
+    <header id="header" class="{{ request()->is('artikel') ? '' : 'sticky-top' }}">
         <div class="container d-flex align-items-center">
             <!-- <img src="assets/img/logotb.png" alt="" style="height: 70px; width: 70px" /> -->
             @foreach ($settings as $setting)
@@ -192,14 +194,14 @@
             <!-- Uncomment below if you prefer to use an image logo -->
             <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
-            <nav id="navbar" class="navbar order-last order-lg-0" style="margin-left: auto">
+            <nav id="navbar" class="navbar order-last order-lg-0">
                 <ul>
                     {{-- <li><a href="/" class="{{ request()->is('/*') ? 'active' : '' }}">Home</a></li> --}}
                     @foreach ($navbar as $item)
                         {{-- @if (!$item->name == 'Profile' || !$item->name == 'Home' || !$item->name == 'News Home') --}}
-                            <li><a href="/{{ $item->slug }}"
-                                    class="{{ request()->is($item->slug . '*') ? 'active' : '' }}">{{ $item->name }}</a>
-                            </li>
+                        <li><a href="/{{ $item->slug }}"
+                                class="{{ request()->is($item->slug . '*') ? 'active' : '' }}">{{ $item->name }}</a>
+                        </li>
                         {{-- @endif --}}
                     @endforeach
                     <li><a href="/kontakkami" class="{{ request()->is('kontakkami*') ? 'active' : '' }}">Kontak
@@ -212,7 +214,35 @@
             <!-- .navbar -->
         </div>
     </header>
-    <section id="hero" class="d-flex justify-content-center align-items-center">
+
+    <div id="carouselExampleIndicators2" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            @foreach ($backgrounds as $key => $bg)
+                <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
+
+                    <img src="{{ asset('storage/' . $bg->image) }}" class="d-block" alt="..." width="100%"
+                        style="height: 600px;">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h1>{{ $bg->heading }}</h1>
+                        <h2>{{ $bg->subheading }}</h2>
+                        <a href="/profile" class="btn btn-outline-light mt-4"
+                            style="padding: 10px 30px 10px 30px; border-radius: 50px">Profile</a>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators2"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators2"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+    {{-- <section id="hero" class="d-flex justify-content-center align-items-center">
         <div class="container position-relative" style="margin-bottom: 10%;" data-aos="zoom-in" data-aos-delay="100">
             @foreach ($settings as $item)
                 @if ($item->display_name == 'Heading')
@@ -226,7 +256,7 @@
                 style="padding: 10px 30px 10px 30px; border-radius: 50px">Profile</a>
 
         </div>
-    </section>
+    </section> --}}
 
     @yield('main')
 
@@ -281,34 +311,7 @@
 
     <!-- Template Main JS File -->
     <script src="{{ asset('template/assets/js/main.js') }}"></script>
-    <script>
-        //default settings:
-        $('.owl-carousel').owlCarousel({
-            nav: false,
-            loop: true,
-            margin: 30,
-            dots: true,
-            autoplay: true,
-            autoplaySpeed: 2200,
-            autoplayTimeout: 2200,
-            autoplayHoverPause: true,
-            slideTransition: 'linear',
-            responsive: {
-                0: {
-                    items: 1
-                },
-                576: {
-                    items: 2
-                },
-                768: {
-                    items: 3
-                },
-                992: {
-                    items: 4
-                }
-            }
-        })
-    </script>
+
 </body>
 
 </html>

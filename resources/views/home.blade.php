@@ -6,7 +6,7 @@
         <!-- Carousel -->
 
         <div id="carouselExampleIndicators" class="carousel slide carosel" data-bs-ride="carousel">
-            <div class="carousel-inner pt-4">
+            <div class="carousel-inner pt-4" style="height: auto">
                 @foreach ($news as $key => $artikel)
                     <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
                         <div class=" container text-white mb-5">
