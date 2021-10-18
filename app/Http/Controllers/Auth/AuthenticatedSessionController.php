@@ -3,12 +3,15 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Kela;
 use App\Models\User;
 use Firebase\JWT\JWT;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use App\Models\Role;
+use Str;
 
 class AuthenticatedSessionController extends Controller
 {
@@ -136,7 +139,6 @@ class AuthenticatedSessionController extends Controller
 
         $token = JWT::encode($data, "1342423424324324234", 'HS256');
         return response()->json(['token' => $token], 200)->header("Access-Control-Allow-Origin", "*");
-
     }
     /**
      * Get the User.
@@ -155,7 +157,49 @@ class AuthenticatedSessionController extends Controller
 
     public function userCreate(Request $request)
     {
-        // TODO: Bsk kerjain create datanya
-        return response()->json([$request->all(), 'ispassword' => Hash::needsRehash($request->password)], 201);
+
+        function cekrole($role)
+        {
+            switch ($role) {
+                case 'manager':
+                    $roles = Role::where("name", "manager")->first();
+                    return $roles->id;
+                    break;
+                case 'student':
+                    $roles = Role::where("name", "siswa")->first();
+                    return $roles->id;
+                case 'teacher':
+                case 'coursecreator':
+                case 'editingteacher':
+                    $roles = Role::where("name", "guru")->first();
+                    return $roles->id;
+            }
+        }
+
+        function sitakols_role($role)
+        {
+            switch ($role) {
+                case 'manager':
+                    return "kaprog";
+                    break;
+                case 'student':
+                    return "siswa";
+                    break;
+                case 'teacher':
+                case 'coursecreator':
+                case 'editingteacher':
+                    return "guru";
+                    break;
+            }
+        }
+        User::create([
+            "name" => $request->firstname,
+            "email" => $request->email,
+            "password" => $request->password,
+            "nomor_induk" => $request->username,
+            "role_id" => cekrole($request->role),
+            "spesifc_role" => sitakols_role($request->role),
+        ]);
+        return response()->json(["success" => "Succesfully"], 201);
     }
 }

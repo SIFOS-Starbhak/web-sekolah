@@ -7,7 +7,11 @@
             <h3><b><a href="/{{ $item->slug }}">{{ $item->title }}</a></b></h3>
             <hr>
             <div class="text-center">
-                <img src="{{ asset('storage/' . $item->image) }}" alt="" width="70%">
+                @if (file_exists(public_path('article-img/'.$item->image)))
+                <img src="{{ asset('article-img/' . $item->image) }}" width="70%" />
+                @else 
+                <img src="{{ asset('storage/' . $item->image) }}" width="70%" />
+                @endif
             </div>
             <br>
             <p>by
@@ -17,7 +21,7 @@
             {{-- <p>Posted on <a href="">August , 2016</a> | by <a href="">smktaruanbhakti</a></p> --}}
             <br>
             <div>
-                {!! $item->excerpt !!} <a href="/{{ $item->slug }}">Read More ...</a>
+                {!! $item->excerpt !!} <a href="/showartikel/{{ $item->slug }}">Read More ...</a>
             </div>
             <br>
         @endforeach

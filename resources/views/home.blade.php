@@ -6,16 +6,17 @@
         <!-- Carousel -->
 
         <div id="carouselExampleIndicators" class="carousel slide carosel" data-bs-ride="carousel">
-            <div class="carousel-inner pt-4">
+            <div class="carousel-inner pt-4" style="height: auto">
                 @foreach ($news as $key => $artikel)
                     <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
                         <div class=" container text-white mb-5">
                             <div class="row counters">
                                 <div class="col-md-4 judul">
-                                    <h2 style="color: white;">{{ $artikel->title }}</h2>
+                                    <h2 style="color: white;">{{ Str::words($artikel->title, 5)}}
+                                    </h2>
                                 </div>
                                 <div class="col-md-4">
-                                    <p style="font-weight: 100" class="mt-2 isi">{{ $artikel->excerpt }}</p>
+                                    <p style="font-weight: 100" class="mt-2 isi">{{ Str::words($artikel->excerpt, 25) }}</p>
                                 </div>
                                 <div class="col-md-4 text-center tombol">
                                     <a href="/showartikel/{{ $artikel->slug }}"
@@ -40,8 +41,7 @@
         <!-- End Counts Section -->
 
         <!-- ======= About Section ======= -->
-        <section id="about" class="about"
-            style="background-color: #d7efff; font-family: 'Poppins', sans-serif">
+        <section id="about" class="about" style="background-color: #d7efff; font-family: 'Poppins', sans-serif">
             <div class="container" data-aos="fade-up">
                 <div class="row">
                     @foreach ($content as $item)
@@ -83,8 +83,7 @@
         </section>
 
 
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content" style="width: 100%">
                     @foreach ($home as $img)
@@ -99,7 +98,7 @@
         <section id="why-us" class="why-us bg-dark">
             <div class="container" data-aos="fade-up">
                 <div class="text-center">
-                    <a class="btn btn-outline-light pe-5 ps-5" style="border-radius: 50px">Virtual
+                    <a class="btn btn-outline-light text-light pe-5 ps-5" style="border-radius: 50px">Virtual
                         Tour SMK Taruna Bhakti</a>
                 </div>
                 @foreach ($settings as $setting)
@@ -118,7 +117,7 @@
         <section id="counts" class="counts section-bg" style="background: #e39b0d">
             <div class="container">
                 <div class="text-center">
-                    <a class="btn btn-outline-light pe-5 ps-5" style="border-radius: 50px">Artikel dan Info
+                    <a class="btn btn-outline-light text-light pe-5 ps-5" style="border-radius: 50px">Artikel dan Info
                         Sekolah</a>
                 </div>
             </div>
@@ -131,8 +130,13 @@
                     @forelse ($article as $artikel)
                         <div class="col-lg-4 mb-4">
                             <div class="course-item shadow">
-                                <img src="{{ asset('storage/' . $artikel->image) }}" class="img-fluid" alt="..."
-                                    style="width:100%;height:250px;" />
+                                @if (file_exists(public_path('article-img/' . $artikel->image)))
+                                    <img src="{{ 'article-img/' . $artikel->image }}" class="img-fluid" alt="..."
+                                        style="width:100%;height:250px;" />
+                                @else
+                                    <img src="{{ asset('storage/' . $artikel->image) }}" class="img-fluid" alt="..."
+                                        style="width:100%;height:250px;" />
+                                @endif
                                 <div class="course-content">
                                     <div class="d-flex justify-content-between mb-3">
                                         <h4>
@@ -163,8 +167,8 @@
             @if ($key == 6)
                 <div class="container">
                     <div class="text-center">
-                        <a href="/artikel" class="btn btn-outline-primary pe-5 ps-5 mb-5"
-                            style="border-radius: 50px">Load More
+                        <a href="/artikel" class="btn btn-outline-primary pe-5 ps-5 mb-5" style="border-radius: 50px">Load
+                            More
                             ...</a>
                     </div>
                 </div>
@@ -176,9 +180,9 @@
                 <div class="row counters kebawah owl-carousel">
                     @foreach ($partners as $partner)
                         <div class="col-md-3 mt-2 partner"">
-                            <a href=" {{ $partner->link_perusahaan }}">
+                                    <a href=" {{ $partner->link_perusahaan }}">
                             <img title="{{ $partner->nama_perusahaan }}"
-                                src="{{ asset('storage/' . $partner->logo_perusahaan) }}" alt=""/>
+                                src="{{ asset('storage/' . $partner->logo_perusahaan) }}" alt="" />
                             </a>
                         </div>
                     @endforeach

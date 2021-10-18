@@ -22,7 +22,7 @@
                     @foreach ($image as $key => $kls)
                         <div class="carousel-item {{ $loop->iteration == 1 ? 'active' : '' }}">
                             <img src="{{ asset('storage/' . $kls->photo) }}" class="d-block img-fluid mx-auto" alt="..."
-                                width="50%">
+                                width="25%">
                         </div>
                     @endforeach
                 </div>
@@ -38,18 +38,42 @@
     </div> --}}
             <div id="trailer">
                 <div id="video">
-                    <video controls autoplay="autoplay" width="600"
-                        onclick="if(/Android/.test(navigator.userAgent))this.play();">
+                   <div class="row justify-content-center">
                         @foreach ($video as $item)
-                            <source src="{{ asset('storage/' . $item->video) }}" type="video/mp4" />
-                        @endforeach
-                        <embed src="video/flashfox.swf" width="600" height="480"
-                            flashVars="autoplay=true&amp;controls=true&amp;loop=true&amp;src=trailer.mp4"
-                            allowFullScreen="true" wmode="transparent" type="application/x-shockwave-flash"
-                            pluginspage="http://www.adobe.com/go/getflashplayer_en" />
-                    </video>
+                    <div class="col-4 mt-4 text-center">
+                        <video controls width="100%"
+                        onclick="if(/Android/.test(navigator.userAgent))this.play();">
+                            <source src="{{ asset('storage/' . $item->video) }}"   type="video/mp4" />
+                                <embed src="video/flashfox.swf" 
+                                flashVars="autoplay=true&amp;controls=true&amp;loop=true&amp;src=trailer.mp4"
+                                allowFullScreen="true" wmode="transparent" type="application/x-shockwave-flash"
+                                pluginspage="http://www.adobe.com/go/getflashplayer_en" />
+                            </video>
+                            <h5 class="fw-bold">{{ $item->title }}</h5>
+                    </div>
+                            @endforeach
+                   </div>
                 </div>
             </div>
         @endif
     </div>
+    
 @endsection
+<script>
+$('.owl-carousel').owlCarousel({
+    loop:true,
+    margin:10,
+    nav:true,
+    responsive:{
+        0:{
+            items:1
+        },
+        600:{
+            items:3
+        },
+        1000:{
+            items:5
+        }
+    }
+})
+</script>

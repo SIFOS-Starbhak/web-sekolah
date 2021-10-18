@@ -21,6 +21,8 @@ use App\Models\Navbar;
 use App\Models\Content;
 use App\Models\Image;
 use App\Models\Video;
+use App\Models\Background;
+use App\Models\Role;
 
 class WebController extends Controller
 {
@@ -33,8 +35,9 @@ class WebController extends Controller
         $posts = Post::all()->where('status','PUBLISHED');
         $settings = Setting::all();
         $partners = Partner::all();
+        $backgrounds = Background::all();
         $navbar = Navbar::all()->where('status', 'Active');
-        return view('home', compact('navbar', 'navbar', 'posts', 'content', 'news', 'settings', 'article','partners', 'home'));
+        return view('home', compact('navbar','backgrounds', 'navbar', 'posts', 'content', 'news', 'settings', 'article','partners', 'home'));
     }
 
     public function profiletb()
@@ -50,7 +53,8 @@ class WebController extends Controller
         $settings = Setting::all();
         $cardgallery = CategoryNews::all();
         $navbar = Navbar::all()->where('status', 'Active');
-        return view ('gallery', compact('settings', 'cardgallery'));
+        $backgrounds = Background::all();
+        return view ('gallery', compact('settings', 'cardgallery', 'backgrounds'));
     }
 
     public function gallery21()
@@ -101,7 +105,7 @@ class WebController extends Controller
         $foto = Gallery::all()->where('kategori_guru', $kategori->id);
         $settings = Setting::all();
         $navbar = Navbar::all()->where('status', 'Active');
-        
+
         return view('fotoguru', compact('navbar', 'foto', 'settings', 'kategori'));
     }
     public function kurikulumguru()
@@ -109,7 +113,8 @@ class WebController extends Controller
         $settings = Setting::all();
         $fotoguru = Kategori::all();
         $navbar = Navbar::all()->where('status', 'Active');
-        return view('kurikulum', compact('navbar', 'settings', 'fotoguru'));
+        $backgrounds = Background::all();
+        return view('kurikulum', compact('navbar', 'settings', 'fotoguru', 'backgrounds'));
     }
     public function kurikulumsmktb()
     {
@@ -123,11 +128,11 @@ class WebController extends Controller
         $settings = Setting::all();
         $struktur = Page::where('id', '17')->get(['body', 'title']);
         $kompetensi = Page::where('id', '16')->get(['body', 'title']);
-        $fotoguru = Kategori::all();    
+        $fotoguru = Kategori::all();
         $cardkurikulum = Page::where('id', '22')->orWhere('id', '23')->orWhere('id', '24')->get();
         return view('kurikulum', compact('settings', 'struktur', 'kompetensi', 'fotoguru', 'cardkurikulum'));
     }
-    
+
     public function bkk()
     {
         $settings = Setting::all();
@@ -135,10 +140,10 @@ class WebController extends Controller
         return view('bkk', compact('settings','cardbkk'));
     }
 
-    public function bkk_menu(Page $category)
+    public function bkkmenu(Page $bkk)
     {
         $settings = Setting::all();
-        return view('bkkmenu', compact('settings','category'));
+        return view('bkkmenu', compact('settings','bkk'));
     }
 
     public function kesiswaan()
@@ -154,7 +159,7 @@ class WebController extends Controller
         return view('kesiswaanmenu', compact('settings', 'category'));
     }
 
-    
+
     public function sarpras()
     {
         $content = ContentSarpra::all();
@@ -169,8 +174,9 @@ class WebController extends Controller
         $bc = GallerySarpra::all()->where('content_id', '7');
         $tei = GallerySarpra::all()->where('content_id', '8');
         $gallery = GallerySarpra::all();
-                $navbar = Navbar::all()->where('status', 'Active');
-        return view('sarpras', compact('navbar', 'tei', 'bc', 'rpl', 'mm', 'tkj', 'perpus', 'kelas', 'settings', 'content', 'gallery', 'samsung', 'bahasa'));
+        $navbar = Navbar::all()->where('status', 'Active');
+        $backgrounds = Background::all();
+        return view('sarpras', compact('backgrounds', 'navbar', 'tei', 'bc', 'rpl', 'mm', 'tkj', 'perpus', 'kelas', 'settings', 'content', 'gallery', 'samsung', 'bahasa'));
     }
     public function sarprassekolah()
     {
@@ -193,21 +199,24 @@ class WebController extends Controller
     public function registalum()
     {
         $settings = Setting::all();
-                $navbar = Navbar::all()->where('status', 'Active');
-        return view('registalum', compact('navbar', 'settings'));
+        $navbar = Navbar::all()->where('status', 'Active');
+        $backgrounds = Background::all();
+        return view('registalum', compact('navbar', 'settings', 'backgrounds'));
     }
     public function category(Category $category)
     {
         $settings = Setting::all();
         $navbar = Navbar::all()->where('status', 'Active');
-        return view('showcategory', compact('navbar', 'settings', 'category'), ['posts' => $category->post]);
+        $backgrounds = Background::all();
+        return view('showcategory', compact('navbar', 'settings', 'category', 'backgrounds'), ['posts' => $category->post]);
     }
 
     public function author(User $user)
     {
         $settings = Setting::all();
-                $navbar = Navbar::all()->where('status', 'Active');
-        return view('showauthor', compact('navbar', 'settings', 'user'), ['posts' => $user->post]);
+        $navbar = Navbar::all()->where('status', 'Active');
+        $backgrounds = Background::all();
+        return view('showauthor', compact('navbar', 'settings', 'user', 'backgrounds'), ['posts' => $user->post]);
     }
 
     public function menucard(Navbar $menu)
@@ -215,7 +224,8 @@ class WebController extends Controller
         $page = Page::all()->where('category_id', $menu->id)->where('status', 'ACTIVE');
         $settings = Setting::all();
         $navbar = Navbar::all()->where('status', 'Active');
-        return view('template.menu', compact('menu', 'page', 'settings', 'navbar'));
+        $backgrounds = Background::all();
+        return view('template.menu', compact('menu', 'page', 'settings', 'navbar', 'backgrounds'));
     }
 
     public function submenu($nav, Page $submenu)
@@ -223,7 +233,8 @@ class WebController extends Controller
         $settings = Setting::all();
         $navbar = Navbar::all()->where('status', 'Active');
         $contents = Content::all()->where('sub_menu', $submenu->id);
-        return view('submenu', compact('settings', 'navbar', 'nav', 'contents', 'submenu'));
+        $backgrounds = Background::all();
+        return view('submenu', compact('settings', 'navbar', 'nav', 'contents', 'submenu', 'backgrounds'));
     }
 
     public function galleries(Page $gallery)
@@ -232,7 +243,7 @@ class WebController extends Controller
         $video = Video::all();
         $settings = Setting::all();
         $navbar = Navbar::all()->where('status', 'Active');
-
-        return view('gallery', compact('image', 'video', 'gallery', 'settings', 'navbar'));
+        $backgrounds = Background::all();
+        return view('gallery', compact('image', 'video', 'gallery', 'settings', 'navbar', 'backgrounds'));
     }
 }

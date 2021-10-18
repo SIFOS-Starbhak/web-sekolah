@@ -7,12 +7,12 @@
 
         <section id="popular-courses" class="courses">
             <div class="container" data-aos="fade-up">
-                <div class="d-flex justify-content-center row flex-wrap" data-aos="zoom-in" data-aos-delay="100" >
+                <div class="d-flex justify-content-center row flex-wrap" data-aos="zoom-in" data-aos-delay="100">
                     @foreach ($cardbkk as $fg)
                         <div class="col-lg-4 mb-4" style="width: 300px">
                             <div class="course-item shadow">
                                 <img src="{{ asset('storage/' . $fg->image) }}" class="img-fluid" alt="..."
-                                    style="width:100%;height:250px;" />
+                                    style="width:100%;height:250px; object-fit: cover;" />
                                 <div class="course-content mt-3">
                                     <h3><a href="/bkk/{{ $fg->slug }}">{{ $fg->title }}</a>
                                     </h3>

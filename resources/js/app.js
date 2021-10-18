@@ -14,8 +14,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
             axios
                 // buat ip public
-                .post(`/api/login`, user)
-                // .post(`http://117.102.67.70:8000/api/login`, user)
+                // .post(`/api/login`, user)
+                .post(`http://127.0.0.1:8000/api/login`, user)
                 .then((res) => {
                     console.log(res.data);
                     window.sessionStorage.setItem(
@@ -50,11 +50,11 @@ document.addEventListener("DOMContentLoaded", () => {
             e.preventDefault();
             var data = new FormData();
             data.append('token', 'token-post');
-            axios.post("http://localhost/Moodle-starbhak/webservice/rest/costom-rest.php", data, {
+            axios.post("http://localhost/moddle/moodle/webservice/rest/costom-rest.php", data, {
                 withCredentials: true,
                 crossDomain: true
             }).then(async (res) => {
-                console.log(res.data);
+                // console.log(res.data);
                 if (res.data.user) {
                     const data = await axios.post(`http://localhost:8000/api/user`).then(res => {
                         if (res.data) {
@@ -62,10 +62,9 @@ document.addEventListener("DOMContentLoaded", () => {
                             return res.data
                         }
                     })
+                    console.log(res.data);
 
-                    console.log(data)
                     // idk how to nested foreach loop so i use for loop
-
                     for (const resValue of Object.values(res.data.user)) {
                         let bool = false
                         for (const dataValue of Object.values(data)) {
@@ -83,7 +82,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     } else {
         document.getElementById("frmlogout").addEventListener("click", (e) => {
-            e.preventDefault(); 
+            e.preventDefault();
             axios
                 // buat ip public
                 .post(`/api/logout`)
@@ -127,8 +126,8 @@ document.addEventListener("DOMContentLoaded", () => {
             e.preventDefault();
             console.log("clicked");
             window.location.href =
-                "http://117.102.67.70:8000/authentication/" +
-                //"http://127.0.0.1:8001/authentication/" +
+                // "http://117.102.67.70:8000/authentication/" +
+                "http://127.0.0.1:8001/authentication/" +
                 window.sessionStorage.getItem("token"); // href seuai sama url
         });
     }
