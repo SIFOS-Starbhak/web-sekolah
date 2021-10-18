@@ -229,6 +229,14 @@
             };
             reader.readAsDataURL(event.target.files[0]);
         };
+        var loadFileEdit = function(event) {
+            var reader = new FileReader();
+            reader.onload = function() {
+                var output = document.getElementById('outputProfile');
+                output.src = reader.result;
+            };
+            reader.readAsDataURL(event.target.files[0]);
+        };
     </script>
     @stack('js')
 </body>

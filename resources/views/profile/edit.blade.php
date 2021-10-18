@@ -110,7 +110,7 @@
                         
                     </div>
                     <div class="card-footer text-right">
-                      <a href="" class="btn btn-warning">Back</a>
+                      <a href="{{redirect()->getUrlGenerator()->previous()}}" class="btn btn-warning">Back</a>
                       <button  type="submit" class="btn btn-primary">Save Changes</button>
                     </div>
                   </form>

@@ -94,8 +94,8 @@
             <div class="col">
                 <div class="card profile-widget">
                     <div class="profile-widget-header">
-                        <img alt="image" src="{{ asset(/Auth::user()->avatar) }}'"
-                            class="rounded-circle profile-widget-picture">
+                        <img alt="image" src="{{ asset(Auth::user()->avatar)}}" style="width: 100px;" 
+                            class="rounded-circle profile-widget-picture ">
                         <div class="profile-widget-items">
                             <div class="profile-widget-item">
                                 <div class="profile-widget-item-label">NIK</div>

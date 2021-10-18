@@ -2,6 +2,7 @@
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\WebController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegistalumController;
 use App\Models\Post;
 use App\Models\Kela;
@@ -96,13 +97,21 @@ Route::get('/showartikel/{id}', function ($id) {
     return view('showartikel', compact('articleShow', 'settings', 'author', 'navbar'));
 })->name('showartikel');
 
+
+
+
     Route::get('/author/{user}', 'WebController@author');
 
     Route::get('/posted/{posted}', 'WebController@posted');
 
+
+    
+    
     // Manager
     Route::group(['prefix' => 'manager','middleware' => ['jwt.verify', 'auth:api']], function () {
-    // Route::get('/Article/index', [ArticleController::class, 'index'])-all>name('article.index');
+        // Route::get('/Article/index', [ArticleController::class, 'index'])-all>name('article.index');
+        Route::get('/edit/profile/{id}', [ProfileController::class, 'edit'])->name('edit.profile');
+        Route::put('/update/profile/{id}', [ProfileController::class, 'update'])->name('update.profile');
     Route::get('/Article/tambah', [ArticleController::class, 'tambah'])->name('article.tambah');
     Route::post('/Article/post', [ArticleController::class, 'store'])->name('article.store');
     Route::get('/Article/edit/{id}', [ArticleController::class, 'edit'])->name('article.edit');

@@ -14,8 +14,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
             axios
                 // buat ip public
-                .post(`/api/login`, user)
-                // .post(`http://117.102.67.70:8000/api/login`, user)
+                // .post(`/api/login`, user)
+                .post(`http://127.0.0.1:8000/api/login`, user)
                 .then((res) => {
                     console.log(res.data);
                     window.sessionStorage.setItem(
@@ -126,8 +126,8 @@ document.addEventListener("DOMContentLoaded", () => {
             e.preventDefault();
             console.log("clicked");
             window.location.href =
-                "http://117.102.67.70:8000/authentication/" +
-                //"http://127.0.0.1:8001/authentication/" +
+                // "http://117.102.67.70:8000/authentication/" +
+                "http://127.0.0.1:8001/authentication/" +
                 window.sessionStorage.getItem("token"); // href seuai sama url
         });
     }
