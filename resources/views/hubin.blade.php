@@ -2,9 +2,12 @@
 @section('title', 'Hubin')
 @section('main')
     <div class="container pt-5">
+        <a href="/hubin" class="col-12" style="font-size: 17px;"><i class="fas fa-arrow-left"></i>
+            Kembali</a>
         <h2 class="text-center"><b>Data Tamatan SMK Taruna Bhakti</b></h2>
         <hr>
-        <a style="color: white" href="/registalum"><button class="col-12 btn btn-primary text-center">Registrasi Data Tamatan SMK Taruna Bhakti</button></a>
+        <a style="color: white" href="/registalum"><button class="col-12 btn btn-primary text-center">Registrasi Data Tamatan
+                SMK Taruna Bhakti</button></a>
         <br><br>
         <nav class="nav nav-tabs flex-column flex-sm-row mt-1">
             @foreach ($jurusan as $key => $item)
@@ -500,16 +503,16 @@
             </div>
         </div>
     </div>
-        <script>
+    <script>
         //message with toastr
-        @if(session()->has('success'))
+        @if (session()->has('success'))
         
-            toastr.success('{{ session('success') }}', 'BERHASIL!'); 
-
+            toastr.success('{{ session('success') }}', 'BERHASIL!');
+        
         @elseif(session()->has('error'))
-
-            toastr.error('{{ session('error') }}', 'GAGAL!'); 
-            
+        
+            toastr.error('{{ session('error') }}', 'GAGAL!');
+        
         @endif
     </script>
 @endsection

@@ -1,8 +1,10 @@
 @extends('template.app')
 @section('title', 'Sarana Pra sarana')
 @section('main')
-    @if (request()->is('sarpras/sarana-dan-prasarana-sekolah'))
-        <div class="container pt-5 mb-5">
+    <div class="container mt-5 mb-5" data-aos="fade-up">
+        <a href="/sarpras" class="col-12" style="font-size: 17px;"><i class="fas fa-arrow-left"></i>
+            Kembali</a>
+        @if (request()->is('sarpras/sarana-dan-prasarana-sekolah'))
 
             <!-- Sarpras -->
             <div class="row">
@@ -73,12 +75,10 @@
                     </div>
                 </div>
             </div>
-        </div>
-    @endif
+        @endif
 
-    @if (request()->is('sarpras/ruang-pembelajaran-umum'))
         <!-- Ruang umum -->
-        <div class="container pt-5 mb-5">
+        @if (request()->is('sarpras/ruang-pembelajaran-umum'))
             <div class="row">
                 <div class="">
                     <h3><b>Ruang Pembelajaran Umum</b></h3>
@@ -163,12 +163,10 @@
                     @endforeach
                 </div>
             </div>
-        </div>
-    @endif
+        @endif
 
-    @if (request()->is('sarpras/ruang-pembelajaran-khusus'))
         <!-- Ruang Khusus -->
-        <div class="container pt-5 mb-5">
+        @if (request()->is('sarpras/ruang-pembelajaran-khusus'))
             <div class="row">
                 <div class="">
                     <h3><b>Ruang Pembelajaran Khusus</b></h3>
@@ -293,12 +291,10 @@
 
                 </div>
             </div>
-        </div>
-    @endif
+        @endif
 
-    @if (request()->is('sarpras/fasilitas-parkir-kendaraan-siswa'))
-        <!-- Parkiran -->
-        <div class="container pt-5 mb-5">
+        @if (request()->is('sarpras/fasilitas-parkir-kendaraan-siswa'))
+            <!-- Parkiran -->
             <div class="row">
                 <div class="">
                     <h3><b>Fasilitas Parkir Kendaraan Siswa</b></h3>
@@ -320,12 +316,10 @@
                     @endforeach
                 </div>
             </div>
-        </div>
-    @endif
+        @endif
 
-    @if (request()->is('sarpras/mushola-raudhotul-ilmi'))
-        <!-- Mushola -->
-        <div class="container pt-5 mb-5">
+        @if (request()->is('sarpras/mushola-raudhotul-ilmi'))
+            <!-- Mushola -->
             <div class="row">
                 <div class="">
                     <h3><b>Mushola Raudhotul Ilmi</b></h3>
@@ -347,12 +341,10 @@
                     @endforeach
                 </div>
             </div>
-        </div>
-    @endif
+        @endif
 
-    @if (request()->is('sarpras/fasilitas-pendukung'))
-        <!-- Mushola -->
-        <div class="container pt-5">
+        @if (request()->is('sarpras/fasilitas-pendukung'))
+            <!-- Mushola -->
             <div class="row">
                 <div class="">
                     <h3><b>Fasilitas Pendukung</b></h3>
@@ -380,8 +372,8 @@
                     @endforeach
                 </div>
             </div>
-        </div>
-    @endif
+        @endif
+    </div>
 
     <script>
         function myFunction(imgs) {

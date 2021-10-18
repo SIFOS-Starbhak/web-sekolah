@@ -92,7 +92,7 @@ class WebController extends Controller
     public function kurikulumtb()
     {
         $struktur = DB::table('posts')->find(12);
-        $navbar = Navbar::all();
+                $navbar = Navbar::all()->where('status', 'Active');
         return view('kurikulum', compact('navbar', 'struktur'));
     }
 
@@ -169,7 +169,7 @@ class WebController extends Controller
         $bc = GallerySarpra::all()->where('content_id', '7');
         $tei = GallerySarpra::all()->where('content_id', '8');
         $gallery = GallerySarpra::all();
-        $navbar = Navbar::all();
+                $navbar = Navbar::all()->where('status', 'Active');
         return view('sarpras', compact('navbar', 'tei', 'bc', 'rpl', 'mm', 'tkj', 'perpus', 'kelas', 'settings', 'content', 'gallery', 'samsung', 'bahasa'));
     }
     public function sarprassekolah()
@@ -193,19 +193,20 @@ class WebController extends Controller
     public function registalum()
     {
         $settings = Setting::all();
-        $navbar = Navbar::all();
+                $navbar = Navbar::all()->where('status', 'Active');
         return view('registalum', compact('navbar', 'settings'));
     }
     public function category(Category $category)
     {
         $settings = Setting::all();
+        $navbar = Navbar::all()->where('status', 'Active');
         return view('showcategory', compact('navbar', 'settings', 'category'), ['posts' => $category->post]);
     }
 
     public function author(User $user)
     {
         $settings = Setting::all();
-        $navbar = Navbar::all();
+                $navbar = Navbar::all()->where('status', 'Active');
         return view('showauthor', compact('navbar', 'settings', 'user'), ['posts' => $user->post]);
     }
 
