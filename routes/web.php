@@ -36,6 +36,8 @@ Route::get('/login', function () {
 Route::get('/', 'WebController@index');
 // Route::view('/', 'template/main');
 Route::get('/profile', 'WebController@profiletb');
+
+// Page Sarpras
 Route::get('sarpras/sarana-dan-prasarana-sekolah', 'WebController@sarpras');
 Route::get('sarpras/ruang-pembelajaran-umum', 'WebController@sarpras');
 Route::get('sarpras/ruang-pembelajaran-khusus', 'WebController@sarpras');
@@ -43,38 +45,39 @@ Route::get('sarpras/fasilitas-parkir-kendaraan-siswa', 'WebController@sarpras');
 Route::get('sarpras/mushola-raudhotul-ilmi', 'WebController@sarpras');
 Route::get('sarpras/fasilitas-pendukung', 'WebController@sarpras');
 
+// Page Hubin
 Route::get('/hubin/data-tamatan', 'HubinController@index')->name('hubin');
-Route::get('/kurikulum/guru-smk-taruna-bhakti', 'WebController@kurikulumguru')->name('hubin');
 
+// Page Kurikulum
+Route::get('/kurikulum/guru-smk-taruna-bhakti', 'WebController@kurikulumguru');
+Route::get('/kurikulum/{kategori:slug}', 'WebController@fotoguru');
+
+// Page Gallery
 Route::get('/gallery/{gallery:slug}', 'WebController@galleries');
-// route::get('/gallery', 'WebController@gallery');
-// route::get('/gallery/tahun-2021', 'WebController@gallery21');
-// route::get('/gallery/tahun-2020', 'WebController@gallery20');
-// route::get('/gallery/tahun-2019', 'WebController@gallery19');
-// route::get('/gallery/tahun-2018', 'WebController@gallery18');
-// route::get('/gallery/tahun-2017', 'WebController@gallery17');
 
-Route::get('/artikel', function () {
-    $settings = App\Models\Setting::all();
-    $article = App\Models\Post::where('status', 'PUBLISHED')->get();
-    return view('artikel', compact('settings', 'article'));
-});
-
+// Page Kontak Kami
 Route::get('/kontakkami', function () {
     $settings = App\Models\Setting::all();
     $navbar = App\Models\Navbar::all()->where('status', 'Active');
     return view('kontakkami', compact('settings'));
 });
+
+// Page Register Alumni
 Route::post('/registalum/store',[RegistalumController::class,'store'])->name('store');
 Route::get('/registalum',[RegistalumController::class,'create']);
 // Route::get('/kesiswaan', 'WebController@kesiswaan');
 // Route::get('/kurikulum/kurikulumguru', 'WebController@kurikulumguru');
-Route::get('/kurikulum/kurikulumsmktb', 'WebController@kurikulumsmktb');
+// Route::get('/kurikulum/kurikulumsmktb', 'WebController@kurikulumsmktb');
 
-Route::get('/kurikulum/{kategori:slug}', 'WebController@fotoguru');
-
+// Artikel
+Route::get('/artikel', function () {
+    $settings = App\Models\Setting::all();
+    $article = App\Models\Post::where('status', 'PUBLISHED')->get();
+    return view('artikel', compact('settings', 'article'));
+});
+Route::get('/author/{user}', 'WebController@author');
+Route::get('/posted/{posted}', 'WebController@posted');
 Route::get('/category/{category:slug}', 'WebController@category');
-
 Route::get('/showartikel/{id}', function ($id) {
     // dd($id);
     $articleShow = App\Models\Post::where('slug', $id)->first();
@@ -85,10 +88,6 @@ Route::get('/showartikel/{id}', function ($id) {
     $navbar = App\Models\Navbar::all()->where('status', 'Active');
     return view('showartikel', compact('articleShow', 'settings', 'author', 'navbar'));
 })->name('showartikel');
-
-    Route::get('/author/{user}', 'WebController@author');
-
-    Route::get('/posted/{posted}', 'WebController@posted');
 
     // Manager
     Route::group(['prefix' => 'manager','middleware' => ['jwt.verify', 'auth:api']], function () {
@@ -211,6 +210,6 @@ Route::group(['prefix' =>'siswa', 'middleware' => ['jwt.verify', 'auth:api']], f
     })->name('dashboard.siswa');
 });
 
+// Dinamis Page Web Sekolah
 Route::get('/{menu:slug}', 'WebController@menucard');
-
 Route::get('/{nav:slug}/{submenu:slug}', 'WebController@submenu');
