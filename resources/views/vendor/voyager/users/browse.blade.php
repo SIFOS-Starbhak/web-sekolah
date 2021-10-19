@@ -94,7 +94,7 @@
                                         @php
                                             $arr = [];
                                         @endphp
-                                        @foreach ($dataType->browseRows as $row)
+                                        @foreach ($dataType->browseRows->where('field','!=','kelas_siswa') as $row)
                                             <th>
                                                 @if ($isServerSide && in_array($row->field, $sortableColumns))
                                                     <a href="{{ $row->sortByUrl($orderBy, $sortOrder) }}">
@@ -130,7 +130,7 @@
                                                         value="{{ $data->getKey() }}">
                                                 </td>
                                             @endif
-                                            @foreach ($dataType->browseRows as $row)
+                                            @foreach ($dataType->browseRows->where('field','!=','kelas_siswa') as $row)
                                                 @php
                                                     if ($data->{$row->field . '_browse'}) {
                                                         $data->{$row->field} = $data->{$row->field . '_browse'};
@@ -375,9 +375,9 @@
                                             </th>
                                         @endif
                                         @php
-                                            $arr = [];
+                                            // dd($dataType->browseRows->where('field','!=','user_belongsto_mapel_relationship'))
                                         @endphp
-                                        @foreach ($dataType->browseRows as $row)
+                                        @foreach ($dataType->browseRows->where('field','!=','user_belongsto_mapel_relationship')->where('field','!=','spesifc_role') as $row)
                                             <th>
                                                 @if ($isServerSide && in_array($row->field, $sortableColumns))
                                                     <a href="{{ $row->sortByUrl($orderBy, $sortOrder) }}">
@@ -404,7 +404,7 @@
                                     $role = App\Models\Role::where('name','siswa')->first();
                                 @endphp
                                 <tbody>
-                                    @foreach ($dataTypeContent->where('role_id',$role->id) as $data)
+                                    @foreach ($dataTypeContent->where('role_id',$role->id); as $data)
                                         <tr>
                                             @if ($showCheckboxColumn)
                                                 <td>
@@ -413,7 +413,7 @@
                                                         value="{{ $data->getKey() }}">
                                                 </td>
                                             @endif
-                                            @foreach ($dataType->browseRows as $row)
+                                            @foreach ($dataType->browseRows->where('field','!=','user_belongsto_mapel_relationship')->where('field','!=','spesifc_role') as $row)
                                                 @php
                                                     if ($data->{$row->field . '_browse'}) {
                                                         $data->{$row->field} = $data->{$row->field . '_browse'};
