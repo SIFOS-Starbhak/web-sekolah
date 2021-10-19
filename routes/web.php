@@ -57,12 +57,7 @@ Route::get('/kurikulum/{kategori:slug}', 'WebController@fotoguru');
 Route::get('/gallery/{gallery:slug}', 'WebController@galleries');
 
 // Page Kontak Kami
-Route::get('/kontakkami', function () {
-    $settings = App\Models\Setting::all();
-    $navbar = App\Models\Navbar::all()->where('status', 'Active');
-    $backgrounds = App\Models\Background::all();
-    return view('kontakkami', compact('settings','navbar', 'backgrounds'));
-});
+
 
 // Page Register Alumni
 Route::post('/registalum/store',[RegistalumController::class,'store'])->name('store');
