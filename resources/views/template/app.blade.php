@@ -48,35 +48,28 @@
 * Author: BootstrapMade.com
 * License: https://bootstrapmade.com/license/
 ======================================================== -->
-    @foreach ($settings as $item)
-        @if ($item->display_name == 'Fitur Home Page')
-            <style>
-                #hero {
-                    width: 100% !important;
-                    height: 100% !important;
-                    background: url('{{ asset("storage/$item->value") }}') top center;
-                    background-size: cover !important;
-                    position: relative !important;
-                }
-
-                #hero:before {
-                    content: "" !important;
-                    background: rgba(0, 0, 0, 0.4) !important;
-                    position: absolute !important;
-                    bottom: 0 !important;
-                    top: 0 !important;
-                    left: 0 !important;
-                    right: 0 !important;
-                }
-
-                #hero {
-                    background-attachment: fixed;
-                }
-
-            </style>
-        @endif
-    @endforeach
     <style>
+        #hero {
+            width: 100% !important;
+            height: 100% !important;
+            /* background-size: cover !important;
+            position: relative !important; */
+        }
+
+        #hero:before {
+            content: "" !important;
+            background: rgba(0, 0, 0, 0) !important;
+            position: absolute !important;
+            bottom: 0 !important;
+            top: 0 !important;
+            left: 0 !important;
+            right: 0 !important;
+        }
+
+        #hero div img {
+            object-fit: cover;
+        }
+
         .artikel {
             color: white;
             font-weight: bold;
@@ -192,7 +185,7 @@
             <!-- Uncomment below if you prefer to use an image logo -->
             {{-- <a href="index.html" class="logo me-auto"><img src="{{asset('template/assets/img/logo.png')}}" alt="" class="img-fluid"></a> --}}
 
-            <nav id="navbar active"
+            <nav id="navbar"
                 class="navbar order-last order-lg-0 {{ request()->is('/') || request()->is('profile') || request()->is('kurikulum') || request()->is('hubin') || request()->is('sarpras') || request()->is('kesiswaan') || request()->is('kontak') ? 'show' : '' }}"
                 style="margin-left: auto">
                 <ul>
@@ -217,21 +210,19 @@
     </header>
 
     <div id="carouselExampleIndicators2" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner">
+        <div class="carousel-inner" id="hero">
             @foreach ($backgrounds as $key => $bg)
                 <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
                     <img src="{{ asset('storage/' . $bg->image) }}" class="d-block" alt="..." width="100%"
                         style="height: 600px;">
-                    <div class="carousel-caption d-none d-md-block"
+                    <div class="carousel-caption d-none d-md-block container"
                         style="margin-bottom: 11%; margin-left: -10%; text-align: left;" data-aos="zoom-in"
                         data-aos-delay="100">
-                        @foreach ($settings as $item)
-                            @if ($item->display_name == 'Heading')
-                                <h1 class="fw-bold">{!! $item->value !!}</h1>
-                            @elseif( $item->display_name == 'Sub Heading' )
-                                <h2>{{ $item->value }}</h2>
-                            @endif
-                        @endforeach
+                            @foreach ($settings as $item)
+                                @if ($item->display_name == 'Heading')
+                                    {!! $item->value !!}
+                                @endif
+                            @endforeach
                         <a href="/profile" class="btn btn-outline-light mt-4"
                             style="padding: 10px 30px 10px 30px; border-radius: 50px">Profile</a>
                     </div>
