@@ -2,6 +2,10 @@
 @section('title', 'Kurikulum')
 @section('main')
     <style>
+        .guru {
+            transition: 500ms;
+        }
+
         .guru:hover {
             -ms-transform: scale(1.05);
             /* IE 9 */
@@ -9,6 +13,7 @@
             /* Safari 3-8 */
             transform: scale(1.05);
             box-shadow: 20px;
+            transition: 500ms;
         }
 
     </style>

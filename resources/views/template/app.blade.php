@@ -116,29 +116,30 @@
         </div>
     </header>
 
-    <div id="carouselExampleIndicators2" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner" id="hero">
-            @foreach ($backgrounds as $key => $bg)
-                <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
-                    <img src="{{ asset('storage/' . $bg->image) }}" class="d-block" alt="..." width="100%"
-                        style="height: 600px; filter: brightness(50%)">
-                    <div class="carousel-caption d-none d-md-block container"
-                        style="margin-bottom: 13%; margin-left: -10%; text-align: left;" data-aos="zoom-in"
-                        data-aos-delay="100">
-                        @foreach ($settings as $item)
-                            @if ($item->display_name == 'Heading')
-                                {!! $item->value !!}
-                            @endif
-                        @endforeach
+    @if (!request()->is('/registalum'))
+        <div id="carouselExampleIndicators2" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner" id="hero">
+                @foreach ($backgrounds as $key => $bg)
+                    <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
+                        <img src="{{ asset('storage/' . $bg->image) }}" class="d-block" alt="..." width="100%"
+                            style="height: 600px; filter: brightness(50%)">
+                        <div class="carousel-caption d-none d-md-block container"
+                            style="margin-bottom: 13%; margin-left: -10%; text-align: left;" data-aos="zoom-in"
+                            data-aos-delay="100">
+                            @foreach ($settings as $item)
+                                @if ($item->display_name == 'Heading')
+                                    {!! $item->value !!}
+                                @endif
+                            @endforeach
 
-                        <a href="/profile" class="btn btn-outline-light mt-4"
-                            style="padding: 10px 30px 10px 30px; border-radius: 50px">Profile</a>
+                            <a href="/profile" class="btn btn-outline-light mt-4"
+                                style="padding: 10px 30px 10px 30px; border-radius: 50px">Profile</a>
+                        </div>
                     </div>
-                </div>
 
-            @endforeach
-        </div>
-        {{-- <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators2"
+                @endforeach
+            </div>
+            {{-- <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators2"
             data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Previous</span>
@@ -148,7 +149,8 @@
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Next</span>
         </button> --}}
-    </div>
+        </div>
+    @endif
     {{-- <section id="hero" class="d-flex justify-content-center align-items-center">
         <div class="container position-relative" style="margin-bottom: 10%;" data-aos="zoom-in" data-aos-delay="100">
             @foreach ($backgrounds as $key => $bg)

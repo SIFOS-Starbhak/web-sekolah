@@ -54,12 +54,12 @@
             <div class="d-flex justify-content-center row flex-wrap" data-aos="zoom-in" data-aos-delay="100">
                 @foreach ($fotoguru as $fg)
                     <div class="col-lg-4 mb-4" style="width: 300px">
-                        <a href="/kurikulum/{{ $fg->slug }}">
+                        <a href="/guru-starbhak/{{ $fg->slug }}">
                             <div class="course-item h-100 shadow ani">
                                 <img src="{{ asset('storage/' . $fg->foto) }}" class="img-fluid" alt="..."
                                     style="width:100%;height:250px; object-fit: cover;" />
                                 <div class="course-content mt-3">
-                                    <h3><a href="/kurikulum/{{ $fg->slug }}">{{ $fg->nama_kategori }}</a>
+                                    <h3><a href="/guru-starbhak/{{ $fg->slug }}">{{ $fg->nama_kategori }}</a>
                                     </h3>
                                 </div>
                             </div>
