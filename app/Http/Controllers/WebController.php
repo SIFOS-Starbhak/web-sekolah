@@ -105,8 +105,8 @@ class WebController extends Controller
         $foto = Gallery::all()->where('kategori_guru', $kategori->id);
         $settings = Setting::all();
         $navbar = Navbar::all()->where('status', 'Active');
-
-        return view('fotoguru', compact('navbar', 'foto', 'settings', 'kategori'));
+        $backgrounds = Background::all();
+        return view('fotoguru', compact('navbar', 'foto', 'settings', 'kategori', 'backgrounds'));
     }
     public function kurikulumguru()
     {
