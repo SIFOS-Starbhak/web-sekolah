@@ -38,16 +38,20 @@
     </div> --}}
             <div id="trailer">
                 <div id="video">
-                    <video controls autoplay="autoplay" width="600"
-                        onclick="if(/Android/.test(navigator.userAgent))this.play();">
+                    <div class="row">
                         @foreach ($video as $item)
+                    <div class="col-md-4">
+                        <video controls autoplay="autoplay"
+                        onclick="if(/Android/.test(navigator.userAgent))this.play();">
                             <source src="{{ asset('storage/' . $item->video) }}" type="video/mp4" />
-                        @endforeach
-                        <embed src="video/flashfox.swf" width="600" height="480"
-                            flashVars="autoplay=true&amp;controls=true&amp;loop=true&amp;src=trailer.mp4"
-                            allowFullScreen="true" wmode="transparent" type="application/x-shockwave-flash"
-                            pluginspage="http://www.adobe.com/go/getflashplayer_en" />
-                    </video>
+                                <embed src="video/flashfox.swf"
+                                flashVars="autoplay=true&amp;controls=true&amp;loop=true&amp;src=trailer.mp4"
+                                allowFullScreen="true" wmode="transparent" type="application/x-shockwave-flash"
+                                pluginspage="http://www.adobe.com/go/getflashplayer_en" />
+                        </video>
+                    </div>
+                    @endforeach
+                    </div>
                 </div>
             </div>
         @endif

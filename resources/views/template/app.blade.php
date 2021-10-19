@@ -179,7 +179,7 @@
 </head>
 
 <body>
-    <header id="header" class="{{ request()->is('artikel') ? '' : 'fixed-top' }}">
+    <header id="header" class="{{ request()->is('artikel') ? '' : 'sticky-top' }}">
         <div class="container d-flex align-items-center">
             <!-- <img src="assets/img/logotb.png" alt="" style="height: 70px; width: 70px" /> -->
             @foreach ($settings as $setting)

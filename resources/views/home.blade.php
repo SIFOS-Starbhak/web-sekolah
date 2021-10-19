@@ -12,7 +12,10 @@
                         <div class=" container text-white mb-5">
                             <div class="row counters">
                                 <div class="col-md-4 judul">
-                                    <h2 style="color: white;">{{ $artikel->title }}</h2>
+                                    <h2 style="color: white;">{{
+                                     $artikel->title
+                                     
+                                     }}</h2>
                                 </div>
                                 <div class="col-md-4">
                                     <p style="font-weight: 100" class="mt-2 isi">{{ $artikel->excerpt }}</p>
@@ -169,21 +172,20 @@
                     </div>
                 </div>
             @endif
-        @endforeach
+        @endforeach 
 
         <section id="counts" class="counts section-bg mt-4" style="background-color: #fff9f9">
-            <div class="container text-center">
-                <div class="row counters kebawah owl-carousel">
-                    @foreach ($partners as $partner)
-                        <div class="col-md-3 mt-2 partner"">
-                            <a href=" {{ $partner->link_perusahaan }}">
-                            <img title="{{ $partner->nama_perusahaan }}"
-                                src="{{ asset('storage/' . $partner->logo_perusahaan) }}" alt=""/>
-                            </a>
-                        </div>
-                    @endforeach
-                </div>
-            </div>
+            <marquee behavior="scroll" scrollamount="20">
+                
+                        @foreach ($partners as $partner)
+                                <a class="me-4 ms-4" href=" {{ $partner->link_perusahaan }}">
+                                <img title="{{ $partner->nama_perusahaan }}"
+                                    src="{{ asset('storage/' . $partner->logo_perusahaan) }}" alt=""/>
+                                </a>
+        
+                        @endforeach
+
+            </marquee>
         </section>
 
 

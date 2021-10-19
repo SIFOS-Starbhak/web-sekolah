@@ -125,14 +125,16 @@ class WebController extends Controller
         $kompetensi = Page::where('id', '16')->get(['body', 'title']);
         $fotoguru = Kategori::all();    
         $cardkurikulum = Page::where('id', '22')->orWhere('id', '23')->orWhere('id', '24')->get();
-        return view('kurikulum', compact('settings', 'struktur', 'kompetensi', 'fotoguru', 'cardkurikulum'));
+        $navbar = Navbar::all()->where('status', 'Active');
+        return view('kurikulum', compact('settings', 'struktur', 'kompetensi', 'fotoguru', 'cardkurikulum', 'navbar'));
     }
     
     public function bkk()
     {
         $settings = Setting::all();
         $cardbkk = Page::where('id', '24')->orWhere('id', '25')->get();
-        return view('bkk', compact('settings','cardbkk'));
+        $navbar = Navbar::all()->where('status', 'Active');
+        return view('bkk', compact('settings','cardbkk','navbar'));
     }
 
     public function bkkmenu(Page $bkk)

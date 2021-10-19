@@ -59,7 +59,6 @@ Route::get('/artikel', function () {
     $article = App\Models\Post::where('status', 'PUBLISHED')->get();
     return view('artikel', compact('settings', 'article'));
 });
-<<<<<<< HEAD
 // Route::get('/profile', function () {
 //     $settings = App\Models\Setting::all();
 //     App\Models\Bgcontent::all();
@@ -67,24 +66,15 @@ Route::get('/artikel', function () {
 //     return view('profile', compact('settings','homefooters'));
 // });
 
-Route::get('/kurikulum', 'WebController@kurikulum');
-Route::get('/bkk', 'WebController@bkk');
-Route::get('/bkk/{bkk:slug}', 'WebController@bkkmenu');
-=======
->>>>>>> c5e2aaa9ca2f204c1425a61bfd0c94d5c140055e
-
 Route::get('/kontakkami', function () {
     $settings = App\Models\Setting::all();
     $navbar = App\Models\Navbar::all()->where('status', 'Active');
-    return view('kontakkami', compact('settings'));
+    return view('kontakkami', compact('settings', 'navbar'));
 });
 Route::post('/registalum/store',[RegistalumController::class,'store'])->name('store');
 Route::get('/registalum',[RegistalumController::class,'create']);
 // Route::get('/kesiswaan', 'WebController@kesiswaan');
 // Route::get('/kurikulum/kurikulumguru', 'WebController@kurikulumguru');
-Route::get('/kurikulum/kurikulumsmktb', 'WebController@kurikulumsmktb');
-
-Route::get('/kurikulum/{kategori:slug}', 'WebController@fotoguru');
 
 Route::get('/category/{category:slug}', 'WebController@category');
 
