@@ -4,8 +4,8 @@
     <div class="container pb-5">
         <h3 class="mt-5"><b>Kontak Kami</b></h3>
         <hr class="mt-4" style="height: 2px" />
-        <p>Jln. Pekapuran Kel. Curug . <br>
-            Kec. Cimanggis Depok. <br>
+        <p>Jln. Pekapuran Kel. Curug <br>
+            Kec. Cimanggis, Kota Depok. <br>
             Kode Pos : 16953 <br>
             Telp. (021) 8744810 <br>
             Email: <a

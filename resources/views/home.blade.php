@@ -179,7 +179,7 @@
             <div class="container text-center">
                 <div class="row counters kebawah owl-carousel">
                     @foreach ($partners as $partner)
-                        <div class="col-md-3 mt-2 partner"">
+                        <div class="col-md-3 mt-2 partner">
                                     <a href=" {{ $partner->link_perusahaan }}">
                             <img title="{{ $partner->nama_perusahaan }}"
                                 src="{{ asset('storage/' . $partner->logo_perusahaan) }}" alt="" />

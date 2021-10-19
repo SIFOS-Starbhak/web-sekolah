@@ -94,7 +94,7 @@
             <div class="col">
                 <div class="card profile-widget">
                     <div class="profile-widget-header">
-                        <img alt="image" src="{{ asset(Auth::user()->avatar)}}" style="width: 100px;" 
+                        <img alt="image" src="{{ asset(Auth::user()->avatar)}}" style="width: 100px;"
                             class="rounded-circle profile-widget-picture ">
                         <div class="profile-widget-items">
                             <div class="profile-widget-item">
@@ -136,7 +136,7 @@
                                     <h3>Portal SMK Taruna Bhakti</h3>
                                 </div>
                                 <div class="card-body flex-fill">
-                                    <p class="card-text text-dark">Portal yang dapat digunakan untuk
+                                    <p class="card-text text-dark">Portal Belajar yang dapat digunakan untuk
                                         pembelajaran,
                                         pengerjaan dan pengiriman Tugas.</p>
                                 </div>
@@ -166,7 +166,7 @@
                                         SMK Taruna Bhakti</h3>
                                 </div>
                                 <div class="card-body flex-fill">
-                                    <p class="card-text text-dark">Refleksi mengajar yang berfungsi untuk
+                                    <p class="card-text text-dark">Refleksi mengajar berfungsi untuk
                                         merekap pembelajaran jarak jauh (PJJ)</p>
                                 </div>
                             </div>
@@ -179,7 +179,7 @@
         <div class="row">
             <div class="col">
                 <div class="mb-3">
-                    <h1 class="section-title">Article SMK Taruna Bhakti
+                    <h1 class="section-title">Artikel SMK Taruna Bhakti
                     </h1>
                 </div>
                 <table id="tableArtikel" class="table dataTable">
