@@ -8,7 +8,7 @@
 
             <!-- Sarpras -->
             <div class="row">
-                <div class="">
+                <div class="mt-5">
                     <h3><b>Sarana dan Prasarana Sekolah</b></h3>
                     <hr>
                     <br>

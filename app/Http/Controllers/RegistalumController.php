@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Alumni;
 use App\Models\Jurusan;
+use App\Models\Setting;
+use App\Models\Navbar;
+use App\Models\Background;
 use Illuminate\Http\Request;
 
 class RegistalumController extends Controller
@@ -11,8 +14,10 @@ class RegistalumController extends Controller
     
     public function create()
 {
-    
-    return view('/registalum', [ 'jurusans' => Jurusan::all() ]);
+    $settings = Setting::all();
+    $backgrounds = Background::all();
+    $navbar = Navbar::all()->where('status', 'Active');
+    return view('/registalum', compact('backgrounds', 'settings', 'navbar'), [ 'jurusans' => Jurusan::all() ]);
 }
 
 public function store(Request $request)

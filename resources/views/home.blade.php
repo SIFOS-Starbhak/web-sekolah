@@ -12,11 +12,12 @@
                         <div class=" container text-white mb-5">
                             <div class="row counters">
                                 <div class="col-md-4 judul">
-                                    <h2 style="color: white;">{{ Str::words($artikel->title, 5)}}
+                                    <h2 style="color: white;">{{ Str::words($artikel->title, 5) }}
                                     </h2>
                                 </div>
                                 <div class="col-md-4">
-                                    <p style="font-weight: 100" class="mt-2 isi">{{ Str::words($artikel->excerpt, 25) }}</p>
+                                    <p style="font-weight: 100" class="mt-2 isi">
+                                        {{ Str::words($artikel->excerpt, 25) }}</p>
                                 </div>
                                 <div class="col-md-4 text-center tombol">
                                     <a href="/showartikel/{{ $artikel->slug }}"
@@ -180,7 +181,7 @@
                 <div class="row counters kebawah owl-carousel">
                     @foreach ($partners as $partner)
                         <div class="col-md-3 mt-2 partner"">
-                                    <a href=" {{ $partner->link_perusahaan }}">
+                                            <a href=" {{ $partner->link_perusahaan }}">
                             <img title="{{ $partner->nama_perusahaan }}"
                                 src="{{ asset('storage/' . $partner->logo_perusahaan) }}" alt="" />
                             </a>
@@ -237,6 +238,6 @@
 
     <!-- End Footer -->
     <div id="preloader"></div>
-    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+    <a href="#" class="back-to-top d-flex align-items-center me-5 justify-content-center"><i
             class="bi bi-arrow-up-short"></i></a>
 @endsection

@@ -16,61 +16,61 @@ class HubinController extends Controller
     {
         // Jurusan TKJ
         $tkjKuliah = Alumni::where('categories_alumnis', 'Kuliah')
-            ->where('jurusan', 'Teknik Komputer Jaringan')->where('status', 'PUBLISHED')
+            ->where('jurusan', 'Teknik Komputer Jaringan')->where('status', 'PUBLISED')
             ->latest()->paginate(5);
         $tkjKerja = Alumni::where('categories_alumnis', 'Bekerja')
-            ->where('jurusan', 'Teknik Komputer Jaringan')->where('status', 'PUBLISHED')
+            ->where('jurusan', 'Teknik Komputer Jaringan')->where('status', 'PUBLISED')
             ->latest()->paginate(5);
         $tkjWira = Alumni::where('categories_alumnis', 'Wirausaha')
-            ->where('jurusan', 'Teknik Komputer Jaringan')->where('status', 'PUBLISHED')
+            ->where('jurusan', 'Teknik Komputer Jaringan')->where('status', 'PUBLISED')
             ->latest()->paginate(5);
         // Akhir Jurusan TKJ 
 
         // Jurusan MM
         $mmKuliah = Alumni::where('categories_alumnis', 'Kuliah')
-            ->where('jurusan', 'Multimedia')->where('status', 'PUBLISHED')
+            ->where('jurusan', 'Multimedia')->where('status', 'PUBLISED')
             ->latest()->paginate(5);
         $mmKerja = Alumni::where('categories_alumnis', 'Bekerja')
-            ->where('jurusan', 'Multimedia')->where('status', 'PUBLISHED')
+            ->where('jurusan', 'Multimedia')->where('status', 'PUBLISED')
             ->latest()->paginate(5);
         $mmWira = Alumni::where('categories_alumnis', 'Wirausaha')
-            ->where('jurusan', 'Multimedia')->where('status', 'PUBLISHED')
+            ->where('jurusan', 'Multimedia')->where('status', 'PUBLISED')
             ->latest()->paginate(5);
         // Akhir Jurusan MM
 
         // Jurusan BC
         $bcKuliah = Alumni::where('categories_alumnis', 'Kuliah')
-            ->where('jurusan', 'Broadcast')->where('status', 'PUBLISHED')
+            ->where('jurusan', 'Broadcast')->where('status', 'PUBLISED')
             ->latest()->paginate(5);
         $bcKerja = Alumni::where('categories_alumnis', 'Bekerja')
-            ->where('jurusan', 'Broadcast')->where('status', 'PUBLISHED')
+            ->where('jurusan', 'Broadcast')->where('status', 'PUBLISED')
             ->latest()->paginate(5);
         $bcWira = Alumni::where('categories_alumnis', 'Wirausaha')
-            ->where('jurusan', 'Broadcast')->where('status', 'PUBLISHED')
+            ->where('jurusan', 'Broadcast')->where('status', 'PUBLISED')
             ->latest()->paginate(5);
         // Akhir Jurusan BC
 
         // Jurusan TEI
         $teiKuliah = Alumni::where('categories_alumnis', 'Kuliah')
-            ->where('jurusan', 'Teknik Elektronik Industri')->where('status', 'PUBLISHED')
+            ->where('jurusan', 'Teknik Elektronik Industri')->where('status', 'PUBLISED')
             ->latest()->paginate(5);
         $teiKerja = Alumni::where('categories_alumnis', 'Bekerja')
-            ->where('jurusan', 'Teknik Elektronik Industri')->where('status', 'PUBLISHED')
+            ->where('jurusan', 'Teknik Elektronik Industri')->where('status', 'PUBLISED')
             ->latest()->paginate(5);
         $teiWira = Alumni::where('categories_alumnis', 'Wirausaha')
-            ->where('jurusan', 'Teknik Elektronik Industri')->where('status', 'PUBLISHED')
+            ->where('jurusan', 'Teknik Elektronik Industri')->where('status', 'PUBLISED')
             ->latest()->paginate(5);
         // Akhir Jurusan TEI
 
         // Jurusan RPL
         $rplKuliah = Alumni::where('categories_alumnis', 'Kuliah')
-            ->where('jurusan', 'Rekayasa Perangkat Lunak')->where('status', 'PUBLISHED')
+            ->where('jurusan', 'Rekayasa Perangkat Lunak')->where('status', 'PUBLISED')
             ->latest()->paginate(5);
         $rplKerja = Alumni::where('categories_alumnis', 'Bekerja')
-            ->where('jurusan', 'Rekayasa Perangkat Lunak')->where('status', 'PUBLISHED')
+            ->where('jurusan', 'Rekayasa Perangkat Lunak')->where('status', 'PUBLISED')
             ->latest()->paginate(5);
         $rplWira = Alumni::where('categories_alumnis', 'Wirausaha')
-            ->where('jurusan', 'Rekayasa Perangkat Lunak')->where('status', 'PUBLISHED')
+            ->where('jurusan', 'Rekayasa Perangkat Lunak')->where('status', 'PUBLISED')
             ->latest()->paginate(5);
         // Akhir Jurusan RPL
 
