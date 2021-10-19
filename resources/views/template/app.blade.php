@@ -189,13 +189,11 @@
                 class="navbar order-last order-lg-0 {{ request()->is('/') || request()->is('profile') || request()->is('kurikulum') || request()->is('hubin') || request()->is('sarpras') || request()->is('kesiswaan') || request()->is('kontak') ? 'show' : '' }}"
                 style="margin-left: auto">
                 <ul>
-                    {{-- <li><a href="/" class="{{ request()->is('/*') ? 'active' : '' }}">Home</a></li> --}}
+                    <li><a href="/" class="{{ request()->is('/*') ? 'active' : '' }}">Home</a></li>
                     @foreach ($navbar as $item)
-                        {{-- @if (!$item->name == 'Profile' || !$item->name == 'Home' || !$item->name == 'News Home') --}}
                         <li><a href="/{{ $item->slug }}"
                                 class="{{ request()->is($item->slug . '*') ? 'active' : '' }}">{{ $item->name }}</a>
                         </li>
-                        {{-- @endif --}}
                     @endforeach
                     <li><a href="/kontakkami" class="{{ request()->is('kontakkami*') ? 'active' : '' }}">Kontak
                             Kami</a></li>

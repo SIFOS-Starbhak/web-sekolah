@@ -60,7 +60,8 @@ Route::get('/gallery/{gallery:slug}', 'WebController@galleries');
 Route::get('/kontakkami', function () {
     $settings = App\Models\Setting::all();
     $navbar = App\Models\Navbar::all()->where('status', 'Active');
-    return view('kontakkami', compact('settings'));
+    $backgrounds = App\Models\Background::all();
+    return view('kontakkami', compact('settings','navbar', 'backgrounds'));
 });
 
 // Page Register Alumni
