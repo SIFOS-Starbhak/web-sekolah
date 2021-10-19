@@ -260,7 +260,7 @@
 
     @yield('main')
 
-    <footer class="counts section-bg" style="background-color: #095b90;">
+    {{-- <footer class="counts section-bg" style="background-color: #095b90;">
         <div class="container text-white">
             <div class="row counters mt-4">
                 <div class="col-md-2" style="font-family: poppins">
@@ -300,6 +300,56 @@
                         </p>
                     </div>
                 </section>
+            </div>
+        </div>
+    </footer> --}}
+    <footer class="footer-08" style="background-color: #095b90;">
+        <div class="container-fluid px-lg-5 text-white">
+            <div class="row">
+                <div class="col-md-9 py-5">
+                    <img class="mb-3" src="{{ asset('template/assets/img/logotb.png') }}" alt=""
+                        style="width: 95px; height: 95px" />
+                    <div class="row">
+                        <div class="col-md-4 mb-md-0 mb-4">
+                            <h4 class="footer-heading fw-bold">
+                                YAYASAN SETYA BHAKTI<br>
+                                SMK TARUNA BHAKTI</h4>
+                            <p class="fs-7 fw-light" style="font-size: 12px">Jln. Pekapuran Kel.Curug <br />
+                                Kec. Cimanggis, Kota Depok, <br />
+                                Provinsi Jawa Barat <br />
+                                <span class="text-monospace">
+                                    Telepon : (021) 874 4810
+                                </span>
+                            </p>
+
+                        </div>
+                        <div class="col-md-4 mb-md-0 mb-4">
+                            <h4 class="footer-heading fw-bold">
+                                Admission Information</h4>
+                            <p class="fs-7 fw-light" style="font-size: 12px">Email : taruna@smktarunabhakti.net <br />
+                                Format: name, address, phone number, <br />
+                                majors, and description
+                            </p>
+                        </div>
+                    </div>
+                    <hr class="mt-4" style="height: 2.5px" />
+                    <div class="row mt-md-5">
+                        <div class="col-md-12">
+                            <p class="copyright" style="font-size: 12px">
+                                <script>
+                                    document.write(new Date().getFullYear());
+                                </script> Copyright SMK Taruna Bhakti | Developed with
+                                <i class="fa fa-heart text-danger"></i>
+                                by. SIFOS Team
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 py-md-5 py-4 aside-stretch-right pl-lg-5">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3422.9758774687684!2d106.86757171434212!3d-6.3841757642214585!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69eb7eb989aead%3A0xab7c10f23f712046!2sSMK%20Taruna%20Bhakti!5e1!3m2!1sid!2sid!4v1633323181916!5m2!1sid!2sid"
+                        width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
             </div>
         </div>
     </footer>

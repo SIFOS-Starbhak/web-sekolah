@@ -8,6 +8,7 @@ use App\Models\Bgcontent;
 use App\Models\Jurusan;
 use App\Models\Setting;
 use App\Models\Navbar;
+use App\Models\Background;
 
 class HubinController extends Controller
 {
