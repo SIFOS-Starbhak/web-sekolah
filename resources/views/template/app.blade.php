@@ -190,7 +190,7 @@
                 style="margin-left: auto">
                 <ul>
                     {{-- <li><a href="/" class="{{ request()->is('/*') ? 'active' : '' }}">Home</a></li> --}}
-                    @foreach ($navbargit  as $item)
+                    @foreach ($navbar as $item)
                         <li><a href="/{{ $item->slug }}"
                                 class="{{ request()->is($item->slug . '*') ? 'active' : '' }}">{{ $item->name }}</a>
                         </li>
@@ -216,11 +216,11 @@
                     <div class="carousel-caption d-none d-md-block container"
                         style="margin-bottom: 11%; margin-left: -10%; text-align: left;" data-aos="zoom-in"
                         data-aos-delay="100">
-                            @foreach ($settings as $item)
-                                @if ($item->display_name == 'Heading')
-                                    {!! $item->value !!}
-                                @endif
-                            @endforeach
+                        @foreach ($settings as $item)
+                            @if ($item->display_name == 'Heading')
+                                {!! $item->value !!}
+                            @endif
+                        @endforeach
                         <a href="/profile" class="btn btn-outline-light mt-4"
                             style="padding: 10px 30px 10px 30px; border-radius: 50px">Profile</a>
                     </div>
