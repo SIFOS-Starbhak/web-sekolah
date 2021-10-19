@@ -189,8 +189,8 @@
                 class="navbar order-last order-lg-0 {{ request()->is('/') || request()->is('profile') || request()->is('kurikulum') || request()->is('hubin') || request()->is('sarpras') || request()->is('kesiswaan') || request()->is('kontak') ? 'show' : '' }}"
                 style="margin-left: auto">
                 <ul>
-                    <li><a href="/" class="{{ request()->is('/*') ? 'active' : '' }}">Home</a></li>
-                    @foreach ($navbar as $item)
+                    {{-- <li><a href="/" class="{{ request()->is('/*') ? 'active' : '' }}">Home</a></li> --}}
+                    @foreach ($navbargit  as $item)
                         <li><a href="/{{ $item->slug }}"
                                 class="{{ request()->is($item->slug . '*') ? 'active' : '' }}">{{ $item->name }}</a>
                         </li>
