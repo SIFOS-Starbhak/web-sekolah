@@ -293,7 +293,7 @@
                     <div class="col-md-2 mt-5">
                         <i class="fab fa-facebook" style="font-size: 40px"></i>
                         <p style="font-size: 18px"><b> Facebook Page</b></p>
-                        <p style="font-size: 13px; font-weight: lighter">Check out the latest photos on starbhak.offcial
+                        <p style="font-size: 13px; font-weight: lighter">Check out our latest info on starbhak.offcial
                             Facebook</p>
                     </div>
                 </div>
