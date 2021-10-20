@@ -14,9 +14,8 @@
                         <hr>
                         <br>
                         <p class="
-                        mt-3">Gedung Sekolah Milik sendiri dengan design bangunan
-                            berbentuk permanen yang di sesuaikan
-                            dengan kebutuhan pendidikan dan berlantai 4.</p>
+                        mt-3">Gedung Sekolah berlantai 4 milik sendiri dengan desain bangunan permanen
+                            yang disesuaikan untuk kebutuhan pendidikan.</p>
                         <div class=" text-center">
                             @foreach ($gallery as $item)
                                 @if ($item->content_id == 15)

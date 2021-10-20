@@ -56,7 +56,7 @@
     <section id="hero" class="d-flex justify-content-center align-items-center">
         <div class="container position-relative" data-aos="zoom-in" data-aos-delay="100">
             <h1>Learning Today,<br />Leading Tomorrow</h1>
-            <h2>We are team of talented designers making websites with Bootstrap</h2>
+            <h2>We are team of talented designers making website with Bootstrap</h2>
             <a href="courses.html" class="btn-get-started">Get Started</a>
         </div>
     </section>
@@ -82,8 +82,8 @@
                     </div>
                     <div class="col-lg-6 col-md-6 pt-4 pt-lg-0 order-2 order-lg-1 content">
                         <h3>Why Starbhak?</h3>
-                        <p style="font-size: 20px">90% of graduating students already work before graduation, as either
-                            self-employed workers or young professionals.</p>
+                        <p style="font-size: 20px">90% of students who have graduated have worked before graduating.
+                            Either as self-employed or as a young professional.</p>
                     </div>
                 </div>
             </div>

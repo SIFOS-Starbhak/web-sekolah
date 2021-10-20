@@ -212,7 +212,7 @@
                             @endif
                         @endforeach
                         <p style="font-size: 13px; font-weight: lighter">
-                            Check out the latest photos <br />
+                            Check out our latest post<br />
                             on starbhak.offcial Instagram
                         </p>
                     </div>
