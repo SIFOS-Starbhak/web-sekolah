@@ -30,10 +30,10 @@
                             {!! $item->description !!}
                         @endif
                     @endforeach
-                    <p class="fw-bold">Galery Foto Sarana Lab Komputer SMK Taruna Bhakti</p>
+                    <p class="fw-bold">Galeri Foto Sarana Lab Komputer SMK Taruna Bhakti</p>
                     <br>
 
-                    <p class="fw-bold">Samsung</p>
+                    <p class="fw-bold">Samsung Tech Institute</p>
                     <!-- SAMSUNG -->
                     <!-- The grid: four columns -->
                     <div class="row">
