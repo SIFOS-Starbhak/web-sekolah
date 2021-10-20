@@ -188,15 +188,15 @@
                         </b>
                     </p>
                     <p style="font-size: 13px; font-weight: lighter">
-                        Jalan Pekapuran Kel.Curug <br />
-                        Kec.Cimanggis , Kota Depok <br />
-                        Propinsi Jawa Barat <br />
+                        Jalan Pekapuran Kel. Curug <br />
+                        Kec. Cimanggis , Kota Depok <br />
+                        Provinsi Jawa Barat <br />
                         Kode Pos : 16953<br />
                         Telepon : (021) 874 4810
                     </p>
                 </div>
                 <div class="col-md-3 mt-3">
-                    <p style="font-size: 20px"><b> Admission Information</b></p>
+                    <p style="font-size: 20px"><b>Admission Information</b></p>
                     <br />
                     <p style="font-size: 13px; font-weight: lighter">
                         Email : <a class="text-white link-email"
