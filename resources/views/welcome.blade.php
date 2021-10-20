@@ -82,7 +82,8 @@
                     </div>
                     <div class="col-lg-6 col-md-6 pt-4 pt-lg-0 order-2 order-lg-1 content">
                         <h3>Why Starbhak?</h3>
-                        <p style="font-size: 20px">90% of students who have graduated have worked before graduating.
+                        <p style="font-size: 20px">90% of students who have graduated
+                            have worked before graduating.
                             Either as self-employed or as a young professional.</p>
                     </div>
                 </div>
