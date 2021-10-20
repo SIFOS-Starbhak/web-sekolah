@@ -9,17 +9,10 @@
     <meta content="" name="description" />
     <meta content="" name="keywords" />
 
-
-
     <!-- Favicons -->
     <link href="{{ asset('favicon.ico') }}" rel="icon" />
 
     <link href="{{ asset('template/assets/img/apple-touch-icon.png') }}" rel="apple-touch-icon" />
-
-    {{-- Gallery Carousel --}}
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
     <!-- Google Fonts -->
     <link
@@ -43,17 +36,17 @@
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
         integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
     <!-- =======================================================
-* Template Name: Mentor - v4.5.0
-* Template URL: https://bootstrapmade.com/mentor-free-education-bootstrap-theme/
-* Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
-======================================================== -->
+  * Template Name: Mentor - v4.5.0
+  * Template URL: https://bootstrapmade.com/mentor-free-education-bootstrap-theme/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
     <style>
         #hero {
             width: 100% !important;
             height: 100% !important;
-            /* background-size: cover !important;
-            position: relative !important; */
+            background-size: cover !important;
+            position: relative !important;
         }
 
         #hero:before {
@@ -89,87 +82,6 @@
             color: #2689c9;
         }
 
-        #vpCarousel .carousel-caption h2 {
-            background-color: rgba(192, 192, 192, 0.2);
-            padding: 10px 0;
-            color: darkred;
-        }
-
-        #vpCarousel .carousel-caption p {
-            background-color: rgba(192, 192, 192, 0.3);
-            padding: 10px 0;
-            color: darkgreen;
-        }
-
-        #vpCarousel .carousel-control.left {
-            background-image: none;
-            width: 54px;
-            height: 54px;
-            top: 50%;
-            left: 20px;
-            margin-top: -27px;
-            line-height: 54px;
-            border: 2px solid #fff;
-            opacity: 1;
-            text-shadow: none;
-            -webkit-transition: all 0.2s ease-in-out 0s;
-            -o-transition: all 0.2s ease-in-out 0s;
-            transition: all 0.2s ease-in-out 0s;
-        }
-
-        #vpCarousel .carousel-control.right {
-            background-image: none;
-            width: 54px;
-            height: 54px;
-            top: 50%;
-            right: 20px;
-            margin-top: -27px;
-            line-height: 54px;
-            border: 2px solid #fff;
-            opacity: 1;
-            text-shadow: none;
-            -webkit-transition: all 0.2s ease-in-out 0s;
-            -o-transition: all 0.2s ease-in-out 0s;
-            transition: all 0.2s ease-in-out 0s;
-        }
-
-        #vpCarousel .carousel-indicators {
-            bottom: 0;
-            left: 10px;
-            margin-left: 5px;
-            width: 100%;
-        }
-
-        #vpCarousel .carousel-indicators li {
-            border: medium none;
-            border-radius: 0;
-            float: left;
-            height: 40px;
-            margin-bottom: 5px;
-            margin-left: 0;
-            margin-right: 5px !important;
-            margin-top: 0;
-            width: 76px;
-        }
-
-        #vpCarousel .carousel-indicators img {
-            border: 2px solid #FFFFFF;
-            float: left;
-            height: 40px;
-            left: 0;
-            width: 76px;
-            opacity: 0.7;
-        }
-
-        #vpCarousel .carousel-indicators .active img {
-            border: 2px solid #39b3d7;
-            opacity: 1;
-        }
-
-        #vpCarousel .carousel-indicators li:hover img {
-            opacity: 0.85;
-        }
-
     </style>
 </head>
 
@@ -185,20 +97,15 @@
             <!-- Uncomment below if you prefer to use an image logo -->
             {{-- <a href="index.html" class="logo me-auto"><img src="{{asset('template/assets/img/logo.png')}}" alt="" class="img-fluid"></a> --}}
 
-            <nav id="navbar"
-                class="navbar order-last order-lg-0 {{ request()->is('/') || request()->is('profile') || request()->is('kurikulum') || request()->is('hubin') || request()->is('sarpras') || request()->is('kesiswaan') || request()->is('kontak') ? 'show' : '' }}"
-                style="margin-left: auto">
+            <nav id="navbar" class="navbar order-last order-lg-0 show" style="margin-left: auto">
                 <ul>
                     {{-- <li><a href="/" class="{{ request()->is('/*') ? 'active' : '' }}">Home</a></li> --}}
                     @foreach ($navbar as $item)
-                        {{-- @if (!$item->name == 'Profile' || !$item->name == 'Home' || !$item->name == 'News Home') --}}
                         <li><a href="/{{ $item->slug }}"
                                 class="{{ request()->is($item->slug . '*') ? 'active' : '' }}">{{ $item->name }}</a>
                         </li>
-                        {{-- @endif --}}
                     @endforeach
-                    <li><a href="/kontakkami" class="{{ request()->is('kontakkami*') ? 'active' : '' }}">Kontak
-                            Kami</a></li>
+
                     <li><a href="{{ route('login') }}" target="_blank" class="btn-get-started active">Login</a>
                     </li>
 
@@ -209,27 +116,30 @@
         </div>
     </header>
 
-    <div id="carouselExampleIndicators2" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner" id="hero">
-            @foreach ($backgrounds as $key => $bg)
-                <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
-                    <img src="{{ asset('storage/' . $bg->image) }}" class="d-block" alt="..." width="100%"
-                        style="height: 600px;">
-                    <div class="carousel-caption d-none d-md-block container"
-                        style="margin-bottom: 11%; margin-left: -10%; text-align: left;" data-aos="zoom-in"
-                        data-aos-delay="100">
+    @if (!request()->is('/registalum'))
+        <div id="carouselExampleIndicators2" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner" id="hero">
+                @foreach ($backgrounds as $key => $bg)
+                    <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
+                        <img src="{{ asset('storage/' . $bg->image) }}" class="d-block" alt="..." width="100%"
+                            style="height: 600px; filter: brightness(50%)">
+                        <div class="carousel-caption d-none d-md-block container"
+                            style="margin-bottom: 13%; margin-left: -10%; text-align: left;" data-aos="zoom-in"
+                            data-aos-delay="100">
                             @foreach ($settings as $item)
                                 @if ($item->display_name == 'Heading')
                                     {!! $item->value !!}
                                 @endif
                             @endforeach
-                        <a href="/profile" class="btn btn-outline-light mt-4"
-                            style="padding: 10px 30px 10px 30px; border-radius: 50px">Profile</a>
+
+                            <a href="/profile" class="btn btn-outline-light mt-4"
+                                style="padding: 10px 30px 10px 30px; border-radius: 50px">Profile</a>
+                        </div>
                     </div>
-                </div>
-            @endforeach
-        </div>
-        {{-- <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators2"
+
+                @endforeach
+            </div>
+            {{-- <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators2"
             data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Previous</span>
@@ -239,7 +149,8 @@
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Next</span>
         </button> --}}
-    </div>
+        </div>
+    @endif
     {{-- <section id="hero" class="d-flex justify-content-center align-items-center">
         <div class="container position-relative" style="margin-bottom: 10%;" data-aos="zoom-in" data-aos-delay="100">
             @foreach ($backgrounds as $key => $bg)
@@ -269,7 +180,7 @@
                     <img src="{{ asset('template/assets/img/logotb.png') }}" alt=""
                         style="width: 95px; height: 95px" />
                 </div>
-                <div class="col-md-4 mt-3">
+                <div class="col-md-3 mt-3">
                     <p style="font-size: 20px">
                         <b>
                             YAYASAN SETYA BHAKTI <br />
@@ -277,21 +188,29 @@
                         </b>
                     </p>
                     <p style="font-size: 13px; font-weight: lighter">
-                        Jalan Pekapuran Kel.Curug <br />
-                        Kec.Cimanggis , Kota Depok <br />
-                        Propinsi Jawa Barat <br />
-                        <br />
-                        Telpon : (021) 874 4810
+                        Jalan Pekapuran Kel. Curug <br />
+                        Kec. Cimanggis , Kota Depok <br />
+                        Provinsi Jawa Barat <br />
+                        Kode Pos : 16953<br />
+                        Telepon : (021) 874 4810
                     </p>
                 </div>
-                <div class="col-md-6 mt-3">
-                    <p style="font-size: 20px"><b> Admission Information</b></p>
+                <div class="col-md-3 mt-3">
+                    <p style="font-size: 20px"><b>Admission Information</b></p>
                     <br />
                     <p style="font-size: 13px; font-weight: lighter">
-                        Email : taruna@smktarunabhakti.net <br />
+                        Email : <a class="text-white link-email"
+                            href="https://mail.google.com/mail/u/0/#inbox?compose=CllgCJfrtXDBTmXvRjBmgJVHHJSbRTpLwSxXtCMfZcnbzmglgHtJHJdDwfWdvzzCLGZzlRLstnV"
+                            target="_blank">taruna@smktarunabhakti.net</a> <br />
                         Format: name, address, phone number, <br />
                         majors, and description
                     </p>
+                </div>
+                <div class="col-md-4 mt-3">
+                    <iframe class="shadow-lg"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3422.9758774687684!2d106.86757171434212!3d-6.3841757642214585!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69eb7eb989aead%3A0xab7c10f23f712046!2sSMK%20Taruna%20Bhakti!5e1!3m2!1sid!2sid!4v1633323181916!5m2!1sid!2sid"
+                        style="border-radius: 5px" allowfullscreen="" loading="lazy">
+                    </iframe>
                 </div>
                 <hr class="mt-4" style="height: 2.5px" />
                 <section>
@@ -304,6 +223,7 @@
                 </section>
             </div>
         </div>
+
     </footer>
     <script src="{{ asset('template/assets/vendor/aos/aos.js') }}"></script>
     <script src="{{ asset('template/assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>

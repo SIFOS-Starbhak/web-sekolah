@@ -1,4 +1,5 @@
 <?php
+
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\WebController;
@@ -25,7 +26,7 @@ use Tymon\JWTAuth\JWTAuth;
 |
  */
 // Route::get('/',[WebController::class,'index']);
-Route::post('/logout', [AuthenticatedSessionController::class,'destroy'])->name('logout');
+Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
@@ -51,21 +52,16 @@ Route::get('/hubin/data-tamatan', 'HubinController@index')->name('hubin');
 
 // Page Kurikulum
 Route::get('/kurikulum/guru-smk-taruna-bhakti', 'WebController@kurikulumguru');
-Route::get('/kurikulum/{kategori:slug}', 'WebController@fotoguru');
+Route::get('/guru-starbhak/{kategori:slug}', 'WebController@fotoguru');
 
 // Page Gallery
 Route::get('/gallery/{gallery:slug}', 'WebController@galleries');
 
 // Page Kontak Kami
-Route::get('/kontakkami', function () {
-    $settings = App\Models\Setting::all();
-    $navbar = App\Models\Navbar::all()->where('status', 'Active');
-    return view('kontakkami', compact('settings'));
-});
 
 // Page Register Alumni
-Route::post('/registalum/store',[RegistalumController::class,'store'])->name('store');
-Route::get('/registalum',[RegistalumController::class,'create']);
+Route::post('/registalum/store', [RegistalumController::class, 'store'])->name('store');
+Route::get('/registalum', [RegistalumController::class, 'create']);
 // Route::get('/kesiswaan', 'WebController@kesiswaan');
 // Route::get('/kurikulum/kurikulumguru', 'WebController@kurikulumguru');
 // Route::get('/kurikulum/kurikulumsmktb', 'WebController@kurikulumsmktb');
@@ -90,11 +86,11 @@ Route::get('/showartikel/{id}', function ($id) {
     return view('showartikel', compact('articleShow', 'settings', 'author', 'navbar'));
 })->name('showartikel');
 
-    // Manager
-    Route::group(['prefix' => 'manager','middleware' => ['jwt.verify', 'auth:api']], function () {
-        // Route::get('/Article/index', [ArticleController::class, 'index'])-all>name('article.index');
-        Route::get('/edit/profile/{id}', [ProfileController::class, 'edit'])->name('edit.profile');
-        Route::put('/update/profile/{id}', [ProfileController::class, 'update'])->name('update.profile');
+// Manager
+Route::group(['prefix' => 'manager', 'middleware' => ['jwt.verify', 'auth:api']], function () {
+    // Route::get('/Article/index', [ArticleController::class, 'index'])-all>name('article.index');
+    Route::get('/edit/profile/{id}', [ProfileController::class, 'edit'])->name('edit.profile');
+    Route::put('/update/profile/{id}', [ProfileController::class, 'update'])->name('update.profile');
     Route::get('/Article/tambah', [ArticleController::class, 'tambah'])->name('article.tambah');
     Route::post('/Article/post', [ArticleController::class, 'store'])->name('article.store');
     Route::get('/Article/edit/{id}', [ArticleController::class, 'edit'])->name('article.edit');
@@ -117,99 +113,103 @@ Route::group(['prefix' => 'guru', 'middleware' => ['jwt.verify', 'auth:api']], f
 
         $article = Post::all();
 
-        $X = User::wherehas('kelas', function($query){
-            $query->where('kelas','X');
+        $X = User::wherehas('kelas', function ($query) {
+            $query->where('kelas', 'X');
         })->get();
-        $X_RPL = User::wherehas('kelas', function($query){
-            $query->where('kelas','X')->where('jurusan','RPL');
+        $X_RPL = User::wherehas('kelas', function ($query) {
+            $query->where('kelas', 'X')->where('jurusan', 'RPL');
         })->get();
-        $X_BC = User::wherehas('kelas', function($query){
-            $query->where('kelas','X')->where('jurusan','BC');
+        $X_BC = User::wherehas('kelas', function ($query) {
+            $query->where('kelas', 'X')->where('jurusan', 'BC');
         })->get();
-        $X_MM = User::wherehas('kelas', function($query){
-            $query->where('kelas','X')->where('jurusan','MM');
+        $X_MM = User::wherehas('kelas', function ($query) {
+            $query->where('kelas', 'X')->where('jurusan', 'MM');
         })->get();
-        $X_TKJ = User::wherehas('kelas', function($query){
-            $query->where('kelas','X')->where('jurusan','TKJ');
+        $X_TKJ = User::wherehas('kelas', function ($query) {
+            $query->where('kelas', 'X')->where('jurusan', 'TKJ');
         })->get();
-        $X_TEI = User::wherehas('kelas', function($query){
-            $query->where('kelas','X')->where('jurusan','TEI');
+        $X_TEI = User::wherehas('kelas', function ($query) {
+            $query->where('kelas', 'X')->where('jurusan', 'TEI');
         })->get();
 
         // dd($RPL);
-        $XI = User::wherehas('kelas', function($query){
-            $query->where('kelas','XI');
+        $XI = User::wherehas('kelas', function ($query) {
+            $query->where('kelas', 'XI');
         })->get();
-        $XI_RPL = User::wherehas('kelas', function($query){
-            $query->where('kelas','XI')->where('jurusan','RPL');
+        $XI_RPL = User::wherehas('kelas', function ($query) {
+            $query->where('kelas', 'XI')->where('jurusan', 'RPL');
         })->get();
-        $XI_BC = User::wherehas('kelas', function($query){
-            $query->where('kelas','XI')->where('jurusan','BC');
+        $XI_BC = User::wherehas('kelas', function ($query) {
+            $query->where('kelas', 'XI')->where('jurusan', 'BC');
         })->get();
-        $XI_MM = User::wherehas('kelas', function($query){
-            $query->where('kelas','XI')->where('jurusan','MM');
+        $XI_MM = User::wherehas('kelas', function ($query) {
+            $query->where('kelas', 'XI')->where('jurusan', 'MM');
         })->get();
         // dd($XI_MM);
-        $XI_TKJ = User::wherehas('kelas', function($query){
-            $query->where('kelas','XI')->where('jurusan','TKJ');
+        $XI_TKJ = User::wherehas('kelas', function ($query) {
+            $query->where('kelas', 'XI')->where('jurusan', 'TKJ');
         })->get();
-        $XI_TEI = User::wherehas('kelas', function($query){
-            $query->where('kelas','XI')->where('jurusan','TEI');
-        })->get();
-
-        $XII = User::wherehas('kelas', function($query){
-            $query->where('kelas','XII');
+        $XI_TEI = User::wherehas('kelas', function ($query) {
+            $query->where('kelas', 'XI')->where('jurusan', 'TEI');
         })->get();
 
-        $XII_RPL = User::wherehas('kelas', function($query){
-            $query->where('kelas','XII')->where('jurusan','RPL');
-        })->get();
-        $XII_BC = User::wherehas('kelas', function($query){
-            $query->where('kelas','XII')->where('jurusan','BC');
-        })->get();
-        $XII_MM = User::wherehas('kelas', function($query){
-            $query->where('kelas','XII')->where('jurusan','MM');
-        })->get();
-        $XII_TKJ = User::wherehas('kelas', function($query){
-            $query->where('kelas','XII')->where('jurusan','TKJ');
-        })->get();
-        $XII_TEI = User::wherehas('kelas', function($query){
-            $query->where('kelas','XII')->where('jurusan','TEI');
+        $XII = User::wherehas('kelas', function ($query) {
+            $query->where('kelas', 'XII');
         })->get();
 
+        $XII_RPL = User::wherehas('kelas', function ($query) {
+            $query->where('kelas', 'XII')->where('jurusan', 'RPL');
+        })->get();
+        $XII_BC = User::wherehas('kelas', function ($query) {
+            $query->where('kelas', 'XII')->where('jurusan', 'BC');
+        })->get();
+        $XII_MM = User::wherehas('kelas', function ($query) {
+            $query->where('kelas', 'XII')->where('jurusan', 'MM');
+        })->get();
+        $XII_TKJ = User::wherehas('kelas', function ($query) {
+            $query->where('kelas', 'XII')->where('jurusan', 'TKJ');
+        })->get();
+        $XII_TEI = User::wherehas('kelas', function ($query) {
+            $query->where('kelas', 'XII')->where('jurusan', 'TEI');
+        })->get();
 
 
 
-        return view('dashboard.dashboard',compact('article','X','XI','XII',
-        'X_RPL',
-        'X_BC',
-        'X_MM',
-        'X_TKJ',
-        'X_TEI',
 
-        'XI_RPL',
-        'XI_BC',
-        'XI_MM',
-        'XI_TKJ',
-        'XI_TEI',
+        return view('dashboard.dashboard', compact(
+            'article',
+            'X',
+            'XI',
+            'XII',
+            'X_RPL',
+            'X_BC',
+            'X_MM',
+            'X_TKJ',
+            'X_TEI',
 
-        'XII_RPL',
-        'XII_BC',
-        'XII_MM',
-        'XII_TKJ',
-        'XII_TEI',
-    ));
+            'XI_RPL',
+            'XI_BC',
+            'XI_MM',
+            'XI_TKJ',
+            'XI_TEI',
+
+            'XII_RPL',
+            'XII_BC',
+            'XII_MM',
+            'XII_TKJ',
+            'XII_TEI',
+        ));
     })->name('dashboard.guru');
 });
 // Siswa
-Route::group(['prefix' =>'siswa', 'middleware' => ['jwt.verify', 'auth:api']], function () {
+Route::group(['prefix' => 'siswa', 'middleware' => ['jwt.verify', 'auth:api']], function () {
     Route::get('/dashboard', function () {
         // $article = Post::all();
-        $article = Category::wherehas('post', function($query){
-            $query->where('name','Siswa');
+        $article = Category::wherehas('post', function ($query) {
+            $query->where('name', 'Siswa');
         })->get();
         // dd($article);
-        return view('dashboard.dashboard',compact('article'));
+        return view('dashboard.dashboard', compact('article'));
     })->name('dashboard.siswa');
 });
 
