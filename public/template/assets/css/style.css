@@ -453,7 +453,7 @@ h6 {
 }
 
 .navbar a:hover,
-.navbar li:hover>a {
+.navbar li:hover > a {
     text-decoration: underline 2px;
 }
 
@@ -490,11 +490,11 @@ h6 {
 
 .navbar .dropdown ul a:hover,
 .navbar .dropdown ul .active:hover,
-.navbar .dropdown ul li:hover>a {
+.navbar .dropdown ul li:hover > a {
     color: #2689c9;
 }
 
-.navbar .dropdown:hover>ul {
+.navbar .dropdown:hover > ul {
     opacity: 1;
     top: 100%;
     visibility: visible;
@@ -506,7 +506,7 @@ h6 {
     visibility: hidden;
 }
 
-.navbar .dropdown .dropdown:hover>ul {
+.navbar .dropdown .dropdown:hover > ul {
     opacity: 1;
     top: 0;
     left: 100%;
@@ -518,7 +518,7 @@ h6 {
         left: -90%;
     }
 
-    .navbar .dropdown .dropdown:hover>ul {
+    .navbar .dropdown .dropdown:hover > ul {
         left: -100%;
     }
 }
@@ -533,10 +533,12 @@ h6 {
     display: none;
     line-height: 0;
     transition: 0.5s;
+    margin-right: 2%;
 }
 
 .mobile-nav-toggle.bi-x {
     color: #fff;
+    margin-right: 2%;
 }
 
 @media (max-width: 991px) {
@@ -593,7 +595,7 @@ h6 {
 }
 
 .navbar-mobile a:hover,
-.navbar-mobile li:hover>a {
+.navbar-mobile li:hover > a {
     color: #2a2a2a;
 }
 
@@ -628,11 +630,11 @@ h6 {
 
 .navbar-mobile .dropdown ul a:hover,
 .navbar-mobile .dropdown ul .active:hover,
-.navbar-mobile .dropdown ul li:hover>a {
+.navbar-mobile .dropdown ul li:hover > a {
     color: #2689c9;
 }
 
-.navbar-mobile .dropdown>.dropdown-active {
+.navbar-mobile .dropdown > .dropdown-active {
     display: block;
 }
 
@@ -659,11 +661,11 @@ h6 {
     padding-top: 72px;
 }
 
-@media (max-width: 992px) {
-    #hero .container {
-        padding-top: 62px;
+/* @media (max-width: 992px) {
+    #hero div .container {
+        text-align: justify;
     }
-}
+} */
 
 #hero h1 {
     margin: 0;
@@ -699,7 +701,7 @@ h6 {
     border: 2px solid #2689c9;
 }
 
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
     #hero {
         height: 100vh;
     }
@@ -713,7 +715,7 @@ h6 {
         font-size: 18px;
         line-height: 24px;
     }
-}
+} */
 
 /*--------------------------------------------------------------
 # Sections General
@@ -842,7 +844,8 @@ section {
 /*--------------------------------------------------------------
 # Carousel
 --------------------------------------------------------------*/
-@media (max-width: 768px) {}
+@media (max-width: 768px) {
+}
 
 /*--------------------------------------------------------------
 # Counts
@@ -1580,7 +1583,7 @@ section {
     font-weight: 600;
 }
 
-.contact .php-email-form .error-message br+br {
+.contact .php-email-form .error-message br + br {
     margin-top: 25px;
 }
 

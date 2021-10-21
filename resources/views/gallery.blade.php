@@ -22,7 +22,7 @@
                     @foreach ($image as $key => $kls)
                         <div class="carousel-item {{ $loop->iteration == 1 ? 'active' : '' }}">
                             <img src="{{ asset('storage/' . $kls->photo) }}" class="d-block img-fluid mx-auto" alt="..."
-                                width="50%">
+                                width="25%">
                         </div>
                     @endforeach
                 </div>
@@ -38,22 +38,42 @@
     </div> --}}
             <div id="trailer">
                 <div id="video">
-                    <div class="row">
+                   <div class="row justify-content-center">
                         @foreach ($video as $item)
-                    <div class="col-md-4">
-                        <video controls autoplay="autoplay"
+                    <div class="col-4 mt-4 text-center">
+                        <video controls width="100%"
                         onclick="if(/Android/.test(navigator.userAgent))this.play();">
-                            <source src="{{ asset('storage/' . $item->video) }}" type="video/mp4" />
-                                <embed src="video/flashfox.swf"
+                            <source src="{{ asset('storage/' . $item->video) }}"   type="video/mp4" />
+                                <embed src="video/flashfox.swf" 
                                 flashVars="autoplay=true&amp;controls=true&amp;loop=true&amp;src=trailer.mp4"
                                 allowFullScreen="true" wmode="transparent" type="application/x-shockwave-flash"
                                 pluginspage="http://www.adobe.com/go/getflashplayer_en" />
-                        </video>
+                            </video>
+                            <h5 class="fw-bold">{{ $item->title }}</h5>
                     </div>
-                    @endforeach
-                    </div>
+                            @endforeach
+                   </div>
                 </div>
             </div>
         @endif
     </div>
+    
 @endsection
+<script>
+$('.owl-carousel').owlCarousel({
+    loop:true,
+    margin:10,
+    nav:true,
+    responsive:{
+        0:{
+            items:1
+        },
+        600:{
+            items:3
+        },
+        1000:{
+            items:5
+        }
+    }
+})
+</script>

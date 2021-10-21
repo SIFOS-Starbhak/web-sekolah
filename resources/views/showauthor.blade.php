@@ -7,8 +7,12 @@
             <h3><b><a href="/{{ $item->slug }}">{{ $item->title }}</a></b></h3>
             <hr>
             <div class="text-center">
-                <img src="{{ asset('storage/' . $item->image) }}" alt="" width="70%">
-            </div>
+                @if (file_exists(public_path('article-img/'.$item->image)))
+             <img src="{{ asset('article-img/' . $item->image) }}" width="70%" />
+             @else 
+             <img src="{{ asset('storage/' . $item->image) }}" width="70%" />
+             @endif
+         </div>
             <br>
             <p>
                 Posted in <a href="/category/{{ $item->category->slug }}">{{ $item->category->name }}</a>

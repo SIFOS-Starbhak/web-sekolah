@@ -79,7 +79,8 @@ class HubinController extends Controller
         $jurusan = Jurusan::all();
         $settings = Setting::all();
         $navbar = Navbar::all()->where('status', 'Active');
+        $backgrounds = Background::all();
 
-        return view('hubin', compact('tkjKuliah', 'tkjWira', 'tkjKerja', 'mmKuliah', 'mmWira', 'mmKerja', 'bcKuliah', 'bcWira', 'bcKerja', 'teiKerja', 'teiWira', 'teiKuliah', 'rplKerja', 'rplWira', 'rplKuliah', 'jurusan', 'settings', 'navbar'));
+        return view('hubin', compact('backgrounds', 'tkjKuliah', 'tkjWira', 'tkjKerja', 'mmKuliah', 'mmWira', 'mmKerja', 'bcKuliah', 'bcWira', 'bcKerja', 'teiKerja', 'teiWira', 'teiKuliah', 'rplKerja', 'rplWira', 'rplKuliah', 'jurusan', 'settings', 'navbar'));
     }
 }
