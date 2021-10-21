@@ -98,7 +98,7 @@
         <section id="why-us" class="why-us bg-dark">
             <div class="container" data-aos="fade-up">
                 <div class="text-center">
-                    <span class="text-white border border-2 border-white pt-2 pb-2 ps-5 pe-5" style="font-size: 18px; border-radius: 50px">Virtual Tour SMK Taruna Bhakti</span>
+                    <span class="text-white border border-2 border-white pt-2 pb-2 ps-5 pe-5 rounded-pill" style="font-size: 18px;">Virtual Tour SMK Taruna Bhakti</span>
                 </div>
                 @foreach ($settings as $setting)
                     @if ($setting->display_name == 'Virtual Tour')
@@ -116,7 +116,7 @@
         <section id="counts" class="counts section-bg" style="background: #e39b0d">
             <div class="container">
                 <div class="text-center">
-                    <span class="text-white border border-2 border-white pt-2 pb-2 ps-5 pe-5" style="font-size: 18px; border-radius: 50px">Artikel dan Info Sekolah</span>
+                    <span class="text-white border border-2 border-white pt-2 pb-2 ps-5 pe-5 rounded-pill" style="font-size: 18px;">Artikel dan Info Sekolah</span>
                 </div>
             </div>
         </section>
