@@ -64,7 +64,6 @@ Route::post('/registalum/store', [RegistalumController::class, 'store'])->name('
 Route::get('/registalum', [RegistalumController::class, 'create']);
 // Route::get('/kesiswaan', 'WebController@kesiswaan');
 // Route::get('/kurikulum/kurikulumguru', 'WebController@kurikulumguru');
-// Route::get('/kurikulum/kurikulumsmktb', 'WebController@kurikulumsmktb');
 
 // Artikel
 Route::get('/artikel', function () {
