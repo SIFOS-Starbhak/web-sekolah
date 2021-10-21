@@ -96,7 +96,7 @@
                             </div>
 
                             <div class="mb-3">
-                                <label for="" class="form-label fw-bold">Category Alumni</label>
+                                <label for="" class="form-label fw-bold">Kategori Alumni</label>
                                 <select class="form-select" aria-label="Default select example"
                                     id="categories_alumnis" name="categories_alumnis">
                                     <option selected></option>
