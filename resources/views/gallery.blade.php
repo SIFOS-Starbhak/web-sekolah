@@ -11,10 +11,10 @@
         .ani:hover {
             filter: none
                 /* -ms-transform: scale(1.05);
-            -webkit-transform: scale(1.05);
-            transform: scale(1.05);
-            box-shadow: 20px;
-            transition: 500ms; */
+                -webkit-transform: scale(1.05);
+                transform: scale(1.05);
+                box-shadow: 20px;
+                transition: 500ms; */
         }
 
     </style>
@@ -152,5 +152,12 @@
             expandImg.parentElement.style.display = "block";
         }
     </script>
-
+    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Unde cum officiis maiores illum non nemo reprehenderit sunt,
+    ex vel modi qui, deserunt eaque nulla recusandae expedita, vitae sit. A, ducimus.
+    Nobis ad temporibus illo nulla earum veniam quisquam molestias praesentium voluptatem sit! Veniam, cupiditate maxime
+    mollitia voluptatum autem dolorum odit quam ad molestiae, alias ratione deserunt consectetur ut quidem voluptates?
+    Dicta neque eaque quae ullam, nisi, earum, saepe quibusdam repudiandae atque rem delectus. Dicta, ad nam. Ex quisquam
+    temporibus animi earum velit voluptatem, libero vero eaque, doloremque dolores quod perferendis?
+    Quidem labore magnam repudiandae saepe distinctio commodi nobis earum sint error, odit numquam dolorem vel tempore ullam
+    quod quia qui ipsam alias deserunt veniam laudantium laboriosam! Reprehenderit nihil esse nobis.
 @endsection
