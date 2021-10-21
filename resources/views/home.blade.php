@@ -98,8 +98,7 @@
         <section id="why-us" class="why-us bg-dark">
             <div class="container" data-aos="fade-up">
                 <div class="text-center">
-                    <a class="btn btn-outline-light text-light pe-5 ps-5" style="border-radius: 50px">Virtual
-                        Tour SMK Taruna Bhakti</a>
+                    <span class="text-white border border-2 border-white pt-2 pb-2 ps-5 pe-5" style="font-size: 18px; border-radius: 50px">Virtual Tour SMK Taruna Bhakti</span>
                 </div>
                 @foreach ($settings as $setting)
                     @if ($setting->display_name == 'Virtual Tour')
@@ -117,8 +116,7 @@
         <section id="counts" class="counts section-bg" style="background: #e39b0d">
             <div class="container">
                 <div class="text-center">
-                    <a class="btn btn-outline-light text-light pe-5 ps-5" style="border-radius: 50px">Artikel dan Info
-                        Sekolah</a>
+                    <span class="text-white border border-2 border-white pt-2 pb-2 ps-5 pe-5" style="font-size: 18px; border-radius: 50px">Artikel dan Info Sekolah</span>
                 </div>
             </div>
         </section>
@@ -132,7 +130,7 @@
                             <div class="course-item shadow">
                                 @if (file_exists(public_path('article-img/' . $artikel->image)))
                                     <img src="{{ 'article-img/' . $artikel->image }}" class="img-fluid" alt="..."
-                                        style="width:100%;height:250px;" />
+                                    style="width:100%;height:250px;" />
                                 @else
                                     <img src="{{ asset('storage/' . $artikel->image) }}" class="img-fluid" alt="..."
                                         style="width:100%;height:250px;" />
@@ -153,15 +151,16 @@
                                 </div>
                             </div>
                         </div>
-                    @empty
-                        <div class="btn btn-danger">
-                            Tidak Ada Artikel
-                        </div>
+                        @empty
+                            <div class="btn btn-danger">
+                                Tidak Ada Artikel
+                            </div>
                     @endforelse
-                    <!-- End Course Item-->
                 </div>
             </div>
         </section>
+
+        
 
         @foreach ($posts as $key => $item)
             @if ($key == 6)
@@ -179,7 +178,7 @@
             <div class="container text-center">
                 <div class="row counters kebawah owl-carousel">
                     @foreach ($partners as $partner)
-                        <div class="col-md-3 mt-2 partner">
+                        <div class="col-lg-3 mt-2 partner">
                                     <a href=" {{ $partner->link_perusahaan }}">
                             <img title="{{ $partner->nama_perusahaan }}"
                                 src="{{ asset('storage/' . $partner->logo_perusahaan) }}" alt="" />
