@@ -8,23 +8,24 @@
         <a href="/gallery" class="col-12" style="font-size: 17px;"><i class="fas fa-arrow-left"></i>
             Kembali</a>
         @if (request()->is('gallery/image'))
-
-            <div class="row mt-5">
-                @foreach ($image as $key => $kls)
-                    <div class="col-md-3">
-                        <img src="{{ asset('storage/' . $kls->photo) }}" class="d-block img-fluid mx-auto" alt="..."
-                            width="50%" onclick="myFunction(this);">
-                    </div>
-                @endforeach
-            </div>
-
             <div class="closeimg text-center">
                 <!-- Close the image -->
                 <span onclick="this.parentElement.style.display='none'" class="closebtn text-dark">&times;</span>
 
                 <!-- Expanded image -->
-                <img id="expandedImg" style="width:40%;">
+                <img id="expandedImg" class="mt-4" style="width:50%;">
             </div>
+
+            <div class="row mt-5">
+                @foreach ($image as $key => $kls)
+                    <div class="col-md-3 mt-4">
+                        <img src="{{ asset('storage/' . $kls->photo) }}" class="d-block img-fluid mx-auto" alt="..."
+                            width="100%" onclick="myFunction(this);">
+                    </div>
+                @endforeach
+            </div>
+
+
 
             {{-- <div id="carouselExampleIndicators" class="carousel slide my-5" data-bs-ride="carousel">
                 <div class="carousel-indicators">
