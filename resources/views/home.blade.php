@@ -1,12 +1,30 @@
 @extends('template.app')
 @section('title', 'Home')
 @section('main')
+<style>
+    .tinggi {
+        height: 200px
+    }
+    
+    @media (max-width: 1000px) {
+        .tinggi {
+            height: 275px;
+        }
+    }
+
+    @media (max-width: 400px) {
+        .tinggi {
+            height: 325px;
+        }
+    }
+</style>
+
     <main id="main">
         <!-- ======= Counts Section ======= -->
         <!-- Carousel -->
 
-        <div id="carouselExampleIndicators" class="carousel slide carosel" data-bs-ride="carousel">
-            <div class="carousel-inner pt-4" style="height: auto">
+        <div id="carouselExampleIndicators" class="carousel slide carosel" data-bs-ride="carousel" >
+            <div class="carousel-inner pt-4 tinggi">
                 @foreach ($news as $key => $artikel)
                     <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
                         <div class=" container text-white mb-5">
@@ -115,7 +133,7 @@
         <!-- Artikel dan Info Sekolah -->
         <section id="counts" class="counts section-bg" style="background: #e39b0d">
             <div class="container">
-                <div class="text-center">
+                <div class="text-center mt-3 mb-3">
                     <span class="text-white border border-2 border-white pt-2 pb-2 ps-5 pe-5 rounded-pill" style="font-size: 18px;">Artikel dan Info Sekolah</span>
                 </div>
             </div>

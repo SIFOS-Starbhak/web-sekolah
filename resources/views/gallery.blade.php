@@ -3,21 +3,23 @@
 @section('main')
 
 <style>
-    .ani {
-            transition: 200ms;
-            filter: brightness(70%)
-        }
+    .ani 
+    {
+        transition: 200ms;
+        filter: brightness(70%)
+    }
 
-        .ani:hover {
-            filter: none
+    .ani:hover 
+    {
+        filter: none
 
 
-            /* -ms-transform: scale(1.05);
-            -webkit-transform: scale(1.05);
-            transform: scale(1.05);
-            box-shadow: 20px;
-            transition: 500ms; */
-        }
+        /* -ms-transform: scale(1.05);
+        -webkit-transform: scale(1.05);
+        transform: scale(1.05);
+        box-shadow: 20px;
+        transition: 500ms; */
+    }
 </style>
     {{-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -31,12 +33,12 @@
                 <span onclick="this.parentElement.style.display='none'" class="closebtn text-dark">&times;</span>
 
                 <!-- Expanded image -->
-                <img id="expandedImg" class="mt-4" style="width:50%;">
+                <img id="expandedImg" class="mt-4" style="width:80%;">
             </div>
 
             <div class="row mt-5" style="max-height: 750px; overflow-y: scroll;">
                 @foreach ($image as $key => $kls)
-                    <div class="col-md-3 mt-4">
+                    <div class="col-4 mt-4">
                         <img src="{{ asset('storage/' . $kls->photo) }}" class="d-block img-fluid mx-auto ani" alt="..."
                             width="100%" onclick="myFunction(this);">
                     </div>
