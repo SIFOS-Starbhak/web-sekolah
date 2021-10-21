@@ -23,6 +23,7 @@ use App\Models\Image;
 use App\Models\Video;
 use App\Models\Background;
 use App\Models\Role;
+use App\Models\GuruKejuruan;
 
 class WebController extends Controller
 {
@@ -42,10 +43,11 @@ class WebController extends Controller
 
     public function profiletb()
     {
+        $backgrounds = Background::all();
         $pages = Page::all()->where('category_id', '7')->where('status', 'ACTIVE');
         $settings = Setting::all();
         $navbar = Navbar::all()->where('status', 'Active');
-        return view('profile', compact('navbar', 'settings', 'pages'));
+        return view('profile', compact('navbar', 'settings', 'pages','backgrounds'));
     }
 
     public function gallery()
@@ -236,7 +238,8 @@ class WebController extends Controller
         $navbar = Navbar::all()->where('status', 'Active');
         $contents = Content::all()->where('sub_menu', $submenu->id);
         $backgrounds = Background::all();
-        return view('submenu', compact('settings', 'navbar', 'nav', 'contents', 'submenu', 'backgrounds'));
+        $foto = GuruKejuruan::all()->where('jurusan', $submenu->id);
+        return view('submenu', compact('settings', 'navbar', 'nav', 'contents', 'submenu', 'backgrounds', 'foto'));
     }
 
     public function galleries(Page $gallery)

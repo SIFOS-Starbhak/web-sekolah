@@ -2,6 +2,7 @@
 @section('title', $gallery->title)
 @section('main')
 
+<<<<<<< HEAD
 <style>
     .ani 
     {
@@ -21,6 +22,19 @@
         transition: 500ms; */
     }
 </style>
+=======
+    <style>
+        .ani {
+            transition: 200ms;
+            filter: brightness(75%)
+        }
+
+        .ani:hover {
+            filter: none;
+        }
+
+    </style>
+>>>>>>> 765981e42cfd93d55025b39e4a1c082ec21c7c9e
     {{-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script> --}}
@@ -36,7 +50,7 @@
                 <img id="expandedImg" class="mt-4" style="width:80%;">
             </div>
 
-            <div class="row mt-5" style="max-height: 750px; overflow-y: scroll;">
+            <div class="row mt-5" style="max-height: 400px; overflow-y: scroll;">
                 @foreach ($image as $key => $kls)
                     <div class="col-4 mt-4">
                         <img src="{{ asset('storage/' . $kls->photo) }}" class="d-block img-fluid mx-auto ani" alt="..."
