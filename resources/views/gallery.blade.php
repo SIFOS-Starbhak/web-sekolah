@@ -87,7 +87,7 @@
                             <div class="d-flex justify-content-left row flex-wrap" data-aos="zoom-in" data-aos-delay="100">
                                 @foreach ($video as $item)
                                     <div class="col-lg-4 mb-4" style="">
-                                        <video controls width="100%"
+                                        <video controls width="100%" poster="{{ asset('storage/' . $item->thumbnail) }}"
                                             onclick="if(/Android/.test(navigator.userAgent))this.play();">
                                             <source src="{{ asset('storage/' . $item->video) }}" type="video/mp4" />
                                             <embed src="video/flashfox.swf"

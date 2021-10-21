@@ -12,11 +12,12 @@
                         <div class=" container text-white mb-5">
                             <div class="row counters">
                                 <div class="col-md-4 judul">
-                                    <h2 style="color: white;">{{ Str::words($artikel->title, 5)}}
+                                    <h2 style="color: white;">{{ Str::words($artikel->title, 5) }}
                                     </h2>
                                 </div>
                                 <div class="col-md-4">
-                                    <p style="font-weight: 100" class="mt-2 isi">{{ Str::words($artikel->excerpt, 25) }}</p>
+                                    <p style="font-weight: 100" class="mt-2 isi">
+                                        {{ Str::words($artikel->excerpt, 25) }}</p>
                                 </div>
                                 <div class="col-md-4 text-center tombol">
                                     <a href="/showartikel/{{ $artikel->slug }}"
@@ -124,44 +125,49 @@
         </section>
         <!-- End -->
         <!-- ======= Popular Courses Section ======= -->
-        <section id="popular-courses" class="courses">
-            <div class="container" data-aos="fade-up">
-                <div class="d-flex justify-content-center row flex-wrap" data-aos="zoom-in" data-aos-delay="100">
-                    @forelse ($article as $artikel)
-                        <div class="col-lg-4 mb-4">
-                            <div class="course-item shadow">
-                                @if (file_exists(public_path('article-img/' . $artikel->image)))
-                                    <img src="{{ 'article-img/' . $artikel->image }}" class="img-fluid" alt="..."
-                                        style="width:100%;height:250px;" />
-                                @else
-                                    <img src="{{ asset('storage/' . $artikel->image) }}" class="img-fluid" alt="..."
-                                        style="width:100%;height:250px;" />
-                                @endif
-                                <div class="course-content">
-                                    <div class="d-flex justify-content-between mb-3">
-                                        <h4>
-                                            <a href="/category/{{ $artikel->category->slug }}"
-                                                class="artikel">{{ $artikel->category->name }}</a>
-                                        </h4>
-                                        <!-- <p class="price">$169</p> -->
-                                    </div>
-                                    <h3><a href="/{{ $artikel->slug }}">{{ $artikel->title }}</a>
-                                    </h3>
+        <div class="container" data-aos="fade-up">
+            <div class="row card-group " data-aos="zoom-in" data-aos-delay="100">
+                <section id="popular-courses" class="courses">
+                    <div class="container" data-aos="fade-up">
+                        <div class="d-flex justify-content-center row flex-wrap card-group" data-aos="zoom-in"
+                            data-aos-delay="100">
+                            @forelse ($article as $artikel)
+                                <div class="col-lg-4 mb-4">
+                                    <div class="course-item shadow h-100 ani">
+                                        @if (file_exists(public_path('article-img/' . $artikel->image)))
+                                            <img src="{{ 'article-img/' . $artikel->image }}" class="img-fluid"
+                                                alt="..." style="width:100%;height:250px;" />
+                                        @else
+                                            <img src="{{ asset('storage/' . $artikel->image) }}" class="img-fluid"
+                                                alt="..." style="width:100%;height:250px;" />
+                                        @endif
+                                        <div class="course-content mt-3">
+                                            <div class="d-flex justify-content-between mb-3">
+                                                <h4>
+                                                    <a href="/category/{{ $artikel->category->slug }}"
+                                                        class="artikel">{{ $artikel->category->name }}</a>
+                                                </h4>
+                                                <!-- <p class="price">$169</p> -->
+                                            </div>
+                                            <h3><a href="/{{ $artikel->slug }}">{{ Str::words($artikel->title, 5) }}</a>
+                                            </h3>
 
-                                    <p>{{ $artikel->excerpt }}</p>
-                                    <p><a href="/showartikel/{{ $artikel->slug }}">Read More ...</a></p>
+                                            <p>{{ Str::words($artikel->excerpt, 25) }}</p>
+                                            <p><a href="/showartikel/{{ $artikel->slug }}">Read More ...</a></p>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
+                            @empty
+                                <div class="btn btn-danger">
+                                    Tidak Ada Artikel
+                                </div>
+                            @endforelse
+                            <!-- End Course Item-->
                         </div>
-                    @empty
-                        <div class="btn btn-danger">
-                            Tidak Ada Artikel
-                        </div>
-                    @endforelse
-                    <!-- End Course Item-->
-                </div>
+                    </div>
+                </section>
             </div>
-        </section>
+        </div>
 
         @foreach ($posts as $key => $item)
             @if ($key == 6)
@@ -180,9 +186,9 @@
                 <div class="row counters kebawah owl-carousel">
                     @foreach ($partners as $partner)
                         <div class="col-md-3 mt-2 partner">
-                                    <a href=" {{ $partner->link_perusahaan }}">
-                            <img title="{{ $partner->nama_perusahaan }}"
-                                src="{{ asset('storage/' . $partner->logo_perusahaan) }}" alt="" />
+                            <a href=" {{ $partner->link_perusahaan }}">
+                                <img title="{{ $partner->nama_perusahaan }}"
+                                    src="{{ asset('storage/' . $partner->logo_perusahaan) }}" alt="" />
                             </a>
                         </div>
                     @endforeach

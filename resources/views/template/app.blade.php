@@ -82,6 +82,25 @@
             color: #2689c9;
         }
 
+        .navba ul .btn-get-started {
+            font-family: "Raleway", sans-serif;
+            font-weight: 500;
+            font-size: 15px;
+            letter-spacing: 1px;
+            display: inline-block;
+            padding: 10px 35px;
+            border-radius: 50px;
+            transition: 0.5s;
+            margin-top: 30px;
+            border: 2px solid #fff;
+            color: #fff;
+        }
+
+        .navbar ul .btn-get-started:hover {
+            background: #2689c9;
+            border: 2px solid #2689c9;
+        }
+
     </style>
 </head>
 
@@ -106,7 +125,7 @@
                         </li>
                     @endforeach
 
-                    <li><a href="{{ route('login') }}" target="_blank" class="btn-get-started active">Login</a>
+                    <li><a href="{{ route('login') }}" target="_blank" class="btn-get-started ">Login</a>
                     </li>
 
                 </ul>
@@ -126,12 +145,7 @@
                         <div class="carousel-caption d-none d-md-block container"
                             style="margin-bottom: 13%; margin-left: -10%; text-align: left;" data-aos="zoom-in"
                             data-aos-delay="100">
-                            @foreach ($settings as $item)
-                                @if ($item->display_name == 'Heading')
-                                    {!! $item->value !!}
-                                @endif
-                            @endforeach
-
+                            <h1>{{ $bg->heading }}</h1>
                             <a href="/profile" class="btn btn-outline-light mt-4"
                                 style="padding: 10px 30px 10px 30px; border-radius: 50px">Profile</a>
                         </div>
