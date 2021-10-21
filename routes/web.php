@@ -13,6 +13,7 @@ use App\Models\Setting;
 use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\DashboardManager;
 use Tymon\JWTAuth\JWTAuth;
 
 /*
@@ -97,11 +98,7 @@ Route::group(['prefix' => 'manager', 'middleware' => ['jwt.verify', 'auth:api']]
     Route::patch('/Article/update/{id}', [ArticleController::class, 'update'])->name('article.update');
     Route::put('/Article/draft/{id}', [ArticleController::class, 'draftOrPublised'])->name('article.draft');
     Route::POST('/image/store', [ImageController::class, 'store'])->name('admin.image');
-    Route::get('/dashboard', function () {
-        $article = Post::where('author_id', Auth::guard('api')->id())->get();
-        // dd($article);
-        return view('dashboard.dashboard', compact('article'));
-    })->name('dashboard.manager');
+    Route::get('/dashboard', [DashboardManager::class, 'index'])->name('dashboard.manager');
 });
 
 // Guru
@@ -210,6 +207,17 @@ Route::group(['prefix' => 'siswa', 'middleware' => ['jwt.verify', 'auth:api']], 
         // dd($article);
         return view('dashboard.dashboard', compact('article'));
     })->name('dashboard.siswa');
+});
+// Perusahaan
+Route::group(['prefix' => 'perusahaan', 'middleware' => ['jwt.verify', 'auth:api']], function () {
+    Route::get('/dashboard', function () {
+        // $article = Post::all();
+        $article = Category::wherehas('post', function ($query) {
+            $query->where('name', 'Perusahaan');
+        })->get();
+        // dd($article);
+        return view('dashboard.dashboard', compact('article'));
+    })->name('dashboard.perusahaan');
 });
 
 // Dinamis Page Web Sekolah

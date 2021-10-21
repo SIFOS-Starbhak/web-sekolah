@@ -7,12 +7,12 @@
         </li>
         <li class="dropdown"><a href="#" data-toggle="dropdown"
                 class="nav-link dropdown-toggle nav-link-lg nav-link-user">
-                <img alt="image" src='{{ asset(Auth::user()->avatar)}}' class="rounded-circle mr-1">
+                <img alt="image" src='{{ asset(Auth::user()->avatar) }}' class="rounded-circle mr-1">
                 <div class="d-sm-none d-lg-inline-block">{{ JWTAuth::user()->name }}</div>
             </a>
             <div class="dropdown-menu dropdown-menu-right">
                 <div class="dropdown-title">Logged in 5 min ago</div>
-                 <a href="{{route('edit.profile', JWTAuth::user()->id)}}" class="dropdown-item has-icon">
+                <a href="{{ route('edit.profile', JWTAuth::user()->id) }}" class="dropdown-item has-icon">
                     <i class="far fa-user"></i> Profile
                 </a>
                 {{-- <a href="features-activities.html" class="dropdown-item has-icon">
@@ -20,7 +20,7 @@
                 </a>
                 <a href="features-settings.html" class="dropdown-item has-icon">
                     <i class="fas fa-cog"></i> Settings
-                </a>  --}}
+                </a> --}}
                 <div class="dropdown-divider"></div>
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
@@ -35,7 +35,7 @@
     <div class="container">
         <div class="text-dark my-auto">
             <h3 class="my-0">
-                @yield('judul')
+                <span class="text-primary">{{ $greetings }}</span>
             </h3>
         </div>
     </div>
