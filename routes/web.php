@@ -70,7 +70,8 @@ Route::get('/registalum', [RegistalumController::class, 'create']);
 Route::get('/artikel', function () {
     $settings = App\Models\Setting::all();
     $article = App\Models\Post::where('status', 'PUBLISHED')->get();
-    return view('artikel', compact('settings', 'article'));
+    $backgrounds = App\Models\Background::all();
+    return view('artikel', compact('settings', 'article', 'backgrounds'));
 });
 Route::get('/author/{user}', 'WebController@author');
 Route::get('/posted/{posted}', 'WebController@posted');
@@ -83,7 +84,8 @@ Route::get('/showartikel/{id}', function ($id) {
     // dd($author);
     $settings = App\Models\Setting::all();
     $navbar = App\Models\Navbar::all()->where('status', 'Active');
-    return view('showartikel', compact('articleShow', 'settings', 'author', 'navbar'));
+    $backgrounds = App\Models\Background::all();
+    return view('showartikel', compact('articleShow', 'settings', 'author', 'navbar', 'backgrounds'));
 })->name('showartikel');
 
 // Manager

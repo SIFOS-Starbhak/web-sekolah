@@ -149,7 +149,8 @@
                                                 </h4>
                                                 <!-- <p class="price">$169</p> -->
                                             </div>
-                                            <h3><a href="/{{ $artikel->slug }}">{{ Str::words($artikel->title, 5) }}</a>
+                                            <h3><a
+                                                    href="/showartikel/{{ $artikel->slug }}">{{ Str::words($artikel->title, 5) }}</a>
                                             </h3>
 
                                             <p>{{ Str::words($artikel->excerpt, 25) }}</p>
