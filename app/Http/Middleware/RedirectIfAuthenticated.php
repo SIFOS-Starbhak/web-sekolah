@@ -29,6 +29,8 @@ class RedirectIfAuthenticated
                     return redirect()->route('dashboard.siswa');
                 } else if (Auth::guard($guard)->user()->hasRole('manager')) {
                     return redirect()->route('dashboard.manager');
+                } else if (Auth::guard($guard)->user()->hasRole('perusahaan')) {
+                    return redirect()->route('dashboard.perusahaan');
                 } else {
                     return redirect()->route('dashboard');
                 }

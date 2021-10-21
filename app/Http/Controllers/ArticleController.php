@@ -12,7 +12,23 @@ class ArticleController extends Controller
 {
     public function index()
     {
-        return view('article.index');
+        $greetings = "";
+        $time = date("H");
+        $timezone = date("e");
+
+        if ($time < "12") {
+            $greetings = "Selamat Pagi";
+        } else
+            if ($time >= "12" && $time < "15") {
+            $greetings = "Selamat Siang";
+        } else
+            if ($time >= "15" && $time < "18") {
+            $greetings = "Selamat Sore";
+        } else
+            if ($time >= "18") {
+            $greetings = "Selamat Malam";
+        }
+        return view('article.index', compact('greetings'));
     }
 
     public function tambah()
@@ -21,8 +37,8 @@ class ArticleController extends Controller
         $categories = Category::all();
         // dd($categories->page);
         // $pages = Page::has('category')->where('')
-
-        return view('article.tambah', compact('categories'));
+        $greetings = "Tambah Artikel";
+        return view('article.tambah', compact('categories', 'greetings'));
     }
     public function store(Request $request)
     {
@@ -49,10 +65,6 @@ class ArticleController extends Controller
         $nm = $request->image;
         $namafile = $nm->getClientOriginalName();
         $nm->move(public_path() . '/article-img', $namafile);
-
-
-
-
         Post::create([
             'author_id' => auth()->id(),
             'category_id' => $request->category,

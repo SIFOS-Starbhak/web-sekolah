@@ -82,6 +82,8 @@ class AuthenticatedSessionController extends Controller
             $data['redirect'] = route('dashboard.guru');
         } else if (auth('api')->user()->hasRole('manager')) {
             $data['redirect'] = route('dashboard.manager');
+        } else if (auth('api')->user()->hasRole('perusahaan')) {
+            $data['redirect'] = route('dashboard.perusahaan');
         } else {
             $data['redirect'] = route('dashboard');
         }
@@ -135,6 +137,8 @@ class AuthenticatedSessionController extends Controller
             $data['auth'] = ["username" => auth('api')->user()->nomor_induk, "password" => auth('api')->user()->password, "role" => "guru"];
         } else if (auth('api')->user()->hasRole('manager')) {
             $data['auth'] = ["username" => auth('api')->user()->nomor_induk, "password" => auth('api')->user()->password, "role" => "manager"];
+        } else if (auth('api')->user()->hasRole('perusahaan')) {
+            $data['auth'] = ["username" => auth('api')->user()->email, "password" => auth('api')->user()->password, "role" => "perusahaan"];
         }
 
         $token = JWT::encode($data, "1342423424324324234", 'HS256');

@@ -26,9 +26,10 @@
                         @foreach ($page as $fg)
                             <div class="col-lg-4 mb-4" style="width: 300px">
                                 <a href="/{{ $menu->slug }}/{{ $fg->slug }}">
-                                <div class="course-item shadow h-100 ani">
-                                        <img src="{{ asset('storage/' . $fg->image) }}" class="img-fluid" alt="..."
-                                            style="width:100%;height:250px;" />
+                                    <div class="course-item shadow h-100 ani">
+                                        <img src="{{ asset('storage/' . $fg->image) }}"
+                                            class="img-fluid justify-content-center" alt="..."
+                                            style="width:100%;height:250px;object-fit: cover" />
                                         <div class="course-content mt-3">
                                             <h3><a href="/{{ $menu->slug }}/{{ $fg->slug }}">{{ $fg->title }}</a>
                                             </h3>

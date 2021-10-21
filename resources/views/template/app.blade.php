@@ -82,25 +82,23 @@
             color: #2689c9;
         }
 
-        .navba ul .btn-get-started {
-            font-family: "Raleway", sans-serif;
-            font-weight: 500;
-            font-size: 15px;
-            letter-spacing: 1px;
-            display: inline-block;
-            padding: 10px 35px;
-            border-radius: 50px;
-            transition: 0.5s;
-            margin-top: 30px;
-            border: 2px solid #fff;
-            color: #fff;
+        .carousel-caption {
+            margin-bottom: 13%;
         }
 
-        .navbar ul .btn-get-started:hover {
-            background: #2689c9;
-            border: 2px solid #2689c9;
+        @media (max-width: 992px) {
+            .carousel-caption {
+                margin-bottom: 40%;
+            }
         }
 
+        @media (max-width: 300px) {
+            .iframe-maps {
+                width: 100%
+            }
+        }
+
+        
     </style>
 </head>
 
@@ -142,8 +140,8 @@
                     <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
                         <img src="{{ asset('storage/' . $bg->image) }}" class="d-block" alt="..." width="100%"
                             style="height: 600px; filter: brightness(50%)">
-                        <div class="carousel-caption d-none d-md-block container"
-                            style="margin-bottom: 13%; margin-left: -10%; text-align: left;" data-aos="zoom-in"
+                        <div class="carousel-caption container"
+                            style="margin-left: -10%; text-align: left;" data-aos="zoom-in"
                             data-aos-delay="100">
                             <h1>{{ $bg->heading }}</h1>
                             <a href="/profile" class="btn btn-outline-light mt-4"
@@ -189,12 +187,12 @@
 
     <footer class="counts section-bg" style="background-color: #095b90;">
         <div class="container text-white">
-            <div class="row counters mt-4">
-                <div class="col-md-2" style="font-family: poppins">
+            <div class="row counters mt-4 footer-media">
+                <div class="col-lg-2" style="font-family: poppins">
                     <img src="{{ asset('template/assets/img/logotb.png') }}" alt=""
                         style="width: 95px; height: 95px" />
                 </div>
-                <div class="col-md-3 mt-3">
+                <div class="col-lg-3 mt-3">
                     <p style="font-size: 20px">
                         <b>
                             YAYASAN SETYA BHAKTI <br />
@@ -209,7 +207,7 @@
                         Telepon : (021) 874 4810
                     </p>
                 </div>
-                <div class="col-md-3 mt-3">
+                <div class="col-lg-3 mt-3">
                     <p style="font-size: 20px"><b>Admission Information</b></p>
                     <br />
                     <p style="font-size: 13px; font-weight: lighter">
@@ -220,8 +218,8 @@
                         majors, and description
                     </p>
                 </div>
-                <div class="col-md-4 mt-3">
-                    <iframe class="shadow-lg"
+                <div class="col-lg-4 mt-3">
+                    <iframe class="shadow-lg iframe-maps"
                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3422.9758774687684!2d106.86757171434212!3d-6.3841757642214585!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69eb7eb989aead%3A0xab7c10f23f712046!2sSMK%20Taruna%20Bhakti!5e1!3m2!1sid!2sid!4v1633323181916!5m2!1sid!2sid"
                         style="border-radius: 5px" allowfullscreen="" loading="lazy">
                     </iframe>
