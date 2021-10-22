@@ -100,13 +100,19 @@ Route::group(['prefix' => 'manager', 'middleware' => ['jwt.verify', 'auth:api']]
     Route::patch('/Article/update/{id}', [ArticleController::class, 'update'])->name('article.update');
     Route::put('/Article/draft/{id}', [ArticleController::class, 'draftOrPublised'])->name('article.draft');
     Route::POST('/image/store', [ImageController::class, 'store'])->name('admin.image');
-    Route::get('/dashboard', [DashboardManager::class, 'index'])->name('dashboard.manager');
+
+    Route::get('/dashboard', function () {
+        $article = Post::where('author_id', Auth::guard('api')->id())->get();
+        // dd($article);
+        return view('dashboard.dashboard', compact('article'));
+    })->name('dashboard.manager');
 });
 
 // Guru
-Route::group(['prefix' => 'guru', 'middleware' => ['jwt.verify', 'auth:api']], function () {
+Route::group(['prefix' => 'guru', 'middleware' => ['jwt.verify', 'auth:api','role:guru']], function () {
     Route::get('/Article/index', [ArticleController::class, 'index'])->name('article.index');
-
+    Route::get('/edit/profile/{id}', [ProfileController::class, 'edit'])->name('edit.profileGuru');
+    Route::put('/update/profile/{id}', [ProfileController::class, 'update'])->name('update.profile');
     Route::get('/dashboard', function () {
 
         $article = Post::all();
@@ -197,10 +203,12 @@ Route::group(['prefix' => 'guru', 'middleware' => ['jwt.verify', 'auth:api']], f
             'XII_TKJ',
             'XII_TEI',
         ));
-    })->name('dashboard.guru');
+    })->name('dashboard.guru'); 
 });
 // Siswa
-Route::group(['prefix' => 'siswa', 'middleware' => ['jwt.verify', 'auth:api']], function () {
+Route::group(['prefix' => 'siswa', 'middleware' => ['jwt.verify', 'auth:api','role:siswa']], function () {
+    Route::get('/edit/profile/{id}', [ProfileController::class, 'edit'])->name('edit.profileSiswa');
+    Route::put('/update/profile/{id}', [ProfileController::class, 'update'])->name('update.profile');
     Route::get('/dashboard', function () {
         // $article = Post::all();
         $article = Category::wherehas('post', function ($query) {
@@ -210,6 +218,7 @@ Route::group(['prefix' => 'siswa', 'middleware' => ['jwt.verify', 'auth:api']], 
         return view('dashboard.dashboard', compact('article'));
     })->name('dashboard.siswa');
 });
+
 // Perusahaan
 Route::group(['prefix' => 'perusahaan', 'middleware' => ['jwt.verify', 'auth:api']], function () {
     Route::get('/dashboard', function () {

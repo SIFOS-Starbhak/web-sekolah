@@ -1,3 +1,4 @@
+app layouts
 <!DOCTYPE html>
 <html lang="en">
 
@@ -34,6 +35,49 @@
         #toast-container>.toast-success {
             background-color: #51A351 !important;
         }
+
+  
+
+.select2-selection__choice {
+  height: 40px;
+  line-height: 40px;
+  padding-right: 16px !important;
+  padding-left: 16px !important;
+  background-color: #787aff !important;
+  color: rgb(255, 255, 255) !important;
+  font-size: 15px;
+  font-weight: 400;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  border: none !important;
+
+  border-radius: 10px !important;
+}
+
+
+.select2-selection__arrow {
+  display: none;
+}
+
+.select2-results__option--highlighted {
+  background-color: #787aff !important;
+  color: rgb(245, 245, 245) !important;
+}
+
+.select2-dropdown {
+  border-radius: 0 !important;
+  box-shadow: 0px 3px 6px 0 rgba(255, 8, 8, 0.15) !important;
+  border: none !important;
+  margin-top: 4px !important;
+  width: 366px !important;
+}
+
+.select2-results__option {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 13px;
+  line-height: 24px !important;
+  vertical-align: middle !important;
+  padding-left: 8px !important;
+}
 
     </style>
     @stack('css')
@@ -74,6 +118,10 @@
     <script src="{{ asset('assets/js/config.js') }}"></script>
     <script src="{{ asset('assets/js/app.js') }}"></script>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
+
     <!-- JS Libraries -->
     <script src="https://cdn.ckeditor.com/ckeditor5/29.2.0/classic/ckeditor.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/js/iziToast.min.js"
@@ -90,10 +138,14 @@
     </script>
     {{-- <script src="../node_modules/izitoast/dist/js/iziToast.min.js"></script> --}}
     {{-- <script src="https://cdn.ckeditor.com/ckeditor5/29.2.0/classic/ckeditor.js"></script> --}}
-
-
+    @yield('script')
     <script>
+   
+   
         $(document).ready(function() {
+            $('.select2').select2({
+            closeOnSelect: false
+            });
             $('#X_RPL').DataTable();
             $('#X_MM').DataTable();
             $('#X_BC').DataTable();
