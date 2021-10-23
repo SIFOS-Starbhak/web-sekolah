@@ -1,6 +1,5 @@
 @extends('layouts.app')
 @section('title', 'Dashboard')
-@section('judul', 'Welcome')
 
 @section('main')
     {{-- @if (JWTAuth::user()->role->name == 'siswa') --}}
@@ -15,7 +14,7 @@
                     @else
                         <img alt="image" src="{{ asset('img/avatar/avatar-1.png') }}"
                             class="rounded-circle profile-widget-picture">
-                    @endif
+    @endif
     <div class="profile-widget-items">
         <div class="profile-widget-item">
             <div class="profile-widget-item-label">NISN</div>
@@ -102,7 +101,7 @@
             </div>
         </div> --}}
 
-{{-- @elseif (JWTAuth::user()->role->name == 'guru') --}}
+    {{-- @elseif (JWTAuth::user()->role->name == 'guru') --}}
 @elseif (Route::is('dashboard.guru'))
     <div class="row">
         <div class="col">
@@ -208,28 +207,30 @@
                 <h1 class="section-title">Article SMK Taruna Bhakti
                 </h1>
             </div>
-            <table id="tableArtikel" class="table dataTable">
-                <thead>
-                    <tr role="row">
-                        <th scope="col">Judul</th>
-                        <th scope="col">Kategori</th>
-                        <th scope="col">Waktu dan Tanggal dibuat</th>
-                        <th scope="col">Status</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($article as $item)
-                        <tr>
-                            {{-- <td>
+            <div class="card">
+                <div class="card-body">
+                    <table id="tableArtikel" class="table dataTable no-footer">
+                        <thead>
+                            <tr role="row">
+                                <th scope="col">Judul</th>
+                                <th scope="col">Kategori</th>
+                                <th scope="col">Waktu dan Tanggal dibuat</th>
+                                <th scope="col">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($article as $item)
+                                <tr>
+                                    {{-- <td>
                                     <img style="width: 200px; height:200px;"
                                         class=""
                                         src="
                                         {{ asset('article-img/' . $item->image) }}" alt="">
                                 </td> --}}
-                            <td>{{ $item->title }}
-                                <div class="table-links d-flex align-items-center">
-                                    <a href="{{ route('showartikel', $item->slug) }}">View</a>
-                                    {{-- <a href="{{ route('article.edit', $item->id) }}">Edit</a>
+                                    <td>{{ $item->title }}
+                                        <div class="table-links d-flex align-items-center">
+                                            <a href="{{ route('showartikel', $item->slug) }}">View</a>
+                                            {{-- <a href="{{ route('article.edit', $item->id) }}">Edit</a>
                                         <div class="bullet"></div>
                                         <form id="deleteForm"
                                             action="{{ route('article.delete', $item->id) }}"
@@ -241,18 +242,18 @@
                                             </button>
                                         </form> --}}
 
-                                </div>
-                            </td>
-                            <td>
-                                {{ $item->category->name }}
-                            </td>
-                            <td>
-                                {{ Carbon\Carbon::parse($item->created_at)->format('H:i') }}
-                                <br>
-                                {{ Carbon\Carbon::parse($item->created_at)->isoFormat('dddd, D MMMM Y') }}
-                            </td>
-                            <td>
-                                {{-- <div class="dropdown d-inline">
+                                        </div>
+                                    </td>
+                                    <td>
+                                        {{ $item->category->name }}
+                                    </td>
+                                    <td>
+                                        {{ Carbon\Carbon::parse($item->created_at)->format('H:i') }}
+                                        <br>
+                                        {{ Carbon\Carbon::parse($item->created_at)->isoFormat('dddd, D MMMM Y') }}
+                                    </td>
+                                    <td>
+                                        {{-- <div class="dropdown d-inline">
                                         @if ($item->status == 'DRAFT')
                                             <button class="btn btn-warning dropdown-toggle" type="button"
                                                 id="dropdownMenuButton2" data-toggle="dropdown"
@@ -290,18 +291,20 @@
                                             </form>
                                         </div>
                                     </div> --}}
-                                @if ($item->status == 'PUBLISHED')
-                                    <span class="badge badge-primary">{{ $item->status }}</span>
+                                        @if ($item->status == 'PUBLISHED')
+                                            <span class="badge badge-primary">{{ $item->status }}</span>
 
-                                @else
-                                    <span class="badge badge-warning">{{ $item->status }}</span>
+                                        @else
+                                            <span class="badge badge-warning">{{ $item->status }}</span>
 
-                                @endif
-                            </td>
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
+                                        @endif
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -431,7 +434,7 @@
                                             <div class="tab-pane fade" id="X-MM6" role="tabpanel"
                                                 aria-labelledby="X-MM-tab6">
 
-                                                <table class="table table-striped" id="X_MM">
+                                                <table class="table table-striped tble" id="X_MM">
                                                     <thead>
                                                         <tr>
 
@@ -1189,9 +1192,9 @@
         </div>
     </div>
     {{-- @elseif (Route::is('dashboard.manager')) --}}
-    
-    @elseif (Route::is('dashboard.manager'))
-{{-- @elseif(JWTAuth::user()->role->name == 'manager') --}}
+
+@elseif (Route::is('dashboard.manager'))
+    {{-- @elseif(JWTAuth::user()->role->name == 'manager') --}}
     <div class="row">
         <div class="col">
             <div class="card card-info profile-widget">
@@ -1399,9 +1402,9 @@
             </div>
         </div>
     </div>
-    @elseif (Route::is('dashboard.perusahaan'))
-    
-{{-- @elseif (JWTAuth::user()->role->name == 'perusahaan') --}}
+@elseif (Route::is('dashboard.perusahaan'))
+
+    {{-- @elseif (JWTAuth::user()->role->name == 'perusahaan') --}}
     <div class="row">
         <div class="col">
             <div class="card card-info profile-widget">
@@ -1577,7 +1580,7 @@
 
 @push('css')
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/dataTables.bootstrap4.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.7/dist/sweetalert2.all.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.bootstrap.min.css">
     <style>
         .cardh {
             transition: 0.4s ease-out;
@@ -1601,10 +1604,62 @@
 @push('js')
     <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap4.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.9/js/responsive.bootstrap.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.7/dist/sweetalert2.all.min.js"></script>
     <script>
-        $("#tableArtikel").dataTable({
+        $(document).ready(function() {
+            var table = $('#tableArtikel').DataTable({
+                responsive: true
+            });
+            $('#X_RPL').DataTable({
+                responsive: true
+            });
+            $('#X_MM').DataTable({
+                responsive: true
+            });
+            $('#X_BC').DataTable({
+                responsive: true
+            });
+            $('#X_TKJ').DataTable({
+                responsive: true
+            });
+            $('#X_TEI').DataTable({
+                responsive: true
+            });
 
+            $('#XI_RPL').DataTable({
+                responsive: true
+            });
+            $('#XI_MM').DataTable({
+                responsive: true
+            });
+            $('#XI_BC').DataTable({
+                responsive: true
+            });
+            $('#XI_TKJ').DataTable({
+                responsive: true
+            });
+            $('#XI_TEI').DataTable({
+                responsive: true
+            });
+
+            $('#XII_RPL').DataTable({
+                responsive: true
+            });
+            $('#XII_MM').DataTable({
+                responsive: true
+            });
+            $('#XII_BC').DataTable({
+                responsive: true
+            });
+            $('#XII_TKJ').DataTable({
+                responsive: true
+            });
+            $('#XII_TEI').DataTable({
+                responsive: true
+            });
+            new $.fn.dataTable.FixedHeader(table);
         });
         $('.deleteConfirm').on('click', function(e) {
             e.preventDefault();
@@ -1624,11 +1679,6 @@
                 }
             })
         });
-    </script>
-@endpush
-
-@push('script')
-    <script>
         ClassicEditor
             .create(document.querySelector('#task-textarea'))
             .catch(error => {
@@ -1640,30 +1690,5 @@
         // .catch( error => {
         //     console.error( error );
         // } );
-    </script>
-
-    <script>
-        $(document).ready(function() {
-            $('.select2').select2({
-                closeOnSelect: false
-            });
-            $('#X_RPL').DataTable();
-            $('#X_MM').DataTable();
-            $('#X_BC').DataTable();
-            $('#X_TKJ').DataTable();
-            $('#X_TEI').DataTable();
-
-            $('#XI_RPL').DataTable();
-            $('#XI_MM').DataTable();
-            $('#XI_BC').DataTable();
-            $('#XI_TKJ').DataTable();
-            $('#XI_TEI').DataTable();
-
-            $('#XII_RPL').DataTable();
-            $('#XII_MM').DataTable();
-            $('#XII_BC').DataTable();
-            $('#XII_TKJ').DataTable();
-            $('#XII_TEI').DataTable();
-        });
     </script>
 @endpush

@@ -42,9 +42,9 @@
                 <div class="dropdown-divider"></div>
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
-
                 </form>
-                <a class="dropdown-item" id="frmlogout">Logout</a>
+                <a href="javascript:void(0)" class="dropdown-item has-icon text-danger" id="frmlogout">
+                    <i class="fas fa-sign-out-alt"></i> Logout</a>
             </div>
         </li>
     </ul>

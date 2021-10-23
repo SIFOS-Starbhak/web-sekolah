@@ -127,37 +127,10 @@
 
     <!-- Custom JS -->
     <script>
-        // ClassicEditor
-        // .create( document.querySelector( '#task-' ) )
-        // .catch( error => {
-        //     console.error( error );
-        // } );
-    </script>
-    {{-- <script src="../node_modules/izitoast/dist/js/iziToast.min.js"></script> --}}
-    {{-- <script src="https://cdn.ckeditor.com/ckeditor5/29.2.0/classic/ckeditor.js"></script> --}}
-    @yield('script')
-    <script>
         $(document).ready(function() {
             $('.select2').select2({
                 closeOnSelect: false
             });
-            $('#X_RPL').DataTable();
-            $('#X_MM').DataTable();
-            $('#X_BC').DataTable();
-            $('#X_TKJ').DataTable();
-            $('#X_TEI').DataTable();
-
-            $('#XI_RPL').DataTable();
-            $('#XI_MM').DataTable();
-            $('#XI_BC').DataTable();
-            $('#XI_TKJ').DataTable();
-            $('#XI_TEI').DataTable();
-
-            $('#XII_RPL').DataTable();
-            $('#XII_MM').DataTable();
-            $('#XII_BC').DataTable();
-            $('#XII_TKJ').DataTable();
-            $('#XII_TEI').DataTable();
         });
     </script>
 
