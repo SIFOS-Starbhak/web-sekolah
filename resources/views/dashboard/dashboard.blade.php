@@ -3,7 +3,8 @@
 @section('judul', 'Welcome')
 
 @section('main')
-    @if (JWTAuth::user()->role->name == 'siswa')
+    {{-- @if (JWTAuth::user()->role->name == 'siswa') --}}
+    @if (Route::is('dashboard.siswa'))
         <div class="row">
             <div class="col">
                 <div class="card profile-widget">
@@ -14,7 +15,7 @@
                     @else
                         <img alt="image" src="{{ asset('img/avatar/avatar-1.png') }}"
                             class="rounded-circle profile-widget-picture">
-    @endif
+                    @endif
     <div class="profile-widget-items">
         <div class="profile-widget-item">
             <div class="profile-widget-item-label">NISN</div>
@@ -101,7 +102,8 @@
             </div>
         </div> --}}
 
-@elseif (JWTAuth::user()->role->name == 'guru')
+{{-- @elseif (JWTAuth::user()->role->name == 'guru') --}}
+@elseif (Route::is('dashboard.guru'))
     <div class="row">
         <div class="col">
             <div class="card profile-widget">
@@ -1187,8 +1189,9 @@
         </div>
     </div>
     {{-- @elseif (Route::is('dashboard.manager')) --}}
-
-@elseif(JWTAuth::user()->role->name == 'manager')
+    
+    @elseif (Route::is('dashboard.manager'))
+{{-- @elseif(JWTAuth::user()->role->name == 'manager') --}}
     <div class="row">
         <div class="col">
             <div class="card card-info profile-widget">
@@ -1396,7 +1399,9 @@
             </div>
         </div>
     </div>
-@elseif (JWTAuth::user()->role->name == 'perusahaan')
+    @elseif (Route::is('dashboard.perusahaan'))
+    
+{{-- @elseif (JWTAuth::user()->role->name == 'perusahaan') --}}
     <div class="row">
         <div class="col">
             <div class="card card-info profile-widget">

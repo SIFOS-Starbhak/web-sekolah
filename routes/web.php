@@ -220,7 +220,7 @@ Route::group(['prefix' => 'siswa', 'middleware' => ['jwt.verify', 'auth:api', 'r
 });
 
 // Perusahaan
-Route::group(['prefix' => 'perusahaan', 'middleware' => ['jwt.verify', 'auth:api']], function () {
+Route::group(['prefix' => 'perusahaan', 'middleware' => ['jwt.verify', 'auth:api', 'role:perusahaan']], function () {
     Route::get('/dashboard', function () {
         // $article = Post::all();
         $article = Category::wherehas('post', function ($query) {
