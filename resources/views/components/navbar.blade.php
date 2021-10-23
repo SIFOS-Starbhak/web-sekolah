@@ -1,7 +1,9 @@
 <div class="navbar-bg"></div>
 <nav class="navbar navbar-expand-lg main-navbar">
     <ul class="navbar-nav mr-auto">
-        <img alt="icon" src="{{ asset('img/logo.svg') }}" style="width: 76px">
+        <a href="{{ Request::routeIs(Auth::getDefaultDriver() . '.dashboard') }}">
+            <img alt="icon" src="{{ asset('img/logo.svg') }}" style="width: 76px">
+        </a>
     </ul>
     <ul class="navbar-nav navbar-right">
         </li>

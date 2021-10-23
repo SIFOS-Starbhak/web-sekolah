@@ -42,6 +42,10 @@
     </div>
     </div>
     </div>
+    <div class="mb-3">
+        <h1 class="section-title">WEB App Instansi SMK Taruna Bhakti
+        </h1>
+    </div>
     <div class="row">
         <div class="col-md-4 d-flex mb-3">
             <a href="" class="text-decoration-none" id="microWebPortal">
@@ -1392,8 +1396,177 @@
             </div>
         </div>
     </div>
+@elseif (JWTAuth::user()->role->name == 'perusahaan')
+    <div class="row">
+        <div class="col">
+            <div class="card card-info profile-widget">
+                <div class="profile-widget-header">
+                    <img alt="image" src="{{ asset(Auth::user()->avatar) }}"
+                        class="rounded-circle profile-widget-picture">
+                    <div class="profile-widget-items">
+                        <div class="profile-widget-item">
+                            <div class="profile-widget-item-label">ID</div>
+                            <div class="profile-widget-item-value">
+                                {{ JWTAuth::user()->nomor_induk }}</div>
+                        </div>
+                        <div class="profile-widget-item">
+                            <div class="profile-widget-item-label">Email</div>
+                            <div class="profile-widget-item-value">
+                                {{ JWTAuth::user()->email }}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="profile-widget-description">
+                    <div class="profile-widget-name">{{ JWTAuth::user()->name }}
+                        <div class="text-muted d-inline font-weight-normal">
+                            <div class="slash"></div>
+                            <div class="badge badge-primary">
+                                {{ JWTAuth::user()->jabatan_guru }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
+    <div class="row">
+        <div class="mb-3">
+            <h1 class="section-title">Data Siswa <code>Kelas XII</code>
+            </h1>
+        </div>
+        <div class="col-12 col-sm-12 col-lg-12 ">
+            <div class="card">
+                <div class="card-header">
+                    <form class="card-header-form">
+                        <input type="text" name="search" class="form-control" placeholder="Cari">
+                    </form>
+                </div>
+                <div class="card-body">
+                    <ul class="nav nav-tabs justify-content-center" id="myTab6" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active text-center" id="XII-RPL-tab6" data-toggle="tab" href="#XII-RPL6"
+                                role="tab" aria-controls="home" aria-selected="true">
+                                <span>
+                                    {{-- <i class="fas fa-home"></i> --}}
+                                </span>RPL
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-center" id="XII-MM-tab6" data-toggle="tab" href="#XII-MM6" role="tab"
+                                aria-controls="profile" aria-selected="false">
+                                <span>
+                                    {{-- <i class="fas fa-id-card"></i> --}}
+                                </span>MM
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-center" id="XII-BC-tab6" data-toggle="tab" href="#XII-BC6" role="tab"
+                                aria-controls="contact" aria-selected="false">
+                                <span>
+                                    {{-- <i class="fas fa-mail-bulk"></i> --}}
+                                </span>BC
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-center" id="XII-TKJ-tab6" data-toggle="tab" href="#XII-TKJ6" role="tab"
+                                aria-controls="contact" aria-selected="false">
+                                <span>
+                                    {{-- <i class="fas fa-mail-bulk"></i> --}}
+                                </span>TKJ
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-center" id="XII-TEI-tab6" data-toggle="tab" href="#XII-TEI6" role="tab"
+                                aria-controls="contact" aria-selected="false">
+                                <span>
+                                    {{-- <i class="fas fa-mail-bulk"></i> --}}
+                                </span>TEI
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="tab-content tab-bordered" id="myTabContent6">
+                        <div class="tab-pane fade show active" id="XII-RPL6" role="tabpanel"
+                            aria-labelledby="XII-RPL-tab6">
+                            <div class="row">
+                                {{-- @forelse ($XI_RPL as $item)
+                                            <tr>
+                                                <td>
+                                                    <div class="sort-handler">
+                                                        {{ $loop->iteration }}
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <img alt="image" src="{{ asset('img/' . $item->avatar) }}"
+                                                        class="rounded-circle" width="35" data-toggle="tooltip"
+                                                        title="Wildan Ahdian">
+                                                </td>
+                                                <td>{{ $item->name }}</td>
+                                                <td class="align-middle">
+                                                    {{ $item->email }}
+                                                </td>
+                                            </tr>
+                                        @empty
+                                            <div class="center">
+                                                <h1>Data Siswa Tidak ada</h1>
+                                            </div>
+                                        @endforelse --}}
+                                <div class="col-md-4">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h4>{{ JWTAuth::user()->name }}
+                                                <br>
+                                                <span style="font-size: 14px; font-weight: lighter">Web
+                                                    Developer</span>
+                                            </h4>
+                                            <div class="card-header-action">
+                                                <div class="dropdown d-inline">
+                                                    <button class="btn btn-primary dropdown-toggle" type="button"
+                                                        id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true"
+                                                        aria-expanded="false">
+                                                        Opsi
+                                                    </button>
+                                                    <div class="dropdown-menu" x-placement="bottom-start"
+                                                        style="position: absolute; transform: translate3d(0px, 28px, 0px); top: 0px; left: 0px; will-change: transform;">
+                                                        <a class="dropdown-item has-icon" href="#"><i
+                                                                class="far fa-heart"></i> Action</a>
+                                                        <a class="dropdown-item has-icon" href="#"><i
+                                                                class="far fa-file"></i> Another action</a>
+                                                        <a class="dropdown-item has-icon" href="#"><i
+                                                                class="far fa-clock"></i> Something else here</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="mb-2">
+                                                <strong>XII RPL 1</strong>
+                                            </div>
+                                            <blockquote class="blockquote">
+                                                <p class="mb-0">Saya senang ngoding.</p>
+                                            </blockquote>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="XII-MM6" role="tabpanel" aria-labelledby="XII-MM-tab6">
 
+                        </div>
+                        <div class="tab-pane fade" id="XII-BC6" role="tabpanel" aria-labelledby="XII-BC-tab6">
+
+                        </div>
+                        <div class="tab-pane fade" id="XII-TKJ6" role="tabpanel" aria-labelledby="XII-TKJ-tab6">
+
+                        </div>
+                        <div class="tab-pane fade" id="XII-TEI6" role="tabpanel" aria-labelledby="XII-TEI-tab6">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     @endif
 @endsection
 
