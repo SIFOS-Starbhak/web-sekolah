@@ -91,7 +91,7 @@ Route::get('/showartikel/{id}', function ($id) {
 // Manager
 Route::group(['prefix' => 'manager', 'middleware' => ['jwt.verify', 'auth:api']], function () {
     // Route::get('/Article/index', [ArticleController::class, 'index'])-all>name('article.index');
-    Route::get('/edit/profile/{id}', [ProfileController::class, 'edit'])->name('edit.profile');
+    Route::get('/edit/profile/{id}', [ProfileController::class, 'edit'])->name('edit.profileManager');
     Route::put('/update/profile/{id}', [ProfileController::class, 'update'])->name('update.profile');
     Route::get('/Article/tambah', [ArticleController::class, 'tambah'])->name('article.tambah');
     Route::post('/Article/post', [ArticleController::class, 'store'])->name('article.store');
@@ -109,7 +109,7 @@ Route::group(['prefix' => 'manager', 'middleware' => ['jwt.verify', 'auth:api']]
 });
 
 // Guru
-Route::group(['prefix' => 'guru', 'middleware' => ['jwt.verify', 'auth:api','role:guru']], function () {
+Route::group(['prefix' => 'guru', 'middleware' => ['jwt.verify', 'auth:api', 'role:guru']], function () {
     Route::get('/Article/index', [ArticleController::class, 'index'])->name('article.index');
     Route::get('/edit/profile/{id}', [ProfileController::class, 'edit'])->name('edit.profileGuru');
     Route::put('/update/profile/{id}', [ProfileController::class, 'update'])->name('update.profile');
@@ -203,10 +203,10 @@ Route::group(['prefix' => 'guru', 'middleware' => ['jwt.verify', 'auth:api','rol
             'XII_TKJ',
             'XII_TEI',
         ));
-    })->name('dashboard.guru'); 
+    })->name('dashboard.guru');
 });
 // Siswa
-Route::group(['prefix' => 'siswa', 'middleware' => ['jwt.verify', 'auth:api','role:siswa']], function () {
+Route::group(['prefix' => 'siswa', 'middleware' => ['jwt.verify', 'auth:api', 'role:siswa']], function () {
     Route::get('/edit/profile/{id}', [ProfileController::class, 'edit'])->name('edit.profileSiswa');
     Route::put('/update/profile/{id}', [ProfileController::class, 'update'])->name('update.profile');
     Route::get('/dashboard', function () {
