@@ -3,7 +3,7 @@
 @section('judul', 'Welcome')
 
 @section('main')
-    @if (Route::is('dashboard.siswa'))
+    @if (JWTAuth::user()->role->name == 'siswa')
         <div class="row">
             <div class="col">
                 <div class="card profile-widget">
@@ -102,7 +102,7 @@
             </div>
         </div> --}}
 
-    @elseif (Route::is('dashboard.guru'))
+    @elseif (JWTAuth::user()->role->name == 'guru')
         <div class="row">
             <div class="col">
                 <div class="card profile-widget">
@@ -128,7 +128,7 @@
                             <div class="profile-widget-item">
                                 <div class="profile-widget-item-label">Mata Pelajaran</div>
                                 <div class="profile-widget-item-value">
-                                    {{ JWTAuth::user()->mapel->mata_pelajaran }}</div>
+                                    {{ empty(JWTAuth::user()->mapel->mata_pelajaran) ? "Tidak ada Mapel" : JWTAuth::user()->mapel->mata_pelajaran }}</div>
                             </div>
                         </div>
                     </div>
@@ -1212,7 +1212,7 @@
         </div>
         {{-- @elseif (Route::is('dashboard.manager')) --}}
 
-    @else
+    @elseif(JWTAuth::user()->role->name == 'manager')
         <div class="row">
             <div class="col">
                 <div class="card card-info profile-widget">

@@ -2,7 +2,8 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
         @section('main')        
                 
-                <section class="section" style="height: 1000px;" >
+                <section class="section" style="height: 1000px;"  >
+                  <div class="card" style="height: 1100px;">
                   <div class="section-header">
                     <h1>Profile</h1>
                     <div class="section-header-breadcrumb">
@@ -10,20 +11,17 @@
                       <div class="breadcrumb-item">Profile</div>
                     </div>
                   </div>
-                  {{-- {{
-                  dd($profile)
-        
-                  }} --}}
+             
                          
-                    <div class="section-body">
+                    <div class="section-body" >
                       {{-- <h2 class="section-title">Hi, {{Str::words($profile->name,1)}}!</h2> --}}
                        {{-- <p class="section-lead">
                          Ubah informasi tentang diri kamu di halaman ini .
                        </p> --}}
-          
-                      <div class="row mt-sm-4">
-                        <div class="col-12 col-md-12 col-lg-5">
-                          <div class="card profile-widget">
+
+                       <div class="row ">
+                        <div class="col-12 col-md-12 col-lg-5" style="margin-top: -20px;">
+                          <div class="card profile-widget p-4">
                             <center>
                               <div class="profile-widget-header" >
                                         @if (File::exists(public_path($profile->avatar)))
@@ -53,7 +51,7 @@
                               <div class="badges">
                                 {{-- <a style="cursor: pointer;" class="badge badge-primary">Primary</a> --}}
                                 {{-- {{dd($yourSkill)}} --}}
-                                @if (empty($yourSkill) )
+                                @if (empty($yourSkill) || $profile->detailUser->skill == null )
                                   <br>
                                   <h5>Belum ada keahlian</h5>
                                 @else
@@ -68,16 +66,17 @@
                             </div>
                           </div>
                           
-                            <div class="embed-responsive embed-responsive-16by9 h-50" >
-                              @if ($profile->detailUser->cv == null)
-                              <iframe class="embed-responsive-item"  id="preview-image-before-upload" type="application/pdf"  src="https://commercial.bunn.com/img/image-not-available.png" allowfullscreen></iframe>
-                                  @else 
-                                  <iframe class="embed-responsive-item h-100"   id="preview-image-before-upload" type="application/pdf"  src="{{asset($profile->detailUser->cv)}}" allowfullscreen></iframe>
+                            <div class="embed-responsive embed-responsive-16by9 h-50 w-100 ml-4" >
+                              {{-- {{dd}} --}}
+                              @if ($profile->detailUser == null || $profile->detailUser->cv == null)
+                              <iframe class=" embed-responsive-item h-100 "  id="preview-image-before-upload" type="application/pdf"  src="{{asset('404_file.gif')}}" allowfullscreen></iframe>
+                              @else 
+                                  <iframe class=" embed-responsive-item h-100 "   id="preview-image-before-upload" type="application/pdf"  src="{{asset($profile->detailUser->cv)}}" allowfullscreen></iframe>
                                   
                               @endif
                               </div>
                         </div>
-                        <div class="col-12 col-md-12 col-lg-7">
+                        <div class="col-12 col-md-12 col-lg-7 mt-3" >
                           <div class="card">
                             <form method="post" action="{{ route('update.profile', $profile->id) }}" class="needs-validation" enctype="multipart/form-data">
                               @method('put')
@@ -218,6 +217,7 @@
                           </div>
                         </div>
                       </div>
+                       </div>
                     </div>
                 </section>
                 

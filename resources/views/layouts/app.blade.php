@@ -88,14 +88,14 @@ app layouts
     <script defer src="{{ mix('js/app.js') }}"></script>
 </head>
 
-<body class="layout-3">
+<body class="layout-3" style="background-color:rgba(208, 203, 203, 0.15)">
     <div id="app">
-        <div class="main-wrapper container">
+        <div class="main-wrapper container" >
             @include('components.navbar')
 
             <!-- Main Content -->
             <div class="main-content position-relative">
-                <section class="section">
+                <section class="section"  >
                     <div class="section-body">
                         @yield('main')
                     </div>
