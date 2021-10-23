@@ -98,7 +98,6 @@
             }
         }
 
-        
     </style>
 </head>
 
@@ -140,9 +139,8 @@
                     <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
                         <img src="{{ asset('storage/' . $bg->image) }}" class="d-block" alt="..." width="100%"
                             style="height: 600px; filter: brightness(50%)">
-                        <div class="carousel-caption container"
-                            style="margin-left: -10%; text-align: left;" data-aos="zoom-in"
-                            data-aos-delay="100">
+                        <div class="carousel-caption container" style="margin-left: -10%; text-align: left;"
+                            data-aos="zoom-in" data-aos-delay="100">
                             <h1>{{ $bg->heading }}</h1>
                             <a href="/profile" class="btn btn-outline-light mt-4"
                                 style="padding: 10px 30px 10px 30px; border-radius: 50px">Profile</a>
@@ -237,6 +235,7 @@
         </div>
 
     </footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="{{ asset('template/assets/vendor/aos/aos.js') }}"></script>
     <script src="{{ asset('template/assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('template/assets/vendor/php-email-form/validate.js') }}"></script>
@@ -246,6 +245,7 @@
     <!-- Template Main JS File -->
     <script src="{{ asset('template/assets/js/main.js') }}"></script>
 
+    @stack('js')
 </body>
 
 </html>
