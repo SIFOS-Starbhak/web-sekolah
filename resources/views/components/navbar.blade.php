@@ -10,9 +10,9 @@
         <li class="dropdown"><a href="#" data-toggle="dropdown"
                 class="nav-link dropdown-toggle nav-link-lg nav-link-user">
                 @if (File::exists(public_path(Auth::user()->avatar)))
-                <img alt="image" src='{{ asset(Auth::user()->avatar) }}' class="rounded-circle mr-1">
+                <img alt="image" src='{{ asset(Auth::user()->avatar) }}' style="width: 40px; height: 40px; border-radius: 50%;">
             @else
-                <img alt="image" src='{{ asset('img/avatar/avatar-1.png') }}' class="rounded-circle mr-1">
+                <img alt="image" src='{{ asset('img/avatar/avatar-1.png') }}' style="width: 40px; height: 40px; border-radius: 50%;">
 
 
                 @endif
@@ -28,10 +28,15 @@
                     <a href="{{ route('edit.profileManager', JWTAuth::user()->id) }}" class="dropdown-item has-icon">
                         <i class="far fa-user"></i> Profile
                     </a>
-                @else
-                    <a href="{{ route('edit.profileSiswa', JWTAuth::user()->id) }}" class="dropdown-item has-icon">
-                        <i class="far fa-user"></i> Profile
-                    </a>
+                @elseif(Auth::guard('api')->user()->role->name === "perusahaan")
+                <a href="{{ route('edit.profilePerusahaan', JWTAuth::user()->id) }}" class="dropdown-item has-icon">
+                    <i class="far fa-user"></i> Profile
+                </a>    
+
+                @else 
+                <a href="{{ route('edit.profileSiswa', JWTAuth::user()->id) }}" class="dropdown-item has-icon">
+                    <i class="far fa-user"></i> Profile
+                </a>
                 @endif
                 {{-- <a href="features-activities.html" class="dropdown-item has-icon">
                     <i class="fas fa-bolt"></i> Activities

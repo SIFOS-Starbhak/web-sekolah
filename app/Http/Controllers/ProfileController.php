@@ -61,7 +61,18 @@ class ProfileController extends Controller
                 'name.required' => "Nama tidak boleh kosong",
                 'email.required' => "Email tidak boleh kosong",
             ]);
-        } else {
+        }elseif((Auth::user()->role->name == "perusahaan" )){
+            $request->validate([
+                "name" => 'required',
+                "email" => 'required',
+                "no_telpon" => 'required',
+            ], [
+                'name.required' => "Nama tidak boleh kosong",
+                'email.required' => "Email tidak boleh kosong",
+                'no_telpon.required' => "Contact tidak boleh kosong",
+                
+            ]);
+        }else {
             $request->validate([
                 "name" => 'required',
                 "email" => 'required',
@@ -79,7 +90,7 @@ class ProfileController extends Controller
                 // 'skill.*.required' => "Skill Minimal 1",
                 // 'cv.mimes' => "file harus PDF",
             ]);
-        }
+        } 
 
         // dd($request);
 
@@ -249,5 +260,29 @@ class ProfileController extends Controller
 
 
         return redirect()->route('dashboard.' . Auth::user()->role->name)->with('message', 'Berhasil update Profile');
+    }
+
+    public function detail($id)
+    {
+        $profile = User::where('id', $id)->first();
+        // $profile
+        $kelas = Kela::all();
+        $skill = Skill::all();
+        $detailUser = $profile->detailUser;
+        // dd($detailUser);
+        if ($detailUser == null) {
+            $yourSkill = [];
+            $detailProfileSkill = [];
+        } else {
+            $detailProfileSkill =  explode(',', $profile->detailUser->skill);
+            // dd($detailProfileSkill);
+            foreach ($detailProfileSkill as $key => $value) {
+                $yourSkill[] = Skill::where('id', $value)->first();
+            }
+        }
+        return view('profile.detail', compact('detailProfileSkill', 'skill', 'profile', 'kelas', 'yourSkill'));
+
+        // return view('profile.detail');
+
     }
 }

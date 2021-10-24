@@ -10,6 +10,9 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Auth;
 use DB;
 
+use Illuminate\Pagination\Paginator;
+// use Paginator;
+
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -30,6 +33,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+
+
+        Paginator::useBootstrap();
         $greetings = "";
         $time = date("H");
         $timezone = date("e");

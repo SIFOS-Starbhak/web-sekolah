@@ -37,35 +37,55 @@
                             </center>
                             <div class="profile-widget-description">
                               <div class="profile-widget-name"></div>
-                              @if (empty($profile->detailUser->bio))
-                                <h6 style="font-weight: 100" class="d-flex justify-content-center" >Tidak ada bio</h6>
-                              @else
-                              <h6 class="d-flex justify-content-center">
-                                "{{$profile->detailUser->bio}}"
-                              </h6>
+                              @if (Auth::user()->role->name == "perusahaan")
+                                      @if (empty($profile->detailUser->bio))
+                                      <h6 style="font-weight: 100" class="d-flex justify-content-center" >Tidak ada deskripsi perusahaan</h6>
+                                    @else
+                                    <h6 class="d-flex justify-content-center">
+                                      {{$profile->detailUser->bio}}
+                                    </h6> 
+                                      @endif
+                              @else 
+
+                                  @if (empty($profile->detailUser->bio))
+                                  <h6 style="font-weight: 100" class="d-flex justify-content-center" >Tidak ada bio</h6>
+                                @else
+                                <h6 class="d-flex justify-content-center">
+                                  "{{$profile->detailUser->bio}}"
+                                </h6>
+
+                                @endif
 
                               @endif
                             </div>
-                            <div class="card-footer text-center">
-                              <div class="font-weight-bold mb-2">Keahlian</div>
-                              <div class="badges">
-                                {{-- <a style="cursor: pointer;" class="badge badge-primary">Primary</a> --}}
-                                {{-- {{dd($yourSkill)}} --}}
-                                @if (empty($yourSkill) || $profile->detailUser->skill == null )
-                                  <br>
-                                  <h5>Belum ada keahlian</h5>
-                                @else
-                                  <br>
-                                  @foreach ($yourSkill as $item)
-                                  <a style="cursor: pointer;" class="badge badge-primary">{{$item->nama_skill}}</a>
-
-                                  @endforeach
-                            
-                                @endif
+                              @if (Auth::user()->role->name == "perusahaan")
+                               
+                              @else
+                              <div class="card-footer text-center">
+                                <div class="font-weight-bold mb-2">Keahlian</div>
+                                <div class="badges">
+                                  {{-- <a style="cursor: pointer;" class="badge badge-primary">Primary</a> --}}
+                                  {{-- {{dd($yourSkill)}} --}}
+                                  @if (empty($yourSkill) || $profile->detailUser->skill == null )
+                                    <br>
+                                    <h5>Belum ada keahlian</h5>
+                                  @else
+                                    <br>
+                                    @foreach ($yourSkill as $item)
+                                    <a style="cursor: pointer;" class="badge badge-primary">{{$item->nama_skill}}</a>
+  
+                                    @endforeach
+                              
+                                  @endif
+                                </div>
                               </div>
-                            </div>
+                              @endif
                           </div>
                           
+                            @if (Auth::user()->role->name === "perusahaan")
+                          
+
+                            @else 
                             <div class="embed-responsive embed-responsive-16by9 h-50 w-100 ml-4" >
                               {{-- {{dd}} --}}
                               @if ($profile->detailUser == null || $profile->detailUser->cv == null)
@@ -74,12 +94,24 @@
                                   <iframe class=" embed-responsive-item h-100 "   id="preview-image-before-upload" type="application/pdf"  src="{{asset($profile->detailUser->cv)}}" allowfullscreen></iframe>
                                   
                               @endif
-                              </div>
+                            </div>
+                            @endif
                         </div>
                         <div class="col-12 col-md-12 col-lg-7 mt-3" >
                           <div class="card">
-                            <form method="post" action="{{ route('update.profile', $profile->id) }}" class="needs-validation" enctype="multipart/form-data">
-                              @method('put')
+                            @if (Auth::user()->role->name == "manager")
+                            <form method="post" action="{{ route('update.profileManager', $profile->id) }}" class="needs-validation" enctype="multipart/form-data">
+                                @elseif(Auth::user()->role->name == "guru")
+                            <form method="post" action="{{ route('update.profileGuru', $profile->id) }}" class="needs-validation" enctype="multipart/form-data">
+
+                                @elseif(Auth::user()->role->name == "perusahaan")
+                            <form method="post" action="{{ route('update.profilePerusahaan', $profile->id) }}" class="needs-validation" enctype="multipart/form-data">
+
+                                @else 
+                                <form method="post" action="{{ route('update.profileSiswa', $profile->id) }}" class="needs-validation" enctype="multipart/form-data">
+
+                                @endif
+                            @method('put')
                               @csrf
                               <div class="card-header">
                                 <h4>Edit Profile</h4>
@@ -134,7 +166,11 @@
                                   </div>
                                   <div class="row">
                                     <div class="form-group col-md-6 col-12">
+                                      @if (Auth::user()->role->name == "perusahaan")
+                                      <label>Contact</label>
+                                          @else
                                       <label>Nomor Telp</label>
+                                      @endif
                                       <input  type="text" class="form-control @error('no_telpon') is-invalid @enderror" name="no_telpon" value="{{!empty($profile->detailUser->no_telpon) ? $profile->detailUser->no_telpon : ""}}" >
                                       @error('no_telpon')
                                       <div class="invalid-feedback">
@@ -152,7 +188,13 @@
                                  
                                   <div class="row">
                                     <div class="form-group col-12">
+                                      @if (Auth::user()->role->name == "perusahaan")
+                                      <label>Deskripsi Perusahaan</label>
+
+                                      @else
                                       <label>Bio</label>
+
+                                      @endif
                                       <textarea name="bio" style="font-size: 17px;" class="form-control summernote-simple @error('bio') is-invalid @enderror ">{{!empty($profile->detailUser->bio) ? $profile->detailUser->bio : ""}}</textarea>
                                       @error('bio')
                                        <div class="invalid-feedback">
@@ -172,6 +214,9 @@
                                       </select>
                                     </div>
                                   </div> --}}
+                                  @if (Auth::user()->role->name === "perusahaan")
+                                        
+                                  @else 
                                   <div class="row">
                                     <div class="form-group col-12">
                                       <label>Select your skill</label>
@@ -207,6 +252,7 @@
                                     </div>
                                     
                                   </div>
+                                  @endif
                               </div>
                               
                               <div class="card-footer text-right">
@@ -231,17 +277,7 @@
         @section('script')
         <script>
           $('#categorySkill').select2().val($('#skil_user').data('name')).trigger('change');
-          const togglePassword = document.querySelector('#togglePassword');
-          const password = document.querySelector('#password');
-        
-          togglePassword.addEventListener('click', function (e) {
-              // toggle the type attribute
-              const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
-        password.setAttribute('type', type);
-        // toggle the eye / eye slash icon
-        this.classList.toggle('bi-eye');
-        
-          });
+       
         
         //   function tooglePassword() {
         //   var element = document.getElementById("myDIV");

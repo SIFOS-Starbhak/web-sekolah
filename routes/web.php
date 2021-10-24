@@ -4,6 +4,7 @@ use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\WebController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PDFController;
 use App\Http\Controllers\RegistalumController;
 use App\Models\Post;
 use App\Models\Kela;
@@ -92,7 +93,7 @@ Route::get('/showartikel/{id}', function ($id) {
 Route::group(['prefix' => 'manager', 'middleware' => ['jwt.verify', 'auth:api']], function () {
     // Route::get('/Article/index', [ArticleController::class, 'index'])-all>name('article.index');
     Route::get('/edit/profile/{id}', [ProfileController::class, 'edit'])->name('edit.profileManager');
-    Route::put('/update/profile/{id}', [ProfileController::class, 'update'])->name('update.profile');
+    Route::put('/update/profile/{id}', [ProfileController::class, 'update'])->name('update.profileManager');
     Route::get('/Article/tambah', [ArticleController::class, 'tambah'])->name('article.tambah');
     Route::post('/Article/post', [ArticleController::class, 'store'])->name('article.store');
     Route::get('/Article/edit/{id}', [ArticleController::class, 'edit'])->name('article.edit');
@@ -112,7 +113,7 @@ Route::group(['prefix' => 'manager', 'middleware' => ['jwt.verify', 'auth:api']]
 Route::group(['prefix' => 'guru', 'middleware' => ['jwt.verify', 'auth:api', 'role:guru']], function () {
     Route::get('/Article/index', [ArticleController::class, 'index'])->name('article.index');
     Route::get('/edit/profile/{id}', [ProfileController::class, 'edit'])->name('edit.profileGuru');
-    Route::put('/update/profile/{id}', [ProfileController::class, 'update'])->name('update.profile');
+    Route::put('/update/profile/{id}', [ProfileController::class, 'update'])->name('update.profileGuru');
     Route::get('/dashboard', function () {
 
         $article = Post::all();
@@ -208,7 +209,7 @@ Route::group(['prefix' => 'guru', 'middleware' => ['jwt.verify', 'auth:api', 'ro
 // Siswa
 Route::group(['prefix' => 'siswa', 'middleware' => ['jwt.verify', 'auth:api', 'role:siswa']], function () {
     Route::get('/edit/profile/{id}', [ProfileController::class, 'edit'])->name('edit.profileSiswa');
-    Route::put('/update/profile/{id}', [ProfileController::class, 'update'])->name('update.profile');
+    Route::put('/update/profile/{id}', [ProfileController::class, 'update'])->name('update.profileSiswa');
     Route::get('/dashboard', function () {
         // $article = Post::all();
         $article = Category::wherehas('post', function ($query) {
@@ -221,13 +222,36 @@ Route::group(['prefix' => 'siswa', 'middleware' => ['jwt.verify', 'auth:api', 'r
 
 // Perusahaan
 Route::group(['prefix' => 'perusahaan', 'middleware' => ['jwt.verify', 'auth:api', 'role:perusahaan']], function () {
+    Route::get('/edit/profile/{id}', [ProfileController::class, 'edit'])->name('edit.profilePerusahaan');
+    Route::put('/update/profile/{id}', [ProfileController::class, 'update'])->name('update.profilePerusahaan');
+    Route::get('/detail/siswa/{id}', [ProfileController::class, 'detail'])->name('detail.profile');
+    Route::get('/download-cv/siswa/{id}', [PDFController::class, 'downloadCV'])->name('download.cv');
+    Route::get('/stream-cv/siswa/{id}', [PDFController::class, 'Stream'])->name('stream.cv');
     Route::get('/dashboard', function () {
         // $article = Post::all();
         $article = Category::wherehas('post', function ($query) {
             $query->where('name', 'Perusahaan');
         })->get();
         // dd($article);
-        return view('dashboard.dashboard', compact('article'));
+
+        $XII_RPL = User::wherehas('kelas', function ($query) {
+            $query->where('kelas', 'XII')->where('jurusan', 'RPL');
+        })->paginate(6);
+        $XII_BC = User::wherehas('kelas', function ($query) {
+            $query->where('kelas', 'XII')->where('jurusan', 'BC');
+        })->paginate(6);
+        $XII_MM = User::wherehas('kelas', function ($query) {
+            $query->where('kelas', 'XII')->where('jurusan', 'MM');
+        })->paginate(6);
+        $XII_TKJ = User::wherehas('kelas', function ($query) {
+            $query->where('kelas', 'XII')->where('jurusan', 'TKJ');
+        })->paginate(6);
+        $XII_TEI = User::wherehas('kelas', function ($query) {
+            $query->where('kelas', 'XII')->where('jurusan', 'TEI');
+        })->paginate(6);
+        // dd($XII_RPL);
+
+        return view('dashboard.dashboard', compact('article','XII_RPL','XII_BC','XII_MM','XII_TKJ','XII_TEI'));
     })->name('dashboard.perusahaan');
 });
 

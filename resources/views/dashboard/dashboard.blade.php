@@ -10,11 +10,11 @@
                     <div class="profile-widget-header">
                         @if (File::exists(public_path(Auth::user()->avatar)))
                         <img alt="image" src="{{ asset(Auth::user()->avatar) }}"
-                            class="rounded-circle profile-widget-picture">
+                            style="width: 150px; height: 150px; border-radius: 50%;">
                     @else
                         <img alt="image" src="{{ asset('img/avatar/avatar-1.png') }}"
-                            class="rounded-circle profile-widget-picture">
-    @endif
+                            style="width: 150px; height: 150px; border-radius: 50%;">
+                     @endif
     <div class="profile-widget-items">
         <div class="profile-widget-item">
             <div class="profile-widget-item-label">NISN</div>
@@ -109,10 +109,10 @@
                 <div class="profile-widget-header">
                     @if (File::exists(public_path(Auth::user()->avatar)))
                     <img alt="image" src="{{ asset(Auth::user()->avatar) }}"
-                        class="rounded-circle profile-widget-picture">
+                        style="width: 150px; height: 150px; border-radius: 50%;">
                 @else
                     <img alt="image" src="{{ asset('img/avatar/avatar-1.png') }}"
-                        class="rounded-circle profile-widget-picture">
+                        style="width: 150px; height: 150px; border-radius: 50%;">
                     @endif
                     <div class="profile-widget-items">
                         <div class="profile-widget-item">
@@ -1201,10 +1201,10 @@
                 <div class="profile-widget-header">
                     @if (File::exists(public_path(Auth::user()->avatar)))
                     <img alt="image" src="{{ asset(Auth::user()->avatar) }}"
-                        class="rounded-circle profile-widget-picture">
+                        style="width: 150px; height: 150px; border-radius: 50%;">
                 @else
                     <img alt="image" src="{{ asset('img/avatar/avatar-1.png') }}"
-                        class="rounded-circle profile-widget-picture">
+                        style="width: 150px; height: 150px; border-radius: 50%;">
                     @endif
                     <div class="profile-widget-items">
                         <div class="profile-widget-item">
@@ -1427,16 +1427,17 @@
                 <div class="profile-widget-description">
                     <div class="profile-widget-name">{{ JWTAuth::user()->name }}
                         <div class="text-muted d-inline font-weight-normal">
-                            <div class="slash"></div>
+                            {{-- <div class="slash"></div>
                             <div class="badge badge-primary">
                                 {{ JWTAuth::user()->jabatan_guru }}
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    {{-- {{dd($XII_RPL)}} --}}
 
     <div class="row">
         <div class="mb-3">
@@ -1445,11 +1446,11 @@
         </div>
         <div class="col-12 col-sm-12 col-lg-12 ">
             <div class="card">
-                <div class="card-header">
+                {{-- <div class="card-header">
                     <form class="card-header-form">
                         <input type="text" name="search" class="form-control" placeholder="Cari">
                     </form>
-                </div>
+                </div> --}}
                 <div class="card-body">
                     <ul class="nav nav-tabs justify-content-center" id="myTab6" role="tablist">
                         <li class="nav-item">
@@ -1497,78 +1498,553 @@
                         <div class="tab-pane fade show active" id="XII-RPL6" role="tabpanel"
                             aria-labelledby="XII-RPL-tab6">
                             <div class="row">
-                                {{-- @forelse ($XI_RPL as $item)
-                                            <tr>
-                                                <td>
-                                                    <div class="sort-handler">
-                                                        {{ $loop->iteration }}
+                                @forelse ($XII_RPL as $item)
+                                    <div class="col-md-4">
+                                        <div class="card">
+                                            <div class="card-header">
+                                                    <div class="row">
+                                                        <div class="col-9">
+                                                            @if (File::exists(public_path($item->avatar)))
+                                                            <img alt="image" src="{{asset($item->avatar) }}" style="width: 150px; height: 150px; border-radius: 50%;">
+                                                            <br>
+                                                                    @else 
+                                                            <img alt="image" src="{{ asset('img/avatar/avatar-1.png') }}" style="width: 150px; height: 150px; border-radius: 50%;">
+                                                            <br>
+                                                            @endif
+
+                                                            <h4 class="mt-3">{{ $item->name }}
+                                                                <br>
+                                                                <span style="font-size: 14px; font-weight: lighter"></span>
+                                                            </h4>
+                                                            
+                                                        </div>
+                                                        <div class="col-3">
+                                                            <div class="card-header-action">
+                                                                <div class="dropdown d-inline">
+                                                                    <button class="btn btn-secondary dropdown-toggle" type="button"
+                                                                        id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true"
+                                                                        aria-expanded="false">
+                                                                        Option
+                                                                    </button>
+                                                                    <div class="dropdown-menu" x-placement="bottom-start"
+                                                                        style="position: absolute; transform: translate3d(0px, 28px, 0px); top: 0px; left: 0px; will-change: transform;">
+                                                                        <a class="dropdown-item has-icon" href="{{route('detail.profile',$item->id)}}"><i
+                                                                                class="fas fa-search"></i> Detail Profile</a>
+            
+                                                                                @if ($item->detailUser == null || $item->detailUser->cv == null)
+                                                                                   <a class="dropdown-item has-icon "  disabled > Belum punya CV</a>
+                                                                                @else 
+                                                                                   <a class="dropdown-item has-icon" href="{{route('stream.cv',$item->id)}}"><i class="fas fa-file"></i>  View CV</a>
+            
+                                                                                
+                                                                                @endif
+                                                                        {{-- <a class="dropdown-item has-icon" href="#"><i
+                                                                                class="far fa-clock"></i> Something else here</a> --}}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                </td>
-                                                <td>
-                                                    <img alt="image" src="{{ asset('img/' . $item->avatar) }}"
-                                                        class="rounded-circle" width="35" data-toggle="tooltip"
-                                                        title="Wildan Ahdian">
-                                                </td>
-                                                <td>{{ $item->name }}</td>
-                                                <td class="align-middle">
-                                                    {{ $item->email }}
-                                                </td>
-                                            </tr>
-                                        @empty
-                                            <div class="center">
-                                                <h1>Data Siswa Tidak ada</h1>
                                             </div>
-                                        @endforelse --}}
-                                <div class="col-md-4">
-                                    <div class="card">
-                                        <div class="card-header">
-                                            <h4>{{ JWTAuth::user()->name }}
-                                                <br>
-                                                <span style="font-size: 14px; font-weight: lighter">Web
-                                                    Developer</span>
-                                            </h4>
-                                            <div class="card-header-action">
-                                                <div class="dropdown d-inline">
-                                                    <button class="btn btn-primary dropdown-toggle" type="button"
-                                                        id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true"
-                                                        aria-expanded="false">
-                                                        Opsi
-                                                    </button>
-                                                    <div class="dropdown-menu" x-placement="bottom-start"
-                                                        style="position: absolute; transform: translate3d(0px, 28px, 0px); top: 0px; left: 0px; will-change: transform;">
-                                                        <a class="dropdown-item has-icon" href="#"><i
-                                                                class="far fa-heart"></i> Action</a>
-                                                        <a class="dropdown-item has-icon" href="#"><i
-                                                                class="far fa-file"></i> Another action</a>
-                                                        <a class="dropdown-item has-icon" href="#"><i
-                                                                class="far fa-clock"></i> Something else here</a>
+                                            <div class="card-body">
+                                                <div id="accordion">
+                                                    <div class="card">
+                                                      <div class="card-header" id="headingOne">
+                                                        <h5 class="mb-0">
+                                                          <button style="text-decoration: none;" class="btn btn-primary" data-toggle="collapse" data-target="#collapseOne{{$loop->iteration}}" aria-expanded="true" aria-controls="collapseOne{{$loop->iteration}}" >
+                                                            Skill
+                                                        </button>
+                                                        </h5>
+                                                      </div>
+                                                  
+                                                      <div id="collapseOne{{$loop->iteration}}" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                                                        <div class="card-body">
+                                                            @if ($item->detailUser == null || $item->detailUser->skill == null)
+                                                              Belum ada skill 
+                                                              
+                                                              @else 
+                                                                @php
+                                                                 $detailProfileSkill =  explode(',', $item->detailUser->skill);
+                                                                foreach ($detailProfileSkill as $key => $value) {
+                                                                    $yourSkill[] = App\Models\Skill::where('id', $value)->first();
+                                                                }
+                                                                @endphp
+                                                                    @foreach ($yourSkill as $item)
+                                                                    <a style="cursor: pointer;" class="badge badge-primary ">{{$item->nama_skill}}</a>
+                                  
+                                                                    @endforeach
+
+                                                            @endif
+                                                        </div>
+                                                      </div>
                                                     </div>
+                                                    
+                                                    
+                                                  </div>
+                                                  {{-- <div class="mb-2">
+                                                    <strong>{{$item->kelas->nama_kelas}}</strong>
                                                 </div>
+                                                <blockquote class="blockquote">
+                                                        @if ($item->detailUser == null || $item->detailUser->bio == null)
+                                                            <i>Tidak memiliki Bio</i>
+                                                        @else
+                                                    <p class="mb-0">{{Str::words($item->detailUser->bio,8)}}</p>
+                                                         
+
+                                                        @endif
+                                                </blockquote> --}}
+                                                
                                             </div>
-                                        </div>
-                                        <div class="card-body">
-                                            <div class="mb-2">
-                                                <strong>XII RPL 1</strong>
-                                            </div>
-                                            <blockquote class="blockquote">
-                                                <p class="mb-0">Saya senang ngoding.</p>
-                                            </blockquote>
                                         </div>
                                     </div>
-                                </div>
+                                @empty
+                                    <h5>
+                                        "Tidak ada data siswa"
+                                    </h5>
+                                @endforelse
+                            
+                    
+                            </div>
+                            <div class="d-flex justify-content-center">
+                                {!! $XII_RPL->links() !!}
                             </div>
                         </div>
                         <div class="tab-pane fade" id="XII-MM6" role="tabpanel" aria-labelledby="XII-MM-tab6">
+                            <div class="row">
+                                @forelse ($XII_MM as $item)
+                                <div class="col-md-4">
+                                    <div class="card">
+                                        <div class="card-header">
+                                                <div class="row">
+                                                    <div class="col-9">
+                                                        @if (File::exists(public_path($item->avatar)))
+                                                        <img alt="image" src="{{asset($item->avatar) }}" style="width: 150px; height: 150px; border-radius: 50%;">
+                                                        <br>
+                                                                @else 
+                                                        <img alt="image" src="{{ asset('img/avatar/avatar-1.png') }}" style="width: 150px; height: 150px; border-radius: 50%;">
+                                                        <br>
+                                                        @endif
 
+                                                        <h4 class="mt-3">{{ $item->name }}
+                                                            <br>
+                                                            <span style="font-size: 14px; font-weight: lighter"></span>
+                                                        </h4>
+                                                        
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <div class="card-header-action">
+                                                            <div class="dropdown d-inline">
+                                                                <button class="btn btn-secondary dropdown-toggle" type="button"
+                                                                    id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true"
+                                                                    aria-expanded="false">
+                                                                    Option
+                                                                </button>
+                                                                <div class="dropdown-menu" x-placement="bottom-start"
+                                                                    style="position: absolute; transform: translate3d(0px, 28px, 0px); top: 0px; left: 0px; will-change: transform;">
+                                                                    <a class="dropdown-item has-icon" href="{{route('detail.profile',$item->id)}}"><i
+                                                                            class="fas fa-search"></i> Detail Profile</a>
+        
+                                                                            @if ($item->detailUser == null || $item->detailUser->cv == null)
+                                                                               <a class="dropdown-item has-icon "  disabled > Belum punya CV</a>
+                                                                            @else 
+                                                                               <a class="dropdown-item has-icon" href="{{route('stream.cv',$item->id)}}"><i class="fas fa-file"></i>  View CV</a>
+        
+                                                                            
+                                                                            @endif
+                                                                    {{-- <a class="dropdown-item has-icon" href="#"><i
+                                                                            class="far fa-clock"></i> Something else here</a> --}}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                        </div>
+                                        <div class="card-body">
+                                            <div id="accordion">
+                                                <div class="card">
+                                                  <div class="card-header" id="headingOne">
+                                                    <h5 class="mb-0">
+                                                      <button style="text-decoration: none;" class="btn btn-primary" data-toggle="collapse" data-target="#collapseOne{{$loop->iteration}}" aria-expanded="true" aria-controls="collapseOne{{$loop->iteration}}" >
+                                                        Skill
+                                                    </button>
+                                                    </h5>
+                                                  </div>
+                                              
+                                                  <div id="collapseOne{{$loop->iteration}}" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                                                    <div class="card-body">
+                                                        @if ($item->detailUser == null || $item->detailUser->skill == null)
+                                                          Belum ada skill 
+                                                          
+                                                          @else 
+                                                            @php
+                                                             $detailProfileSkill =  explode(',', $item->detailUser->skill);
+                                                            foreach ($detailProfileSkill as $key => $value) {
+                                                                $yourSkill[] = App\Models\Skill::where('id', $value)->first();
+                                                            }
+                                                            @endphp
+                                                                @foreach ($yourSkill as $item)
+                                                                <a style="cursor: pointer;" class="badge badge-primary ">{{$item->nama_skill}}</a>
+                              
+                                                                @endforeach
+
+                                                        @endif
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                                
+                                                
+                                              </div>
+                                              {{-- <div class="mb-2">
+                                                <strong>{{$item->kelas->nama_kelas}}</strong>
+                                            </div>
+                                            <blockquote class="blockquote">
+                                                    @if ($item->detailUser == null || $item->detailUser->bio == null)
+                                                        <i>Tidak memiliki Bio</i>
+                                                    @else
+                                                <p class="mb-0">{{Str::words($item->detailUser->bio,8)}}</p>
+                                                     
+
+                                                    @endif
+                                            </blockquote> --}}
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                                @empty
+                                    <h5>
+                                        "Tidak ada data siswa"
+                                    </h5>
+                                @endforelse
+                            
+                    
+                            </div>
+                            <div class="d-flex justify-content-center">
+                                {!! $XII_MM->links() !!}
+                            </div>
                         </div>
                         <div class="tab-pane fade" id="XII-BC6" role="tabpanel" aria-labelledby="XII-BC-tab6">
+                            <div class="row">
+                                @forelse ($XII_BC as $item)
+                                <div class="col-md-4">
+                                    <div class="card">
+                                        <div class="card-header">
+                                                <div class="row">
+                                                    <div class="col-9">
+                                                        @if (File::exists(public_path($item->avatar)))
+                                                        <img alt="image" src="{{asset($item->avatar) }}" style="width: 150px; height: 150px; border-radius: 50%;">
+                                                        <br>
+                                                                @else 
+                                                        <img alt="image" src="{{ asset('img/avatar/avatar-1.png') }}" style="width: 150px; height: 150px; border-radius: 50%;">
+                                                        <br>
+                                                        @endif
 
+                                                        <h4 class="mt-3">{{ $item->name }}
+                                                            <br>
+                                                            <span style="font-size: 14px; font-weight: lighter"></span>
+                                                        </h4>
+                                                        
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <div class="card-header-action">
+                                                            <div class="dropdown d-inline">
+                                                                <button class="btn btn-secondary dropdown-toggle" type="button"
+                                                                    id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true"
+                                                                    aria-expanded="false">
+                                                                    Option
+                                                                </button>
+                                                                <div class="dropdown-menu" x-placement="bottom-start"
+                                                                    style="position: absolute; transform: translate3d(0px, 28px, 0px); top: 0px; left: 0px; will-change: transform;">
+                                                                    <a class="dropdown-item has-icon" href="{{route('detail.profile',$item->id)}}"><i
+                                                                            class="fas fa-search"></i> Detail Profile</a>
+        
+                                                                            @if ($item->detailUser == null || $item->detailUser->cv == null)
+                                                                               <a class="dropdown-item has-icon "  disabled > Belum punya CV</a>
+                                                                            @else 
+                                                                               <a class="dropdown-item has-icon" href="{{route('stream.cv',$item->id)}}"><i class="fas fa-file"></i>  View CV</a>
+        
+                                                                            
+                                                                            @endif
+                                                                    {{-- <a class="dropdown-item has-icon" href="#"><i
+                                                                            class="far fa-clock"></i> Something else here</a> --}}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                        </div>
+                                        <div class="card-body">
+                                            <div id="accordion">
+                                                <div class="card">
+                                                  <div class="card-header" id="headingOne">
+                                                    <h5 class="mb-0">
+                                                      <button style="text-decoration: none;" class="btn btn-primary" data-toggle="collapse" data-target="#collapseOne{{$loop->iteration}}" aria-expanded="true" aria-controls="collapseOne{{$loop->iteration}}" >
+                                                        Skill
+                                                    </button>
+                                                    </h5>
+                                                  </div>
+                                              
+                                                  <div id="collapseOne{{$loop->iteration}}" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                                                    <div class="card-body">
+                                                        @if ($item->detailUser == null || $item->detailUser->skill == null)
+                                                          Belum ada skill 
+                                                          
+                                                          @else 
+                                                            @php
+                                                             $detailProfileSkill =  explode(',', $item->detailUser->skill);
+                                                            foreach ($detailProfileSkill as $key => $value) {
+                                                                $yourSkill[] = App\Models\Skill::where('id', $value)->first();
+                                                            }
+                                                            @endphp
+                                                                @foreach ($yourSkill as $item)
+                                                                <a style="cursor: pointer;" class="badge badge-primary ">{{$item->nama_skill}}</a>
+                              
+                                                                @endforeach
+
+                                                        @endif
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                                
+                                                
+                                              </div>
+                                              {{-- <div class="mb-2">
+                                                <strong>{{$item->kelas->nama_kelas}}</strong>
+                                            </div>
+                                            <blockquote class="blockquote">
+                                                    @if ($item->detailUser == null || $item->detailUser->bio == null)
+                                                        <i>Tidak memiliki Bio</i>
+                                                    @else
+                                                <p class="mb-0">{{Str::words($item->detailUser->bio,8)}}</p>
+                                                     
+
+                                                    @endif
+                                            </blockquote> --}}
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                                @empty
+                                    <h5>
+                                        "Tidak ada data siswa"
+                                    </h5>
+                                @endforelse
+                            
+                    
+                            </div>
+                            <div class="d-flex justify-content-center">
+                                {!! $XII_BC->links() !!}
+                            </div>
                         </div>
                         <div class="tab-pane fade" id="XII-TKJ6" role="tabpanel" aria-labelledby="XII-TKJ-tab6">
+                            <div class="row">
+                                @forelse ($XII_TKJ as $item)
+                                <div class="col-md-4">
+                                    <div class="card">
+                                        <div class="card-header">
+                                                <div class="row">
+                                                    <div class="col-9">
+                                                        @if (File::exists(public_path($item->avatar)))
+                                                        <img alt="image" src="{{asset($item->avatar) }}" style="width: 150px; height: 150px; border-radius: 50%;">
+                                                        <br>
+                                                                @else 
+                                                        <img alt="image" src="{{ asset('img/avatar/avatar-1.png') }}" style="width: 150px; height: 150px; border-radius: 50%;">
+                                                        <br>
+                                                        @endif
 
+                                                        <h4 class="mt-3">{{ $item->name }}
+                                                            <br>
+                                                            <span style="font-size: 14px; font-weight: lighter"></span>
+                                                        </h4>
+                                                        
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <div class="card-header-action">
+                                                            <div class="dropdown d-inline">
+                                                                <button class="btn btn-secondary dropdown-toggle" type="button"
+                                                                    id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true"
+                                                                    aria-expanded="false">
+                                                                    Option
+                                                                </button>
+                                                                <div class="dropdown-menu" x-placement="bottom-start"
+                                                                    style="position: absolute; transform: translate3d(0px, 28px, 0px); top: 0px; left: 0px; will-change: transform;">
+                                                                    <a class="dropdown-item has-icon" href="{{route('detail.profile',$item->id)}}"><i
+                                                                            class="fas fa-search"></i> Detail Profile</a>
+        
+                                                                            @if ($item->detailUser == null || $item->detailUser->cv == null)
+                                                                               <a class="dropdown-item has-icon "  disabled > Belum punya CV</a>
+                                                                            @else 
+                                                                               <a class="dropdown-item has-icon" href="{{route('stream.cv',$item->id)}}"><i class="fas fa-file"></i>  View CV</a>
+        
+                                                                            
+                                                                            @endif
+                                                                    {{-- <a class="dropdown-item has-icon" href="#"><i
+                                                                            class="far fa-clock"></i> Something else here</a> --}}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                        </div>
+                                        <div class="card-body">
+                                            <div id="accordion">
+                                                <div class="card">
+                                                  <div class="card-header" id="headingOne">
+                                                    <h5 class="mb-0">
+                                                      <button style="text-decoration: none;" class="btn btn-primary" data-toggle="collapse" data-target="#collapseOne{{$loop->iteration}}" aria-expanded="true" aria-controls="collapseOne{{$loop->iteration}}" >
+                                                        Skill
+                                                    </button>
+                                                    </h5>
+                                                  </div>
+                                              
+                                                  <div id="collapseOne{{$loop->iteration}}" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                                                    <div class="card-body">
+                                                        @if ($item->detailUser == null || $item->detailUser->skill == null)
+                                                          Belum ada skill 
+                                                          
+                                                          @else 
+                                                            @php
+                                                             $detailProfileSkill =  explode(',', $item->detailUser->skill);
+                                                            foreach ($detailProfileSkill as $key => $value) {
+                                                                $yourSkill[] = App\Models\Skill::where('id', $value)->first();
+                                                            }
+                                                            @endphp
+                                                                @foreach ($yourSkill as $item)
+                                                                <a style="cursor: pointer;" class="badge badge-primary ">{{$item->nama_skill}}</a>
+                              
+                                                                @endforeach
+
+                                                        @endif
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                                
+                                                
+                                              </div>
+                                              {{-- <div class="mb-2">
+                                                <strong>{{$item->kelas->nama_kelas}}</strong>
+                                            </div>
+                                            <blockquote class="blockquote">
+                                                    @if ($item->detailUser == null || $item->detailUser->bio == null)
+                                                        <i>Tidak memiliki Bio</i>
+                                                    @else
+                                                <p class="mb-0">{{Str::words($item->detailUser->bio,8)}}</p>
+                                                     
+
+                                                    @endif
+                                            </blockquote> --}}
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                                @empty
+                                    <h5>
+                                        "Tidak ada data siswa"
+                                    </h5>
+                                @endforelse
+                            
+                    
+                            </div>
+                            <div class="d-flex justify-content-center">
+                                {!! $XII_TKJ->links() !!}
+                            </div>
                         </div>
                         <div class="tab-pane fade" id="XII-TEI6" role="tabpanel" aria-labelledby="XII-TEI-tab6">
+                            <div class="row">
+                                @forelse ($XII_TEI as $item)
+                                    <div class="col-md-4">
+                                        <div class="card">
+                                            <div class="card-header">
+                                                <h4 class="mt-3">{{ $item->name }}
+                                                    <br>
+                                                    <span style="font-size: 14px; font-weight: lighter"></span>
+                                                </h4>
+                                                <div class="card-header-action">
+                                                    <div class="dropdown d-inline">
+                                                        <button class="btn btn-secondary dropdown-toggle" type="button"
+                                                            id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true"
+                                                            aria-expanded="false">
+                                                            Option
+                                                        </button>
+                                                        <div class="dropdown-menu" x-placement="bottom-start"
+                                                            style="position: absolute; transform: translate3d(0px, 28px, 0px); top: 0px; left: 0px; will-change: transform;">
+                                                            <a class="dropdown-item has-icon" href="{{route('detail.profile',$item->id)}}"><i
+                                                                    class="fas fa-search"></i> Detail Profile</a>
 
+                                                                    @if ($item->detailUser == null || $item->detailUser->cv == null)
+                                                                       <a class="dropdown-item has-icon "  disabled > Belum punya CV</a>
+                                                                    @else 
+                                                                       <a class="dropdown-item has-icon" href="{{route('stream.cv',$item->id)}}"><i class="fas fa-file"></i>  View CV</a>
+
+                                                                    
+                                                                    @endif
+                                                            {{-- <a class="dropdown-item has-icon" href="#"><i
+                                                                    class="far fa-clock"></i> Something else here</a> --}}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card-body">
+                                                <div id="accordion">
+                                                    <div class="card">
+                                                      <div class="card-header" id="headingOne">
+                                                        <h5 class="mb-0">
+                                                          <button style="text-decoration: none;" class="btn btn-primary" data-toggle="collapse" data-target="#collapseOne{{$loop->iteration}}" aria-expanded="true" aria-controls="collapseOne{{$loop->iteration}}" >
+                                                            Skill
+                                                        </button>
+                                                        </h5>
+                                                      </div>
+                                                  
+                                                      <div id="collapseOne{{$loop->iteration}}" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                                                        <div class="card-body">
+                                                            @if ($item->detailUser == null || $item->detailUser->skill == null)
+                                                              Belum ada skill 
+                                                              
+                                                              @else 
+                                                                @php
+                                                                 $detailProfileSkill =  explode(',', $item->detailUser->skill);
+                                                                foreach ($detailProfileSkill as $key => $value) {
+                                                                    $yourSkill[] = App\Models\Skill::where('id', $value)->first();
+                                                                }
+                                                                @endphp
+                                                                    @foreach ($yourSkill as $item)
+                                                                    <a style="cursor: pointer;" class="badge badge-primary ">{{$item->nama_skill}}</a>
+                                  
+                                                                    @endforeach
+
+                                                            @endif
+                                                        </div>
+                                                      </div>
+                                                    </div>
+                                                    
+                                                    
+                                                  </div>
+                                                  {{-- <div class="mb-2">
+                                                    <strong>{{$item->kelas->nama_kelas}}</strong>
+                                                </div>
+                                                <blockquote class="blockquote">
+                                                        @if ($item->detailUser == null || $item->detailUser->bio == null)
+                                                            <i>Tidak memiliki Bio</i>
+                                                        @else
+                                                    <p class="mb-0">{{Str::words($item->detailUser->bio,8)}}</p>
+                                                         
+
+                                                        @endif
+                                                </blockquote> --}}
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                @empty
+                                    <h5>
+                                        "Tidak ada data siswa"
+                                    </h5>
+                                @endforelse
+                            
+                    
+                            </div>
+                            <div class="d-flex justify-content-center">
+                                {!! $XII_TEI->links() !!}
+                            </div>
                         </div>
                     </div>
                 </div>
