@@ -55,6 +55,13 @@ Route::get('/hubin/data-tamatan', 'HubinController@index')->name('hubin');
 Route::get('/kurikulum/guru-smk-taruna-bhakti', 'WebController@kurikulumguru');
 Route::get('/guru-starbhak/{kategori:slug}', 'WebController@fotoguru');
 
+// Page BKK
+Route::get('/bkk/open-recruitment', 'WebController@recruitment');
+
+// Page Ekstrakulikuler
+Route::get('/kesiswaan/ekstrakurikuler', 'WebController@ekskul');
+Route::get('/ekskul/{eskul:slug}', 'WebController@eskul');
+
 // Page Gallery
 Route::get('/gallery/{gallery:slug}', 'WebController@galleries');
 

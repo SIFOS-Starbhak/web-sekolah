@@ -24,6 +24,11 @@ use App\Models\Video;
 use App\Models\Background;
 use App\Models\Role;
 use App\Models\GuruKejuruan;
+use App\Models\Recruitment;
+use App\Models\Ekskul;
+use App\Models\TabEkskul;
+use App\Models\ContentEkskul;
+use App\Models\GalleryEkskul;
 
 class WebController extends Controller
 {
@@ -250,5 +255,37 @@ class WebController extends Controller
         $navbar = Navbar::all()->where('status', 'Active');
         $backgrounds = Background::all();
         return view('gallery', compact('image', 'video', 'gallery', 'settings', 'navbar', 'backgrounds'));
+    }
+
+    public function recruitment()
+    {
+        $settings = Setting::all();
+        $navbar = Navbar::all()->where('status', 'Active');
+        $backgrounds = Background::all();
+        $reqruitment = Recruitment::all();
+
+        return view('bkk', compact('settings', 'navbar', 'backgrounds', 'reqruitment'));
+    }
+
+    public function ekskul()
+    {
+        $settings = Setting::all();
+        $navbar = Navbar::all()->where('status', 'Active');
+        $backgrounds = Background::all();
+        $eskul = Ekskul::all();
+
+        return view('ekskul', compact('settings', 'navbar', 'backgrounds', 'eskul'));
+    }
+
+    public function eskul(Ekskul $eskul)
+    {
+        $settings = Setting::all();
+        $navbar = Navbar::all()->where('status', 'Active');
+        $backgrounds = Background::all();
+        $tab = TabEkskul::all();
+        $content = ContentEkskul::all()->where('ekskul', $eskul->id);
+        $gallery = GalleryEkskul::all()->where('ekskul', $eskul->id);
+
+        return view('eskul', compact('settings', 'navbar', 'backgrounds', 'eskul', 'content', 'tab', 'gallery'));
     }
 }

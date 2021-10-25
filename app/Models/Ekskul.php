@@ -16,4 +16,9 @@ class Ekskul extends Model
         'slug',
     ];
 
+    public function content()
+    {
+        return $this->hasMany(ContentEkskul::class, 'ekskul', 'id');
+    }
+
 }
