@@ -17,7 +17,7 @@
         }
 
     </style>
-    <div class="container" data-aos="fade-up">
+    <div class="container" data-aos="fade-up" id="/kurikulum">
         <div class="row card-group " data-aos="zoom-in" data-aos-delay="100">
             <section id="popular-courses" class="courses">
                 <div class="container" data-aos="fade-up">

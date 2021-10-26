@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 25, 2021 at 09:45 AM
--- Server version: 10.4.13-MariaDB
--- PHP Version: 7.4.8
+-- Generation Time: Oct 23, 2021 at 06:14 AM
+-- Server version: 10.4.21-MariaDB
+-- PHP Version: 8.0.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -160,28 +160,6 @@ INSERT INTO `contents` (`id`, `title`, `content`, `created_at`, `updated_at`, `s
 (3, 'Keterangan Jurusan', '<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi neque quaerat dolorem? Libero, fuga? Aspernatur voluptate aliquid beatae maiores, doloribus explicabo itaque enim nihil molestias? Eligendi illum culpa officia. Explicabo facilis reiciendis possimus dolore laudantium veniam accusantium esse reprehenderit fuga ea nesciunt accusamus similique consequuntur in magnam harum, doloribus vitae dicta obcaecati exercitationem. Nam inventore, doloribus voluptas aspernatur omnis quae eos dolores sint aut asperiores consectetur velit corporis voluptatem corrupti natus quibusdam vero dignissimos hic pariatur praesentium facere non dolorum optio laudantium! Culpa blanditiis sit perferendis quibusdam maxime inventore! Quibusdam cumque fuga alias iusto magnam! Quibusdam repudiandae doloremque aliquam minus.</p>', '2021-10-21 06:41:54', '2021-10-21 06:45:50', '48', 'keterangan-jurusan'),
 (5, 'Foto Guru', NULL, '2021-10-21 06:46:14', '2021-10-21 06:46:14', '48', 'foto-guru'),
 (6, 'Rekayasa Perangkat lunak', '<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Unde cum officiis maiores illum non nemo reprehenderit sunt, ex vel modi qui, deserunt eaque nulla recusandae expedita, vitae sit. A, ducimus. Nobis ad temporibus illo nulla earum veniam quisquam molestias praesentium voluptatem sit! Veniam, cupiditate maxime mollitia voluptatum autem dolorum odit quam ad molestiae, alias ratione deserunt consectetur ut quidem voluptates? Dicta neque eaque quae ullam, nisi, earum, saepe quibusdam repudiandae atque rem delectus. Dicta, ad nam. Ex quisquam temporibus animi earum velit voluptatem, libero vero eaque, doloremque dolores quod perferendis? Quidem labore magnam repudiandae saepe distinctio commodi nobis earum sint error, odit numquam dolorem vel tempore ullam quod quia qui ipsam alias deserunt veniam laudantium laboriosam! Reprehenderit nihil esse nobis.</p>', '2021-10-21 08:43:53', '2021-10-21 08:43:53', '50', 'rekayasa-perangkat-lunak');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `content_ekskuls`
---
-
-CREATE TABLE `content_ekskuls` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `body` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `ekskul` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `content_ekskuls`
---
-
-INSERT INTO `content_ekskuls` (`id`, `title`, `body`, `ekskul`, `created_at`, `updated_at`) VALUES
-(1, '1', '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa impedit eveniet laboriosam aperiam corporis blanditiis exercitationem iure earum distinctio vero architecto eligendi accusantium suscipit maxime quaerat, facilis sint quos delectus rerum veritatis. Amet atque commodi quod nam sint alias deserunt, repellendus eaque iusto vero ratione et, consectetur, maxime harum fuga doloribus. Voluptas pariatur minus blanditiis quia repudiandae rerum iusto ex optio minima eum atque, explicabo dicta unde provident officia, excepturi vero laudantium. Quas voluptatibus provident soluta velit necessitatibus et tempore repellat vel laborum, id debitis voluptatem culpa, nihil ratione. Ab facilis sunt fuga, odit quis corporis eaque cum amet tempora.</p>', '1', '2021-10-25 04:09:00', '2021-10-25 04:10:56');
 
 -- --------------------------------------------------------
 
@@ -386,7 +364,7 @@ INSERT INTO `data_rows` (`id`, `data_type_id`, `field`, `type`, `display_name`, 
 (204, 32, 'nama_mapel', 'text', 'Nama Mapel', 1, 1, 1, 1, 1, 1, '{}', 2),
 (205, 32, 'created_at', 'timestamp', 'Created At', 0, 1, 1, 1, 0, 1, '{}', 3),
 (206, 32, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 4),
-(207, 1, 'user_belongsto_mapel_relationship', 'relationship', 'mapels', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\Models\\\\Mapel\",\"table\":\"mapels\",\"type\":\"belongsTo\",\"column\":\"mapel_id\",\"key\":\"id\",\"label\":\"nama_mapel\",\"pivot_table\":\"alumnis\",\"pivot\":\"0\",\"taggable\":null}', 13),
+(207, 1, 'user_belongsto_mapel_relationship', 'relationship', 'mapels', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\Models\\\\Mapel\",\"table\":\"mapels\",\"type\":\"belongsTo\",\"column\":\"mapel_id\",\"key\":\"id\",\"label\":\"nama_mapel\",\"pivot_table\":\"alumnis\",\"pivot\":\"0\",\"taggable\":\"0\"}', 13),
 (208, 31, 'nama_photo', 'text', 'Nama Photo', 0, 1, 1, 1, 1, 1, '{}', 6),
 (209, 19, 'website_perusahaan', 'text', 'Website Perusahaan', 0, 1, 1, 1, 1, 1, '{}', 7),
 (210, 16, 'status', 'select_dropdown', 'Status', 0, 1, 1, 1, 1, 1, '{\"default\":\"UNPUBLISHED\",\"options\":{\"PUBLISED\":\"PUBLISHED\",\"UNPUBLISED\":\"UNPUBLISED\"}}', 12),
@@ -446,50 +424,30 @@ INSERT INTO `data_rows` (`id`, `data_type_id`, `field`, `type`, `display_name`, 
 (264, 45, 'deleted_at', 'timestamp', 'Deleted At', 0, 1, 1, 1, 1, 1, '{}', 7),
 (265, 45, 'slug', 'text', 'Slug', 0, 1, 1, 1, 1, 1, '{}', 8),
 (266, 44, 'gallery_belongsto_kategori_relationship', 'relationship', 'kategoris', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\Models\\\\Kategori\",\"table\":\"kategoris\",\"type\":\"belongsTo\",\"column\":\"kategori_guru\",\"key\":\"id\",\"label\":\"nama_kategori\",\"pivot_table\":\"alumnis\",\"pivot\":\"0\",\"taggable\":\"0\"}', 9),
-(267, 1, 'user_belongsto_kela_relationship', 'relationship', 'kelas', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\Models\\\\Kela\",\"table\":\"kelas\",\"type\":\"belongsTo\",\"column\":\"kelas_siswa\",\"key\":\"id\",\"label\":\"nama_kelas\",\"pivot_table\":\"alumnis\",\"pivot\":\"0\",\"taggable\":null}', 14),
+(267, 1, 'user_belongsto_kela_relationship', 'relationship', 'kelas', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\Models\\\\Kela\",\"table\":\"kelas\",\"type\":\"belongsTo\",\"column\":\"kelas_siswa\",\"key\":\"id\",\"label\":\"nama_kelas\",\"pivot_table\":\"alumnis\",\"pivot\":\"0\",\"taggable\":\"0\"}', 14),
 (268, 47, 'id', 'text', 'Id', 1, 0, 0, 0, 0, 0, '{}', 1),
 (269, 47, 'image', 'image', 'Image', 0, 1, 1, 1, 1, 1, '{}', 2),
 (270, 47, 'title', 'text', 'Title', 0, 1, 1, 1, 1, 1, '{}', 3),
 (271, 47, 'slug', 'text', 'Slug', 0, 1, 1, 1, 1, 1, '{\"slugify\":{\"origin\":\"title\"},\"validation\":{\"rule\":\"unique:pages,slug\"}}', 4),
 (272, 47, 'created_at', 'timestamp', 'Created At', 0, 1, 1, 1, 0, 1, '{}', 5),
 (273, 47, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 6),
-(282, 51, 'id', 'text', 'Id', 1, 0, 0, 0, 0, 0, '{}', 1),
-(283, 51, 'nama_perusahaan', 'text', 'Nama Perusahaan', 0, 1, 1, 1, 1, 1, '{}', 2),
-(284, 51, 'title', 'text', 'Title', 0, 1, 1, 1, 1, 1, '{}', 3),
-(285, 51, 'body', 'text', 'Body', 0, 1, 1, 1, 1, 1, '{}', 4),
-(286, 51, 'image', 'text', 'Image', 0, 1, 1, 1, 1, 1, '{}', 5),
-(287, 51, 'created_at', 'timestamp', 'Created At', 0, 1, 1, 1, 0, 1, '{}', 6),
-(288, 51, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 7),
-(289, 51, 'slug', 'text', 'Slug', 0, 1, 1, 1, 1, 1, '{\"slugify\":{\"origin\":\"title\"}}', 8),
-(290, 53, 'id', 'text', 'Id', 1, 0, 0, 0, 0, 0, '{}', 1),
-(291, 53, 'nama_perusahaan', 'text', 'Nama Perusahaan', 0, 1, 1, 1, 1, 1, '{}', 2),
-(292, 53, 'title', 'text', 'Title', 0, 1, 1, 1, 1, 1, '{}', 3),
-(293, 53, 'body', 'text', 'Body', 0, 1, 1, 1, 1, 1, '{}', 4),
-(294, 53, 'image', 'text', 'Image', 0, 1, 1, 1, 1, 1, '{}', 5),
-(295, 53, 'created_at', 'timestamp', 'Created At', 0, 1, 1, 1, 0, 1, '{}', 6),
-(296, 53, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 7),
-(297, 53, 'slug', 'text', 'Slug', 0, 1, 1, 1, 1, 1, '{\"slugify\":{\"origin\":\"title\"}}', 8),
-(298, 54, 'id', 'text', 'Id', 1, 0, 0, 0, 0, 0, '{}', 1),
-(299, 54, 'name', 'text', 'Name', 0, 1, 1, 1, 1, 1, '{}', 2),
-(300, 54, 'created_at', 'timestamp', 'Created At', 0, 1, 1, 1, 0, 1, '{}', 4),
-(301, 54, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 5),
-(302, 55, 'id', 'text', 'Id', 1, 0, 0, 0, 0, 0, '{}', 1),
-(303, 55, 'title', 'text', 'Title', 0, 1, 1, 1, 1, 1, '{}', 2),
-(304, 55, 'body', 'rich_text_box', 'Body', 0, 1, 1, 1, 1, 1, '{}', 4),
-(305, 55, 'ekskul', 'text', 'Ekskul', 0, 1, 1, 1, 1, 1, '{}', 5),
-(306, 55, 'created_at', 'timestamp', 'Created At', 0, 1, 1, 1, 0, 1, '{}', 7),
-(307, 55, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 8),
-(308, 56, 'id', 'text', 'Id', 1, 0, 0, 0, 0, 0, '{}', 1),
-(309, 56, 'title', 'text', 'Title', 0, 1, 1, 1, 1, 1, '{}', 2),
-(310, 56, 'description', 'rich_text_box', 'Description', 0, 1, 1, 1, 1, 1, '{}', 3),
-(311, 56, 'image', 'image', 'Image', 0, 1, 1, 1, 1, 1, '{}', 4),
-(312, 56, 'ekskul', 'text', 'Ekskul', 0, 1, 1, 1, 1, 1, '{}', 5),
-(313, 56, 'created_at', 'timestamp', 'Created At', 0, 1, 1, 1, 0, 1, '{}', 6),
-(314, 56, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 7),
-(315, 56, 'gallery_ekskul_belongsto_ekskul_relationship', 'relationship', 'ekskuls', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\Models\\\\Ekskul\",\"table\":\"ekskuls\",\"type\":\"belongsTo\",\"column\":\"ekskul\",\"key\":\"id\",\"label\":\"title\",\"pivot_table\":\"alumnis\",\"pivot\":\"0\",\"taggable\":\"0\"}', 8),
-(316, 55, 'content_ekskul_belongsto_ekskul_relationship', 'relationship', 'Ekskul', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\Models\\\\Ekskul\",\"table\":\"ekskuls\",\"type\":\"belongsTo\",\"column\":\"ekskul\",\"key\":\"id\",\"label\":\"title\",\"pivot_table\":\"alumnis\",\"pivot\":\"0\",\"taggable\":\"0\"}', 6),
-(317, 55, 'content_ekskul_belongsto_tab_ekskul_relationship', 'relationship', 'Title', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\Models\\\\TabEkskul\",\"table\":\"tab_ekskuls\",\"type\":\"belongsTo\",\"column\":\"title\",\"key\":\"id\",\"label\":\"name\",\"pivot_table\":\"alumnis\",\"pivot\":\"0\",\"taggable\":\"0\"}', 3),
-(318, 54, 'slug', 'text', 'Slug', 0, 1, 1, 1, 1, 1, '{\"slugify\":{\"origin\":\"name\"},\"validation\":{\"rule\":\"unique:pages,slug\"}}', 3);
+(274, 1, 'nomor_induk', 'text', 'Nomor Induk', 0, 1, 1, 1, 1, 1, '{}', 12),
+(275, 1, 'jabatan_guru', 'text', 'Jabatan Guru', 0, 1, 1, 1, 1, 1, '{}', 13),
+(276, 1, 'kelas_siswa', 'text', 'Kelas Siswa', 0, 1, 1, 1, 1, 1, '{}', 14),
+(277, 1, 'spesifc_role', 'text', 'Jabatan Guru', 1, 1, 1, 1, 1, 1, '{}', 15),
+(278, 1, 'mapel_id', 'text', 'Mapel Id', 0, 1, 1, 1, 1, 1, '{}', 16),
+(279, 48, 'id', 'hidden', 'Id', 1, 0, 0, 0, 0, 0, '{}', 1),
+(280, 48, 'bio', 'text', 'Bio', 0, 1, 1, 1, 1, 1, '{}', 2),
+(281, 48, 'no_telpon', 'text', 'No Telpon', 0, 1, 1, 1, 1, 1, '{}', 3),
+(282, 48, 'skill', 'text', 'Skill', 0, 1, 1, 1, 1, 1, '{}', 4),
+(283, 48, 'cv', 'text', 'Cv', 0, 1, 1, 1, 1, 1, '{}', 5),
+(284, 48, 'created_at', 'timestamp', 'Created At', 0, 1, 1, 1, 0, 1, '{}', 6),
+(285, 48, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 7),
+(286, 49, 'id', 'hidden', 'Id', 1, 0, 0, 0, 0, 0, '{}', 1),
+(287, 49, 'nama_skill', 'text', 'Nama Skill', 0, 1, 1, 1, 1, 1, '{}', 2),
+(288, 49, 'created_at', 'timestamp', 'Created At', 0, 1, 1, 1, 0, 1, '{}', 3),
+(289, 49, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 4),
+(290, 1, 'user_belongsto_detail_user_relationship', 'relationship', 'detail_users', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\Models\\\\DetailUser\",\"table\":\"detail_users\",\"type\":\"belongsTo\",\"column\":\"detail_user\",\"key\":\"id\",\"label\":\"id\",\"pivot_table\":\"alumnis\",\"pivot\":\"0\",\"taggable\":null}', 17);
 
 -- --------------------------------------------------------
 
@@ -520,7 +478,7 @@ CREATE TABLE `data_types` (
 --
 
 INSERT INTO `data_types` (`id`, `name`, `slug`, `display_name_singular`, `display_name_plural`, `icon`, `model_name`, `policy_name`, `controller`, `description`, `generate_permissions`, `server_side`, `details`, `created_at`, `updated_at`) VALUES
-(1, 'users', 'users', 'User', 'Users', 'voyager-person', 'TCG\\Voyager\\Models\\User', 'TCG\\Voyager\\Policies\\UserPolicy', 'TCG\\Voyager\\Http\\Controllers\\VoyagerUserController', NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"desc\",\"default_search_key\":null,\"scope\":null}', '2021-09-21 07:32:51', '2021-09-22 06:10:53'),
+(1, 'users', 'users', 'User', 'Users', 'voyager-person', 'TCG\\Voyager\\Models\\User', 'TCG\\Voyager\\Policies\\UserPolicy', 'TCG\\Voyager\\Http\\Controllers\\VoyagerUserController', NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"desc\",\"default_search_key\":null,\"scope\":null}', '2021-09-21 07:32:51', '2021-10-22 06:47:40'),
 (2, 'menus', 'menus', 'Menu', 'Menus', 'voyager-list', 'TCG\\Voyager\\Models\\Menu', NULL, '', '', 1, 0, NULL, '2021-09-21 07:32:51', '2021-09-21 07:32:51'),
 (3, 'roles', 'roles', 'Role', 'Roles', 'voyager-lock', 'TCG\\Voyager\\Models\\Role', NULL, 'TCG\\Voyager\\Http\\Controllers\\VoyagerRoleController', '', 1, 0, NULL, '2021-09-21 07:32:52', '2021-09-21 07:32:52'),
 (4, 'categories', 'categories', 'Category', 'Categories', 'voyager-categories', 'TCG\\Voyager\\Models\\Category', NULL, '', '', 1, 0, NULL, '2021-09-21 07:33:09', '2021-09-21 07:33:09'),
@@ -546,10 +504,24 @@ INSERT INTO `data_types` (`id`, `name`, `slug`, `display_name_singular`, `displa
 (44, 'galleries', 'galleries', 'Gallery', 'Galleries', NULL, 'App\\Models\\Gallery', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2021-10-21 07:12:49', '2021-10-21 07:14:21'),
 (45, 'kategoris', 'kategoris', 'Kategori', 'Kategoris', NULL, 'App\\Models\\Kategori', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null}', '2021-10-21 07:13:41', '2021-10-21 07:13:41'),
 (47, 'ekskuls', 'ekskuls', 'Ekskul', 'Ekskuls', NULL, 'App\\Models\\Ekskul', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null}', '2021-10-21 08:57:59', '2021-10-21 08:57:59'),
-(53, 'recruitments', 'recruitments', 'Recruitment', 'Recruitments', NULL, 'App\\Models\\Recruitment', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null}', '2021-10-22 07:48:19', '2021-10-22 07:48:19'),
-(54, 'tab_ekskuls', 'tab-ekskuls', 'Tab Ekskul', 'Tab Ekskuls', NULL, 'App\\Models\\TabEkskul', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2021-10-23 01:36:34', '2021-10-23 02:09:17'),
-(55, 'content_ekskuls', 'content-ekskuls', 'Content Ekskul', 'Content Ekskuls', NULL, 'App\\Models\\ContentEkskul', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2021-10-23 01:49:04', '2021-10-25 04:08:38'),
-(56, 'gallery_ekskuls', 'gallery-ekskuls', 'Gallery Ekskul', 'Gallery Ekskuls', NULL, 'App\\Models\\GalleryEkskul', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2021-10-23 02:03:58', '2021-10-23 02:05:11');
+(48, 'detail_users', 'detail-users', 'Detail User', 'Detail Users', NULL, 'App\\Models\\DetailUser', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null}', '2021-10-23 04:09:48', '2021-10-23 04:09:48'),
+(49, 'skills', 'skills', 'Skill', 'Skills', NULL, 'App\\Models\\Skill', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null}', '2021-10-23 04:10:19', '2021-10-23 04:10:19');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `detail_users`
+--
+
+CREATE TABLE `detail_users` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `bio` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `no_telpon` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `skill` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `cv` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -683,22 +655,6 @@ INSERT INTO `galleries` (`id`, `nama_guru`, `foto`, `kategori_guru`, `created_at
 (69, 'Tety Suryani', 'galleries\\October2021\\XeshdJVGYSjGRZZ7nuYs.jpg', '5', '2021-10-04 06:13:45', '2021-10-04 06:13:45', NULL, NULL),
 (70, 'Tuahta Hasiholan, S.Kom', 'galleries\\October2021\\lpe7XxWPqlwsZy6VpAbL.jpg', '4', '2021-10-04 06:15:21', '2021-10-04 06:15:21', NULL, NULL),
 (71, 'Verra Rousmawati, M. Sc', 'galleries\\October2021\\ggXN1Pj2nqCSytJ4v1h1.jpg', '1', '2021-10-04 06:16:41', '2021-10-04 06:17:02', NULL, NULL);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `gallery_ekskuls`
---
-
-CREATE TABLE `gallery_ekskuls` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `description` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `ekskul` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -1161,10 +1117,8 @@ INSERT INTO `menu_items` (`id`, `menu_id`, `title`, `url`, `target`, `icon_class
 (42, 1, 'Galleries', '', '_self', NULL, NULL, NULL, 24, '2021-10-21 07:12:49', '2021-10-21 07:12:49', 'voyager.galleries.index', NULL),
 (43, 1, 'Kategoris', '', '_self', NULL, NULL, NULL, 25, '2021-10-21 07:13:41', '2021-10-21 07:13:41', 'voyager.kategoris.index', NULL),
 (44, 1, 'Ekskuls', '', '_self', NULL, NULL, NULL, 26, '2021-10-21 08:58:00', '2021-10-21 08:58:00', 'voyager.ekskuls.index', NULL),
-(45, 1, 'Recruitments', '', '_self', NULL, NULL, NULL, 27, '2021-10-22 07:48:21', '2021-10-22 07:48:21', 'voyager.recruitments.index', NULL),
-(46, 1, 'Tab Ekskuls', '', '_self', NULL, NULL, NULL, 28, '2021-10-23 01:36:40', '2021-10-23 01:36:40', 'voyager.tab-ekskuls.index', NULL),
-(47, 1, 'Content Ekskuls', '', '_self', NULL, NULL, NULL, 29, '2021-10-23 01:49:05', '2021-10-23 01:49:05', 'voyager.content-ekskuls.index', NULL),
-(48, 1, 'Gallery Ekskuls', '', '_self', NULL, NULL, NULL, 30, '2021-10-23 02:03:59', '2021-10-23 02:03:59', 'voyager.gallery-ekskuls.index', NULL);
+(45, 1, 'Detail Users', '', '_self', NULL, NULL, NULL, 27, '2021-10-23 04:09:48', '2021-10-23 04:09:48', 'voyager.detail-users.index', NULL),
+(46, 1, 'Skills', '', '_self', NULL, NULL, NULL, 28, '2021-10-23 04:10:19', '2021-10-23 04:10:19', 'voyager.skills.index', NULL);
 
 -- --------------------------------------------------------
 
@@ -1297,7 +1251,7 @@ INSERT INTO `pages` (`id`, `author_id`, `title`, `excerpt`, `body`, `image`, `sl
 (50, 1, 'Rekayasa Perangkat Lunak', NULL, NULL, 'pages/October2021/ramRyetVsrnrvnM0MTS0.png', 'rekayasa-perangkat-lunak', NULL, NULL, 'ACTIVE', '2021-10-21 06:09:35', '2021-10-21 06:09:35', 6),
 (51, 1, 'Broadcast', NULL, NULL, 'pages/October2021/luRyTc2UZYw7sBO72sho.png', 'broadcast', NULL, NULL, 'ACTIVE', '2021-10-21 06:10:43', '2021-10-21 06:10:43', 6),
 (52, 1, 'Teknik Elektronik Industr', NULL, NULL, 'pages/October2021/2cEAXPtoBd1BtM8WHcCU.png', 'teknik-elektronik-industr', NULL, NULL, 'ACTIVE', '2021-10-21 06:11:45', '2021-10-21 06:11:45', 6),
-(53, 1, 'Multimedia', NULL, NULL, NULL, 'multimedia', NULL, NULL, 'ACTIVE', '2021-10-21 06:18:45', '2021-10-22 11:35:42', 6);
+(53, 1, 'Multimedia', NULL, NULL, 'pages/October2021/GI16J5tsCwaROXY1xJgA.png', 'multimedia', NULL, NULL, 'ACTIVE', '2021-10-21 06:18:45', '2021-10-21 06:21:44', 6);
 
 -- --------------------------------------------------------
 
@@ -1496,26 +1450,16 @@ INSERT INTO `permissions` (`id`, `key`, `table_name`, `created_at`, `updated_at`
 (178, 'edit_ekskuls', 'ekskuls', '2021-10-21 08:58:00', '2021-10-21 08:58:00'),
 (179, 'add_ekskuls', 'ekskuls', '2021-10-21 08:58:00', '2021-10-21 08:58:00'),
 (180, 'delete_ekskuls', 'ekskuls', '2021-10-21 08:58:00', '2021-10-21 08:58:00'),
-(181, 'browse_recruitments', 'recruitments', '2021-10-22 07:46:03', '2021-10-22 07:46:03'),
-(182, 'read_recruitments', 'recruitments', '2021-10-22 07:46:03', '2021-10-22 07:46:03'),
-(183, 'edit_recruitments', 'recruitments', '2021-10-22 07:46:03', '2021-10-22 07:46:03'),
-(184, 'add_recruitments', 'recruitments', '2021-10-22 07:46:03', '2021-10-22 07:46:03'),
-(185, 'delete_recruitments', 'recruitments', '2021-10-22 07:46:03', '2021-10-22 07:46:03'),
-(186, 'browse_tab_ekskuls', 'tab_ekskuls', '2021-10-23 01:36:37', '2021-10-23 01:36:37'),
-(187, 'read_tab_ekskuls', 'tab_ekskuls', '2021-10-23 01:36:37', '2021-10-23 01:36:37'),
-(188, 'edit_tab_ekskuls', 'tab_ekskuls', '2021-10-23 01:36:37', '2021-10-23 01:36:37'),
-(189, 'add_tab_ekskuls', 'tab_ekskuls', '2021-10-23 01:36:37', '2021-10-23 01:36:37'),
-(190, 'delete_tab_ekskuls', 'tab_ekskuls', '2021-10-23 01:36:37', '2021-10-23 01:36:37'),
-(191, 'browse_content_ekskuls', 'content_ekskuls', '2021-10-23 01:49:05', '2021-10-23 01:49:05'),
-(192, 'read_content_ekskuls', 'content_ekskuls', '2021-10-23 01:49:05', '2021-10-23 01:49:05'),
-(193, 'edit_content_ekskuls', 'content_ekskuls', '2021-10-23 01:49:05', '2021-10-23 01:49:05'),
-(194, 'add_content_ekskuls', 'content_ekskuls', '2021-10-23 01:49:05', '2021-10-23 01:49:05'),
-(195, 'delete_content_ekskuls', 'content_ekskuls', '2021-10-23 01:49:05', '2021-10-23 01:49:05'),
-(196, 'browse_gallery_ekskuls', 'gallery_ekskuls', '2021-10-23 02:03:59', '2021-10-23 02:03:59'),
-(197, 'read_gallery_ekskuls', 'gallery_ekskuls', '2021-10-23 02:03:59', '2021-10-23 02:03:59'),
-(198, 'edit_gallery_ekskuls', 'gallery_ekskuls', '2021-10-23 02:03:59', '2021-10-23 02:03:59'),
-(199, 'add_gallery_ekskuls', 'gallery_ekskuls', '2021-10-23 02:03:59', '2021-10-23 02:03:59'),
-(200, 'delete_gallery_ekskuls', 'gallery_ekskuls', '2021-10-23 02:03:59', '2021-10-23 02:03:59');
+(181, 'browse_detail_users', 'detail_users', '2021-10-23 04:09:48', '2021-10-23 04:09:48'),
+(182, 'read_detail_users', 'detail_users', '2021-10-23 04:09:48', '2021-10-23 04:09:48'),
+(183, 'edit_detail_users', 'detail_users', '2021-10-23 04:09:48', '2021-10-23 04:09:48'),
+(184, 'add_detail_users', 'detail_users', '2021-10-23 04:09:48', '2021-10-23 04:09:48'),
+(185, 'delete_detail_users', 'detail_users', '2021-10-23 04:09:48', '2021-10-23 04:09:48'),
+(186, 'browse_skills', 'skills', '2021-10-23 04:10:19', '2021-10-23 04:10:19'),
+(187, 'read_skills', 'skills', '2021-10-23 04:10:19', '2021-10-23 04:10:19'),
+(188, 'edit_skills', 'skills', '2021-10-23 04:10:19', '2021-10-23 04:10:19'),
+(189, 'add_skills', 'skills', '2021-10-23 04:10:19', '2021-10-23 04:10:19'),
+(190, 'delete_skills', 'skills', '2021-10-23 04:10:19', '2021-10-23 04:10:19');
 
 -- --------------------------------------------------------
 
@@ -1682,17 +1626,7 @@ INSERT INTO `permission_role` (`permission_id`, `role_id`) VALUES
 (187, 1),
 (188, 1),
 (189, 1),
-(190, 1),
-(191, 1),
-(192, 1),
-(193, 1),
-(194, 1),
-(195, 1),
-(196, 1),
-(197, 1),
-(198, 1),
-(199, 1),
-(200, 1);
+(190, 1);
 
 -- --------------------------------------------------------
 
@@ -1743,23 +1677,6 @@ CREATE TABLE `posts` (
 INSERT INTO `posts` (`id`, `author_id`, `category_id`, `title`, `seo_title`, `excerpt`, `body`, `image`, `slug`, `meta_description`, `meta_keywords`, `status`, `featured`, `created_at`, `updated_at`) VALUES
 (30, 1, 3, 'Peringati 10 Muharram 1443 H, SMK Taruna Bhakti Berikan Santunan Kepada 133 Siswa Yatim, Piatu, dan Yatim Piatu', NULL, 'SMK Taruna Bhakti melalui Pokja Kesiswaan menggalang partisipasi dengan Yayasan Setya Bhakti dengan seluruh guru SMK Taruna Bhakti memberikan santunan kepada 133 siswa yatim dan atau piatu dalam rangka memperingati 10 Muharram 1443 H.', '<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1rem; color: #212529; font-family: Lato, -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 15px;\">SMK Taruna Bhakti melalui Pokja Kesiswaan menggalang partisipasi dengan Yayasan Setya Bhakti dengan seluruh guru SMK Taruna Bhakti memberikan santunan kepada 133 siswa yatim dan atau piatu dalam rangka memperingati 10 Muharram 1443 H.</p>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1rem; color: #212529; font-family: Lato, -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 15px;\">Kegiatan ini dilaksanakan pada Sabtu, 28 Agustus 2021 bertempat di Mushola Roudhoutul &lsquo;Ilmi, sarana ibadah di SMK Taruna Bhakti. Siswa yang menerima santunan berasal dari seluruh kelas tingkat X, XI, dan XII yang saat ini berjumlah 37 rombel. Teknis penyaluran menerapkan protokol kesehatan ketat dengan membagi dua sesi, yakni pagi pukul 10.00 &ndash; 11.30 WIB dan siang pukul 14.30 &ndash; 16.00 WIB.</p>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1rem; color: #212529; font-family: Lato, -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 15px;\">Tujuan diselenggarakannya kegiatan ini adalah sebagai bentuk aksi sosial, mempererat tali silaturahmi, dan edukasi kepada seluruh warga sekolah sebagai pembelajaran untuk berbagi kepada sesama. Tak hanya itu, diharapkan program ini dapat terlaksana secara berkelanjutan sebagai wujud kepedulian sekolah kepada seluruh peserta didiknya.</p>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1rem; color: #212529; font-family: Lato, -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 15px;\"><img class=\"aligncenter size-full wp-image-10032\" style=\"box-sizing: border-box; vertical-align: middle; border: 0px none; height: auto; max-width: 100%; clear: both; display: block; margin-left: auto; margin-right: auto;\" src=\"https://smktarunabhakti.net/wp-content/uploads/2021/08/10-muharom-1.jpg\" sizes=\"(max-width: 1280px) 100vw, 1280px\" srcset=\"https://smktarunabhakti.net/wp-content/uploads/2021/08/10-muharom-1.jpg 1280w, https://smktarunabhakti.net/wp-content/uploads/2021/08/10-muharom-1-300x169.jpg 300w, https://smktarunabhakti.net/wp-content/uploads/2021/08/10-muharom-1-1024x576.jpg 1024w, https://smktarunabhakti.net/wp-content/uploads/2021/08/10-muharom-1-768x432.jpg 768w\" alt=\"\" width=\"1280\" height=\"720\" /></p>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1rem; color: #212529; font-family: Lato, -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 15px;\"><img class=\"aligncenter size-full wp-image-10033\" style=\"box-sizing: border-box; vertical-align: middle; border: 0px none; height: auto; max-width: 100%; clear: both; display: block; margin-left: auto; margin-right: auto;\" src=\"https://smktarunabhakti.net/wp-content/uploads/2021/08/10-Muharom-2.jpg\" sizes=\"(max-width: 1280px) 100vw, 1280px\" srcset=\"https://smktarunabhakti.net/wp-content/uploads/2021/08/10-Muharom-2.jpg 1280w, https://smktarunabhakti.net/wp-content/uploads/2021/08/10-Muharom-2-300x169.jpg 300w, https://smktarunabhakti.net/wp-content/uploads/2021/08/10-Muharom-2-1024x576.jpg 1024w, https://smktarunabhakti.net/wp-content/uploads/2021/08/10-Muharom-2-768x432.jpg 768w\" alt=\"\" width=\"1280\" height=\"720\" /></p>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1rem; color: #212529; font-family: Lato, -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 15px;\"><img class=\"aligncenter size-full wp-image-10034\" style=\"box-sizing: border-box; vertical-align: middle; border: 0px none; height: auto; max-width: 100%; clear: both; display: block; margin-left: auto; margin-right: auto;\" src=\"https://smktarunabhakti.net/wp-content/uploads/2021/08/10-Muharom-3.jpg\" sizes=\"(max-width: 1280px) 100vw, 1280px\" srcset=\"https://smktarunabhakti.net/wp-content/uploads/2021/08/10-Muharom-3.jpg 1280w, https://smktarunabhakti.net/wp-content/uploads/2021/08/10-Muharom-3-300x138.jpg 300w, https://smktarunabhakti.net/wp-content/uploads/2021/08/10-Muharom-3-1024x471.jpg 1024w, https://smktarunabhakti.net/wp-content/uploads/2021/08/10-Muharom-3-768x353.jpg 768w\" alt=\"\" width=\"1280\" height=\"589\" /></p>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1rem; color: #212529; font-family: Lato, -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 15px;\"><img class=\"aligncenter size-full wp-image-10035\" style=\"box-sizing: border-box; vertical-align: middle; border: 0px none; height: auto; max-width: 100%; clear: both; display: block; margin-left: auto; margin-right: auto;\" src=\"https://smktarunabhakti.net/wp-content/uploads/2021/08/10-Muharom.jpg\" sizes=\"(max-width: 1280px) 100vw, 1280px\" srcset=\"https://smktarunabhakti.net/wp-content/uploads/2021/08/10-Muharom.jpg 1280w, https://smktarunabhakti.net/wp-content/uploads/2021/08/10-Muharom-300x169.jpg 300w, https://smktarunabhakti.net/wp-content/uploads/2021/08/10-Muharom-1024x576.jpg 1024w, https://smktarunabhakti.net/wp-content/uploads/2021/08/10-Muharom-768x432.jpg 768w\" alt=\"\" width=\"1280\" height=\"720\" /></p>', 'posts\\October2021\\fRyMijdbsP4vOimiapgx.jpg', 'peringati-10-muharram-1443-h-smk-taruna-bhakti-berikan-santunan-kepada-133-siswa-yatim-piatu-dan-yatim-piatu', NULL, NULL, 'PUBLISHED', 1, '2021-10-08 04:13:02', '2021-10-14 12:46:57'),
 (31, 1, 3, 'SMK Taruna Bhakti Selenggarakan Gebyar Vaksinasi Pelajar Dosis Ke-1', NULL, 'SMK Taruna Bhakti melalui Pokja Kesiswaan ditunjuk sebagai Pelaksana Kegiatan Gebyar Vaksinasi Pelajar Dosis Ke-1 pada Jumat, 3 September 2021.', '<div class=\"entry-content\" style=\"box-sizing: border-box; margin: 1.5em 0px 0px; color: #212529; font-family: Lato, -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 15px;\">\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1rem;\">SMK Taruna Bhakti melalui Pokja Kesiswaan ditunjuk sebagai Pelaksana Kegiatan Gebyar Vaksinasi Pelajar Dosis Ke-1 pada Jumat, 3 September 2021. Kegiatan ini merupakan kerjasama Musyawarah Kerja Kepala Sekolah (MKKS) Kota Depok dengan Rumah Sakit Bhayangkara Brimob Depok.</p>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1rem;\">Peserta yang mengikuti program vaksinasi ini sebanyak 835 orang dengan rincian peserta dari SMK Taruna Bhakti sebanyak 488 orang, SMP dan SMK lain sebanyak 367 orang, dan warga lingkungan sekitar SMK Taruna Bhakti sebanyak 92 orang.</p>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1rem;\">Jenis vaksin yang diberikan adalah Pfizer, salah satu jenis vaksin yang digunakan di Indonesia. Pelaksanaan kegiatan ini menerapkan protokol kesehatan secara ketat yang dijuga dikawal oleh Petugas Kesatuan Brimob Depok. Tujuan diselenggarakan program ini adalah sebagai bakti sekolah kepada negara dalam membantu proses percepatan vaksinasi untuk melawan pandemi Covid-19, khususnya untuk kalangan pelajar sebagai syarat pemberlakuan Pembelajaran Tatap Muka Terbatas (PTMT) SMK Taruna Bhakti Tahun Pelajaran 2021/2022.</p>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1rem;\"><img class=\"aligncenter size-full wp-image-10039\" style=\"box-sizing: border-box; vertical-align: middle; border: 0px none; height: auto; max-width: 100%; clear: both; display: block; margin-left: auto; margin-right: auto;\" src=\"https://smktarunabhakti.net/wp-content/uploads/2021/09/Vaksin-1.jpg\" sizes=\"(max-width: 1280px) 100vw, 1280px\" srcset=\"https://smktarunabhakti.net/wp-content/uploads/2021/09/Vaksin-1.jpg 1280w, https://smktarunabhakti.net/wp-content/uploads/2021/09/Vaksin-1-300x169.jpg 300w, https://smktarunabhakti.net/wp-content/uploads/2021/09/Vaksin-1-1024x576.jpg 1024w, https://smktarunabhakti.net/wp-content/uploads/2021/09/Vaksin-1-768x432.jpg 768w\" alt=\"\" width=\"1280\" height=\"720\" /></p>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1rem;\"><img class=\"aligncenter size-full wp-image-10040\" style=\"box-sizing: border-box; vertical-align: middle; border: 0px none; height: auto; max-width: 100%; clear: both; display: block; margin-left: auto; margin-right: auto;\" src=\"https://smktarunabhakti.net/wp-content/uploads/2021/09/Vaksin-2.jpg\" sizes=\"(max-width: 1280px) 100vw, 1280px\" srcset=\"https://smktarunabhakti.net/wp-content/uploads/2021/09/Vaksin-2.jpg 1280w, https://smktarunabhakti.net/wp-content/uploads/2021/09/Vaksin-2-300x169.jpg 300w, https://smktarunabhakti.net/wp-content/uploads/2021/09/Vaksin-2-1024x575.jpg 1024w, https://smktarunabhakti.net/wp-content/uploads/2021/09/Vaksin-2-768x431.jpg 768w\" alt=\"\" width=\"1280\" height=\"719\" /></p>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1rem;\"><img class=\"aligncenter size-full wp-image-10041\" style=\"box-sizing: border-box; vertical-align: middle; border: 0px none; height: auto; max-width: 100%; clear: both; display: block; margin-left: auto; margin-right: auto;\" src=\"https://smktarunabhakti.net/wp-content/uploads/2021/09/Vaksin-3.jpg\" sizes=\"(max-width: 1280px) 100vw, 1280px\" srcset=\"https://smktarunabhakti.net/wp-content/uploads/2021/09/Vaksin-3.jpg 1280w, https://smktarunabhakti.net/wp-content/uploads/2021/09/Vaksin-3-300x169.jpg 300w, https://smktarunabhakti.net/wp-content/uploads/2021/09/Vaksin-3-1024x575.jpg 1024w, https://smktarunabhakti.net/wp-content/uploads/2021/09/Vaksin-3-768x431.jpg 768w\" alt=\"\" width=\"1280\" height=\"719\" /></p>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1rem;\"><img class=\"aligncenter size-full wp-image-10042\" style=\"box-sizing: border-box; vertical-align: middle; border: 0px none; height: auto; max-width: 100%; clear: both; display: block; margin-left: auto; margin-right: auto;\" src=\"https://smktarunabhakti.net/wp-content/uploads/2021/09/Vaksin-4.jpg\" sizes=\"(max-width: 1280px) 100vw, 1280px\" srcset=\"https://smktarunabhakti.net/wp-content/uploads/2021/09/Vaksin-4.jpg 1280w, https://smktarunabhakti.net/wp-content/uploads/2021/09/Vaksin-4-300x225.jpg 300w, https://smktarunabhakti.net/wp-content/uploads/2021/09/Vaksin-4-1024x768.jpg 1024w, https://smktarunabhakti.net/wp-content/uploads/2021/09/Vaksin-4-768x576.jpg 768w\" alt=\"\" width=\"1280\" height=\"960\" /></p>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1rem;\"><img class=\"aligncenter size-full wp-image-10043\" style=\"box-sizing: border-box; vertical-align: middle; border: 0px none; height: auto; max-width: 100%; clear: both; display: block; margin-left: auto; margin-right: auto;\" src=\"https://smktarunabhakti.net/wp-content/uploads/2021/09/vaksin-5.jpg\" sizes=\"(max-width: 1280px) 100vw, 1280px\" srcset=\"https://smktarunabhakti.net/wp-content/uploads/2021/09/vaksin-5.jpg 1280w, https://smktarunabhakti.net/wp-content/uploads/2021/09/vaksin-5-300x225.jpg 300w, https://smktarunabhakti.net/wp-content/uploads/2021/09/vaksin-5-1024x768.jpg 1024w, https://smktarunabhakti.net/wp-content/uploads/2021/09/vaksin-5-768x576.jpg 768w\" alt=\"\" width=\"1280\" height=\"960\" /></p>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1rem;\"><img class=\"aligncenter size-full wp-image-10044\" style=\"box-sizing: border-box; vertical-align: middle; border: 0px none; height: auto; max-width: 100%; clear: both; display: block; margin-left: auto; margin-right: auto;\" src=\"https://smktarunabhakti.net/wp-content/uploads/2021/09/Vaksin-6.jpg\" sizes=\"(max-width: 1280px) 100vw, 1280px\" srcset=\"https://smktarunabhakti.net/wp-content/uploads/2021/09/Vaksin-6.jpg 1280w, https://smktarunabhakti.net/wp-content/uploads/2021/09/Vaksin-6-300x222.jpg 300w, https://smktarunabhakti.net/wp-content/uploads/2021/09/Vaksin-6-1024x759.jpg 1024w, https://smktarunabhakti.net/wp-content/uploads/2021/09/Vaksin-6-768x569.jpg 768w\" alt=\"\" width=\"1280\" height=\"949\" /></p>\r\n<p>&nbsp;</p>\r\n</div>', 'posts\\October2021\\lJhPRF2DGuTCG3fGBhJR.jpg', 'smk-taruna-bhakti-selenggarakan-gebyar-vaksinasi-pelajar-dosis-ke-1', NULL, NULL, 'PUBLISHED', 1, '2021-10-08 04:14:01', '2021-10-14 12:38:35');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `recruitments`
---
-
-CREATE TABLE `recruitments` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `nama_perusahaan` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `body` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  `slug` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -1853,24 +1770,24 @@ INSERT INTO `siswas` (`id`, `name`, `kelas_id`, `email`, `password`, `created_at
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tab_ekskuls`
+-- Table structure for table `skills`
 --
 
-CREATE TABLE `tab_ekskuls` (
+CREATE TABLE `skills` (
   `id` int(10) UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `nama_skill` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  `slug` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `tab_ekskuls`
+-- Dumping data for table `skills`
 --
 
-INSERT INTO `tab_ekskuls` (`id`, `name`, `created_at`, `updated_at`, `slug`) VALUES
-(1, 'Keterangan', '2021-10-25 04:06:53', '2021-10-25 04:06:53', 'keterangan'),
-(2, 'Gallery', '2021-10-25 04:07:10', '2021-10-25 04:07:10', 'gallery');
+INSERT INTO `skills` (`id`, `nama_skill`, `created_at`, `updated_at`) VALUES
+(1, 'Laravel', '2021-10-23 04:11:55', '2021-10-23 04:11:55'),
+(2, 'HTML', '2021-10-23 04:12:03', '2021-10-23 04:12:03'),
+(3, 'CSS', '2021-10-23 04:12:07', '2021-10-23 04:12:07');
 
 -- --------------------------------------------------------
 
@@ -1947,71 +1864,73 @@ CREATE TABLE `users` (
   `jabatan_guru` varchar(225) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `kelas_siswa` int(11) DEFAULT NULL,
   `spesifc_role` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `mapel_id` int(11) DEFAULT NULL
+  `mapel_id` int(11) DEFAULT NULL,
+  `detail_user` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `role_id`, `name`, `email`, `avatar`, `email_verified_at`, `password`, `remember_token`, `settings`, `created_at`, `updated_at`, `nomor_induk`, `jabatan_guru`, `kelas_siswa`, `spesifc_role`, `mapel_id`) VALUES
-(1, 1, 'Taruna', 'admin@admin.com', 'users/default.png', NULL, '$2y$10$Fo8k1RIU9Ej0B7oa4thUgexNlQk06ytDVR6fcbbS6hVBZlUQ6HIyC', 'Yq9WfEWR14Bc15uKtA1A3i6VrlwHmniMBzB4LErvMR7Src0whE6huSK6LEW2', NULL, '2021-08-19 18:52:57', '2021-08-19 18:52:57', NULL, NULL, NULL, '', NULL),
-(2, 1, 'admin', 'admin@email.com', 'users/default.png', NULL, '$2y$10$R4YUok8EtOVF81IlFaCTZ.8l6i03Hgd6B1YUZaYQK/cVC0k8mUj76', NULL, '{\"locale\":\"id\"}', '2021-10-04 19:09:29', '2021-10-05 00:01:23', '523235235', NULL, NULL, 'kepsek', NULL),
-(3, 3, 'Ari Suhendra Tahyadi', '32232@gmail.com', 'users/default.png', NULL, '$2y$10$qMNo101mY9bBwUaUBHidAuKh1NiuG0b4ATbUF.mhBYouy87Pv0UHC', NULL, '{\"locale\":\"id\"}', '2021-10-04 19:21:41', '2021-10-05 00:03:18', '42342342342', NULL, 3, 'siswa', NULL),
-(4, 4, 'Joko', 'joko@gmail.com', 'users/default.png', NULL, '$2y$10$IPvgfaSlLOMZpSKQCrKcHel1pMIArKFcvNGg0m7VftDcgCtMqjWtC', NULL, '{\"locale\":\"id\"}', '2021-10-04 19:25:37', '2021-10-05 00:02:49', '12910100259', 'Guru', NULL, 'Kurikulum', 2),
-(5, 1, 'admin', 'admin@test.com', 'users/default.png', NULL, '$2y$10$INKBBk0I6VUlMaIN2ALde.BIxc4q0PAaeiRx5i68s0Rf41.qaddqm', NULL, NULL, '2021-10-04 23:28:44', '2021-10-05 00:01:03', '4324234234', NULL, NULL, 'admin', NULL),
-(6, 5, 'THEBBB', 'Yuhnpa@gmail.com', 'users\\October2021\\E8czVAHwOuRA1hZJKfyk.jpg', NULL, '$2y$10$BNaBhza.bvWGNQyZknvOQuMztrlh1JXW1Q3q3izJoeM69Ne13j7Ky', NULL, NULL, '2021-10-04 23:43:46', '2021-10-05 02:19:25', '3423242342342', 'Kepala Program', NULL, 'kaprog', NULL),
-(8, 3, 'siswa0', 'siswa0@gmail.com', 'users/default.png', NULL, '$2y$10$cgIafsOLGIJ5m.tI1sTAe.FzknGSfOUCyANsaGopSNjKeNIs2sMXK', '', '[]', '2021-10-08 08:31:02', '2021-10-08 08:31:02', '9591', '', 7, 'siswa', 3),
-(9, 3, 'siswa1', 'siswa1@gmail.com', 'users/default.png', NULL, '$2y$10$8Fs6ZBjA60UToL.97tNZteZFYsBtWcCDmaxr9hI2GnyMV.xPiygGe', '', '[]', '2021-10-08 08:31:02', '2021-10-08 08:31:02', '17928', '', 25, 'siswa', 2),
-(10, 3, 'siswa2', 'siswa2@gmail.com', 'users/default.png', NULL, '$2y$10$VofvpZ/HUW822zlcCMD4pO/s.tVER/cwH8/IGIvVapMxG1k0fVpea', '', '[]', '2021-10-08 08:31:02', '2021-10-08 08:31:02', '75', '', 18, 'siswa', 4),
-(11, 3, 'siswa3', 'siswa3@gmail.com', 'users/default.png', NULL, '$2y$10$POfDubHx9YI2IH0hq76mbecNe8nIA59p2mxuR/7HUlHK0dFbAkjLe', '', '[]', '2021-10-08 08:31:02', '2021-10-08 08:31:02', '17', '', 9, 'siswa', 3),
-(12, 3, 'siswa4', 'siswa4@gmail.com', 'users/default.png', NULL, '$2y$10$YS77dRFaTSki2c6CT2/Hmuh0w07uTh0Uqt/6cAV2N8BgmR09JG1jy', '', '[]', '2021-10-08 08:31:02', '2021-10-08 08:31:02', '940', '', 14, 'siswa', 1),
-(13, 3, 'siswa5', 'siswa5@gmail.com', 'users/default.png', NULL, '$2y$10$BIBI5OpGkrWn0Z3yddon4..fLLdgDtaOlrm7XBvVNvz9dKIxiBpDC', '', '[]', '2021-10-08 08:31:02', '2021-10-08 08:31:02', '14680027', '', 42, 'siswa', 1),
-(14, 3, 'siswa6', 'siswa6@gmail.com', 'users/default.png', NULL, '$2y$10$KohcIhvv.sYcrbkGD6ohhOJ1Hq.A5JcdgnFXk7FWTfnSBeOvUyv8G', '', '[]', '2021-10-08 08:31:03', '2021-10-08 08:31:03', '24', '', 12, 'siswa', 2),
-(15, 3, 'siswa7', 'siswa7@gmail.com', 'users/default.png', NULL, '$2y$10$2n0lBfCD263OYcN.HYtuyeHiQ5QPbR/aQrbE0oqYsJa.3cD9c7iLu', '', '[]', '2021-10-08 08:31:03', '2021-10-08 08:31:03', '95139656', '', 9, 'siswa', 4),
-(16, 3, 'siswa8', 'siswa8@gmail.com', 'users/default.png', NULL, '$2y$10$I07cNq8a0YJSo0fUQDrmk.kr21XEWBAHACFTzbPIeoTde7UfJPES.', '', '[]', '2021-10-08 08:31:03', '2021-10-08 08:31:03', '9597461', '', 16, 'siswa', 1),
-(17, 3, 'siswa9', 'siswa9@gmail.com', 'users/default.png', NULL, '$2y$10$GjISADlK5lgI1evXWFfNDey4c/6J5Ut5SjOCvmsxZ.iBVAM5RIamy', '', '[]', '2021-10-08 08:31:03', '2021-10-08 08:31:03', '3', '', 12, 'siswa', 1),
-(18, 3, 'siswa10', 'siswa10@gmail.com', 'users/default.png', NULL, '$2y$10$1jqTE2COWcTODgecHyVwdOvX.dyGn.llDFlmRh0e0xVu9ZAwCRGy.', '', '[]', '2021-10-08 08:31:03', '2021-10-08 08:31:03', '32516947', '', 24, 'siswa', 2),
-(19, 3, 'siswa11', 'siswa11@gmail.com', 'users/default.png', NULL, '$2y$10$oZoCGWZCHD1hJ/Lujq00d.EVRT8ylHQhhm10w/csW0aTEBxMVsBh.', '', '[]', '2021-10-08 08:31:03', '2021-10-08 08:31:03', '75892', '', 34, 'siswa', 1),
-(20, 3, 'siswa12', 'siswa12@gmail.com', 'users/default.png', NULL, '$2y$10$Gm7HyzM.x0p3QwjuAzKLVeVIgeaPaUPk1FUptDEo0LJmPtOq46yMC', '', '[]', '2021-10-08 08:31:04', '2021-10-08 08:31:04', '7', '', 8, 'siswa', 4),
-(21, 3, 'siswa13', 'siswa13@gmail.com', 'users/default.png', NULL, '$2y$10$ZLCZ/KknhezSuw6IaCkMbuY6VXFIevz5MvHd63xbEHoItHxM/FSrC', '', '[]', '2021-10-08 08:31:04', '2021-10-08 08:31:04', '5', '', 19, 'siswa', 1),
-(22, 3, 'siswa14', 'siswa14@gmail.com', 'users/default.png', NULL, '$2y$10$K6IEAJygL03xxdO806LLU./Poz3wGGMegEJEXdxHI6CsLD300yv9e', '', '[]', '2021-10-08 08:31:04', '2021-10-08 08:31:04', '689', '', 38, 'siswa', 3),
-(23, 3, 'siswa15', 'siswa15@gmail.com', 'users/default.png', NULL, '$2y$10$Y95iDzFU3rNFsxpRFQfcD.1oTfJH8M0UmH9NWPNrhdylzvJS8rLqO', '', '[]', '2021-10-08 08:31:04', '2021-10-08 08:31:04', '0', '', 10, 'siswa', 3),
-(24, 3, 'siswa16', 'siswa16@gmail.com', 'users/default.png', NULL, '$2y$10$.iLEiGwjv5cVfs95F/3BbuNM1Vj7b/v3gHHejIyQ26PKaH8R58gUi', '', '[]', '2021-10-08 08:31:04', '2021-10-08 08:31:04', '138', '', 14, 'siswa', 3),
-(25, 3, 'siswa17', 'siswa17@gmail.com', 'users/default.png', NULL, '$2y$10$coMhBmHs0y/N/pV/wPP47Oi7fClCp5fj9LSbRSh/Gl6h02/gW1Gj.', '', '[]', '2021-10-08 08:31:04', '2021-10-08 08:31:04', '386895', '', 21, 'siswa', 4),
-(26, 3, 'siswa18', 'siswa18@gmail.com', 'users/default.png', NULL, '$2y$10$gwvCQiyCEL1rmOH1sAMGEOJXJJ39HdPQV4igmRlu4QPjsfGurWyDS', '', '[]', '2021-10-08 08:31:04', '2021-10-08 08:31:04', '3344', '', 11, 'siswa', 4),
-(27, 3, 'siswa19', 'siswa19@gmail.com', 'users/default.png', NULL, '$2y$10$h9.q77mIWbCJB64iM0lhFuK7LIhqaKchUDb6.80LIhOFnREhmT6uy', '', '[]', '2021-10-08 08:31:04', '2021-10-08 08:31:04', '6395956', '', 45, 'siswa', 1),
-(28, 3, 'siswa20', 'siswa20@gmail.com', 'users/default.png', NULL, '$2y$10$3S2j7V9qlBHBZVqxS/rPrelQzSAzChfjuVHF6eY1WJv1gSsIXk97a', '', '[]', '2021-10-08 08:31:04', '2021-10-08 08:31:04', '6', '', 17, 'siswa', 2),
-(29, 3, 'siswa21', 'siswa21@gmail.com', 'users/default.png', NULL, '$2y$10$grV6WkHrjumDGgWpw8GLf.ELaWstBWCog/I5xCrsbNpHeirNpPQue', '', '[]', '2021-10-08 08:31:05', '2021-10-08 08:31:05', '7652', '', 45, 'siswa', 3),
-(30, 3, 'siswa22', 'siswa22@gmail.com', 'users/default.png', NULL, '$2y$10$aA4WoVXZiUuJmJw1tosv2uEWKr0X.e8quV0Xn3gwK1lqMqdPHw6wS', '', '[]', '2021-10-08 08:31:05', '2021-10-08 08:31:05', '5982', '', 42, 'siswa', 2),
-(31, 3, 'siswa23', 'siswa23@gmail.com', 'users/default.png', NULL, '$2y$10$rzyElIGjNcJE56JsuwUkBuNA6yh7K6LlMRc0TSrbzbNP7LNNRCl0q', '', '[]', '2021-10-08 08:31:05', '2021-10-08 08:31:05', '9', '', 35, 'siswa', 3),
-(32, 3, 'siswa24', 'siswa24@gmail.com', 'users/default.png', NULL, '$2y$10$57/FLe4uHpM2qN3.XZ68PeVtDTglONRhYxhFakVlEBlxnbTGmG4Y.', '', '[]', '2021-10-08 08:31:05', '2021-10-08 08:31:05', '9321364', '', 32, 'siswa', 4),
-(33, 3, 'siswa25', 'siswa25@gmail.com', 'users/default.png', NULL, '$2y$10$2KNVxsAUTaavRjcqUvKW3ePM.5t3uNybMl.bhGYUUZHbKtulc1I5y', '', '[]', '2021-10-08 08:31:05', '2021-10-08 08:31:05', '115719', '', 40, 'siswa', 3),
-(34, 3, 'siswa26', 'siswa26@gmail.com', 'users/default.png', NULL, '$2y$10$l.cMwuHNSQY79z/3.uygy.GcuOW4.pOztDw56d1YvyBamBRe4PAjm', '', '[]', '2021-10-08 08:31:05', '2021-10-08 08:31:05', '5341', '', 7, 'siswa', 3),
-(35, 3, 'siswa27', 'siswa27@gmail.com', 'users/default.png', NULL, '$2y$10$rbSM1hVmW5jzLSpFSl6qXO9TM/YyqKCwKR9pyRpdccDfyupwLLILy', '', '[]', '2021-10-08 08:31:05', '2021-10-08 08:31:05', '943625', '', 3, 'siswa', 1),
-(36, 3, 'siswa28', 'siswa28@gmail.com', 'users/default.png', NULL, '$2y$10$q9BulNHHiTZRh6imIBy2COU3Hi/i/1.ojPtEtvgaQxEn9RUktt51G', '', '[]', '2021-10-08 08:31:06', '2021-10-08 08:31:06', '145', '', 34, 'siswa', 4),
-(37, 3, 'siswa29', 'siswa29@gmail.com', 'users/default.png', NULL, '$2y$10$w3/8XrKvPxkLrjoVKJo39ep0cqo32uR.j7ZLU3khPLG2cG1dH/s..', '', '[]', '2021-10-08 08:31:06', '2021-10-08 08:31:06', '74810367', '', 7, 'siswa', 1),
-(38, 3, 'siswa30', 'siswa30@gmail.com', 'users/default.png', NULL, '$2y$10$pX.jTiQdOPpaNmm.kw0Ho.wJ4T4jKFRPgUHxdh61cIrqIuZJPsmYC', '', '[]', '2021-10-08 08:31:06', '2021-10-08 08:31:06', '521108910', '', 4, 'siswa', 3),
-(39, 3, 'siswa31', 'siswa31@gmail.com', 'users/default.png', NULL, '$2y$10$q4BCgUpcxobEqkuTNlBfz.l9bSuYPJ9y94cNkxE9UaaNamtKQdpgy', '', '[]', '2021-10-08 08:31:06', '2021-10-08 08:31:06', '4852916', '', 44, 'siswa', 2),
-(40, 3, 'siswa32', 'siswa32@gmail.com', 'users/default.png', NULL, '$2y$10$GQXyFMie8QRGWd99DWvi8OgXQoV6vv1En8tC4nvyYbaZ1JxMDqVFm', '', '[]', '2021-10-08 08:31:06', '2021-10-08 08:31:06', '2846209', '', 37, 'siswa', 2),
-(41, 3, 'siswa33', 'siswa33@gmail.com', 'users/default.png', NULL, '$2y$10$I5uxqfmlEOLTMAY0QJ0G6Okh0o58ujToOq9TD5vTtc6ycX0tEdIGK', '', '[]', '2021-10-08 08:31:06', '2021-10-08 08:31:06', '88135469', '', 21, 'siswa', 3),
-(42, 3, 'siswa34', 'siswa34@gmail.com', 'users/default.png', NULL, '$2y$10$wb6BPMxB/doBLS5jYfgxxu.Ayx5B0eCtvuxtbZQeDlLA.KlkMHyTO', '', '[]', '2021-10-08 08:31:06', '2021-10-08 08:31:06', '8', '', 42, 'siswa', 4),
-(43, 3, 'siswa35', 'siswa35@gmail.com', 'users/default.png', NULL, '$2y$10$dtWGQky6di/nUtIRhzAnAO8ZNnbyrSIQ7ON9VpmTaw/QhAryRaiAe', '', '[]', '2021-10-08 08:31:06', '2021-10-08 08:31:06', '4471', '', 46, 'siswa', 3),
-(44, 3, 'siswa36', 'siswa36@gmail.com', 'users/default.png', NULL, '$2y$10$bYLcz6URnp2rFw1YnZ3VcOsOMo.0olghHqsefOcyooJrPAXU.Y6Ou', '', '[]', '2021-10-08 08:31:06', '2021-10-08 08:31:06', '7924', '', 46, 'siswa', 4),
-(45, 3, 'siswa37', 'siswa37@gmail.com', 'users/default.png', NULL, '$2y$10$ctueDWAPNpTPxvxIBtAFzeI8j6F3EsIVrOK6gkiTdHXh.Sm71rSDG', '', '[]', '2021-10-08 08:31:07', '2021-10-08 08:31:07', '30383', '', 43, 'siswa', 4),
-(46, 3, 'siswa38', 'siswa38@gmail.com', 'users/default.png', NULL, '$2y$10$nA3uYSzxg5NwBIcei3ZbhO9HbEXBzfAid8HotCkpR2S0mFi6o834y', '', '[]', '2021-10-08 08:31:07', '2021-10-08 08:31:07', '292', '', 31, 'siswa', 4),
-(47, 3, 'siswa39', 'siswa39@gmail.com', 'users/default.png', NULL, '$2y$10$XPmDWzAUNG1UaKm.tAIgWOqobUNCJcwINjozdUvKq5K1MyuHzsan2', '', '[]', '2021-10-08 08:31:07', '2021-10-08 08:31:07', '6098838', '', 44, 'siswa', 1),
-(48, 3, 'siswa40', 'siswa40@gmail.com', 'users/default.png', NULL, '$2y$10$nnmonSPejnECkvNNnNMOu.QFkd61eWgTzbjQByyPaL//q5HgTQyGC', '', '[]', '2021-10-08 08:31:07', '2021-10-08 08:31:07', '16591418', '', 32, 'siswa', 1),
-(49, 3, 'siswa41', 'siswa41@gmail.com', 'users/default.png', NULL, '$2y$10$A7Px0yES20A6m.JECq2vQunxWmA.kMa.UlnstM.uMbkvUn2ilPFga', '', '[]', '2021-10-08 08:31:07', '2021-10-08 08:31:07', '80873816', '', 15, 'siswa', 3),
-(50, 3, 'siswa42', 'siswa42@gmail.com', 'users/default.png', NULL, '$2y$10$Sni9tq3Q8fBfNAUt2g6fV.VFVtpX7pIkEl3SAYmcTuOJLltSSDsGe', '', '[]', '2021-10-08 08:31:07', '2021-10-08 08:31:07', '52940593', '', 43, 'siswa', 3),
-(51, 3, 'siswa43', 'siswa43@gmail.com', 'users/default.png', NULL, '$2y$10$MlvDyE0M4iGDeWtNCeShuOkAB9OW9R7RFKWvLvsiltG.53Z4MiepC', '', '[]', '2021-10-08 08:31:07', '2021-10-08 08:31:07', '23515379', '', 9, 'siswa', 2),
-(52, 3, 'siswa44', 'siswa44@gmail.com', 'users/default.png', NULL, '$2y$10$hn4Q.hgexBRMbelZO3tt8e4LltEOHGUyHUJrXBqRr72jkid2DNMBO', '', '[]', '2021-10-08 08:31:07', '2021-10-08 08:31:07', '261637', '', 19, 'siswa', 3),
-(53, 3, 'siswa45', 'siswa45@gmail.com', 'users/default.png', NULL, '$2y$10$c942nyzmrqgpLvrHGB4vWODu1.SIBM39cvbIw6IQtj/pTclFkYYW2', '', '[]', '2021-10-08 08:31:07', '2021-10-08 08:31:07', '831', '', 20, 'siswa', 3),
-(54, 3, 'siswa46', 'siswa46@gmail.com', 'users/default.png', NULL, '$2y$10$KDN.n9HwXrYZZmRjEMSxq.Yb/wHxBrEFCTK2leHDQJ8dh9dB7QcKq', '', '[]', '2021-10-08 08:31:07', '2021-10-08 08:31:07', '772', '', 11, 'siswa', 1),
-(55, 3, 'siswa47', 'siswa47@gmail.com', 'users/default.png', NULL, '$2y$10$frMbOeryGu1YucD8g3UNo.vG1qCqij0z0r.EGi/jp0oNErADYpUw6', '', '[]', '2021-10-08 08:31:08', '2021-10-08 08:31:08', '194898', '', 12, 'siswa', 4),
-(56, 3, 'siswa48', 'siswa48@gmail.com', 'users/default.png', NULL, '$2y$10$MP1gRIt0Sjgg0dxxSslQV.kQnK2tj5w3LnPc1aO/eKl1w7A7PRHtK', '', '[]', '2021-10-08 08:31:08', '2021-10-08 08:31:08', '8', '', 45, 'siswa', 1),
-(57, 3, 'siswa49', 'siswa49@gmail.com', 'users/default.png', NULL, '$2y$10$jKQ1h7SZX.FaLb0gNVE8ZuLTe.4FB1Runjg6LxuI5RQfrAYmyI0yq', '', '[]', '2021-10-08 08:31:08', '2021-10-08 08:31:08', '689449', '', 2, 'siswa', 4),
-(59, 4, '312314', 'email', 'users/default.png', NULL, '$2y$10$0MiO/AXNP90GfABmowu.kOj.4.g8eVqhAHDXzNjCoy4QIDRrWbhA.', NULL, NULL, '2021-10-18 07:54:06', '2021-10-18 07:54:06', '1230913', NULL, NULL, 'guru', NULL);
+INSERT INTO `users` (`id`, `role_id`, `name`, `email`, `avatar`, `email_verified_at`, `password`, `remember_token`, `settings`, `created_at`, `updated_at`, `nomor_induk`, `jabatan_guru`, `kelas_siswa`, `spesifc_role`, `mapel_id`, `detail_user`) VALUES
+(1, 1, 'Taruna', 'admin@admin.com', 'users/default.png', NULL, '$2y$10$Fo8k1RIU9Ej0B7oa4thUgexNlQk06ytDVR6fcbbS6hVBZlUQ6HIyC', 'goYcHXZbQy5jgDIe99Ob0R0mv902ZPg6MotZp5dQb4QuxfLuZ8yf3OrwFAcr', NULL, '2021-08-19 18:52:57', '2021-08-19 18:52:57', NULL, NULL, NULL, '', NULL, NULL),
+(2, 1, 'admin', 'admin@email.com', 'users/default.png', NULL, '$2y$10$R4YUok8EtOVF81IlFaCTZ.8l6i03Hgd6B1YUZaYQK/cVC0k8mUj76', NULL, '{\"locale\":\"id\"}', '2021-10-04 19:09:29', '2021-10-05 00:01:23', '523235235', NULL, NULL, 'kepsek', NULL, NULL),
+(3, 3, 'Ari Suhendra Tahyadi', '32232@gmail.com', 'users/default.png', NULL, '$2y$10$qMNo101mY9bBwUaUBHidAuKh1NiuG0b4ATbUF.mhBYouy87Pv0UHC', NULL, '{\"locale\":\"id\"}', '2021-10-04 19:21:41', '2021-10-05 00:03:18', '42342342342', NULL, 3, 'siswa', NULL, NULL),
+(4, 4, 'Joko', 'joko@gmail.com', 'users/default.png', NULL, '$2y$10$IPvgfaSlLOMZpSKQCrKcHel1pMIArKFcvNGg0m7VftDcgCtMqjWtC', NULL, '{\"locale\":\"id\"}', '2021-10-04 19:25:37', '2021-10-22 07:13:28', '12910100259', NULL, NULL, 'litbang', NULL, NULL),
+(5, 1, 'admin', 'admin@test.com', 'users/default.png', NULL, '$2y$10$INKBBk0I6VUlMaIN2ALde.BIxc4q0PAaeiRx5i68s0Rf41.qaddqm', NULL, NULL, '2021-10-04 23:28:44', '2021-10-05 00:01:03', '4324234234', NULL, NULL, 'admin', NULL, NULL),
+(6, 5, 'THEBBB', 'Yuhnpa@gmail.com', 'users\\October2021\\E8czVAHwOuRA1hZJKfyk.jpg', NULL, '$2y$10$BNaBhza.bvWGNQyZknvOQuMztrlh1JXW1Q3q3izJoeM69Ne13j7Ky', NULL, NULL, '2021-10-04 23:43:46', '2021-10-05 02:19:25', '3423242342342', 'Kepala Program', NULL, 'kaprog', NULL, NULL),
+(8, 3, 'siswa0', 'siswa0@gmail.com', 'users/default.png', NULL, '$2y$10$cgIafsOLGIJ5m.tI1sTAe.FzknGSfOUCyANsaGopSNjKeNIs2sMXK', '', '[]', '2021-10-08 08:31:02', '2021-10-08 08:31:02', '9591', '', 7, 'siswa', 3, NULL),
+(9, 3, 'siswa1', 'siswa1@gmail.com', 'users/default.png', NULL, '$2y$10$8Fs6ZBjA60UToL.97tNZteZFYsBtWcCDmaxr9hI2GnyMV.xPiygGe', '', '[]', '2021-10-08 08:31:02', '2021-10-08 08:31:02', '17928', '', 25, 'siswa', 2, NULL),
+(10, 3, 'siswa2', 'siswa2@gmail.com', 'users/default.png', NULL, '$2y$10$VofvpZ/HUW822zlcCMD4pO/s.tVER/cwH8/IGIvVapMxG1k0fVpea', '', '[]', '2021-10-08 08:31:02', '2021-10-08 08:31:02', '75', '', 18, 'siswa', 4, NULL),
+(11, 3, 'siswa3', 'siswa3@gmail.com', 'users/default.png', NULL, '$2y$10$POfDubHx9YI2IH0hq76mbecNe8nIA59p2mxuR/7HUlHK0dFbAkjLe', '', '[]', '2021-10-08 08:31:02', '2021-10-08 08:31:02', '17', '', 9, 'siswa', 3, NULL),
+(12, 3, 'siswa4', 'siswa4@gmail.com', 'users/default.png', NULL, '$2y$10$YS77dRFaTSki2c6CT2/Hmuh0w07uTh0Uqt/6cAV2N8BgmR09JG1jy', '', '[]', '2021-10-08 08:31:02', '2021-10-08 08:31:02', '940', '', 14, 'siswa', 1, NULL),
+(13, 3, 'siswa5', 'siswa5@gmail.com', 'users/default.png', NULL, '$2y$10$BIBI5OpGkrWn0Z3yddon4..fLLdgDtaOlrm7XBvVNvz9dKIxiBpDC', '', '[]', '2021-10-08 08:31:02', '2021-10-08 08:31:02', '14680027', '', 42, 'siswa', 1, NULL),
+(14, 3, 'siswa6', 'siswa6@gmail.com', 'users/default.png', NULL, '$2y$10$KohcIhvv.sYcrbkGD6ohhOJ1Hq.A5JcdgnFXk7FWTfnSBeOvUyv8G', '', '[]', '2021-10-08 08:31:03', '2021-10-08 08:31:03', '24', '', 12, 'siswa', 2, NULL),
+(15, 3, 'siswa7', 'siswa7@gmail.com', 'users/default.png', NULL, '$2y$10$2n0lBfCD263OYcN.HYtuyeHiQ5QPbR/aQrbE0oqYsJa.3cD9c7iLu', '', '[]', '2021-10-08 08:31:03', '2021-10-08 08:31:03', '95139656', '', 9, 'siswa', 4, NULL),
+(16, 3, 'siswa8', 'siswa8@gmail.com', 'users/default.png', NULL, '$2y$10$I07cNq8a0YJSo0fUQDrmk.kr21XEWBAHACFTzbPIeoTde7UfJPES.', '', '[]', '2021-10-08 08:31:03', '2021-10-08 08:31:03', '9597461', '', 16, 'siswa', 1, NULL),
+(17, 3, 'siswa9', 'siswa9@gmail.com', 'users/default.png', NULL, '$2y$10$GjISADlK5lgI1evXWFfNDey4c/6J5Ut5SjOCvmsxZ.iBVAM5RIamy', '', '[]', '2021-10-08 08:31:03', '2021-10-08 08:31:03', '3', '', 12, 'siswa', 1, NULL),
+(18, 3, 'siswa10', 'siswa10@gmail.com', 'users/default.png', NULL, '$2y$10$1jqTE2COWcTODgecHyVwdOvX.dyGn.llDFlmRh0e0xVu9ZAwCRGy.', '', '[]', '2021-10-08 08:31:03', '2021-10-08 08:31:03', '32516947', '', 24, 'siswa', 2, NULL),
+(19, 3, 'siswa11', 'siswa11@gmail.com', 'users/default.png', NULL, '$2y$10$oZoCGWZCHD1hJ/Lujq00d.EVRT8ylHQhhm10w/csW0aTEBxMVsBh.', '', '[]', '2021-10-08 08:31:03', '2021-10-08 08:31:03', '75892', '', 34, 'siswa', 1, NULL),
+(20, 3, 'siswa12', 'siswa12@gmail.com', 'users/default.png', NULL, '$2y$10$Gm7HyzM.x0p3QwjuAzKLVeVIgeaPaUPk1FUptDEo0LJmPtOq46yMC', '', '[]', '2021-10-08 08:31:04', '2021-10-08 08:31:04', '7', '', 8, 'siswa', 4, NULL),
+(21, 3, 'siswa13', 'siswa13@gmail.com', 'users/default.png', NULL, '$2y$10$ZLCZ/KknhezSuw6IaCkMbuY6VXFIevz5MvHd63xbEHoItHxM/FSrC', '', '[]', '2021-10-08 08:31:04', '2021-10-08 08:31:04', '5', '', 19, 'siswa', 1, NULL),
+(22, 3, 'siswa14', 'siswa14@gmail.com', 'users/default.png', NULL, '$2y$10$K6IEAJygL03xxdO806LLU./Poz3wGGMegEJEXdxHI6CsLD300yv9e', '', '[]', '2021-10-08 08:31:04', '2021-10-08 08:31:04', '689', '', 38, 'siswa', 3, NULL),
+(23, 3, 'siswa15', 'siswa15@gmail.com', 'users/default.png', NULL, '$2y$10$Y95iDzFU3rNFsxpRFQfcD.1oTfJH8M0UmH9NWPNrhdylzvJS8rLqO', '', '[]', '2021-10-08 08:31:04', '2021-10-08 08:31:04', '0', '', 10, 'siswa', 3, NULL),
+(24, 3, 'siswa16', 'siswa16@gmail.com', 'users/default.png', NULL, '$2y$10$.iLEiGwjv5cVfs95F/3BbuNM1Vj7b/v3gHHejIyQ26PKaH8R58gUi', '', '[]', '2021-10-08 08:31:04', '2021-10-08 08:31:04', '138', '', 14, 'siswa', 3, NULL),
+(25, 3, 'siswa17', 'siswa17@gmail.com', 'users/default.png', NULL, '$2y$10$coMhBmHs0y/N/pV/wPP47Oi7fClCp5fj9LSbRSh/Gl6h02/gW1Gj.', '', '[]', '2021-10-08 08:31:04', '2021-10-08 08:31:04', '386895', '', 21, 'siswa', 4, NULL),
+(26, 3, 'siswa18', 'siswa18@gmail.com', 'users/default.png', NULL, '$2y$10$gwvCQiyCEL1rmOH1sAMGEOJXJJ39HdPQV4igmRlu4QPjsfGurWyDS', '', '[]', '2021-10-08 08:31:04', '2021-10-08 08:31:04', '3344', '', 11, 'siswa', 4, NULL),
+(27, 3, 'siswa19', 'siswa19@gmail.com', 'users/default.png', NULL, '$2y$10$h9.q77mIWbCJB64iM0lhFuK7LIhqaKchUDb6.80LIhOFnREhmT6uy', '', '[]', '2021-10-08 08:31:04', '2021-10-08 08:31:04', '6395956', '', 45, 'siswa', 1, NULL),
+(28, 3, 'siswa20', 'siswa20@gmail.com', 'users/default.png', NULL, '$2y$10$3S2j7V9qlBHBZVqxS/rPrelQzSAzChfjuVHF6eY1WJv1gSsIXk97a', '', '[]', '2021-10-08 08:31:04', '2021-10-08 08:31:04', '6', '', 17, 'siswa', 2, NULL),
+(29, 3, 'siswa21', 'siswa21@gmail.com', 'users/default.png', NULL, '$2y$10$grV6WkHrjumDGgWpw8GLf.ELaWstBWCog/I5xCrsbNpHeirNpPQue', '', '[]', '2021-10-08 08:31:05', '2021-10-08 08:31:05', '7652', '', 45, 'siswa', 3, NULL),
+(30, 3, 'siswa22', 'siswa22@gmail.com', 'users/default.png', NULL, '$2y$10$aA4WoVXZiUuJmJw1tosv2uEWKr0X.e8quV0Xn3gwK1lqMqdPHw6wS', '', '[]', '2021-10-08 08:31:05', '2021-10-08 08:31:05', '5982', '', 42, 'siswa', 2, NULL),
+(31, 3, 'siswa23', 'siswa23@gmail.com', 'users/default.png', NULL, '$2y$10$rzyElIGjNcJE56JsuwUkBuNA6yh7K6LlMRc0TSrbzbNP7LNNRCl0q', '', '[]', '2021-10-08 08:31:05', '2021-10-08 08:31:05', '9', '', 35, 'siswa', 3, NULL),
+(32, 3, 'siswa24', 'siswa24@gmail.com', 'users/default.png', NULL, '$2y$10$57/FLe4uHpM2qN3.XZ68PeVtDTglONRhYxhFakVlEBlxnbTGmG4Y.', '', '[]', '2021-10-08 08:31:05', '2021-10-08 08:31:05', '9321364', '', 32, 'siswa', 4, NULL),
+(33, 3, 'siswa25', 'siswa25@gmail.com', 'users/default.png', NULL, '$2y$10$2KNVxsAUTaavRjcqUvKW3ePM.5t3uNybMl.bhGYUUZHbKtulc1I5y', '', '[]', '2021-10-08 08:31:05', '2021-10-08 08:31:05', '115719', '', 40, 'siswa', 3, NULL),
+(34, 3, 'siswa26', 'siswa26@gmail.com', 'users/default.png', NULL, '$2y$10$l.cMwuHNSQY79z/3.uygy.GcuOW4.pOztDw56d1YvyBamBRe4PAjm', '', '[]', '2021-10-08 08:31:05', '2021-10-08 08:31:05', '5341', '', 7, 'siswa', 3, NULL),
+(35, 3, 'siswa27', 'siswa27@gmail.com', 'users/default.png', NULL, '$2y$10$rbSM1hVmW5jzLSpFSl6qXO9TM/YyqKCwKR9pyRpdccDfyupwLLILy', '', '[]', '2021-10-08 08:31:05', '2021-10-08 08:31:05', '943625', '', 3, 'siswa', 1, NULL),
+(36, 3, 'siswa28', 'siswa28@gmail.com', 'users/default.png', NULL, '$2y$10$q9BulNHHiTZRh6imIBy2COU3Hi/i/1.ojPtEtvgaQxEn9RUktt51G', '', '[]', '2021-10-08 08:31:06', '2021-10-08 08:31:06', '145', '', 34, 'siswa', 4, NULL),
+(37, 3, 'siswa29', 'siswa29@gmail.com', 'users/default.png', NULL, '$2y$10$w3/8XrKvPxkLrjoVKJo39ep0cqo32uR.j7ZLU3khPLG2cG1dH/s..', '', '[]', '2021-10-08 08:31:06', '2021-10-08 08:31:06', '74810367', '', 7, 'siswa', 1, NULL),
+(38, 3, 'siswa30', 'siswa30@gmail.com', 'users/default.png', NULL, '$2y$10$pX.jTiQdOPpaNmm.kw0Ho.wJ4T4jKFRPgUHxdh61cIrqIuZJPsmYC', '', '[]', '2021-10-08 08:31:06', '2021-10-08 08:31:06', '521108910', '', 4, 'siswa', 3, NULL),
+(39, 3, 'siswa31', 'siswa31@gmail.com', 'users/default.png', NULL, '$2y$10$q4BCgUpcxobEqkuTNlBfz.l9bSuYPJ9y94cNkxE9UaaNamtKQdpgy', '', '[]', '2021-10-08 08:31:06', '2021-10-08 08:31:06', '4852916', '', 44, 'siswa', 2, NULL),
+(40, 3, 'siswa32', 'siswa32@gmail.com', 'users/default.png', NULL, '$2y$10$GQXyFMie8QRGWd99DWvi8OgXQoV6vv1En8tC4nvyYbaZ1JxMDqVFm', '', '[]', '2021-10-08 08:31:06', '2021-10-08 08:31:06', '2846209', '', 37, 'siswa', 2, NULL),
+(41, 3, 'siswa33', 'siswa33@gmail.com', 'users/default.png', NULL, '$2y$10$I5uxqfmlEOLTMAY0QJ0G6Okh0o58ujToOq9TD5vTtc6ycX0tEdIGK', '', '[]', '2021-10-08 08:31:06', '2021-10-08 08:31:06', '88135469', '', 21, 'siswa', 3, NULL),
+(42, 3, 'siswa34', 'siswa34@gmail.com', 'users/default.png', NULL, '$2y$10$wb6BPMxB/doBLS5jYfgxxu.Ayx5B0eCtvuxtbZQeDlLA.KlkMHyTO', '', '[]', '2021-10-08 08:31:06', '2021-10-08 08:31:06', '8', '', 42, 'siswa', 4, NULL),
+(43, 3, 'siswa35', 'siswa35@gmail.com', 'users/default.png', NULL, '$2y$10$dtWGQky6di/nUtIRhzAnAO8ZNnbyrSIQ7ON9VpmTaw/QhAryRaiAe', '', '[]', '2021-10-08 08:31:06', '2021-10-08 08:31:06', '4471', '', 46, 'siswa', 3, NULL),
+(44, 3, 'siswa36', 'siswa36@gmail.com', 'users/default.png', NULL, '$2y$10$bYLcz6URnp2rFw1YnZ3VcOsOMo.0olghHqsefOcyooJrPAXU.Y6Ou', '', '[]', '2021-10-08 08:31:06', '2021-10-08 08:31:06', '7924', '', 46, 'siswa', 4, NULL),
+(45, 3, 'siswa37', 'siswa37@gmail.com', 'users/default.png', NULL, '$2y$10$ctueDWAPNpTPxvxIBtAFzeI8j6F3EsIVrOK6gkiTdHXh.Sm71rSDG', '', '[]', '2021-10-08 08:31:07', '2021-10-08 08:31:07', '30383', '', 43, 'siswa', 4, NULL),
+(46, 3, 'siswa38', 'siswa38@gmail.com', 'users/default.png', NULL, '$2y$10$nA3uYSzxg5NwBIcei3ZbhO9HbEXBzfAid8HotCkpR2S0mFi6o834y', '', '[]', '2021-10-08 08:31:07', '2021-10-08 08:31:07', '292', '', 31, 'siswa', 4, NULL),
+(47, 3, 'siswa39', 'siswa39@gmail.com', 'users/default.png', NULL, '$2y$10$XPmDWzAUNG1UaKm.tAIgWOqobUNCJcwINjozdUvKq5K1MyuHzsan2', '', '[]', '2021-10-08 08:31:07', '2021-10-08 08:31:07', '6098838', '', 44, 'siswa', 1, NULL),
+(48, 3, 'siswa40', 'siswa40@gmail.com', 'users/default.png', NULL, '$2y$10$nnmonSPejnECkvNNnNMOu.QFkd61eWgTzbjQByyPaL//q5HgTQyGC', '', '[]', '2021-10-08 08:31:07', '2021-10-08 08:31:07', '16591418', '', 32, 'siswa', 1, NULL),
+(49, 3, 'siswa41', 'siswa41@gmail.com', 'users/default.png', NULL, '$2y$10$A7Px0yES20A6m.JECq2vQunxWmA.kMa.UlnstM.uMbkvUn2ilPFga', '', '[]', '2021-10-08 08:31:07', '2021-10-08 08:31:07', '80873816', '', 15, 'siswa', 3, NULL),
+(50, 3, 'siswa42', 'siswa42@gmail.com', 'users/default.png', NULL, '$2y$10$Sni9tq3Q8fBfNAUt2g6fV.VFVtpX7pIkEl3SAYmcTuOJLltSSDsGe', '', '[]', '2021-10-08 08:31:07', '2021-10-08 08:31:07', '52940593', '', 43, 'siswa', 3, NULL),
+(51, 3, 'siswa43', 'siswa43@gmail.com', 'users/default.png', NULL, '$2y$10$MlvDyE0M4iGDeWtNCeShuOkAB9OW9R7RFKWvLvsiltG.53Z4MiepC', '', '[]', '2021-10-08 08:31:07', '2021-10-08 08:31:07', '23515379', '', 9, 'siswa', 2, NULL),
+(52, 3, 'siswa44', 'siswa44@gmail.com', 'users/default.png', NULL, '$2y$10$hn4Q.hgexBRMbelZO3tt8e4LltEOHGUyHUJrXBqRr72jkid2DNMBO', '', '[]', '2021-10-08 08:31:07', '2021-10-08 08:31:07', '261637', '', 19, 'siswa', 3, NULL),
+(53, 3, 'siswa45', 'siswa45@gmail.com', 'users/default.png', NULL, '$2y$10$c942nyzmrqgpLvrHGB4vWODu1.SIBM39cvbIw6IQtj/pTclFkYYW2', '', '[]', '2021-10-08 08:31:07', '2021-10-08 08:31:07', '831', '', 20, 'siswa', 3, NULL),
+(54, 3, 'siswa46', 'siswa46@gmail.com', 'users/default.png', NULL, '$2y$10$KDN.n9HwXrYZZmRjEMSxq.Yb/wHxBrEFCTK2leHDQJ8dh9dB7QcKq', '', '[]', '2021-10-08 08:31:07', '2021-10-08 08:31:07', '772', '', 11, 'siswa', 1, NULL),
+(55, 3, 'siswa47', 'siswa47@gmail.com', 'users/default.png', NULL, '$2y$10$frMbOeryGu1YucD8g3UNo.vG1qCqij0z0r.EGi/jp0oNErADYpUw6', '', '[]', '2021-10-08 08:31:08', '2021-10-08 08:31:08', '194898', '', 12, 'siswa', 4, NULL),
+(56, 3, 'siswa48', 'siswa48@gmail.com', 'users/default.png', NULL, '$2y$10$MP1gRIt0Sjgg0dxxSslQV.kQnK2tj5w3LnPc1aO/eKl1w7A7PRHtK', '', '[]', '2021-10-08 08:31:08', '2021-10-08 08:31:08', '8', '', 45, 'siswa', 1, NULL),
+(57, 3, 'siswa49', 'siswa49@gmail.com', 'users/default.png', NULL, '$2y$10$jKQ1h7SZX.FaLb0gNVE8ZuLTe.4FB1Runjg6LxuI5RQfrAYmyI0yq', '', '[]', '2021-10-08 08:31:08', '2021-10-08 08:31:08', '689449', '', 2, 'siswa', 4, NULL),
+(59, 4, '312314', 'email', 'users/default.png', NULL, '$2y$10$0MiO/AXNP90GfABmowu.kOj.4.g8eVqhAHDXzNjCoy4QIDRrWbhA.', NULL, NULL, '2021-10-18 07:54:06', '2021-10-18 07:54:06', '1230913', NULL, NULL, 'guru', NULL, NULL),
+(60, 4, 'ui', 'ui@gmail.com', 'users/default.png', NULL, '$2y$10$m.hyKdxNKMt9kwOni.qTnu7BU9XzlzjMflR60sh4DRxn7fNdMXrJK', NULL, '{\"locale\":\"id\"}', '2021-10-22 07:15:04', '2021-10-22 07:15:04', '097709809809', NULL, NULL, 'tu', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -2080,12 +1999,6 @@ ALTER TABLE `contents`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `content_ekskuls`
---
-ALTER TABLE `content_ekskuls`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `content_sarpras`
 --
 ALTER TABLE `content_sarpras`
@@ -2107,6 +2020,12 @@ ALTER TABLE `data_types`
   ADD UNIQUE KEY `data_types_slug_unique` (`slug`);
 
 --
+-- Indexes for table `detail_users`
+--
+ALTER TABLE `detail_users`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `ekskuls`
 --
 ALTER TABLE `ekskuls`
@@ -2123,12 +2042,6 @@ ALTER TABLE `failed_jobs`
 -- Indexes for table `galleries`
 --
 ALTER TABLE `galleries`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `gallery_ekskuls`
---
-ALTER TABLE `gallery_ekskuls`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -2277,12 +2190,6 @@ ALTER TABLE `posts`
   ADD UNIQUE KEY `posts_slug_unique` (`slug`);
 
 --
--- Indexes for table `recruitments`
---
-ALTER TABLE `recruitments`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `roles`
 --
 ALTER TABLE `roles`
@@ -2303,9 +2210,9 @@ ALTER TABLE `siswas`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `tab_ekskuls`
+-- Indexes for table `skills`
 --
-ALTER TABLE `tab_ekskuls`
+ALTER TABLE `skills`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -2366,12 +2273,6 @@ ALTER TABLE `contents`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT for table `content_ekskuls`
---
-ALTER TABLE `content_ekskuls`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
 -- AUTO_INCREMENT for table `content_sarpras`
 --
 ALTER TABLE `content_sarpras`
@@ -2381,13 +2282,19 @@ ALTER TABLE `content_sarpras`
 -- AUTO_INCREMENT for table `data_rows`
 --
 ALTER TABLE `data_rows`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=319;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=291;
 
 --
 -- AUTO_INCREMENT for table `data_types`
 --
 ALTER TABLE `data_types`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+
+--
+-- AUTO_INCREMENT for table `detail_users`
+--
+ALTER TABLE `detail_users`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `ekskuls`
@@ -2406,12 +2313,6 @@ ALTER TABLE `failed_jobs`
 --
 ALTER TABLE `galleries`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
-
---
--- AUTO_INCREMENT for table `gallery_ekskuls`
---
-ALTER TABLE `gallery_ekskuls`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `gallery_sarpras`
@@ -2462,34 +2363,28 @@ ALTER TABLE `managers`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `mapels`
---
-ALTER TABLE `mapels`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
 -- AUTO_INCREMENT for table `menu_items`
 --
 ALTER TABLE `menu_items`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
 -- AUTO_INCREMENT for table `permissions`
 --
 ALTER TABLE `permissions`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=201;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=191;
 
 --
--- AUTO_INCREMENT for table `recruitments`
+-- AUTO_INCREMENT for table `skills`
 --
-ALTER TABLE `recruitments`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+ALTER TABLE `skills`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `tab_ekskuls`
+-- AUTO_INCREMENT for table `users`
 --
-ALTER TABLE `tab_ekskuls`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+ALTER TABLE `users`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

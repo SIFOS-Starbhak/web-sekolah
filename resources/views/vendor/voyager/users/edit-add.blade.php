@@ -74,7 +74,7 @@
                                     <label for="default_role">{{ __('voyager::profile.role_default') }}</label>
                                     @php
                                         $dataTypeRows = $dataType->{isset($dataTypeContent->id) ? 'editRows' : 'addRows'};
-                                        
+
                                         $row = $dataTypeRows->where('field', 'user_belongsto_role_relationship')->first();
                                         $options = $row->details;
                                     @endphp
@@ -90,22 +90,41 @@
                                 </div>
 
                             @endcan
-                            
+
                                 <div class="form-group" id="kelas">
                                     <label for="kelas_siswa">{{ __('kelas siswa') }}</label>
                                     @php
                                         $dataTypeRows = $dataType->{isset($dataTypeContent->id) ? 'editRows' : 'addRows'};
                                         $row = $dataTypeRows->where('field', 'user_belongsto_kela_relationship')->first();
-                                        
+
                                         $options = $row->details;
                                     @endphp
                                     @include('voyager::formfields.relationship')
                                 </div>
                                 <div class="form-group" id="role_spesifc">
-                                <label for="spesifc_role">{{ __('spesifik role') }}</label>
+                                {{-- <label for="spesifc_role">{{ __('spesifik role') }}</label>
                                 <input type="text" class="form-control" id="spesifc_role" name="spesifc_role"
                                     placeholder="{{ __('spesifik role') }}"
-                                    value="{{ old('spesifc_role', $dataTypeContent->spesifc_role ?? '') }}">
+                                    value="{{ old('spesifc_role', $dataTypeContent->spesifc_role ?? '') }}"> --}}
+
+                                <div class="form-group">
+                                <label for="spesifc_role">Jabatan Guru</label>
+                                <select class="form-control select2" id="spesifc_role" name="spesifc_role">
+                                    <option value="" >{{ $dataTypeContent->spesifc_role }}</option>
+                                    <option value="admin" {{ ($dataTypeContent->spesifc_role == "admin") ? "selected" : ""   }}>Admin</option>
+                                    <option value="litbang" {{ ($dataTypeContent->spesifc_role == "litbang") ? "selected" : ""   }}>Litbang</option>
+                                    <option value="tu" {{ ($dataTypeContent->spesifc_role == "tu") ? "selected" : ""   }}>Tata Usaha</option>
+                                    <option value="kaprog"{{ ($dataTypeContent->spesifc_role == "kaprog") ? "selected" : ""   }}>Kepala Program</option>
+                                    <option value="kepsek" {{ ($dataTypeContent->spesifc_role == "kepsek") ? "selected" : ""   }}>Kepala Sekolah</option>
+                                    <option value="waka" {{ ($dataTypeContent->spesifc_role == "waka") ? "selected" : ""   }}>Wakil Kepala Sekolah</option>
+                                    <option value="bkk" {{ ($dataTypeContent->spesifc_role == "bkk") ? "selected" : ""   }}>BKK</option>
+                                    <option value="hubin" {{ ($dataTypeContent->spesifc_role == "hubin") ? "selected" : ""   }}>Hubin</option>
+                                    <option value="kurikulum" {{ ($dataTypeContent->spesifc_role == "kurikulum") ? "selected" : ""   }}>Kurikulum</option>
+                                    <option value="kesiswaan" {{ ($dataTypeContent->spesifc_role == "kesiswaaan") ? "selected" : ""   }}>Kesiswaaan</option>
+                                    <option value="sarpras" {{ ($dataTypeContent->spesifc_role == "sarpras") ? "selected" : ""   }}>Sarpras</option>
+                                    <option value="Kejuruan" {{ ($dataTypeContent->spesifc_role == "kejuruan") ? "selected" : ""   }}>Kejuruan</option>
+                                </select>
+                            </div>
                             </div>
                             @php
                                 if (isset($dataTypeContent->locale)) {
@@ -113,7 +132,7 @@
                                 } else {
                                     $selected_locale = config('app.locale', 'en');
                                 }
-                                
+
                             @endphp
                             <div class="form-group">
                                 <label for="locale">{{ __('voyager::generic.locale') }}</label>
@@ -172,9 +191,14 @@
                 }else{
                     $('#kelas').hide()
                     $('#role_spesifc').hide()
-                }
             }
-        $('document').ready(function() {
+            }
+            $('[name="role_id"]').change(function (e) {
+                showHideInput();
+            })
+
+        $(document).ready(function() {
+
             $('#kelas').hide();
             $('#role_spesifc').hide();
             $('.toggleswitch').bootstrapToggle();

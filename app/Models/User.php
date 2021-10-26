@@ -73,4 +73,8 @@ class User extends \TCG\Voyager\Models\User implements JWTSubject
     {
         return $this->hasOne(Mapel::class,'id','mapel_id');
     }
+    public function detailUser()
+    {
+        return $this->hasOne(DetailUser::class,'id','detail_user');
+    }
 }

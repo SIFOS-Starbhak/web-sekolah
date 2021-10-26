@@ -49,7 +49,8 @@
             </div>
         </div>
     </div>
-
+@endsection
+@push('js')
     <script>
         $(function() {
             $('.pop').on('click', function() {
@@ -58,4 +59,4 @@
             });
         });
     </script>
-@endsection
+@endpush
