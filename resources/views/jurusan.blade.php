@@ -1,5 +1,5 @@
 @extends('template.app')
-@section('title', $menu->name)
+@section('title', 'Jurusan')
 @section('main')
     <style>
         .ani {
@@ -17,21 +17,23 @@
         }
 
     </style>
-    <div class="container" data-aos="fade-up" id="menu">
+    <div class="container mt-5" data-aos="fade-up">
+        <a href="/program-keahlian" class="col-12" style="font-size: 17px;"><i class="fas fa-arrow-left"></i>
+            Kembali</a>
         <div class="row card-group " data-aos="zoom-in" data-aos-delay="100">
             <section id="popular-courses" class="courses">
                 <div class="container" data-aos="fade-up">
-                    <h3 class="fw-bold text-center mb-5">{{ $menu->name }}</h3>
+                    <h3 class="fw-bold text-center mb-5">Jurusan</h3>
                     <div class="d-flex justify-content-center row flex-wrap" data-aos="zoom-in" data-aos-delay="100">
-                        @foreach ($page as $fg)
+                        @foreach ($jurusan as $item)
                             <div class="col-lg-4 mb-4" style="width: 300px">
-                                <a href="/{{ $menu->slug }}/{{ $fg->slug }}">
+                                <a href="/jurusan/{{ $item->slug }}">
                                     <div class="course-item shadow h-100 ani">
-                                        <img src="{{ asset('storage/' . $fg->image) }}"
+                                        <img src="{{ asset('storage/' . $item->image) }}"
                                             class="img-fluid justify-content-center" alt="..."
-                                            style="width:100%;height:250px;object-fit: cover" />
+                                            style="width:100%;height:300px;object-fit: cover" />
                                         <div class="course-content mt-3">
-                                            <h3><a href="/{{ $menu->slug }}/{{ $fg->slug }}">{{ $fg->title }}</a>
+                                            <h3><a href="/jurusan/{{ $item->slug }}">{{ $item->jurusan }}</a>
                                             </h3>
                                         </div>
                                     </div>
@@ -45,12 +47,3 @@
         </div>
     </div>
 @endsection
-@push('js')
-    <script>
-        $(document).ready(function() {
-            $('html, body').animate({
-                scrollTop: $('#menu').offset().top - 170
-            }, 'slow');
-        });
-    </script>
-@endpush

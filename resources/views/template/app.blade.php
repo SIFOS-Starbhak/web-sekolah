@@ -142,6 +142,7 @@
                         <div class="carousel-caption container" style="margin-left: -10%; text-align: left;"
                             data-aos="zoom-in" data-aos-delay="100">
                             <h1>{{ $bg->heading }}</h1>
+                            <h3>{{ $bg->subheading }}</h3>
                             <a href="/profile" class="btn btn-outline-light mt-4"
                                 style="padding: 10px 30px 10px 30px; border-radius: 50px">Profile</a>
                         </div>
@@ -244,7 +245,6 @@
 
     <!-- Template Main JS File -->
     <script src="{{ asset('template/assets/js/main.js') }}"></script>
-
     @stack('js')
 </body>
 

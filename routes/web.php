@@ -63,6 +63,10 @@ Route::get('/bkk/open-recruitment', 'WebController@recruitment');
 Route::get('/kesiswaan/ekstrakurikuler', 'WebController@ekskul');
 Route::get('/ekskul/{eskul:slug}', 'WebController@eskul');
 
+// Page Ekstrakulikuler
+Route::get('/program-keahlian/jurusan', 'WebController@jurusan');
+Route::get('/jurusan/{jurusan:slug}', 'WebController@jurusans');
+
 // Page Gallery
 Route::get('/gallery/{gallery:slug}', 'WebController@galleries');
 

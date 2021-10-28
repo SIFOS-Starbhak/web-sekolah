@@ -1,5 +1,5 @@
 @extends('template.app')
-@section('title', 'Ekstrakulikuler')
+@section('title', $eskul->title)
 @section('main')
     <style>
         .ani {
