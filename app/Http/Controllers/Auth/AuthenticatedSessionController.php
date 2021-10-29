@@ -128,17 +128,17 @@ class AuthenticatedSessionController extends Controller
             $data['kelas'] = auth('api')->user()->kelas;
         }
         if (auth('api')->user()->hasRole('admin')) {
-            $data['auth'] = ["username" => auth('api')->user()->nomor_induk, "password" => auth('api')->user()->password, "role" => "admin"];
+            $data['auth'] = ["username" => auth('api')->user()->nomor_induk, "password" => auth('api')->user()->password, "role" => "admin", "spesifc_role" => auth('api')->user()->spesifc_role];
             $data['role'] = 'admin';
         } else if (auth('api')->user()->hasRole('siswa')) {
-            $data['auth'] = ["username" => auth('api')->user()->nomor_induk, "password" => auth('api')->user()->password, "role" => "siswa"];
+            $data['auth'] = ["username" => auth('api')->user()->nomor_induk, "password" => auth('api')->user()->password, "role" => "siswa", "spesifc_role" => auth('api')->user()->spesifc_role];
             $data['role'] = 'siswa';
         } else if (auth('api')->user()->hasRole('guru')) {
-            $data['auth'] = ["username" => auth('api')->user()->nomor_induk, "password" => auth('api')->user()->password, "role" => "guru"];
+            $data['auth'] = ["username" => auth('api')->user()->nomor_induk, "password" => auth('api')->user()->password, "role" => "guru", "spesifc_role" => auth('api')->user()->spesifc_role];
         } else if (auth('api')->user()->hasRole('manager')) {
-            $data['auth'] = ["username" => auth('api')->user()->nomor_induk, "password" => auth('api')->user()->password, "role" => "manager"];
+            $data['auth'] = ["username" => auth('api')->user()->nomor_induk, "password" => auth('api')->user()->password, "role" => "manager" , "spesifc_role" => auth('api')->user()->spesifc_role];
         } else if (auth('api')->user()->hasRole('perusahaan')) {
-            $data['auth'] = ["username" => auth('api')->user()->email, "password" => auth('api')->user()->password, "role" => "perusahaan"];
+            $data['auth'] = ["username" => auth('api')->user()->email, "password" => auth('api')->user()->password, "role" => "perusahaan", "spesifc_role" => auth('api')->user()->spesifc_role];
         }
 
         $token = JWT::encode($data, "1342423424324324234", 'HS256');
