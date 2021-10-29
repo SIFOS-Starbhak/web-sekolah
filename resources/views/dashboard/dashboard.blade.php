@@ -108,7 +108,7 @@
             <div class="card profile-widget">
                 <div class="profile-widget-header">
                     @if (File::exists(public_path(Auth::user()->avatar)))
-                    <img class="rounded-circle profile-widget-picture" alt="image"
+                    <img class="rounded-circle profile-widget-picture" style="height: 150px;" alt="image"
                         src="{{ asset(Auth::user()->avatar) }}">
                 @else
                     <img class="rounded-circle profile-widget-picture" alt="image"
@@ -1200,7 +1200,7 @@
             <div class="card card-info profile-widget">
                 <div class="profile-widget-header">
                     @if (File::exists(public_path(Auth::user()->avatar)))
-                    <img class="rounded-circle profile-widget-picture" alt="image"
+                    <img class="rounded-circle profile-widget-picture" style="height: 150px;" alt="image"
                         src="{{ asset(Auth::user()->avatar) }}">
                 @else
                     <img class="rounded-circle profile-widget-picture" alt="image"
@@ -2133,7 +2133,7 @@
             <div class="card card-info profile-widget">
                 <div class="profile-widget-header">
                     @if (File::exists(public_path(Auth::user()->avatar)))
-                    <img class="rounded-circle profile-widget-picture" alt="image"
+                    <img class="rounded-circle profile-widget-picture" style="height: 150px;" alt="image"
                         src="{{ asset(Auth::user()->avatar) }}">
                 @else
                     <img class="rounded-circle profile-widget-picture" alt="image"
