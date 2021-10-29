@@ -45,7 +45,12 @@
                                       {{$profile->detailUser->bio}}
                                     </h6> 
                                       @endif
-                              @else 
+
+                             @elseif(Auth::user()->role->name == "admin" && Auth::user()->spesifc_role == "admin")
+
+                                    <h6></h6>
+
+                            @else 
 
                                   @if (empty($profile->detailUser->bio))
                                   <h6 style="font-weight: 100" class="d-flex justify-content-center" >Tidak ada bio</h6>
@@ -60,6 +65,9 @@
                             </div>
                               @if (Auth::user()->role->name == "perusahaan")
                                
+                              @elseif(Auth::user()->role->name == "admin" && Auth::user()->spesifc_role == "admin")
+
+
                               @else
                               <div class="card-footer text-center">
                                 <div class="font-weight-bold mb-2">Keahlian</div>
@@ -84,6 +92,8 @@
                           
                             @if (Auth::user()->role->name === "perusahaan")
                           
+                            @elseif(Auth::user()->role->name == "admin" && Auth::user()->spesifc_role == "admin")
+
 
                             @else 
                             <div class="embed-responsive embed-responsive-16by9 h-50 w-100 ml-4" >
@@ -107,6 +117,10 @@
                                 @elseif(Auth::user()->role->name == "perusahaan")
                             <form method="post" action="{{ route('update.profilePerusahaan', $profile->id) }}" class="needs-validation" enctype="multipart/form-data">
 
+
+                              @elseif(Auth::user()->role->name == "admin" && Auth::user()->spesifc_role == "admin")
+                              <form method="post" action="{{ route('update.profileAdm', $profile->id) }}" class="needs-validation" enctype="multipart/form-data">
+  
                                 @else 
                                 <form method="post" action="{{ route('update.profileSiswa', $profile->id) }}" class="needs-validation" enctype="multipart/form-data">
 
@@ -163,44 +177,75 @@
                                         </div>
                                       </div>
                                     </div>
+                                    @if (Auth::user()->role->name == "admin" && Auth::user()->spesifc_role == "admin")
+                                    <div class="form-group col-md-6 col-12">
+                                      <label>File Photo</label>
+                                      <input name="profileImg"  onchange="loadFileEdit(event)" type="file" class="form-control"  accept="image/png, image/jpeg, image/jpg" >
+                                    </div>
+                                            
+                                    @else 
+
+                                    @endif
                                   </div>
                                   <div class="row">
                                     <div class="form-group col-md-6 col-12">
                                       @if (Auth::user()->role->name == "perusahaan")
                                       <label>Contact</label>
-                                          @else
-                                      <label>Nomor Telp</label>
-                                      @endif
                                       <input  type="text" class="form-control @error('no_telpon') is-invalid @enderror" name="no_telpon" value="{{!empty($profile->detailUser->no_telpon) ? $profile->detailUser->no_telpon : ""}}" >
                                       @error('no_telpon')
                                       <div class="invalid-feedback">
                                         {{$message}}
                                       </div>
                                       @enderror
-                                    </div>
-                                    
-                                    <div class="form-group col-md-6 col-12">
-                                      <label>File Photo</label>
-                                      <input name="profileImg"  onchange="loadFileEdit(event)" type="file" class="form-control"  accept="image/png, image/jpeg, image/jpg" >
 
+                                      @elseif(Auth::user()->role->name == "admin" && Auth::user()->spesifc_role == "admin")
+
+
+
+                                          @else
+                                      <label>Nomor Telp</label>
+                                      <input  type="text" class="form-control @error('no_telpon') is-invalid @enderror" name="no_telpon" value="{{!empty($profile->detailUser->no_telpon) ? $profile->detailUser->no_telpon : ""}}" >
+                                      @error('no_telpon')
+                                      <div class="invalid-feedback">
+                                        {{$message}}
+                                      </div>
+                                      @enderror
+                                      @endif
                                     </div>
+                                        @if (Auth::user()->role->name == "admin" && Auth::user()->spesifc_role == "admin")
+                                            
+                                        @else 
+                                        <div class="form-group col-md-6 col-12">
+                                          <label>File Photo</label>
+                                          <input name="profileImg"  onchange="loadFileEdit(event)" type="file" class="form-control"  accept="image/png, image/jpeg, image/jpg" >
+                                        </div>
+
+                                        @endif
                                   </div>
                                  
                                   <div class="row">
                                     <div class="form-group col-12">
                                       @if (Auth::user()->role->name == "perusahaan")
                                       <label>Deskripsi Perusahaan</label>
-
-                                      @else
-                                      <label>Bio</label>
-
-                                      @endif
                                       <textarea name="bio" style="font-size: 17px;" class="form-control summernote-simple @error('bio') is-invalid @enderror ">{{!empty($profile->detailUser->bio) ? $profile->detailUser->bio : ""}}</textarea>
                                       @error('bio')
                                        <div class="invalid-feedback">
                                          {{$message}}
                                        </div>
                                        @enderror
+
+                                      @elseif(Auth::user()->role->name == "admin" && Auth::user()->spesifc_role == "admin")
+
+                                      @else
+                                      <label>Bio</label>
+                                      <textarea name="bio" style="font-size: 17px;" class="form-control summernote-simple @error('bio') is-invalid @enderror ">{{!empty($profile->detailUser->bio) ? $profile->detailUser->bio : ""}}</textarea>
+                                      @error('bio')
+                                       <div class="invalid-feedback">
+                                         {{$message}}
+                                       </div>
+                                       @enderror
+
+                                      @endif
                                     </div>
                                   </div>
                                   {{-- <div class="row">
@@ -215,7 +260,10 @@
                                     </div>
                                   </div> --}}
                                   @if (Auth::user()->role->name === "perusahaan")
-                                        
+                                  
+                                  @elseif(Auth::user()->role->name == "admin" && Auth::user()->spesifc_role == "admin")
+
+
                                   @else 
                                   <div class="row">
                                     <div class="form-group col-12">

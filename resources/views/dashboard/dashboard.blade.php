@@ -2122,6 +2122,80 @@
             </div>
         </div>
     </div>
+
+
+
+
+    @elseif (Route::is('dashboard.adm'))
+    {{-- @elseif(JWTAuth::user()->role->name == 'manager') --}}
+    <div class="row">
+        <div class="col">
+            <div class="card card-info profile-widget">
+                <div class="profile-widget-header">
+                    @if (File::exists(public_path(Auth::user()->avatar)))
+                    <img class="rounded-circle profile-widget-picture" alt="image"
+                        src="{{ asset(Auth::user()->avatar) }}">
+                @else
+                    <img class="rounded-circle profile-widget-picture" alt="image"
+                        src="{{ asset('img/avatar/avatar-1.png') }}">
+                    @endif
+                    <div class="profile-widget-items">
+                        <div class="profile-widget-item">
+                            <div class="profile-widget-item-label">NIK</div>
+                            <div class="profile-widget-item-value">
+                                {{ JWTAuth::user()->nomor_induk }}</div>
+                        </div>
+                        <div class="profile-widget-item">
+                            <div class="profile-widget-item-label">Email</div>
+                            <div class="profile-widget-item-value">
+                                {{ JWTAuth::user()->email }}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="profile-widget-description">
+                    <div class="profile-widget-name">
+                        <span class="h3 font-weight-bold">
+                            {{ JWTAuth::user()->name }}
+                            <div class="slash"></div>
+                            <div class="text-muted d-inline font-weight-normal">
+                                <div class="badge badge-primary">
+                                    {{ JWTAuth::user()->role->display_name }}
+                                </div>
+                            </div>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="mb-3">
+                <h1 class="section-title">WEB App Instansi SMK Taruna Bhakti
+                </h1>
+            </div>
+            <div class="container">
+                <div class="row">
+                   
+                    <div class="col-md-4 d-flex mb-3">
+                        <a href="" class="text-decoration-none" id="sitakols">
+                            <div class="card h-100">
+                                <div class="bg-warning text-white py-5 px-4">
+                                    <i class="fas fa-briefcase big-icon"></i>
+                                    <h3>Sitakols SMK Taruna Bhakti</h3>
+                                </div>
+                                <div class="card-body flex-fill">
+                                    <p class="card-text text-dark">Sitakols adalah aplikasi yang digunakan
+                                        untuk keperluan surat menyurat dan magang.</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+  
     @endif
 @endsection
 

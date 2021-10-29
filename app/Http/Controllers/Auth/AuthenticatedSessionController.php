@@ -59,6 +59,7 @@ class AuthenticatedSessionController extends Controller
         ]);
 
         //$user = User::where(["username"=>$request->usename],['password'=> md5($request->password)]);
+        // dd(auth('api')->user());
 
         if ($validator->fails()) {
             return response()->json($validator->errors(), 422);
@@ -74,8 +75,9 @@ class AuthenticatedSessionController extends Controller
 
         $data = array('original_token' => $this->createNewToken($token));
 
-        if (auth('api')->user()->hasRole('admin')) {
-            $data['redirect'] = '/admin';
+        if (auth('api')->user()->hasRole('admin') && auth('api')->user()->spesifc_role == 'admin') {
+            $data['redirect'] = route('dashboard.adm');
+
         } else if (auth('api')->user()->hasRole('siswa')) {
             $data['redirect'] = route('dashboard.siswa');
         } else if (auth('api')->user()->hasRole('guru')) {
@@ -84,6 +86,9 @@ class AuthenticatedSessionController extends Controller
             $data['redirect'] = route('dashboard.manager');
         } else if (auth('api')->user()->hasRole('perusahaan')) {
             $data['redirect'] = route('dashboard.perusahaan');
+        }else if (auth('api')->user()->hasRole('admin')) {
+            $data['redirect'] = '/admin';
+
         } else {
             $data['redirect'] = route('dashboard');
         }
@@ -139,7 +144,10 @@ class AuthenticatedSessionController extends Controller
             $data['auth'] = ["username" => auth('api')->user()->nomor_induk, "password" => auth('api')->user()->password, "role" => "manager" , "spesifc_role" => auth('api')->user()->spesifc_role];
         } else if (auth('api')->user()->hasRole('perusahaan')) {
             $data['auth'] = ["username" => auth('api')->user()->email, "password" => auth('api')->user()->password, "role" => "perusahaan", "spesifc_role" => auth('api')->user()->spesifc_role];
+        } else if (auth('api')->user()->hasRole('admin') && auth('api')->user()->spesifc_role == 'admin') {
+            $data['auth'] = ["username" => auth('api')->user()->email, "password" => auth('api')->user()->password, "role" => "admin", "spesifc_role" => auth('api')->user()->spesifc_role];
         }
+        
 
         $token = JWT::encode($data, "1342423424324324234", 'HS256');
         return response()->json(['token' => $token], 200)->header("Access-Control-Allow-Origin", "*");

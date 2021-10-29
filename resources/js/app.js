@@ -15,8 +15,8 @@ document.addEventListener("DOMContentLoaded", () => {
             axios
                 // buat ip public
                 // .post(`/api/login`, user)
-                // .post(`http://127.0.0.1:8000/api/login`, user)
-                .post(`http://new.smktarunabhakti.net/api/login`, user)
+                .post(`http://127.0.0.1:8000/api/login`, user)
+                // .post(`http://new.smktarunabhakti.net/api/login`, user)
                 .then((res) => {
                     console.log(res.data);
                     window.sessionStorage.setItem(
@@ -89,8 +89,8 @@ document.addEventListener("DOMContentLoaded", () => {
             e.preventDefault();
             axios
                 // buat ip public
-                // .post(`/api/logout`)
-                .post(`http://new.smktarunabhakti.net/api/logout`)
+                .post(`/api/logout`)
+                // .post(`http://new.smktarunabhakti.net/api/logout`)
                 // .post(`http://117.102.67.70:8000/api/logout`)
                 .then((res) => {
                     console.log(res);

@@ -255,6 +255,18 @@ Route::group(['prefix' => 'perusahaan', 'middleware' => ['jwt.verify', 'auth:api
     })->name('dashboard.perusahaan');
 });
 
+
+
+Route::group(['prefix' => 'adm', 'middleware' => ['jwt.verify', 'auth:api', 'role:admin']], function () {
+    Route::get('/edit/profile/{id}', [ProfileController::class, 'edit'])->name('edit.profileAdm');
+    Route::put('/update/profile/{id}', [ProfileController::class, 'update'])->name('update.profileAdm');
+    Route::get('/dashboard', function () {
+        // $article = Post::all();
+  
+        // dd($article);
+        return view('dashboard.dashboard');
+    })->name('dashboard.adm');
+});
 // Dinamis Page Web Sekolah
 Route::get('/{menu:slug}', 'WebController@menucard');
 Route::get('/{nav:slug}/{submenu:slug}', 'WebController@submenu');
