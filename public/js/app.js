@@ -4183,9 +4183,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     document.getElementById("sitakols").addEventListener("click", function (e) {
       e.preventDefault();
-      console.log("clicked");
-      window.location.href = "http://117.102.60.70:8090/api/prakerin/" + //"http://127.0.0.1:8002/api/prakerin/" +
-      window.sessionStorage.getItem("token"); // href seuai sama url
+      window.location.href = "http://127.0.0.1:8002/api/prakerin/" + window.sessionStorage.getItem("token"); // href seuai sama url
     }); // Api Refleksi
 
     document.getElementById("refleksi").addEventListener("click", function (e) {

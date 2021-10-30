@@ -2126,7 +2126,8 @@
 
 
 
-    @elseif (Route::is('dashboard.adm'))
+@elseif (Route::is('dashboard.adm'))
+
     {{-- @elseif(JWTAuth::user()->role->name == 'manager') --}}
     <div class="row">
         <div class="col">
@@ -2167,15 +2168,31 @@
                 </div>
             </div>
         </div>
-        <br>
-        <div class="row">
+    </div>  
+     
+    <div class="row">
+        <div class="col">
             <div class="mb-3">
                 <h1 class="section-title">WEB App Instansi SMK Taruna Bhakti
                 </h1>
             </div>
             <div class="container">
                 <div class="row">
-                   
+                    <div class="col-md-4 d-none mb-3" style="display: none">
+                        <a href="" class="text-decoration-none"  id="microWebPortal">
+                            <div class="card h-100">
+                                <div class=" text-white py-5 px-4" style="background-color: rgb(43, 214, 43)">
+                                    <i class="fas fa-chalkboard-teacher big-icon"></i>
+                                    <h3>Portal SMK Taruna Bhakti</h3>
+                                </div>
+                                <div class="card-body flex-fill">
+                                    <p class="card-text text-dark">Portal yang dapat digunakan untuk
+                                        pembelajaran,
+                                        pengerjaan dan pengiriman Tugas.</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
                     <div class="col-md-4 d-flex mb-3">
                         <a href="" class="text-decoration-none" id="sitakols">
                             <div class="card h-100">
@@ -2190,12 +2207,25 @@
                             </div>
                         </a>
                     </div>
-                   
+                    <div class="col-md-4 d-none mb-3 " >
+                        <a href="" class="text-decoration-none" id="refleksi">
+                            <div class="card h-100">
+                                <div class="bg-info text-white py-5 px-4">
+                                    <i class="fas fa-clipboard big-icon"></i>
+                                    <h3>Refleksi Mengajar
+                                        SMK Taruna Bhakti</h3>
+                                </div>
+                                <div class="card-body flex-fill">
+                                    <p class="card-text text-dark">Refleksi mengajar yang berfungsi untuk
+                                        merekap pembelajaran jarak jauh (PJJ)</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-  
     @endif
 @endsection
 
@@ -2223,6 +2253,7 @@
 @endpush
 
 @push('js')
+    
     <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap4.min.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.2.9/js/responsive.bootstrap.min.js"></script>
