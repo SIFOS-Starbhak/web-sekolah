@@ -33,7 +33,7 @@
                 <div class="slash"></div>
                 <div class="text-muted d-inline font-weight-normal">
                     <div class="badge badge-lg badge-primary">
-                        {{ JWTAuth::user()->kelas->nama_kelas }}
+                        {{ empty(JWTAuth::user()->kelas->nama_kelas) ? "Belum ada kelas" : JWTAuth::user()->kelas->nama_kelas  }} 
                     </div>
                 </div>
             </span>
@@ -196,6 +196,20 @@
                     <div class="card-body flex-fill">
                         <p class="card-text text-dark">Refleksi mengajar yang berfungsi untuk
                             merekap pembelajaran jarak jauh (PJJ)</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-md-4 d-flex mb-3">
+            <a href="#" class="text-decoration-none" >
+                <div class="card h-100">
+                    <div class="bg-info text-white py-5 px-4" style="background-color: rgb(0, 229, 255)">
+                        <i class="fas fa-clipboard big-icon"></i>
+                        <h3>Administrasi Guru</h3>
+                    </div>
+                    <div class="card-body flex-fill">
+                        <p class="card-text text-dark">administrasi Guru</p>
                     </div>
                 </div>
             </a>

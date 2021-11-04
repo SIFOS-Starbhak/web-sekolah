@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
                             "info"
                         ).innerHTML = `<div class="alert alert-warning alert-dismissible fade show" role="alert">
                             <strong>Opps!</strong> Something went wrong...
-                                ${Object.values(err.response.data)
+                                ${Object.values(err.response.data)  
                                     .map((e) => `<li>${e}</li>`)
                                     .join("")}
                             <button type="button" class="btn-close" data-bs-dismiss="alert"
@@ -51,33 +51,53 @@ document.addEventListener("DOMContentLoaded", () => {
             e.preventDefault();
             var data = new FormData();
             data.append('token', 'token-post');
-                // axios.post("http://localhost/moddle/moodle/webservice/rest/costom-rest.php", data, {
+                // axios.post("http://localhost/Moodle-starbhak2/webservice/rest/costom-rest.php", data, {
                 axios.post("http://117.102.67.70:8008/moodlev2/webservice/rest/costom-rest.php", data, {
                 withCredentials: true,
                 crossDomain: true
             }).then(async (res) => {
-                // console.log(res.data);
-                if (res.data.user) {
-                        // const data = await axios.post(`http://localhost:8000/api/user`).then(res => {
+                // console.log(res);
+                if (res.data.user || res.data.user_student) {
+                        // const data = await axios.post(`http://127.0.0.1:8000/api/user`).then(res => {
                         const data = await axios.post(`http://new.smktarunabhakti.net/api/user`).then(res => {
                         if (res.data) {
                             // console.log(res.data)
                             return res.data
                         }
                     })
-                    console.log(res.data);
+                   
 
                     // idk how to nested foreach loop so i use for loop
                     for (const resValue of Object.values(res.data.user)) {
                         let bool = false
+                      
                         for (const dataValue of Object.values(data)) {
                             if (resValue.username === dataValue.nomor_induk || isNaN(resValue.username)) {
                                 bool = true
                             }
                         }
                         if (!bool) {
-                            // await axios.post('http://localhost:8000/api/user/create', resValue).then(response => console.log(response.data)).catch(err => console.log(err))
-                            await axios.post('http://new.smktarunabhakti.net/api/user/create', resValue).then(response => console.log(response.data)).catch(err => console.log(err))
+                            await axios.post('http://new.smktarunabhakti.net/api/user/create', resValue).then(
+                                response => console.log(response.data)
+                                ).catch(err => console.log(err))
+                            // await axios.post('http://new.smktarunabhakti.net/api/user/create', resValue).then(response => console.log(response.data)).catch(err => console.log(err))
+                        }
+                        // console.table(key,value);
+                    }
+
+                    for (const resValue of Object.values(res.data.user_student)) {
+                        let bool = false
+                      
+                        for (const dataValue of Object.values(data)) {
+                            if (resValue.username === dataValue.nomor_induk || isNaN(resValue.username)) {
+                                bool = true
+                            }
+                        }
+                        if (!bool) {
+                            await axios.post('http://new.smktarunabhakti.net/api/user/create', resValue).then(
+                                response => console.log(response.data)
+                                ).catch(err => console.log(err))
+                            // await axios.post('http://new.smktarunabhakti.net/api/user/create', resValue).then(response => console.log(response.data)).catch(err => console.log(err))
                         }
                         // console.table(key,value);
                     }
@@ -89,8 +109,8 @@ document.addEventListener("DOMContentLoaded", () => {
             e.preventDefault();
             axios
                 // buat ip public
-                .post(`/api/logout`)
-                // .post(`http://new.smktarunabhakti.net/api/logout`)
+                // .post(`http://127.0.0.1:8000/api/logout`)
+                .post(`http://new.smktarunabhakti.net/api/logout`)
                 // .post(`http://117.102.67.70:8000/api/logout`)
                 .then((res) => {
                     console.log(res);
@@ -112,7 +132,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 e.preventDefault();
                 window.location.href =
                     "http://117.102.67.70:8008/moodlev2/login/index.php?token=" +
-                    //"http://localhost/Moodle-starbhak/login/index.php?token=" +
+                    // "http://localhost/Moodle-starbhak2/login/index.php?token=" +
                     window.sessionStorage.getItem("token"); // href seuai sama url
             });
 
@@ -122,7 +142,7 @@ document.addEventListener("DOMContentLoaded", () => {
         .addEventListener("click", (e) => {
             e.preventDefault();
             window.location.href =
-                 "http://127.0.0.1:8002/api/prakerin/" +
+                 "http://117.102.67.70:8090/api/prakerin/" +
                     window.sessionStorage.getItem("token"); // href seuai sama url
         });
     
@@ -131,8 +151,18 @@ document.addEventListener("DOMContentLoaded", () => {
             e.preventDefault();
             console.log("clicked");
             window.location.href =
-                // "http://117.102.67.70:8000/authentication/" +
-                "http://127.0.0.1:8001/authentication/" +
+                "http://117.102.67.70:8000/authentication/" +
+                // "http://127.0.0.1:8001/authentication/" +
+                window.sessionStorage.getItem("token"); // href seuai sama url
+        });
+
+         // Api Refleksi
+         document.getElementById("administrasiGuru").addEventListener("click", (e) => {
+            e.preventDefault();
+            console.log("clicked");
+            window.location.href =
+                "http://117.102.67.70:8000/authentication/" +
+                // "http://127.0.0.1:8003/api/adm/" +
                 window.sessionStorage.getItem("token"); // href seuai sama url
         });
     }

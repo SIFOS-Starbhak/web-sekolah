@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Role;
 use Str;
-
+use Carbon\Carbon;
 class AuthenticatedSessionController extends Controller
 {
     public function __construct()
@@ -129,7 +129,7 @@ class AuthenticatedSessionController extends Controller
     {
         $data = array('user' => auth('api')->user());
         // XXX: Di Moodle user udah ada kelas sama rolenya tapi pas di matiin malah kgk ada kelas&role nya
-        if (auth('api')->user()->kelas_siswa) {
+        if (auth('api')->user()->hasRole('siswa')) {
             $data['kelas'] = auth('api')->user()->kelas;
         }
         if (auth('api')->user()->hasRole('admin')) {
@@ -169,7 +169,23 @@ class AuthenticatedSessionController extends Controller
 
     public function userCreate(Request $request)
     {
-
+        
+        function kelas($lastname){
+            $return = Kela::where('nama_kelas',$lastname)->first();
+            if(!empty($return)){  
+                Kela::create([
+                    'nama_kelas' => $lastname,
+                    'kelas' => explode(' ',$lastname)[0],
+                    'tahun_ajaran' => Carbon::now()->Isoformat('YYYY') .'/'. Carbon::now()->addYear(1)->Isoformat('YYYY'),
+                    'status' => "Aktif"
+                ]);
+                $kelas = Kela::where('nama_kelas',$lastname)->first();
+                return $kelas->id;
+            }else{
+                return $return->id;
+            }  
+        }
+        
         function cekrole($role)
         {
             switch ($role) {
@@ -185,6 +201,10 @@ class AuthenticatedSessionController extends Controller
                 case 'editingteacher':
                     $roles = Role::where("name", "guru")->first();
                     return $roles->id;
+                default: 
+                $roles = Role::where("name", "siswa")->first();
+                return $roles->id;
+                break;
             }
         }
 
@@ -202,8 +222,12 @@ class AuthenticatedSessionController extends Controller
                 case 'editingteacher':
                     return "guru";
                     break;
+                default: 
+                    return "siswa";
+                break;
             }
         }
+
         User::create([
             "name" => $request->firstname,
             "email" => $request->email,
@@ -211,6 +235,7 @@ class AuthenticatedSessionController extends Controller
             "nomor_induk" => $request->username,
             "role_id" => cekrole($request->role),
             "spesifc_role" => sitakols_role($request->role),
+            'kelas_siswa' => kelas($request->lastname),
         ]);
         return response()->json(["success" => "Succesfully"], 201);
     }
