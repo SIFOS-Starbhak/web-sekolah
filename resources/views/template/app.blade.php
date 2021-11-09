@@ -122,7 +122,7 @@
                         </li>
                     @endforeach
 
-                    <li><a href="{{ route('login') }}" target="_blank" class="btn-get-started ">Login</a>
+                    <li><a href="{{ route('login') }}" target="_blank" class="btn-get-started active">Login</a>
                     </li>
 
                 </ul>
@@ -236,6 +236,9 @@
         </div>
 
     </footer>
+    <div id="preloader"></div>
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+            class="bi bi-arrow-up-short"></i></a>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="{{ asset('template/assets/vendor/aos/aos.js') }}"></script>
     <script src="{{ asset('template/assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>

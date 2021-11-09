@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Tymon\JWTAuth\Contracts\JWTSubject;
@@ -73,8 +74,13 @@ class User extends \TCG\Voyager\Models\User implements JWTSubject
     {
         return $this->hasOne(Mapel::class,'id','mapel_id');
     }
-    public function detailUser()
+    // public function detailUser()
+    // {
+    //     return $this->hasOne(DetailUser::class,'id','detail_user');
+    // }
+
+    public function user()
     {
-        return $this->hasOne(DetailUser::class,'id','detail_user');
+        return $this->belongsTo(DetailUser::class, 'detail_user');
     }
 }

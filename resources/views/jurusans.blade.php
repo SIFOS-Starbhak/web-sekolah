@@ -71,8 +71,47 @@
                             </div>
                         </div>
                     @endif
-                </div>
-            @endforeach
-        </div>
+                    @if ($item->slug == 'guru')
+                        <section class="our-webcoderskull padding-lg">
+                            <div class="container">
+                                <ul class="row">
+                                    @foreach ($foto as $ft)
+                                        <li class="col-12 col-md-6 col-lg-3 ani">
+                                            <a data-toggle="modal" data-target="imagemodal" class="pop">
+                                                <div class="cnt-block equal-hight text-center" style="height: 349px;">
+                                                    <img src="{{ asset('storage/' . $ft->foto) }}" class="img-responsive"
+                                                        alt="" style="width:200px;height:200px; object-fit: cover;">
+                                                    <h3 style="margin-top:10%;">{{ $ft->nama_guru }}</h3>
+                                                </div>
+                                            </a>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        </section>
+
+                        <div class="modal fade" id="imagemodal" tabindex="-1" role="dialog"
+                            aria-labelledby="myModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-body">
+                                    <img src="" class="imagepreview" style="width: 100%;">
+                                </div>
+                            </div>
+                        </div>
+                    @endsection
+                    @push('js')
+                        <script>
+                            $(function() {
+                                $('.pop').on('click', function() {
+                                    $('.imagepreview').attr('src', $(this).find('img').attr('src'));
+                                    $('#imagemodal').modal('show');
+                                });
+                            });
+                        </script>
+                    @endpush
+                @endif
+            </div>
+        @endforeach
     </div>
+</div>
 @endsection

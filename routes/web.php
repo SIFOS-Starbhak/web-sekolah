@@ -57,7 +57,8 @@ Route::get('/kurikulum/guru-smk-taruna-bhakti', 'WebController@kurikulumguru');
 Route::get('/guru-starbhak/{kategori:slug}', 'WebController@fotoguru');
 
 // Page BKK
-Route::get('/bkk/open-recruitment', 'WebController@recruitment');
+Route::get('/bkk/open-recruitment', 'WebController@bkk');
+Route::get('/bkk/data-siswa-starbhak', 'WebController@bkk');
 
 // Page Ekstrakulikuler
 Route::get('/kesiswaan/ekstrakurikuler', 'WebController@ekskul');

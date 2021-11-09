@@ -33,6 +33,7 @@ use App\Models\Jurusan;
 use App\Models\TabJurusan;
 use App\Models\ContentJurusan;
 use App\Models\GalleryJurusan;
+use App\Models\DetailUser;
 
 class WebController extends Controller
 {
@@ -68,13 +69,6 @@ class WebController extends Controller
         return view ('gallery', compact('settings', 'cardgallery', 'backgrounds'));
     }
 
-    public function kurikulumtb()
-    {
-        $struktur = DB::table('posts')->find(12);
-        $navbar = Navbar::all()->where('status', 'Active');
-        return view('kurikulum', compact('navbar', 'struktur'));
-    }
-
     public function fotoguru(Kategori $kategori)
     {
         $foto = Gallery::all()->where('kategori_guru', $kategori->id);
@@ -90,25 +84,6 @@ class WebController extends Controller
         $navbar = Navbar::all()->where('status', 'Active');
         $backgrounds = Background::all();
         return view('kurikulum', compact('navbar', 'settings', 'fotoguru', 'backgrounds'));
-    }
-
-    public function kurikulum()
-    {
-        $settings = Setting::all();
-        $struktur = Page::where('id', '17')->get(['body', 'title']);
-        $kompetensi = Page::where('id', '16')->get(['body', 'title']);
-        $fotoguru = Kategori::all();
-        $cardkurikulum = Page::where('id', '22')->orWhere('id', '23')->orWhere('id', '24')->get();
-        $navbar = Navbar::all()->where('status', 'Active');
-        return view('kurikulum', compact('settings', 'struktur', 'kompetensi', 'fotoguru', 'cardkurikulum', 'navbar'));
-    }
-
-    public function bkk()
-    {
-        $settings = Setting::all();
-        $cardbkk = Page::where('id', '24')->orWhere('id', '25')->get();
-        $navbar = Navbar::all()->where('status', 'Active');
-        return view('bkk', compact('settings','cardbkk','navbar'));
     }
 
     public function kesiswaan()
@@ -189,14 +164,15 @@ class WebController extends Controller
         return view('gallery', compact('image', 'video', 'gallery', 'settings', 'navbar', 'backgrounds'));
     }
 
-    public function recruitment()
+    public function bkk()
     {
         $settings = Setting::all();
         $navbar = Navbar::all()->where('status', 'Active');
         $backgrounds = Background::all();
         $reqruitment = Recruitment::all();
+        $users = User::all();
 
-        return view('bkk', compact('settings', 'navbar', 'backgrounds', 'reqruitment'));
+        return view('bkk', compact('settings', 'navbar', 'backgrounds', 'reqruitment', 'users'));
     }
 
     public function ekskul()
@@ -239,7 +215,9 @@ class WebController extends Controller
         $tab = TabJurusan::all();
         $content = ContentJurusan::all()->where('jurusan', $jurusan->id);
         $gallery = GalleryJurusan::all()->where('jurusan', $jurusan->id);
+        $foto = Gallery::all()->where('katagori_guru', 'Guru Kejurusan')
+                                ->where('jurusan', $jurusan->name);
 
-        return view('jurusans', compact('settings', 'navbar', 'backgrounds', 'jurusan', 'content', 'tab', 'gallery'));
+        return view('jurusans', compact('settings', 'navbar', 'backgrounds', 'jurusan', 'content', 'tab', 'gallery', 'foto'));
     }
 }
