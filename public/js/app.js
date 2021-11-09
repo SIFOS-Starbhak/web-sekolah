@@ -4057,7 +4057,8 @@ document.addEventListener("DOMContentLoaded", function () {
       e.preventDefault();
       var frmData = new FormData(e.target);
       var user = Object.fromEntries(frmData);
-      axios__WEBPACK_IMPORTED_MODULE_1___default().post("http://new.smktarunabhakti.net/api/login", user).then(function (res) {
+      axios__WEBPACK_IMPORTED_MODULE_1___default().post("http://127.0.0.1:8000/api/login", user) // .post(`http://new.smktarunabhakti.net/api/login`, user)
+      .then(function (res) {
         console.log(res.data);
         window.sessionStorage.setItem("token", res.data.original_token.original.access_token);
         window.sessionStorage.setItem("auth_token", res.data.auth_token);
@@ -4076,26 +4077,27 @@ document.addEventListener("DOMContentLoaded", function () {
       console.log("clicked");
       e.preventDefault();
       var data = new FormData();
-      data.append('token', 'token-post'); // axios.post("http://localhost/moddle/moodle/webservice/rest/costom-rest.php", data, {
-
-      axios__WEBPACK_IMPORTED_MODULE_1___default().post("http://117.102.67.70:8008/moodlev2/webservice/rest/costom-rest.php", data, {
+      data.append('token', 'token-post');
+      axios__WEBPACK_IMPORTED_MODULE_1___default().post("http://localhost/Moodle-starbhak2/webservice/rest/costom-rest.php", data, {
+        // axios.post("http://117.102.67.70:8008/moodlev2/webservice/rest/costom-rest.php", data, {
         withCredentials: true,
         crossDomain: true
       }).then( /*#__PURE__*/function () {
         var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(res) {
-          var _data, _i, _Object$values, resValue, bool, _i2, _Object$values2, dataValue;
+          var _data, _i, _Object$values, resValue, bool, _i2, _Object$values2, dataValue, _i3, _Object$values3, _resValue, _bool, _i4, _Object$values4, _dataValue;
 
           return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
             while (1) {
               switch (_context.prev = _context.next) {
                 case 0:
-                  if (!res.data.user) {
-                    _context.next = 16;
+                  if (!(res.data.user || res.data.user_student)) {
+                    _context.next = 26;
                     break;
                   }
 
                   _context.next = 3;
-                  return axios__WEBPACK_IMPORTED_MODULE_1___default().post("http://new.smktarunabhakti.net/api/user").then(function (res) {
+                  return axios__WEBPACK_IMPORTED_MODULE_1___default().post("http://127.0.0.1:8000/api/user").then(function (res) {
+                    // const data = await axios.post(`http://new.smktarunabhakti.net/api/user`).then(res => {
                     if (res.data) {
                       // console.log(res.data)
                       return res.data;
@@ -4104,13 +4106,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 case 3:
                   _data = _context.sent;
-                  console.log(res.data); // idk how to nested foreach loop so i use for loop
-
                   _i = 0, _Object$values = Object.values(res.data.user);
 
-                case 6:
+                case 5:
                   if (!(_i < _Object$values.length)) {
-                    _context.next = 16;
+                    _context.next = 15;
                     break;
                   }
 
@@ -4126,23 +4126,60 @@ document.addEventListener("DOMContentLoaded", function () {
                   }
 
                   if (bool) {
-                    _context.next = 13;
+                    _context.next = 12;
                     break;
                   }
 
-                  _context.next = 13;
-                  return axios__WEBPACK_IMPORTED_MODULE_1___default().post('http://new.smktarunabhakti.net/api/user/create', resValue).then(function (response) {
+                  _context.next = 12;
+                  return axios__WEBPACK_IMPORTED_MODULE_1___default().post('http://127.0.0.1:8000/api/user/create', resValue).then(function (response) {
                     return console.log(response.data);
                   })["catch"](function (err) {
                     return console.log(err);
                   });
 
-                case 13:
+                case 12:
                   _i++;
-                  _context.next = 6;
+                  _context.next = 5;
                   break;
 
+                case 15:
+                  _i3 = 0, _Object$values3 = Object.values(res.data.user_student);
+
                 case 16:
+                  if (!(_i3 < _Object$values3.length)) {
+                    _context.next = 26;
+                    break;
+                  }
+
+                  _resValue = _Object$values3[_i3];
+                  _bool = false;
+
+                  for (_i4 = 0, _Object$values4 = Object.values(_data); _i4 < _Object$values4.length; _i4++) {
+                    _dataValue = _Object$values4[_i4];
+
+                    if (_resValue.username === _dataValue.nomor_induk || isNaN(_resValue.username)) {
+                      _bool = true;
+                    }
+                  }
+
+                  if (_bool) {
+                    _context.next = 23;
+                    break;
+                  }
+
+                  _context.next = 23;
+                  return axios__WEBPACK_IMPORTED_MODULE_1___default().post('http://127.0.0.1:8000/api/user/create', _resValue).then(function (response) {
+                    return console.log(response.data);
+                  })["catch"](function (err) {
+                    return console.log(err);
+                  });
+
+                case 23:
+                  _i3++;
+                  _context.next = 16;
+                  break;
+
+                case 26:
                 case "end":
                   return _context.stop();
               }
@@ -4160,7 +4197,8 @@ document.addEventListener("DOMContentLoaded", function () {
   } else {
     document.getElementById("frmlogout").addEventListener("click", function (e) {
       e.preventDefault();
-      axios__WEBPACK_IMPORTED_MODULE_1___default().post("http://new.smktarunabhakti.net/api/logout") // .post(`http://117.102.67.70:8000/api/logout`)
+      axios__WEBPACK_IMPORTED_MODULE_1___default().post("http://127.0.0.1:8000/api/logout") // .post(`http://new.smktarunabhakti.net/api/logout`)
+      // .post(`http://117.102.67.70:8000/api/logout`)
       .then(function (res) {
         console.log(res);
         window.sessionStorage.removeItem("token");
@@ -4175,15 +4213,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
     document.getElementById("microWebPortal").addEventListener("click", function (e) {
       e.preventDefault();
-      window.location.href = "http://117.102.67.70:8008/moodlev2/login/index.php?token=" + //"http://localhost/Moodle-starbhak/login/index.php?token=" +
-      window.sessionStorage.getItem("token"); // href seuai sama url
+      window.location.href = // "http://117.102.67.70:8008/moodlev2/login/index.php?token=" +
+      "http://localhost/Moodle-starbhak2/login/index.php?token=" + window.sessionStorage.getItem("token"); // href seuai sama url
     }); // Api Sitakols
 
     document.getElementById("sitakols").addEventListener("click", function (e) {
       e.preventDefault();
-      console.log("clicked");
-      window.location.href = "http://117.102.60.70:8090/api/prakerin/" + //"http://127.0.0.1:8002/api/prakerin/" +
-      window.sessionStorage.getItem("token"); // href seuai sama url
+      window.location.href = "http://127.0.0.1:8002/api/prakerin/" + window.sessionStorage.getItem("token"); // href seuai sama url
     }); // Api Refleksi
 
     document.getElementById("refleksi").addEventListener("click", function (e) {
@@ -4191,6 +4227,13 @@ document.addEventListener("DOMContentLoaded", function () {
       console.log("clicked");
       window.location.href = // "http://117.102.67.70:8000/authentication/" +
       "http://127.0.0.1:8001/authentication/" + window.sessionStorage.getItem("token"); // href seuai sama url
+    }); // Api Refleksi
+
+    document.getElementById("administrasiGuru").addEventListener("click", function (e) {
+      e.preventDefault();
+      console.log("clicked");
+      window.location.href = // "http://117.102.67.70:8000/authentication/" +
+      "http://127.0.0.1:8003/api/adm/" + window.sessionStorage.getItem("token"); // href seuai sama url
     });
   }
 });
@@ -23870,7 +23913,7 @@ try {
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"_args":[["axios@0.21.4","C:\\\\xampp\\\\htdocs\\\\Web-Sekolah"]],"_development":true,"_from":"axios@0.21.4","_id":"axios@0.21.4","_inBundle":false,"_integrity":"sha512-ut5vewkiu8jjGBdqpM44XxjuCjq9LAKeHVmoVfHVzy8eHgxxq8SbAVQNovDA8mVi05kP0Ea/n/UzcSHcTJQfNg==","_location":"/axios","_phantomChildren":{},"_requested":{"type":"version","registry":true,"raw":"axios@0.21.4","name":"axios","escapedName":"axios","rawSpec":"0.21.4","saveSpec":null,"fetchSpec":"0.21.4"},"_requiredBy":["#DEV:/"],"_resolved":"https://registry.npmjs.org/axios/-/axios-0.21.4.tgz","_spec":"0.21.4","_where":"C:\\\\xampp\\\\htdocs\\\\Web-Sekolah","author":{"name":"Matt Zabriskie"},"browser":{"./lib/adapters/http.js":"./lib/adapters/xhr.js"},"bugs":{"url":"https://github.com/axios/axios/issues"},"bundlesize":[{"path":"./dist/axios.min.js","threshold":"5kB"}],"dependencies":{"follow-redirects":"^1.14.0"},"description":"Promise based HTTP client for the browser and node.js","devDependencies":{"coveralls":"^3.0.0","es6-promise":"^4.2.4","grunt":"^1.3.0","grunt-banner":"^0.6.0","grunt-cli":"^1.2.0","grunt-contrib-clean":"^1.1.0","grunt-contrib-watch":"^1.0.0","grunt-eslint":"^23.0.0","grunt-karma":"^4.0.0","grunt-mocha-test":"^0.13.3","grunt-ts":"^6.0.0-beta.19","grunt-webpack":"^4.0.2","istanbul-instrumenter-loader":"^1.0.0","jasmine-core":"^2.4.1","karma":"^6.3.2","karma-chrome-launcher":"^3.1.0","karma-firefox-launcher":"^2.1.0","karma-jasmine":"^1.1.1","karma-jasmine-ajax":"^0.1.13","karma-safari-launcher":"^1.0.0","karma-sauce-launcher":"^4.3.6","karma-sinon":"^1.0.5","karma-sourcemap-loader":"^0.3.8","karma-webpack":"^4.0.2","load-grunt-tasks":"^3.5.2","minimist":"^1.2.0","mocha":"^8.2.1","sinon":"^4.5.0","terser-webpack-plugin":"^4.2.3","typescript":"^4.0.5","url-search-params":"^0.10.0","webpack":"^4.44.2","webpack-dev-server":"^3.11.0"},"homepage":"https://axios-http.com","jsdelivr":"dist/axios.min.js","keywords":["xhr","http","ajax","promise","node"],"license":"MIT","main":"index.js","name":"axios","repository":{"type":"git","url":"git+https://github.com/axios/axios.git"},"scripts":{"build":"NODE_ENV=production grunt build","coveralls":"cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js","examples":"node ./examples/server.js","fix":"eslint --fix lib/**/*.js","postversion":"git push && git push --tags","preversion":"npm test","start":"node ./sandbox/server.js","test":"grunt test","version":"npm run build && grunt version && git add -A dist && git add CHANGELOG.md bower.json package.json"},"typings":"./index.d.ts","unpkg":"dist/axios.min.js","version":"0.21.4"}');
+module.exports = JSON.parse('{"name":"axios","version":"0.21.4","description":"Promise based HTTP client for the browser and node.js","main":"index.js","scripts":{"test":"grunt test","start":"node ./sandbox/server.js","build":"NODE_ENV=production grunt build","preversion":"npm test","version":"npm run build && grunt version && git add -A dist && git add CHANGELOG.md bower.json package.json","postversion":"git push && git push --tags","examples":"node ./examples/server.js","coveralls":"cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js","fix":"eslint --fix lib/**/*.js"},"repository":{"type":"git","url":"https://github.com/axios/axios.git"},"keywords":["xhr","http","ajax","promise","node"],"author":"Matt Zabriskie","license":"MIT","bugs":{"url":"https://github.com/axios/axios/issues"},"homepage":"https://axios-http.com","devDependencies":{"coveralls":"^3.0.0","es6-promise":"^4.2.4","grunt":"^1.3.0","grunt-banner":"^0.6.0","grunt-cli":"^1.2.0","grunt-contrib-clean":"^1.1.0","grunt-contrib-watch":"^1.0.0","grunt-eslint":"^23.0.0","grunt-karma":"^4.0.0","grunt-mocha-test":"^0.13.3","grunt-ts":"^6.0.0-beta.19","grunt-webpack":"^4.0.2","istanbul-instrumenter-loader":"^1.0.0","jasmine-core":"^2.4.1","karma":"^6.3.2","karma-chrome-launcher":"^3.1.0","karma-firefox-launcher":"^2.1.0","karma-jasmine":"^1.1.1","karma-jasmine-ajax":"^0.1.13","karma-safari-launcher":"^1.0.0","karma-sauce-launcher":"^4.3.6","karma-sinon":"^1.0.5","karma-sourcemap-loader":"^0.3.8","karma-webpack":"^4.0.2","load-grunt-tasks":"^3.5.2","minimist":"^1.2.0","mocha":"^8.2.1","sinon":"^4.5.0","terser-webpack-plugin":"^4.2.3","typescript":"^4.0.5","url-search-params":"^0.10.0","webpack":"^4.44.2","webpack-dev-server":"^3.11.0"},"browser":{"./lib/adapters/http.js":"./lib/adapters/xhr.js"},"jsdelivr":"dist/axios.min.js","unpkg":"dist/axios.min.js","typings":"./index.d.ts","dependencies":{"follow-redirects":"^1.14.0"},"bundlesize":[{"path":"./dist/axios.min.js","threshold":"5kB"}]}');
 
 /***/ })
 

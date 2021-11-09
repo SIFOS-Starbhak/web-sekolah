@@ -32,6 +32,10 @@
                 <a href="{{ route('edit.profilePerusahaan', JWTAuth::user()->id) }}" class="dropdown-item has-icon">
                     <i class="far fa-user"></i> Profile
                 </a>    
+                @elseif(Auth::guard('api')->user()->role->name === "admin"  && Auth::guard('api')->user()->spesifc_role === "admin" )
+                <a href="{{ route('edit.profileAdm', JWTAuth::user()->id) }}" class="dropdown-item has-icon">
+                    <i class="far fa-user"></i> Profile
+                </a>    
 
                 @else 
                 <a href="{{ route('edit.profileSiswa', JWTAuth::user()->id) }}" class="dropdown-item has-icon">

@@ -33,7 +33,7 @@
                 <div class="slash"></div>
                 <div class="text-muted d-inline font-weight-normal">
                     <div class="badge badge-lg badge-primary">
-                        {{ JWTAuth::user()->kelas->nama_kelas }}
+                        {{ empty(JWTAuth::user()->kelas->nama_kelas) ? "Belum ada kelas" : JWTAuth::user()->kelas->nama_kelas  }} 
                     </div>
                 </div>
             </span>
@@ -108,7 +108,7 @@
             <div class="card profile-widget">
                 <div class="profile-widget-header">
                     @if (File::exists(public_path(Auth::user()->avatar)))
-                    <img class="rounded-circle profile-widget-picture" alt="image"
+                    <img class="rounded-circle profile-widget-picture" style="height: 150px;" alt="image"
                         src="{{ asset(Auth::user()->avatar) }}">
                 @else
                     <img class="rounded-circle profile-widget-picture" alt="image"
@@ -196,6 +196,20 @@
                     <div class="card-body flex-fill">
                         <p class="card-text text-dark">Refleksi mengajar yang berfungsi untuk
                             merekap pembelajaran jarak jauh (PJJ)</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-md-4 d-flex mb-3">
+            <a href="#" class="text-decoration-none" >
+                <div class="card h-100">
+                    <div class="bg-info text-white py-5 px-4" style="background-color: rgb(0, 229, 255)">
+                        <i class="fas fa-clipboard big-icon"></i>
+                        <h3>Administrasi Guru</h3>
+                    </div>
+                    <div class="card-body flex-fill">
+                        <p class="card-text text-dark">administrasi Guru</p>
                     </div>
                 </div>
             </a>
@@ -1200,7 +1214,7 @@
             <div class="card card-info profile-widget">
                 <div class="profile-widget-header">
                     @if (File::exists(public_path(Auth::user()->avatar)))
-                    <img class="rounded-circle profile-widget-picture" alt="image"
+                    <img class="rounded-circle profile-widget-picture" style="height: 150px;" alt="image"
                         src="{{ asset(Auth::user()->avatar) }}">
                 @else
                     <img class="rounded-circle profile-widget-picture" alt="image"
@@ -2122,6 +2136,110 @@
             </div>
         </div>
     </div>
+
+
+
+
+@elseif (Route::is('dashboard.adm'))
+
+    {{-- @elseif(JWTAuth::user()->role->name == 'manager') --}}
+    <div class="row">
+        <div class="col">
+            <div class="card card-info profile-widget">
+                <div class="profile-widget-header">
+                    @if (File::exists(public_path(Auth::user()->avatar)))
+                    <img class="rounded-circle profile-widget-picture" style="height: 150px;" alt="image"
+                        src="{{ asset(Auth::user()->avatar) }}">
+                @else
+                    <img class="rounded-circle profile-widget-picture" alt="image"
+                        src="{{ asset('img/avatar/avatar-1.png') }}">
+                    @endif
+                    <div class="profile-widget-items">
+                        <div class="profile-widget-item">
+                            <div class="profile-widget-item-label">NIK</div>
+                            <div class="profile-widget-item-value">
+                                {{ JWTAuth::user()->nomor_induk }}</div>
+                        </div>
+                        <div class="profile-widget-item">
+                            <div class="profile-widget-item-label">Email</div>
+                            <div class="profile-widget-item-value">
+                                {{ JWTAuth::user()->email }}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="profile-widget-description">
+                    <div class="profile-widget-name">
+                        <span class="h3 font-weight-bold">
+                            {{ JWTAuth::user()->name }}
+                            <div class="slash"></div>
+                            <div class="text-muted d-inline font-weight-normal">
+                                <div class="badge badge-primary">
+                                    {{ JWTAuth::user()->role->display_name }}
+                                </div>
+                            </div>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>  
+     
+    <div class="row">
+        <div class="col">
+            <div class="mb-3">
+                <h1 class="section-title">WEB App Instansi SMK Taruna Bhakti
+                </h1>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 d-none mb-3" style="display: none">
+                        <a href="" class="text-decoration-none"  id="microWebPortal">
+                            <div class="card h-100">
+                                <div class=" text-white py-5 px-4" style="background-color: rgb(43, 214, 43)">
+                                    <i class="fas fa-chalkboard-teacher big-icon"></i>
+                                    <h3>Portal SMK Taruna Bhakti</h3>
+                                </div>
+                                <div class="card-body flex-fill">
+                                    <p class="card-text text-dark">Portal yang dapat digunakan untuk
+                                        pembelajaran,
+                                        pengerjaan dan pengiriman Tugas.</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-4 d-flex mb-3">
+                        <a href="" class="text-decoration-none" id="sitakols">
+                            <div class="card h-100">
+                                <div class="bg-warning text-white py-5 px-4">
+                                    <i class="fas fa-briefcase big-icon"></i>
+                                    <h3>Sitakols SMK Taruna Bhakti</h3>
+                                </div>
+                                <div class="card-body flex-fill">
+                                    <p class="card-text text-dark">Sitakols adalah aplikasi yang digunakan
+                                        untuk keperluan surat menyurat dan magang.</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-4 d-none mb-3 " >
+                        <a href="" class="text-decoration-none" id="refleksi">
+                            <div class="card h-100">
+                                <div class="bg-info text-white py-5 px-4">
+                                    <i class="fas fa-clipboard big-icon"></i>
+                                    <h3>Refleksi Mengajar
+                                        SMK Taruna Bhakti</h3>
+                                </div>
+                                <div class="card-body flex-fill">
+                                    <p class="card-text text-dark">Refleksi mengajar yang berfungsi untuk
+                                        merekap pembelajaran jarak jauh (PJJ)</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     @endif
 @endsection
 
@@ -2149,6 +2267,7 @@
 @endpush
 
 @push('js')
+    
     <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap4.min.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.2.9/js/responsive.bootstrap.min.js"></script>

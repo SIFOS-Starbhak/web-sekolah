@@ -72,6 +72,17 @@ class ProfileController extends Controller
                 'no_telpon.required' => "Contact tidak boleh kosong",
                 
             ]);
+        }elseif((Auth::user()->role->name == "admin" && Auth::user()->spesifc_role == "admin" )){
+            $request->validate([
+                "name" => 'required',
+                "email" => 'required',
+                // "no_telpon" => 'required',
+            ], [
+                'name.required' => "Nama tidak boleh kosong",
+                'email.required' => "Email tidak boleh kosong",
+                // 'no_telpon.required' => "Contact tidak boleh kosong",
+                
+            ]);
         }else {
             $request->validate([
                 "name" => 'required',
@@ -258,8 +269,14 @@ class ProfileController extends Controller
             }
         }
 
+        if (Auth::user()->role->name == "admin" && Auth::user()->spesifc_role == "admin" ) {
+            # code...
+            return redirect()->route('dashboard.adm')->with('message', 'Berhasil update Profile');
+        }else{
+            return redirect()->route('dashboard.' . Auth::user()->role->name)->with('message', 'Berhasil update Profile');
 
-        return redirect()->route('dashboard.' . Auth::user()->role->name)->with('message', 'Berhasil update Profile');
+        }
+
     }
 
     public function detail($id)

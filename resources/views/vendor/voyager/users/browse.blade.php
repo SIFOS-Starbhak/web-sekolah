@@ -118,10 +118,11 @@
                                     </tr>
                                 </thead>
                                 @php
-                                    $role = App\Models\Role::where('name','guru')->first();
+                                    $role = App\Models\Role::where('name','siswa')->first();
+                                    
                                 @endphp
                                 <tbody>
-                                    @foreach ($dataTypeContent->where('role_id',$role->id) as $data)
+                                    @foreach ($dataTypeContent->where('role_id','!=',$role_id) as $data)
                                         <tr>
                                             @if ($showCheckboxColumn)
                                                 <td>

@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Role;
 use Str;
-
+use Carbon\Carbon;
 class AuthenticatedSessionController extends Controller
 {
     public function __construct()
@@ -59,6 +59,7 @@ class AuthenticatedSessionController extends Controller
         ]);
 
         //$user = User::where(["username"=>$request->usename],['password'=> md5($request->password)]);
+        // dd(auth('api')->user());
 
         if ($validator->fails()) {
             return response()->json($validator->errors(), 422);
@@ -74,8 +75,9 @@ class AuthenticatedSessionController extends Controller
 
         $data = array('original_token' => $this->createNewToken($token));
 
-        if (auth('api')->user()->hasRole('admin')) {
-            $data['redirect'] = '/admin';
+        if (auth('api')->user()->hasRole('admin') && auth('api')->user()->spesifc_role == 'admin') {
+            $data['redirect'] = route('dashboard.adm');
+
         } else if (auth('api')->user()->hasRole('siswa')) {
             $data['redirect'] = route('dashboard.siswa');
         } else if (auth('api')->user()->hasRole('guru')) {
@@ -84,6 +86,9 @@ class AuthenticatedSessionController extends Controller
             $data['redirect'] = route('dashboard.manager');
         } else if (auth('api')->user()->hasRole('perusahaan')) {
             $data['redirect'] = route('dashboard.perusahaan');
+        }else if (auth('api')->user()->hasRole('admin')) {
+            $data['redirect'] = '/admin';
+
         } else {
             $data['redirect'] = route('dashboard');
         }
@@ -124,22 +129,25 @@ class AuthenticatedSessionController extends Controller
     {
         $data = array('user' => auth('api')->user());
         // XXX: Di Moodle user udah ada kelas sama rolenya tapi pas di matiin malah kgk ada kelas&role nya
-        if (auth('api')->user()->kelas_siswa) {
+        if (auth('api')->user()->hasRole('siswa')) {
             $data['kelas'] = auth('api')->user()->kelas;
         }
         if (auth('api')->user()->hasRole('admin')) {
-            $data['auth'] = ["username" => auth('api')->user()->nomor_induk, "password" => auth('api')->user()->password, "role" => "admin"];
+            $data['auth'] = ["username" => auth('api')->user()->nomor_induk, "password" => auth('api')->user()->password, "role" => "admin", "spesifc_role" => auth('api')->user()->spesifc_role];
             $data['role'] = 'admin';
         } else if (auth('api')->user()->hasRole('siswa')) {
-            $data['auth'] = ["username" => auth('api')->user()->nomor_induk, "password" => auth('api')->user()->password, "role" => "siswa"];
+            $data['auth'] = ["username" => auth('api')->user()->nomor_induk, "password" => auth('api')->user()->password, "role" => "siswa", "spesifc_role" => auth('api')->user()->spesifc_role];
             $data['role'] = 'siswa';
         } else if (auth('api')->user()->hasRole('guru')) {
-            $data['auth'] = ["username" => auth('api')->user()->nomor_induk, "password" => auth('api')->user()->password, "role" => "guru"];
+            $data['auth'] = ["username" => auth('api')->user()->nomor_induk, "password" => auth('api')->user()->password, "role" => "guru", "spesifc_role" => auth('api')->user()->spesifc_role];
         } else if (auth('api')->user()->hasRole('manager')) {
-            $data['auth'] = ["username" => auth('api')->user()->nomor_induk, "password" => auth('api')->user()->password, "role" => "manager"];
+            $data['auth'] = ["username" => auth('api')->user()->nomor_induk, "password" => auth('api')->user()->password, "role" => "manager" , "spesifc_role" => auth('api')->user()->spesifc_role];
         } else if (auth('api')->user()->hasRole('perusahaan')) {
-            $data['auth'] = ["username" => auth('api')->user()->email, "password" => auth('api')->user()->password, "role" => "perusahaan"];
+            $data['auth'] = ["username" => auth('api')->user()->email, "password" => auth('api')->user()->password, "role" => "perusahaan", "spesifc_role" => auth('api')->user()->spesifc_role];
+        } else if (auth('api')->user()->hasRole('admin') && auth('api')->user()->spesifc_role == 'admin') {
+            $data['auth'] = ["username" => auth('api')->user()->email, "password" => auth('api')->user()->password, "role" => "admin", "spesifc_role" => auth('api')->user()->spesifc_role];
         }
+        
 
         $token = JWT::encode($data, "1342423424324324234", 'HS256');
         return response()->json(['token' => $token], 200)->header("Access-Control-Allow-Origin", "*");
@@ -161,7 +169,23 @@ class AuthenticatedSessionController extends Controller
 
     public function userCreate(Request $request)
     {
-
+        
+        function kelas($lastname){
+            $return = Kela::where('nama_kelas',$lastname)->first();
+            if(!empty($return)){  
+                Kela::create([
+                    'nama_kelas' => $lastname,
+                    'kelas' => explode(' ',$lastname)[0],
+                    'tahun_ajaran' => Carbon::now()->Isoformat('YYYY') .'/'. Carbon::now()->addYear(1)->Isoformat('YYYY'),
+                    'status' => "Aktif"
+                ]);
+                $kelas = Kela::where('nama_kelas',$lastname)->first();
+                return $kelas->id;
+            }else{
+                return $return->id;
+            }  
+        }
+        
         function cekrole($role)
         {
             switch ($role) {
@@ -177,6 +201,10 @@ class AuthenticatedSessionController extends Controller
                 case 'editingteacher':
                     $roles = Role::where("name", "guru")->first();
                     return $roles->id;
+                default: 
+                $roles = Role::where("name", "siswa")->first();
+                return $roles->id;
+                break;
             }
         }
 
@@ -194,8 +222,12 @@ class AuthenticatedSessionController extends Controller
                 case 'editingteacher':
                     return "guru";
                     break;
+                default: 
+                    return "siswa";
+                break;
             }
         }
+
         User::create([
             "name" => $request->firstname,
             "email" => $request->email,
@@ -203,6 +235,7 @@ class AuthenticatedSessionController extends Controller
             "nomor_induk" => $request->username,
             "role_id" => cekrole($request->role),
             "spesifc_role" => sitakols_role($request->role),
+            'kelas_siswa' => kelas($request->lastname),
         ]);
         return response()->json(["success" => "Succesfully"], 201);
     }
