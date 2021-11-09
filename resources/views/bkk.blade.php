@@ -63,8 +63,8 @@
                                                 style="width:200px;height:200px; object-fit: cover;"/>
                                             @endif
                                             <h3 style="margin-top:10%;">{{ $user->name }}</h3>
-                                            <h6 style="margin-top:10%;">{{ $user->user->skill }}</h6>
-                                            <h6 style="margin-top:10%;"><a href="/{{ 'storage/' . $user->user->cv }}">CV -
+                                            {{-- <h6 style="margin-top:10%;">{{ $user->user->skill }}</h6> --}}
+                                            <h6 style="margin-top:10%;"><a href="">CV -
                                                     {{ $user->name }}</a></h6>
                                         </div>
                                     </a>

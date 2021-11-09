@@ -16,13 +16,8 @@ class DetailUser extends Model
         'cv',
         'no_telpon',
     ];
-    // public function user()
-    // {
-    //     return $this->belongsTo(User::class,'id');
-    // }
-
-    public function users()
+    public function user()
     {
-        return $this->hasMany(User::class,'id', 'detail_user');
+        return $this->belongsTo(User::class,'id');
     }
 }
