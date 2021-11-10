@@ -86,12 +86,7 @@ Route::get('/artikel', function () {
     $article = App\Models\Post::where('status', 'PUBLISHED')->get();
     $backgrounds = App\Models\Background::all();
     $navbar = App\Models\Navbar::all()->where('status', 'Active');
-<<<<<<< HEAD
-
-    return view('artikel', compact('navbar','settings', 'article', 'backgrounds'));
-=======
     return view('artikel', compact('settings', 'article', 'backgrounds', 'navbar'));
->>>>>>> b30918d04425f0f8dd1ecd4e2ae71e046766a0a4
 });
 Route::get('/author/{user}', 'WebController@author');
 Route::get('/posted/{posted}', 'WebController@posted');
