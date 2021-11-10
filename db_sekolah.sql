@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 23, 2021 at 06:14 AM
+-- Generation Time: Nov 09, 2021 at 03:58 PM
 -- Server version: 10.4.21-MariaDB
--- PHP Version: 8.0.10
+-- PHP Version: 8.0.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -87,7 +87,7 @@ CREATE TABLE `backgrounds` (
 --
 
 INSERT INTO `backgrounds` (`id`, `image`, `heading`, `subheading`, `created_at`, `updated_at`) VALUES
-(1, 'backgrounds/October2021/wUC9w6DhsONLJNFwIxib.png', 'SMK Pusat Keunggulan', 'Our Quality Ask Be DIfferent', '2021-10-18 07:13:00', '2021-10-18 07:13:00'),
+(1, 'backgrounds\\October2021\\4R8xylilxvH8nslg6Fv7.jpg', 'SMK Taruna Bhakti', 'Our Quality Ask Be DIfferent', '2021-10-18 07:13:00', '2021-10-28 01:39:36'),
 (2, 'backgrounds/October2021/Q8qhZwqARLNYr4m4HtuM.jpg', 'SMK Pusat Keunggulan', 'Our Quality Ask Be DIfferent', '2021-10-18 07:13:00', '2021-10-18 07:13:48'),
 (3, 'backgrounds/October2021/BGuTRG5AB0w9TeVtDIee.jpg', 'SMK Pusat Keunggulan', 'Our Quality Ask Be DIfferent', '2021-10-18 07:13:27', '2021-10-18 07:13:27');
 
@@ -160,6 +160,36 @@ INSERT INTO `contents` (`id`, `title`, `content`, `created_at`, `updated_at`, `s
 (3, 'Keterangan Jurusan', '<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi neque quaerat dolorem? Libero, fuga? Aspernatur voluptate aliquid beatae maiores, doloribus explicabo itaque enim nihil molestias? Eligendi illum culpa officia. Explicabo facilis reiciendis possimus dolore laudantium veniam accusantium esse reprehenderit fuga ea nesciunt accusamus similique consequuntur in magnam harum, doloribus vitae dicta obcaecati exercitationem. Nam inventore, doloribus voluptas aspernatur omnis quae eos dolores sint aut asperiores consectetur velit corporis voluptatem corrupti natus quibusdam vero dignissimos hic pariatur praesentium facere non dolorum optio laudantium! Culpa blanditiis sit perferendis quibusdam maxime inventore! Quibusdam cumque fuga alias iusto magnam! Quibusdam repudiandae doloremque aliquam minus.</p>', '2021-10-21 06:41:54', '2021-10-21 06:45:50', '48', 'keterangan-jurusan'),
 (5, 'Foto Guru', NULL, '2021-10-21 06:46:14', '2021-10-21 06:46:14', '48', 'foto-guru'),
 (6, 'Rekayasa Perangkat lunak', '<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Unde cum officiis maiores illum non nemo reprehenderit sunt, ex vel modi qui, deserunt eaque nulla recusandae expedita, vitae sit. A, ducimus. Nobis ad temporibus illo nulla earum veniam quisquam molestias praesentium voluptatem sit! Veniam, cupiditate maxime mollitia voluptatum autem dolorum odit quam ad molestiae, alias ratione deserunt consectetur ut quidem voluptates? Dicta neque eaque quae ullam, nisi, earum, saepe quibusdam repudiandae atque rem delectus. Dicta, ad nam. Ex quisquam temporibus animi earum velit voluptatem, libero vero eaque, doloremque dolores quod perferendis? Quidem labore magnam repudiandae saepe distinctio commodi nobis earum sint error, odit numquam dolorem vel tempore ullam quod quia qui ipsam alias deserunt veniam laudantium laboriosam! Reprehenderit nihil esse nobis.</p>', '2021-10-21 08:43:53', '2021-10-21 08:43:53', '50', 'rekayasa-perangkat-lunak');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `content_ekskuls`
+--
+
+CREATE TABLE `content_ekskuls` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `body` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `ekskul` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `content_jurusans`
+--
+
+CREATE TABLE `content_jurusans` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `body` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `jurusan` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -341,7 +371,7 @@ INSERT INTO `data_rows` (`id`, `data_type_id`, `field`, `type`, `display_name`, 
 (126, 17, 'name', 'text', 'Name', 0, 1, 1, 1, 1, 1, '{}', 2),
 (127, 20, 'id', 'text', 'Id', 1, 0, 0, 0, 0, 0, '{}', 1),
 (128, 20, 'jurusan', 'text', 'Jurusan', 0, 1, 1, 1, 1, 1, '{}', 2),
-(129, 20, 'created_at', 'timestamp', 'Created At', 0, 1, 1, 1, 0, 1, '{}', 3),
+(129, 20, 'created_at', 'timestamp', 'Created At', 0, 0, 0, 0, 0, 0, '{}', 3),
 (130, 20, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 4),
 (181, 16, 'alumni_belongsto_jurusan_relationship', 'relationship', 'jurusans', 0, 0, 1, 1, 1, 1, '{\"model\":\"App\\\\Models\\\\Jurusan\",\"table\":\"jurusans\",\"type\":\"belongsTo\",\"column\":\"jurusan\",\"key\":\"jurusan\",\"label\":\"jurusan\",\"pivot_table\":\"alumnis\",\"pivot\":\"0\",\"taggable\":\"0\"}', 10),
 (182, 16, 'categories_alumnis', 'text', 'Categories Alumnis', 0, 1, 1, 1, 1, 1, '{\"options\":{\"Bekerja\":\"Bekerja\",\"Kuliah\":\"Kuliah\",\"Wirausaha\":\"Wirausaha\"}}', 8),
@@ -414,7 +444,6 @@ INSERT INTO `data_rows` (`id`, `data_type_id`, `field`, `type`, `display_name`, 
 (254, 44, 'created_at', 'timestamp', 'Created At', 0, 1, 1, 1, 0, 1, '{}', 5),
 (255, 44, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 6),
 (256, 44, 'deleted_at', 'timestamp', 'Deleted At', 0, 1, 1, 1, 1, 1, '{}', 7),
-(257, 44, 'kategori_id', 'text', 'Kategori Id', 0, 1, 1, 1, 1, 1, '{}', 8),
 (258, 45, 'id', 'text', 'Id', 1, 0, 0, 0, 0, 0, '{}', 1),
 (259, 45, 'nama_kategori', 'text', 'Nama Kategori', 0, 1, 1, 1, 1, 1, '{}', 2),
 (260, 45, 'foto', 'image', 'Foto', 0, 1, 1, 1, 1, 1, '{}', 3),
@@ -423,7 +452,7 @@ INSERT INTO `data_rows` (`id`, `data_type_id`, `field`, `type`, `display_name`, 
 (263, 45, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 6),
 (264, 45, 'deleted_at', 'timestamp', 'Deleted At', 0, 1, 1, 1, 1, 1, '{}', 7),
 (265, 45, 'slug', 'text', 'Slug', 0, 1, 1, 1, 1, 1, '{}', 8),
-(266, 44, 'gallery_belongsto_kategori_relationship', 'relationship', 'kategoris', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\Models\\\\Kategori\",\"table\":\"kategoris\",\"type\":\"belongsTo\",\"column\":\"kategori_guru\",\"key\":\"id\",\"label\":\"nama_kategori\",\"pivot_table\":\"alumnis\",\"pivot\":\"0\",\"taggable\":\"0\"}', 9),
+(266, 44, 'gallery_belongsto_kategori_relationship', 'relationship', 'Category', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\Models\\\\Kategori\",\"table\":\"kategoris\",\"type\":\"belongsTo\",\"column\":\"kategori_guru\",\"key\":\"id\",\"label\":\"nama_kategori\",\"pivot_table\":\"alumnis\",\"pivot\":\"0\",\"taggable\":\"0\"}', 9),
 (267, 1, 'user_belongsto_kela_relationship', 'relationship', 'kelas', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\Models\\\\Kela\",\"table\":\"kelas\",\"type\":\"belongsTo\",\"column\":\"kelas_siswa\",\"key\":\"id\",\"label\":\"nama_kelas\",\"pivot_table\":\"alumnis\",\"pivot\":\"0\",\"taggable\":\"0\"}', 14),
 (268, 47, 'id', 'text', 'Id', 1, 0, 0, 0, 0, 0, '{}', 1),
 (269, 47, 'image', 'image', 'Image', 0, 1, 1, 1, 1, 1, '{}', 2),
@@ -440,14 +469,64 @@ INSERT INTO `data_rows` (`id`, `data_type_id`, `field`, `type`, `display_name`, 
 (280, 48, 'bio', 'text', 'Bio', 0, 1, 1, 1, 1, 1, '{}', 2),
 (281, 48, 'no_telpon', 'text', 'No Telpon', 0, 1, 1, 1, 1, 1, '{}', 3),
 (282, 48, 'skill', 'text', 'Skill', 0, 1, 1, 1, 1, 1, '{}', 4),
-(283, 48, 'cv', 'text', 'Cv', 0, 1, 1, 1, 1, 1, '{}', 5),
+(283, 48, 'cv', 'file', 'Cv', 0, 1, 1, 1, 1, 1, '{}', 5),
 (284, 48, 'created_at', 'timestamp', 'Created At', 0, 1, 1, 1, 0, 1, '{}', 6),
 (285, 48, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 7),
 (286, 49, 'id', 'hidden', 'Id', 1, 0, 0, 0, 0, 0, '{}', 1),
 (287, 49, 'nama_skill', 'text', 'Nama Skill', 0, 1, 1, 1, 1, 1, '{}', 2),
 (288, 49, 'created_at', 'timestamp', 'Created At', 0, 1, 1, 1, 0, 1, '{}', 3),
 (289, 49, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 4),
-(290, 1, 'user_belongsto_detail_user_relationship', 'relationship', 'detail_users', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\Models\\\\DetailUser\",\"table\":\"detail_users\",\"type\":\"belongsTo\",\"column\":\"detail_user\",\"key\":\"id\",\"label\":\"id\",\"pivot_table\":\"alumnis\",\"pivot\":\"0\",\"taggable\":null}', 17);
+(290, 1, 'user_belongsto_detail_user_relationship', 'relationship', 'detail_users', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\Models\\\\DetailUser\",\"table\":\"detail_users\",\"type\":\"belongsTo\",\"column\":\"detail_user\",\"key\":\"id\",\"label\":\"id\",\"pivot_table\":\"alumnis\",\"pivot\":\"0\",\"taggable\":null}', 17),
+(291, 20, 'image', 'image', 'Image', 0, 1, 1, 1, 1, 1, '{\"resize\":{\"width\":\"1000\",\"height\":null},\"quality\":\"70%\",\"upsize\":true}', 6),
+(292, 20, 'slug', 'text', 'Slug', 0, 1, 1, 1, 1, 1, '{\"slugify\":{\"origin\":\"jurusan\"},\"validation\":{\"rule\":\"unique:jurusans,slug\"}}', 7),
+(293, 50, 'id', 'text', 'Id', 1, 0, 0, 0, 0, 0, '{}', 1),
+(294, 50, 'title', 'text', 'Title', 0, 1, 1, 1, 1, 1, '{}', 2),
+(295, 50, 'body', 'rich_text_box', 'Body', 0, 1, 1, 1, 1, 1, '{}', 4),
+(297, 50, 'created_at', 'timestamp', 'Created At', 0, 1, 1, 1, 0, 1, '{}', 7),
+(298, 50, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 8),
+(299, 51, 'id', 'text', 'Id', 1, 0, 0, 0, 0, 0, '{}', 1),
+(300, 51, 'title', 'text', 'Title', 0, 1, 1, 1, 1, 1, '{}', 2),
+(301, 51, 'body', 'rich_text_box', 'Body', 0, 1, 1, 1, 1, 1, '{}', 4),
+(302, 51, 'created_at', 'timestamp', 'Created At', 0, 0, 0, 0, 0, 0, '{}', 7),
+(303, 51, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 8),
+(304, 51, 'jurusan', 'text', 'Jurusan', 0, 1, 1, 1, 1, 1, '{}', 5),
+(305, 52, 'id', 'text', 'Id', 1, 0, 0, 0, 0, 0, '{}', 1),
+(306, 52, 'image', 'image', 'Image', 0, 1, 1, 1, 1, 1, '{}', 2),
+(308, 52, 'created_at', 'timestamp', 'Created At', 0, 1, 1, 1, 0, 1, '{}', 4),
+(309, 52, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 5),
+(310, 53, 'id', 'text', 'Id', 1, 0, 0, 0, 0, 0, '{}', 1),
+(311, 53, 'image', 'image', 'Image', 0, 1, 1, 1, 1, 1, '{}', 2),
+(312, 53, 'jurusan', 'text', 'Jurusan', 0, 1, 1, 1, 1, 1, '{}', 3),
+(313, 53, 'created_at', 'timestamp', 'Created At', 0, 1, 1, 1, 0, 1, '{}', 5),
+(314, 53, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 6),
+(315, 54, 'id', 'text', 'Id', 1, 0, 0, 0, 0, 0, '{}', 1),
+(316, 54, 'nama_perusahaan', 'text', 'Nama Perusahaan', 0, 1, 1, 1, 1, 1, '{}', 2),
+(317, 54, 'title', 'text', 'Title', 0, 1, 1, 1, 1, 1, '{}', 3),
+(318, 54, 'body', 'rich_text_box', 'Body', 0, 1, 1, 1, 1, 1, '{}', 4),
+(319, 54, 'image', 'image', 'Image', 0, 1, 1, 1, 1, 1, '{}', 5),
+(320, 54, 'slug', 'text', 'Slug', 0, 1, 1, 1, 1, 1, '{\"slugify\":{\"origin\":\"title\"},\"validation\":{\"rule\":\"unique:recruitments,slug\"}}', 6),
+(321, 54, 'created_at', 'timestamp', 'Created At', 0, 1, 1, 1, 0, 1, '{}', 7),
+(322, 54, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 8),
+(323, 55, 'id', 'text', 'Id', 1, 0, 0, 0, 0, 0, '{}', 1),
+(324, 55, 'name', 'text', 'Name', 0, 1, 1, 1, 1, 1, '{}', 2),
+(325, 55, 'slug', 'text', 'Slug', 0, 1, 1, 1, 1, 1, '{\"slugify\":{\"origin\":\"name\"},\"validation\":{\"rule\":\"unique:tab_ekskuls,slug\"}}', 3),
+(326, 55, 'created_at', 'timestamp', 'Created At', 0, 1, 1, 1, 0, 1, '{}', 4),
+(327, 55, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 5),
+(328, 56, 'id', 'text', 'Id', 1, 0, 0, 0, 0, 0, '{}', 1),
+(329, 56, 'name', 'text', 'Name', 0, 1, 1, 1, 1, 1, '{}', 2),
+(330, 56, 'slug', 'text', 'Slug', 0, 1, 1, 1, 1, 1, '{\"slugify\":{\"origin\":\"title\"},\"validation\":{\"rule\":\"unique:tab_jurusans,slug\"}}', 3),
+(331, 56, 'created_at', 'timestamp', 'Created At', 0, 1, 1, 1, 0, 1, '{}', 4),
+(332, 56, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 5),
+(333, 50, 'content_ekskul_belongsto_jurusan_relationship', 'relationship', 'Ekskul', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\Models\\\\Ekskul\",\"table\":\"ekskuls\",\"type\":\"belongsTo\",\"column\":\"id\",\"key\":\"id\",\"label\":\"title\",\"pivot_table\":\"alumnis\",\"pivot\":\"0\",\"taggable\":\"0\"}', 6),
+(334, 50, 'content_ekskul_belongsto_tab_jurusan_relationship', 'relationship', 'Title', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\Models\\\\TabEkskul\",\"table\":\"tab_ekskuls\",\"type\":\"belongsTo\",\"column\":\"title\",\"key\":\"id\",\"label\":\"name\",\"pivot_table\":\"alumnis\",\"pivot\":\"0\",\"taggable\":\"0\"}', 3),
+(335, 50, 'ekskul', 'text', 'Ekskul', 0, 1, 1, 1, 1, 1, '{}', 5),
+(336, 51, 'content_jurusan_belongsto_jurusan_relationship', 'relationship', 'Jurusan', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\Models\\\\Jurusan\",\"table\":\"jurusans\",\"type\":\"belongsTo\",\"column\":\"jurusan\",\"key\":\"id\",\"label\":\"jurusan\",\"pivot_table\":\"alumnis\",\"pivot\":\"0\",\"taggable\":\"0\"}', 6),
+(337, 51, 'content_jurusan_belongsto_tab_jurusan_relationship', 'relationship', 'Title', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\Models\\\\TabJurusan\",\"table\":\"tab_jurusans\",\"type\":\"belongsTo\",\"column\":\"title\",\"key\":\"id\",\"label\":\"name\",\"pivot_table\":\"alumnis\",\"pivot\":\"0\",\"taggable\":\"0\"}', 3),
+(338, 52, 'gallery_ekskul_belongsto_ekskul_relationship', 'relationship', 'ekskuls', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\Models\\\\Ekskul\",\"table\":\"ekskuls\",\"type\":\"belongsTo\",\"column\":\"ekskul\",\"key\":\"id\",\"label\":\"title\",\"pivot_table\":\"alumnis\",\"pivot\":\"0\",\"taggable\":\"0\"}', 6),
+(339, 52, 'ekskul', 'text', 'Ekskul', 0, 1, 1, 1, 1, 1, '{}', 3),
+(340, 53, 'gallery_jurusan_belongsto_jurusan_relationship', 'relationship', 'Jurusan', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\Models\\\\Jurusan\",\"table\":\"jurusans\",\"type\":\"belongsTo\",\"column\":\"jurusan\",\"key\":\"id\",\"label\":\"jurusan\",\"pivot_table\":\"alumnis\",\"pivot\":\"0\",\"taggable\":\"0\"}', 4),
+(341, 44, 'gallery_belongsto_jurusan_relationship', 'relationship', 'jurusan', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\Models\\\\Jurusan\",\"table\":\"jurusans\",\"type\":\"belongsTo\",\"column\":\"jurusan\",\"key\":\"id\",\"label\":\"jurusan\",\"pivot_table\":\"alumnis\",\"pivot\":\"0\",\"taggable\":\"0\"}', 10),
+(342, 44, 'jurusan', 'text', 'Jurusan', 0, 1, 1, 1, 1, 1, '{}', 8);
 
 -- --------------------------------------------------------
 
@@ -491,7 +570,7 @@ INSERT INTO `data_types` (`id`, `name`, `slug`, `display_name_singular`, `displa
 (16, 'alumnis', 'alumnis', 'Alumni', 'Alumnis', NULL, 'App\\Models\\Alumni', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2021-09-29 21:41:44', '2021-10-14 13:06:02'),
 (17, 'categories_alumnis', 'categories-alumnis', 'Categories Alumni', 'Categories Alumnis', NULL, 'App\\Models\\CategoriesAlumni', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2021-09-29 21:51:04', '2021-09-29 23:51:34'),
 (19, 'partners', 'partners', 'Partner', 'Partners', NULL, 'App\\Models\\Partner', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2021-09-29 21:52:12', '2021-10-13 05:13:25'),
-(20, 'jurusans', 'jurusans', 'Jurusan', 'Jurusans', NULL, 'App\\Models\\Jurusan', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2021-09-29 23:52:50', '2021-10-02 07:37:34'),
+(20, 'jurusans', 'jurusans', 'Jurusan', 'Jurusans', NULL, 'App\\Models\\Jurusan', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2021-09-29 23:52:50', '2021-10-28 01:30:49'),
 (30, 'content_sarpras', 'content-sarpras', 'Content Sarpra', 'Content Sarpras', NULL, 'App\\Models\\ContentSarpra', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2021-10-06 14:30:52', '2021-10-17 08:34:43'),
 (31, 'gallery_sarpras', 'gallery-sarpras', 'Gallery Sarpra', 'Gallery Sarpras', NULL, 'App\\Models\\GallerySarpra', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2021-10-06 14:35:52', '2021-10-17 02:53:32'),
 (32, 'mapels', 'mapels', 'Mapel', 'Mapels', NULL, 'App\\Models\\Mapel', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null}', '2021-10-07 02:56:07', '2021-10-07 02:56:07'),
@@ -501,11 +580,18 @@ INSERT INTO `data_types` (`id`, `name`, `slug`, `display_name_singular`, `displa
 (38, 'contents', 'contents', 'Content', 'Contents', NULL, 'App\\Models\\Content', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2021-10-17 09:10:31', '2021-10-21 06:45:28'),
 (39, 'backgrounds', 'backgrounds', 'Background', 'Backgrounds', NULL, 'App\\Models\\Background', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null}', '2021-10-18 07:11:15', '2021-10-18 07:11:15'),
 (42, 'guru_kejuruans', 'guru-kejuruans', 'Guru Kejuruan', 'Guru Kejuruans', '&#xe066;', 'App\\Models\\GuruKejuruan', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2021-10-21 07:08:03', '2021-10-21 07:11:00'),
-(44, 'galleries', 'galleries', 'Gallery', 'Galleries', NULL, 'App\\Models\\Gallery', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2021-10-21 07:12:49', '2021-10-21 07:14:21'),
+(44, 'galleries', 'galleries', 'Gallery', 'Galleries', NULL, 'App\\Models\\Gallery', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2021-10-21 07:12:49', '2021-10-28 00:56:56'),
 (45, 'kategoris', 'kategoris', 'Kategori', 'Kategoris', NULL, 'App\\Models\\Kategori', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null}', '2021-10-21 07:13:41', '2021-10-21 07:13:41'),
 (47, 'ekskuls', 'ekskuls', 'Ekskul', 'Ekskuls', NULL, 'App\\Models\\Ekskul', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null}', '2021-10-21 08:57:59', '2021-10-21 08:57:59'),
-(48, 'detail_users', 'detail-users', 'Detail User', 'Detail Users', NULL, 'App\\Models\\DetailUser', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null}', '2021-10-23 04:09:48', '2021-10-23 04:09:48'),
-(49, 'skills', 'skills', 'Skill', 'Skills', NULL, 'App\\Models\\Skill', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null}', '2021-10-23 04:10:19', '2021-10-23 04:10:19');
+(48, 'detail_users', 'detail-users', 'Detail User', 'Detail Users', NULL, 'App\\Models\\DetailUser', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2021-10-23 04:09:48', '2021-10-28 03:15:09'),
+(49, 'skills', 'skills', 'Skill', 'Skills', NULL, 'App\\Models\\Skill', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null}', '2021-10-23 04:10:19', '2021-10-23 04:10:19'),
+(50, 'content_ekskuls', 'content-ekskuls', 'Content Ekskul', 'Content Ekskuls', NULL, 'App\\Models\\ContentEkskul', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2021-10-27 14:05:01', '2021-10-28 00:52:10'),
+(51, 'content_jurusans', 'content-jurusans', 'Content Jurusan', 'Content Jurusans', NULL, 'App\\Models\\ContentJurusan', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2021-10-27 14:06:55', '2021-10-28 00:50:46'),
+(52, 'gallery_ekskuls', 'gallery-ekskuls', 'Gallery Ekskul', 'Gallery Ekskuls', NULL, 'App\\Models\\GalleryEkskul', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2021-10-27 14:07:28', '2021-10-28 00:54:15'),
+(53, 'gallery_jurusans', 'gallery-jurusans', 'Gallery Jurusan', 'Gallery Jurusans', NULL, 'App\\Models\\GalleryJurusan', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2021-10-27 14:07:55', '2021-10-28 00:55:24'),
+(54, 'recruitments', 'recruitments', 'Recruitment', 'Recruitments', NULL, 'App\\Models\\Recruitment', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2021-10-27 14:08:44', '2021-10-27 14:10:00'),
+(55, 'tab_ekskuls', 'tab-ekskuls', 'Tab Ekskul', 'Tab Ekskuls', NULL, 'App\\Models\\TabEkskul', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null}', '2021-10-27 14:09:29', '2021-10-27 14:09:29'),
+(56, 'tab_jurusans', 'tab-jurusans', 'Tab Jurusan', 'Tab Jurusans', NULL, 'App\\Models\\TabJurusan', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null}', '2021-10-27 14:11:12', '2021-10-27 14:11:12');
 
 -- --------------------------------------------------------
 
@@ -522,6 +608,13 @@ CREATE TABLE `detail_users` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `detail_users`
+--
+
+INSERT INTO `detail_users` (`id`, `bio`, `no_telpon`, `skill`, `cv`, `created_at`, `updated_at`) VALUES
+(1, NULL, NULL, NULL, 'detail-users/October2021/0rLBJX9BNbbGpLUELGCT.pdf', '2021-10-28 03:16:00', '2021-10-28 04:03:00');
 
 -- --------------------------------------------------------
 
@@ -584,14 +677,14 @@ CREATE TABLE `galleries` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL,
-  `kategori_id` bigint(20) UNSIGNED DEFAULT NULL
+  `jurusan` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `galleries`
 --
 
-INSERT INTO `galleries` (`id`, `nama_guru`, `foto`, `kategori_guru`, `created_at`, `updated_at`, `deleted_at`, `kategori_id`) VALUES
+INSERT INTO `galleries` (`id`, `nama_guru`, `foto`, `kategori_guru`, `created_at`, `updated_at`, `deleted_at`, `jurusan`) VALUES
 (1, 'Dwi Sustiawan, S,Pd', 'galleries\\October2021\\tRjuTMl5QJClLWHL7LQO.jpg', '5', '2021-10-02 04:41:54', '2021-10-02 06:14:10', NULL, NULL),
 (2, 'Edena Dharma Putri, SE', 'galleries\\October2021\\oNWzOLkv1y2xOjhIlDZH.jpg', '2', '2021-10-02 04:51:59', '2021-10-04 06:39:54', NULL, NULL),
 (3, 'Abdul Fatah, SE', 'galleries\\October2021\\bLgBkJFlPNwnXdJTGxqQ.jpg', '5', '2021-10-02 04:54:28', '2021-10-04 06:40:17', NULL, NULL),
@@ -655,6 +748,34 @@ INSERT INTO `galleries` (`id`, `nama_guru`, `foto`, `kategori_guru`, `created_at
 (69, 'Tety Suryani', 'galleries\\October2021\\XeshdJVGYSjGRZZ7nuYs.jpg', '5', '2021-10-04 06:13:45', '2021-10-04 06:13:45', NULL, NULL),
 (70, 'Tuahta Hasiholan, S.Kom', 'galleries\\October2021\\lpe7XxWPqlwsZy6VpAbL.jpg', '4', '2021-10-04 06:15:21', '2021-10-04 06:15:21', NULL, NULL),
 (71, 'Verra Rousmawati, M. Sc', 'galleries\\October2021\\ggXN1Pj2nqCSytJ4v1h1.jpg', '1', '2021-10-04 06:16:41', '2021-10-04 06:17:02', NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `gallery_ekskuls`
+--
+
+CREATE TABLE `gallery_ekskuls` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `ekskul` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `gallery_jurusans`
+--
+
+CREATE TABLE `gallery_jurusans` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `jurusan` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -851,19 +972,21 @@ CREATE TABLE `jurusans` (
   `jurusan` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  `singkatan` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL
+  `singkatan` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `slug` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `jurusans`
 --
 
-INSERT INTO `jurusans` (`id`, `jurusan`, `created_at`, `updated_at`, `singkatan`) VALUES
-(1, 'Teknik Komputer Jaringan', '2021-09-29 23:55:00', '2021-10-02 04:31:05', 'TKJ'),
-(2, 'Multimedia', '2021-09-29 23:55:00', '2021-10-02 04:30:54', 'MM'),
-(3, 'Rekayasa Perangkat Lunak', '2021-09-29 23:55:00', '2021-10-02 04:30:41', 'RPL'),
-(4, 'Broadcast', '2021-09-29 23:58:00', '2021-10-02 04:30:23', 'BC'),
-(5, 'Teknik Elektronik Industri', '2021-09-29 23:58:00', '2021-10-02 04:30:04', 'TEI');
+INSERT INTO `jurusans` (`id`, `jurusan`, `created_at`, `updated_at`, `singkatan`, `image`, `slug`) VALUES
+(1, 'Teknik Komputer Jaringan', '2021-09-29 23:55:00', '2021-10-28 01:06:47', 'TKJ', 'jurusans\\October2021\\GMimuDarkIwAsZ2HtQA0.png', 'teknik-komputer-jaringan'),
+(2, 'Multimedia', '2021-09-29 23:55:00', '2021-10-28 01:31:33', 'MM', 'jurusans\\October2021\\iId3OKxvkEbMdbcwYAWv.png', 'multimedia'),
+(3, 'Rekayasa Perangkat Lunak', '2021-09-29 23:55:00', '2021-10-28 01:09:27', 'RPL', 'jurusans\\October2021\\7YANPgf5vRXBqgsxWBip.png', 'rekayasa-perangkat-lunak'),
+(4, 'Broadcast', '2021-09-29 23:58:00', '2021-10-28 01:04:57', 'BC', 'jurusans\\October2021\\2lCtxQswgbLeLHCWK9q2.png', 'broadcast'),
+(5, 'Teknik Elektronik Industri', '2021-09-29 23:58:00', '2021-10-28 01:06:06', 'TEI', 'jurusans\\October2021\\UEM2ozlSVxCiVkUxol78.png', 'teknik-elektronik-industri');
 
 -- --------------------------------------------------------
 
@@ -1118,7 +1241,14 @@ INSERT INTO `menu_items` (`id`, `menu_id`, `title`, `url`, `target`, `icon_class
 (43, 1, 'Kategoris', '', '_self', NULL, NULL, NULL, 25, '2021-10-21 07:13:41', '2021-10-21 07:13:41', 'voyager.kategoris.index', NULL),
 (44, 1, 'Ekskuls', '', '_self', NULL, NULL, NULL, 26, '2021-10-21 08:58:00', '2021-10-21 08:58:00', 'voyager.ekskuls.index', NULL),
 (45, 1, 'Detail Users', '', '_self', NULL, NULL, NULL, 27, '2021-10-23 04:09:48', '2021-10-23 04:09:48', 'voyager.detail-users.index', NULL),
-(46, 1, 'Skills', '', '_self', NULL, NULL, NULL, 28, '2021-10-23 04:10:19', '2021-10-23 04:10:19', 'voyager.skills.index', NULL);
+(46, 1, 'Skills', '', '_self', NULL, NULL, NULL, 28, '2021-10-23 04:10:19', '2021-10-23 04:10:19', 'voyager.skills.index', NULL),
+(47, 1, 'Content Ekskuls', '', '_self', NULL, NULL, NULL, 29, '2021-10-27 14:05:04', '2021-10-27 14:05:04', 'voyager.content-ekskuls.index', NULL),
+(48, 1, 'Content Jurusans', '', '_self', NULL, NULL, NULL, 30, '2021-10-27 14:06:56', '2021-10-27 14:06:56', 'voyager.content-jurusans.index', NULL),
+(49, 1, 'Gallery Ekskuls', '', '_self', NULL, NULL, NULL, 31, '2021-10-27 14:07:28', '2021-10-27 14:07:28', 'voyager.gallery-ekskuls.index', NULL),
+(50, 1, 'Gallery Jurusans', '', '_self', NULL, NULL, NULL, 32, '2021-10-27 14:07:56', '2021-10-27 14:07:56', 'voyager.gallery-jurusans.index', NULL),
+(51, 1, 'Recruitments', '', '_self', NULL, NULL, NULL, 33, '2021-10-27 14:08:45', '2021-10-27 14:08:45', 'voyager.recruitments.index', NULL),
+(52, 1, 'Tab Ekskuls', '', '_self', NULL, NULL, NULL, 34, '2021-10-27 14:09:30', '2021-10-27 14:09:30', 'voyager.tab-ekskuls.index', NULL),
+(53, 1, 'Tab Jurusans', '', '_self', NULL, NULL, NULL, 35, '2021-10-27 14:11:13', '2021-10-27 14:11:13', 'voyager.tab-jurusans.index', NULL);
 
 -- --------------------------------------------------------
 
@@ -1244,14 +1374,10 @@ INSERT INTO `pages` (`id`, `author_id`, `title`, `excerpt`, `body`, `image`, `sl
 (42, 1, 'Bimbingan Konseling', NULL, NULL, 'pages/October2021/3wAIRX6Eb22eWcK63Luo.jpg', 'bimbingan-konseling', NULL, NULL, 'ACTIVE', '2021-10-17 07:13:11', '2021-10-17 07:13:33', 4),
 (43, 1, 'Ekstrakurikuler', NULL, NULL, 'pages/October2021/Bxf8ULlbOHc5NXM532gt.jpg', 'ekstrakurikuler', NULL, NULL, 'ACTIVE', '2021-10-17 07:14:21', '2021-10-17 07:14:21', 4),
 (44, 1, 'Open Recruitment', NULL, NULL, 'pages/October2021/HXlnBNqDnLyIfxskufGZ.jpg', 'open-recruitment', NULL, NULL, 'ACTIVE', '2021-10-17 07:15:13', '2021-10-17 07:15:13', 5),
-(45, 1, 'Data Lulusan SMK Taruna Bhakti', NULL, NULL, 'pages/October2021/OHY6s4U7cPMX5OO5gT4o.jpg', 'data-lulusan-smk-taruna-bhakti', NULL, NULL, 'ACTIVE', '2021-10-17 07:15:49', '2021-10-17 07:15:49', 5),
+(45, 1, 'Data Lulusan SMK Taruna Bhakti', NULL, NULL, 'pages/October2021/OHY6s4U7cPMX5OO5gT4o.jpg', 'data-siswa-starbhak', NULL, NULL, 'ACTIVE', '2021-10-17 07:15:49', '2021-10-30 13:10:10', 5),
 (46, 1, 'Image', NULL, NULL, 'pages/October2021/nvvieG1eXz1wWu70LCgx.jpg', 'image', NULL, NULL, 'ACTIVE', '2021-10-17 07:16:45', '2021-10-17 07:16:45', 10),
 (47, 1, 'Video', NULL, NULL, 'pages/October2021/gelmSD1zy7kstltz1FzG.jpg', 'video', NULL, NULL, 'ACTIVE', '2021-10-17 07:17:15', '2021-10-17 07:17:15', 10),
-(48, 1, 'Teknik Komputer dan Jaringan', NULL, NULL, 'pages/October2021/c2vxHB7gUPfEN8IdEJpe.png', 'teknik-komputer-dan-jaringan', NULL, NULL, 'ACTIVE', '2021-10-21 06:06:48', '2021-10-21 06:06:48', 6),
-(50, 1, 'Rekayasa Perangkat Lunak', NULL, NULL, 'pages/October2021/ramRyetVsrnrvnM0MTS0.png', 'rekayasa-perangkat-lunak', NULL, NULL, 'ACTIVE', '2021-10-21 06:09:35', '2021-10-21 06:09:35', 6),
-(51, 1, 'Broadcast', NULL, NULL, 'pages/October2021/luRyTc2UZYw7sBO72sho.png', 'broadcast', NULL, NULL, 'ACTIVE', '2021-10-21 06:10:43', '2021-10-21 06:10:43', 6),
-(52, 1, 'Teknik Elektronik Industr', NULL, NULL, 'pages/October2021/2cEAXPtoBd1BtM8WHcCU.png', 'teknik-elektronik-industr', NULL, NULL, 'ACTIVE', '2021-10-21 06:11:45', '2021-10-21 06:11:45', 6),
-(53, 1, 'Multimedia', NULL, NULL, 'pages/October2021/GI16J5tsCwaROXY1xJgA.png', 'multimedia', NULL, NULL, 'ACTIVE', '2021-10-21 06:18:45', '2021-10-21 06:21:44', 6);
+(54, 1, 'Jurusan', NULL, NULL, 'pages\\October2021\\sJeNwPffoMcEho6FYz1K.jpg', 'jurusan', NULL, NULL, 'ACTIVE', '2021-10-27 13:44:13', '2021-10-27 13:44:13', 6);
 
 -- --------------------------------------------------------
 
@@ -1459,7 +1585,42 @@ INSERT INTO `permissions` (`id`, `key`, `table_name`, `created_at`, `updated_at`
 (187, 'read_skills', 'skills', '2021-10-23 04:10:19', '2021-10-23 04:10:19'),
 (188, 'edit_skills', 'skills', '2021-10-23 04:10:19', '2021-10-23 04:10:19'),
 (189, 'add_skills', 'skills', '2021-10-23 04:10:19', '2021-10-23 04:10:19'),
-(190, 'delete_skills', 'skills', '2021-10-23 04:10:19', '2021-10-23 04:10:19');
+(190, 'delete_skills', 'skills', '2021-10-23 04:10:19', '2021-10-23 04:10:19'),
+(191, 'browse_content_ekskuls', 'content_ekskuls', '2021-10-27 14:05:03', '2021-10-27 14:05:03'),
+(192, 'read_content_ekskuls', 'content_ekskuls', '2021-10-27 14:05:03', '2021-10-27 14:05:03'),
+(193, 'edit_content_ekskuls', 'content_ekskuls', '2021-10-27 14:05:03', '2021-10-27 14:05:03'),
+(194, 'add_content_ekskuls', 'content_ekskuls', '2021-10-27 14:05:03', '2021-10-27 14:05:03'),
+(195, 'delete_content_ekskuls', 'content_ekskuls', '2021-10-27 14:05:03', '2021-10-27 14:05:03'),
+(196, 'browse_content_jurusans', 'content_jurusans', '2021-10-27 14:06:56', '2021-10-27 14:06:56'),
+(197, 'read_content_jurusans', 'content_jurusans', '2021-10-27 14:06:56', '2021-10-27 14:06:56'),
+(198, 'edit_content_jurusans', 'content_jurusans', '2021-10-27 14:06:56', '2021-10-27 14:06:56'),
+(199, 'add_content_jurusans', 'content_jurusans', '2021-10-27 14:06:56', '2021-10-27 14:06:56'),
+(200, 'delete_content_jurusans', 'content_jurusans', '2021-10-27 14:06:56', '2021-10-27 14:06:56'),
+(201, 'browse_gallery_ekskuls', 'gallery_ekskuls', '2021-10-27 14:07:28', '2021-10-27 14:07:28'),
+(202, 'read_gallery_ekskuls', 'gallery_ekskuls', '2021-10-27 14:07:28', '2021-10-27 14:07:28'),
+(203, 'edit_gallery_ekskuls', 'gallery_ekskuls', '2021-10-27 14:07:28', '2021-10-27 14:07:28'),
+(204, 'add_gallery_ekskuls', 'gallery_ekskuls', '2021-10-27 14:07:28', '2021-10-27 14:07:28'),
+(205, 'delete_gallery_ekskuls', 'gallery_ekskuls', '2021-10-27 14:07:28', '2021-10-27 14:07:28'),
+(206, 'browse_gallery_jurusans', 'gallery_jurusans', '2021-10-27 14:07:56', '2021-10-27 14:07:56'),
+(207, 'read_gallery_jurusans', 'gallery_jurusans', '2021-10-27 14:07:56', '2021-10-27 14:07:56'),
+(208, 'edit_gallery_jurusans', 'gallery_jurusans', '2021-10-27 14:07:56', '2021-10-27 14:07:56'),
+(209, 'add_gallery_jurusans', 'gallery_jurusans', '2021-10-27 14:07:56', '2021-10-27 14:07:56'),
+(210, 'delete_gallery_jurusans', 'gallery_jurusans', '2021-10-27 14:07:56', '2021-10-27 14:07:56'),
+(211, 'browse_recruitments', 'recruitments', '2021-10-27 14:08:45', '2021-10-27 14:08:45'),
+(212, 'read_recruitments', 'recruitments', '2021-10-27 14:08:45', '2021-10-27 14:08:45'),
+(213, 'edit_recruitments', 'recruitments', '2021-10-27 14:08:45', '2021-10-27 14:08:45'),
+(214, 'add_recruitments', 'recruitments', '2021-10-27 14:08:45', '2021-10-27 14:08:45'),
+(215, 'delete_recruitments', 'recruitments', '2021-10-27 14:08:45', '2021-10-27 14:08:45'),
+(216, 'browse_tab_ekskuls', 'tab_ekskuls', '2021-10-27 14:09:30', '2021-10-27 14:09:30'),
+(217, 'read_tab_ekskuls', 'tab_ekskuls', '2021-10-27 14:09:30', '2021-10-27 14:09:30'),
+(218, 'edit_tab_ekskuls', 'tab_ekskuls', '2021-10-27 14:09:30', '2021-10-27 14:09:30'),
+(219, 'add_tab_ekskuls', 'tab_ekskuls', '2021-10-27 14:09:30', '2021-10-27 14:09:30'),
+(220, 'delete_tab_ekskuls', 'tab_ekskuls', '2021-10-27 14:09:30', '2021-10-27 14:09:30'),
+(221, 'browse_tab_jurusans', 'tab_jurusans', '2021-10-27 14:11:13', '2021-10-27 14:11:13'),
+(222, 'read_tab_jurusans', 'tab_jurusans', '2021-10-27 14:11:13', '2021-10-27 14:11:13'),
+(223, 'edit_tab_jurusans', 'tab_jurusans', '2021-10-27 14:11:13', '2021-10-27 14:11:13'),
+(224, 'add_tab_jurusans', 'tab_jurusans', '2021-10-27 14:11:13', '2021-10-27 14:11:13'),
+(225, 'delete_tab_jurusans', 'tab_jurusans', '2021-10-27 14:11:13', '2021-10-27 14:11:13');
 
 -- --------------------------------------------------------
 
@@ -1626,7 +1787,42 @@ INSERT INTO `permission_role` (`permission_id`, `role_id`) VALUES
 (187, 1),
 (188, 1),
 (189, 1),
-(190, 1);
+(190, 1),
+(191, 1),
+(192, 1),
+(193, 1),
+(194, 1),
+(195, 1),
+(196, 1),
+(197, 1),
+(198, 1),
+(199, 1),
+(200, 1),
+(201, 1),
+(202, 1),
+(203, 1),
+(204, 1),
+(205, 1),
+(206, 1),
+(207, 1),
+(208, 1),
+(209, 1),
+(210, 1),
+(211, 1),
+(212, 1),
+(213, 1),
+(214, 1),
+(215, 1),
+(216, 1),
+(217, 1),
+(218, 1),
+(219, 1),
+(220, 1),
+(221, 1),
+(222, 1),
+(223, 1),
+(224, 1),
+(225, 1);
 
 -- --------------------------------------------------------
 
@@ -1677,6 +1873,23 @@ CREATE TABLE `posts` (
 INSERT INTO `posts` (`id`, `author_id`, `category_id`, `title`, `seo_title`, `excerpt`, `body`, `image`, `slug`, `meta_description`, `meta_keywords`, `status`, `featured`, `created_at`, `updated_at`) VALUES
 (30, 1, 3, 'Peringati 10 Muharram 1443 H, SMK Taruna Bhakti Berikan Santunan Kepada 133 Siswa Yatim, Piatu, dan Yatim Piatu', NULL, 'SMK Taruna Bhakti melalui Pokja Kesiswaan menggalang partisipasi dengan Yayasan Setya Bhakti dengan seluruh guru SMK Taruna Bhakti memberikan santunan kepada 133 siswa yatim dan atau piatu dalam rangka memperingati 10 Muharram 1443 H.', '<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1rem; color: #212529; font-family: Lato, -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 15px;\">SMK Taruna Bhakti melalui Pokja Kesiswaan menggalang partisipasi dengan Yayasan Setya Bhakti dengan seluruh guru SMK Taruna Bhakti memberikan santunan kepada 133 siswa yatim dan atau piatu dalam rangka memperingati 10 Muharram 1443 H.</p>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1rem; color: #212529; font-family: Lato, -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 15px;\">Kegiatan ini dilaksanakan pada Sabtu, 28 Agustus 2021 bertempat di Mushola Roudhoutul &lsquo;Ilmi, sarana ibadah di SMK Taruna Bhakti. Siswa yang menerima santunan berasal dari seluruh kelas tingkat X, XI, dan XII yang saat ini berjumlah 37 rombel. Teknis penyaluran menerapkan protokol kesehatan ketat dengan membagi dua sesi, yakni pagi pukul 10.00 &ndash; 11.30 WIB dan siang pukul 14.30 &ndash; 16.00 WIB.</p>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1rem; color: #212529; font-family: Lato, -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 15px;\">Tujuan diselenggarakannya kegiatan ini adalah sebagai bentuk aksi sosial, mempererat tali silaturahmi, dan edukasi kepada seluruh warga sekolah sebagai pembelajaran untuk berbagi kepada sesama. Tak hanya itu, diharapkan program ini dapat terlaksana secara berkelanjutan sebagai wujud kepedulian sekolah kepada seluruh peserta didiknya.</p>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1rem; color: #212529; font-family: Lato, -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 15px;\"><img class=\"aligncenter size-full wp-image-10032\" style=\"box-sizing: border-box; vertical-align: middle; border: 0px none; height: auto; max-width: 100%; clear: both; display: block; margin-left: auto; margin-right: auto;\" src=\"https://smktarunabhakti.net/wp-content/uploads/2021/08/10-muharom-1.jpg\" sizes=\"(max-width: 1280px) 100vw, 1280px\" srcset=\"https://smktarunabhakti.net/wp-content/uploads/2021/08/10-muharom-1.jpg 1280w, https://smktarunabhakti.net/wp-content/uploads/2021/08/10-muharom-1-300x169.jpg 300w, https://smktarunabhakti.net/wp-content/uploads/2021/08/10-muharom-1-1024x576.jpg 1024w, https://smktarunabhakti.net/wp-content/uploads/2021/08/10-muharom-1-768x432.jpg 768w\" alt=\"\" width=\"1280\" height=\"720\" /></p>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1rem; color: #212529; font-family: Lato, -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 15px;\"><img class=\"aligncenter size-full wp-image-10033\" style=\"box-sizing: border-box; vertical-align: middle; border: 0px none; height: auto; max-width: 100%; clear: both; display: block; margin-left: auto; margin-right: auto;\" src=\"https://smktarunabhakti.net/wp-content/uploads/2021/08/10-Muharom-2.jpg\" sizes=\"(max-width: 1280px) 100vw, 1280px\" srcset=\"https://smktarunabhakti.net/wp-content/uploads/2021/08/10-Muharom-2.jpg 1280w, https://smktarunabhakti.net/wp-content/uploads/2021/08/10-Muharom-2-300x169.jpg 300w, https://smktarunabhakti.net/wp-content/uploads/2021/08/10-Muharom-2-1024x576.jpg 1024w, https://smktarunabhakti.net/wp-content/uploads/2021/08/10-Muharom-2-768x432.jpg 768w\" alt=\"\" width=\"1280\" height=\"720\" /></p>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1rem; color: #212529; font-family: Lato, -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 15px;\"><img class=\"aligncenter size-full wp-image-10034\" style=\"box-sizing: border-box; vertical-align: middle; border: 0px none; height: auto; max-width: 100%; clear: both; display: block; margin-left: auto; margin-right: auto;\" src=\"https://smktarunabhakti.net/wp-content/uploads/2021/08/10-Muharom-3.jpg\" sizes=\"(max-width: 1280px) 100vw, 1280px\" srcset=\"https://smktarunabhakti.net/wp-content/uploads/2021/08/10-Muharom-3.jpg 1280w, https://smktarunabhakti.net/wp-content/uploads/2021/08/10-Muharom-3-300x138.jpg 300w, https://smktarunabhakti.net/wp-content/uploads/2021/08/10-Muharom-3-1024x471.jpg 1024w, https://smktarunabhakti.net/wp-content/uploads/2021/08/10-Muharom-3-768x353.jpg 768w\" alt=\"\" width=\"1280\" height=\"589\" /></p>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1rem; color: #212529; font-family: Lato, -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 15px;\"><img class=\"aligncenter size-full wp-image-10035\" style=\"box-sizing: border-box; vertical-align: middle; border: 0px none; height: auto; max-width: 100%; clear: both; display: block; margin-left: auto; margin-right: auto;\" src=\"https://smktarunabhakti.net/wp-content/uploads/2021/08/10-Muharom.jpg\" sizes=\"(max-width: 1280px) 100vw, 1280px\" srcset=\"https://smktarunabhakti.net/wp-content/uploads/2021/08/10-Muharom.jpg 1280w, https://smktarunabhakti.net/wp-content/uploads/2021/08/10-Muharom-300x169.jpg 300w, https://smktarunabhakti.net/wp-content/uploads/2021/08/10-Muharom-1024x576.jpg 1024w, https://smktarunabhakti.net/wp-content/uploads/2021/08/10-Muharom-768x432.jpg 768w\" alt=\"\" width=\"1280\" height=\"720\" /></p>', 'posts\\October2021\\fRyMijdbsP4vOimiapgx.jpg', 'peringati-10-muharram-1443-h-smk-taruna-bhakti-berikan-santunan-kepada-133-siswa-yatim-piatu-dan-yatim-piatu', NULL, NULL, 'PUBLISHED', 1, '2021-10-08 04:13:02', '2021-10-14 12:46:57'),
 (31, 1, 3, 'SMK Taruna Bhakti Selenggarakan Gebyar Vaksinasi Pelajar Dosis Ke-1', NULL, 'SMK Taruna Bhakti melalui Pokja Kesiswaan ditunjuk sebagai Pelaksana Kegiatan Gebyar Vaksinasi Pelajar Dosis Ke-1 pada Jumat, 3 September 2021.', '<div class=\"entry-content\" style=\"box-sizing: border-box; margin: 1.5em 0px 0px; color: #212529; font-family: Lato, -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; font-size: 15px;\">\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1rem;\">SMK Taruna Bhakti melalui Pokja Kesiswaan ditunjuk sebagai Pelaksana Kegiatan Gebyar Vaksinasi Pelajar Dosis Ke-1 pada Jumat, 3 September 2021. Kegiatan ini merupakan kerjasama Musyawarah Kerja Kepala Sekolah (MKKS) Kota Depok dengan Rumah Sakit Bhayangkara Brimob Depok.</p>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1rem;\">Peserta yang mengikuti program vaksinasi ini sebanyak 835 orang dengan rincian peserta dari SMK Taruna Bhakti sebanyak 488 orang, SMP dan SMK lain sebanyak 367 orang, dan warga lingkungan sekitar SMK Taruna Bhakti sebanyak 92 orang.</p>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1rem;\">Jenis vaksin yang diberikan adalah Pfizer, salah satu jenis vaksin yang digunakan di Indonesia. Pelaksanaan kegiatan ini menerapkan protokol kesehatan secara ketat yang dijuga dikawal oleh Petugas Kesatuan Brimob Depok. Tujuan diselenggarakan program ini adalah sebagai bakti sekolah kepada negara dalam membantu proses percepatan vaksinasi untuk melawan pandemi Covid-19, khususnya untuk kalangan pelajar sebagai syarat pemberlakuan Pembelajaran Tatap Muka Terbatas (PTMT) SMK Taruna Bhakti Tahun Pelajaran 2021/2022.</p>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1rem;\"><img class=\"aligncenter size-full wp-image-10039\" style=\"box-sizing: border-box; vertical-align: middle; border: 0px none; height: auto; max-width: 100%; clear: both; display: block; margin-left: auto; margin-right: auto;\" src=\"https://smktarunabhakti.net/wp-content/uploads/2021/09/Vaksin-1.jpg\" sizes=\"(max-width: 1280px) 100vw, 1280px\" srcset=\"https://smktarunabhakti.net/wp-content/uploads/2021/09/Vaksin-1.jpg 1280w, https://smktarunabhakti.net/wp-content/uploads/2021/09/Vaksin-1-300x169.jpg 300w, https://smktarunabhakti.net/wp-content/uploads/2021/09/Vaksin-1-1024x576.jpg 1024w, https://smktarunabhakti.net/wp-content/uploads/2021/09/Vaksin-1-768x432.jpg 768w\" alt=\"\" width=\"1280\" height=\"720\" /></p>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1rem;\"><img class=\"aligncenter size-full wp-image-10040\" style=\"box-sizing: border-box; vertical-align: middle; border: 0px none; height: auto; max-width: 100%; clear: both; display: block; margin-left: auto; margin-right: auto;\" src=\"https://smktarunabhakti.net/wp-content/uploads/2021/09/Vaksin-2.jpg\" sizes=\"(max-width: 1280px) 100vw, 1280px\" srcset=\"https://smktarunabhakti.net/wp-content/uploads/2021/09/Vaksin-2.jpg 1280w, https://smktarunabhakti.net/wp-content/uploads/2021/09/Vaksin-2-300x169.jpg 300w, https://smktarunabhakti.net/wp-content/uploads/2021/09/Vaksin-2-1024x575.jpg 1024w, https://smktarunabhakti.net/wp-content/uploads/2021/09/Vaksin-2-768x431.jpg 768w\" alt=\"\" width=\"1280\" height=\"719\" /></p>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1rem;\"><img class=\"aligncenter size-full wp-image-10041\" style=\"box-sizing: border-box; vertical-align: middle; border: 0px none; height: auto; max-width: 100%; clear: both; display: block; margin-left: auto; margin-right: auto;\" src=\"https://smktarunabhakti.net/wp-content/uploads/2021/09/Vaksin-3.jpg\" sizes=\"(max-width: 1280px) 100vw, 1280px\" srcset=\"https://smktarunabhakti.net/wp-content/uploads/2021/09/Vaksin-3.jpg 1280w, https://smktarunabhakti.net/wp-content/uploads/2021/09/Vaksin-3-300x169.jpg 300w, https://smktarunabhakti.net/wp-content/uploads/2021/09/Vaksin-3-1024x575.jpg 1024w, https://smktarunabhakti.net/wp-content/uploads/2021/09/Vaksin-3-768x431.jpg 768w\" alt=\"\" width=\"1280\" height=\"719\" /></p>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1rem;\"><img class=\"aligncenter size-full wp-image-10042\" style=\"box-sizing: border-box; vertical-align: middle; border: 0px none; height: auto; max-width: 100%; clear: both; display: block; margin-left: auto; margin-right: auto;\" src=\"https://smktarunabhakti.net/wp-content/uploads/2021/09/Vaksin-4.jpg\" sizes=\"(max-width: 1280px) 100vw, 1280px\" srcset=\"https://smktarunabhakti.net/wp-content/uploads/2021/09/Vaksin-4.jpg 1280w, https://smktarunabhakti.net/wp-content/uploads/2021/09/Vaksin-4-300x225.jpg 300w, https://smktarunabhakti.net/wp-content/uploads/2021/09/Vaksin-4-1024x768.jpg 1024w, https://smktarunabhakti.net/wp-content/uploads/2021/09/Vaksin-4-768x576.jpg 768w\" alt=\"\" width=\"1280\" height=\"960\" /></p>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1rem;\"><img class=\"aligncenter size-full wp-image-10043\" style=\"box-sizing: border-box; vertical-align: middle; border: 0px none; height: auto; max-width: 100%; clear: both; display: block; margin-left: auto; margin-right: auto;\" src=\"https://smktarunabhakti.net/wp-content/uploads/2021/09/vaksin-5.jpg\" sizes=\"(max-width: 1280px) 100vw, 1280px\" srcset=\"https://smktarunabhakti.net/wp-content/uploads/2021/09/vaksin-5.jpg 1280w, https://smktarunabhakti.net/wp-content/uploads/2021/09/vaksin-5-300x225.jpg 300w, https://smktarunabhakti.net/wp-content/uploads/2021/09/vaksin-5-1024x768.jpg 1024w, https://smktarunabhakti.net/wp-content/uploads/2021/09/vaksin-5-768x576.jpg 768w\" alt=\"\" width=\"1280\" height=\"960\" /></p>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1rem;\"><img class=\"aligncenter size-full wp-image-10044\" style=\"box-sizing: border-box; vertical-align: middle; border: 0px none; height: auto; max-width: 100%; clear: both; display: block; margin-left: auto; margin-right: auto;\" src=\"https://smktarunabhakti.net/wp-content/uploads/2021/09/Vaksin-6.jpg\" sizes=\"(max-width: 1280px) 100vw, 1280px\" srcset=\"https://smktarunabhakti.net/wp-content/uploads/2021/09/Vaksin-6.jpg 1280w, https://smktarunabhakti.net/wp-content/uploads/2021/09/Vaksin-6-300x222.jpg 300w, https://smktarunabhakti.net/wp-content/uploads/2021/09/Vaksin-6-1024x759.jpg 1024w, https://smktarunabhakti.net/wp-content/uploads/2021/09/Vaksin-6-768x569.jpg 768w\" alt=\"\" width=\"1280\" height=\"949\" /></p>\r\n<p>&nbsp;</p>\r\n</div>', 'posts\\October2021\\lJhPRF2DGuTCG3fGBhJR.jpg', 'smk-taruna-bhakti-selenggarakan-gebyar-vaksinasi-pelajar-dosis-ke-1', NULL, NULL, 'PUBLISHED', 1, '2021-10-08 04:14:01', '2021-10-14 12:38:35');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `recruitments`
+--
+
+CREATE TABLE `recruitments` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `nama_perusahaan` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `body` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `slug` int(11) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -1792,6 +2005,34 @@ INSERT INTO `skills` (`id`, `nama_skill`, `created_at`, `updated_at`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tab_ekskuls`
+--
+
+CREATE TABLE `tab_ekskuls` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `slug` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tab_jurusans`
+--
+
+CREATE TABLE `tab_jurusans` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `slug` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `translations`
 --
 
@@ -1873,7 +2114,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `role_id`, `name`, `email`, `avatar`, `email_verified_at`, `password`, `remember_token`, `settings`, `created_at`, `updated_at`, `nomor_induk`, `jabatan_guru`, `kelas_siswa`, `spesifc_role`, `mapel_id`, `detail_user`) VALUES
-(1, 1, 'Taruna', 'admin@admin.com', 'users/default.png', NULL, '$2y$10$Fo8k1RIU9Ej0B7oa4thUgexNlQk06ytDVR6fcbbS6hVBZlUQ6HIyC', 'goYcHXZbQy5jgDIe99Ob0R0mv902ZPg6MotZp5dQb4QuxfLuZ8yf3OrwFAcr', NULL, '2021-08-19 18:52:57', '2021-08-19 18:52:57', NULL, NULL, NULL, '', NULL, NULL),
+(1, 1, 'Taruna', 'admin@admin.com', 'users/default.png', NULL, '$2y$10$Fo8k1RIU9Ej0B7oa4thUgexNlQk06ytDVR6fcbbS6hVBZlUQ6HIyC', 'goYcHXZbQy5jgDIe99Ob0R0mv902ZPg6MotZp5dQb4QuxfLuZ8yf3OrwFAcr', NULL, '2021-08-19 18:52:57', '2021-08-19 18:52:57', NULL, NULL, NULL, '', NULL, 1),
 (2, 1, 'admin', 'admin@email.com', 'users/default.png', NULL, '$2y$10$R4YUok8EtOVF81IlFaCTZ.8l6i03Hgd6B1YUZaYQK/cVC0k8mUj76', NULL, '{\"locale\":\"id\"}', '2021-10-04 19:09:29', '2021-10-05 00:01:23', '523235235', NULL, NULL, 'kepsek', NULL, NULL),
 (3, 3, 'Ari Suhendra Tahyadi', '32232@gmail.com', 'users/default.png', NULL, '$2y$10$qMNo101mY9bBwUaUBHidAuKh1NiuG0b4ATbUF.mhBYouy87Pv0UHC', NULL, '{\"locale\":\"id\"}', '2021-10-04 19:21:41', '2021-10-05 00:03:18', '42342342342', NULL, 3, 'siswa', NULL, NULL),
 (4, 4, 'Joko', 'joko@gmail.com', 'users/default.png', NULL, '$2y$10$IPvgfaSlLOMZpSKQCrKcHel1pMIArKFcvNGg0m7VftDcgCtMqjWtC', NULL, '{\"locale\":\"id\"}', '2021-10-04 19:25:37', '2021-10-22 07:13:28', '12910100259', NULL, NULL, 'litbang', NULL, NULL),
@@ -1999,6 +2240,18 @@ ALTER TABLE `contents`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `content_ekskuls`
+--
+ALTER TABLE `content_ekskuls`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `content_jurusans`
+--
+ALTER TABLE `content_jurusans`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `content_sarpras`
 --
 ALTER TABLE `content_sarpras`
@@ -2042,6 +2295,18 @@ ALTER TABLE `failed_jobs`
 -- Indexes for table `galleries`
 --
 ALTER TABLE `galleries`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `gallery_ekskuls`
+--
+ALTER TABLE `gallery_ekskuls`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `gallery_jurusans`
+--
+ALTER TABLE `gallery_jurusans`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -2190,6 +2455,12 @@ ALTER TABLE `posts`
   ADD UNIQUE KEY `posts_slug_unique` (`slug`);
 
 --
+-- Indexes for table `recruitments`
+--
+ALTER TABLE `recruitments`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `roles`
 --
 ALTER TABLE `roles`
@@ -2213,6 +2484,18 @@ ALTER TABLE `siswas`
 -- Indexes for table `skills`
 --
 ALTER TABLE `skills`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tab_ekskuls`
+--
+ALTER TABLE `tab_ekskuls`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tab_jurusans`
+--
+ALTER TABLE `tab_jurusans`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -2273,6 +2556,18 @@ ALTER TABLE `contents`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
+-- AUTO_INCREMENT for table `content_ekskuls`
+--
+ALTER TABLE `content_ekskuls`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `content_jurusans`
+--
+ALTER TABLE `content_jurusans`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `content_sarpras`
 --
 ALTER TABLE `content_sarpras`
@@ -2282,19 +2577,19 @@ ALTER TABLE `content_sarpras`
 -- AUTO_INCREMENT for table `data_rows`
 --
 ALTER TABLE `data_rows`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=291;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=343;
 
 --
 -- AUTO_INCREMENT for table `data_types`
 --
 ALTER TABLE `data_types`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 
 --
 -- AUTO_INCREMENT for table `detail_users`
 --
 ALTER TABLE `detail_users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `ekskuls`
@@ -2313,6 +2608,18 @@ ALTER TABLE `failed_jobs`
 --
 ALTER TABLE `galleries`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
+
+--
+-- AUTO_INCREMENT for table `gallery_ekskuls`
+--
+ALTER TABLE `gallery_ekskuls`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `gallery_jurusans`
+--
+ALTER TABLE `gallery_jurusans`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `gallery_sarpras`
@@ -2366,19 +2673,43 @@ ALTER TABLE `managers`
 -- AUTO_INCREMENT for table `menu_items`
 --
 ALTER TABLE `menu_items`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+
+--
+-- AUTO_INCREMENT for table `pages`
+--
+ALTER TABLE `pages`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 
 --
 -- AUTO_INCREMENT for table `permissions`
 --
 ALTER TABLE `permissions`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=191;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=226;
+
+--
+-- AUTO_INCREMENT for table `recruitments`
+--
+ALTER TABLE `recruitments`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `skills`
 --
 ALTER TABLE `skills`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `tab_ekskuls`
+--
+ALTER TABLE `tab_ekskuls`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `tab_jurusans`
+--
+ALTER TABLE `tab_jurusans`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `users`

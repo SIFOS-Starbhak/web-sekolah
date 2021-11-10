@@ -57,6 +57,18 @@ Route::get('/hubin/data-tamatan', 'HubinController@index')->name('hubin');
 Route::get('/kurikulum/guru-smk-taruna-bhakti', 'WebController@kurikulumguru');
 Route::get('/guru-starbhak/{kategori:slug}', 'WebController@fotoguru');
 
+// Page BKK
+Route::get('/bkk/open-recruitment', 'WebController@bkk');
+Route::get('/bkk/data-siswa-starbhak', 'WebController@bkk');
+
+// Page Ekstrakulikuler
+Route::get('/kesiswaan/ekstrakurikuler', 'WebController@ekskul');
+Route::get('/ekskul/{eskul:slug}', 'WebController@eskul');
+
+// Page Ekstrakulikuler
+Route::get('/program-keahlian/jurusan', 'WebController@jurusan');
+Route::get('/jurusan/{jurusan:slug}', 'WebController@jurusans');
+
 // Page Gallery
 Route::get('/gallery/{gallery:slug}', 'WebController@galleries');
 
@@ -74,8 +86,12 @@ Route::get('/artikel', function () {
     $article = App\Models\Post::where('status', 'PUBLISHED')->get();
     $backgrounds = App\Models\Background::all();
     $navbar = App\Models\Navbar::all()->where('status', 'Active');
+<<<<<<< HEAD
 
     return view('artikel', compact('navbar','settings', 'article', 'backgrounds'));
+=======
+    return view('artikel', compact('settings', 'article', 'backgrounds', 'navbar'));
+>>>>>>> b30918d04425f0f8dd1ecd4e2ae71e046766a0a4
 });
 Route::get('/author/{user}', 'WebController@author');
 Route::get('/posted/{posted}', 'WebController@posted');
