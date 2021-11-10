@@ -24,6 +24,16 @@ use App\Models\Video;
 use App\Models\Background;
 use App\Models\Role;
 use App\Models\GuruKejuruan;
+use App\Models\Recruitment;
+use App\Models\Ekskul;
+use App\Models\TabEkskul;
+use App\Models\ContentEkskul;
+use App\Models\GalleryEkskul;
+use App\Models\Jurusan;
+use App\Models\TabJurusan;
+use App\Models\ContentJurusan;
+use App\Models\GalleryJurusan;
+use App\Models\DetailUser;
 
 class WebController extends Controller
 {
@@ -59,49 +69,6 @@ class WebController extends Controller
         return view ('gallery', compact('settings', 'cardgallery', 'backgrounds'));
     }
 
-    public function gallery21()
-    {
-        $settings = Setting::all();
-        $card2021 = GalleryNews::where('category', '5')->get();
-        $navbar = Navbar::all()->where('status', 'Active');
-        return view ('tahun-2021', compact('settings', 'card2021'));
-    }
-    public function gallery20()
-    {
-        $settings = Setting::all();
-        $card2020 = GalleryNews::where('category', '4')->get();
-        $navbar = Navbar::all()->where('status', 'Active');
-        return view ('tahun-2020', compact('settings', 'card2020'));
-    }
-    public function gallery19()
-    {
-        $settings = Setting::all();
-        $card2019 = GalleryNews::where('category', '3')->get();
-        $navbar = Navbar::all()->where('status', 'Active');
-        return view ('tahun-2019', compact('settings', 'card2019'));
-    }
-    public function gallery18()
-    {
-        $settings = Setting::all();
-        $card2018 = GalleryNews::where('category', '2')->get();
-        $navbar = Navbar::all()->where('status', 'Active');
-        return view ('tahun-2018', compact('settings', 'card2018'));
-    }
-    public function gallery17()
-    {
-        $settings = Setting::all();
-        $card2017 = GalleryNews::where('category', '1')->get();
-        $navbar = Navbar::all()->where('status', 'Active');
-        return view ('tahun-2017', compact('settings', 'card2017'));
-    }
-
-    public function kurikulumtb()
-    {
-        $struktur = DB::table('posts')->find(12);
-                $navbar = Navbar::all()->where('status', 'Active');
-        return view('kurikulum', compact('navbar', 'struktur'));
-    }
-
     public function fotoguru(Kategori $kategori)
     {
         $foto = Gallery::all()->where('kategori_guru', $kategori->id);
@@ -118,37 +85,6 @@ class WebController extends Controller
         $backgrounds = Background::all();
         return view('kurikulum', compact('navbar', 'settings', 'fotoguru', 'backgrounds'));
     }
-    public function kurikulumsmktb()
-    {
-        $settings = Setting::all();
-        $struktur = Page::where('id', '17')->get(['body', 'title']);
-        return view('kurikulumsmktb', compact('settings','struktur'));
-    }
-
-    public function kurikulum()
-    {
-        $settings = Setting::all();
-        $struktur = Page::where('id', '17')->get(['body', 'title']);
-        $kompetensi = Page::where('id', '16')->get(['body', 'title']);
-        $fotoguru = Kategori::all();
-        $cardkurikulum = Page::where('id', '22')->orWhere('id', '23')->orWhere('id', '24')->get();
-        $navbar = Navbar::all()->where('status', 'Active');
-        return view('kurikulum', compact('settings', 'struktur', 'kompetensi', 'fotoguru', 'cardkurikulum', 'navbar'));
-    }
-
-    public function bkk()
-    {
-        $settings = Setting::all();
-        $cardbkk = Page::where('id', '24')->orWhere('id', '25')->get();
-        $navbar = Navbar::all()->where('status', 'Active');
-        return view('bkk', compact('settings','cardbkk','navbar'));
-    }
-
-    public function bkkmenu(Page $bkk)
-    {
-        $settings = Setting::all();
-        return view('bkkmenu', compact('settings','bkk'));
-    }
 
     public function kesiswaan()
     {
@@ -156,13 +92,6 @@ class WebController extends Controller
         $kesiswaans = Page::where('category_id', '3')->get(['title', 'slug', 'image']);
         return view('kesiswaan', compact('settings', 'kesiswaans'));
     }
-
-    public function kesiswaan_menu(Page $category)
-    {
-        $settings = Setting::all();
-        return view('kesiswaanmenu', compact('settings', 'category'));
-    }
-
 
     public function sarpras()
     {
@@ -182,24 +111,7 @@ class WebController extends Controller
         $backgrounds = Background::all();
         return view('sarpras', compact('backgrounds', 'navbar', 'tei', 'bc', 'rpl', 'mm', 'tkj', 'perpus', 'kelas', 'settings', 'content', 'gallery', 'samsung', 'bahasa'));
     }
-    public function sarprassekolah()
-    {
-        $category = CategorySarpra::all();
-        $content = ContentSarpra::all();
-        $settings = Setting::all();
-        $samsung = GallerySarpra::all()->where('content_id', '16');
-        $bahasa = GallerySarpra::all()->where('content_id', '2');
-        $kelas = GallerySarpra::all()->where('content_id', '1');
-        $perpus = GallerySarpra::all()->where('content_id', '3');
-        $tkj = GallerySarpra::all()->where('content_id', '4');
-        $mm = GallerySarpra::all()->where('content_id', '5');
-        $rpl = GallerySarpra::all()->where('content_id', '6');
-        $bc = GallerySarpra::all()->where('content_id', '7');
-        $tei = GallerySarpra::all()->where('content_id', '8');
-        $gallery = GallerySarpra::all();
-        $sarprassekolah = Page::where('id', '19')->get();
-        return view('sarprassekolah', compact('tei', 'bc', 'rpl', 'mm', 'tkj', 'perpus', 'kelas', 'settings', 'category', 'content', 'gallery', 'samsung', 'bahasa', 'sarprassekolah'));
-    }
+
     public function registalum()
     {
         $settings = Setting::all();
@@ -250,5 +162,62 @@ class WebController extends Controller
         $navbar = Navbar::all()->where('status', 'Active');
         $backgrounds = Background::all();
         return view('gallery', compact('image', 'video', 'gallery', 'settings', 'navbar', 'backgrounds'));
+    }
+
+    public function bkk()
+    {
+        $settings = Setting::all();
+        $navbar = Navbar::all()->where('status', 'Active');
+        $backgrounds = Background::all();
+        $reqruitment = Recruitment::all();
+        $users = User::all();
+
+        return view('bkk', compact('settings', 'navbar', 'backgrounds', 'reqruitment', 'users'));
+    }
+
+    public function ekskul()
+    {
+        $settings = Setting::all();
+        $navbar = Navbar::all()->where('status', 'Active');
+        $backgrounds = Background::all();
+        $eskul = Ekskul::all();
+
+        return view('ekskul', compact('settings', 'navbar', 'backgrounds', 'eskul'));
+    }
+
+    public function eskul(Ekskul $eskul)
+    {
+        $settings = Setting::all();
+        $navbar = Navbar::all()->where('status', 'Active');
+        $backgrounds = Background::all();
+        $tab = TabEkskul::all();
+        $content = ContentEkskul::all()->where('ekskul', $eskul->id);
+        $gallery = GalleryEkskul::all()->where('ekskul', $eskul->id);
+
+        return view('eskul', compact('settings', 'navbar', 'backgrounds', 'eskul', 'content', 'tab', 'gallery'));
+    }
+
+    public function jurusan()
+    {
+        $settings = Setting::all();
+        $navbar = Navbar::all()->where('status', 'Active');
+        $backgrounds = Background::all();
+        $jurusan = Jurusan::all();
+
+        return view('jurusan', compact('settings', 'navbar', 'backgrounds', 'jurusan'));
+    }
+
+    public function jurusans(Jurusan $jurusan)
+    {
+        $settings = Setting::all();
+        $navbar = Navbar::all()->where('status', 'Active');
+        $backgrounds = Background::all();
+        $tab = TabJurusan::all();
+        $content = ContentJurusan::all()->where('jurusan', $jurusan->id);
+        $gallery = GalleryJurusan::all()->where('jurusan', $jurusan->id);
+        $foto = Gallery::all()->where('katagori_guru', 'Guru Kejurusan')
+                                ->where('jurusan', $jurusan->name);
+
+        return view('jurusans', compact('settings', 'navbar', 'backgrounds', 'jurusan', 'content', 'tab', 'gallery', 'foto'));
     }
 }

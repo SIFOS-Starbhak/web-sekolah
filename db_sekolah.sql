@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 21 Okt 2021 pada 11.06
--- Versi server: 10.4.13-MariaDB
--- Versi PHP: 7.4.8
+-- Generation Time: Nov 09, 2021 at 03:58 PM
+-- Server version: 10.4.21-MariaDB
+-- PHP Version: 8.0.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `alumnis`
+-- Table structure for table `alumnis`
 --
 
 CREATE TABLE `alumnis` (
@@ -43,7 +43,7 @@ CREATE TABLE `alumnis` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `alumnis`
+-- Dumping data for table `alumnis`
 --
 
 INSERT INTO `alumnis` (`id`, `name`, `tahun_lulus`, `nama_perusahaan`, `posisi`, `tahun_kerja`, `penghasilan`, `created_at`, `updated_at`, `categories_alumnis`, `jurusan`, `status`) VALUES
@@ -70,7 +70,7 @@ INSERT INTO `alumnis` (`id`, `name`, `tahun_lulus`, `nama_perusahaan`, `posisi`,
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `backgrounds`
+-- Table structure for table `backgrounds`
 --
 
 CREATE TABLE `backgrounds` (
@@ -83,18 +83,18 @@ CREATE TABLE `backgrounds` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `backgrounds`
+-- Dumping data for table `backgrounds`
 --
 
 INSERT INTO `backgrounds` (`id`, `image`, `heading`, `subheading`, `created_at`, `updated_at`) VALUES
-(1, 'backgrounds/October2021/wUC9w6DhsONLJNFwIxib.png', 'SMK Pusat Keunggulan', 'Our Quality Ask Be DIfferent', '2021-10-18 07:13:00', '2021-10-18 07:13:00'),
+(1, 'backgrounds\\October2021\\4R8xylilxvH8nslg6Fv7.jpg', 'SMK Taruna Bhakti', 'Our Quality Ask Be DIfferent', '2021-10-18 07:13:00', '2021-10-28 01:39:36'),
 (2, 'backgrounds/October2021/Q8qhZwqARLNYr4m4HtuM.jpg', 'SMK Pusat Keunggulan', 'Our Quality Ask Be DIfferent', '2021-10-18 07:13:00', '2021-10-18 07:13:48'),
 (3, 'backgrounds/October2021/BGuTRG5AB0w9TeVtDIee.jpg', 'SMK Pusat Keunggulan', 'Our Quality Ask Be DIfferent', '2021-10-18 07:13:27', '2021-10-18 07:13:27');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `categories`
+-- Table structure for table `categories`
 --
 
 CREATE TABLE `categories` (
@@ -108,7 +108,7 @@ CREATE TABLE `categories` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `categories`
+-- Dumping data for table `categories`
 --
 
 INSERT INTO `categories` (`id`, `parent_id`, `order`, `name`, `slug`, `created_at`, `updated_at`) VALUES
@@ -123,7 +123,7 @@ INSERT INTO `categories` (`id`, `parent_id`, `order`, `name`, `slug`, `created_a
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `categories_alumnis`
+-- Table structure for table `categories_alumnis`
 --
 
 CREATE TABLE `categories_alumnis` (
@@ -136,7 +136,7 @@ CREATE TABLE `categories_alumnis` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `contents`
+-- Table structure for table `contents`
 --
 
 CREATE TABLE `contents` (
@@ -150,7 +150,7 @@ CREATE TABLE `contents` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `contents`
+-- Dumping data for table `contents`
 --
 
 INSERT INTO `contents` (`id`, `title`, `content`, `created_at`, `updated_at`, `sub_menu`, `slug`) VALUES
@@ -164,7 +164,37 @@ INSERT INTO `contents` (`id`, `title`, `content`, `created_at`, `updated_at`, `s
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `content_sarpras`
+-- Table structure for table `content_ekskuls`
+--
+
+CREATE TABLE `content_ekskuls` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `body` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `ekskul` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `content_jurusans`
+--
+
+CREATE TABLE `content_jurusans` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `body` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `jurusan` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `content_sarpras`
 --
 
 CREATE TABLE `content_sarpras` (
@@ -177,7 +207,7 @@ CREATE TABLE `content_sarpras` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `content_sarpras`
+-- Dumping data for table `content_sarpras`
 --
 
 INSERT INTO `content_sarpras` (`id`, `title`, `description`, `category_id`, `created_at`, `updated_at`) VALUES
@@ -201,7 +231,7 @@ INSERT INTO `content_sarpras` (`id`, `title`, `description`, `category_id`, `cre
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `data_rows`
+-- Table structure for table `data_rows`
 --
 
 CREATE TABLE `data_rows` (
@@ -221,7 +251,7 @@ CREATE TABLE `data_rows` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `data_rows`
+-- Dumping data for table `data_rows`
 --
 
 INSERT INTO `data_rows` (`id`, `data_type_id`, `field`, `type`, `display_name`, `required`, `browse`, `read`, `edit`, `add`, `delete`, `details`, `order`) VALUES
@@ -341,7 +371,7 @@ INSERT INTO `data_rows` (`id`, `data_type_id`, `field`, `type`, `display_name`, 
 (126, 17, 'name', 'text', 'Name', 0, 1, 1, 1, 1, 1, '{}', 2),
 (127, 20, 'id', 'text', 'Id', 1, 0, 0, 0, 0, 0, '{}', 1),
 (128, 20, 'jurusan', 'text', 'Jurusan', 0, 1, 1, 1, 1, 1, '{}', 2),
-(129, 20, 'created_at', 'timestamp', 'Created At', 0, 1, 1, 1, 0, 1, '{}', 3),
+(129, 20, 'created_at', 'timestamp', 'Created At', 0, 0, 0, 0, 0, 0, '{}', 3),
 (130, 20, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 4),
 (181, 16, 'alumni_belongsto_jurusan_relationship', 'relationship', 'jurusans', 0, 0, 1, 1, 1, 1, '{\"model\":\"App\\\\Models\\\\Jurusan\",\"table\":\"jurusans\",\"type\":\"belongsTo\",\"column\":\"jurusan\",\"key\":\"jurusan\",\"label\":\"jurusan\",\"pivot_table\":\"alumnis\",\"pivot\":\"0\",\"taggable\":\"0\"}', 10),
 (182, 16, 'categories_alumnis', 'text', 'Categories Alumnis', 0, 1, 1, 1, 1, 1, '{\"options\":{\"Bekerja\":\"Bekerja\",\"Kuliah\":\"Kuliah\",\"Wirausaha\":\"Wirausaha\"}}', 8),
@@ -364,7 +394,7 @@ INSERT INTO `data_rows` (`id`, `data_type_id`, `field`, `type`, `display_name`, 
 (204, 32, 'nama_mapel', 'text', 'Nama Mapel', 1, 1, 1, 1, 1, 1, '{}', 2),
 (205, 32, 'created_at', 'timestamp', 'Created At', 0, 1, 1, 1, 0, 1, '{}', 3),
 (206, 32, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 4),
-(207, 1, 'user_belongsto_mapel_relationship', 'relationship', 'mapels', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\Models\\\\Mapel\",\"table\":\"mapels\",\"type\":\"belongsTo\",\"column\":\"mapel_id\",\"key\":\"id\",\"label\":\"nama_mapel\",\"pivot_table\":\"alumnis\",\"pivot\":\"0\",\"taggable\":null}', 13),
+(207, 1, 'user_belongsto_mapel_relationship', 'relationship', 'mapels', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\Models\\\\Mapel\",\"table\":\"mapels\",\"type\":\"belongsTo\",\"column\":\"mapel_id\",\"key\":\"id\",\"label\":\"nama_mapel\",\"pivot_table\":\"alumnis\",\"pivot\":\"0\",\"taggable\":\"0\"}', 13),
 (208, 31, 'nama_photo', 'text', 'Nama Photo', 0, 1, 1, 1, 1, 1, '{}', 6),
 (209, 19, 'website_perusahaan', 'text', 'Website Perusahaan', 0, 1, 1, 1, 1, 1, '{}', 7),
 (210, 16, 'status', 'select_dropdown', 'Status', 0, 1, 1, 1, 1, 1, '{\"default\":\"UNPUBLISHED\",\"options\":{\"PUBLISED\":\"PUBLISHED\",\"UNPUBLISED\":\"UNPUBLISED\"}}', 12),
@@ -414,7 +444,6 @@ INSERT INTO `data_rows` (`id`, `data_type_id`, `field`, `type`, `display_name`, 
 (254, 44, 'created_at', 'timestamp', 'Created At', 0, 1, 1, 1, 0, 1, '{}', 5),
 (255, 44, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 6),
 (256, 44, 'deleted_at', 'timestamp', 'Deleted At', 0, 1, 1, 1, 1, 1, '{}', 7),
-(257, 44, 'kategori_id', 'text', 'Kategori Id', 0, 1, 1, 1, 1, 1, '{}', 8),
 (258, 45, 'id', 'text', 'Id', 1, 0, 0, 0, 0, 0, '{}', 1),
 (259, 45, 'nama_kategori', 'text', 'Nama Kategori', 0, 1, 1, 1, 1, 1, '{}', 2),
 (260, 45, 'foto', 'image', 'Foto', 0, 1, 1, 1, 1, 1, '{}', 3),
@@ -423,19 +452,86 @@ INSERT INTO `data_rows` (`id`, `data_type_id`, `field`, `type`, `display_name`, 
 (263, 45, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 6),
 (264, 45, 'deleted_at', 'timestamp', 'Deleted At', 0, 1, 1, 1, 1, 1, '{}', 7),
 (265, 45, 'slug', 'text', 'Slug', 0, 1, 1, 1, 1, 1, '{}', 8),
-(266, 44, 'gallery_belongsto_kategori_relationship', 'relationship', 'kategoris', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\Models\\\\Kategori\",\"table\":\"kategoris\",\"type\":\"belongsTo\",\"column\":\"kategori_guru\",\"key\":\"id\",\"label\":\"nama_kategori\",\"pivot_table\":\"alumnis\",\"pivot\":\"0\",\"taggable\":\"0\"}', 9),
-(267, 1, 'user_belongsto_kela_relationship', 'relationship', 'kelas', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\Models\\\\Kela\",\"table\":\"kelas\",\"type\":\"belongsTo\",\"column\":\"kelas_siswa\",\"key\":\"id\",\"label\":\"nama_kelas\",\"pivot_table\":\"alumnis\",\"pivot\":\"0\",\"taggable\":null}', 14),
+(266, 44, 'gallery_belongsto_kategori_relationship', 'relationship', 'Category', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\Models\\\\Kategori\",\"table\":\"kategoris\",\"type\":\"belongsTo\",\"column\":\"kategori_guru\",\"key\":\"id\",\"label\":\"nama_kategori\",\"pivot_table\":\"alumnis\",\"pivot\":\"0\",\"taggable\":\"0\"}', 9),
+(267, 1, 'user_belongsto_kela_relationship', 'relationship', 'kelas', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\Models\\\\Kela\",\"table\":\"kelas\",\"type\":\"belongsTo\",\"column\":\"kelas_siswa\",\"key\":\"id\",\"label\":\"nama_kelas\",\"pivot_table\":\"alumnis\",\"pivot\":\"0\",\"taggable\":\"0\"}', 14),
 (268, 47, 'id', 'text', 'Id', 1, 0, 0, 0, 0, 0, '{}', 1),
 (269, 47, 'image', 'image', 'Image', 0, 1, 1, 1, 1, 1, '{}', 2),
 (270, 47, 'title', 'text', 'Title', 0, 1, 1, 1, 1, 1, '{}', 3),
 (271, 47, 'slug', 'text', 'Slug', 0, 1, 1, 1, 1, 1, '{\"slugify\":{\"origin\":\"title\"},\"validation\":{\"rule\":\"unique:pages,slug\"}}', 4),
 (272, 47, 'created_at', 'timestamp', 'Created At', 0, 1, 1, 1, 0, 1, '{}', 5),
-(273, 47, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 6);
+(273, 47, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 6),
+(274, 1, 'nomor_induk', 'text', 'Nomor Induk', 0, 1, 1, 1, 1, 1, '{}', 12),
+(275, 1, 'jabatan_guru', 'text', 'Jabatan Guru', 0, 1, 1, 1, 1, 1, '{}', 13),
+(276, 1, 'kelas_siswa', 'text', 'Kelas Siswa', 0, 1, 1, 1, 1, 1, '{}', 14),
+(277, 1, 'spesifc_role', 'text', 'Jabatan Guru', 1, 1, 1, 1, 1, 1, '{}', 15),
+(278, 1, 'mapel_id', 'text', 'Mapel Id', 0, 1, 1, 1, 1, 1, '{}', 16),
+(279, 48, 'id', 'hidden', 'Id', 1, 0, 0, 0, 0, 0, '{}', 1),
+(280, 48, 'bio', 'text', 'Bio', 0, 1, 1, 1, 1, 1, '{}', 2),
+(281, 48, 'no_telpon', 'text', 'No Telpon', 0, 1, 1, 1, 1, 1, '{}', 3),
+(282, 48, 'skill', 'text', 'Skill', 0, 1, 1, 1, 1, 1, '{}', 4),
+(283, 48, 'cv', 'file', 'Cv', 0, 1, 1, 1, 1, 1, '{}', 5),
+(284, 48, 'created_at', 'timestamp', 'Created At', 0, 1, 1, 1, 0, 1, '{}', 6),
+(285, 48, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 7),
+(286, 49, 'id', 'hidden', 'Id', 1, 0, 0, 0, 0, 0, '{}', 1),
+(287, 49, 'nama_skill', 'text', 'Nama Skill', 0, 1, 1, 1, 1, 1, '{}', 2),
+(288, 49, 'created_at', 'timestamp', 'Created At', 0, 1, 1, 1, 0, 1, '{}', 3),
+(289, 49, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 4),
+(290, 1, 'user_belongsto_detail_user_relationship', 'relationship', 'detail_users', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\Models\\\\DetailUser\",\"table\":\"detail_users\",\"type\":\"belongsTo\",\"column\":\"detail_user\",\"key\":\"id\",\"label\":\"id\",\"pivot_table\":\"alumnis\",\"pivot\":\"0\",\"taggable\":null}', 17),
+(291, 20, 'image', 'image', 'Image', 0, 1, 1, 1, 1, 1, '{\"resize\":{\"width\":\"1000\",\"height\":null},\"quality\":\"70%\",\"upsize\":true}', 6),
+(292, 20, 'slug', 'text', 'Slug', 0, 1, 1, 1, 1, 1, '{\"slugify\":{\"origin\":\"jurusan\"},\"validation\":{\"rule\":\"unique:jurusans,slug\"}}', 7),
+(293, 50, 'id', 'text', 'Id', 1, 0, 0, 0, 0, 0, '{}', 1),
+(294, 50, 'title', 'text', 'Title', 0, 1, 1, 1, 1, 1, '{}', 2),
+(295, 50, 'body', 'rich_text_box', 'Body', 0, 1, 1, 1, 1, 1, '{}', 4),
+(297, 50, 'created_at', 'timestamp', 'Created At', 0, 1, 1, 1, 0, 1, '{}', 7),
+(298, 50, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 8),
+(299, 51, 'id', 'text', 'Id', 1, 0, 0, 0, 0, 0, '{}', 1),
+(300, 51, 'title', 'text', 'Title', 0, 1, 1, 1, 1, 1, '{}', 2),
+(301, 51, 'body', 'rich_text_box', 'Body', 0, 1, 1, 1, 1, 1, '{}', 4),
+(302, 51, 'created_at', 'timestamp', 'Created At', 0, 0, 0, 0, 0, 0, '{}', 7),
+(303, 51, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 8),
+(304, 51, 'jurusan', 'text', 'Jurusan', 0, 1, 1, 1, 1, 1, '{}', 5),
+(305, 52, 'id', 'text', 'Id', 1, 0, 0, 0, 0, 0, '{}', 1),
+(306, 52, 'image', 'image', 'Image', 0, 1, 1, 1, 1, 1, '{}', 2),
+(308, 52, 'created_at', 'timestamp', 'Created At', 0, 1, 1, 1, 0, 1, '{}', 4),
+(309, 52, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 5),
+(310, 53, 'id', 'text', 'Id', 1, 0, 0, 0, 0, 0, '{}', 1),
+(311, 53, 'image', 'image', 'Image', 0, 1, 1, 1, 1, 1, '{}', 2),
+(312, 53, 'jurusan', 'text', 'Jurusan', 0, 1, 1, 1, 1, 1, '{}', 3),
+(313, 53, 'created_at', 'timestamp', 'Created At', 0, 1, 1, 1, 0, 1, '{}', 5),
+(314, 53, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 6),
+(315, 54, 'id', 'text', 'Id', 1, 0, 0, 0, 0, 0, '{}', 1),
+(316, 54, 'nama_perusahaan', 'text', 'Nama Perusahaan', 0, 1, 1, 1, 1, 1, '{}', 2),
+(317, 54, 'title', 'text', 'Title', 0, 1, 1, 1, 1, 1, '{}', 3),
+(318, 54, 'body', 'rich_text_box', 'Body', 0, 1, 1, 1, 1, 1, '{}', 4),
+(319, 54, 'image', 'image', 'Image', 0, 1, 1, 1, 1, 1, '{}', 5),
+(320, 54, 'slug', 'text', 'Slug', 0, 1, 1, 1, 1, 1, '{\"slugify\":{\"origin\":\"title\"},\"validation\":{\"rule\":\"unique:recruitments,slug\"}}', 6),
+(321, 54, 'created_at', 'timestamp', 'Created At', 0, 1, 1, 1, 0, 1, '{}', 7),
+(322, 54, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 8),
+(323, 55, 'id', 'text', 'Id', 1, 0, 0, 0, 0, 0, '{}', 1),
+(324, 55, 'name', 'text', 'Name', 0, 1, 1, 1, 1, 1, '{}', 2),
+(325, 55, 'slug', 'text', 'Slug', 0, 1, 1, 1, 1, 1, '{\"slugify\":{\"origin\":\"name\"},\"validation\":{\"rule\":\"unique:tab_ekskuls,slug\"}}', 3),
+(326, 55, 'created_at', 'timestamp', 'Created At', 0, 1, 1, 1, 0, 1, '{}', 4),
+(327, 55, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 5),
+(328, 56, 'id', 'text', 'Id', 1, 0, 0, 0, 0, 0, '{}', 1),
+(329, 56, 'name', 'text', 'Name', 0, 1, 1, 1, 1, 1, '{}', 2),
+(330, 56, 'slug', 'text', 'Slug', 0, 1, 1, 1, 1, 1, '{\"slugify\":{\"origin\":\"title\"},\"validation\":{\"rule\":\"unique:tab_jurusans,slug\"}}', 3),
+(331, 56, 'created_at', 'timestamp', 'Created At', 0, 1, 1, 1, 0, 1, '{}', 4),
+(332, 56, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 5),
+(333, 50, 'content_ekskul_belongsto_jurusan_relationship', 'relationship', 'Ekskul', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\Models\\\\Ekskul\",\"table\":\"ekskuls\",\"type\":\"belongsTo\",\"column\":\"id\",\"key\":\"id\",\"label\":\"title\",\"pivot_table\":\"alumnis\",\"pivot\":\"0\",\"taggable\":\"0\"}', 6),
+(334, 50, 'content_ekskul_belongsto_tab_jurusan_relationship', 'relationship', 'Title', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\Models\\\\TabEkskul\",\"table\":\"tab_ekskuls\",\"type\":\"belongsTo\",\"column\":\"title\",\"key\":\"id\",\"label\":\"name\",\"pivot_table\":\"alumnis\",\"pivot\":\"0\",\"taggable\":\"0\"}', 3),
+(335, 50, 'ekskul', 'text', 'Ekskul', 0, 1, 1, 1, 1, 1, '{}', 5),
+(336, 51, 'content_jurusan_belongsto_jurusan_relationship', 'relationship', 'Jurusan', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\Models\\\\Jurusan\",\"table\":\"jurusans\",\"type\":\"belongsTo\",\"column\":\"jurusan\",\"key\":\"id\",\"label\":\"jurusan\",\"pivot_table\":\"alumnis\",\"pivot\":\"0\",\"taggable\":\"0\"}', 6),
+(337, 51, 'content_jurusan_belongsto_tab_jurusan_relationship', 'relationship', 'Title', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\Models\\\\TabJurusan\",\"table\":\"tab_jurusans\",\"type\":\"belongsTo\",\"column\":\"title\",\"key\":\"id\",\"label\":\"name\",\"pivot_table\":\"alumnis\",\"pivot\":\"0\",\"taggable\":\"0\"}', 3),
+(338, 52, 'gallery_ekskul_belongsto_ekskul_relationship', 'relationship', 'ekskuls', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\Models\\\\Ekskul\",\"table\":\"ekskuls\",\"type\":\"belongsTo\",\"column\":\"ekskul\",\"key\":\"id\",\"label\":\"title\",\"pivot_table\":\"alumnis\",\"pivot\":\"0\",\"taggable\":\"0\"}', 6),
+(339, 52, 'ekskul', 'text', 'Ekskul', 0, 1, 1, 1, 1, 1, '{}', 3),
+(340, 53, 'gallery_jurusan_belongsto_jurusan_relationship', 'relationship', 'Jurusan', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\Models\\\\Jurusan\",\"table\":\"jurusans\",\"type\":\"belongsTo\",\"column\":\"jurusan\",\"key\":\"id\",\"label\":\"jurusan\",\"pivot_table\":\"alumnis\",\"pivot\":\"0\",\"taggable\":\"0\"}', 4),
+(341, 44, 'gallery_belongsto_jurusan_relationship', 'relationship', 'jurusan', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\Models\\\\Jurusan\",\"table\":\"jurusans\",\"type\":\"belongsTo\",\"column\":\"jurusan\",\"key\":\"id\",\"label\":\"jurusan\",\"pivot_table\":\"alumnis\",\"pivot\":\"0\",\"taggable\":\"0\"}', 10),
+(342, 44, 'jurusan', 'text', 'Jurusan', 0, 1, 1, 1, 1, 1, '{}', 8);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `data_types`
+-- Table structure for table `data_types`
 --
 
 CREATE TABLE `data_types` (
@@ -457,11 +553,11 @@ CREATE TABLE `data_types` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `data_types`
+-- Dumping data for table `data_types`
 --
 
 INSERT INTO `data_types` (`id`, `name`, `slug`, `display_name_singular`, `display_name_plural`, `icon`, `model_name`, `policy_name`, `controller`, `description`, `generate_permissions`, `server_side`, `details`, `created_at`, `updated_at`) VALUES
-(1, 'users', 'users', 'User', 'Users', 'voyager-person', 'TCG\\Voyager\\Models\\User', 'TCG\\Voyager\\Policies\\UserPolicy', 'TCG\\Voyager\\Http\\Controllers\\VoyagerUserController', NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"desc\",\"default_search_key\":null,\"scope\":null}', '2021-09-21 07:32:51', '2021-09-22 06:10:53'),
+(1, 'users', 'users', 'User', 'Users', 'voyager-person', 'TCG\\Voyager\\Models\\User', 'TCG\\Voyager\\Policies\\UserPolicy', 'TCG\\Voyager\\Http\\Controllers\\VoyagerUserController', NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"desc\",\"default_search_key\":null,\"scope\":null}', '2021-09-21 07:32:51', '2021-10-22 06:47:40'),
 (2, 'menus', 'menus', 'Menu', 'Menus', 'voyager-list', 'TCG\\Voyager\\Models\\Menu', NULL, '', '', 1, 0, NULL, '2021-09-21 07:32:51', '2021-09-21 07:32:51'),
 (3, 'roles', 'roles', 'Role', 'Roles', 'voyager-lock', 'TCG\\Voyager\\Models\\Role', NULL, 'TCG\\Voyager\\Http\\Controllers\\VoyagerRoleController', '', 1, 0, NULL, '2021-09-21 07:32:52', '2021-09-21 07:32:52'),
 (4, 'categories', 'categories', 'Category', 'Categories', 'voyager-categories', 'TCG\\Voyager\\Models\\Category', NULL, '', '', 1, 0, NULL, '2021-09-21 07:33:09', '2021-09-21 07:33:09'),
@@ -474,7 +570,7 @@ INSERT INTO `data_types` (`id`, `name`, `slug`, `display_name_singular`, `displa
 (16, 'alumnis', 'alumnis', 'Alumni', 'Alumnis', NULL, 'App\\Models\\Alumni', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2021-09-29 21:41:44', '2021-10-14 13:06:02'),
 (17, 'categories_alumnis', 'categories-alumnis', 'Categories Alumni', 'Categories Alumnis', NULL, 'App\\Models\\CategoriesAlumni', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2021-09-29 21:51:04', '2021-09-29 23:51:34'),
 (19, 'partners', 'partners', 'Partner', 'Partners', NULL, 'App\\Models\\Partner', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2021-09-29 21:52:12', '2021-10-13 05:13:25'),
-(20, 'jurusans', 'jurusans', 'Jurusan', 'Jurusans', NULL, 'App\\Models\\Jurusan', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2021-09-29 23:52:50', '2021-10-02 07:37:34'),
+(20, 'jurusans', 'jurusans', 'Jurusan', 'Jurusans', NULL, 'App\\Models\\Jurusan', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2021-09-29 23:52:50', '2021-10-28 01:30:49'),
 (30, 'content_sarpras', 'content-sarpras', 'Content Sarpra', 'Content Sarpras', NULL, 'App\\Models\\ContentSarpra', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2021-10-06 14:30:52', '2021-10-17 08:34:43'),
 (31, 'gallery_sarpras', 'gallery-sarpras', 'Gallery Sarpra', 'Gallery Sarpras', NULL, 'App\\Models\\GallerySarpra', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2021-10-06 14:35:52', '2021-10-17 02:53:32'),
 (32, 'mapels', 'mapels', 'Mapel', 'Mapels', NULL, 'App\\Models\\Mapel', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null}', '2021-10-07 02:56:07', '2021-10-07 02:56:07'),
@@ -484,14 +580,46 @@ INSERT INTO `data_types` (`id`, `name`, `slug`, `display_name_singular`, `displa
 (38, 'contents', 'contents', 'Content', 'Contents', NULL, 'App\\Models\\Content', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2021-10-17 09:10:31', '2021-10-21 06:45:28'),
 (39, 'backgrounds', 'backgrounds', 'Background', 'Backgrounds', NULL, 'App\\Models\\Background', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null}', '2021-10-18 07:11:15', '2021-10-18 07:11:15'),
 (42, 'guru_kejuruans', 'guru-kejuruans', 'Guru Kejuruan', 'Guru Kejuruans', '&#xe066;', 'App\\Models\\GuruKejuruan', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2021-10-21 07:08:03', '2021-10-21 07:11:00'),
-(44, 'galleries', 'galleries', 'Gallery', 'Galleries', NULL, 'App\\Models\\Gallery', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2021-10-21 07:12:49', '2021-10-21 07:14:21'),
+(44, 'galleries', 'galleries', 'Gallery', 'Galleries', NULL, 'App\\Models\\Gallery', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2021-10-21 07:12:49', '2021-10-28 00:56:56'),
 (45, 'kategoris', 'kategoris', 'Kategori', 'Kategoris', NULL, 'App\\Models\\Kategori', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null}', '2021-10-21 07:13:41', '2021-10-21 07:13:41'),
-(47, 'ekskuls', 'ekskuls', 'Ekskul', 'Ekskuls', NULL, 'App\\Models\\Ekskul', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null}', '2021-10-21 08:57:59', '2021-10-21 08:57:59');
+(47, 'ekskuls', 'ekskuls', 'Ekskul', 'Ekskuls', NULL, 'App\\Models\\Ekskul', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null}', '2021-10-21 08:57:59', '2021-10-21 08:57:59'),
+(48, 'detail_users', 'detail-users', 'Detail User', 'Detail Users', NULL, 'App\\Models\\DetailUser', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2021-10-23 04:09:48', '2021-10-28 03:15:09'),
+(49, 'skills', 'skills', 'Skill', 'Skills', NULL, 'App\\Models\\Skill', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null}', '2021-10-23 04:10:19', '2021-10-23 04:10:19'),
+(50, 'content_ekskuls', 'content-ekskuls', 'Content Ekskul', 'Content Ekskuls', NULL, 'App\\Models\\ContentEkskul', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2021-10-27 14:05:01', '2021-10-28 00:52:10'),
+(51, 'content_jurusans', 'content-jurusans', 'Content Jurusan', 'Content Jurusans', NULL, 'App\\Models\\ContentJurusan', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2021-10-27 14:06:55', '2021-10-28 00:50:46'),
+(52, 'gallery_ekskuls', 'gallery-ekskuls', 'Gallery Ekskul', 'Gallery Ekskuls', NULL, 'App\\Models\\GalleryEkskul', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2021-10-27 14:07:28', '2021-10-28 00:54:15'),
+(53, 'gallery_jurusans', 'gallery-jurusans', 'Gallery Jurusan', 'Gallery Jurusans', NULL, 'App\\Models\\GalleryJurusan', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2021-10-27 14:07:55', '2021-10-28 00:55:24'),
+(54, 'recruitments', 'recruitments', 'Recruitment', 'Recruitments', NULL, 'App\\Models\\Recruitment', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2021-10-27 14:08:44', '2021-10-27 14:10:00'),
+(55, 'tab_ekskuls', 'tab-ekskuls', 'Tab Ekskul', 'Tab Ekskuls', NULL, 'App\\Models\\TabEkskul', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null}', '2021-10-27 14:09:29', '2021-10-27 14:09:29'),
+(56, 'tab_jurusans', 'tab-jurusans', 'Tab Jurusan', 'Tab Jurusans', NULL, 'App\\Models\\TabJurusan', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null}', '2021-10-27 14:11:12', '2021-10-27 14:11:12');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `ekskuls`
+-- Table structure for table `detail_users`
+--
+
+CREATE TABLE `detail_users` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `bio` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `no_telpon` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `skill` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `cv` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `detail_users`
+--
+
+INSERT INTO `detail_users` (`id`, `bio`, `no_telpon`, `skill`, `cv`, `created_at`, `updated_at`) VALUES
+(1, NULL, NULL, NULL, 'detail-users/October2021/0rLBJX9BNbbGpLUELGCT.pdf', '2021-10-28 03:16:00', '2021-10-28 04:03:00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ekskuls`
 --
 
 CREATE TABLE `ekskuls` (
@@ -504,7 +632,7 @@ CREATE TABLE `ekskuls` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `ekskuls`
+-- Dumping data for table `ekskuls`
 --
 
 INSERT INTO `ekskuls` (`id`, `image`, `title`, `slug`, `created_at`, `updated_at`) VALUES
@@ -522,7 +650,7 @@ INSERT INTO `ekskuls` (`id`, `image`, `title`, `slug`, `created_at`, `updated_at
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `failed_jobs`
+-- Table structure for table `failed_jobs`
 --
 
 CREATE TABLE `failed_jobs` (
@@ -538,7 +666,7 @@ CREATE TABLE `failed_jobs` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `galleries`
+-- Table structure for table `galleries`
 --
 
 CREATE TABLE `galleries` (
@@ -549,14 +677,14 @@ CREATE TABLE `galleries` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL,
-  `kategori_id` bigint(20) UNSIGNED DEFAULT NULL
+  `jurusan` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `galleries`
+-- Dumping data for table `galleries`
 --
 
-INSERT INTO `galleries` (`id`, `nama_guru`, `foto`, `kategori_guru`, `created_at`, `updated_at`, `deleted_at`, `kategori_id`) VALUES
+INSERT INTO `galleries` (`id`, `nama_guru`, `foto`, `kategori_guru`, `created_at`, `updated_at`, `deleted_at`, `jurusan`) VALUES
 (1, 'Dwi Sustiawan, S,Pd', 'galleries\\October2021\\tRjuTMl5QJClLWHL7LQO.jpg', '5', '2021-10-02 04:41:54', '2021-10-02 06:14:10', NULL, NULL),
 (2, 'Edena Dharma Putri, SE', 'galleries\\October2021\\oNWzOLkv1y2xOjhIlDZH.jpg', '2', '2021-10-02 04:51:59', '2021-10-04 06:39:54', NULL, NULL),
 (3, 'Abdul Fatah, SE', 'galleries\\October2021\\bLgBkJFlPNwnXdJTGxqQ.jpg', '5', '2021-10-02 04:54:28', '2021-10-04 06:40:17', NULL, NULL),
@@ -624,7 +752,35 @@ INSERT INTO `galleries` (`id`, `nama_guru`, `foto`, `kategori_guru`, `created_at
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `gallery_sarpras`
+-- Table structure for table `gallery_ekskuls`
+--
+
+CREATE TABLE `gallery_ekskuls` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `ekskul` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `gallery_jurusans`
+--
+
+CREATE TABLE `gallery_jurusans` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `jurusan` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `gallery_sarpras`
 --
 
 CREATE TABLE `gallery_sarpras` (
@@ -637,7 +793,7 @@ CREATE TABLE `gallery_sarpras` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `gallery_sarpras`
+-- Dumping data for table `gallery_sarpras`
 --
 
 INSERT INTO `gallery_sarpras` (`id`, `created_at`, `updated_at`, `image`, `content_id`, `nama_photo`) VALUES
@@ -682,7 +838,7 @@ INSERT INTO `gallery_sarpras` (`id`, `created_at`, `updated_at`, `image`, `conte
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `gurus`
+-- Table structure for table `gurus`
 --
 
 CREATE TABLE `gurus` (
@@ -698,7 +854,7 @@ CREATE TABLE `gurus` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `gurus`
+-- Dumping data for table `gurus`
 --
 
 INSERT INTO `gurus` (`id`, `name`, `email`, `password`, `created_at`, `updated_at`, `nik`, `remember_token`, `jabatan`) VALUES
@@ -710,7 +866,7 @@ INSERT INTO `gurus` (`id`, `name`, `email`, `password`, `created_at`, `updated_a
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `guru_kejuruans`
+-- Table structure for table `guru_kejuruans`
 --
 
 CREATE TABLE `guru_kejuruans` (
@@ -723,7 +879,7 @@ CREATE TABLE `guru_kejuruans` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `guru_kejuruans`
+-- Dumping data for table `guru_kejuruans`
 --
 
 INSERT INTO `guru_kejuruans` (`id`, `nama_guru`, `image`, `jurusan`, `created_at`, `updated_at`) VALUES
@@ -739,7 +895,7 @@ INSERT INTO `guru_kejuruans` (`id`, `nama_guru`, `image`, `jurusan`, `created_at
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `guru_role`
+-- Table structure for table `guru_role`
 --
 
 CREATE TABLE `guru_role` (
@@ -748,7 +904,7 @@ CREATE TABLE `guru_role` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `guru_role`
+-- Dumping data for table `guru_role`
 --
 
 INSERT INTO `guru_role` (`guru_id`, `kategori_id`) VALUES
@@ -771,7 +927,7 @@ INSERT INTO `guru_role` (`guru_id`, `kategori_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `images`
+-- Table structure for table `images`
 --
 
 CREATE TABLE `images` (
@@ -784,7 +940,7 @@ CREATE TABLE `images` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `images`
+-- Dumping data for table `images`
 --
 
 INSERT INTO `images` (`id`, `photo`, `title`, `description`, `created_at`, `updated_at`) VALUES
@@ -808,7 +964,7 @@ INSERT INTO `images` (`id`, `photo`, `title`, `description`, `created_at`, `upda
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `jurusans`
+-- Table structure for table `jurusans`
 --
 
 CREATE TABLE `jurusans` (
@@ -816,24 +972,26 @@ CREATE TABLE `jurusans` (
   `jurusan` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  `singkatan` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL
+  `singkatan` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `slug` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `jurusans`
+-- Dumping data for table `jurusans`
 --
 
-INSERT INTO `jurusans` (`id`, `jurusan`, `created_at`, `updated_at`, `singkatan`) VALUES
-(1, 'Teknik Komputer Jaringan', '2021-09-29 23:55:00', '2021-10-02 04:31:05', 'TKJ'),
-(2, 'Multimedia', '2021-09-29 23:55:00', '2021-10-02 04:30:54', 'MM'),
-(3, 'Rekayasa Perangkat Lunak', '2021-09-29 23:55:00', '2021-10-02 04:30:41', 'RPL'),
-(4, 'Broadcast', '2021-09-29 23:58:00', '2021-10-02 04:30:23', 'BC'),
-(5, 'Teknik Elektronik Industri', '2021-09-29 23:58:00', '2021-10-02 04:30:04', 'TEI');
+INSERT INTO `jurusans` (`id`, `jurusan`, `created_at`, `updated_at`, `singkatan`, `image`, `slug`) VALUES
+(1, 'Teknik Komputer Jaringan', '2021-09-29 23:55:00', '2021-10-28 01:06:47', 'TKJ', 'jurusans\\October2021\\GMimuDarkIwAsZ2HtQA0.png', 'teknik-komputer-jaringan'),
+(2, 'Multimedia', '2021-09-29 23:55:00', '2021-10-28 01:31:33', 'MM', 'jurusans\\October2021\\iId3OKxvkEbMdbcwYAWv.png', 'multimedia'),
+(3, 'Rekayasa Perangkat Lunak', '2021-09-29 23:55:00', '2021-10-28 01:09:27', 'RPL', 'jurusans\\October2021\\7YANPgf5vRXBqgsxWBip.png', 'rekayasa-perangkat-lunak'),
+(4, 'Broadcast', '2021-09-29 23:58:00', '2021-10-28 01:04:57', 'BC', 'jurusans\\October2021\\2lCtxQswgbLeLHCWK9q2.png', 'broadcast'),
+(5, 'Teknik Elektronik Industri', '2021-09-29 23:58:00', '2021-10-28 01:06:06', 'TEI', 'jurusans\\October2021\\UEM2ozlSVxCiVkUxol78.png', 'teknik-elektronik-industri');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `kategoris`
+-- Table structure for table `kategoris`
 --
 
 CREATE TABLE `kategoris` (
@@ -848,7 +1006,7 @@ CREATE TABLE `kategoris` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `kategoris`
+-- Dumping data for table `kategoris`
 --
 
 INSERT INTO `kategoris` (`id`, `nama_kategori`, `foto`, `caption`, `created_at`, `updated_at`, `deleted_at`, `slug`) VALUES
@@ -861,7 +1019,7 @@ INSERT INTO `kategoris` (`id`, `nama_kategori`, `foto`, `caption`, `created_at`,
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `kelas`
+-- Table structure for table `kelas`
 --
 
 CREATE TABLE `kelas` (
@@ -877,7 +1035,7 @@ CREATE TABLE `kelas` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `kelas`
+-- Dumping data for table `kelas`
 --
 
 INSERT INTO `kelas` (`id`, `kelas`, `nama_kelas`, `tahun_ajaran`, `wali_kelas`, `status`, `created_at`, `updated_at`, `jurusan`) VALUES
@@ -930,7 +1088,7 @@ INSERT INTO `kelas` (`id`, `kelas`, `nama_kelas`, `tahun_ajaran`, `wali_kelas`, 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `managers`
+-- Table structure for table `managers`
 --
 
 CREATE TABLE `managers` (
@@ -946,7 +1104,7 @@ CREATE TABLE `managers` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `managers`
+-- Dumping data for table `managers`
 --
 
 INSERT INTO `managers` (`id`, `name`, `jabatan`, `email`, `password`, `created_at`, `updated_at`, `nik`, `remember_token`) VALUES
@@ -955,7 +1113,7 @@ INSERT INTO `managers` (`id`, `name`, `jabatan`, `email`, `password`, `created_a
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `mapels`
+-- Table structure for table `mapels`
 --
 
 CREATE TABLE `mapels` (
@@ -966,7 +1124,7 @@ CREATE TABLE `mapels` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `mapels`
+-- Dumping data for table `mapels`
 --
 
 INSERT INTO `mapels` (`id`, `mata_pelajaran`, `created_at`, `updated_at`) VALUES
@@ -978,7 +1136,7 @@ INSERT INTO `mapels` (`id`, `mata_pelajaran`, `created_at`, `updated_at`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `media`
+-- Table structure for table `media`
 --
 
 CREATE TABLE `media` (
@@ -1005,7 +1163,7 @@ CREATE TABLE `media` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `menus`
+-- Table structure for table `menus`
 --
 
 CREATE TABLE `menus` (
@@ -1016,7 +1174,7 @@ CREATE TABLE `menus` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `menus`
+-- Dumping data for table `menus`
 --
 
 INSERT INTO `menus` (`id`, `name`, `created_at`, `updated_at`) VALUES
@@ -1025,7 +1183,7 @@ INSERT INTO `menus` (`id`, `name`, `created_at`, `updated_at`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `menu_items`
+-- Table structure for table `menu_items`
 --
 
 CREATE TABLE `menu_items` (
@@ -1045,7 +1203,7 @@ CREATE TABLE `menu_items` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `menu_items`
+-- Dumping data for table `menu_items`
 --
 
 INSERT INTO `menu_items` (`id`, `menu_id`, `title`, `url`, `target`, `icon_class`, `color`, `parent_id`, `order`, `created_at`, `updated_at`, `route`, `parameters`) VALUES
@@ -1081,12 +1239,21 @@ INSERT INTO `menu_items` (`id`, `menu_id`, `title`, `url`, `target`, `icon_class
 (41, 1, 'Guru Kejuruans', '', '_self', 'voyager-treasure-open', '#000000', NULL, 21, '2021-10-21 07:08:03', '2021-10-21 07:10:21', 'voyager.guru-kejuruans.index', 'null'),
 (42, 1, 'Galleries', '', '_self', NULL, NULL, NULL, 24, '2021-10-21 07:12:49', '2021-10-21 07:12:49', 'voyager.galleries.index', NULL),
 (43, 1, 'Kategoris', '', '_self', NULL, NULL, NULL, 25, '2021-10-21 07:13:41', '2021-10-21 07:13:41', 'voyager.kategoris.index', NULL),
-(44, 1, 'Ekskuls', '', '_self', NULL, NULL, NULL, 26, '2021-10-21 08:58:00', '2021-10-21 08:58:00', 'voyager.ekskuls.index', NULL);
+(44, 1, 'Ekskuls', '', '_self', NULL, NULL, NULL, 26, '2021-10-21 08:58:00', '2021-10-21 08:58:00', 'voyager.ekskuls.index', NULL),
+(45, 1, 'Detail Users', '', '_self', NULL, NULL, NULL, 27, '2021-10-23 04:09:48', '2021-10-23 04:09:48', 'voyager.detail-users.index', NULL),
+(46, 1, 'Skills', '', '_self', NULL, NULL, NULL, 28, '2021-10-23 04:10:19', '2021-10-23 04:10:19', 'voyager.skills.index', NULL),
+(47, 1, 'Content Ekskuls', '', '_self', NULL, NULL, NULL, 29, '2021-10-27 14:05:04', '2021-10-27 14:05:04', 'voyager.content-ekskuls.index', NULL),
+(48, 1, 'Content Jurusans', '', '_self', NULL, NULL, NULL, 30, '2021-10-27 14:06:56', '2021-10-27 14:06:56', 'voyager.content-jurusans.index', NULL),
+(49, 1, 'Gallery Ekskuls', '', '_self', NULL, NULL, NULL, 31, '2021-10-27 14:07:28', '2021-10-27 14:07:28', 'voyager.gallery-ekskuls.index', NULL),
+(50, 1, 'Gallery Jurusans', '', '_self', NULL, NULL, NULL, 32, '2021-10-27 14:07:56', '2021-10-27 14:07:56', 'voyager.gallery-jurusans.index', NULL),
+(51, 1, 'Recruitments', '', '_self', NULL, NULL, NULL, 33, '2021-10-27 14:08:45', '2021-10-27 14:08:45', 'voyager.recruitments.index', NULL),
+(52, 1, 'Tab Ekskuls', '', '_self', NULL, NULL, NULL, 34, '2021-10-27 14:09:30', '2021-10-27 14:09:30', 'voyager.tab-ekskuls.index', NULL),
+(53, 1, 'Tab Jurusans', '', '_self', NULL, NULL, NULL, 35, '2021-10-27 14:11:13', '2021-10-27 14:11:13', 'voyager.tab-jurusans.index', NULL);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `migrations`
+-- Table structure for table `migrations`
 --
 
 CREATE TABLE `migrations` (
@@ -1096,7 +1263,7 @@ CREATE TABLE `migrations` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `migrations`
+-- Dumping data for table `migrations`
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
@@ -1133,7 +1300,7 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `navbars`
+-- Table structure for table `navbars`
 --
 
 CREATE TABLE `navbars` (
@@ -1146,7 +1313,7 @@ CREATE TABLE `navbars` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `navbars`
+-- Dumping data for table `navbars`
 --
 
 INSERT INTO `navbars` (`id`, `name`, `slug`, `created_at`, `updated_at`, `status`) VALUES
@@ -1164,7 +1331,7 @@ INSERT INTO `navbars` (`id`, `name`, `slug`, `created_at`, `updated_at`, `status
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `pages`
+-- Table structure for table `pages`
 --
 
 CREATE TABLE `pages` (
@@ -1184,7 +1351,7 @@ CREATE TABLE `pages` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `pages`
+-- Dumping data for table `pages`
 --
 
 INSERT INTO `pages` (`id`, `author_id`, `title`, `excerpt`, `body`, `image`, `slug`, `meta_description`, `meta_keywords`, `status`, `created_at`, `updated_at`, `category_id`) VALUES
@@ -1207,19 +1374,15 @@ INSERT INTO `pages` (`id`, `author_id`, `title`, `excerpt`, `body`, `image`, `sl
 (42, 1, 'Bimbingan Konseling', NULL, NULL, 'pages/October2021/3wAIRX6Eb22eWcK63Luo.jpg', 'bimbingan-konseling', NULL, NULL, 'ACTIVE', '2021-10-17 07:13:11', '2021-10-17 07:13:33', 4),
 (43, 1, 'Ekstrakurikuler', NULL, NULL, 'pages/October2021/Bxf8ULlbOHc5NXM532gt.jpg', 'ekstrakurikuler', NULL, NULL, 'ACTIVE', '2021-10-17 07:14:21', '2021-10-17 07:14:21', 4),
 (44, 1, 'Open Recruitment', NULL, NULL, 'pages/October2021/HXlnBNqDnLyIfxskufGZ.jpg', 'open-recruitment', NULL, NULL, 'ACTIVE', '2021-10-17 07:15:13', '2021-10-17 07:15:13', 5),
-(45, 1, 'Data Lulusan SMK Taruna Bhakti', NULL, NULL, 'pages/October2021/OHY6s4U7cPMX5OO5gT4o.jpg', 'data-lulusan-smk-taruna-bhakti', NULL, NULL, 'ACTIVE', '2021-10-17 07:15:49', '2021-10-17 07:15:49', 5),
+(45, 1, 'Data Lulusan SMK Taruna Bhakti', NULL, NULL, 'pages/October2021/OHY6s4U7cPMX5OO5gT4o.jpg', 'data-siswa-starbhak', NULL, NULL, 'ACTIVE', '2021-10-17 07:15:49', '2021-10-30 13:10:10', 5),
 (46, 1, 'Image', NULL, NULL, 'pages/October2021/nvvieG1eXz1wWu70LCgx.jpg', 'image', NULL, NULL, 'ACTIVE', '2021-10-17 07:16:45', '2021-10-17 07:16:45', 10),
 (47, 1, 'Video', NULL, NULL, 'pages/October2021/gelmSD1zy7kstltz1FzG.jpg', 'video', NULL, NULL, 'ACTIVE', '2021-10-17 07:17:15', '2021-10-17 07:17:15', 10),
-(48, 1, 'Teknik Komputer dan Jaringan', NULL, NULL, 'pages/October2021/c2vxHB7gUPfEN8IdEJpe.png', 'teknik-komputer-dan-jaringan', NULL, NULL, 'ACTIVE', '2021-10-21 06:06:48', '2021-10-21 06:06:48', 6),
-(50, 1, 'Rekayasa Perangkat Lunak', NULL, NULL, 'pages/October2021/ramRyetVsrnrvnM0MTS0.png', 'rekayasa-perangkat-lunak', NULL, NULL, 'ACTIVE', '2021-10-21 06:09:35', '2021-10-21 06:09:35', 6),
-(51, 1, 'Broadcast', NULL, NULL, 'pages/October2021/luRyTc2UZYw7sBO72sho.png', 'broadcast', NULL, NULL, 'ACTIVE', '2021-10-21 06:10:43', '2021-10-21 06:10:43', 6),
-(52, 1, 'Teknik Elektronik Industr', NULL, NULL, 'pages/October2021/2cEAXPtoBd1BtM8WHcCU.png', 'teknik-elektronik-industr', NULL, NULL, 'ACTIVE', '2021-10-21 06:11:45', '2021-10-21 06:11:45', 6),
-(53, 1, 'Multimedia', NULL, NULL, 'pages/October2021/GI16J5tsCwaROXY1xJgA.png', 'multimedia', NULL, NULL, 'ACTIVE', '2021-10-21 06:18:45', '2021-10-21 06:21:44', 6);
+(54, 1, 'Jurusan', NULL, NULL, 'pages\\October2021\\sJeNwPffoMcEho6FYz1K.jpg', 'jurusan', NULL, NULL, 'ACTIVE', '2021-10-27 13:44:13', '2021-10-27 13:44:13', 6);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `partners`
+-- Table structure for table `partners`
 --
 
 CREATE TABLE `partners` (
@@ -1233,7 +1396,7 @@ CREATE TABLE `partners` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `partners`
+-- Dumping data for table `partners`
 --
 
 INSERT INTO `partners` (`id`, `logo_perusahaan`, `nama_perusahaan`, `alamat_perusahaan`, `created_at`, `updated_at`, `website_perusahaan`) VALUES
@@ -1245,7 +1408,7 @@ INSERT INTO `partners` (`id`, `logo_perusahaan`, `nama_perusahaan`, `alamat_peru
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `password_resets`
+-- Table structure for table `password_resets`
 --
 
 CREATE TABLE `password_resets` (
@@ -1257,7 +1420,7 @@ CREATE TABLE `password_resets` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `permissions`
+-- Table structure for table `permissions`
 --
 
 CREATE TABLE `permissions` (
@@ -1269,7 +1432,7 @@ CREATE TABLE `permissions` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `permissions`
+-- Dumping data for table `permissions`
 --
 
 INSERT INTO `permissions` (`id`, `key`, `table_name`, `created_at`, `updated_at`) VALUES
@@ -1412,12 +1575,57 @@ INSERT INTO `permissions` (`id`, `key`, `table_name`, `created_at`, `updated_at`
 (177, 'read_ekskuls', 'ekskuls', '2021-10-21 08:58:00', '2021-10-21 08:58:00'),
 (178, 'edit_ekskuls', 'ekskuls', '2021-10-21 08:58:00', '2021-10-21 08:58:00'),
 (179, 'add_ekskuls', 'ekskuls', '2021-10-21 08:58:00', '2021-10-21 08:58:00'),
-(180, 'delete_ekskuls', 'ekskuls', '2021-10-21 08:58:00', '2021-10-21 08:58:00');
+(180, 'delete_ekskuls', 'ekskuls', '2021-10-21 08:58:00', '2021-10-21 08:58:00'),
+(181, 'browse_detail_users', 'detail_users', '2021-10-23 04:09:48', '2021-10-23 04:09:48'),
+(182, 'read_detail_users', 'detail_users', '2021-10-23 04:09:48', '2021-10-23 04:09:48'),
+(183, 'edit_detail_users', 'detail_users', '2021-10-23 04:09:48', '2021-10-23 04:09:48'),
+(184, 'add_detail_users', 'detail_users', '2021-10-23 04:09:48', '2021-10-23 04:09:48'),
+(185, 'delete_detail_users', 'detail_users', '2021-10-23 04:09:48', '2021-10-23 04:09:48'),
+(186, 'browse_skills', 'skills', '2021-10-23 04:10:19', '2021-10-23 04:10:19'),
+(187, 'read_skills', 'skills', '2021-10-23 04:10:19', '2021-10-23 04:10:19'),
+(188, 'edit_skills', 'skills', '2021-10-23 04:10:19', '2021-10-23 04:10:19'),
+(189, 'add_skills', 'skills', '2021-10-23 04:10:19', '2021-10-23 04:10:19'),
+(190, 'delete_skills', 'skills', '2021-10-23 04:10:19', '2021-10-23 04:10:19'),
+(191, 'browse_content_ekskuls', 'content_ekskuls', '2021-10-27 14:05:03', '2021-10-27 14:05:03'),
+(192, 'read_content_ekskuls', 'content_ekskuls', '2021-10-27 14:05:03', '2021-10-27 14:05:03'),
+(193, 'edit_content_ekskuls', 'content_ekskuls', '2021-10-27 14:05:03', '2021-10-27 14:05:03'),
+(194, 'add_content_ekskuls', 'content_ekskuls', '2021-10-27 14:05:03', '2021-10-27 14:05:03'),
+(195, 'delete_content_ekskuls', 'content_ekskuls', '2021-10-27 14:05:03', '2021-10-27 14:05:03'),
+(196, 'browse_content_jurusans', 'content_jurusans', '2021-10-27 14:06:56', '2021-10-27 14:06:56'),
+(197, 'read_content_jurusans', 'content_jurusans', '2021-10-27 14:06:56', '2021-10-27 14:06:56'),
+(198, 'edit_content_jurusans', 'content_jurusans', '2021-10-27 14:06:56', '2021-10-27 14:06:56'),
+(199, 'add_content_jurusans', 'content_jurusans', '2021-10-27 14:06:56', '2021-10-27 14:06:56'),
+(200, 'delete_content_jurusans', 'content_jurusans', '2021-10-27 14:06:56', '2021-10-27 14:06:56'),
+(201, 'browse_gallery_ekskuls', 'gallery_ekskuls', '2021-10-27 14:07:28', '2021-10-27 14:07:28'),
+(202, 'read_gallery_ekskuls', 'gallery_ekskuls', '2021-10-27 14:07:28', '2021-10-27 14:07:28'),
+(203, 'edit_gallery_ekskuls', 'gallery_ekskuls', '2021-10-27 14:07:28', '2021-10-27 14:07:28'),
+(204, 'add_gallery_ekskuls', 'gallery_ekskuls', '2021-10-27 14:07:28', '2021-10-27 14:07:28'),
+(205, 'delete_gallery_ekskuls', 'gallery_ekskuls', '2021-10-27 14:07:28', '2021-10-27 14:07:28'),
+(206, 'browse_gallery_jurusans', 'gallery_jurusans', '2021-10-27 14:07:56', '2021-10-27 14:07:56'),
+(207, 'read_gallery_jurusans', 'gallery_jurusans', '2021-10-27 14:07:56', '2021-10-27 14:07:56'),
+(208, 'edit_gallery_jurusans', 'gallery_jurusans', '2021-10-27 14:07:56', '2021-10-27 14:07:56'),
+(209, 'add_gallery_jurusans', 'gallery_jurusans', '2021-10-27 14:07:56', '2021-10-27 14:07:56'),
+(210, 'delete_gallery_jurusans', 'gallery_jurusans', '2021-10-27 14:07:56', '2021-10-27 14:07:56'),
+(211, 'browse_recruitments', 'recruitments', '2021-10-27 14:08:45', '2021-10-27 14:08:45'),
+(212, 'read_recruitments', 'recruitments', '2021-10-27 14:08:45', '2021-10-27 14:08:45'),
+(213, 'edit_recruitments', 'recruitments', '2021-10-27 14:08:45', '2021-10-27 14:08:45'),
+(214, 'add_recruitments', 'recruitments', '2021-10-27 14:08:45', '2021-10-27 14:08:45'),
+(215, 'delete_recruitments', 'recruitments', '2021-10-27 14:08:45', '2021-10-27 14:08:45'),
+(216, 'browse_tab_ekskuls', 'tab_ekskuls', '2021-10-27 14:09:30', '2021-10-27 14:09:30'),
+(217, 'read_tab_ekskuls', 'tab_ekskuls', '2021-10-27 14:09:30', '2021-10-27 14:09:30'),
+(218, 'edit_tab_ekskuls', 'tab_ekskuls', '2021-10-27 14:09:30', '2021-10-27 14:09:30'),
+(219, 'add_tab_ekskuls', 'tab_ekskuls', '2021-10-27 14:09:30', '2021-10-27 14:09:30'),
+(220, 'delete_tab_ekskuls', 'tab_ekskuls', '2021-10-27 14:09:30', '2021-10-27 14:09:30'),
+(221, 'browse_tab_jurusans', 'tab_jurusans', '2021-10-27 14:11:13', '2021-10-27 14:11:13'),
+(222, 'read_tab_jurusans', 'tab_jurusans', '2021-10-27 14:11:13', '2021-10-27 14:11:13'),
+(223, 'edit_tab_jurusans', 'tab_jurusans', '2021-10-27 14:11:13', '2021-10-27 14:11:13'),
+(224, 'add_tab_jurusans', 'tab_jurusans', '2021-10-27 14:11:13', '2021-10-27 14:11:13'),
+(225, 'delete_tab_jurusans', 'tab_jurusans', '2021-10-27 14:11:13', '2021-10-27 14:11:13');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `permission_role`
+-- Table structure for table `permission_role`
 --
 
 CREATE TABLE `permission_role` (
@@ -1426,7 +1634,7 @@ CREATE TABLE `permission_role` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `permission_role`
+-- Dumping data for table `permission_role`
 --
 
 INSERT INTO `permission_role` (`permission_id`, `role_id`) VALUES
@@ -1569,12 +1777,57 @@ INSERT INTO `permission_role` (`permission_id`, `role_id`) VALUES
 (177, 1),
 (178, 1),
 (179, 1),
-(180, 1);
+(180, 1),
+(181, 1),
+(182, 1),
+(183, 1),
+(184, 1),
+(185, 1),
+(186, 1),
+(187, 1),
+(188, 1),
+(189, 1),
+(190, 1),
+(191, 1),
+(192, 1),
+(193, 1),
+(194, 1),
+(195, 1),
+(196, 1),
+(197, 1),
+(198, 1),
+(199, 1),
+(200, 1),
+(201, 1),
+(202, 1),
+(203, 1),
+(204, 1),
+(205, 1),
+(206, 1),
+(207, 1),
+(208, 1),
+(209, 1),
+(210, 1),
+(211, 1),
+(212, 1),
+(213, 1),
+(214, 1),
+(215, 1),
+(216, 1),
+(217, 1),
+(218, 1),
+(219, 1),
+(220, 1),
+(221, 1),
+(222, 1),
+(223, 1),
+(224, 1),
+(225, 1);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `personal_access_tokens`
+-- Table structure for table `personal_access_tokens`
 --
 
 CREATE TABLE `personal_access_tokens` (
@@ -1592,7 +1845,7 @@ CREATE TABLE `personal_access_tokens` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `posts`
+-- Table structure for table `posts`
 --
 
 CREATE TABLE `posts` (
@@ -1614,7 +1867,7 @@ CREATE TABLE `posts` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `posts`
+-- Dumping data for table `posts`
 --
 
 INSERT INTO `posts` (`id`, `author_id`, `category_id`, `title`, `seo_title`, `excerpt`, `body`, `image`, `slug`, `meta_description`, `meta_keywords`, `status`, `featured`, `created_at`, `updated_at`) VALUES
@@ -1624,7 +1877,24 @@ INSERT INTO `posts` (`id`, `author_id`, `category_id`, `title`, `seo_title`, `ex
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `roles`
+-- Table structure for table `recruitments`
+--
+
+CREATE TABLE `recruitments` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `nama_perusahaan` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `body` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `slug` int(11) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `roles`
 --
 
 CREATE TABLE `roles` (
@@ -1636,7 +1906,7 @@ CREATE TABLE `roles` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `roles`
+-- Dumping data for table `roles`
 --
 
 INSERT INTO `roles` (`id`, `name`, `display_name`, `created_at`, `updated_at`) VALUES
@@ -1649,7 +1919,7 @@ INSERT INTO `roles` (`id`, `name`, `display_name`, `created_at`, `updated_at`) V
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `settings`
+-- Table structure for table `settings`
 --
 
 CREATE TABLE `settings` (
@@ -1664,7 +1934,7 @@ CREATE TABLE `settings` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `settings`
+-- Dumping data for table `settings`
 --
 
 INSERT INTO `settings` (`id`, `key`, `display_name`, `value`, `details`, `type`, `order`, `group`) VALUES
@@ -1688,7 +1958,7 @@ INSERT INTO `settings` (`id`, `key`, `display_name`, `value`, `details`, `type`,
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `siswas`
+-- Table structure for table `siswas`
 --
 
 CREATE TABLE `siswas` (
@@ -1704,7 +1974,7 @@ CREATE TABLE `siswas` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `siswas`
+-- Dumping data for table `siswas`
 --
 
 INSERT INTO `siswas` (`id`, `name`, `kelas_id`, `email`, `password`, `created_at`, `updated_at`, `nipd`, `remember_token`) VALUES
@@ -1713,7 +1983,57 @@ INSERT INTO `siswas` (`id`, `name`, `kelas_id`, `email`, `password`, `created_at
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `translations`
+-- Table structure for table `skills`
+--
+
+CREATE TABLE `skills` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `nama_skill` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `skills`
+--
+
+INSERT INTO `skills` (`id`, `nama_skill`, `created_at`, `updated_at`) VALUES
+(1, 'Laravel', '2021-10-23 04:11:55', '2021-10-23 04:11:55'),
+(2, 'HTML', '2021-10-23 04:12:03', '2021-10-23 04:12:03'),
+(3, 'CSS', '2021-10-23 04:12:07', '2021-10-23 04:12:07');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tab_ekskuls`
+--
+
+CREATE TABLE `tab_ekskuls` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `slug` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tab_jurusans`
+--
+
+CREATE TABLE `tab_jurusans` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `slug` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `translations`
 --
 
 CREATE TABLE `translations` (
@@ -1728,7 +2048,7 @@ CREATE TABLE `translations` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `translations`
+-- Dumping data for table `translations`
 --
 
 INSERT INTO `translations` (`id`, `table_name`, `column_name`, `foreign_key`, `locale`, `value`, `created_at`, `updated_at`) VALUES
@@ -1766,7 +2086,7 @@ INSERT INTO `translations` (`id`, `table_name`, `column_name`, `foreign_key`, `l
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `users`
+-- Table structure for table `users`
 --
 
 CREATE TABLE `users` (
@@ -1785,76 +2105,78 @@ CREATE TABLE `users` (
   `jabatan_guru` varchar(225) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `kelas_siswa` int(11) DEFAULT NULL,
   `spesifc_role` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `mapel_id` int(11) DEFAULT NULL
+  `mapel_id` int(11) DEFAULT NULL,
+  `detail_user` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `users`
+-- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `role_id`, `name`, `email`, `avatar`, `email_verified_at`, `password`, `remember_token`, `settings`, `created_at`, `updated_at`, `nomor_induk`, `jabatan_guru`, `kelas_siswa`, `spesifc_role`, `mapel_id`) VALUES
-(1, 1, 'Taruna', 'admin@admin.com', 'users/default.png', NULL, '$2y$10$Fo8k1RIU9Ej0B7oa4thUgexNlQk06ytDVR6fcbbS6hVBZlUQ6HIyC', 'H1YZICLRP6aSTpwgDGSOG0O1Qcnxaw3WTe2vwztQQaCsrvijQuAICyvY0bZv', NULL, '2021-08-19 18:52:57', '2021-08-19 18:52:57', NULL, NULL, NULL, '', NULL),
-(2, 1, 'admin', 'admin@email.com', 'users/default.png', NULL, '$2y$10$R4YUok8EtOVF81IlFaCTZ.8l6i03Hgd6B1YUZaYQK/cVC0k8mUj76', NULL, '{\"locale\":\"id\"}', '2021-10-04 19:09:29', '2021-10-05 00:01:23', '523235235', NULL, NULL, 'kepsek', NULL),
-(3, 3, 'Ari Suhendra Tahyadi', '32232@gmail.com', 'users/default.png', NULL, '$2y$10$qMNo101mY9bBwUaUBHidAuKh1NiuG0b4ATbUF.mhBYouy87Pv0UHC', NULL, '{\"locale\":\"id\"}', '2021-10-04 19:21:41', '2021-10-05 00:03:18', '42342342342', NULL, 3, 'siswa', NULL),
-(4, 4, 'Joko', 'joko@gmail.com', 'users/default.png', NULL, '$2y$10$IPvgfaSlLOMZpSKQCrKcHel1pMIArKFcvNGg0m7VftDcgCtMqjWtC', NULL, '{\"locale\":\"id\"}', '2021-10-04 19:25:37', '2021-10-05 00:02:49', '12910100259', 'Guru', NULL, 'Kurikulum', 2),
-(5, 1, 'admin', 'admin@test.com', 'users/default.png', NULL, '$2y$10$INKBBk0I6VUlMaIN2ALde.BIxc4q0PAaeiRx5i68s0Rf41.qaddqm', NULL, NULL, '2021-10-04 23:28:44', '2021-10-05 00:01:03', '4324234234', NULL, NULL, 'admin', NULL),
-(6, 5, 'THEBBB', 'Yuhnpa@gmail.com', 'users\\October2021\\E8czVAHwOuRA1hZJKfyk.jpg', NULL, '$2y$10$BNaBhza.bvWGNQyZknvOQuMztrlh1JXW1Q3q3izJoeM69Ne13j7Ky', NULL, NULL, '2021-10-04 23:43:46', '2021-10-05 02:19:25', '3423242342342', 'Kepala Program', NULL, 'kaprog', NULL),
-(8, 3, 'siswa0', 'siswa0@gmail.com', 'users/default.png', NULL, '$2y$10$cgIafsOLGIJ5m.tI1sTAe.FzknGSfOUCyANsaGopSNjKeNIs2sMXK', '', '[]', '2021-10-08 08:31:02', '2021-10-08 08:31:02', '9591', '', 7, 'siswa', 3),
-(9, 3, 'siswa1', 'siswa1@gmail.com', 'users/default.png', NULL, '$2y$10$8Fs6ZBjA60UToL.97tNZteZFYsBtWcCDmaxr9hI2GnyMV.xPiygGe', '', '[]', '2021-10-08 08:31:02', '2021-10-08 08:31:02', '17928', '', 25, 'siswa', 2),
-(10, 3, 'siswa2', 'siswa2@gmail.com', 'users/default.png', NULL, '$2y$10$VofvpZ/HUW822zlcCMD4pO/s.tVER/cwH8/IGIvVapMxG1k0fVpea', '', '[]', '2021-10-08 08:31:02', '2021-10-08 08:31:02', '75', '', 18, 'siswa', 4),
-(11, 3, 'siswa3', 'siswa3@gmail.com', 'users/default.png', NULL, '$2y$10$POfDubHx9YI2IH0hq76mbecNe8nIA59p2mxuR/7HUlHK0dFbAkjLe', '', '[]', '2021-10-08 08:31:02', '2021-10-08 08:31:02', '17', '', 9, 'siswa', 3),
-(12, 3, 'siswa4', 'siswa4@gmail.com', 'users/default.png', NULL, '$2y$10$YS77dRFaTSki2c6CT2/Hmuh0w07uTh0Uqt/6cAV2N8BgmR09JG1jy', '', '[]', '2021-10-08 08:31:02', '2021-10-08 08:31:02', '940', '', 14, 'siswa', 1),
-(13, 3, 'siswa5', 'siswa5@gmail.com', 'users/default.png', NULL, '$2y$10$BIBI5OpGkrWn0Z3yddon4..fLLdgDtaOlrm7XBvVNvz9dKIxiBpDC', '', '[]', '2021-10-08 08:31:02', '2021-10-08 08:31:02', '14680027', '', 42, 'siswa', 1),
-(14, 3, 'siswa6', 'siswa6@gmail.com', 'users/default.png', NULL, '$2y$10$KohcIhvv.sYcrbkGD6ohhOJ1Hq.A5JcdgnFXk7FWTfnSBeOvUyv8G', '', '[]', '2021-10-08 08:31:03', '2021-10-08 08:31:03', '24', '', 12, 'siswa', 2),
-(15, 3, 'siswa7', 'siswa7@gmail.com', 'users/default.png', NULL, '$2y$10$2n0lBfCD263OYcN.HYtuyeHiQ5QPbR/aQrbE0oqYsJa.3cD9c7iLu', '', '[]', '2021-10-08 08:31:03', '2021-10-08 08:31:03', '95139656', '', 9, 'siswa', 4),
-(16, 3, 'siswa8', 'siswa8@gmail.com', 'users/default.png', NULL, '$2y$10$I07cNq8a0YJSo0fUQDrmk.kr21XEWBAHACFTzbPIeoTde7UfJPES.', '', '[]', '2021-10-08 08:31:03', '2021-10-08 08:31:03', '9597461', '', 16, 'siswa', 1),
-(17, 3, 'siswa9', 'siswa9@gmail.com', 'users/default.png', NULL, '$2y$10$GjISADlK5lgI1evXWFfNDey4c/6J5Ut5SjOCvmsxZ.iBVAM5RIamy', '', '[]', '2021-10-08 08:31:03', '2021-10-08 08:31:03', '3', '', 12, 'siswa', 1),
-(18, 3, 'siswa10', 'siswa10@gmail.com', 'users/default.png', NULL, '$2y$10$1jqTE2COWcTODgecHyVwdOvX.dyGn.llDFlmRh0e0xVu9ZAwCRGy.', '', '[]', '2021-10-08 08:31:03', '2021-10-08 08:31:03', '32516947', '', 24, 'siswa', 2),
-(19, 3, 'siswa11', 'siswa11@gmail.com', 'users/default.png', NULL, '$2y$10$oZoCGWZCHD1hJ/Lujq00d.EVRT8ylHQhhm10w/csW0aTEBxMVsBh.', '', '[]', '2021-10-08 08:31:03', '2021-10-08 08:31:03', '75892', '', 34, 'siswa', 1),
-(20, 3, 'siswa12', 'siswa12@gmail.com', 'users/default.png', NULL, '$2y$10$Gm7HyzM.x0p3QwjuAzKLVeVIgeaPaUPk1FUptDEo0LJmPtOq46yMC', '', '[]', '2021-10-08 08:31:04', '2021-10-08 08:31:04', '7', '', 8, 'siswa', 4),
-(21, 3, 'siswa13', 'siswa13@gmail.com', 'users/default.png', NULL, '$2y$10$ZLCZ/KknhezSuw6IaCkMbuY6VXFIevz5MvHd63xbEHoItHxM/FSrC', '', '[]', '2021-10-08 08:31:04', '2021-10-08 08:31:04', '5', '', 19, 'siswa', 1),
-(22, 3, 'siswa14', 'siswa14@gmail.com', 'users/default.png', NULL, '$2y$10$K6IEAJygL03xxdO806LLU./Poz3wGGMegEJEXdxHI6CsLD300yv9e', '', '[]', '2021-10-08 08:31:04', '2021-10-08 08:31:04', '689', '', 38, 'siswa', 3),
-(23, 3, 'siswa15', 'siswa15@gmail.com', 'users/default.png', NULL, '$2y$10$Y95iDzFU3rNFsxpRFQfcD.1oTfJH8M0UmH9NWPNrhdylzvJS8rLqO', '', '[]', '2021-10-08 08:31:04', '2021-10-08 08:31:04', '0', '', 10, 'siswa', 3),
-(24, 3, 'siswa16', 'siswa16@gmail.com', 'users/default.png', NULL, '$2y$10$.iLEiGwjv5cVfs95F/3BbuNM1Vj7b/v3gHHejIyQ26PKaH8R58gUi', '', '[]', '2021-10-08 08:31:04', '2021-10-08 08:31:04', '138', '', 14, 'siswa', 3),
-(25, 3, 'siswa17', 'siswa17@gmail.com', 'users/default.png', NULL, '$2y$10$coMhBmHs0y/N/pV/wPP47Oi7fClCp5fj9LSbRSh/Gl6h02/gW1Gj.', '', '[]', '2021-10-08 08:31:04', '2021-10-08 08:31:04', '386895', '', 21, 'siswa', 4),
-(26, 3, 'siswa18', 'siswa18@gmail.com', 'users/default.png', NULL, '$2y$10$gwvCQiyCEL1rmOH1sAMGEOJXJJ39HdPQV4igmRlu4QPjsfGurWyDS', '', '[]', '2021-10-08 08:31:04', '2021-10-08 08:31:04', '3344', '', 11, 'siswa', 4),
-(27, 3, 'siswa19', 'siswa19@gmail.com', 'users/default.png', NULL, '$2y$10$h9.q77mIWbCJB64iM0lhFuK7LIhqaKchUDb6.80LIhOFnREhmT6uy', '', '[]', '2021-10-08 08:31:04', '2021-10-08 08:31:04', '6395956', '', 45, 'siswa', 1),
-(28, 3, 'siswa20', 'siswa20@gmail.com', 'users/default.png', NULL, '$2y$10$3S2j7V9qlBHBZVqxS/rPrelQzSAzChfjuVHF6eY1WJv1gSsIXk97a', '', '[]', '2021-10-08 08:31:04', '2021-10-08 08:31:04', '6', '', 17, 'siswa', 2),
-(29, 3, 'siswa21', 'siswa21@gmail.com', 'users/default.png', NULL, '$2y$10$grV6WkHrjumDGgWpw8GLf.ELaWstBWCog/I5xCrsbNpHeirNpPQue', '', '[]', '2021-10-08 08:31:05', '2021-10-08 08:31:05', '7652', '', 45, 'siswa', 3),
-(30, 3, 'siswa22', 'siswa22@gmail.com', 'users/default.png', NULL, '$2y$10$aA4WoVXZiUuJmJw1tosv2uEWKr0X.e8quV0Xn3gwK1lqMqdPHw6wS', '', '[]', '2021-10-08 08:31:05', '2021-10-08 08:31:05', '5982', '', 42, 'siswa', 2),
-(31, 3, 'siswa23', 'siswa23@gmail.com', 'users/default.png', NULL, '$2y$10$rzyElIGjNcJE56JsuwUkBuNA6yh7K6LlMRc0TSrbzbNP7LNNRCl0q', '', '[]', '2021-10-08 08:31:05', '2021-10-08 08:31:05', '9', '', 35, 'siswa', 3),
-(32, 3, 'siswa24', 'siswa24@gmail.com', 'users/default.png', NULL, '$2y$10$57/FLe4uHpM2qN3.XZ68PeVtDTglONRhYxhFakVlEBlxnbTGmG4Y.', '', '[]', '2021-10-08 08:31:05', '2021-10-08 08:31:05', '9321364', '', 32, 'siswa', 4),
-(33, 3, 'siswa25', 'siswa25@gmail.com', 'users/default.png', NULL, '$2y$10$2KNVxsAUTaavRjcqUvKW3ePM.5t3uNybMl.bhGYUUZHbKtulc1I5y', '', '[]', '2021-10-08 08:31:05', '2021-10-08 08:31:05', '115719', '', 40, 'siswa', 3),
-(34, 3, 'siswa26', 'siswa26@gmail.com', 'users/default.png', NULL, '$2y$10$l.cMwuHNSQY79z/3.uygy.GcuOW4.pOztDw56d1YvyBamBRe4PAjm', '', '[]', '2021-10-08 08:31:05', '2021-10-08 08:31:05', '5341', '', 7, 'siswa', 3),
-(35, 3, 'siswa27', 'siswa27@gmail.com', 'users/default.png', NULL, '$2y$10$rbSM1hVmW5jzLSpFSl6qXO9TM/YyqKCwKR9pyRpdccDfyupwLLILy', '', '[]', '2021-10-08 08:31:05', '2021-10-08 08:31:05', '943625', '', 3, 'siswa', 1),
-(36, 3, 'siswa28', 'siswa28@gmail.com', 'users/default.png', NULL, '$2y$10$q9BulNHHiTZRh6imIBy2COU3Hi/i/1.ojPtEtvgaQxEn9RUktt51G', '', '[]', '2021-10-08 08:31:06', '2021-10-08 08:31:06', '145', '', 34, 'siswa', 4),
-(37, 3, 'siswa29', 'siswa29@gmail.com', 'users/default.png', NULL, '$2y$10$w3/8XrKvPxkLrjoVKJo39ep0cqo32uR.j7ZLU3khPLG2cG1dH/s..', '', '[]', '2021-10-08 08:31:06', '2021-10-08 08:31:06', '74810367', '', 7, 'siswa', 1),
-(38, 3, 'siswa30', 'siswa30@gmail.com', 'users/default.png', NULL, '$2y$10$pX.jTiQdOPpaNmm.kw0Ho.wJ4T4jKFRPgUHxdh61cIrqIuZJPsmYC', '', '[]', '2021-10-08 08:31:06', '2021-10-08 08:31:06', '521108910', '', 4, 'siswa', 3),
-(39, 3, 'siswa31', 'siswa31@gmail.com', 'users/default.png', NULL, '$2y$10$q4BCgUpcxobEqkuTNlBfz.l9bSuYPJ9y94cNkxE9UaaNamtKQdpgy', '', '[]', '2021-10-08 08:31:06', '2021-10-08 08:31:06', '4852916', '', 44, 'siswa', 2),
-(40, 3, 'siswa32', 'siswa32@gmail.com', 'users/default.png', NULL, '$2y$10$GQXyFMie8QRGWd99DWvi8OgXQoV6vv1En8tC4nvyYbaZ1JxMDqVFm', '', '[]', '2021-10-08 08:31:06', '2021-10-08 08:31:06', '2846209', '', 37, 'siswa', 2),
-(41, 3, 'siswa33', 'siswa33@gmail.com', 'users/default.png', NULL, '$2y$10$I5uxqfmlEOLTMAY0QJ0G6Okh0o58ujToOq9TD5vTtc6ycX0tEdIGK', '', '[]', '2021-10-08 08:31:06', '2021-10-08 08:31:06', '88135469', '', 21, 'siswa', 3),
-(42, 3, 'siswa34', 'siswa34@gmail.com', 'users/default.png', NULL, '$2y$10$wb6BPMxB/doBLS5jYfgxxu.Ayx5B0eCtvuxtbZQeDlLA.KlkMHyTO', '', '[]', '2021-10-08 08:31:06', '2021-10-08 08:31:06', '8', '', 42, 'siswa', 4),
-(43, 3, 'siswa35', 'siswa35@gmail.com', 'users/default.png', NULL, '$2y$10$dtWGQky6di/nUtIRhzAnAO8ZNnbyrSIQ7ON9VpmTaw/QhAryRaiAe', '', '[]', '2021-10-08 08:31:06', '2021-10-08 08:31:06', '4471', '', 46, 'siswa', 3),
-(44, 3, 'siswa36', 'siswa36@gmail.com', 'users/default.png', NULL, '$2y$10$bYLcz6URnp2rFw1YnZ3VcOsOMo.0olghHqsefOcyooJrPAXU.Y6Ou', '', '[]', '2021-10-08 08:31:06', '2021-10-08 08:31:06', '7924', '', 46, 'siswa', 4),
-(45, 3, 'siswa37', 'siswa37@gmail.com', 'users/default.png', NULL, '$2y$10$ctueDWAPNpTPxvxIBtAFzeI8j6F3EsIVrOK6gkiTdHXh.Sm71rSDG', '', '[]', '2021-10-08 08:31:07', '2021-10-08 08:31:07', '30383', '', 43, 'siswa', 4),
-(46, 3, 'siswa38', 'siswa38@gmail.com', 'users/default.png', NULL, '$2y$10$nA3uYSzxg5NwBIcei3ZbhO9HbEXBzfAid8HotCkpR2S0mFi6o834y', '', '[]', '2021-10-08 08:31:07', '2021-10-08 08:31:07', '292', '', 31, 'siswa', 4),
-(47, 3, 'siswa39', 'siswa39@gmail.com', 'users/default.png', NULL, '$2y$10$XPmDWzAUNG1UaKm.tAIgWOqobUNCJcwINjozdUvKq5K1MyuHzsan2', '', '[]', '2021-10-08 08:31:07', '2021-10-08 08:31:07', '6098838', '', 44, 'siswa', 1),
-(48, 3, 'siswa40', 'siswa40@gmail.com', 'users/default.png', NULL, '$2y$10$nnmonSPejnECkvNNnNMOu.QFkd61eWgTzbjQByyPaL//q5HgTQyGC', '', '[]', '2021-10-08 08:31:07', '2021-10-08 08:31:07', '16591418', '', 32, 'siswa', 1),
-(49, 3, 'siswa41', 'siswa41@gmail.com', 'users/default.png', NULL, '$2y$10$A7Px0yES20A6m.JECq2vQunxWmA.kMa.UlnstM.uMbkvUn2ilPFga', '', '[]', '2021-10-08 08:31:07', '2021-10-08 08:31:07', '80873816', '', 15, 'siswa', 3),
-(50, 3, 'siswa42', 'siswa42@gmail.com', 'users/default.png', NULL, '$2y$10$Sni9tq3Q8fBfNAUt2g6fV.VFVtpX7pIkEl3SAYmcTuOJLltSSDsGe', '', '[]', '2021-10-08 08:31:07', '2021-10-08 08:31:07', '52940593', '', 43, 'siswa', 3),
-(51, 3, 'siswa43', 'siswa43@gmail.com', 'users/default.png', NULL, '$2y$10$MlvDyE0M4iGDeWtNCeShuOkAB9OW9R7RFKWvLvsiltG.53Z4MiepC', '', '[]', '2021-10-08 08:31:07', '2021-10-08 08:31:07', '23515379', '', 9, 'siswa', 2),
-(52, 3, 'siswa44', 'siswa44@gmail.com', 'users/default.png', NULL, '$2y$10$hn4Q.hgexBRMbelZO3tt8e4LltEOHGUyHUJrXBqRr72jkid2DNMBO', '', '[]', '2021-10-08 08:31:07', '2021-10-08 08:31:07', '261637', '', 19, 'siswa', 3),
-(53, 3, 'siswa45', 'siswa45@gmail.com', 'users/default.png', NULL, '$2y$10$c942nyzmrqgpLvrHGB4vWODu1.SIBM39cvbIw6IQtj/pTclFkYYW2', '', '[]', '2021-10-08 08:31:07', '2021-10-08 08:31:07', '831', '', 20, 'siswa', 3),
-(54, 3, 'siswa46', 'siswa46@gmail.com', 'users/default.png', NULL, '$2y$10$KDN.n9HwXrYZZmRjEMSxq.Yb/wHxBrEFCTK2leHDQJ8dh9dB7QcKq', '', '[]', '2021-10-08 08:31:07', '2021-10-08 08:31:07', '772', '', 11, 'siswa', 1),
-(55, 3, 'siswa47', 'siswa47@gmail.com', 'users/default.png', NULL, '$2y$10$frMbOeryGu1YucD8g3UNo.vG1qCqij0z0r.EGi/jp0oNErADYpUw6', '', '[]', '2021-10-08 08:31:08', '2021-10-08 08:31:08', '194898', '', 12, 'siswa', 4),
-(56, 3, 'siswa48', 'siswa48@gmail.com', 'users/default.png', NULL, '$2y$10$MP1gRIt0Sjgg0dxxSslQV.kQnK2tj5w3LnPc1aO/eKl1w7A7PRHtK', '', '[]', '2021-10-08 08:31:08', '2021-10-08 08:31:08', '8', '', 45, 'siswa', 1),
-(57, 3, 'siswa49', 'siswa49@gmail.com', 'users/default.png', NULL, '$2y$10$jKQ1h7SZX.FaLb0gNVE8ZuLTe.4FB1Runjg6LxuI5RQfrAYmyI0yq', '', '[]', '2021-10-08 08:31:08', '2021-10-08 08:31:08', '689449', '', 2, 'siswa', 4),
-(59, 4, '312314', 'email', 'users/default.png', NULL, '$2y$10$0MiO/AXNP90GfABmowu.kOj.4.g8eVqhAHDXzNjCoy4QIDRrWbhA.', NULL, NULL, '2021-10-18 07:54:06', '2021-10-18 07:54:06', '1230913', NULL, NULL, 'guru', NULL);
+INSERT INTO `users` (`id`, `role_id`, `name`, `email`, `avatar`, `email_verified_at`, `password`, `remember_token`, `settings`, `created_at`, `updated_at`, `nomor_induk`, `jabatan_guru`, `kelas_siswa`, `spesifc_role`, `mapel_id`, `detail_user`) VALUES
+(1, 1, 'Taruna', 'admin@admin.com', 'users/default.png', NULL, '$2y$10$Fo8k1RIU9Ej0B7oa4thUgexNlQk06ytDVR6fcbbS6hVBZlUQ6HIyC', 'goYcHXZbQy5jgDIe99Ob0R0mv902ZPg6MotZp5dQb4QuxfLuZ8yf3OrwFAcr', NULL, '2021-08-19 18:52:57', '2021-08-19 18:52:57', NULL, NULL, NULL, '', NULL, 1),
+(2, 1, 'admin', 'admin@email.com', 'users/default.png', NULL, '$2y$10$R4YUok8EtOVF81IlFaCTZ.8l6i03Hgd6B1YUZaYQK/cVC0k8mUj76', NULL, '{\"locale\":\"id\"}', '2021-10-04 19:09:29', '2021-10-05 00:01:23', '523235235', NULL, NULL, 'kepsek', NULL, NULL),
+(3, 3, 'Ari Suhendra Tahyadi', '32232@gmail.com', 'users/default.png', NULL, '$2y$10$qMNo101mY9bBwUaUBHidAuKh1NiuG0b4ATbUF.mhBYouy87Pv0UHC', NULL, '{\"locale\":\"id\"}', '2021-10-04 19:21:41', '2021-10-05 00:03:18', '42342342342', NULL, 3, 'siswa', NULL, NULL),
+(4, 4, 'Joko', 'joko@gmail.com', 'users/default.png', NULL, '$2y$10$IPvgfaSlLOMZpSKQCrKcHel1pMIArKFcvNGg0m7VftDcgCtMqjWtC', NULL, '{\"locale\":\"id\"}', '2021-10-04 19:25:37', '2021-10-22 07:13:28', '12910100259', NULL, NULL, 'litbang', NULL, NULL),
+(5, 1, 'admin', 'admin@test.com', 'users/default.png', NULL, '$2y$10$INKBBk0I6VUlMaIN2ALde.BIxc4q0PAaeiRx5i68s0Rf41.qaddqm', NULL, NULL, '2021-10-04 23:28:44', '2021-10-05 00:01:03', '4324234234', NULL, NULL, 'admin', NULL, NULL),
+(6, 5, 'THEBBB', 'Yuhnpa@gmail.com', 'users\\October2021\\E8czVAHwOuRA1hZJKfyk.jpg', NULL, '$2y$10$BNaBhza.bvWGNQyZknvOQuMztrlh1JXW1Q3q3izJoeM69Ne13j7Ky', NULL, NULL, '2021-10-04 23:43:46', '2021-10-05 02:19:25', '3423242342342', 'Kepala Program', NULL, 'kaprog', NULL, NULL),
+(8, 3, 'siswa0', 'siswa0@gmail.com', 'users/default.png', NULL, '$2y$10$cgIafsOLGIJ5m.tI1sTAe.FzknGSfOUCyANsaGopSNjKeNIs2sMXK', '', '[]', '2021-10-08 08:31:02', '2021-10-08 08:31:02', '9591', '', 7, 'siswa', 3, NULL),
+(9, 3, 'siswa1', 'siswa1@gmail.com', 'users/default.png', NULL, '$2y$10$8Fs6ZBjA60UToL.97tNZteZFYsBtWcCDmaxr9hI2GnyMV.xPiygGe', '', '[]', '2021-10-08 08:31:02', '2021-10-08 08:31:02', '17928', '', 25, 'siswa', 2, NULL),
+(10, 3, 'siswa2', 'siswa2@gmail.com', 'users/default.png', NULL, '$2y$10$VofvpZ/HUW822zlcCMD4pO/s.tVER/cwH8/IGIvVapMxG1k0fVpea', '', '[]', '2021-10-08 08:31:02', '2021-10-08 08:31:02', '75', '', 18, 'siswa', 4, NULL),
+(11, 3, 'siswa3', 'siswa3@gmail.com', 'users/default.png', NULL, '$2y$10$POfDubHx9YI2IH0hq76mbecNe8nIA59p2mxuR/7HUlHK0dFbAkjLe', '', '[]', '2021-10-08 08:31:02', '2021-10-08 08:31:02', '17', '', 9, 'siswa', 3, NULL),
+(12, 3, 'siswa4', 'siswa4@gmail.com', 'users/default.png', NULL, '$2y$10$YS77dRFaTSki2c6CT2/Hmuh0w07uTh0Uqt/6cAV2N8BgmR09JG1jy', '', '[]', '2021-10-08 08:31:02', '2021-10-08 08:31:02', '940', '', 14, 'siswa', 1, NULL),
+(13, 3, 'siswa5', 'siswa5@gmail.com', 'users/default.png', NULL, '$2y$10$BIBI5OpGkrWn0Z3yddon4..fLLdgDtaOlrm7XBvVNvz9dKIxiBpDC', '', '[]', '2021-10-08 08:31:02', '2021-10-08 08:31:02', '14680027', '', 42, 'siswa', 1, NULL),
+(14, 3, 'siswa6', 'siswa6@gmail.com', 'users/default.png', NULL, '$2y$10$KohcIhvv.sYcrbkGD6ohhOJ1Hq.A5JcdgnFXk7FWTfnSBeOvUyv8G', '', '[]', '2021-10-08 08:31:03', '2021-10-08 08:31:03', '24', '', 12, 'siswa', 2, NULL),
+(15, 3, 'siswa7', 'siswa7@gmail.com', 'users/default.png', NULL, '$2y$10$2n0lBfCD263OYcN.HYtuyeHiQ5QPbR/aQrbE0oqYsJa.3cD9c7iLu', '', '[]', '2021-10-08 08:31:03', '2021-10-08 08:31:03', '95139656', '', 9, 'siswa', 4, NULL),
+(16, 3, 'siswa8', 'siswa8@gmail.com', 'users/default.png', NULL, '$2y$10$I07cNq8a0YJSo0fUQDrmk.kr21XEWBAHACFTzbPIeoTde7UfJPES.', '', '[]', '2021-10-08 08:31:03', '2021-10-08 08:31:03', '9597461', '', 16, 'siswa', 1, NULL),
+(17, 3, 'siswa9', 'siswa9@gmail.com', 'users/default.png', NULL, '$2y$10$GjISADlK5lgI1evXWFfNDey4c/6J5Ut5SjOCvmsxZ.iBVAM5RIamy', '', '[]', '2021-10-08 08:31:03', '2021-10-08 08:31:03', '3', '', 12, 'siswa', 1, NULL),
+(18, 3, 'siswa10', 'siswa10@gmail.com', 'users/default.png', NULL, '$2y$10$1jqTE2COWcTODgecHyVwdOvX.dyGn.llDFlmRh0e0xVu9ZAwCRGy.', '', '[]', '2021-10-08 08:31:03', '2021-10-08 08:31:03', '32516947', '', 24, 'siswa', 2, NULL),
+(19, 3, 'siswa11', 'siswa11@gmail.com', 'users/default.png', NULL, '$2y$10$oZoCGWZCHD1hJ/Lujq00d.EVRT8ylHQhhm10w/csW0aTEBxMVsBh.', '', '[]', '2021-10-08 08:31:03', '2021-10-08 08:31:03', '75892', '', 34, 'siswa', 1, NULL),
+(20, 3, 'siswa12', 'siswa12@gmail.com', 'users/default.png', NULL, '$2y$10$Gm7HyzM.x0p3QwjuAzKLVeVIgeaPaUPk1FUptDEo0LJmPtOq46yMC', '', '[]', '2021-10-08 08:31:04', '2021-10-08 08:31:04', '7', '', 8, 'siswa', 4, NULL),
+(21, 3, 'siswa13', 'siswa13@gmail.com', 'users/default.png', NULL, '$2y$10$ZLCZ/KknhezSuw6IaCkMbuY6VXFIevz5MvHd63xbEHoItHxM/FSrC', '', '[]', '2021-10-08 08:31:04', '2021-10-08 08:31:04', '5', '', 19, 'siswa', 1, NULL),
+(22, 3, 'siswa14', 'siswa14@gmail.com', 'users/default.png', NULL, '$2y$10$K6IEAJygL03xxdO806LLU./Poz3wGGMegEJEXdxHI6CsLD300yv9e', '', '[]', '2021-10-08 08:31:04', '2021-10-08 08:31:04', '689', '', 38, 'siswa', 3, NULL),
+(23, 3, 'siswa15', 'siswa15@gmail.com', 'users/default.png', NULL, '$2y$10$Y95iDzFU3rNFsxpRFQfcD.1oTfJH8M0UmH9NWPNrhdylzvJS8rLqO', '', '[]', '2021-10-08 08:31:04', '2021-10-08 08:31:04', '0', '', 10, 'siswa', 3, NULL),
+(24, 3, 'siswa16', 'siswa16@gmail.com', 'users/default.png', NULL, '$2y$10$.iLEiGwjv5cVfs95F/3BbuNM1Vj7b/v3gHHejIyQ26PKaH8R58gUi', '', '[]', '2021-10-08 08:31:04', '2021-10-08 08:31:04', '138', '', 14, 'siswa', 3, NULL),
+(25, 3, 'siswa17', 'siswa17@gmail.com', 'users/default.png', NULL, '$2y$10$coMhBmHs0y/N/pV/wPP47Oi7fClCp5fj9LSbRSh/Gl6h02/gW1Gj.', '', '[]', '2021-10-08 08:31:04', '2021-10-08 08:31:04', '386895', '', 21, 'siswa', 4, NULL),
+(26, 3, 'siswa18', 'siswa18@gmail.com', 'users/default.png', NULL, '$2y$10$gwvCQiyCEL1rmOH1sAMGEOJXJJ39HdPQV4igmRlu4QPjsfGurWyDS', '', '[]', '2021-10-08 08:31:04', '2021-10-08 08:31:04', '3344', '', 11, 'siswa', 4, NULL),
+(27, 3, 'siswa19', 'siswa19@gmail.com', 'users/default.png', NULL, '$2y$10$h9.q77mIWbCJB64iM0lhFuK7LIhqaKchUDb6.80LIhOFnREhmT6uy', '', '[]', '2021-10-08 08:31:04', '2021-10-08 08:31:04', '6395956', '', 45, 'siswa', 1, NULL),
+(28, 3, 'siswa20', 'siswa20@gmail.com', 'users/default.png', NULL, '$2y$10$3S2j7V9qlBHBZVqxS/rPrelQzSAzChfjuVHF6eY1WJv1gSsIXk97a', '', '[]', '2021-10-08 08:31:04', '2021-10-08 08:31:04', '6', '', 17, 'siswa', 2, NULL),
+(29, 3, 'siswa21', 'siswa21@gmail.com', 'users/default.png', NULL, '$2y$10$grV6WkHrjumDGgWpw8GLf.ELaWstBWCog/I5xCrsbNpHeirNpPQue', '', '[]', '2021-10-08 08:31:05', '2021-10-08 08:31:05', '7652', '', 45, 'siswa', 3, NULL),
+(30, 3, 'siswa22', 'siswa22@gmail.com', 'users/default.png', NULL, '$2y$10$aA4WoVXZiUuJmJw1tosv2uEWKr0X.e8quV0Xn3gwK1lqMqdPHw6wS', '', '[]', '2021-10-08 08:31:05', '2021-10-08 08:31:05', '5982', '', 42, 'siswa', 2, NULL),
+(31, 3, 'siswa23', 'siswa23@gmail.com', 'users/default.png', NULL, '$2y$10$rzyElIGjNcJE56JsuwUkBuNA6yh7K6LlMRc0TSrbzbNP7LNNRCl0q', '', '[]', '2021-10-08 08:31:05', '2021-10-08 08:31:05', '9', '', 35, 'siswa', 3, NULL),
+(32, 3, 'siswa24', 'siswa24@gmail.com', 'users/default.png', NULL, '$2y$10$57/FLe4uHpM2qN3.XZ68PeVtDTglONRhYxhFakVlEBlxnbTGmG4Y.', '', '[]', '2021-10-08 08:31:05', '2021-10-08 08:31:05', '9321364', '', 32, 'siswa', 4, NULL),
+(33, 3, 'siswa25', 'siswa25@gmail.com', 'users/default.png', NULL, '$2y$10$2KNVxsAUTaavRjcqUvKW3ePM.5t3uNybMl.bhGYUUZHbKtulc1I5y', '', '[]', '2021-10-08 08:31:05', '2021-10-08 08:31:05', '115719', '', 40, 'siswa', 3, NULL),
+(34, 3, 'siswa26', 'siswa26@gmail.com', 'users/default.png', NULL, '$2y$10$l.cMwuHNSQY79z/3.uygy.GcuOW4.pOztDw56d1YvyBamBRe4PAjm', '', '[]', '2021-10-08 08:31:05', '2021-10-08 08:31:05', '5341', '', 7, 'siswa', 3, NULL),
+(35, 3, 'siswa27', 'siswa27@gmail.com', 'users/default.png', NULL, '$2y$10$rbSM1hVmW5jzLSpFSl6qXO9TM/YyqKCwKR9pyRpdccDfyupwLLILy', '', '[]', '2021-10-08 08:31:05', '2021-10-08 08:31:05', '943625', '', 3, 'siswa', 1, NULL),
+(36, 3, 'siswa28', 'siswa28@gmail.com', 'users/default.png', NULL, '$2y$10$q9BulNHHiTZRh6imIBy2COU3Hi/i/1.ojPtEtvgaQxEn9RUktt51G', '', '[]', '2021-10-08 08:31:06', '2021-10-08 08:31:06', '145', '', 34, 'siswa', 4, NULL),
+(37, 3, 'siswa29', 'siswa29@gmail.com', 'users/default.png', NULL, '$2y$10$w3/8XrKvPxkLrjoVKJo39ep0cqo32uR.j7ZLU3khPLG2cG1dH/s..', '', '[]', '2021-10-08 08:31:06', '2021-10-08 08:31:06', '74810367', '', 7, 'siswa', 1, NULL),
+(38, 3, 'siswa30', 'siswa30@gmail.com', 'users/default.png', NULL, '$2y$10$pX.jTiQdOPpaNmm.kw0Ho.wJ4T4jKFRPgUHxdh61cIrqIuZJPsmYC', '', '[]', '2021-10-08 08:31:06', '2021-10-08 08:31:06', '521108910', '', 4, 'siswa', 3, NULL),
+(39, 3, 'siswa31', 'siswa31@gmail.com', 'users/default.png', NULL, '$2y$10$q4BCgUpcxobEqkuTNlBfz.l9bSuYPJ9y94cNkxE9UaaNamtKQdpgy', '', '[]', '2021-10-08 08:31:06', '2021-10-08 08:31:06', '4852916', '', 44, 'siswa', 2, NULL),
+(40, 3, 'siswa32', 'siswa32@gmail.com', 'users/default.png', NULL, '$2y$10$GQXyFMie8QRGWd99DWvi8OgXQoV6vv1En8tC4nvyYbaZ1JxMDqVFm', '', '[]', '2021-10-08 08:31:06', '2021-10-08 08:31:06', '2846209', '', 37, 'siswa', 2, NULL),
+(41, 3, 'siswa33', 'siswa33@gmail.com', 'users/default.png', NULL, '$2y$10$I5uxqfmlEOLTMAY0QJ0G6Okh0o58ujToOq9TD5vTtc6ycX0tEdIGK', '', '[]', '2021-10-08 08:31:06', '2021-10-08 08:31:06', '88135469', '', 21, 'siswa', 3, NULL),
+(42, 3, 'siswa34', 'siswa34@gmail.com', 'users/default.png', NULL, '$2y$10$wb6BPMxB/doBLS5jYfgxxu.Ayx5B0eCtvuxtbZQeDlLA.KlkMHyTO', '', '[]', '2021-10-08 08:31:06', '2021-10-08 08:31:06', '8', '', 42, 'siswa', 4, NULL),
+(43, 3, 'siswa35', 'siswa35@gmail.com', 'users/default.png', NULL, '$2y$10$dtWGQky6di/nUtIRhzAnAO8ZNnbyrSIQ7ON9VpmTaw/QhAryRaiAe', '', '[]', '2021-10-08 08:31:06', '2021-10-08 08:31:06', '4471', '', 46, 'siswa', 3, NULL),
+(44, 3, 'siswa36', 'siswa36@gmail.com', 'users/default.png', NULL, '$2y$10$bYLcz6URnp2rFw1YnZ3VcOsOMo.0olghHqsefOcyooJrPAXU.Y6Ou', '', '[]', '2021-10-08 08:31:06', '2021-10-08 08:31:06', '7924', '', 46, 'siswa', 4, NULL),
+(45, 3, 'siswa37', 'siswa37@gmail.com', 'users/default.png', NULL, '$2y$10$ctueDWAPNpTPxvxIBtAFzeI8j6F3EsIVrOK6gkiTdHXh.Sm71rSDG', '', '[]', '2021-10-08 08:31:07', '2021-10-08 08:31:07', '30383', '', 43, 'siswa', 4, NULL),
+(46, 3, 'siswa38', 'siswa38@gmail.com', 'users/default.png', NULL, '$2y$10$nA3uYSzxg5NwBIcei3ZbhO9HbEXBzfAid8HotCkpR2S0mFi6o834y', '', '[]', '2021-10-08 08:31:07', '2021-10-08 08:31:07', '292', '', 31, 'siswa', 4, NULL),
+(47, 3, 'siswa39', 'siswa39@gmail.com', 'users/default.png', NULL, '$2y$10$XPmDWzAUNG1UaKm.tAIgWOqobUNCJcwINjozdUvKq5K1MyuHzsan2', '', '[]', '2021-10-08 08:31:07', '2021-10-08 08:31:07', '6098838', '', 44, 'siswa', 1, NULL),
+(48, 3, 'siswa40', 'siswa40@gmail.com', 'users/default.png', NULL, '$2y$10$nnmonSPejnECkvNNnNMOu.QFkd61eWgTzbjQByyPaL//q5HgTQyGC', '', '[]', '2021-10-08 08:31:07', '2021-10-08 08:31:07', '16591418', '', 32, 'siswa', 1, NULL),
+(49, 3, 'siswa41', 'siswa41@gmail.com', 'users/default.png', NULL, '$2y$10$A7Px0yES20A6m.JECq2vQunxWmA.kMa.UlnstM.uMbkvUn2ilPFga', '', '[]', '2021-10-08 08:31:07', '2021-10-08 08:31:07', '80873816', '', 15, 'siswa', 3, NULL),
+(50, 3, 'siswa42', 'siswa42@gmail.com', 'users/default.png', NULL, '$2y$10$Sni9tq3Q8fBfNAUt2g6fV.VFVtpX7pIkEl3SAYmcTuOJLltSSDsGe', '', '[]', '2021-10-08 08:31:07', '2021-10-08 08:31:07', '52940593', '', 43, 'siswa', 3, NULL),
+(51, 3, 'siswa43', 'siswa43@gmail.com', 'users/default.png', NULL, '$2y$10$MlvDyE0M4iGDeWtNCeShuOkAB9OW9R7RFKWvLvsiltG.53Z4MiepC', '', '[]', '2021-10-08 08:31:07', '2021-10-08 08:31:07', '23515379', '', 9, 'siswa', 2, NULL),
+(52, 3, 'siswa44', 'siswa44@gmail.com', 'users/default.png', NULL, '$2y$10$hn4Q.hgexBRMbelZO3tt8e4LltEOHGUyHUJrXBqRr72jkid2DNMBO', '', '[]', '2021-10-08 08:31:07', '2021-10-08 08:31:07', '261637', '', 19, 'siswa', 3, NULL),
+(53, 3, 'siswa45', 'siswa45@gmail.com', 'users/default.png', NULL, '$2y$10$c942nyzmrqgpLvrHGB4vWODu1.SIBM39cvbIw6IQtj/pTclFkYYW2', '', '[]', '2021-10-08 08:31:07', '2021-10-08 08:31:07', '831', '', 20, 'siswa', 3, NULL),
+(54, 3, 'siswa46', 'siswa46@gmail.com', 'users/default.png', NULL, '$2y$10$KDN.n9HwXrYZZmRjEMSxq.Yb/wHxBrEFCTK2leHDQJ8dh9dB7QcKq', '', '[]', '2021-10-08 08:31:07', '2021-10-08 08:31:07', '772', '', 11, 'siswa', 1, NULL),
+(55, 3, 'siswa47', 'siswa47@gmail.com', 'users/default.png', NULL, '$2y$10$frMbOeryGu1YucD8g3UNo.vG1qCqij0z0r.EGi/jp0oNErADYpUw6', '', '[]', '2021-10-08 08:31:08', '2021-10-08 08:31:08', '194898', '', 12, 'siswa', 4, NULL),
+(56, 3, 'siswa48', 'siswa48@gmail.com', 'users/default.png', NULL, '$2y$10$MP1gRIt0Sjgg0dxxSslQV.kQnK2tj5w3LnPc1aO/eKl1w7A7PRHtK', '', '[]', '2021-10-08 08:31:08', '2021-10-08 08:31:08', '8', '', 45, 'siswa', 1, NULL),
+(57, 3, 'siswa49', 'siswa49@gmail.com', 'users/default.png', NULL, '$2y$10$jKQ1h7SZX.FaLb0gNVE8ZuLTe.4FB1Runjg6LxuI5RQfrAYmyI0yq', '', '[]', '2021-10-08 08:31:08', '2021-10-08 08:31:08', '689449', '', 2, 'siswa', 4, NULL),
+(59, 4, '312314', 'email', 'users/default.png', NULL, '$2y$10$0MiO/AXNP90GfABmowu.kOj.4.g8eVqhAHDXzNjCoy4QIDRrWbhA.', NULL, NULL, '2021-10-18 07:54:06', '2021-10-18 07:54:06', '1230913', NULL, NULL, 'guru', NULL, NULL),
+(60, 4, 'ui', 'ui@gmail.com', 'users/default.png', NULL, '$2y$10$m.hyKdxNKMt9kwOni.qTnu7BU9XzlzjMflR60sh4DRxn7fNdMXrJK', NULL, '{\"locale\":\"id\"}', '2021-10-22 07:15:04', '2021-10-22 07:15:04', '097709809809', NULL, NULL, 'tu', NULL, NULL);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `user_roles`
+-- Table structure for table `user_roles`
 --
 
 CREATE TABLE `user_roles` (
@@ -1865,7 +2187,7 @@ CREATE TABLE `user_roles` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `videos`
+-- Table structure for table `videos`
 --
 
 CREATE TABLE `videos` (
@@ -1878,7 +2200,7 @@ CREATE TABLE `videos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `videos`
+-- Dumping data for table `videos`
 --
 
 INSERT INTO `videos` (`id`, `video`, `title`, `description`, `created_at`, `updated_at`) VALUES
@@ -1892,19 +2214,19 @@ INSERT INTO `videos` (`id`, `video`, `title`, `description`, `created_at`, `upda
 --
 
 --
--- Indeks untuk tabel `alumnis`
+-- Indexes for table `alumnis`
 --
 ALTER TABLE `alumnis`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `backgrounds`
+-- Indexes for table `backgrounds`
 --
 ALTER TABLE `backgrounds`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `categories`
+-- Indexes for table `categories`
 --
 ALTER TABLE `categories`
   ADD PRIMARY KEY (`id`),
@@ -1912,26 +2234,38 @@ ALTER TABLE `categories`
   ADD KEY `categories_parent_id_foreign` (`parent_id`);
 
 --
--- Indeks untuk tabel `contents`
+-- Indexes for table `contents`
 --
 ALTER TABLE `contents`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `content_sarpras`
+-- Indexes for table `content_ekskuls`
+--
+ALTER TABLE `content_ekskuls`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `content_jurusans`
+--
+ALTER TABLE `content_jurusans`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `content_sarpras`
 --
 ALTER TABLE `content_sarpras`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `data_rows`
+-- Indexes for table `data_rows`
 --
 ALTER TABLE `data_rows`
   ADD PRIMARY KEY (`id`),
   ADD KEY `data_rows_data_type_id_foreign` (`data_type_id`);
 
 --
--- Indeks untuk tabel `data_types`
+-- Indexes for table `data_types`
 --
 ALTER TABLE `data_types`
   ADD PRIMARY KEY (`id`),
@@ -1939,88 +2273,106 @@ ALTER TABLE `data_types`
   ADD UNIQUE KEY `data_types_slug_unique` (`slug`);
 
 --
--- Indeks untuk tabel `ekskuls`
+-- Indexes for table `detail_users`
+--
+ALTER TABLE `detail_users`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `ekskuls`
 --
 ALTER TABLE `ekskuls`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `failed_jobs`
+-- Indexes for table `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
 
 --
--- Indeks untuk tabel `galleries`
+-- Indexes for table `galleries`
 --
 ALTER TABLE `galleries`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `gallery_sarpras`
+-- Indexes for table `gallery_ekskuls`
+--
+ALTER TABLE `gallery_ekskuls`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `gallery_jurusans`
+--
+ALTER TABLE `gallery_jurusans`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `gallery_sarpras`
 --
 ALTER TABLE `gallery_sarpras`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `gurus`
+-- Indexes for table `gurus`
 --
 ALTER TABLE `gurus`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `guru_kejuruans`
+-- Indexes for table `guru_kejuruans`
 --
 ALTER TABLE `guru_kejuruans`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `guru_role`
+-- Indexes for table `guru_role`
 --
 ALTER TABLE `guru_role`
   ADD KEY `guru_role_guru_id_index` (`guru_id`),
   ADD KEY `guru_role_kategori_id_index` (`kategori_id`);
 
 --
--- Indeks untuk tabel `images`
+-- Indexes for table `images`
 --
 ALTER TABLE `images`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `jurusans`
+-- Indexes for table `jurusans`
 --
 ALTER TABLE `jurusans`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `kategoris`
+-- Indexes for table `kategoris`
 --
 ALTER TABLE `kategoris`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `kategoris_slug_unique` (`slug`);
 
 --
--- Indeks untuk tabel `kelas`
+-- Indexes for table `kelas`
 --
 ALTER TABLE `kelas`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `managers`
+-- Indexes for table `managers`
 --
 ALTER TABLE `managers`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `mapels`
+-- Indexes for table `mapels`
 --
 ALTER TABLE `mapels`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `media`
+-- Indexes for table `media`
 --
 ALTER TABLE `media`
   ADD PRIMARY KEY (`id`),
@@ -2028,59 +2380,59 @@ ALTER TABLE `media`
   ADD KEY `media_model_type_model_id_index` (`model_type`,`model_id`);
 
 --
--- Indeks untuk tabel `menus`
+-- Indexes for table `menus`
 --
 ALTER TABLE `menus`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `menus_name_unique` (`name`);
 
 --
--- Indeks untuk tabel `menu_items`
+-- Indexes for table `menu_items`
 --
 ALTER TABLE `menu_items`
   ADD PRIMARY KEY (`id`),
   ADD KEY `menu_items_menu_id_foreign` (`menu_id`);
 
 --
--- Indeks untuk tabel `migrations`
+-- Indexes for table `migrations`
 --
 ALTER TABLE `migrations`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `navbars`
+-- Indexes for table `navbars`
 --
 ALTER TABLE `navbars`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `pages`
+-- Indexes for table `pages`
 --
 ALTER TABLE `pages`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `pages_slug_unique` (`slug`);
 
 --
--- Indeks untuk tabel `partners`
+-- Indexes for table `partners`
 --
 ALTER TABLE `partners`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `password_resets`
+-- Indexes for table `password_resets`
 --
 ALTER TABLE `password_resets`
   ADD KEY `password_resets_email_index` (`email`);
 
 --
--- Indeks untuk tabel `permissions`
+-- Indexes for table `permissions`
 --
 ALTER TABLE `permissions`
   ADD PRIMARY KEY (`id`),
   ADD KEY `permissions_key_index` (`key`);
 
 --
--- Indeks untuk tabel `permission_role`
+-- Indexes for table `permission_role`
 --
 ALTER TABLE `permission_role`
   ADD PRIMARY KEY (`permission_id`,`role_id`),
@@ -2088,7 +2440,7 @@ ALTER TABLE `permission_role`
   ADD KEY `permission_role_role_id_index` (`role_id`);
 
 --
--- Indeks untuk tabel `personal_access_tokens`
+-- Indexes for table `personal_access_tokens`
 --
 ALTER TABLE `personal_access_tokens`
   ADD PRIMARY KEY (`id`),
@@ -2096,41 +2448,65 @@ ALTER TABLE `personal_access_tokens`
   ADD KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`);
 
 --
--- Indeks untuk tabel `posts`
+-- Indexes for table `posts`
 --
 ALTER TABLE `posts`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `posts_slug_unique` (`slug`);
 
 --
--- Indeks untuk tabel `roles`
+-- Indexes for table `recruitments`
+--
+ALTER TABLE `recruitments`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `roles`
 --
 ALTER TABLE `roles`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `roles_name_unique` (`name`);
 
 --
--- Indeks untuk tabel `settings`
+-- Indexes for table `settings`
 --
 ALTER TABLE `settings`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `settings_key_unique` (`key`);
 
 --
--- Indeks untuk tabel `siswas`
+-- Indexes for table `siswas`
 --
 ALTER TABLE `siswas`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `translations`
+-- Indexes for table `skills`
+--
+ALTER TABLE `skills`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tab_ekskuls`
+--
+ALTER TABLE `tab_ekskuls`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tab_jurusans`
+--
+ALTER TABLE `tab_jurusans`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `translations`
 --
 ALTER TABLE `translations`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `translations_table_name_column_name_foreign_key_locale_unique` (`table_name`,`column_name`,`foreign_key`,`locale`);
 
 --
--- Indeks untuk tabel `users`
+-- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
@@ -2138,7 +2514,7 @@ ALTER TABLE `users`
   ADD KEY `role_id` (`role_id`);
 
 --
--- Indeks untuk tabel `user_roles`
+-- Indexes for table `user_roles`
 --
 ALTER TABLE `user_roles`
   ADD PRIMARY KEY (`user_id`,`role_id`),
@@ -2146,259 +2522,200 @@ ALTER TABLE `user_roles`
   ADD KEY `user_roles_role_id_index` (`role_id`);
 
 --
--- Indeks untuk tabel `videos`
+-- Indexes for table `videos`
 --
 ALTER TABLE `videos`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `alumnis`
+-- AUTO_INCREMENT for table `alumnis`
 --
 ALTER TABLE `alumnis`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
--- AUTO_INCREMENT untuk tabel `backgrounds`
+-- AUTO_INCREMENT for table `backgrounds`
 --
 ALTER TABLE `backgrounds`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT untuk tabel `categories`
+-- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- AUTO_INCREMENT untuk tabel `contents`
+-- AUTO_INCREMENT for table `contents`
 --
 ALTER TABLE `contents`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT untuk tabel `content_sarpras`
+-- AUTO_INCREMENT for table `content_ekskuls`
+--
+ALTER TABLE `content_ekskuls`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `content_jurusans`
+--
+ALTER TABLE `content_jurusans`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `content_sarpras`
 --
 ALTER TABLE `content_sarpras`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
--- AUTO_INCREMENT untuk tabel `data_rows`
+-- AUTO_INCREMENT for table `data_rows`
 --
 ALTER TABLE `data_rows`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=274;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=343;
 
 --
--- AUTO_INCREMENT untuk tabel `data_types`
+-- AUTO_INCREMENT for table `data_types`
 --
 ALTER TABLE `data_types`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 
 --
--- AUTO_INCREMENT untuk tabel `ekskuls`
+-- AUTO_INCREMENT for table `detail_users`
+--
+ALTER TABLE `detail_users`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `ekskuls`
 --
 ALTER TABLE `ekskuls`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
--- AUTO_INCREMENT untuk tabel `failed_jobs`
+-- AUTO_INCREMENT for table `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `galleries`
+-- AUTO_INCREMENT for table `galleries`
 --
 ALTER TABLE `galleries`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
 
 --
--- AUTO_INCREMENT untuk tabel `gallery_sarpras`
+-- AUTO_INCREMENT for table `gallery_ekskuls`
+--
+ALTER TABLE `gallery_ekskuls`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `gallery_jurusans`
+--
+ALTER TABLE `gallery_jurusans`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `gallery_sarpras`
 --
 ALTER TABLE `gallery_sarpras`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
--- AUTO_INCREMENT untuk tabel `gurus`
+-- AUTO_INCREMENT for table `gurus`
 --
 ALTER TABLE `gurus`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT untuk tabel `guru_kejuruans`
+-- AUTO_INCREMENT for table `guru_kejuruans`
 --
 ALTER TABLE `guru_kejuruans`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT untuk tabel `images`
+-- AUTO_INCREMENT for table `images`
 --
 ALTER TABLE `images`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
--- AUTO_INCREMENT untuk tabel `jurusans`
+-- AUTO_INCREMENT for table `jurusans`
 --
 ALTER TABLE `jurusans`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT untuk tabel `kategoris`
+-- AUTO_INCREMENT for table `kategoris`
 --
 ALTER TABLE `kategoris`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT untuk tabel `kelas`
+-- AUTO_INCREMENT for table `kelas`
 --
 ALTER TABLE `kelas`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
--- AUTO_INCREMENT untuk tabel `managers`
+-- AUTO_INCREMENT for table `managers`
 --
 ALTER TABLE `managers`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT untuk tabel `mapels`
---
-ALTER TABLE `mapels`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
--- AUTO_INCREMENT untuk tabel `media`
---
-ALTER TABLE `media`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT untuk tabel `menus`
---
-ALTER TABLE `menus`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT untuk tabel `menu_items`
+-- AUTO_INCREMENT for table `menu_items`
 --
 ALTER TABLE `menu_items`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
-
---
--- AUTO_INCREMENT untuk tabel `migrations`
---
-ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
-
---
--- AUTO_INCREMENT untuk tabel `navbars`
---
-ALTER TABLE `navbars`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
-
---
--- AUTO_INCREMENT untuk tabel `pages`
---
-ALTER TABLE `pages`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 
 --
--- AUTO_INCREMENT untuk tabel `partners`
+-- AUTO_INCREMENT for table `pages`
 --
-ALTER TABLE `partners`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+ALTER TABLE `pages`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 
 --
--- AUTO_INCREMENT untuk tabel `permissions`
+-- AUTO_INCREMENT for table `permissions`
 --
 ALTER TABLE `permissions`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=181;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=226;
 
 --
--- AUTO_INCREMENT untuk tabel `personal_access_tokens`
+-- AUTO_INCREMENT for table `recruitments`
 --
-ALTER TABLE `personal_access_tokens`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+ALTER TABLE `recruitments`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `posts`
+-- AUTO_INCREMENT for table `skills`
 --
-ALTER TABLE `posts`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+ALTER TABLE `skills`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT untuk tabel `roles`
+-- AUTO_INCREMENT for table `tab_ekskuls`
 --
-ALTER TABLE `roles`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+ALTER TABLE `tab_ekskuls`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `settings`
+-- AUTO_INCREMENT for table `tab_jurusans`
 --
-ALTER TABLE `settings`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+ALTER TABLE `tab_jurusans`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `siswas`
---
-ALTER TABLE `siswas`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- AUTO_INCREMENT untuk tabel `translations`
---
-ALTER TABLE `translations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
-
---
--- AUTO_INCREMENT untuk tabel `users`
+-- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
-
---
--- AUTO_INCREMENT untuk tabel `videos`
---
-ALTER TABLE `videos`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
---
-
---
--- Ketidakleluasaan untuk tabel `categories`
---
-ALTER TABLE `categories`
-  ADD CONSTRAINT `categories_parent_id_foreign` FOREIGN KEY (`parent_id`) REFERENCES `categories` (`id`) ON DELETE SET NULL ON UPDATE CASCADE;
-
---
--- Ketidakleluasaan untuk tabel `data_rows`
---
-ALTER TABLE `data_rows`
-  ADD CONSTRAINT `data_rows_data_type_id_foreign` FOREIGN KEY (`data_type_id`) REFERENCES `data_types` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Ketidakleluasaan untuk tabel `menu_items`
---
-ALTER TABLE `menu_items`
-  ADD CONSTRAINT `menu_items_menu_id_foreign` FOREIGN KEY (`menu_id`) REFERENCES `menus` (`id`) ON DELETE CASCADE;
-
---
--- Ketidakleluasaan untuk tabel `permission_role`
---
-ALTER TABLE `permission_role`
-  ADD CONSTRAINT `permission_role_permission_id_foreign` FOREIGN KEY (`permission_id`) REFERENCES `permissions` (`id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `permission_role_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE;
-
---
--- Ketidakleluasaan untuk tabel `users`
---
-ALTER TABLE `users`
-  ADD CONSTRAINT `role_id` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`);
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -17,7 +17,7 @@
         }
 
     </style>
-    <div class="container pt-5" data-aos="fade-up">
+    <div class="container mt-5 mb-5" data-aos="fade-up">
         <a href="/{{ $nav }}" class="col-12" style="font-size: 17px;"><i class="fas fa-arrow-left"></i>
             Kembali</a>
         @if ($contents->count() > 1)
@@ -40,36 +40,32 @@
                         <div class="mt-3">
                             {!! $item->content !!}
                         </div>
-                        @if ($item->slug == 'foto-guru')
-                            <section class="our-webcoderskull">
-                                <div class="container">
-                                    <ul class="row">
-                                        @foreach ($foto as $ft)
-                                            <li class="col-12 col-md-6 col-lg-3 ani">
-                                                <a data-bs-toggle="modal" data-bs-target="imagemodal"
-                                                    class="pop">
-                                                    <div class="cnt-block equal-hight text-center" style="height: 349px;">
-                                                        <img src="{{ asset('storage/' . $ft->image) }}"
-                                                            class="img-responsive" alt=""
-                                                            style="width:200px;height:200px; object-fit: cover;">
-                                                        <h3 style="margin-top:10%;">{{ $ft->nama_guru }}</h3>
-                                                    </div>
-                                                </a>
-                                            </li>
-                                        @endforeach
-                                    </ul>
-                                </div>
-                            </section>
+                        <section class="our-webcoderskull">
+                            <div class="container">
+                                <ul class="row">
+                                    @foreach ($foto as $ft)
+                                        <li class="col-12 col-md-6 col-lg-3 ani">
+                                            <a data-bs-toggle="modal" data-bs-target="imagemodal" class="pop">
+                                                <div class="cnt-block equal-hight text-center" style="height: 349px;">
+                                                    <img src="{{ asset('storage/' . $ft->image) }}" class="img-responsive"
+                                                        alt="" style="width:200px;height:200px; object-fit: cover;">
+                                                    <h3 style="margin-top:10%;">{{ $ft->nama_guru }}</h3>
+                                                </div>
+                                            </a>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        </section>
 
-                            <div class="modal fade" id="imagemodal" tabindex="-1" role="dialog"
-                                aria-labelledby="myModalLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-body">
-                                        <img src="" class="imagepreview" style="width: 100%;">
-                                    </div>
+                        <div class="modal fade" id="imagemodal" tabindex="-1" role="dialog"
+                            aria-labelledby="myModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-body">
+                                    <img src="" class="imagepreview" style="width: 100%;">
                                 </div>
                             </div>
-                        @endif
+                        </div>
                     </div>
                 @endforeach
             </div>

@@ -17,7 +17,7 @@
         }
 
     </style>
-    <div class="container" data-aos="fade-up">
+    <div class="container" data-aos="fade-up" id="menu">
         <div class="row card-group " data-aos="zoom-in" data-aos-delay="100">
             <section id="popular-courses" class="courses">
                 <div class="container" data-aos="fade-up">
@@ -45,3 +45,12 @@
         </div>
     </div>
 @endsection
+@push('js')
+    <script>
+        $(document).ready(function() {
+            $('html, body').animate({
+                scrollTop: $('#menu').offset().top - 170
+            }, 'slow');
+        });
+    </script>
+@endpush

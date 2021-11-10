@@ -4,6 +4,7 @@ use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\WebController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PDFController;
 use App\Http\Controllers\RegistalumController;
 use App\Models\Post;
 use App\Models\Kela;
@@ -13,6 +14,7 @@ use App\Models\Setting;
 use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\DashboardManager;
 use Tymon\JWTAuth\JWTAuth;
 
 /*
@@ -54,6 +56,18 @@ Route::get('/hubin/data-tamatan', 'HubinController@index')->name('hubin');
 Route::get('/kurikulum/guru-smk-taruna-bhakti', 'WebController@kurikulumguru');
 Route::get('/guru-starbhak/{kategori:slug}', 'WebController@fotoguru');
 
+// Page BKK
+Route::get('/bkk/open-recruitment', 'WebController@bkk');
+Route::get('/bkk/data-siswa-starbhak', 'WebController@bkk');
+
+// Page Ekstrakulikuler
+Route::get('/kesiswaan/ekstrakurikuler', 'WebController@ekskul');
+Route::get('/ekskul/{eskul:slug}', 'WebController@eskul');
+
+// Page Ekstrakulikuler
+Route::get('/program-keahlian/jurusan', 'WebController@jurusan');
+Route::get('/jurusan/{jurusan:slug}', 'WebController@jurusans');
+
 // Page Gallery
 Route::get('/gallery/{gallery:slug}', 'WebController@galleries');
 
@@ -69,7 +83,9 @@ Route::get('/registalum', [RegistalumController::class, 'create']);
 Route::get('/artikel', function () {
     $settings = App\Models\Setting::all();
     $article = App\Models\Post::where('status', 'PUBLISHED')->get();
-    return view('artikel', compact('settings', 'article'));
+    $backgrounds = App\Models\Background::all();
+    $navbar = App\Models\Navbar::all()->where('status', 'Active');
+    return view('artikel', compact('settings', 'article', 'backgrounds', 'navbar'));
 });
 Route::get('/author/{user}', 'WebController@author');
 Route::get('/posted/{posted}', 'WebController@posted');
@@ -82,14 +98,15 @@ Route::get('/showartikel/{id}', function ($id) {
     // dd($author);
     $settings = App\Models\Setting::all();
     $navbar = App\Models\Navbar::all()->where('status', 'Active');
-    return view('showartikel', compact('articleShow', 'settings', 'author', 'navbar'));
+    $backgrounds = App\Models\Background::all();
+    return view('showartikel', compact('articleShow', 'settings', 'author', 'navbar', 'backgrounds'));
 })->name('showartikel');
 
 // Manager
 Route::group(['prefix' => 'manager', 'middleware' => ['jwt.verify', 'auth:api']], function () {
     // Route::get('/Article/index', [ArticleController::class, 'index'])-all>name('article.index');
-    Route::get('/edit/profile/{id}', [ProfileController::class, 'edit'])->name('edit.profile');
-    Route::put('/update/profile/{id}', [ProfileController::class, 'update'])->name('update.profile');
+    Route::get('/edit/profile/{id}', [ProfileController::class, 'edit'])->name('edit.profileManager');
+    Route::put('/update/profile/{id}', [ProfileController::class, 'update'])->name('update.profileManager');
     Route::get('/Article/tambah', [ArticleController::class, 'tambah'])->name('article.tambah');
     Route::post('/Article/post', [ArticleController::class, 'store'])->name('article.store');
     Route::get('/Article/edit/{id}', [ArticleController::class, 'edit'])->name('article.edit');
@@ -97,6 +114,7 @@ Route::group(['prefix' => 'manager', 'middleware' => ['jwt.verify', 'auth:api']]
     Route::patch('/Article/update/{id}', [ArticleController::class, 'update'])->name('article.update');
     Route::put('/Article/draft/{id}', [ArticleController::class, 'draftOrPublised'])->name('article.draft');
     Route::POST('/image/store', [ImageController::class, 'store'])->name('admin.image');
+
     Route::get('/dashboard', function () {
         $article = Post::where('author_id', Auth::guard('api')->id())->get();
         // dd($article);
@@ -105,9 +123,10 @@ Route::group(['prefix' => 'manager', 'middleware' => ['jwt.verify', 'auth:api']]
 });
 
 // Guru
-Route::group(['prefix' => 'guru', 'middleware' => ['jwt.verify', 'auth:api']], function () {
+Route::group(['prefix' => 'guru', 'middleware' => ['jwt.verify', 'auth:api', 'role:guru']], function () {
     Route::get('/Article/index', [ArticleController::class, 'index'])->name('article.index');
-
+    Route::get('/edit/profile/{id}', [ProfileController::class, 'edit'])->name('edit.profileGuru');
+    Route::put('/update/profile/{id}', [ProfileController::class, 'update'])->name('update.profileGuru');
     Route::get('/dashboard', function () {
 
         $article = Post::all();
@@ -201,7 +220,9 @@ Route::group(['prefix' => 'guru', 'middleware' => ['jwt.verify', 'auth:api']], f
     })->name('dashboard.guru');
 });
 // Siswa
-Route::group(['prefix' => 'siswa', 'middleware' => ['jwt.verify', 'auth:api']], function () {
+Route::group(['prefix' => 'siswa', 'middleware' => ['jwt.verify', 'auth:api', 'role:siswa']], function () {
+    Route::get('/edit/profile/{id}', [ProfileController::class, 'edit'])->name('edit.profileSiswa');
+    Route::put('/update/profile/{id}', [ProfileController::class, 'update'])->name('update.profileSiswa');
     Route::get('/dashboard', function () {
         // $article = Post::all();
         $article = Category::wherehas('post', function ($query) {
@@ -212,6 +233,53 @@ Route::group(['prefix' => 'siswa', 'middleware' => ['jwt.verify', 'auth:api']], 
     })->name('dashboard.siswa');
 });
 
+// Perusahaan
+Route::group(['prefix' => 'perusahaan', 'middleware' => ['jwt.verify', 'auth:api', 'role:perusahaan']], function () {
+    Route::get('/edit/profile/{id}', [ProfileController::class, 'edit'])->name('edit.profilePerusahaan');
+    Route::put('/update/profile/{id}', [ProfileController::class, 'update'])->name('update.profilePerusahaan');
+    Route::get('/detail/siswa/{id}', [ProfileController::class, 'detail'])->name('detail.profile');
+    Route::get('/download-cv/siswa/{id}', [PDFController::class, 'downloadCV'])->name('download.cv');
+    Route::get('/stream-cv/siswa/{id}', [PDFController::class, 'Stream'])->name('stream.cv');
+    Route::get('/dashboard', function () {
+        // $article = Post::all();
+        $article = Category::wherehas('post', function ($query) {
+            $query->where('name', 'Perusahaan');
+        })->get();
+        // dd($article);
+
+        $XII_RPL = User::wherehas('kelas', function ($query) {
+            $query->where('kelas', 'XII')->where('jurusan', 'RPL');
+        })->paginate(6);
+        $XII_BC = User::wherehas('kelas', function ($query) {
+            $query->where('kelas', 'XII')->where('jurusan', 'BC');
+        })->paginate(6);
+        $XII_MM = User::wherehas('kelas', function ($query) {
+            $query->where('kelas', 'XII')->where('jurusan', 'MM');
+        })->paginate(6);
+        $XII_TKJ = User::wherehas('kelas', function ($query) {
+            $query->where('kelas', 'XII')->where('jurusan', 'TKJ');
+        })->paginate(6);
+        $XII_TEI = User::wherehas('kelas', function ($query) {
+            $query->where('kelas', 'XII')->where('jurusan', 'TEI');
+        })->paginate(6);
+        // dd($XII_RPL);
+
+        return view('dashboard.dashboard', compact('article','XII_RPL','XII_BC','XII_MM','XII_TKJ','XII_TEI'));
+    })->name('dashboard.perusahaan');
+});
+
+
+
+Route::group(['prefix' => 'adm', 'middleware' => ['jwt.verify', 'auth:api', 'role:admin']], function () {
+    Route::get('/edit/profile/{id}', [ProfileController::class, 'edit'])->name('edit.profileAdm');
+    Route::put('/update/profile/{id}', [ProfileController::class, 'update'])->name('update.profileAdm');
+    Route::get('/dashboard', function () {
+        // $article = Post::all();
+  
+        // dd($article);
+        return view('dashboard.dashboard');
+    })->name('dashboard.adm');
+});
 // Dinamis Page Web Sekolah
 Route::get('/{menu:slug}', 'WebController@menucard');
 Route::get('/{nav:slug}/{submenu:slug}', 'WebController@submenu');

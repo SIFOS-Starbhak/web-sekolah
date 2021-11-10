@@ -4,6 +4,16 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
+use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Schema;
+
+use Illuminate\Support\Facades\Auth;
+use DB;
+
+use Illuminate\Pagination\Paginator;
+// use Paginator;
+
+
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -23,6 +33,26 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+
+
+        Paginator::useBootstrap();
+        $greetings = "";
+        $time = date("H");
+        $timezone = date("e");
+
+        if ($time < "12") {
+            $greetings = "Selamat Pagi";
+        } else
+            if ($time >= "12" && $time < "15") {
+            $greetings = "Selamat Siang";
+        } else
+            if ($time >= "15" && $time < "18") {
+            $greetings = "Selamat Sore";
+        } else
+            if ($time >= "18") {
+            $greetings = "Selamat Malam";
+        }
+        View::share('greetings',$greetings);  
+
     }
 }

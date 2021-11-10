@@ -94,7 +94,7 @@
                                         @php
                                             $arr = [];
                                         @endphp
-                                        @foreach ($dataType->browseRows->where('field','!=','kelas_siswa') as $row)
+                                        @foreach ($dataType->browseRows->where('field','!=','user_belongsto_kela_relationship')->where('field','!=','jabatan_guru') as $row)
                                             <th>
                                                 @if ($isServerSide && in_array($row->field, $sortableColumns))
                                                     <a href="{{ $row->sortByUrl($orderBy, $sortOrder) }}">
@@ -118,10 +118,11 @@
                                     </tr>
                                 </thead>
                                 @php
-                                    $role = App\Models\Role::where('name','guru')->first();
+                                    $role = App\Models\Role::where('name','siswa')->first();
+                                    
                                 @endphp
                                 <tbody>
-                                    @foreach ($dataTypeContent->where('role_id',$role->id) as $data)
+                                    @foreach ($dataTypeContent->where('role_id','!=',$role_id) as $data)
                                         <tr>
                                             @if ($showCheckboxColumn)
                                                 <td>
@@ -130,7 +131,7 @@
                                                         value="{{ $data->getKey() }}">
                                                 </td>
                                             @endif
-                                            @foreach ($dataType->browseRows->where('field','!=','kelas_siswa') as $row)
+                                            @foreach ($dataType->browseRows->where('field','!=','user_belongsto_kela_relationship')->where('field','!=','jabatan_guru') as $row)
                                                 @php
                                                     if ($data->{$row->field . '_browse'}) {
                                                         $data->{$row->field} = $data->{$row->field . '_browse'};
@@ -375,9 +376,9 @@
                                             </th>
                                         @endif
                                         @php
-                                            // dd($dataType->browseRows->where('field','!=','user_belongsto_mapel_relationship'))
+                                            // dd($dataType->browseRows->where('field','!=','user_belongsto_mapel_relationship')->where('field','!=','spesifc_role'))
                                         @endphp
-                                        @foreach ($dataType->browseRows->where('field','!=','user_belongsto_mapel_relationship')->where('field','!=','spesifc_role') as $row)
+                                        @foreach ($dataType->browseRows->where('field','!=','user_belongsto_mapel_relationship')->where('field','!=','jabatan_guru')->where('field','!=','spesifc_role') as $row)
                                             <th>
                                                 @if ($isServerSide && in_array($row->field, $sortableColumns))
                                                     <a href="{{ $row->sortByUrl($orderBy, $sortOrder) }}">
@@ -413,7 +414,7 @@
                                                         value="{{ $data->getKey() }}">
                                                 </td>
                                             @endif
-                                            @foreach ($dataType->browseRows->where('field','!=','user_belongsto_mapel_relationship')->where('field','!=','spesifc_role') as $row)
+                                            @foreach ($dataType->browseRows->where('field','!=','user_belongsto_mapel_relationship')->where('field','!=','jabatan_guru')->where('field','!=','spesifc_role') as $row)
                                                 @php
                                                     if ($data->{$row->field . '_browse'}) {
                                                         $data->{$row->field} = $data->{$row->field . '_browse'};
