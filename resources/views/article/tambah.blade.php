@@ -36,7 +36,7 @@
                                             </div>
                                             <div class="form-group col-md-6">
                                                 <label for="title">Judul</label>
-                                                <input type="text" class="form-control" id="title" name="title"
+                                                <input type="text" class="form-control" pattern="^[a-zA-Z\s'-]{1,100}$" id="title" name="title"
                                                     placeholder="Masukkan judul untuk artikel" autocomplete="off">
                                                 @error('title')
                                                     <div class="text-danger">{{ $message }}</div>
@@ -46,7 +46,7 @@
                                         <div class="form-row">
                                             <div class="form-group col-md-6">
                                                 <label for="seo">Judul SEO</label>
-                                                <input type="text" class="form-control" id="seo" name="seo_title"
+                                                <input type="text" class="form-control" id="seo" pattern="^[a-zA-Z\s'-]{1,100}$" name="seo_title"
                                                     autocomplete="off" placeholder="Masukkan judul SEO">
                                                 @error('seo_title')
                                                     <div class="text-danger">{{ $message }}</div>

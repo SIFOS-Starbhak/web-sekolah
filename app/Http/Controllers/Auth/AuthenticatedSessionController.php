@@ -80,7 +80,9 @@ class AuthenticatedSessionController extends Controller
 
         } else if (auth('api')->user()->hasRole('siswa')) {
             $data['redirect'] = route('dashboard.siswa');
-        } else if (auth('api')->user()->hasRole('guru')) {
+        } else if (auth('api')->user()->hasRole('user') && auth('api')->user()->spesifc_role == 'panitia') {
+            $data['redirect'] = route('dashboard.panitia');
+        }else if (auth('api')->user()->hasRole('guru')) {
             $data['redirect'] = route('dashboard.guru');
         } else if (auth('api')->user()->hasRole('manager')) {
             $data['redirect'] = route('dashboard.manager');
@@ -146,6 +148,8 @@ class AuthenticatedSessionController extends Controller
             $data['auth'] = ["username" => auth('api')->user()->email, "password" => auth('api')->user()->password, "role" => "perusahaan", "spesifc_role" => auth('api')->user()->spesifc_role];
         } else if (auth('api')->user()->hasRole('admin') && auth('api')->user()->spesifc_role == 'admin') {
             $data['auth'] = ["username" => auth('api')->user()->email, "password" => auth('api')->user()->password, "role" => "admin", "spesifc_role" => auth('api')->user()->spesifc_role];
+        } else if (auth('api')->user()->hasRole('user') && auth('api')->user()->spesifc_role == 'panitia') {
+            $data['auth'] = ["username" => auth('api')->user()->email, "password" => auth('api')->user()->password, "role" => "user", "spesifc_role" => auth('api')->user()->spesifc_role];
         }
         
 

@@ -21,11 +21,11 @@
                                     </h4>
                                     <!-- <p class="price">$169</p> -->
                                 </div>
-                                <h3><a href="/{{ $artikel->slug }}">{{ $artikel->title }}</a>
+                                <h3><a href="/showartikel/{{ $artikel->slug }}">{{ $artikel->title }}</a>
                                 </h3>
 
                                 <p>{{ $artikel->excerpt }}</p>
-                                <p><a href="/{{ $artikel->slug }}">Read More ...</a></p>
+                                <p><a href="/showartikel/{{ $artikel->slug }}">Read More ...</a></p>
                             </div>
                         </div>
                     </div>

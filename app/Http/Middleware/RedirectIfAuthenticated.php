@@ -28,6 +28,8 @@ class RedirectIfAuthenticated
                     return redirect()->route('dashboard.guru');
                 } else if (Auth::guard($guard)->user()->hasRole('siswa')) {
                     return redirect()->route('dashboard.siswa');
+                } else if (Auth::guard($guard)->user()->hasRole('user') && Auth::guard($guard)->user()->spesifc_role == 'panitia') {
+                    return redirect()->route('dashboard.panitia');
                 } else if (Auth::guard($guard)->user()->hasRole('manager')) {
                     return redirect()->route('dashboard.manager');
                 } else if (Auth::guard($guard)->user()->hasRole('perusahaan')) {

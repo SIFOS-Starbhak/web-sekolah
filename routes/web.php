@@ -4,6 +4,7 @@ use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\WebController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\CalonSiswaController;
 use App\Http\Controllers\PDFController;
 use App\Http\Controllers\RegistalumController;
 use App\Models\Post;
@@ -72,7 +73,9 @@ Route::get('/artikel', function () {
     $settings = App\Models\Setting::all();
     $article = App\Models\Post::where('status', 'PUBLISHED')->get();
     $backgrounds = App\Models\Background::all();
-    return view('artikel', compact('settings', 'article', 'backgrounds'));
+    $navbar = App\Models\Navbar::all()->where('status', 'Active');
+
+    return view('artikel', compact('navbar','settings', 'article', 'backgrounds'));
 });
 Route::get('/author/{user}', 'WebController@author');
 Route::get('/posted/{posted}', 'WebController@posted');
@@ -256,6 +259,17 @@ Route::group(['prefix' => 'perusahaan', 'middleware' => ['jwt.verify', 'auth:api
 });
 
 
+// Panitia
+Route::group(['prefix' => 'panitia', 'middleware' => ['jwt.verify', 'auth:api', 'role:user']], function () {
+    Route::post('/CalonSiswa/store/', [CalonSiswaController::class, 'store'])->name('panitia.store.casis');
+    Route::get('/CalonSiswa/edit/{id}', [CalonSiswaController::class, 'edit'])->name('panitia.edit.casis');
+    Route::put('/CalonSiswa/update/{id}', [CalonSiswaController::class, 'update'])->name('panitia.update.casis');
+   
+    Route::get('/dashboard', function () {
+        
+        return view('dashboard.dashboard');
+    })->name('dashboard.panitia');
+});
 
 Route::group(['prefix' => 'adm', 'middleware' => ['jwt.verify', 'auth:api', 'role:admin']], function () {
     Route::get('/edit/profile/{id}', [ProfileController::class, 'edit'])->name('edit.profileAdm');

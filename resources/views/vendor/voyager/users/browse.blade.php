@@ -122,7 +122,7 @@
                                     
                                 @endphp
                                 <tbody>
-                                    @foreach ($dataTypeContent->where('role_id','!=',$role_id) as $data)
+                                    @foreach ($dataTypeContent->where('role_id','!=',$role->id) as $data)
                                         <tr>
                                             @if ($showCheckboxColumn)
                                                 <td>

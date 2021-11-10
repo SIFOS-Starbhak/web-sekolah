@@ -1347,11 +1347,11 @@
                                                     <div class="bullet"></div>
                                                     <a href="{{ route('article.edit', $item->id) }}">Edit</a>
                                                     <div class="bullet"></div>
-                                                    <form id="deleteForm"
+                                                    <form id="deleteForm{{$item->id}}"
                                                         action="{{ route('article.delete', $item->id) }}" method="POST">
                                                         @method('delete')
                                                         @csrf
-                                                        <button type="submit" class="btn px-0 deleteConfirm">
+                                                        <button type="submit" class="btn px-0 deleteConfirm" data-id={{$item->id}}>
                                                             <a class="text-danger">Delete</a>
                                                         </button>
                                                     </form>
@@ -2240,7 +2240,171 @@
             </div>
         </div>
     </div>
+
+    @elseif (Route::is('dashboard.panitia'))
+
+    {{-- @elseif(JWTAuth::user()->role->name == 'manager') --}}
+    <div class="row">
+        <div class="col">
+            <div class="card card-info profile-widget">
+                <div class="profile-widget-header">
+                    @if (File::exists(public_path(Auth::user()->avatar)))
+                    <img class="rounded-circle profile-widget-picture" style="height: 150px;" alt="image"
+                        src="{{ asset(Auth::user()->avatar) }}">
+                @else
+                    <img class="rounded-circle profile-widget-picture" alt="image"
+                        src="{{ asset('img/avatar/avatar-1.png') }}">
+                    @endif
+                    <div class="profile-widget-items">
+                        <div class="profile-widget-item">
+                            <div class="profile-widget-item-label">NIK</div>
+                            <div class="profile-widget-item-value">
+                                {{ JWTAuth::user()->nomor_induk }}</div>
+                        </div>
+                        <div class="profile-widget-item">
+                            <div class="profile-widget-item-label">Email</div>
+                            <div class="profile-widget-item-value">
+                                {{ JWTAuth::user()->email }}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="profile-widget-description">
+                    <div class="profile-widget-name">
+                        <span class="h3 font-weight-bold">
+                            {{ JWTAuth::user()->name }}
+                            <div class="slash"></div>
+                            <div class="text-muted d-inline font-weight-normal">
+                                <div class="badge badge-primary">
+                                    {{ JWTAuth::user()->spesifc_role }}
+                                </div>
+                            </div>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>  
+     
+    <div class="row">
+        <div id="accordion">
+            <div class="card">
+              <div class="card-header" id="headingOne" style="width: 1142px;">
+                <h5 class="mb-0">
+                  <button class="badge badge-md badge-primary" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                 Tambah Data Calon Siswa
+                  </button>
+                </h5>
+              </div>
+          
+              <div id="collapseOne" class="collapse show w-100 " aria-labelledby="headingOne" data-parent="#accordion">
+                <form action="{{route('panitia.store.casis')}}" method="POST">
+                    @csrf
+                    <div class="card-body">
+                        {{-- Baris Pertama --}}
+                        <div class="row">
+                            {{-- Sebelah Kiri --}}
+                            <div class="col-md-6">
+                                <div class="card card-primary">
+                                  <div class="card-header">
+                                    <h3 class="card-title"></h3>
+                                  </div>
+                                    <div class="card-body">
+                                      <div class="form-group">
+                                        <label for="nama_lengkap">Nama Lengkap</label>
+                                        <input type="text" class="form-control" id="nama_lengkap" name="nama_lengkap" value="{{ old('nama_lengkap') }}">
+                                      </div>
+                                      <div class="form-group">
+                                        <label for="jenis_kelamin">Jenis Kelamin</label>
+                                        <select name="jenis_kelamin" id="jenis_kelamin" class="form-control col-md-6">
+                                          <option value="" disabled selected>--Pilihan--</option>
+                                          <option value="Laki-laki">Laki-laki</option>
+                                          <option value="Perempuan">Perempuan</option>
+                                        </select>
+                                      </div>
+                                      <div class="form-group">
+                                        <label for="nisn">NISN</label>
+                                        <input type="number" name="nisn" id="nisn" class="form-control" value="{{ old('nisn') }}">
+                                      </div>
+                                      <div class="form-group">
+                                        <label for="nik">NIK</label>
+                                        <input type="number" name="nik" id="nik" class="form-control" value="{{ old('nik') }}">
+                                      </div>
+                                      <div class="form-group">
+                                        <label for="no_telpon_rumah">No. Telpon Rumah</label>
+                                        <input type="text" name="no_telpon_rumah" id="no_telpon_rumah" class="form-control" value="{{ old('no_telpon_rumah') }}">
+                                      </div>
+                                      <div class="form-group">
+                                        <label for="no_telpon_hp">No. Telpon HP</label>
+                                        <input type="text" name="no_telpon_hp" id="no_telpon_hp" class="form-control" value="{{ old('no_telpon_hp') }}">
+                                      </div>
+                                  </div>
+                                </div>
+                              </div>
+                            {{-- Sebelah Kanan --}}
+    
+                              <div class="col-md-6">
+                                <div class="card card-primary">
+                                  <div class="card-header">
+                                    <h3 class="card-title"></h3>
+                                  </div>
+                                    <div class="card-body">
+                                        <div class="form-group ">
+                                            <label for="agama">Agama</label>
+                                            <select name="agama" id="agama" class="form-control col-md-12">
+                                              <option value="" disabled selected>--Pilihan--</option>
+                                              <option value="Islam">Islam</option>
+                                              <option value="Kristen Protestan">Kristen Protestan</option>
+                                              <option value="Katolik">Katolik</option>
+                                              <option value="Hindu">Hindu</option>
+                                              <option value="Buddha">Buddha</option>
+                                              <option value="Kong Hu Cu">Kong Hu Cu</option>
+                                            </select>
+                                        </div>
+                                      <div class="form-group ">
+                                        <label for="jurusan">Jurusan</label>
+                                        <select name="jurusan_1" id="jurusan" class="form-control col-md-12">
+                                          <option value="" disabled selected>--Pilihan--</option>
+                                          <option value="PPLG">Pengembangan Perangkat Lunak dan Game</option>
+                                          <option value="Animasi">Animasi</option>
+                                          <option value="Teknik Jaringan Komputer dan Telekomunikasi">Teknik Jaringan Komputer dan Telekomunikasi</option>
+                                          <option value="TE">Teknik Elektro</option>
+                                          <option value="BC">Broadcast</option>
+                                        </select>
+                                      </div>
+                                      <div class="form-group ">
+                                        <label for="jurusan">Jurusan</label>
+                                        <select name="jurusan_2" id="jurusan" class="form-control col-md-12">
+                                          <option value="" disabled selected>--Pilihan--</option>
+                                          <option value="PPLG">Pengembangan Perangkat Lunak dan Game</option>
+                                          <option value="Animasi">Animasi</option>
+                                          <option value="Teknik Jaringan Komputer dan Telekomunikasi">Teknik Jaringan Komputer dan Telekomunikasi</option>
+                                          <option value="TE">Teknik Elektro</option>
+                                          <option value="BC">Broadcast</option>
+                                        </select>
+                                      </div>
+                                   
+                                        <div class="form-group">
+                                          <label for="alamat">Alamat</label>
+                                          <textarea class="form-control" name="alamat" id="alamat" cols="30" rows="10"></textarea>
+                                          {{-- <input type="text" name="alamat" id="alamat"  value="{{ old('nik') }}"> --}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-end">
+                            <button class="btn btn-warning btm-md justify-content-end mr-3">Kembai</button>
+                            <button class="btn btn-success btm-md justify-content-end mr-3">Daftarkan</button>
+
+                        </div>
+                    </div>
+                </form>
+              </div>
+            </div>
+        </div>
+    </div>
     @endif
+    
 @endsection
 
 @push('css')
@@ -2267,13 +2431,22 @@
 @endpush
 
 @push('js')
-    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/3.1.62/jquery.inputmask.bundle.js"></script>
     <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap4.min.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.2.9/js/responsive.bootstrap.min.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.7/dist/sweetalert2.all.min.js"></script>
     <script>
+            $(window).load(function()
+            {
+            var phones = [{ "mask": "## ###-###-###"}, { "mask": "## ###-###-###"}];
+                $('#no_telpon_hp').inputmask({ 
+                    mask: phones, 
+                    greedy: false, 
+                    definitions: { '#': { validator: "[0-9]", cardinality: 1}} });
+            });
+
         $(document).ready(function() {
             var table = $('#tableArtikel').DataTable({
                 responsive: true
@@ -2330,6 +2503,7 @@
         $('.deleteConfirm').on('click', function(e) {
             e.preventDefault();
             let id = $(this).data('id');
+            console.log(id);
             Swal.fire({
                 title: 'Apakah anda yakin ingin menghapus?',
                 text: "Artikel yang Anda hapus tidak dapat dipulihkan.",
@@ -2341,7 +2515,7 @@
                 cancelButtonText: 'Batal',
             }).then((result) => {
                 if (result.isConfirmed) {
-                    $('#deleteForm').submit();
+                    $('#deleteForm'+id).submit();
                 }
             })
         });
