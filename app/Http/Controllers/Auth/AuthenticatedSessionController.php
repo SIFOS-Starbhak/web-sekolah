@@ -78,6 +78,8 @@ class AuthenticatedSessionController extends Controller
         if (auth('api')->user()->hasRole('admin') && auth('api')->user()->spesifc_role == 'admin') {
             $data['redirect'] = route('dashboard.adm');
 
+        } else if (auth('api')->user()->hasRole('siswa') && auth('api')->user()->spesifc_role == 'casis') {
+            $data['redirect'] = route('dashboard.casis');
         } else if (auth('api')->user()->hasRole('siswa')) {
             $data['redirect'] = route('dashboard.siswa');
         } else if (auth('api')->user()->hasRole('user') && auth('api')->user()->spesifc_role == 'panitia') {
@@ -137,6 +139,8 @@ class AuthenticatedSessionController extends Controller
         if (auth('api')->user()->hasRole('admin')) {
             $data['auth'] = ["username" => auth('api')->user()->nomor_induk, "password" => auth('api')->user()->password, "role" => "admin", "spesifc_role" => auth('api')->user()->spesifc_role];
             $data['role'] = 'admin';
+        } else if (auth('api')->user()->hasRole('siswa') && auth('api')->user()->spesifc_role == 'casis') {
+            $data['auth'] = ["username" => auth('api')->user()->nomor_induk, "password" => auth('api')->user()->password, "role" => "user", "spesifc_role" => auth('api')->user()->spesifc_role];
         } else if (auth('api')->user()->hasRole('siswa')) {
             $data['auth'] = ["username" => auth('api')->user()->nomor_induk, "password" => auth('api')->user()->password, "role" => "siswa", "spesifc_role" => auth('api')->user()->spesifc_role];
             $data['role'] = 'siswa';
@@ -151,6 +155,7 @@ class AuthenticatedSessionController extends Controller
         } else if (auth('api')->user()->hasRole('user') && auth('api')->user()->spesifc_role == 'panitia') {
             $data['auth'] = ["username" => auth('api')->user()->email, "password" => auth('api')->user()->password, "role" => "user", "spesifc_role" => auth('api')->user()->spesifc_role];
         }
+            
         
 
         $token = JWT::encode($data, "1342423424324324234", 'HS256');

@@ -30,7 +30,10 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.20/datatables.min.css" />
     <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
     <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+    @stack('css')
+
     <style>
+
         #toast-container>.toast-success {
             background-color: #51A351 !important;
         }
@@ -75,6 +78,7 @@
             vertical-align: middle !important;
             padding-left: 8px !important;
         }
+        .modal-backdrop { display: none; } .modal { background: rgba(0,0,0,0.5); } 
 
     </style>
     @stack('css')
@@ -126,6 +130,8 @@
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <!-- Custom JS -->
+    @stack('js')
+
     @yield('script')
     <script>
         $(document).ready(function() {

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\AsalSekolahController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\WebController;
 use App\Http\Controllers\ProfileController;
@@ -10,6 +11,8 @@ use App\Http\Controllers\RegistalumController;
 use App\Models\Post;
 use App\Models\Kela;
 use App\Models\User;
+use App\Models\AsalSekolah;
+use App\Models\CalonSiswa;
 use App\Models\Page;
 use App\Models\Setting;
 use App\Models\Category;
@@ -276,12 +279,39 @@ Route::group(['prefix' => 'panitia', 'middleware' => ['jwt.verify', 'auth:api', 
     Route::get('/CalonSiswa/edit/{id}', [CalonSiswaController::class, 'edit'])->name('panitia.edit.casis');
     Route::put('/CalonSiswa/update/{id}', [CalonSiswaController::class, 'update'])->name('panitia.update.casis');
    
-    Route::get('/dashboard', function () {
+
+
         
-        return view('dashboard.dashboard');
+        Route::get('/asal_sekolah/data',[AsalSekolahController::class,'datatable'])->name('datatable.asal_sekolah');
+        Route::get('/asal_sekolah/data2',[AsalSekolahController::class,'datatable2'])->name('datatable2.asal_sekolah');
+        Route::post('/asal_sekolah/store', [AsalSekolahController::class,'store'])->name('asal_sekolah.store');;
+        Route::get('/asal_sekolah/edit/{id}', [AsalSekolahController::class,'edit'])->name('asal_sekolah.edit');;
+        Route::get('/asal_sekolah/show/{id}', [AsalSekolahController::class,'show'])->name('asal_sekolah.show');;
+        Route::put('/asal_sekolah/update/{id}', [AsalSekolahController::class,'update'])->name('asal_sekolah.update');;
+        Route::delete('/asal_sekolah/delete/{id}', [AsalSekolahController::class,'destroy'])->name('asal_sekolah.destroy');
+
+
+    Route::get('/dashboard', function () {
+        $no_casis = CalonSiswa::all()->count() + 1;
+        // dd($no_casis);
+        $no_daftar = str_pad($no_casis, 3, '0', STR_PAD_LEFT);
+        // dd($increment);
+        $asal_sekolah = AsalSekolah::all();
+        return view('dashboard.dashboard',compact('asal_sekolah','no_daftar'));
     })->name('dashboard.panitia');
 });
 
+// / Casis
+Route::group(['prefix' => 'casis', 'middleware' => ['jwt.verify', 'auth:api', 'role:siswa']], function () {
+  
+
+    Route::get('/dashboard', function () {
+    
+        return view('dashboard.dashboard');
+    })->name('dashboard.casis');
+});
+
+//Admin
 Route::group(['prefix' => 'adm', 'middleware' => ['jwt.verify', 'auth:api', 'role:admin']], function () {
     Route::get('/edit/profile/{id}', [ProfileController::class, 'edit'])->name('edit.profileAdm');
     Route::put('/update/profile/{id}', [ProfileController::class, 'update'])->name('update.profileAdm');
