@@ -20,6 +20,7 @@
 
     <section id="popular-courses" class="courses">
         <div class="container" data-aos="fade-up">
+            
             <div class="d-flex justify-content-center row flex-wrap" data-aos="zoom-in" data-aos-delay="100">
                 @foreach ($fotoguru as $fg)
                     <div class="col-lg-4 mb-4" style="width: 300px">

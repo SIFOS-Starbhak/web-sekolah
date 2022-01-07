@@ -20,4 +20,8 @@ class DetailPrivasiCasis extends Model
         'anak_ke',
         'jumlah_saudara_kandung',
     ];
+    public function calonSiswa()
+    {
+        return $this->hasOne(CalonSiswa::class,'id');
+    }
 }

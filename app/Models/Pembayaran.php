@@ -11,10 +11,8 @@ class Pembayaran extends Model
     protected $table = "pembayarans";
 
     protected $fillable = [
-        'calon_siswa_id',
-        'nominal',
-        'metode_bayar',
-        'bukti_bayar'
+        'nama_pembayaran',
+        'nominal_pembayaran'
        
     ];
 }

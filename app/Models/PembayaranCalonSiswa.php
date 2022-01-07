@@ -8,15 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class PembayaranCalonSiswa extends Model
 {
     use HasFactory;
-    protected $table = "calon_siswa";
+    protected $table = "pembayaran_calonsiswass";
 
     protected $fillable = [
-        'nama',
-        'tempat_lahir',
-        'tanggal_lahir',
+        'calonsiswa_id',
+        'tipecicilan_id',
+        'nominal',
+        'metode_bayar',
+        'bukti_bayar',
         'status',
-        'gugus_id',
-        'jurusan_id',
-        'note',
     ];
 }

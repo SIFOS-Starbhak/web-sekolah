@@ -49,8 +49,30 @@ class CalonSiswa extends Model
          'no_seri_ijazah',
          'no_seri_skhun',
          'detail_privasi_casis_id',
-         'asal_sekolah_id',
+         'asal_sekolah',
          'orangtua_wali_casis_id',
          'prestasi_casis_id',
     ];
+    
+    public function user()
+    {
+        return $this->hasOne(User::class,'id');
+    }
+
+    // public function asalSekolah()
+    // {
+    //     return $this->belongsTo(AsalSekolah::class,'asal_sekolah_id');
+    // }
+    public function detailPrivasiCasis()
+    {
+        return $this->belongsTo(DetailPrivasiCasis::class,'detail_privasi_casis_id');
+    }
+    public function prestasiCasis()
+    {
+        return $this->belongsTo(PrestasiCasis::class,'prestasi_casis_id');
+    }
+    public function orangtuaWaliCasis()
+    {
+        return $this->belongsTo(OrangtuaWaliCasis::class,'orangtua_wali_casis_id');
+    }
 }

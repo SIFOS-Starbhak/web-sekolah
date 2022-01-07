@@ -136,12 +136,42 @@
                 <div class="profile-widget-description">
                     <div class="profile-widget-name">
                         <span class="h3 font-weight-bold">
+                            
                             {{ JWTAuth::user()->name }}
                             <div class="slash"></div>
 
                             <div class="text-muted d-inline font-weight-normal">
                                 <div class="badge badge-primary">
-                                    {{ JWTAuth::user()->jabatan_guru }}
+                                    @if (JWTAuth::user()->spesifc_role == 'admin')
+                                         Admin
+                                    @elseif(JWTAuth::user()->spesifc_role == 'litbang')
+                                        litbang
+                                    @elseif(JWTAuth::user()->spesifc_role == 'tu')
+                                    TU
+                                    @elseif(JWTAuth::user()->spesifc_role == 'kaprog')
+                                    Kepala Program
+                                    @elseif(JWTAuth::user()->spesifc_role == 'kepsek')
+                                    Kepala Sekolah
+                                    @elseif(JWTAuth::user()->spesifc_role == 'waka')
+                                    Wakil Kepala Sekolah
+                                    @elseif(JWTAuth::user()->spesifc_role == 'bkk')
+                                    BKK
+                                    @elseif(JWTAuth::user()->spesifc_role == 'kurikulum')
+                                    Kurikulum
+                                    @elseif(JWTAuth::user()->spesifc_role == 'kesiswaan')
+                                    Kesiswaan
+                                    @elseif(JWTAuth::user()->spesifc_role == 'sarpras')
+                                    Sarana Prasarana
+                                    @elseif(JWTAuth::user()->spesifc_role == 'Kejuruan')
+                                    Kejuruan
+                                    @elseif(JWTAuth::user()->spesifc_role == 'hubin')
+                                    Hubin
+                                    @elseif(JWTAuth::user()->spesifc_role == 'panitia')
+                                    Panitia
+                                    @else 
+                                    None
+                                    @endif
+                                
                                 </div>
                             </div>
                         </span>
@@ -1240,7 +1270,35 @@
                             <div class="slash"></div>
                             <div class="text-muted d-inline font-weight-normal">
                                 <div class="badge badge-primary">
-                                    {{ JWTAuth::user()->jabatan_guru }}
+                                    @if (JWTAuth::user()->spesifc_role == 'admin')
+                                    Admin
+                               @elseif(JWTAuth::user()->spesifc_role == 'litbang')
+                                   litbang
+                               @elseif(JWTAuth::user()->spesifc_role == 'tu')
+                               TU
+                               @elseif(JWTAuth::user()->spesifc_role == 'kaprog')
+                               Kepala Program
+                               @elseif(JWTAuth::user()->spesifc_role == 'kepsek')
+                               Kepala Sekolah
+                               @elseif(JWTAuth::user()->spesifc_role == 'waka')
+                               Wakil Kepala Sekolah
+                               @elseif(JWTAuth::user()->spesifc_role == 'bkk')
+                               BKK
+                               @elseif(JWTAuth::user()->spesifc_role == 'kurikulum')
+                               Kurikulum
+                               @elseif(JWTAuth::user()->spesifc_role == 'kesiswaan')
+                               Kesiswaan
+                               @elseif(JWTAuth::user()->spesifc_role == 'sarpras')
+                               Sarana Prasarana
+                               @elseif(JWTAuth::user()->spesifc_role == 'Kejuruan')
+                               Kejuruan
+                               @elseif(JWTAuth::user()->spesifc_role == 'hubin')
+                               Hubin
+                               @elseif(JWTAuth::user()->spesifc_role == 'panitia')
+                               Panitia
+                               @else 
+                               None
+                               @endif
                                 </div>
                             </div>
                         </span>
@@ -2285,12 +2343,12 @@
             </div>
         </div>
     </div>
-    @if ($message = Session::get('message'))
+    {{-- @if ($message = Session::get('message'))
     <div class="alert alert-success alert-block">
       <button type="button" class="close" data-dismiss="alert">×</button>    
         <strong>{{ $message }}</strong>
     </div>
-  @endif
+  @endif --}}
   {{-- @if ($errors->any())
   <div class="alert alert-danger">
       <ul>
@@ -2339,20 +2397,21 @@
                                                     id="jurusan_1" class="@error('jurusan_1') is-invalid @enderror form-control col-md-12">
                                                     <option style="font-size: 15px; font-weight: 600;" value="" disabled
                                                         selected>--Pilihan--</option>
-                                                    <option style="font-size: 15px; font-weight: 600;" value="PPLG"
-                                                        {{ old('jurusan_1') == 'PPLG' ? 'selected' : '' }}>Pengembangan
-                                                        Perangkat Lunak dan Game</option>
-                                                    <option style="font-size: 15px; font-weight: 600;" value="Animasi"
-                                                        {{ old('jurusan_1') == 'Animasi' ? 'selected' : '' }}>Animasi
-                                                    </option>
-                                                    <option style="font-size: 15px; font-weight: 600;" value="TJKT"
-                                                        {{ old('jurusan_1') == 'TJKT' ? 'selected' : '' }}>Teknik Jaringan
-                                                        Komputer dan Telekomunikasi</option>
-                                                    <option style="font-size: 15px; font-weight: 600;" value="TE"
-                                                        {{ old('jurusan_1') == 'TE' ? 'selected' : '' }}>Teknik Elektro
-                                                    </option>
-                                                    <option style="font-size: 15px; font-weight: 600;" value="BC"
-                                                        {{ old('jurusan_1') == 'BC' ? 'selected' : '' }}>Broadcast</option>
+                                                        @foreach ($jurusan as $item)
+                                                        @if ($item->jurusan ==  'PPLG')
+                                                            <option style="font-size: 15px; font-weight: 600;" value="{{$item->id}}" {{ old('jurusan_1') == $item->id ? 'selected' : '' }}>Pengembang Perangkat Lunak dan Game</option>
+                                                            @elseif($item->jurusan ==  'ANIMASI')
+                                                            <option style="font-size: 15px; font-weight: 600;" value="{{$item->id}}" {{ old('jurusan_1') == $item->id ? 'selected' : '' }}>Animasi</option>
+                                                            @elseif($item->jurusan ==  'TJKT')
+                                                            <option style="font-size: 15px; font-weight: 600;" value="{{$item->id}}" {{ old('jurusan_1') == $item->id ? 'selected' : '' }}>	Teknik Jaringan Komputer & Telekomunikasi</option>
+                                                            @elseif($item->jurusan ==  'BCF')
+                                                            <option style="font-size: 15px; font-weight: 600;" value="{{$item->id}}" {{ old('jurusan_1') == $item->id ? 'selected' : '' }}>	Broadcasting dan perFileman</option>
+                                                            @elseif($item->jurusan ==  'TE')
+                                                            <option style="font-size: 15px; font-weight: 600;" value="{{$item->id}}" {{ old('jurusan_1') == $item->id ? 'selected' : '' }}>	Teknik Elektro</option>
+                                                        @endif
+                                                            
+                                                        @endforeach
+                                                 
                                                 </select>
                                                 @error('jurusan_1')
                                                     <span class="text text-danger">{{ $message }}</span>
@@ -2365,22 +2424,21 @@
                                                     id="jurusan_2" class="@error('jurusan_2') is-invalid @enderror form-control col-md-12">
                                                     <option style="font-size: 15px; font-weight: 600;" value="" disabled
                                                         selected>--Pilihan--</option>
-                                                    <option style="font-size: 15px; font-weight: 600;" value="" disabled
-                                                        selected>--Pilihan--</option>
-                                                    <option style="font-size: 15px; font-weight: 600;" value="PPLG"
-                                                        {{ old('jurusan_2') == 'PPLG' ? 'selected' : '' }}>Pengembangan
-                                                        Perangkat Lunak dan Game</option>
-                                                    <option style="font-size: 15px; font-weight: 600;" value="Animasi"
-                                                        {{ old('jurusan_2') == 'Animasi' ? 'selected' : '' }}>Animasi
-                                                    </option>
-                                                    <option style="font-size: 15px; font-weight: 600;" value="TJKT"
-                                                        {{ old('jurusan_2') == 'TJKT' ? 'selected' : '' }}>Teknik Jaringan
-                                                        Komputer dan Telekomunikasi</option>
-                                                    <option style="font-size: 15px; font-weight: 600;" value="TE"
-                                                        {{ old('jurusan_2') == 'TE' ? 'selected' : '' }}>Teknik Elektro
-                                                    </option>
-                                                    <option style="font-size: 15px; font-weight: 600;" value="BC"
-                                                        {{ old('jurusan_2') == 'BC' ? 'selected' : '' }}>Broadcast</option>
+                                              
+                                                        @foreach ($jurusan as $item)
+                                                                @if ($item->jurusan ==  'PPLG')
+                                                                <option style="font-size: 15px; font-weight: 600;" value="{{$item->id}}" {{ old('jurusan_2') == $item->id ? 'selected' : '' }}>Pengembang Perangkat Lunak dan Game</option>
+                                                                @elseif($item->jurusan ==  'ANIMASI')
+                                                                <option style="font-size: 15px; font-weight: 600;" value="{{$item->id}}" {{ old('jurusan_2') == $item->id ? 'selected' : '' }}>Animasi</option>
+                                                                @elseif($item->jurusan ==  'TJKT')
+                                                                <option style="font-size: 15px; font-weight: 600;" value="{{$item->id}}" {{ old('jurusan_2') == $item->id ? 'selected' : '' }}>	Teknik Jaringan Komputer & Telekomunikasi</option>
+                                                                @elseif($item->jurusan ==  'BCF')
+                                                                <option style="font-size: 15px; font-weight: 600;" value="{{$item->id}}" {{ old('jurusan_2') == $item->id ? 'selected' : '' }}>	Broadcasting dan perFileman</option>
+                                                                @elseif($item->jurusan ==  'TE')
+                                                                <option style="font-size: 15px; font-weight: 600;" value="{{$item->id}}" {{ old('jurusan_2') == $item->id ? 'selected' : '' }}>	Teknik Elektro</option>
+                                                            @endif
+                                                                
+                                                        @endforeach
                                                 </select>
                                                 @error('jurusan_2')
                                                 <span class="text text-danger">{{ $message }}</span>
@@ -2393,22 +2451,21 @@
                                                     id="jurusan_3" class="@error('jurusan_3') is-invalid @enderror form-control col-md-12">
                                                     <option style="font-size: 15px; font-weight: 600;" value="" disabled
                                                         selected>--Pilihan--</option>
-                                                    <option style="font-size: 15px; font-weight: 600;" value="" disabled
-                                                        selected>--Pilihan--</option>
-                                                    <option style="font-size: 15px; font-weight: 600;" value="PPLG"
-                                                        {{ old('jurusan_3') == 'PPLG' ? 'selected' : '' }}>Pengembangan
-                                                        Perangkat Lunak dan Game</option>
-                                                    <option style="font-size: 15px; font-weight: 600;" value="Animasi"
-                                                        {{ old('jurusan_3') == 'Animasi' ? 'selected' : '' }}>Animasi
-                                                    </option>
-                                                    <option style="font-size: 15px; font-weight: 600;" value="TJKT"
-                                                        {{ old('jurusan_3') == 'TJKT' ? 'selected' : '' }}>Teknik Jaringan
-                                                        Komputer dan Telekomunikasi</option>
-                                                    <option style="font-size: 15px; font-weight: 600;" value="TE"
-                                                        {{ old('jurusan_3') == 'TE' ? 'selected' : '' }}>Teknik Elektro
-                                                    </option>
-                                                    <option style="font-size: 15px; font-weight: 600;" value="BC"
-                                                        {{ old('jurusan_3') == 'BC' ? 'selected' : '' }}>Broadcast</option>
+                                                        @foreach ($jurusan as $item)
+                                                        @if ($item->jurusan ==  'PPLG')
+                                                        <option style="font-size: 15px; font-weight: 600;" value="{{$item->id}}" {{ old('jurusan_3') == $item->id ? 'selected' : '' }}>Pengembang Perangkat Lunak dan Game</option>
+                                                        @elseif($item->jurusan ==  'ANIMASI')
+                                                        <option style="font-size: 15px; font-weight: 600;" value="{{$item->id}}" {{ old('jurusan_3') == $item->id ? 'selected' : '' }}>Animasi</option>
+                                                        @elseif($item->jurusan ==  'TJKT')
+                                                        <option style="font-size: 15px; font-weight: 600;" value="{{$item->id}}" {{ old('jurusan_3') == $item->id ? 'selected' : '' }}>	Teknik Jaringan Komputer & Telekomunikasi</option>
+                                                        @elseif($item->jurusan ==  'BCF')
+                                                        <option style="font-size: 15px; font-weight: 600;" value="{{$item->id}}" {{ old('jurusan_3') == $item->id ? 'selected' : '' }}>	Broadcasting dan perFileman</option>
+                                                        @elseif($item->jurusan ==  'TE')
+                                                        <option style="font-size: 15px; font-weight: 600;" value="{{$item->id}}" {{ old('jurusan_3') == $item->id ? 'selected' : '' }}>	Teknik Elektro</option>
+                                                    @endif
+                                                        
+                                                            
+                                                        @endforeach
                                                 </select>
                                                 @error('jurusan_3')
                                                 <span class="text text-danger">{{ $message }}</span>
@@ -3303,15 +3360,16 @@
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label style="font-size: 16px; font-weight: 800;" for="asal_sekolah">Asal Sekolah
+                                                            </label>
+                                                            <input type="text" name="asal_sekolah" id="asal_sekolah" class="@error('asal_sekolah') is-invalid @enderror form-control col-md-12">
                                                                  {{-- <button type="button" class="btn btn-primary btn-md" type="button" data-toggle="modal" data-target="#modalListAsalSekolah">Pilih Sekolah</button> --}}
-                                                                </label>
-                                                            <select style="font-size: 15px; font-weight: 600;" name="asal_sekolah"  id="asal_sekolah" class="@error('asal_sekolah') is-invalid @enderror form-control col-md-12">
+                                                            {{-- <select style="font-size: 15px; font-weight: 600;" name="asal_sekolah"  id="asal_sekolah" class="@error('asal_sekolah') is-invalid @enderror form-control col-md-12">
                                                                 <option style="font-size: 15px; font-weight: 600;" value="" selected>--Pilihan--</option>                                 
                                                                 @foreach ($asal_sekolah as $item)
                                                                 <option style="font-size: 15px; font-weight: 600;" value="{{$item->id}}" {{ old('asal_sekolah') == $item->id ? 'selected' : '' }}> {{$item->nama_sekolah}}</option>
                                                                     
                                                                 @endforeach
-                                                            </select>
+                                                            </select> --}}
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
@@ -3687,7 +3745,7 @@
 
 
 
-@elseif (Route::is('dashboard.casis'))
+@elseif (Route::is('dashboard.casis') || Route::is('pembayaran.casis'))
 
             {{-- @elseif(JWTAuth::user()->role->name == 'manager') --}}
             <div class="row">
@@ -3721,7 +3779,10 @@
                                     <div class="slash"></div>
                                     <div class="text-muted d-inline font-weight-normal">
                                         <div class="badge badge-primary">
-                                            {{ JWTAuth::user()->spesifc_role }}
+                                            @if (JWTAuth::user()->spesifc_role == 'casis')
+                                                Calon Siswa
+                                            @endif
+                                            {{-- {{ JWTAuth::user()->spesifc_role }} --}}
                                         </div>
                                     </div>
                                 </span>
@@ -3730,6 +3791,11 @@
                     </div>
                 </div>
             </div>
+            
+            <div class="section-body">
+                @yield('content_casis')      
+            </div>
+       
 
 
 
@@ -3772,6 +3838,10 @@
             z-index: 1100 !important;
         }
 
+
+        .scrolling-wrapper{
+	overflow-x: auto;
+}
     </style>
 
 @endpush
@@ -3795,27 +3865,27 @@
 
 
 
-   $(document).ready(function () {
-    $('#dataTableSekolah').DataTable({
-      responsive: true,
-      processing: true,
-      serverSide: true,
-      "paging": true,
-      "lengthChange": true,
-      "searching": true,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false,
-      "lengthMenu": [[5, 10, 25, 50, -1], [5, 10, 25, 50, "All"]],
-      ajax: "{{ route('datatable2.asal_sekolah') }}",
-      columns: [
-          {data: 'DT_RowIndex', name: 'id'},
-          {data: 'npsn_sekolah', name: 'npsn_sekolah'},
-          {data: 'nama_sekolah', name: 'nama_sekolah'},
-          {data: 'alamat_sekolah', name: 'alamat_sekolah'},
-          {data: 'aksi', name: 'aksi'}
-      ]
-    })
+//    $(document).ready(function () {
+//     $('#dataTableSekolah').DataTable({
+//       responsive: true,
+//       processing: true,
+//       serverSide: true,
+//       "paging": true,
+//       "lengthChange": true,
+//       "searching": true,
+//       "ordering": true,
+//       "info": true,
+//       "autoWidth": false,
+//       "lengthMenu": [[5, 10, 25, 50, -1], [5, 10, 25, 50, "All"]],
+//       ajax: "{{ route('datatable2.asal_sekolah') }}",
+//       columns: [
+//           {data: 'DT_RowIndex', name: 'id'},
+//           {data: 'npsn_sekolah', name: 'npsn_sekolah'},
+//           {data: 'nama_sekolah', name: 'nama_sekolah'},
+//           {data: 'alamat_sekolah', name: 'alamat_sekolah'},
+//           {data: 'aksi', name: 'aksi'}
+//       ]
+//     })
 
 
 

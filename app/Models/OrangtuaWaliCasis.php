@@ -11,14 +11,14 @@ class OrangtuaWaliCasis extends Model
     protected $table = 'orangtua_wali_casis';
 
     protected $fillable = [
-        'nama_ayah',
+        'nama_ayah_kandung',
         'nik_ayah',
         'tahun_lahir_ayah',
         'pendidikan_ayah',
         'pekerjaan_ayah',
         'penghasilan_ayah',
         'penghasilan_ayah',
-        'nama_ibu',
+        'nama_ibu_kandung',
         'nik_ibu',
         'tahun_lahir_ibu',
         'pendidikan_ibu',
@@ -34,4 +34,8 @@ class OrangtuaWaliCasis extends Model
         'penghasilan_wali',
         'penghasilan_wali',
     ];
+    public function calonSiswa()
+    {
+        return $this->hasOne(CalonSiswa::class,'id');
+    }
 }

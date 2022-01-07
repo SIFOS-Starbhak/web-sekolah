@@ -18,4 +18,9 @@ class PrestasiCasis extends Model
                 'penyelenggara_prestasi',
                 'peringkat_prestasi',
     ];
+    public function calonSiswa()
+    {
+        return $this->hasOne(CalonSiswa::class,'id');
+    }
 }
+

@@ -15,4 +15,9 @@ class AsalSekolah extends Model
         'nama_sekolah',
         'alamat_sekolah',
     ];
+
+    public function calonSiswa()
+    {
+        return $this->hasOne(CalonSiswa::class,'id');
+    }
 }

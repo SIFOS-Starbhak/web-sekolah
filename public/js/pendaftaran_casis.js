@@ -7,6 +7,7 @@
                 if ($(this).hasClass('collapsed')) {
                     $(this).text('Tutup Data Wali');
                     $(this).removeClass("btn btn-primary").addClass("btn btn-warning");
+                    $('#note_for_btn_wali').removeClass("d-none");
     
     
                     $("#nama_wali,#nik_wali,#tahun_lahir_wali").val("");
@@ -18,7 +19,7 @@
                 }
                 
                 if($(this).hasClass('collapsed') == false){
-                    $('#note_for_btn_wali').empty()
+                    $('#note_for_btn_wali').addClass('d-none');
                 }
     
     
@@ -33,12 +34,14 @@
                 if ($(this).val() == "Prestasi" || $(this).val() == "" ) {
                    
                     $("#prestasi").removeClass("d-none");
+                    $('#note_for_prestasi').removeClass('d-none');
+
                   
     
                 }else{
                    $("#prestasi").addClass("d-none");
                     $("#jenis_prestasi,#tingkat_prestasi,#nama_prestasi,#tahun_prestasi,#penyelenggara_prestasi,#peringkat_prestasi").val("");
-                    $('#note_for_prestasi').empty()
+                    $('#note_for_prestasi').addClass('d-none');
     
                     // $(this).removeClass("btn btn-warning").addClass("btn btn-primary")
     

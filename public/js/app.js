@@ -4212,28 +4212,30 @@ document.addEventListener("DOMContentLoaded", function () {
 
     document.getElementById("microWebPortal").addEventListener("click", function (e) {
       e.preventDefault();
-      window.location.href = "http://117.102.67.70:8008/moodlev2/login/index.php?token=" + // "http://localhost/Moodle-starbhak2/login/index.php?token=" +
-      window.sessionStorage.getItem("token"); // href seuai sama url
+      window.location.href = // "http://117.102.67.70:8008/moodlev2/login/index.php?token=" +
+      "http://localhost/Moodle-starbhak2/login/index.php?token=" + window.sessionStorage.getItem("token"); // href seuai sama url
     }); // Api Sitakols
 
     document.getElementById("sitakols").addEventListener("click", function (e) {
       e.preventDefault();
-      window.location.href = "http://117.102.67.70:8090/api/prakerin/" + window.sessionStorage.getItem("token"); // href seuai sama url
+      window.location.href = //  "http://117.102.67.70:8090/api/prakerin/" +
+      "http://127.0.0.1:8002/api/prakerin/" + window.sessionStorage.getItem("token"); // href seuai sama url
     }); // Api Refleksi
 
     document.getElementById("refleksi").addEventListener("click", function (e) {
       e.preventDefault();
       console.log("clicked");
-      window.location.href = "http://117.102.67.70:8000/authentication/" + // "http://127.0.0.1:8001/authentication/" +
-      window.sessionStorage.getItem("token"); // href seuai sama url
+      window.location.href = // "http://117.102.67.70:8000/authentication/" +
+      "http://127.0.0.1:8001/authentication/" + window.sessionStorage.getItem("token"); // href seuai sama url
     }); // Api Refleksi
-
-    document.getElementById("administrasiGuru").addEventListener("click", function (e) {
-      e.preventDefault();
-      console.log("clicked");
-      window.location.href = "http://117.102.67.70:8000/authentication/" + // "http://127.0.0.1:8003/api/adm/" +
-      window.sessionStorage.getItem("token"); // href seuai sama url
-    });
+    //  document.getElementById("administrasiGuru").addEventListener("click", (e) => {
+    //     e.preventDefault();
+    //     console.log("clicked");
+    //     window.location.href =
+    //         "http://117.102.67.70:8000/authentication/" +
+    //         // "http://127.0.0.1:8003/api/adm/" +
+    //         window.sessionStorage.getItem("token"); // href seuai sama url
+    // });
   }
 });
 

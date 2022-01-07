@@ -12,43 +12,82 @@ use Hash;
 use Auth;
 use File;
 
+use App\Models\CalonSiswa;
+use App\Models\DetailPrivasiCasis;
+use App\Models\OrangtuaWaliCasis;
+use App\Models\PrestasiCasis;
+
 class ProfileController extends Controller
 {
     public function edit($id)
     {
+        // dd($id);
 
-        // $settings = Setting::all();
-        $profile = User::where('id', $id)->first();
-        // $profile
-        $kelas = Kela::all();
-        $skill = Skill::all();
-        $detailUser = $profile->detailUser;
-        // dd($detailUser);
-        if ($detailUser == null) {
-            $yourSkill = [];
-            $detailProfileSkill = [];
-        } else {
-            $detailProfileSkill =  explode(',', $profile->detailUser->skill);
-            // dd($detailProfileSkill);
-            foreach ($detailProfileSkill as $key => $value) {
-                $yourSkill[] = Skill::where('id', $value)->first();
+        if (Auth::guard('api')->user()->id == $id) {
+            # code...
+            // $settings = Setting::all();
+            $profile = User::where('id', $id)->first();
+            // $profile
+            $kelas = Kela::all();
+            $skill = Skill::all();
+            $detailUser = $profile->detailUser;
+            // dd($detailUser);
+            if (Auth::user()->spesifc_role == 'casis') {
+    
+               $casis = CalonSiswa::where('id',$profile->calon_siswa_id)->first();
+               $array_prestasi = collect($casis->prestasiCasis)->except(['id','created_at','updated_at']);
+          
+            $jml_null = [];
+            foreach ($array_prestasi as $key => $value) {
+                if ($value == null || $value == '') {
+                 // There are null (or empty) values.
+                    $jml_null[] = 'null';
+               }
             }
+            if (count($jml_null) == count($array_prestasi)) {
+                $prestasi_casis = 'Umum';
+            }else{
+                $prestasi_casis = 'Prestasi';
+                // dd(count($array_prestasi),'prestasi');
+            }
+            // dd($prestasi_casis);
+            $item = ['PPLG','ANIMASI','TJKT','BCF','TE'];
+            foreach ($item as $key => $value) {
+                $jurusan[] = Kela::where('kelas','X')->where('jurusan',$value)->first();
+            }
+            //  $prestasi_siswa = count($a);
+                return view('profile.edit',compact('casis','prestasi_casis','jurusan'));
+                
+            }else{
+                if ($detailUser == null) {
+                    $yourSkill = [];
+                    $detailProfileSkill = [];
+                } else {
+                    $detailProfileSkill =  explode(',', $profile->detailUser->skill);
+                    // dd($detailProfileSkill);
+                    foreach ($detailProfileSkill as $key => $value) {
+                        $yourSkill[] = Skill::where('id', $value)->first();
+                    }
+                }
+                return view('profile.edit', compact('detailProfileSkill', 'skill', 'profile', 'kelas', 'yourSkill'));
+            }
+            // dd($yourSkill);
+    
+    
+            // foreach($skill as $v)
+            // {
+            //     // Group the teams into their respective addresses
+            //     $filtered[$v['address']][] = $v;
+            // }
+    
+            // Filter out any address with 1 or fewer teams
+            // $filtered = array_filter($filtered, function($v){
+            //     return count($v) > 1;
+            // });
+        }else{
+            return redirect()->back();
         }
-        // dd($yourSkill);
 
-
-        // foreach($skill as $v)
-        // {
-        //     // Group the teams into their respective addresses
-        //     $filtered[$v['address']][] = $v;
-        // }
-
-        // Filter out any address with 1 or fewer teams
-        // $filtered = array_filter($filtered, function($v){
-        //     return count($v) > 1;
-        // });
-
-        return view('profile.edit', compact('detailProfileSkill', 'skill', 'profile', 'kelas', 'yourSkill'));
     }
 
     public function update(Request $request, $id)
@@ -72,7 +111,7 @@ class ProfileController extends Controller
                 'no_telpon.required' => "Contact tidak boleh kosong",
                 
             ]);
-        }elseif((Auth::user()->role->name == "admin" && Auth::user()->spesifc_role == "admin" )){
+        }elseif((Auth::user()->role->name == "admin" && Auth::user()->spesifc_role == "admin" || Auth::user()->role->name == "user" && Auth::user()->spesifc_role == "panitia" )){
             $request->validate([
                 "name" => 'required',
                 "email" => 'required',
@@ -272,8 +311,11 @@ class ProfileController extends Controller
         if (Auth::user()->role->name == "admin" && Auth::user()->spesifc_role == "admin" ) {
             # code...
             return redirect()->route('dashboard.adm')->with('message', 'Berhasil update Profile');
+        }elseif (Auth::user()->role->name == "user" && Auth::user()->spesifc_role == "panitia" ) {
+            # code...
+            return redirect()->route('dashboard.panitia')->with('message', 'Berhasil update Profile');
         }else{
-            return redirect()->route('dashboard.' . Auth::user()->role->name)->with('message', 'Berhasil update Profile');
+            return redirect()->route('dashboard.'. Auth::user()->role->name)->with('message', 'Berhasil update Profile');
 
         }
 

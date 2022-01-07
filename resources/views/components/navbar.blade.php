@@ -11,7 +11,7 @@
                 class="nav-link dropdown-toggle nav-link-lg nav-link-user">
                 @if (File::exists(public_path(Auth::user()->avatar)))
                 <img alt="image" src='{{ asset(Auth::user()->avatar) }}' style="width: 40px; height: 40px; border-radius: 50%;">
-            @else
+               @else
                 <img alt="image" src='{{ asset('img/avatar/avatar-1.png') }}' style="width: 40px; height: 40px; border-radius: 50%;">
 
 
@@ -36,8 +36,16 @@
                 <a href="{{ route('edit.profileAdm', JWTAuth::user()->id) }}" class="dropdown-item has-icon">
                     <i class="far fa-user"></i> Profile
                 </a>    
-
+                @elseif(Auth::guard('api')->user()->spesifc_role === "casis" )
+                <a href="{{ route('edit.profileCasis', JWTAuth::user()->id) }}" class="dropdown-item has-icon">
+                    <i class="far fa-user"></i> ProfileCasis
+                </a>    
+                @elseif(Auth::guard('api')->user()->spesifc_role === "panitia" )
+                <a href="{{ route('edit.profilePanitia', JWTAuth::user()->id) }}" class="dropdown-item has-icon">
+                    <i class="far fa-user"></i> ProfilePanitia
+                </a>    
                 @else 
+                
                 <a href="{{ route('edit.profileSiswa', JWTAuth::user()->id) }}" class="dropdown-item has-icon">
                     <i class="far fa-user"></i> Profile
                 </a>
