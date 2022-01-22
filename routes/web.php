@@ -18,10 +18,12 @@ use App\Models\Page;
 use App\Models\Setting;
 use App\Models\Pembayaran;
 use App\Models\Category;
+use App\Models\PembayaranCalonSiswa;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\DashboardManager;
 use Tymon\JWTAuth\JWTAuth;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -285,6 +287,7 @@ Route::group(['prefix' => 'panitia', 'middleware' => ['jwt.verify', 'auth:api', 
     Route::get('/CalonSiswa/edit/{id}', [CalonSiswaController::class, 'edit'])->name('panitia.edit.casis');
     Route::put('/CalonSiswa/update/{id}', [CalonSiswaController::class, 'update'])->name('panitia.update.casis');
    
+    Route::get('/PembayaranCalonSiswa/validasiPembayaran/{id}', [PembayaranCasisController::class, 'validasi_pembayaran'])->name('panitia.validasi_pembayaran');
 
 
         
@@ -307,20 +310,27 @@ Route::group(['prefix' => 'panitia', 'middleware' => ['jwt.verify', 'auth:api', 
         foreach ($item as $key => $value) {
             $jurusan[] = Kela::where('kelas','X')->where('jurusan',$value)->first();
         }
-        // dd($jurusan);
-        return view('dashboard.dashboard',compact('asal_sekolah','no_daftar','jurusan'));
+        $pembayaranCasis = CalonSiswa::all();
+        // $siswa_udabayar = CalonSiswa::has('pembayaranCasis')->get();
+
+        // dd($pembayaranCasis->toArray());
+        return view('dashboard.dashboard',compact('asal_sekolah','no_daftar','jurusan','pembayaranCasis'));
     })->name('dashboard.panitia');
 });
 
 // / Casis
 Route::group(['prefix' => 'casis', 'middleware' => ['jwt.verify', 'auth:api', 'role:siswa']], function () {
     Route::get('/pembayaran/casis/{id}', [PembayaranCasisController::class, 'pembayaran_casis'])->name('pembayaran.casis');
-    // Route::get('/pembayaran/casis/store', [PembayaranCasisController::class, 'pembayaran_casis_store'])->name('pembayaran.casisStore');
+    Route::post('/pembayaran/casis/store', [PembayaranCasisController::class, 'pembayaran_casis_store'])->name('pembayaran.casisStore');
     Route::get('/edit/profile/{id}', [ProfileController::class, 'edit'])->name('edit.profileCasis');
     Route::put('/update/profile/{id}', [CalonSiswaController::class, 'update'])->name('update.profileCasis');
     
     Route::get('/dashboard', function () {
         $pembayaran = Pembayaran::all();
+
+        $user_id =  Auth::guard('api')->user()->id;
+        $casis_id = App\Models\User::where('id', $user_id)->first()->calon_siswa_id;
+      
         return view('casis.index',compact('pembayaran'));
     })->name('dashboard.casis');
 });

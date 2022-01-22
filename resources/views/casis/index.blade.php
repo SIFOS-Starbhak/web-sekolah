@@ -1,5 +1,14 @@
 @extends('dashboard.dashboard')
 @section('content_casis')
+
+@if(session()->has('message'))
+    <div class="alert alert-success">
+        {{ session()->get('message') }}, Tunggu hingga pembayaran terkonfirmasi 
+    </div>
+@endif
+
+
+
 <h2 class="section-title">Pilih Metode Pembayaran</h2>
 <p class="section-lead">Cukup Input Nominal dan Kirim Bukti Pembayaran, lalu tunggu hingga pembayaran terkonfirmasi</p>
 
@@ -58,5 +67,6 @@
     {{-- </div>   --}}
  
  
-</div>   
+</div> 
+  
 @endsection

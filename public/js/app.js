@@ -4077,9 +4077,9 @@ document.addEventListener("DOMContentLoaded", function () {
       console.log("clicked");
       e.preventDefault();
       var data = new FormData();
-      data.append('token', 'token-post'); // axios.post("http://localhost/Moodle-starbhak2/webservice/rest/costom-rest.php", data, {
-
-      axios__WEBPACK_IMPORTED_MODULE_1___default().post("http://117.102.67.70:8008/moodlev2/webservice/rest/costom-rest.php", data, {
+      data.append('token', 'token-post');
+      axios__WEBPACK_IMPORTED_MODULE_1___default().post("http://localhost/Moodle-starbhak2/webservice/rest/costom-rest.php", data, {
+        // axios.post("http://117.102.67.70:8008/moodlev2/webservice/rest/costom-rest.php", data, {
         withCredentials: true,
         crossDomain: true
       }).then( /*#__PURE__*/function () {
@@ -4096,7 +4096,8 @@ document.addEventListener("DOMContentLoaded", function () {
                   }
 
                   _context.next = 3;
-                  return axios__WEBPACK_IMPORTED_MODULE_1___default().post("http://new.smktarunabhakti.net/api/user").then(function (res) {
+                  return axios__WEBPACK_IMPORTED_MODULE_1___default().post("http://127.0.0.1:8003/api/user").then(function (res) {
+                    // const data = await axios.post(`http://new.smktarunabhakti.net/api/user`).then(res => {
                     if (res.data) {
                       // console.log(res.data)
                       return res.data;
@@ -4130,7 +4131,8 @@ document.addEventListener("DOMContentLoaded", function () {
                   }
 
                   _context.next = 12;
-                  return axios__WEBPACK_IMPORTED_MODULE_1___default().post('http://new.smktarunabhakti.net/api/user/create', resValue).then(function (response) {
+                  return axios__WEBPACK_IMPORTED_MODULE_1___default().post('http://127.0.0.1:8003/api/user/create', resValue).then( // await axios.post('http://new.smktarunabhakti.net/api/user/create', resValue).then(
+                  function (response) {
                     return console.log(response.data);
                   })["catch"](function (err) {
                     return console.log(err);
@@ -4167,7 +4169,7 @@ document.addEventListener("DOMContentLoaded", function () {
                   }
 
                   _context.next = 23;
-                  return axios__WEBPACK_IMPORTED_MODULE_1___default().post('http://new.smktarunabhakti.net/api/user/create', _resValue).then(function (response) {
+                  return axios__WEBPACK_IMPORTED_MODULE_1___default().post('http://127.0.0.1:8003/api/user/create', _resValue).then(function (response) {
                     return console.log(response.data);
                   })["catch"](function (err) {
                     return console.log(err);

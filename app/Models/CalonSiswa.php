@@ -56,9 +56,12 @@ class CalonSiswa extends Model
     
     public function user()
     {
-        return $this->hasOne(User::class,'id');
+        return $this->hasOne(User::class,'calon_siswa_id','id');
     }
-
+    public function pembayaranCasis()
+    {
+        return $this->belongsTo(PembayaranCalonSiswa::class,'id');
+    }
     // public function asalSekolah()
     // {
     //     return $this->belongsTo(AsalSekolah::class,'asal_sekolah_id');

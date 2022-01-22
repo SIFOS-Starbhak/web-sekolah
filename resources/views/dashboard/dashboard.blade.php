@@ -2362,7 +2362,7 @@
     <div class="row">
         <div id="accordion">
             <div class="card">
-                <div class="card-header" id="headingDataCalonSiswa" style="width: 1142px;">
+                <div class="card-header " id="headingDataCalonSiswa" style="width: 1142px;">
                     <h5 class="mb-0">
                         <button class="badge badge-md badge-primary" data-toggle="collapse" data-target="#collapseOne"
                             aria-expanded="true" aria-controls="collapseOne">
@@ -2371,7 +2371,7 @@
                     </h5>
                 </div>
 
-                <div id="collapseOne" class="collapse show w-100 " aria-labelledby="headingDataCalonSiswa" data-parent="#accordion">
+                <div id="collapseOne" class="collapse  w-100  collapsing" aria-labelledby="headingDataCalonSiswa" data-parent="#accordion">
                     <form action="{{ route('panitia.store.casis') }}" id="form-tambah" method="POST">
                         @csrf
                         <div class="card-body">
@@ -3696,7 +3696,88 @@
             </div>
         </div>
     </div>
+    <div class="row">
+        <div class="card" style="width: 1142px;">
+            <div class="card-header">
+             Data Pembayaran Calon Siswa
+            </div>
+            <div class="card-body">
+                    @foreach ($pembayaranCasis as $item)
+                    <ul class="list-unstyled user-progress list-unstyled-border list-unstyled-noborder">
+                        <li class="media">
+                            {{-- {{dd($item->user->avatar)}} --}}
+                          <img alt="image" class="mr-3 rounded-circle" width="50" src="{{asset('img/'.$item->user->avatar)}}">
+                          <div class="media-body">
+                            <div class="media-title">{{$item->user->name}}</div>
+                            <div class="text-job text-muted">Belum Lunas</div>
+                          </div>
+                              <div class="media-progressbar mt-2">
+                                  <div class="progress progress-striped active">        
+                                          <div class="bg-primary progress-bar progress-bar-danger" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 0%;">  </div>     
+                                  </div>        
+                              </div>
+                            
+      
+                          <div class="media-cta">
+                              <div class="dropdown d-inline">
+                                  <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fas fa-cogs"></i> Validasi
+                                  </button>
+                                  <div class="dropdown-menu">
+                                   
+                                    
+                                    <a type="button" class="text-dark dropdown-item" data-toggle="modal" id="largeButton" data-attr="{{route('panitia.validasi_pembayaran',$item->id)}}" data-target=".bd-example-modal-xl"><i class="fas fa-edit text-gray-300 mr-2"></i>Konfirmasi Pembayaran</a>
 
+                                    <a class="text-warning dropdown-item" href="">
+                                       <i class="fas fa-search text-yellow-300 mr-2"></i>Detail Calon Siswa
+                                    </a>
+                                    
+                               
+                                  </div>
+                                </div>
+                          </div>
+                        </li>
+                      </ul>
+                    @endforeach    
+            </div>
+              
+        </div>
+    </div>
+ <!-- medium modal -->
+    {{-- <div class="modal fade" id="mediumModal" tabindex="-1" role="dialog" aria-labelledby="mediumModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="mediumBody">
+                    <div>
+                        <!-- the result to be displayed apply here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> --}}
+
+    <div class="modal fade bd-example-modal-xl" id="largeModal" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+          <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" id="largeBody">
+                <div>
+                    <!-- the result to be displayed apply here -->
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
 
   
@@ -3859,61 +3940,4 @@
     <script src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.7/dist/sweetalert2.all.min.js"></script>
 
-<script type="text/javascript">
-      
-
-
-
-
-//    $(document).ready(function () {
-//     $('#dataTableSekolah').DataTable({
-//       responsive: true,
-//       processing: true,
-//       serverSide: true,
-//       "paging": true,
-//       "lengthChange": true,
-//       "searching": true,
-//       "ordering": true,
-//       "info": true,
-//       "autoWidth": false,
-//       "lengthMenu": [[5, 10, 25, 50, -1], [5, 10, 25, 50, "All"]],
-//       ajax: "{{ route('datatable2.asal_sekolah') }}",
-//       columns: [
-//           {data: 'DT_RowIndex', name: 'id'},
-//           {data: 'npsn_sekolah', name: 'npsn_sekolah'},
-//           {data: 'nama_sekolah', name: 'nama_sekolah'},
-//           {data: 'alamat_sekolah', name: 'alamat_sekolah'},
-//           {data: 'aksi', name: 'aksi'}
-//       ]
-//     })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-   });
-  </script>
 @endpush

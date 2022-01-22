@@ -11,7 +11,7 @@ class ContentEkskul extends Model
 
     public function ekskul()
     {
-        return $this->belongsTo(Ekskul::class, 'ekskul');
+        return $this->belongsTo(Ekskul::class);
     }
 
     public function tab()

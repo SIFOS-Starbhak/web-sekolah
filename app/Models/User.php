@@ -80,6 +80,6 @@ class User extends \TCG\Voyager\Models\User implements JWTSubject
     }
     public function calonSiswa()
     {
-        return $this->belongsTo(CalonSiswa::class,'calon_siswa_id');
+        return $this->belongsTo(CalonSiswa::class,'calon_siswa_id','id');
     }
 }

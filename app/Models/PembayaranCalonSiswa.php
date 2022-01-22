@@ -18,4 +18,8 @@ class PembayaranCalonSiswa extends Model
         'bukti_bayar',
         'status',
     ];
+    public function calonSiswa()
+    {
+        return $this->belongsTo(CalonSiswa::class,'calonsiswa_id');
+    }
 }

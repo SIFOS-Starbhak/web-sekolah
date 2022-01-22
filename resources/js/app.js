@@ -58,8 +58,8 @@ document.addEventListener("DOMContentLoaded", () => {
             }).then(async (res) => {
                 // console.log(res);
                 if (res.data.user || res.data.user_student) {
-                        // const data = await axios.post(`http://127.0.0.1:8000/api/user`).then(res => {
-                        const data = await axios.post(`http://new.smktarunabhakti.net/api/user`).then(res => {
+                        const data = await axios.post(`http://127.0.0.1:8003/api/user`).then(res => {
+                        // const data = await axios.post(`http://new.smktarunabhakti.net/api/user`).then(res => {
                         if (res.data) {
                             // console.log(res.data)
                             return res.data
@@ -77,7 +77,8 @@ document.addEventListener("DOMContentLoaded", () => {
                             }
                         }
                         if (!bool) {
-                            await axios.post('http://new.smktarunabhakti.net/api/user/create', resValue).then(
+                            await axios.post('http://127.0.0.1:8003/api/user/create', resValue).then(
+                                // await axios.post('http://new.smktarunabhakti.net/api/user/create', resValue).then(
                                 response => console.log(response.data)
                                 ).catch(err => console.log(err))
                             // await axios.post('http://new.smktarunabhakti.net/api/user/create', resValue).then(response => console.log(response.data)).catch(err => console.log(err))
@@ -94,7 +95,9 @@ document.addEventListener("DOMContentLoaded", () => {
                             }
                         }
                         if (!bool) {
-                            await axios.post('http://new.smktarunabhakti.net/api/user/create', resValue).then(
+                            // await axios.post('http://new.smktarunabhakti.net/api/user/create', resValue).then(
+                            await axios.post('http://127.0.0.1:8003/api/user/create', resValue).then(
+
                                 response => console.log(response.data)
                                 ).catch(err => console.log(err))
                             // await axios.post('http://new.smktarunabhakti.net/api/user/create', resValue).then(response => console.log(response.data)).catch(err => console.log(err))

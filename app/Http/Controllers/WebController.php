@@ -34,6 +34,7 @@ use App\Models\TabJurusan;
 use App\Models\ContentJurusan;
 use App\Models\GalleryJurusan;
 use App\Models\DetailUser;
+use Illuminate\Http\Request;
 
 class WebController extends Controller
 {
@@ -190,10 +191,11 @@ class WebController extends Controller
         $settings = Setting::all();
         $navbar = Navbar::all()->where('status', 'Active');
         $backgrounds = Background::all();
-        $tab = TabEkskul::all();
-        $content = ContentEkskul::all()->where('ekskul', $eskul->id);
-        $gallery = GalleryEkskul::all()->where('ekskul', $eskul->id);
-
+        $tab = TabEkskul::all()->where('eskul',$eskul->id);
+        $content = ContentEkskul::all()->where('eskul', $eskul->id);
+        // dd($content);
+        $gallery = GalleryEkskul::all()->where('eskul', $eskul->id);
+        
         return view('eskul', compact('settings', 'navbar', 'backgrounds', 'eskul', 'content', 'tab', 'gallery'));
     }
 
@@ -209,15 +211,16 @@ class WebController extends Controller
 
     public function jurusans(Jurusan $jurusan)
     {
+        // dd($jurusan->id);
         $settings = Setting::all();
         $navbar = Navbar::all()->where('status', 'Active');
         $backgrounds = Background::all();
-        $tab = TabJurusan::all();
+        $tab = TabJurusan::all()->where('jurusan', $jurusan->id);
         $content = ContentJurusan::all()->where('jurusan', $jurusan->id);
         $gallery = GalleryJurusan::all()->where('jurusan', $jurusan->id);
         $foto = Gallery::all()->where('katagori_guru', 'Guru Kejurusan')
                                 ->where('jurusan', $jurusan->name);
-
+        // dd($content->toArray(),$tab->toArray());
         return view('jurusans', compact('settings', 'navbar', 'backgrounds', 'jurusan', 'content', 'tab', 'gallery', 'foto'));
     }
 }

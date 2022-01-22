@@ -18,7 +18,7 @@
 
     </style>
     <div class="container mt-5 mb-5" data-aos="fade-up">
-        <a href="/kesiswaan/ekstrakurikuler" class="col-12" style="font-size: 17px;"><i class="fas fa-arrow-left"></i>
+        <a href="/program-keahlian/jurusan" class="col-12" style="font-size: 17px;"><i class="fas fa-arrow-left"></i>
             Kembali</a>
         <nav>
             <div class="nav nav-tabs flex-column flex-sm-row mt-4" id="nav-tab" role="tablist">
@@ -27,6 +27,7 @@
                         aria-current="page" data-bs-toggle="tab"
                         data-bs-target="#{{ $item->slug }}"><b>{{ $item->name }}</b></a>
                 @endforeach
+                
             </div>
         </nav>
         <div class="tab-content mt-5 mb-5" id="nav-tabContent">
