@@ -78,6 +78,7 @@ Route::post('/registalum/store', [RegistalumController::class, 'store'])->name('
 Route::get('/registalum', [RegistalumController::class, 'create']);
 // Route::get('/kesiswaan', 'WebController@kesiswaan');
 // Route::get('/kurikulum/kurikulumguru', 'WebController@kurikulumguru');
+Route::get('/stream-cv/siswa/{id}', [PDFController::class, 'Stream'])->name('stream.cv');
 
 // Artikel
 Route::get('/artikel', function () {
@@ -239,7 +240,6 @@ Route::group(['prefix' => 'perusahaan', 'middleware' => ['jwt.verify', 'auth:api
     Route::put('/update/profile/{id}', [ProfileController::class, 'update'])->name('update.profilePerusahaan');
     Route::get('/detail/siswa/{id}', [ProfileController::class, 'detail'])->name('detail.profile');
     Route::get('/download-cv/siswa/{id}', [PDFController::class, 'downloadCV'])->name('download.cv');
-    Route::get('/stream-cv/siswa/{id}', [PDFController::class, 'Stream'])->name('stream.cv');
     Route::get('/dashboard', function () {
         // $article = Post::all();
         $article = Category::wherehas('post', function ($query) {
