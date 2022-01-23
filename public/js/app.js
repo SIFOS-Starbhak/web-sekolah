@@ -4057,7 +4057,7 @@ document.addEventListener("DOMContentLoaded", function () {
       e.preventDefault();
       var frmData = new FormData(e.target);
       var user = Object.fromEntries(frmData);
-      axios__WEBPACK_IMPORTED_MODULE_1___default().post("http://127.0.0.1:8000/api/login", user) // .post(`http://new.smktarunabhakti.net/api/login`, user)
+      axios__WEBPACK_IMPORTED_MODULE_1___default().post("http://127.0.0.1:8003/api/login", user) // .post(`http://new.smktarunabhakti.net/api/login`, user)
       .then(function (res) {
         console.log(res.data);
         window.sessionStorage.setItem("token", res.data.original_token.original.access_token);
@@ -4096,7 +4096,7 @@ document.addEventListener("DOMContentLoaded", function () {
                   }
 
                   _context.next = 3;
-                  return axios__WEBPACK_IMPORTED_MODULE_1___default().post("http://127.0.0.1:8000/api/user").then(function (res) {
+                  return axios__WEBPACK_IMPORTED_MODULE_1___default().post("http://127.0.0.1:8003/api/user").then(function (res) {
                     // const data = await axios.post(`http://new.smktarunabhakti.net/api/user`).then(res => {
                     if (res.data) {
                       // console.log(res.data)
@@ -4131,7 +4131,8 @@ document.addEventListener("DOMContentLoaded", function () {
                   }
 
                   _context.next = 12;
-                  return axios__WEBPACK_IMPORTED_MODULE_1___default().post('http://127.0.0.1:8000/api/user/create', resValue).then(function (response) {
+                  return axios__WEBPACK_IMPORTED_MODULE_1___default().post('http://127.0.0.1:8003/api/user/create', resValue).then( // await axios.post('http://new.smktarunabhakti.net/api/user/create', resValue).then(
+                  function (response) {
                     return console.log(response.data);
                   })["catch"](function (err) {
                     return console.log(err);
@@ -4168,7 +4169,7 @@ document.addEventListener("DOMContentLoaded", function () {
                   }
 
                   _context.next = 23;
-                  return axios__WEBPACK_IMPORTED_MODULE_1___default().post('http://127.0.0.1:8000/api/user/create', _resValue).then(function (response) {
+                  return axios__WEBPACK_IMPORTED_MODULE_1___default().post('http://127.0.0.1:8003/api/user/create', _resValue).then(function (response) {
                     return console.log(response.data);
                   })["catch"](function (err) {
                     return console.log(err);
@@ -4197,7 +4198,7 @@ document.addEventListener("DOMContentLoaded", function () {
   } else {
     document.getElementById("frmlogout").addEventListener("click", function (e) {
       e.preventDefault();
-      axios__WEBPACK_IMPORTED_MODULE_1___default().post("http://127.0.0.1:8000/api/logout") // .post(`http://new.smktarunabhakti.net/api/logout`)
+      axios__WEBPACK_IMPORTED_MODULE_1___default().post("http://127.0.0.1:8003/api/logout") // .post(`http://new.smktarunabhakti.net/api/logout`)
       // .post(`http://117.102.67.70:8000/api/logout`)
       .then(function (res) {
         console.log(res);
@@ -4219,7 +4220,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     document.getElementById("sitakols").addEventListener("click", function (e) {
       e.preventDefault();
-      window.location.href = "http://127.0.0.1:8002/api/prakerin/" + window.sessionStorage.getItem("token"); // href seuai sama url
+      window.location.href = //  "http://117.102.67.70:8090/api/prakerin/" +
+      "http://127.0.0.1:8002/api/prakerin/" + window.sessionStorage.getItem("token"); // href seuai sama url
     }); // Api Refleksi
 
     document.getElementById("refleksi").addEventListener("click", function (e) {
@@ -4228,13 +4230,14 @@ document.addEventListener("DOMContentLoaded", function () {
       window.location.href = // "http://117.102.67.70:8000/authentication/" +
       "http://127.0.0.1:8001/authentication/" + window.sessionStorage.getItem("token"); // href seuai sama url
     }); // Api Refleksi
-
-    document.getElementById("administrasiGuru").addEventListener("click", function (e) {
-      e.preventDefault();
-      console.log("clicked");
-      window.location.href = // "http://117.102.67.70:8000/authentication/" +
-      "http://127.0.0.1:8003/api/adm/" + window.sessionStorage.getItem("token"); // href seuai sama url
-    });
+    //  document.getElementById("administrasiGuru").addEventListener("click", (e) => {
+    //     e.preventDefault();
+    //     console.log("clicked");
+    //     window.location.href =
+    //         "http://117.102.67.70:8000/authentication/" +
+    //         // "http://127.0.0.1:8003/api/adm/" +
+    //         window.sessionStorage.getItem("token"); // href seuai sama url
+    // });
   }
 });
 

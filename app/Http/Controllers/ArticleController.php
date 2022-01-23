@@ -7,7 +7,7 @@ use App\Models\Post;
 use App\Models\Category;
 use Illuminate\Support\Facades\Auth;
 use File;
-
+use Carbon\Carbon;
 class ArticleController extends Controller
 {
     public function index()
@@ -42,6 +42,7 @@ class ArticleController extends Controller
     }
     public function store(Request $request)
     {
+          
         $request->validate([
             'category' => 'required',
             'title' => 'required|unique:posts|max:100',
@@ -64,7 +65,13 @@ class ArticleController extends Controller
         // dd($request,$description,$meta_description,$slug);
         $nm = $request->image;
         $namafile = $nm->getClientOriginalName();
-        $nm->move(public_path() . '/article-img', $namafile);
+        $public_storage_voyager =  Carbon::now()->format('F').Carbon::now()->year;
+
+        $nm->move(public_path() . '/storage/posts/'.$public_storage_voyager, $namafile);
+        // dd('/storage/posts/'.$public_storage_voyager);
+        // $nm->move(public_path() . '/storage/posts/October2021', $namafile);
+
+        $filepath = 'posts/'.$public_storage_voyager.'/'.$namafile;
         Post::create([
             'author_id' => auth()->id(),
             'category_id' => $request->category,
@@ -72,7 +79,7 @@ class ArticleController extends Controller
             'seo_title' => $request->seo_title,
             'excerpt' => $excerpt_10,
             'body' => $request->description,
-            'image' => $namafile,
+            'image' => $filepath,
             'slug' => $slug,
             'meta_description' => $meta_description,
             'meta_keywords' => 'default',
@@ -97,6 +104,9 @@ class ArticleController extends Controller
     public function update(Request $request, $id)
     {
         // dd($request->image);
+        // dd($request);
+        // dd(Storage::disk('posts'));
+
 
         if ($request->image == null) {
             $img =  Post::where('id', $id)->first();
@@ -131,10 +141,13 @@ class ArticleController extends Controller
             // return redirect()->back()->with('fail','Gagal di  Hapus  ');
         } else {
             $img =  Post::where('id', $id)->first();
-            if (File::exists(public_path('article-img/' . $img->image))) {
-                File::delete(public_path('article-img/' . $img->image));
+            // dd($imgi);
+            $public_storage_voyager =  Carbon::now()->format('F').Carbon::now()->year;
+            // dd($img->img);
+            if (File::exists(public_path() . '/storage'.'/'. $img->image)) {
+                File::delete(public_path() . '/storage'.'/'. $img->image);
+              
                 $img =  Post::where('id', $id)->first();
-                // dd($img->image);
                 $description = strip_tags($request->description);
                 $str = str_replace('&nbsp;', '', $description);
                 $meta_description = html_entity_decode($str);
@@ -145,7 +158,15 @@ class ArticleController extends Controller
                 // dd($request,$description,$meta_description,$slug);
                 $nm = $request->image;
                 $namafile = $nm->getClientOriginalName();
-                $nm->move(public_path() . '/article-img', $namafile);
+                // if (Carbon::now()->format('F').Carbon::now()->year) {
+                //     # code...
+                // }
+                $public_storage_voyager =  Carbon::now()->format('F').Carbon::now()->year;
+
+                $nm->move(public_path() . '/storage/posts/'.$public_storage_voyager, $namafile);
+        $filepath = 'posts/'.$public_storage_voyager.'/'.$namafile;
+
+                // $nm->move(public_path() . '/storage/posts/October2021', $namafile);
                 Post::where('id', $id)->update([
                     'author_id'        => auth()->id(),
                     'category_id'      => $request->category,
@@ -153,7 +174,7 @@ class ArticleController extends Controller
                     'seo_title'        => $request->seo_title,
                     'excerpt'          => $excerpt_10,
                     'body'             => $request->description,
-                    'image'            => $namafile,
+                    'image'            => $path_file,
                     'slug'             => $slug,
                     'meta_description' => $meta_description,
                     'meta_keywords'    => 'default',
@@ -165,6 +186,8 @@ class ArticleController extends Controller
                 // return redirect()->back()->with('pesan','Berhasil Hapus Article ');
             }
         }
+        return redirect()->route('dashboard.manager')->with('message', 'Berhasil update Artikel');
+
         // dd($id);
     }
 
@@ -174,10 +197,12 @@ class ArticleController extends Controller
     {
         $img =  Post::where('id', $id)->first();
         // dd($img->image);
+        $public_storage_voyager =  Carbon::now()->format('F').Carbon::now()->year;
+      
 
-        if (File::exists(public_path('article-img/' . $img->image))) {
-            File::delete(public_path('article-img/' . $img->image));
-
+        if (File::exists(public_path() . '/storage'.'/'. $img->image)) {
+            File::delete(public_path() . '/storage'.'/'. $img->image);
+          
             Post::where('id', $id)->delete();
             // return Redirect::to('/')->with($notification);
             // return redirect()->route('dashboard.manager')->;

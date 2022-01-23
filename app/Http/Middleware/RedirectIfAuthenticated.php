@@ -26,6 +26,10 @@ class RedirectIfAuthenticated
                     return redirect()->route('dashboard.adm');
                 } else if (Auth::guard($guard)->user()->hasRole('guru')) {
                     return redirect()->route('dashboard.guru');
+                } else if (Auth::guard($guard)->user()->hasRole('user') && Auth::guard($guard)->user()->spesifc_role == 'panitia') {
+                    return redirect()->route('dashboard.panitia');
+                } else if (Auth::guard($guard)->user()->hasRole('siswa') && Auth::guard($guard)->user()->spesifc_role == 'casis') {
+                    return redirect()->route('dashboard.casis');
                 } else if (Auth::guard($guard)->user()->hasRole('siswa')) {
                     return redirect()->route('dashboard.siswa');
                 } else if (Auth::guard($guard)->user()->hasRole('manager')) {

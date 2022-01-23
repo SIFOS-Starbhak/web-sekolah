@@ -18,7 +18,7 @@ class CekRole
     public function handle(Request $request, Closure $next,...$role)
     {
             if (in_array(Auth::guard('api')->user()->role->name,$role)) {
-                return $next($request);
+                    return $next($request);
             } else{
                 abort(403);
             }
