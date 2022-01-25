@@ -25,7 +25,7 @@
                                             <select name="category" id="categories" class="form-control">
                                                 @foreach ($categories as $item)
                                                     @if ($item->id === $article->category_id)
-                                                        <option value="{{ $article->id }}" selected>
+                                                        <option value="{{ $article->category_id }}" selected>
                                                             {{ $item->name }}
                                                         </option>
                                                     @else
@@ -36,14 +36,14 @@
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label for="title">Judul</label>
-                                            <input type="text" class="form-control" id="title" name="title"
+                                            <input type="text" class="form-control" pattern="^[a-zA-Z\s'-]{1,100}$" id="title" name="title"
                                                 value="{{ $article->title }}">
                                         </div>
                                     </div>
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
                                             <label for="seo">Judul SEO</label>
-                                            <input type="text" class="form-control" id="seo" name="seo_title"
+                                            <input type="text" class="form-control" pattern="^[a-zA-Z\s'-]{1,100}$" id="seo" name="seo_title"
                                                 value="{{ $article->seo_title }}">
                                         </div>
                                         <div class="form-group col-md-6">
@@ -58,7 +58,9 @@
                                     <div class="row my-2">
                                         <div class="container d-flex justify-content-center">
                                             <img id="output" style="width: 250px; height:200px;"
-                                                src="{{ asset('article-img/' . $article->image) }}" />
+                                            {{-- {{public_path() . '/storage/posts/October2021', $namafile}} --}}
+
+                                                src="{{ asset('/storage'.'/'. $article->image) }}" />
                                         </div>
                                     </div>
                                     <div class="form-group">

@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
             axios
                 // buat ip public
                 // .post(`/api/login`, user)
-                .post(`http://127.0.0.1:8000/api/login`, user)
+                .post(`http://127.0.0.1:8003/api/login`, user)
                 // .post(`http://new.smktarunabhakti.net/api/login`, user)
                 .then((res) => {
                     console.log(res.data);
@@ -51,15 +51,15 @@ document.addEventListener("DOMContentLoaded", () => {
             e.preventDefault();
             var data = new FormData();
             data.append('token', 'token-post');
-                // axios.post("http://localhost/Moodle-starbhak2/webservice/rest/costom-rest.php", data, {
-                axios.post("http://117.102.67.70:8008/moodlev2/webservice/rest/costom-rest.php", data, {
+                axios.post("http://localhost/Moodle-starbhak2/webservice/rest/costom-rest.php", data, {
+                // axios.post("http://117.102.67.70:8008/moodlev2/webservice/rest/costom-rest.php", data, {
                 withCredentials: true,
                 crossDomain: true
             }).then(async (res) => {
                 // console.log(res);
                 if (res.data.user || res.data.user_student) {
-                        // const data = await axios.post(`http://127.0.0.1:8000/api/user`).then(res => {
-                        const data = await axios.post(`http://new.smktarunabhakti.net/api/user`).then(res => {
+                        const data = await axios.post(`http://127.0.0.1:8003/api/user`).then(res => {
+                        // const data = await axios.post(`http://new.smktarunabhakti.net/api/user`).then(res => {
                         if (res.data) {
                             // console.log(res.data)
                             return res.data
@@ -77,7 +77,8 @@ document.addEventListener("DOMContentLoaded", () => {
                             }
                         }
                         if (!bool) {
-                            await axios.post('http://new.smktarunabhakti.net/api/user/create', resValue).then(
+                            await axios.post('http://127.0.0.1:8003/api/user/create', resValue).then(
+                                // await axios.post('http://new.smktarunabhakti.net/api/user/create', resValue).then(
                                 response => console.log(response.data)
                                 ).catch(err => console.log(err))
                             // await axios.post('http://new.smktarunabhakti.net/api/user/create', resValue).then(response => console.log(response.data)).catch(err => console.log(err))
@@ -94,7 +95,9 @@ document.addEventListener("DOMContentLoaded", () => {
                             }
                         }
                         if (!bool) {
-                            await axios.post('http://new.smktarunabhakti.net/api/user/create', resValue).then(
+                            // await axios.post('http://new.smktarunabhakti.net/api/user/create', resValue).then(
+                            await axios.post('http://127.0.0.1:8003/api/user/create', resValue).then(
+
                                 response => console.log(response.data)
                                 ).catch(err => console.log(err))
                             // await axios.post('http://new.smktarunabhakti.net/api/user/create', resValue).then(response => console.log(response.data)).catch(err => console.log(err))
@@ -109,8 +112,8 @@ document.addEventListener("DOMContentLoaded", () => {
             e.preventDefault();
             axios
                 // buat ip public
-                // .post(`http://127.0.0.1:8000/api/logout`)
-                .post(`http://new.smktarunabhakti.net/api/logout`)
+                .post(`http://127.0.0.1:8003/api/logout`)
+                // .post(`http://new.smktarunabhakti.net/api/logout`)
                 // .post(`http://117.102.67.70:8000/api/logout`)
                 .then((res) => {
                     console.log(res);
@@ -131,8 +134,8 @@ document.addEventListener("DOMContentLoaded", () => {
             .addEventListener("click", (e) => {
                 e.preventDefault();
                 window.location.href =
-                    "http://117.102.67.70:8008/moodlev2/login/index.php?token=" +
-                    // "http://localhost/Moodle-starbhak2/login/index.php?token=" +
+                    // "http://117.102.67.70:8008/moodlev2/login/index.php?token=" +
+                    "http://localhost/Moodle-starbhak2/login/index.php?token=" +
                     window.sessionStorage.getItem("token"); // href seuai sama url
             });
 
@@ -142,7 +145,9 @@ document.addEventListener("DOMContentLoaded", () => {
         .addEventListener("click", (e) => {
             e.preventDefault();
             window.location.href =
-                 "http://117.102.67.70:8090/api/prakerin/" +
+                //  "http://117.102.67.70:8090/api/prakerin/" +
+                "http://127.0.0.1:8002/api/prakerin/" +
+
                     window.sessionStorage.getItem("token"); // href seuai sama url
         });
     
@@ -151,19 +156,19 @@ document.addEventListener("DOMContentLoaded", () => {
             e.preventDefault();
             console.log("clicked");
             window.location.href =
-                "http://117.102.67.70:8000/authentication/" +
-                // "http://127.0.0.1:8001/authentication/" +
+                // "http://117.102.67.70:8000/authentication/" +
+                "http://127.0.0.1:8001/authentication/" +
                 window.sessionStorage.getItem("token"); // href seuai sama url
         });
 
          // Api Refleksi
-         document.getElementById("administrasiGuru").addEventListener("click", (e) => {
-            e.preventDefault();
-            console.log("clicked");
-            window.location.href =
-                "http://117.102.67.70:8000/authentication/" +
-                // "http://127.0.0.1:8003/api/adm/" +
-                window.sessionStorage.getItem("token"); // href seuai sama url
-        });
+        //  document.getElementById("administrasiGuru").addEventListener("click", (e) => {
+        //     e.preventDefault();
+        //     console.log("clicked");
+        //     window.location.href =
+        //         "http://117.102.67.70:8000/authentication/" +
+        //         // "http://127.0.0.1:8003/api/adm/" +
+        //         window.sessionStorage.getItem("token"); // href seuai sama url
+        // });
     }
 });

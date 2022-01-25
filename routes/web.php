@@ -1,21 +1,29 @@
 <?php
 
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\AsalSekolahController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\WebController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\CalonSiswaController;
 use App\Http\Controllers\PDFController;
 use App\Http\Controllers\RegistalumController;
+use App\Http\Controllers\PembayaranCasisController;
 use App\Models\Post;
 use App\Models\Kela;
 use App\Models\User;
+use App\Models\AsalSekolah;
+use App\Models\CalonSiswa;
 use App\Models\Page;
 use App\Models\Setting;
+use App\Models\Pembayaran;
 use App\Models\Category;
+use App\Models\PembayaranCalonSiswa;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\DashboardManager;
 use Tymon\JWTAuth\JWTAuth;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -269,7 +277,65 @@ Route::group(['prefix' => 'perusahaan', 'middleware' => ['jwt.verify', 'auth:api
 });
 
 
+// Panitia
+Route::group(['prefix' => 'panitia', 'middleware' => ['jwt.verify', 'auth:api', 'role:user']], function () {
 
+    Route::get('/edit/profile/{id}', [ProfileController::class, 'edit'])->name('edit.profilePanitia');
+    Route::put('/update/profile/{id}', [ProfileController::class, 'update'])->name('update.profilePanitia');
+
+    Route::post('/CalonSiswa/store/', [CalonSiswaController::class, 'store'])->name('panitia.store.casis');
+    Route::get('/CalonSiswa/edit/{id}', [CalonSiswaController::class, 'edit'])->name('panitia.edit.casis');
+    Route::put('/CalonSiswa/update/{id}', [CalonSiswaController::class, 'update'])->name('panitia.update.casis');
+   
+    Route::get('/PembayaranCalonSiswa/validasiPembayaran/{id}', [PembayaranCasisController::class, 'validasi_pembayaran'])->name('panitia.validasi_pembayaran');
+
+
+        
+        Route::get('/asal_sekolah/data',[AsalSekolahController::class,'datatable'])->name('datatable.asal_sekolah');
+        Route::get('/asal_sekolah/data2',[AsalSekolahController::class,'datatable2'])->name('datatable2.asal_sekolah');
+        Route::post('/asal_sekolah/store', [AsalSekolahController::class,'store'])->name('asal_sekolah.store');;
+        Route::get('/asal_sekolah/edit/{id}', [AsalSekolahController::class,'edit'])->name('asal_sekolah.edit');;
+        Route::get('/asal_sekolah/show/{id}', [AsalSekolahController::class,'show'])->name('asal_sekolah.show');;
+        Route::put('/asal_sekolah/update/{id}', [AsalSekolahController::class,'update'])->name('asal_sekolah.update');;
+        Route::delete('/asal_sekolah/delete/{id}', [AsalSekolahController::class,'destroy'])->name('asal_sekolah.destroy');
+
+
+    Route::get('/dashboard', function () {
+        $no_casis = CalonSiswa::all()->count() + 1;
+        // dd($no_casis);
+        $no_daftar = str_pad($no_casis, 3, '0', STR_PAD_LEFT);
+        // dd($increment);
+        $asal_sekolah = AsalSekolah::all();
+        $item = ['PPLG','ANIMASI','TJKT','BCF','TE'];
+        foreach ($item as $key => $value) {
+            $jurusan[] = Kela::where('kelas','X')->where('jurusan',$value)->first();
+        }
+        $pembayaranCasis = CalonSiswa::all();
+        // $siswa_udabayar = CalonSiswa::has('pembayaranCasis')->get();
+
+        // dd($pembayaranCasis->toArray());
+        return view('dashboard.dashboard',compact('asal_sekolah','no_daftar','jurusan','pembayaranCasis'));
+    })->name('dashboard.panitia');
+});
+
+// / Casis
+Route::group(['prefix' => 'casis', 'middleware' => ['jwt.verify', 'auth:api', 'role:siswa']], function () {
+    Route::get('/pembayaran/casis/{id}', [PembayaranCasisController::class, 'pembayaran_casis'])->name('pembayaran.casis');
+    Route::post('/pembayaran/casis/store', [PembayaranCasisController::class, 'pembayaran_casis_store'])->name('pembayaran.casisStore');
+    Route::get('/edit/profile/{id}', [ProfileController::class, 'edit'])->name('edit.profileCasis');
+    Route::put('/update/profile/{id}', [CalonSiswaController::class, 'update'])->name('update.profileCasis');
+    
+    Route::get('/dashboard', function () {
+        $pembayaran = Pembayaran::all();
+
+        $user_id =  Auth::guard('api')->user()->id;
+        $casis_id = App\Models\User::where('id', $user_id)->first()->calon_siswa_id;
+      
+        return view('casis.index',compact('pembayaran'));
+    })->name('dashboard.casis');
+});
+
+//Admin
 Route::group(['prefix' => 'adm', 'middleware' => ['jwt.verify', 'auth:api', 'role:admin']], function () {
     Route::get('/edit/profile/{id}', [ProfileController::class, 'edit'])->name('edit.profileAdm');
     Route::put('/update/profile/{id}', [ProfileController::class, 'update'])->name('update.profileAdm');

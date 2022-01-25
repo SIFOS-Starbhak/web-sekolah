@@ -21,7 +21,7 @@
             {{-- <p>Posted on <a href="">August , 2016</a> | by <a href="">smktaruanbhakti</a></p> --}}
             <br>
             <div>
-                {!! $item->excerpt !!} <a href="/{{ $item->slug }}">Read More ...</a>
+                {!! $item->excerpt !!} <a href="/showartikel/{{ $item->slug }}">Read More ...</a>
             </div>
             <br>
             <br>
