@@ -9,7 +9,10 @@ use App\Http\Controllers\CalonSiswaController;
 use App\Http\Controllers\PDFController;
 use App\Http\Controllers\RegistalumController;
 use App\Http\Controllers\PembayaranCasisController;
+use App\Http\Controllers\UserReferenceController;
 use App\Models\Post;
+use App\Models\Gugus;
+use App\Models\UserReference;
 use App\Models\Kela;
 use App\Models\User;
 use App\Models\AsalSekolah;
@@ -23,7 +26,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\DashboardManager;
 use Tymon\JWTAuth\JWTAuth;
+// use DataTables;
 
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -138,7 +143,9 @@ Route::group(['prefix' => 'guru', 'middleware' => ['jwt.verify', 'auth:api', 'ro
     Route::get('/dashboard', function () {
 
         $article = Post::all();
-
+        $siswa_referal = UserReference::all();
+        $calon_siswa = CalonSiswa::all();
+    
         $X = User::wherehas('kelas', function ($query) {
             $query->where('kelas', 'X');
         })->get();
@@ -224,6 +231,7 @@ Route::group(['prefix' => 'guru', 'middleware' => ['jwt.verify', 'auth:api', 'ro
             'XII_MM',
             'XII_TKJ',
             'XII_TEI',
+            'siswa_referal'
         ));
     })->name('dashboard.guru');
 });
@@ -282,25 +290,31 @@ Route::group(['prefix' => 'panitia', 'middleware' => ['jwt.verify', 'auth:api', 
 
     Route::get('/edit/profile/{id}', [ProfileController::class, 'edit'])->name('edit.profilePanitia');
     Route::put('/update/profile/{id}', [ProfileController::class, 'update'])->name('update.profilePanitia');
+    
 
+
+
+    Route::get('/gugus/table',[CalonSiswaController::class,'gugus_table'])->name('table.gugus');
+    Route::get('/ReferalCode/detail_pendaftar/{id}', [UserReferenceController::class, 'detail_pendaftar_referal'])->name('panitia.pendaftar_referal');
+    Route::post('/ReferalCode/store', [UserReferenceController::class, 'store'])->name('panitia.store.referalcode');
     Route::post('/CalonSiswa/store/', [CalonSiswaController::class, 'store'])->name('panitia.store.casis');
     Route::get('/CalonSiswa/edit/{id}', [CalonSiswaController::class, 'edit'])->name('panitia.edit.casis');
-    Route::put('/CalonSiswa/update/{id}', [CalonSiswaController::class, 'update'])->name('panitia.update.casis');
+    Route::get('/CalonSiswa/detail/{id}', [CalonSiswaController::class, 'detail'])->name('panitia.detail.casis');
+    Route::put('/CalonSiswa/update/{id}', [CalonSiswaController::class, 'update_from_panitia'])->name('panitia.update.casis');
+   
+    Route::put('/CalonSiswa/gugus/{id}', [CalonSiswaController::class, 'gugus'])->name('panitia.update.casis_gugus');
+    Route::get('/CalonSiswa/gugus/PenempatanKelas/{id}', [CalonSiswaController::class, 'penempatan_kelas'])->name('panitia.edit.penempatanKelasGugus');
+    Route::put('/CalonSiswa/gugus/PenempatanKelas/ubah', [CalonSiswaController::class, 'penempatan_kelas_update'])->name('panitia.update.penempatanKelasGugus');
    
     Route::get('/PembayaranCalonSiswa/validasiPembayaran/{id}', [PembayaranCasisController::class, 'validasi_pembayaran'])->name('panitia.validasi_pembayaran');
+    Route::get('/PembayaranCalonSiswa/detailImage/{id}', [PembayaranCasisController::class, 'detail_image'])->name('panitia.detail_image');
+    Route::put('/PembayaranCalonSiswa/konfirmasi/{id}', [PembayaranCasisController::class, 'konfirmasi'])->name('panitia.konfirmasi');
+    // Route::put('/PembayaranCalonSiswa/konfirmasiTolak/{id}', [PembayaranCasisController::class, 'konfirmasi_tolak'])->name('panitia.konfirmasi_tolak');
 
 
         
-        Route::get('/asal_sekolah/data',[AsalSekolahController::class,'datatable'])->name('datatable.asal_sekolah');
-        Route::get('/asal_sekolah/data2',[AsalSekolahController::class,'datatable2'])->name('datatable2.asal_sekolah');
-        Route::post('/asal_sekolah/store', [AsalSekolahController::class,'store'])->name('asal_sekolah.store');;
-        Route::get('/asal_sekolah/edit/{id}', [AsalSekolahController::class,'edit'])->name('asal_sekolah.edit');;
-        Route::get('/asal_sekolah/show/{id}', [AsalSekolahController::class,'show'])->name('asal_sekolah.show');;
-        Route::put('/asal_sekolah/update/{id}', [AsalSekolahController::class,'update'])->name('asal_sekolah.update');;
-        Route::delete('/asal_sekolah/delete/{id}', [AsalSekolahController::class,'destroy'])->name('asal_sekolah.destroy');
 
-
-    Route::get('/dashboard', function () {
+    Route::get('/dashboard', function (Request $request) {
         $no_casis = CalonSiswa::all()->count() + 1;
         // dd($no_casis);
         $no_daftar = str_pad($no_casis, 3, '0', STR_PAD_LEFT);
@@ -310,20 +324,191 @@ Route::group(['prefix' => 'panitia', 'middleware' => ['jwt.verify', 'auth:api', 
         foreach ($item as $key => $value) {
             $jurusan[] = Kela::where('kelas','X')->where('jurusan',$value)->first();
         }
-        $pembayaranCasis = CalonSiswa::all();
-        // $siswa_udabayar = CalonSiswa::has('pembayaranCasis')->get();
+        $kelas = Kela::all();
+        // $search =  $request->input('search');
+        // $filter =  $request->input('filter_status');
+        // // dd($filter == "0");
+      
+        // // dd($search);
+        // if($filter != ""){
+        //         if ($filter == "0") {
+        //             $casis_data = CalonSiswa::where('gugus_id',null)->get();
+        //             foreach ($casis_data as $item ) {
+        //                 // dd($casis);
+        //                 $data_pembayaran = App\Models\Pembayaran::first();
+                        
+        //                 $pembayaran_acc =  App\Models\PembayaranCalonSiswa::where('calonsiswa_id',$item->id)->where('status','=',1)->get();
+        //                 // dd($pembayaran_acc);
+        //                 $nominal_menyeluruh = [];
+        //                 foreach ($pembayaran_acc as $key ) {
+        //                     // $calonsiswa[] = $key->calonsiswa_id; 
+        //                     $nominal_menyeluruh[] = $key->nominal;
+        //                 } 
+        //                 $total_pembayaran = array_sum($nominal_menyeluruh);
+                        
+        //                 $ratio = $total_pembayaran / $data_pembayaran->nominal_pembayaran * 100;
+        //                 $filter_belum_lunas[] = [$item->id,$ratio];
+        //                 // dd($filter_belum_lunas);
+        //             }
+        //             foreach ($filter_belum_lunas as $key) {
+        //                 if ($key[1] < 100.0) {
+        //                     $casis_id_lunas[] = $key;
+        //                 }
+        //             }
+        //             foreach ($casis_id_lunas as $key ) {
+        //                 $casis_filter[] = CalonSiswa::where('id',$key[0])->first();
+        //             }
+        //         }else{
+        //                         $casis_data = CalonSiswa::where('gugus_id',null)->get();
+        //                 foreach ($casis_data as $item ) {
+        //                     // dd($casis);
+        //                     $data_pembayaran = App\Models\Pembayaran::first();
+                            
+        //                     $pembayaran_acc =  App\Models\PembayaranCalonSiswa::where('calonsiswa_id',$item->id)->where('status','=',1)->get();
+        //                     // dd($pembayaran_acc);
+        //                     $nominal_menyeluruh = [];
+        //                     foreach ($pembayaran_acc as $key ) {
+        //                         // $calonsiswa[] = $key->calonsiswa_id; 
+        //                         $nominal_menyeluruh[] = $key->nominal;
+        //                     } 
+        //                     $total_pembayaran = array_sum($nominal_menyeluruh);
+                            
+        //                     $ratio = $total_pembayaran / $data_pembayaran->nominal_pembayaran * 100;
+        //                     $filter_lunas[] = [$item->id,$ratio];
+                            
+        //                 }
+        //                 foreach ($filter_lunas as $key) {
+        //                     if ($key[1] == 100.0) {
+        //                         $casis_id_lunas[] = $key;
+        //                     }
+        //                 }
+        //                 foreach ($casis_id_lunas as $key ) {
+        //                 $casis_filter[] = CalonSiswa::where('id',$key[0])->paginate(2);
+        //                 }
+        //         }
+            
+        // }else{
+        //     $casis_filter = [];
 
-        // dd($pembayaranCasis->toArray());
-        return view('dashboard.dashboard',compact('asal_sekolah','no_daftar','jurusan','pembayaranCasis'));
+        // }
+        // if ($search != "") {
+        //     $casis_search = CalonSiswa::where(function ($query) use ($search){
+        //         $query->where('nama_lengkap', 'like', '%'.$search.'%')
+        //           ->where('gugus_id',null)
+        //             ->orWhere('nik', 'like', '%'.$search.'%');
+        //     })->paginate(2);
+            
+        // }else{
+        //     $casis_search = [];
+        // }
+
+            // dd($casis_filter,$casis_search);
+
+            // $casis = $casis_search->paginate();
+            // dd($casis);
+            // ->paginate(10);
+            // if ($casis->toArray()['data'] == null ) {
+            //         $casis[] = "Data Tidak ada";
+            // }
+            // dd($casis);
+            // $casis->appends(['q' => $search]);
+            // $casis = DB::table('calon_siswa')
+            // ->where('pegawai_nama','like',"%".$cari."%")
+            // ->paginate();
+        // }elseif($filter == "LUNAS"){
+        //     $casis_data = CalonSiswa::where('gugus_id',null)->get();
+        //     foreach ($casis_data as $item ) {
+        //         // dd($casis);
+        //         $data_pembayaran = App\Models\Pembayaran::first();
+                
+        //         $pembayaran_acc =  App\Models\PembayaranCalonSiswa::where('calonsiswa_id',$item->id)->where('status','=',1)->get();
+        //         // dd($pembayaran_acc);
+        //         $nominal_menyeluruh = [];
+        //         foreach ($pembayaran_acc as $key ) {
+        //             // $calonsiswa[] = $key->calonsiswa_id; 
+        //             $nominal_menyeluruh[] = $key->nominal;
+        //            } 
+        //            $total_pembayaran = array_sum($nominal_menyeluruh);
+                   
+        //            $ratio = $total_pembayaran / $data_pembayaran->nominal_pembayaran * 100;
+        //            $filter_lunas[] = [$item->id,$ratio];
+                   
+        //     }
+        //     foreach ($filter_lunas as $key) {
+        //         if ($key[1] == 100.0) {
+        //             $casis_id_lunas[] = $key;
+        //         }
+        //     }
+        //     foreach ($casis_id_lunas as $key ) {
+        //        $casis[] = CalonSiswa::where('id',$key[0])->first();
+        //     }
+        //     // dd(collect($casis)->toArray());
+        
+        // }else{
+            // if ($search == "" && $filter == "") {
+                $casis = CalonSiswa::where('gugus_id','=',null)->get();
+            // }
+        // }
+        
+        // $casis = CalonSiswa::paginate(5);
+        $referal_code = UserReference::all();
+
+        $gugus = Gugus::all();
+
+        $data_pembayaran = App\Models\Pembayaran::first();
+        
+        //  $item
+       //  $calon_siswa = App\Models\CalonSiswa::where('id',$item->id)
+        // $pembayaran_acc =  App\Models\PembayaranCalonSiswa::where('calonsiswa_id',$item->id)->where('status','=',1)->get();
+        // $pembayaran_acc = [];
+       //  $data_pembayaran->nominal_pembayaran
+    //  $a =  CalonSiswa::has('pembayaranCasis')->get();
+        // foreach ($casis as $key ) {
+        //     $pembayaran_acc[] = PembayaranCalonSiswa::where('calonsiswa_id',$key->id)->where('status','=',1)->get()->toArray();
+
+        //     $casis_pembayaran = [];
+        //     foreach (array_filter(collect($pembayaran_acc)->toArray()) as $key => $value  ) {
+        //         $casis_pembayaran[] = $value[$key];
+        //        } 
+        //     //    $total_pembayaran = array_sum($casis_pembayaran); 
+        //     //    $ratio = $total_pembayaran / $data_pembayaran->nominal_pembayaran * 100;
+
+        // }
+        // foreach ($casis_pembayaran as $key => $value ) {
+        //     // dd($value);
+        // //     foreach ($value as  $item) {
+        // //         dd($item);
+        // //        $w[] = $item;
+        // //        # code
+        // //    }
+        // }
+        // // $w = [];
+        // dd($casis_pembayaran);
+        // foreach (array_filter(collect($pembayaran_acc)->toArray()) as $key => $value) {
+        //     $w[] = $value[];
+        // }
+// $emptyRemoved = array_filter($linksArray);
+                // dd(array_filter(collect($pembayaran_acc)->toArray()));
+        // $siswa_udabayar = CalonSiswa::has('casis')->get();
+        // $my_percentage = min(100, 110);
+          // Get the next closest 100
+//   $nextHundred = ceil(10 / 100) * 100;
+
+  // Calculate ratio against nextHundred
+        // dd($ratio); 
+        // dd($casis->toArray());
+        // dd($casis->toArray());
+
+        return view('dashboard.dashboard',compact('gugus','asal_sekolah','no_daftar','casis','jurusan','kelas','referal_code'));
     })->name('dashboard.panitia');
 });
 
 // / Casis
-Route::group(['prefix' => 'casis', 'middleware' => ['jwt.verify', 'auth:api', 'role:siswa']], function () {
+Route::group(['prefix' => 'casis', 'middleware' => ['jwt.verify', 'auth:api', 'role:casis']], function () {
     Route::get('/pembayaran/casis/{id}', [PembayaranCasisController::class, 'pembayaran_casis'])->name('pembayaran.casis');
     Route::post('/pembayaran/casis/store', [PembayaranCasisController::class, 'pembayaran_casis_store'])->name('pembayaran.casisStore');
     Route::get('/edit/profile/{id}', [ProfileController::class, 'edit'])->name('edit.profileCasis');
-    Route::put('/update/profile/{id}', [CalonSiswaController::class, 'update'])->name('update.profileCasis');
+    Route::put('/update/profile/{id}', [CalonSiswaController::class, 'update_from_casis'])->name('update.profileCasis');
     
     Route::get('/dashboard', function () {
         $pembayaran = Pembayaran::all();

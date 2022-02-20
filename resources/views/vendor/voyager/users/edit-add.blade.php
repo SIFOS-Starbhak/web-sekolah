@@ -101,6 +101,16 @@
                                     @endphp
                                     @include('voyager::formfields.relationship')
                                 </div>
+                                <div class="form-group" id="mapel">
+                                    <label for="mapel">{{ __('Mapel Guru') }}</label>
+                                    @php
+                                        $dataTypeRows = $dataType->{isset($dataTypeContent->id) ? 'editRows' : 'addRows'};
+                                        $row = $dataTypeRows->where('field', 'user_belongsto_mapel_relationship')->first();
+
+                                        $options = $row->details;
+                                    @endphp
+                                    @include('voyager::formfields.relationship')
+                                </div>
                             <div class="form-group " id="spesifc_guru">
                                 {{-- <label for="spesifc_role">{{ __('spesifik role') }}</label>
                                 <input type="text" class="form-control" id="spesifc_role" name="spesifc_role"
@@ -201,8 +211,11 @@
                     $('#spesifc_guru').hide()
                     $('#role_spesifc_normaluser').empty()
                     $('#spesifc_normaluser').hide()
+                    $('#mapel').hide()
                     $('#kelas').show()
+
                 }else if(val.toLowerCase() ==='guru'){
+                    $('#mapel').show()
                     $('#kelas').hide()
                     $('#spesifc_normaluser').hide()
                     $('#role_spesifc_normaluser').empty()
@@ -230,6 +243,7 @@
                     }
                 }else if(val.toLowerCase() ==='manager'){
                     $('#kelas').hide()
+                    $('#mapel').hide()
                     $('#spesifc_normaluser').hide()
                     $('#role_spesifc_normaluser').empty()
                     if ($('#role_spesifc_guru').is(":empty")) {
@@ -259,6 +273,7 @@
                     // $('#role_spesifc_guru').show()
                 }else if(val.toLowerCase() ==='normal user'){
                     $('#kelas').hide()
+                    $('#mapel').hide()
                     $('#spesifc_guru').hide()
                     $('#role_spesifc_guru').empty()
                     // $('#role_spesifc_normaluser').show()
@@ -269,6 +284,7 @@
                 }
                 else{
                     $('#kelas').hide()
+                    $('#mapel').hide()
                     $('#role_spesifc_guru').empty()
                     $('#spesifc_guru').hide()
                     $('#role_spesifc_normaluser').empty()
@@ -283,6 +299,7 @@
         $(document).ready(function() {
 
             $('#kelas').hide();
+            $('#mapel').hide();
             $('#role_spesifc').hide();
             $('#role_spesifc_guru').hide();
             $('#role_spesifc_normaluser').hide();

@@ -521,7 +521,7 @@
                                                               <div class="form-group">
                                                                   <label style="font-size: 16px; font-weight: 800;"
                                                                       for="jarak_rumah_kesekolah">Jarak Rumah ke Sekolah</label>
-                                                                  <input type="text" style="font-size: 15px; font-weight: 600;" class="form-control"  id="jarak_rumah_kesekolah" name="jarak_rumah_kesekolah" value="{{ old('jarak_rumah_kesekolah',$casis->detailPrivasiCasis->jarak_rumah_kesekolah) }}">
+                                                                  <input type="text" style="font-size: 15px; font-weight: 600;" class="form-control"  id="jarak_rumah_kesekolah" name="jarak_rumah_kesekolah" value="{{ old('jarak_rumah_kesekolah',$casis->detailPrivasiCasis->jarak_rumah_ke_sekolah) }}">
                                                               </div>                                                        
                                                           </div>
                                                           <div class="col-md-6">
@@ -587,8 +587,8 @@
                                                       <div class="col-md-6">
                                                           <div class="form-group">
                                                               <label style="font-size: 16px; font-weight: 800;"
-                                                                  for="tahun_lahir_ayah">Tahun Lahir Ayah </label>
-                                                              <input type="text" style="font-size: 15px; font-weight: 600;"
+                                                                  for="tahun_lahir_ayah">Tgl Lahir Ayah </label>
+                                                              <input type="date" style="font-size: 15px; font-weight: 600;"
                                                                   class="form-control" id="tahun_lahir_ayah" name="tahun_lahir_ayah"
                                                                   value="{{ old('tahun_lahir_ayah',$casis->orangtuaWaliCasis->tahun_lahir_ayah) }}">
                                                           </div>
@@ -720,8 +720,8 @@
                                                           <div class="col-md-6">
                                                               <div class="form-group">
                                                                   <label style="font-size: 16px; font-weight: 800;"
-                                                                      for="tahun_lahir_ibu">Tahun Lahir Ibu </label>
-                                                                  <input type="text" style="font-size: 15px; font-weight: 600;"
+                                                                      for="tahun_lahir_ibu">Tgl Lahir Ibu </label>
+                                                                  <input type="date" style="font-size: 15px; font-weight: 600;"
                                                                       class="form-control" id="tahun_lahir_ibu" name="tahun_lahir_ibu"
                                                                       value="{{ old('tahun_lahir_ibu',$casis->orangtuaWaliCasis->tahun_lahir_ibu) }}">
                                                               </div>
@@ -963,8 +963,8 @@
                                                               <div class="col-md-6">
                                                                   <div class="form-group">
                                                                       <label style="font-size: 16px; font-weight: 800;"
-                                                                          for="tahun_lahir_wali">Tahun Lahir Wali </label>
-                                                                      <input type="text" style="font-size: 15px; font-weight: 600;"
+                                                                          for="tahun_lahir_wali">Tgl Lahir Wali </label>
+                                                                      <input type="date" style="font-size: 15px; font-weight: 600;"
                                                                           class="form-control" id="tahun_lahir_wali" name="tahun_lahir_wali"
                                                                           value="{{ old('tahun_lahir_wali',$casis->orangtuaWaliCasis->tahun_lahir_wali) }}">
                                                                   </div>
@@ -1397,7 +1397,7 @@
                                           
                                         </div>
                                       </div>
-                                      @if (Auth::user()->role->name == "admin" && Auth::user()->spesifc_role == "admin")
+                                      @if (Auth::user()->role->name == "admin" && Auth::user()->spesifc_role == "admin" || Auth::user()->role->name == "user" && Auth::user()->spesifc_role == "panitia")
                                       <div class="form-group col-md-6 col-12">
                                         <label>File Photo</label>
                                         <input name="profileImg"  onchange="loadFileEdit(event)" type="file" class="form-control"  accept="image/png, image/jpeg, image/jpg" >
@@ -1434,7 +1434,7 @@
                                         @enderror
                                         @endif
                                       </div>
-                                          @if (Auth::user()->role->name == "admin" && Auth::user()->spesifc_role == "admin" || Auth::user()->role->name == "user" && Auth::user()->spesifc_role == "panitia")
+                                          @if (Auth::user()->role->name == "admin" && Auth::user()->spesifc_role == "admin" || Auth::user()->role->name == "user" )
                                               
                                           @else 
                                           <div class="form-group col-md-6 col-12">

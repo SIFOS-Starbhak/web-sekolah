@@ -22,4 +22,8 @@ class Kela extends Model
     {
         return $this->hasMany(Siswa::class);
     }
+    public function calonSiswa()
+    {
+        return $this->hasOne(CalonSiswa::class,'id');
+    }
 }

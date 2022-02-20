@@ -9,7 +9,7 @@
           @csrf
           @method('POST') 
             <div class="container justify-content-center">
-              <input type="hidden" name="tipe_cicilan" value="{{$pembayaran->id}}">
+              <input type="hidden" id="pembayaran" name="tipe_cicilan" value="{{$pembayaran->id}}">
                 <div class="form-group col-12" >
                     @php
                         function rupiah($angka){
@@ -20,8 +20,9 @@
                         }
                         
                         @endphp
-                                @if ($pembayaran->nama_pembayaran == 'Sekali Bayar')
-                                <label for="" style="font-size: 20px;">1 .Sekali Bayar</label>
+                        {{-- {{dd($pembayaran->nama_pembayaran)}} --}}
+                                @if ($pembayaran->nama_pembayaran == "Sekali Bayar")
+                                <label for="" style="font-size: 20px;">1 .{{$pembayaran->nama_pembayaran}}</label>
                                 <div class="row gutters-sm ml-5">
                                     <div class="col-6 col-sm-3">
                                       <label class="imagecheck mb-4">
@@ -33,7 +34,7 @@
                                     </div>
                                   </div>
                                 @else
-                                <label for="" style="font-size: 20px;">1 .Tipe Cicilan</label>
+                                <label for="" style="font-size: 20px;">1 .{{$pembayaran->nama_pembayaran}}</label>
 
                                 <div class="row gutters-sm ml-5">
                                     <div class="col-6 col-sm-3">

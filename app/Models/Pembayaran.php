@@ -15,4 +15,8 @@ class Pembayaran extends Model
         'nominal_pembayaran'
        
     ];
+    public function pembayaranCasis()
+    {
+        return $this->hasOne(PembayaranCalonSiswa::class,'id');
+    }
 }

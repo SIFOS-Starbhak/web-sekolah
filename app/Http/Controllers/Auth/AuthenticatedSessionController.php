@@ -78,7 +78,7 @@ class AuthenticatedSessionController extends Controller
         if (auth('api')->user()->hasRole('admin') && auth('api')->user()->spesifc_role == 'admin') {
             $data['redirect'] = route('dashboard.adm');
 
-        } else if (auth('api')->user()->hasRole('siswa') && auth('api')->user()->spesifc_role == 'casis') {
+        } else if (auth('api')->user()->hasRole('casis') && auth('api')->user()->spesifc_role == 'casis') {
             $data['redirect'] = route('dashboard.casis');
         } else if (auth('api')->user()->hasRole('siswa')) {
             $data['redirect'] = route('dashboard.siswa');
@@ -139,9 +139,11 @@ class AuthenticatedSessionController extends Controller
         if (auth('api')->user()->hasRole('admin')) {
             $data['auth'] = ["username" => auth('api')->user()->nomor_induk, "password" => auth('api')->user()->password, "role" => "admin", "spesifc_role" => auth('api')->user()->spesifc_role];
             $data['role'] = 'admin';
-        } else if (auth('api')->user()->hasRole('siswa') && auth('api')->user()->spesifc_role == 'casis') {
-            $data['auth'] = ["username" => auth('api')->user()->nomor_induk, "password" => auth('api')->user()->password, "role" => "user", "spesifc_role" => auth('api')->user()->spesifc_role];
-        } else if (auth('api')->user()->hasRole('siswa')) {
+        }
+        //  else if (auth('api')->user()->hasRole('casis') ) {
+        //     $data['auth'] = ["username" => auth('api')->user()->nomor_induk, "password" => auth('api')->user()->password, "role" => "casis", "spesifc_role" => auth('api')->user()->spesifc_role];
+        // }
+         else if (auth('api')->user()->hasRole('siswa')) {
             $data['auth'] = ["username" => auth('api')->user()->nomor_induk, "password" => auth('api')->user()->password, "role" => "siswa", "spesifc_role" => auth('api')->user()->spesifc_role];
             $data['role'] = 'siswa';
         } else if (auth('api')->user()->hasRole('guru')) {

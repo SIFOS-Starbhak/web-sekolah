@@ -15,7 +15,9 @@ class PembayaranCasisController extends Controller
 {
     public function pembayaran_casis($id)
     {
+        // dd($id);
         $pembayaran = Pembayaran::where('id',$id)->first();
+        // dd($pembayaran);
      return view('casis.pembayaran',compact('pembayaran'));
     }
     public function konfirmasi_pembayaran(Request $request,$id)
@@ -75,7 +77,7 @@ class PembayaranCasisController extends Controller
                     'nominal' => $request->pembayaran_nominal,
                     'metode_bayar' => $request->metode_bayar,
                     'bukti_bayar' => $filepath,
-                    'status' => 0
+                    'status' => null
                 ]);
         return redirect()->route('dashboard.casis')->with('message', 'Berhasil Melakukan Pembayaran!');
 
@@ -96,9 +98,33 @@ class PembayaranCasisController extends Controller
      return view('casis.pembayaran',compact('pembayaran'));
     }
 
-    public function validasi_pembayaran(PembayaranCalonSiswa $id)
+    public function validasi_pembayaran($id)
     {
-        // $pembayaran = PembayaranCalonSiswa::where()
-        return view('dashboard.pembayaran_casis.modal',compact('id'));
+        $pembayaran = PembayaranCalonSiswa::where('calonsiswa_id',$id)->get();
+       
+        return view('dashboard.pembayaran_casis.modal',compact('pembayaran'));
     }
+    public function detail_image($id)
+    {
+        $data = PembayaranCalonSiswa::where('id',$id)->first();
+
+       
+        return view('dashboard.pembayaran_casis.modalimage',compact('data'));
+    }
+    public function konfirmasi(Request $request,$id)
+    {
+         PembayaranCalonSiswa::where('id',$id)->update([
+            'status' => request('status')
+        ]);
+
+       if (request('status') == "0" || request('status') == 0) {
+           $msg = "Berhasil Menolak Pembayaran Calon Siswa";
+       }else{
+        $msg = "Berhasil Menerima Pembayaran Calon Siswa";
+
+       }
+        return  response()->json(['success'=>$msg]);
+    }
+   
+  
 }

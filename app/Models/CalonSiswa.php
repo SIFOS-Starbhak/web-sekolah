@@ -62,6 +62,10 @@ class CalonSiswa extends Model
     {
         return $this->belongsTo(PembayaranCalonSiswa::class,'id');
     }
+    public function referal()
+    {
+        return $this->hasMany(UserReference::class,'referal_code_id','id');
+    }
     // public function asalSekolah()
     // {
     //     return $this->belongsTo(AsalSekolah::class,'asal_sekolah_id');
@@ -77,5 +81,22 @@ class CalonSiswa extends Model
     public function orangtuaWaliCasis()
     {
         return $this->belongsTo(OrangtuaWaliCasis::class,'orangtua_wali_casis_id');
+    }
+    public function kelas_1()
+    {
+        return $this->belongsTo(Kela::class,'jurusan_1');
+    }
+    public function kelas_2()
+    {
+        return $this->belongsTo(Kela::class,'jurusan_2');
+    }
+    public function kelas_3()
+    {
+        return $this->belongsTo(Kela::class,'jurusan_3');
+    }
+    public function gugus()
+    {
+        return $this->belongsTo(Gugus::class,'gugus_id');
+
     }
 }

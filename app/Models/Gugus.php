@@ -14,4 +14,8 @@ class Gugus extends Model
         'nama_gugus'
        
     ];
+    public function calonSiswa()
+    {
+        return $this->hasOne(CalonSiswa::class,'id');
+    }
 }

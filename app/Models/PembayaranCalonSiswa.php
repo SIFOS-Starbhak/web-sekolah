@@ -22,4 +22,8 @@ class PembayaranCalonSiswa extends Model
     {
         return $this->belongsTo(CalonSiswa::class,'calonsiswa_id');
     }
+    public function tipePembayaran()
+    {
+        return $this->belongsTo(Pembayaran::class,'tipecicilan_id');
+    }
 }

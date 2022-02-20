@@ -11,6 +11,7 @@
     <link rel="icon" href="favicon.ico">
     <title>STARBHAK - @yield('title')</title>
 
+    
     <!-- General CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
         integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
@@ -30,6 +31,7 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.20/datatables.min.css" />
     <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
     <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+    
     @stack('css')
 
     <style>
@@ -78,7 +80,42 @@
             vertical-align: middle !important;
             padding-left: 8px !important;
         }
+        .navbar {
+    margin-bottom: 0;
+    z-index: 3;
+}
         .modal-backdrop { display: none; } .modal { background: rgba(0,0,0,0.5); } 
+
+/* The Modal (background) */
+.modal-image {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+}
+
+/* Modal Content (image) */
+.modal-content-image {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 900px;
+
+  max-height: calc(100vh - 110px);
+  overflow-y: auto;
+}
+/* 100% Image Width on Smaller Screens */
+@media only screen and (max-width: 900px){
+  .modal-content {
+    width: 100%;
+  }
+}
 
     </style>
     @stack('css')
@@ -134,7 +171,11 @@
 
     @yield('script')
     <script>
+        // Get the <span> element that closes the modal
+
         $(document).ready(function() {
+            $('.user_casis_multi').select2();
+            
             $('.select2').select2({
                 closeOnSelect: false
             });

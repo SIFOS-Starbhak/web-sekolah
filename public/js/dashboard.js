@@ -1,4 +1,5 @@
 
+
         $(document).ready(function() {
 
 
@@ -52,6 +53,34 @@
             $('#XII_TEI').DataTable({
                 responsive: true
             });
+            $('#referal_code').DataTable({
+                responsive: true
+            });
+
+            $('#data_casis').DataTable({
+                "columns": [
+                    { "width": "5%" },
+                    { "width": "25%" },
+                    { "width": "10%" },
+                    { "width": "30%" },
+                    { "width": "10%" },
+                  ],
+                
+                responsive: true
+            });
+
+            $('.gugus').DataTable({
+                "paging":   false,
+                "ordering": false,
+                "info":     false,
+                
+            });
+
+         
+        
+       
+          
+            
            
         });
         $('.deleteConfirm').on('click', function(e) {
@@ -79,8 +108,58 @@
                 console.error(error);
             });
 
-        // ClassicEditor
-        // .create( document.querySelector( '#task-' ) )
-        // .catch( error => {
-        //     console.error( error );
-        // } );
+
+
+
+            var check = $('input:checkbox[name=ids]:checked')
+            if (check.length == 0 ) {
+                $(".update-all-check").addClass('disabled');
+                
+            }
+
+
+
+            $(".checkBoxClass").click(function () {
+                if ($(this).is(":checked")) {
+                    $(".update-all-check").removeClass('disabled');
+                } else {
+                    $(".update-all-check").addClass('disabled');
+                }
+            });
+
+
+$('.update-all-check').on('click', function(e) {
+    e.preventDefault();
+    // console.log()
+    var id =$(this).data("id");
+    var allIdS = [];
+    $('input:checkbox[name=ids]:checked').each(function(){
+        
+        allIdS.push($(this).val());
+    });
+    // console.log(allIdS,id);         
+
+    $.ajaxSetup({
+        headers: {
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+      });
+    $.ajax({
+        url: "CalonSiswa/gugus/"+id, 
+        type: "PUT",
+        data: {
+            "ids":allIdS
+        },
+        success: function (response) {
+            alert(response.success)
+            $.each(allIdS, function (key, val) { 
+                $("#sid"+val).remove();
+                 
+            });
+            $(".show_data_gugus").load("gugus/table");
+
+      
+           }
+    });
+    // console.log(allIdS,$(this).data("id"));         
+});
