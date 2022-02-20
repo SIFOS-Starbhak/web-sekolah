@@ -143,8 +143,13 @@
                             data-aos="zoom-in" data-aos-delay="100">
                             <h1>{{ $bg->heading }}</h1>
                             <h3>{{ $bg->subheading }}</h3>
-                            <a href="/profile" class="btn btn-outline-light mt-4"
+                            @if ( $bg->set_link == '/profile' || $bg->set_link == 'http://new.smktarunabhakti.net/profile' )
+                                <a href="{{ $bg->set_link }}" class="btn btn-outline-light mt-4"
                                 style="padding: 10px 30px 10px 30px; border-radius: 50px">Profile</a>
+                            @else
+                                <a href="{{ $bg->set_link }}" class="btn btn-outline-light mt-4"
+                                style="padding: 10px 30px 10px 30px; border-radius: 50px">Selengkapnya ...</a>
+                            @endif
                         </div>
                     </div>
 

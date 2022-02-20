@@ -57,15 +57,29 @@
                                         <div class="cnt-block equal-hight text-center" style="height: 349px;">
                                             @if (file_exists(public_path('user-img/' . $user->avatar)))
                                                 <img src="{{ 'user-img/' . $user->avatar }}" class="img-responsive" alt=""
-                                                style="width:200px;height:200px; object-fit: cover;"/>
+                                                    style="width:200px;height:200px; object-fit: cover;" />
                                             @else
-                                                <img src="{{ asset('storage/' . $user->avatar) }}" class="img-responsive" alt=""
-                                                style="width:200px;height:200px; object-fit: cover;"/>
+                                                <img src="{{ asset('storage/' . $user->avatar) }}" class="img-responsive"
+                                                    alt="" style="width:200px;height:200px; object-fit: cover;" />
                                             @endif
                                             <h3 style="margin-top:10%;">{{ $user->name }}</h3>
                                             {{-- <h6 style="margin-top:10%;">{{ $user->user->skill }}</h6> --}}
-                                            <h6 style="margin-top:10%;"><a href="">CV -
-                                                    {{ $user->name }}</a></h6>
+                                            @if ($user->detailUser == null || $user->detailUser->cv == null)
+
+                                                <h6 style="margin-top:10%;">
+                                                    <a disabled>Belum Punya CV </a>
+                                                @else
+
+
+                                                    <h6 style="margin-top:10%;">
+                                                        <a href="{{ route('stream.cv', $user->id) }}">View CV
+                                                            -{{ $user->name }}</a>
+                                                    </h6>
+
+
+                                            @endif
+
+
                                         </div>
                                     </a>
                                 </li>
