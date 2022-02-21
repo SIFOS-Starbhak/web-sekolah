@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Schema;
 
 use Illuminate\Support\Facades\Auth;
 use DB;
+use App\Models\Gugus;
 
 use Illuminate\Pagination\Paginator;
 // use Paginator;
@@ -52,7 +53,10 @@ class AppServiceProvider extends ServiceProvider
             if ($time >= "18") {
             $greetings = "Selamat Malam";
         }
-        View::share('greetings',$greetings);  
+        $gugus_frontView = Gugus::all();
+        View::share(compact('greetings','gugus_frontView'));  
+
+        // View::share();  
 
     }
 }

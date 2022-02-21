@@ -223,4 +223,13 @@ class WebController extends Controller
         // dd($content->toArray(),$tab->toArray());
         return view('jurusans', compact('settings', 'navbar', 'backgrounds', 'jurusan', 'content', 'tab', 'gallery', 'foto'));
     }
+
+    public function ppdb()
+    {
+        $settings = Setting::all();
+        $navbar = Navbar::all()->where('status', 'Active');
+        $backgrounds = Background::all();
+        $eskul = Ekskul::all();
+        return view('ppdb', compact('settings','navbar','backgrounds'));
+    }
 }

@@ -73,6 +73,11 @@ Route::get('/guru-starbhak/{kategori:slug}', 'WebController@fotoguru');
 Route::get('/bkk/open-recruitment', 'WebController@bkk');
 Route::get('/bkk/data-siswa-starbhak', 'WebController@bkk');
 
+
+// Page PPDB
+Route::get('/kesiswaan/ppdb', 'WebController@ppdb');
+
+
 // Page Ekstrakulikuler
 Route::get('/kesiswaan/ekstrakurikuler', 'WebController@ekskul');
 Route::get('/ekskul/{eskul:slug}', 'WebController@eskul');
