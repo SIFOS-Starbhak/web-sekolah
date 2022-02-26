@@ -128,7 +128,7 @@
         }
         // dd($user);
        @endphp
-            <span class="h5"><b>- {{$item->nama_kelas}}</b></span>
+            <span class="h5"><b>-{{$item->nama_kelas}}</b></span>
 
             <table class="table table-bordered">
                 <thead> 
@@ -150,7 +150,6 @@
                             <td>{{$key_u->nama_lengkap}}</td>
                             <td>{{$key_u->jenis_kelamin}}</td>  
                             <td>{{$key_u->asal_sekolah}}</td>  
-                            <td>{{$key_u->user->kelas->nama_kelas}}</td>  
                         </tr>
                         
                       @endif

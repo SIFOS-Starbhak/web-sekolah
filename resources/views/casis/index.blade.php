@@ -208,7 +208,7 @@
                   <center>
                     <div class="col-12 col-md-12 col-lg-12 ">
                       <div class="card card-success  ">
-                        @if ($check_gugus != null)
+                        @if ($check_gugus->gugus != null)
                             <h5 class="mt-2 justify-self-start">
                               Anda Berada di Gugus : 
                               <a href="">

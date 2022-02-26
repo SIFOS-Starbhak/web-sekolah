@@ -107,6 +107,9 @@ class CalonSiswaController extends Controller
         );
         // dd($request->nama_ayah);
 
+     
+        // dd($kode_referal_id,$check);
+
         $detailPrivasiCasis = DetailPrivasiCasis::create([
                'tinggi_badan' => $request->tinggi_badan,
                 'berat_badan' => $request->berat_badan,
@@ -155,6 +158,14 @@ class CalonSiswaController extends Controller
         // dd($no_casis);
         $no_daftar = str_pad($no_casis, 3, '0', STR_PAD_LEFT);
 // dd($request);
+$check = UserReference::where('ref_code',$request->kode_referal)->first();
+
+if ($check == null ) {
+    $kode_referal_id = null;
+}else{
+    $kode_referal_id  = intval($check->id);
+}
+// dd($kode_referal_id);
        $casis = CalonSiswa::create([
         'no_daftar' => $no_daftar,
         'jurusan_1' => $request->jurusan_1,
@@ -197,7 +208,7 @@ class CalonSiswaController extends Controller
         'detail_privasi_casis_id'=> $detailPrivasiCasis->id,
         'orangtua_wali_casis_id'=> $orangtuaWaliCasis->id,
         'prestasi_casis_id'=> $prestasiCasis->id,
-        'referal_code_id'=> $request->kode_referal
+        'referal_code_id' => $kode_referal_id
         ]);
         // dd($casis);
 
@@ -205,7 +216,7 @@ class CalonSiswaController extends Controller
 
 
         User::create([
-           'role_id' => 3,  
+           'role_id' => 7,  
            'name' => $request->nama_lengkap,
            'email' => $request->email,
            'avatar' => 'users/default.png',
@@ -415,7 +426,7 @@ class CalonSiswaController extends Controller
 
 
     User::where('id',$user->id)->update([
-       'role_id' => 3,  
+       'role_id' => 7,  
        'name' => $request->nama_lengkap,
        'email' => $request->email,
        'avatar' => 'users/default.png',

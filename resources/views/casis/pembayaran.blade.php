@@ -111,7 +111,7 @@
                                     </div>
                                     <div class="col-6 col-sm-3">
                                       <label class="imagecheck mb-4">
-                                        <input name="pembayaran_nominal" type="radio" value="100000" class="imagecheck-input"  @if(old('pembayaran_nominal')  ==  "100000" ? "selected" : "" ) checked  @endif />
+                                        <input name="pembayaran_nominal" type="radio" value="1000000" class="imagecheck-input"  @if(old('pembayaran_nominal')  ==  "1000000" ? "selected" : "" ) checked  @endif />
                                         <figure class="imagecheck-figure" style="width: 200px;">
                                           <h6 class="ml-4 mt-2"  style="font-size: 20px;">{{rupiah(1000000)}}</h6>
                                         </figure>

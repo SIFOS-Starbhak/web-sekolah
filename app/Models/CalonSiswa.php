@@ -52,6 +52,7 @@ class CalonSiswa extends Model
          'asal_sekolah',
          'orangtua_wali_casis_id',
          'prestasi_casis_id',
+         'referal_code_id',
     ];
     
     public function user()
